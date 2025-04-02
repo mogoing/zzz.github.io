@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>开心消消乐 - 高精度完整版</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(120deg, #89f7fe, #66a6ff);
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px;
+    }
+    h1 {
+      color: #fff;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    #game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(8, 35px);
+      grid-template-rows: repeat(8, 35px);
+      gap: 3px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px;
+      border-radius: 10px;
+      border: 2px solid #fff;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+    .cell {
+      width: 35px;
+      height: 35px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      position: relative;
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+    .cell:hover { transform: scale(1.1); }
+    .matched {
+      animation: pop 0.3s ease-out forwards;
+    }
+    @keyframes pop {
+      50% { transform: scale(1.2); opacity: 0.5; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+    .error {
+      animation: error 0.3s ease-out;
+    }
+    @keyframes error {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+    .ice {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(173, 216, 230, 0.7);
+      border-radius: 5px;
+      pointer-events: none;
+    }
+    #score-board {
+      margin-top: 15px;
+      color: #fff;
+      font-size: 14px;
+    }
+    #score-board span { font-weight: bold; }
+    .game-btn {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .game-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    #pause-modal, #game-over-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    #pause-content, #game-over-content {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #game-over-btns, #pause-btns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background: #66a6ff;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>开心消消乐</h1>
+  <div id="game-container">
+    <div id="game-board"></div>
+    <div id="score-board">
+      分数: <span id="score">0</span> | 目标分数: <span id="target-score">1000</span> | 剩余步数: <span id="moves-left">20</span>
+    </div>
+    <button class="game-btn" id="pause-btn">暂停</button>
+  </div>
+  <audio id="match-sound" src="https://www.fesliyanstudios.com/play-mp3/4380"></audio>
+  <audio id="no-moves-sound" src="https://www.fesliyanstudios.com/play-mp3/4381"></audio>
 
+  <!-- 暂停弹窗 -->
+  <div id="pause-modal">
+    <div id="pause-content">
+      <h2>游戏暂停</h2>
+      <div id="pause-btns">
+        <button id="resume-btn">继续游戏</button>
+        <button id="restart-btn">重新开始</button>
+        <button id="home-btn">返回主页</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 结算弹窗 -->
+  <div id="game-over-modal">
+    <div id="game-over-content">
+      <h2 id="game-result">游戏结算</h2>
+      <p id="game-result-info">你的分数: <span id="final-score">0</span></p>
+      <div id="game-over-btns">
+        <button id="retry-btn">重试</button>
+        <button id="next-level-btn">下一关</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const boardSize = 8;
+    const icons = ["🍎", "🍌", "🍇", "🍒", "🍍", "🥝"];
+    const specialAnimals = ["🐶", "🐱", "🐭"];
+    const starIcon = "🌟";
+    let board = [];
+    let firstSelection = null;
+    let score = 0;
+    const targetScore = 1000;
+    let movesLeft = 20;
+    let isPaused = false;
+    let isGameOver = false;
+    const matchSound = document.getElementById("match-sound");
+    const noMovesSound = document.getElementById("no-moves-sound");
+    const gameOverModal = document.getElementById("game-over-modal");
+    const pauseModal = document.getElementById("pause-modal");
+    const gameResult = document.getElementById("game-result");
+    const gameResultI
