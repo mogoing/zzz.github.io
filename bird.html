@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>愤怒的小鸟</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:
+"Microsoft YaHei",
+sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+min-height:100vh;
+
+background:
+linear-gradient(
+180deg,
+#8edcff 0%,
+#bcecff 40%,
+#ecfbff 100%
+);
+
+overflow-x:hidden;
+
+}
+
+/* =====================
+顶部
+===================== */
+
+.topbar{
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+display:flex;
+
+justify-content:
+space-between;
+
+align-items:center;
+
+padding:
+20px 40px;
+
+backdrop-filter:
+blur(20px);
+
+background:
+rgba(255,255,255,.08);
+
+border-bottom:
+1px solid
+rgba(255,255,255,.2);
+
+}
+
+.logo{
+
+font-size:42px;
+
+font-weight:900;
+
+color:white;
+
+letter-spacing:2px;
+
+text-shadow:
+0 5px 15px
+rgba(0,0,0,.15);
+
+}
+
+.home-btn{
+
+border:none;
+
+outline:none;
+
+padding:
+12px 22px;
+
+border-radius:15px;
+
+cursor:pointer;
+
+font-weight:700;
+
+background:white;
+
+transition:.3s;
+}
+
+.home-btn:hover{
+
+transform:
+translateY(-3px);
+
+}
+
+/* =====================
+云层
+===================== */
+
+.cloud{
+
+position:fixed;
+
+background:white;
+
+opacity:.7;
+
+border-radius:999px;
+
+z-index:-1;
+
+filter:blur(1px);
+
+}
+
+.cloud:before,
+.cloud:after{
+
+content:"";
+
+position:absolute;
+
+background:white;
+
+border-radius:50%;
+
+}
+
+.cloud1{
+
+width:220px;
+height:70px;
+
+top:80px;
+left:-250px;
+
+animation:
+cloudMove 45s linear infinite;
+
+}
+
+.cloud1:before{
+
+width:80px;
+height:80px;
+
+left:20px;
+top:-30px;
+
+}
+
+.cloud1:after{
+
+width:100px;
+height:100px;
+
+left:90px;
+top:-45px;
+
+}
+
+.cloud2{
+
+width:180px;
+height:60px;
+
+top:260px;
+left:-300px;
+
+animation:
+cloudMove 70s linear infinite;
+
+}
+
+.cloud2:before{
+
+width:70px;
+height:70px;
+
+left:25px;
+top:-25px;
+
+}
+
+.cloud2:after{
+
+width:90px;
+height:90px;
+
+left:80px;
+top:-40px;
+
+}
+
+.cloud3{
+
+width:260px;
+height:80px;
+
+top:460px;
+left:-350px;
+
+animation:
+cloudMove 90s linear infinite;
+
+}
+
+.cloud3:before{
+
+width:90px;
+height:90px;
+
+left:40px;
+top:-35px;
+
+}
+
+.cloud3:after{
+
+width:110px;
+height:110px;
+
+left:110px;
+top:-50px;
+
+}
+
+@keyframes cloudMove{
+
+from{
+transform:translateX(0);
+}
+
+to{
+transform:
+translateX(
+calc(100vw + 500px)
+);
+}
+
+}
+
+/* =====================
+流星
+===================== */
+
+.meteor{
+
+position:fixed;
+
+width:220px;
+height:2px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+white
+);
+
+transform:
+rotate(-35deg);
+
+animation:
+meteorMove
+8s linear infinite;
+
+z-index:-1;
+
+}
+
+@keyframes meteorMove{
+
+0%{
+
+top:-100px;
+left:-250px;
+
+opacity:0;
+
+}
+
+15%{
+opacity:1;
+}
+
+100%{
+
+top:650px;
+left:130%;
+
+opacity:0;
+
+}
+
+}
+
+/* =====================
+关卡区域
+===================== */
+
+.levels{
+
+max-width:1700px;
+
+margin:auto;
+
+padding:40px;
+
+display:grid;
+
+grid-template-columns:
+repeat(5,1fr);
+
+gap:22px;
+
+}
+
+/* =====================
+卡片
+===================== */
+
+.level-card{
+
+height:140px;
+
+border-radius:28px;
+
+padding:18px;
+
+cursor:pointer;
+
+color:white;
+
+position:relative;
+
+overflow:hidden;
+
+opacity:0;
+
+transform:
+translateY(40px);
+
+transition:
+.4s;
+
+box-shadow:
+0 15px 35px
+rgba(0,0,0,.12);
+
+border:
+1px solid
+rgba(255,255,255,.25);
+
+backdrop-filter:
+blur(10px);
+
+}
+
+.level-card.show{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+.level-card:hover{
+
+transform:
+translateY(-8px)
+scale(1.04);
+
+}
+
+.level-card::before{
+
+content:"";
+
+position:absolute;
+
+width:180px;
+height:180px;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,.18);
+
+top:-90px;
+right:-70px;
+
+transition:.4s;
+
+}
+
+.level-card:hover::before{
+
+transform:
+scale(1.25);
+
+}
+
+.level-card span{
+
+font-size:14px;
+
+opacity:.85;
+
+}
+
+.level-card h3{
+
+margin-top:15px;
+
+font-size:28px;
+
+}
+
+/* =====================
+手机适配
+===================== */
+
+@media(max-width:768px){
+
+.topbar{
+
+padding:
+15px 18px;
+
+}
+
+.logo{
+
+font-size:28px;
+
+}
+
+.levels{
+
+grid-template-columns:
+repeat(3,1fr);
+
+padding:15px;
+
+gap:12px;
+
+}
+
+.level-card{
+
+height:100px;
+
+border-radius:18px;
+
+padding:10px;
+
+}
+
+.level-card h3{
+
+font-size:18px;
+
+margin-top:8px;
+
+}
+
+}
+
+/* =====================
+前50关颜色
+===================== */
+
+.lv1{background:linear-gradient(135deg,#ffd6e8,#ffb7d5);}
+.lv2{background:linear-gradient(135deg,#ffe0c7,#ffc9a8);}
+.lv3{background:linear-gradient(135deg,#ddf6e4,#bfebcf);}
+.lv4{background:linear-gradient(135deg,#fff1b8,#ffe082);}
+.lv5{background:linear-gradient(135deg,#d8f3ff,#aee7ff);}
+.lv6{background:linear-gradient(135deg,#e7d9ff,#cdb7ff);}
+.lv7{background:linear-gradient(135deg,#ffd8d8,#ffb3b3);}
+.lv8{background:linear-gradient(135deg,#d8fff8,#b6f7e8);}
+.lv9{background:linear-gradient(135deg,#ffe7f0,#ffcfe1);}
+.lv10{background:linear-gradient(135deg,#fff4d0,#ffe7a1);}
+.lv11{background:linear-gradient(135deg,#d8e9ff,#b5d1ff);}
+.lv12{background:linear-gradient(135deg,#f2d8ff,#e0b5ff);}
+.lv13{background:linear-gradient(135deg,#ffe0e0,#ffc3c3);}
+.lv14{background:linear-gradient(135deg,#d9fff1,#b8f7df);}
+.lv15{background:linear-gradient(135deg,#fff0e0,#ffd5b8);}
+.lv16{background:linear-gradient(135deg,#e0efff,#c0dbff);}
+.lv17{background:linear-gradient(135deg,#ffe4f6,#ffc8e9);}
+.lv18{background:linear-gradient(135deg,#fff2cc,#ffe299);}
+.lv19{background:linear-gradient(135deg,#d9f8ff,#b4eeff);}
+.lv20{background:linear-gradient(135deg,#e8d9ff,#d0b8ff);}
+.lv21{background:linear-gradient(135deg,#ffd9e4,#ffbcd0);}
+.lv22{background:linear-gradient(135deg,#ffe7c2,#ffd49a);}
+.lv23{background:linear-gradient(135deg,#e6ffd9,#cff5b4);}
+.lv24{background:linear-gradient(135deg,#fff0c2,#ffe18c);}
+.lv25{background:linear-gradient(135deg,#d9f4ff,#b9e8ff);}
+.lv26{background:linear-gradient(135deg,#f1d9ff,#ddb8ff);}
+.lv27{background:linear-gradient(135deg,#ffd8f0,#ffbde2);}
+.lv28{background:linear-gradient(135deg,#d7e7ff,#b3d0ff);}
+.lv29{background:linear-gradient(135deg,#e0fff7,#bff8ea);}
+.lv30{background:linear-gradient(135deg,#d8f0ff,#b8e2ff);}
+.lv31{background:linear-gradient(135deg,#ffdccb,#ffbea0);}
+.lv32{background:linear-gradient(135deg,#e5e7ff,#c9cdff);}
+.lv33{background:linear-gradient(135deg,#d9fff1,#aeefd7);}
+.lv34{background:linear-gradient(135deg,#f9d5e5,#eeac99);}
+.lv35{background:linear-gradient(135deg,#fde2e4,#fbc4ab);}
+.lv36{background:linear-gradient(135deg,#e2ece9,#bee1e6);}
+.lv37{background:linear-gradient(135deg,#d7e3fc,#abc4ff);}
+.lv38{background:linear-gradient(135deg,#fff1c1,#ffd166);}
+.lv39{background:linear-gradient(135deg,#e4c1f9,#d0bfff);}
+.lv40{background:linear-gradient(135deg,#ffd6a5,#ffadad);}
+.lv41{background:linear-gradient(135deg,#bde0fe,#a2d2ff);}
+.lv42{background:linear-gradient(135deg,#cdeac0,#ade8f4);}
+.lv43{background:linear-gradient(135deg,#ffc8dd,#ffafcc);}
+.lv44{background:linear-gradient(135deg,#ffe5ec,#ffc2d1);}
+.lv45{background:linear-gradient(135deg,#c3f0ca,#a8e6cf);}
+.lv46{background:linear-gradient(135deg,#e0fbfc,#c2f0fc);}
+.lv47{background:linear-gradient(135deg,#e9d8fd,#d0bfff);}
+.lv48{background:linear-gradient(135deg,#ffdde1,#ffc4d6);}
+.lv49{background:linear-gradient(135deg,#faedcd,#fec89a);}
+.lv50{background:linear-gradient(135deg,#cde7be,#b5ead7);}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+
+<div class="meteor"></div>
+
+<div class="topbar">
+
+<div class="logo">
+愤怒的小鸟
+</div>
+
+<button
+class="home-btn"
+onclick="location.href='index.html'">
+返回主页
+</button>
+
+</div>
+
+<div class="levels">
+
+<div class="level-card lv1" onclick="startLevel('bird01.html')"><span>01</span><h3>菜鸡鸟</h3></div>
+<div class="level-card lv2" onclick="startLevel('bird02.html')"><span>02</span><h3>开心鸟</h3></div>
+<div class="level-card lv3" onclick="startLevel('bird03.html')"><span>03</span><h3>猪猪鸟</h3></div>
+<div class="level-card lv4" onclick="startLevel('bird04.html')"><span>04</span><h3>太阳鸟</h3></div>
+<div class="level-card lv5" onclick="startLevel('bird05.html')"><span>05</span><h3>自由鸟</h3></div>
+
+<div class="level-card lv6" onclick="startLevel('bird06.html')"><span>06</span><h3>自信鸟</h3></div>
+<div class="level-card lv7" onclick="startLevel('bird07.html')"><span>07</span><h3>王者鸟</h3></div>
+<div class="level-card lv8" onclick="startLevel('bird08.html')"><span>08</span><h3>飞天鸟</h3></div>
+<div class="level-card lv9" onclick="startLevel('bird09.html')"><span>09</span><h3>幸运鸟</h3></div>
+<div class="level-card lv10" onclick="startLevel('bird10.html')"><span>10</span><h3>梦想鸟</h3></div>
+
+<div class="level-card lv11" onclick="startLevel('bird11.html')"><span>11</span><h3>流星鸟</h3></div>
+<div class="level-card lv12" onclick="startLevel('bird12.html')"><span>12</span><h3>彩虹鸟</h3></div>
+<div class="level-card lv13" onclick="startLevel('bird13.html')"><span>13</span><h3>奔跑鸟</h3></div>
+<div class="level-card lv14" onclick="startLevel('bird14.html')"><span>14</span><h3>旋风鸟</h3></div>
+<div class="level-card lv15" onclick="startLevel('bird15.html')"><span>15</span><h3>勇敢鸟</h3></div>
+
+<div class="level-card lv16" onclick="startLevel('bird16.html')"><span>16</span><h3>闪电鸟</h3></div>
+<div class="level-card lv17" onclick="startLevel('bird17.html')"><span>17</span><h3>霸王鸟</h3></div>
+<div class="level-card lv18" onclick="startLevel('bird18.html')"><span>18</span><h3>烈焰鸟</h3></div>
+<div class="level-card lv19" onclick="startLevel('bird19.html')"><span>19</span><h3>冲锋鸟</h3></div>
+<div class="level-card lv20" onclick="startLevel('bird20.html')"><span>20</span><h3>无敌鸟</h3></div>
+
+<div class="level-card lv21" onclick="startLevel('bird21.html')"><span>21</span><h3>青春鸟</h3></div>
+<div class="level-card lv22" onclick="startLevel('bird22.html')"><span>22</span><h3>可乐鸟</h3></div>
+<div class="level-card lv23" onclick="startLevel('bird23.html')"><span>23</span><h3>奶茶鸟</h3></div>
+<div class="level-card lv24" onclick="startLevel('bird24.html')"><span>24</span><h3>西瓜鸟</h3></div>
+<div class="level-card lv25" onclick="startLevel('bird25.html')"><span>25</span><h3>柠檬鸟</h3></div>
+
+<div class="level-card lv26" onclick="startLevel('bird26.html')"><span>26</span><h3>草莓鸟</h3></div>
+<div class="level-card lv27" onclick="startLevel('bird27.html')"><span>27</span><h3>星辰鸟</h3></div>
+<div class="level-card lv28" onclick="startLevel('bird28.html')"><span>28</span><h3>银河鸟</h3></div>
+<div class="level-card lv29" onclick="startLevel('bird29.html')"><span>29</span><h3>极光鸟</h3></div>
+<div class="level-card lv30" onclick="startLevel('bird30.html')"><span>30</span><h3>海洋鸟</h3></div>
+
+<div class="level-card lv31" onclick="startLevel('bird31.html')"><span>31</span><h3>火山鸟</h3></div>
+<div class="level-card lv32" onclick="startLevel('bird32.html')"><span>32</span><h3>雷霆鸟</h3></div>
+<div class="level-card lv33" onclick="startLevel('bird33.html')"><span>33</span><h3>飓风鸟</h3></div>
+
+<div class="level-card lv34" onclick="startLevel('bird34.html')"><span>34</span><h3>战神鸟</h3></div>
+<div class="level-card lv35" onclick="startLevel('bird35.html')"><span>35</span><h3>至尊鸟</h3></div>
+<div class="level-card lv36" onclick="startLevel('bird36.html')"><span>36</span><h3>荣耀鸟</h3></div>
+<div class="level-card lv37" onclick="startLevel('bird37.html')"><span>37</span><h3>天空鸟</h3></div>
+<div class="level-card lv38" onclick="startLevel('bird38.html')"><span>38</span><h3>烈日鸟</h3></div>
+
+<div class="level-card lv39" onclick="startLevel('bird39.html')"><span>39</span><h3>月光鸟</h3></div>
+<div class="level-card lv40" onclick="startLevel('bird40.html')"><span>40</span><h3>破晓鸟</h3></div>
+<div class="level-card lv41" onclick="startLevel('bird41.html')"><span>41</span><h3>暴风鸟</h3></div>
+<div class="level-card lv42" onclick="startLevel('bird42.html')"><span>42</span><h3>神龙鸟</h3></div>
+<div class="level-card lv43" onclick="startLevel('bird43.html')"><span>43</span><h3>麒麟鸟</h3></div>
+
+<div class="level-card lv44" onclick="startLevel('bird44.html')"><span>44</span><h3>凤凰鸟</h3></div>
+<div class="level-card lv45" onclick="startLevel('bird45.html')"><span>45</span><h3>苍穹鸟</h3></div>
+<div class="level-card lv46" onclick="startLevel('bird46.html')"><span>46</span><h3>云海鸟</h3></div>
+<div class="level-card lv47" onclick="startLevel('bird47.html')"><span>47</span><h3>幻影鸟</h3></div>
+<div class="level-card lv48" onclick="startLevel('bird48.html')"><span>48</span><h3>流光鸟</h3></div>
+
+<div class="level-card lv49" onclick="startLevel('bird49.html')"><span>49</span><h3>逐梦鸟</h3></div>
+<div class="level-card lv50" onclick="startLevel('bird50.html')"><span>50</span><h3>远征鸟</h3></div>
+
+
+<div class="level-card lv51" onclick="startLevel('bird51.html')"><span>51</span><h3>飞跃鸟</h3></div>
+<div class="level-card lv52" onclick="startLevel('bird52.html')"><span>52</span><h3>猛虎鸟</h3></div>
+<div class="level-card lv53" onclick="startLevel('bird53.html')"><span>53</span><h3>冰川鸟</h3></div>
+<div class="level-card lv54" onclick="startLevel('bird54.html')"><span>54</span><h3>雪山鸟</h3></div>
+<div class="level-card lv55" onclick="startLevel('bird55.html')"><span>55</span><h3>星火鸟</h3></div>
+
+<div class="level-card lv56" onclick="startLevel('bird56.html')"><span>56</span><h3>光速鸟</h3></div>
+<div class="level-card lv57" onclick="startLevel('bird57.html')"><span>57</span><h3>天启鸟</h3></div>
+<div class="level-card lv58" onclick="startLevel('bird58.html')"><span>58</span><h3>苍狼鸟</h3></div>
+<div class="level-card lv59" onclick="startLevel('bird59.html')"><span>59</span><h3>猎鹰鸟</h3></div>
+<div class="level-card lv60" onclick="startLevel('bird60.html')"><span>60</span><h3>赤焰鸟</h3></div>
+
+<div class="level-card lv61" onclick="startLevel('bird61.html')"><span>61</span><h3>深海鸟</h3></div>
+<div class="level-card lv62" onclick="startLevel('bird62.html')"><span>62</span><h3>曙光鸟</h3></div>
+<div class="level-card lv63" onclick="startLevel('bird63.html')"><span>63</span><h3>逐日鸟</h3></div>
+<div class="level-card lv64" onclick="startLevel('bird64.html')"><span>64</span><h3>战歌鸟</h3></div>
+<div class="level-card lv65" onclick="startLevel('bird65.html')"><span>65</span><h3>苍月鸟</h3></div>
+
+<div class="level-card lv66" onclick="startLevel('bird66.html')"><span>66</span><h3>绝影鸟</h3></div>
+<div class="level-card lv67" onclick="startLevel('bird67.html')"><span>67</span><h3>龙魂鸟</h3></div>
+<div class="level-card lv68" onclick="startLevel('bird68.html')"><span>68</span><h3>天穹鸟</h3></div>
+<div class="level-card lv69" onclick="startLevel('bird69.html')"><span>69</span><h3>幻月鸟</h3></div>
+<div class="level-card lv70" onclick="startLevel('bird70.html')"><span>70</span><h3>风暴鸟</h3></div>
+
+<div class="level-card lv71" onclick="startLevel('bird71.html')"><span>71</span><h3>雷神鸟</h3></div>
+<div class="level-card lv72" onclick="startLevel('bird72.html')"><span>72</span><h3>天王鸟</h3></div>
+<div class="level-card lv73" onclick="startLevel('bird73.html')"><span>73</span><h3>圣光鸟</h3></div>
+<div class="level-card lv74" onclick="startLevel('bird74.html')"><span>74</span><h3>荣光鸟</h3></div>
+<div class="level-card lv75" onclick="startLevel('bird75.html')"><span>75</span><h3>神迹鸟</h3></div>
+
+<div class="level-card lv76" onclick="startLevel('bird76.html')"><span>76</span><h3>天命鸟</h3></div>
+<div class="level-card lv77" onclick="startLevel('bird77.html')"><span>77</span><h3>至尊鸟</h3></div>
+<div class="level-card lv78" onclick="startLevel('bird78.html')"><span>78</span><h3>冠军鸟</h3></div>
+<div class="level-card lv79" onclick="startLevel('bird79.html')"><span>79</span><h3>传奇鸟</h3></div>
+<div class="level-card lv80" onclick="startLevel('bird80.html')"><span>80</span><h3>史诗鸟</h3></div>
+
+<div class="level-card lv81" onclick="startLevel('bird81.html')"><span>81</span><h3>神话鸟</h3></div>
+<div class="level-card lv82" onclick="startLevel('bird82.html')"><span>82</span><h3>王冠鸟</h3></div>
+<div class="level-card lv83" onclick="startLevel('bird83.html')"><span>83</span><h3>苍天鸟</h3></div>
+<div class="level-card lv84" onclick="startLevel('bird84.html')"><span>84</span><h3>无双鸟</h3></div>
+<div class="level-card lv85" onclick="startLevel('bird85.html')"><span>85</span><h3>永恒鸟</h3></div>
+
+<div class="level-card lv86" onclick="startLevel('bird86.html')"><span>86</span><h3>圣殿鸟</h3></div>
+<div class="level-card lv87" onclick="startLevel('bird87.html')"><span>87</span><h3>荣耀鸟</h3></div>
+<div class="level-card lv88" onclick="startLevel('bird88.html')"><span>88</span><h3>天际鸟</h3></div>
+<div class="level-card lv89" onclick="startLevel('bird89.html')"><span>89</span><h3>星耀鸟</h3></div>
+<div class="level-card lv90" onclick="startLevel('bird90.html')"><span>90</span><h3>巅峰鸟</h3></div>
+
+<div class="level-card lv91" onclick="startLevel('bird91.html')"><span>91</span><h3>宇宙鸟</h3></div>
+<div class="level-card lv92" onclick="startLevel('bird92.html')"><span>92</span><h3>超神鸟</h3></div>
+<div class="level-card lv93" onclick="startLevel('bird93.html')"><span>93</span><h3>创世鸟</h3></div>
+<div class="level-card lv94" onclick="startLevel('bird94.html')"><span>94</span><h3>混沌鸟</h3></div>
+<div class="level-card lv95" onclick="startLevel('bird95.html')"><span>95</span><h3>圣域鸟</h3></div>
+
+<div class="level-card lv96" onclick="startLevel('bird96.html')"><span>96</span><h3>苍穹鸟</h3></div>
+<div class="level-card lv97" onclick="startLevel('bird97.html')"><span>97</span><h3>天道鸟</h3></div>
+<div class="level-card lv98" onclick="startLevel('bird98.html')"><span>98</span><h3>终极鸟</h3></div>
+<div class="level-card lv99" onclick="startLevel('bird99.html')"><span>99</span><h3>传说鸟</h3></div>
+
+</div>
+
+<style>
+
+/* 51~99颜色 */
+
+.lv51{background:linear-gradient(135deg,#d6f5d6,#b8e6b8);}
+.lv52{background:linear-gradient(135deg,#ffd6d6,#ffaaaa);}
+.lv53{background:linear-gradient(135deg,#d6f0ff,#9fdfff);}
+.lv54{background:linear-gradient(135deg,#f2f2f2,#d8d8d8);}
+.lv55{background:linear-gradient(135deg,#fff0b3,#ffe066);}
+.lv56{background:linear-gradient(135deg,#d8e9ff,#99c2ff);}
+.lv57{background:linear-gradient(135deg,#f5d9ff,#d6a8ff);}
+.lv58{background:linear-gradient(135deg,#d9ffe8,#9ef0c0);}
+.lv59{background:linear-gradient(135deg,#ffe5d0,#ffc49d);}
+.lv60{background:linear-gradient(135deg,#ffb5a7,#f08080);}
+.lv61{background:linear-gradient(135deg,#c7f0ff,#7fd8ff);}
+.lv62{background:linear-gradient(135deg,#fff4d8,#ffe4a3);}
+.lv63{background:linear-gradient(135deg,#fff0b8,#ffd54f);}
+.lv64{background:linear-gradient(135deg,#dfffe0,#a5f0aa);}
+.lv65{background:linear-gradient(135deg,#ecd9ff,#c4a7ff);}
+.lv66{background:linear-gradient(135deg,#ffe2d2,#ffc1aa);}
+.lv67{background:linear-gradient(135deg,#fad2e1,#e2ece9);}
+.lv68{background:linear-gradient(135deg,#d7e3fc,#eae4e9);}
+.lv69{background:linear-gradient(135deg,#e4c1f9,#fde2e4);}
+.lv70{background:linear-gradient(135deg,#bde0fe,#d8f3dc);}
+.lv71{background:linear-gradient(135deg,#cdb4db,#ffc8dd);}
+.lv72{background:linear-gradient(135deg,#a9def9,#e4c1f9);}
+.lv73{background:linear-gradient(135deg,#fff1b6,#ffd6a5);}
+.lv74{background:linear-gradient(135deg,#cdeac0,#ffe5ec);}
+.lv75{background:linear-gradient(135deg,#d8e2dc,#ffe8d6);}
+.lv76{background:linear-gradient(135deg,#ffd6ff,#e7c6ff);}
+.lv77{background:linear-gradient(135deg,#d0f4de,#fcf6bd);}
+.lv78{background:linear-gradient(135deg,#caf0f8,#ade8f4);}
+.lv79{background:linear-gradient(135deg,#fde4cf,#f1c0e8);}
+.lv80{background:linear-gradient(135deg,#ffd8be,#ffe5b4);}
+.lv81{background:linear-gradient(135deg,#e0fbfc,#98f5e1);}
+.lv82{background:linear-gradient(135deg,#f8edeb,#fec89a);}
+.lv83{background:linear-gradient(135deg,#b8e0d2,#d6ccc2);}
+.lv84{background:linear-gradient(135deg,#c3f0ca,#d7e3fc);}
+.lv85{background:linear-gradient(135deg,#ffe8d6,#ffd6a5);}
+.lv86{background:linear-gradient(135deg,#d9ed92,#b5e48c);}
+.lv87{background:linear-gradient(135deg,#f1d1d0,#e8a0bf);}
+.lv88{background:linear-gradient(135deg,#cde7f0,#a9def9);}
+.lv89{background:linear-gradient(135deg,#fadadd,#d8bfd8);}
+.lv90{background:linear-gradient(135deg,#fffacd,#ffe066);}
+.lv91{background:linear-gradient(135deg,#d6efff,#b8d8e3);}
+.lv92{background:linear-gradient(135deg,#e7d8ff,#cdb4db);}
+.lv93{background:linear-gradient(135deg,#ffe0ac,#ffd6e0);}
+.lv94{background:linear-gradient(135deg,#d0f4de,#a9def9);}
+.lv95{background:linear-gradient(135deg,#ffd8be,#fec89a);}
+.lv96{background:linear-gradient(135deg,#cdeac0,#95d5b2);}
+.lv97{background:linear-gradient(135deg,#e2ece9,#bde0fe);}
+.lv98{background:linear-gradient(135deg,#ffd6e8,#fec5bb);}
+.lv99{background:linear-gradient(135deg,#d8f3dc,#b8e0d2);}
+
+</style>
+
+<script>
+
+/* 漂浮粒子 */
+
+setInterval(()=>{
+
+const p=document.createElement("div");
+
+p.innerHTML=["✨","⭐","💫"][Math.floor(Math.random()*3)];
+
+p.style.position="fixed";
+p.style.left=Math.random()*window.innerWidth+"px";
+p.style.top=window.innerHeight+"px";
+p.style.fontSize=(12+Math.random()*20)+"px";
+p.style.opacity=".8";
+p.style.pointerEvents="none";
+p.style.transition="10s linear";
+
+document.body.appendChild(p);
+
+setTimeout(()=>{
+p.style.transform="translateY(-120vh)";
+p.style.opacity="0";
+},50);
+
+setTimeout(()=>{
+p.remove();
+},10000);
+
+},500);
+
+/* 滚动浮现 */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+threshold:0.08
+});
+
+document
+.querySelectorAll(".level-card")
+.forEach(card=>{
+observer.observe(card);
+});
+
+/* 点击关卡 */
+
+function startLevel(url){
+
+document.body.style.pointerEvents="none";
+
+document.body.animate([
+{opacity:1},
+{opacity:0}
+],{
+duration:600,
+fill:"forwards"
+});
+
+setTimeout(()=>{
+location.href=url;
+},600);
+
+}
+
+</script>
+
+</body>
+</html>

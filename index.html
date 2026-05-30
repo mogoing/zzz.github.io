@@ -1,153 +1,505 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>焦香小鸡</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>洋蛋的登录页</title>
 
-        body {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+<style>
 
-        .login-container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 2rem 3rem;
-            width: 100%;
-            max-width: 400px;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI","Microsoft YaHei",sans-serif;
+}
 
-        .logo {
-            font-size: 2.5rem;
-            color: white;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            animation: bounce 1.5s infinite;
-        }
+body{
+height:100vh;
+overflow:hidden;
+background:
+radial-gradient(circle at top left,#8b5cf6 0%,transparent 35%),
+radial-gradient(circle at bottom right,#ec4899 0%,transparent 35%),
+linear-gradient(135deg,#0f172a,#1e293b,#334155);
+}
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+/* 星空 */
 
-        .input-box {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            color: white;
-            font-size: 1rem;
-            margin-top: 0.5rem;
-            transition: all 0.3s ease;
-        }
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+}
 
-        .input-box:focus {
-            outline: none;
-            border-color: #4CAF50;
-            transform: translateY(-2px);
-        }
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite alternate;
+}
 
-        .login-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+@keyframes twinkle{
+from{
+opacity:.2;
+transform:scale(.8);
+}
+to{
+opacity:1;
+transform:scale(1.8);
+}
+}
 
-        .login-btn:hover {
-            background: #45a049;
-            transform: scale(1.02);
-        }
+/* 布局 */
 
-        .error-message {
-            color: #ff4444;
-            text-align: center;
-            margin-top: 1rem;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
+.container{
+display:flex;
+height:100vh;
+}
 
-        .error-message.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* 左侧 */
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+.left{
+flex:1;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+}
 
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 1.5rem 2rem;
-            }
-            
-            .logo {
-                font-size: 2rem;
-            }
-        }
-    </style>
+.logo{
+position:absolute;
+left:40px;
+top:30px;
+color:white;
+font-size:24px;
+font-weight:700;
+letter-spacing:1px;
+}
+
+.logo span{
+color:#ff4d4d;
+}
+
+/* 鸟群 */
+
+.birds{
+position:relative;
+width:520px;
+height:340px;
+}
+
+/* 红鸟 */
+
+.red{
+position:absolute;
+left:0;
+bottom:0;
+width:220px;
+height:220px;
+background:#ff4747;
+border-radius:50%;
+animation:float1 4s ease-in-out infinite;
+box-shadow:0 20px 40px rgba(255,0,0,.35);
+}
+
+/* 黑鸟 */
+
+.black{
+position:absolute;
+left:180px;
+bottom:0;
+width:180px;
+height:250px;
+background:#1f1f1f;
+border-radius:40px;
+transform:skewX(-8deg);
+animation:float2 5s ease-in-out infinite;
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+/* 黄鸟 */
+
+.yellow{
+position:absolute;
+left:330px;
+bottom:0;
+width:140px;
+height:220px;
+background:#ffe14f;
+border-radius:80px 80px 20px 20px;
+animation:float3 3.5s ease-in-out infinite;
+box-shadow:0 20px 40px rgba(255,230,0,.3);
+}
+
+.eye{
+position:absolute;
+width:12px;
+height:12px;
+background:#111;
+border-radius:50%;
+}
+
+.red .e1{left:78px;top:90px;}
+.red .e2{right:78px;top:90px;}
+
+.black .e1{left:58px;top:70px;}
+.black .e2{right:48px;top:70px;}
+
+.yellow .e1{left:45px;top:75px;}
+.yellow .e2{right:35px;top:75px;}
+
+.mouth{
+position:absolute;
+height:4px;
+background:#111;
+}
+
+.red .mouth{
+width:70px;
+left:75px;
+top:130px;
+}
+
+.yellow .mouth{
+width:50px;
+left:45px;
+top:120px;
+}
+
+/* 眉毛 */
+
+.red::before,
+.red::after{
+content:'';
+position:absolute;
+width:70px;
+height:10px;
+background:#111;
+top:60px;
+}
+
+.red::before{
+left:40px;
+transform:rotate(-10deg);
+}
+
+.red::after{
+right:40px;
+transform:rotate(10deg);
+}
+
+/* 动画 */
+
+@keyframes float1{
+50%{
+transform:translateY(-15px);
+}
+}
+
+@keyframes float2{
+50%{
+transform:skewX(-8deg) translateY(-20px);
+}
+}
+
+@keyframes float3{
+50%{
+transform:translateY(-12px);
+}
+}
+
+/* 右侧 */
+
+.right{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+/* 毛玻璃 */
+
+.login{
+width:430px;
+padding:45px;
+border-radius:30px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,.12);
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.25);
+}
+
+.login h1{
+color:white;
+font-size:42px;
+margin-bottom:10px;
+}
+
+.login p{
+color:rgba(255,255,255,.7);
+margin-bottom:30px;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+.input-group label{
+display:block;
+color:white;
+margin-bottom:8px;
+font-size:14px;
+}
+
+.input-group input{
+width:100%;
+padding:16px;
+border:none;
+outline:none;
+border-radius:16px;
+font-size:15px;
+background:rgba(255,255,255,.1);
+color:white;
+}
+
+.input-group input::placeholder{
+color:rgba(255,255,255,.4);
+}
+
+.input-group input:focus{
+box-shadow:0 0 0 3px rgba(255,255,255,.15);
+}
+
+button{
+width:100%;
+height:58px;
+border:none;
+border-radius:18px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+color:white;
+
+background:
+linear-gradient(135deg,#ff5f3a,#ff1f6d);
+
+transition:.35s;
+}
+
+button:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 35px rgba(255,50,100,.4);
+}
+
+#msg{
+margin-top:18px;
+font-weight:600;
+text-align:center;
+}
+
+.successBird{
+position:fixed;
+font-size:60px;
+left:-100px;
+top:50%;
+transform:translateY(-50%);
+animation:fly 1.2s linear forwards;
+z-index:999;
+}
+
+@keyframes fly{
+to{
+left:120%;
+}
+}
+
+/* 手机端 */
+
+@media(max-width:768px){
+
+.container{
+flex-direction:column;
+}
+
+.left{
+height:40%;
+}
+
+.right{
+height:60%;
+}
+
+.birds{
+transform:scale(.65);
+}
+
+.logo{
+font-size:18px;
+left:20px;
+top:20px;
+}
+
+.login{
+width:92%;
+padding:30px;
+}
+
+.login h1{
+font-size:30px;
+}
+
+}
+
+</style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="logo">🎮 欢迎老婆登录</div>
-        <form id="loginForm">
-            <div class="form-group">
-                <input type="text" class="input-box" id="username" placeholder="宝宝账号是什么呀" required>
-            </div>
-            <div class="form-group">
-                <input type="password" class="input-box" id="password" placeholder="密码？挠头…不知道" required>
-            </div>
-            <button type="submit" class="login-btn">登录</button>
-            <div class="error-message" id="errorMsg">账号或密码错误，请重新输入</div>
-        </form>
-    </div>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMsg = document.getElementById('errorMsg');
+<div class="stars" id="stars"></div>
 
-            // 验证逻辑
-            if (username === '123' && password === '123') {
-                // 清除缓存并跳转
-                window.location.href = 'bea/bea.html';
-            } else {
-                // 显示错误信息并刷新页面
-                errorMsg.classList.add('active');
-                setTimeout(() => {
-                    errorMsg.classList.remove('active');
-                    // 强制刷新并清除缓存
-                    window.location.reload(true);
-                }, 1000);
-            }
-        });
-    </script>
+<div class="container">
+
+<div class="left">
+
+<div class="logo">
+<span>●</span> 小慧游戏盒
+</div>
+
+<div class="birds">
+
+<div class="red">
+<div class="eye e1"></div>
+<div class="eye e2"></div>
+<div class="mouth"></div>
+</div>
+
+<div class="black">
+<div class="eye e1"></div>
+<div class="eye e2"></div>
+</div>
+
+<div class="yellow">
+<div class="eye e1"></div>
+<div class="eye e2"></div>
+<div class="mouth"></div>
+</div>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="login">
+
+<h1>欢迎登陆</h1>
+
+<p>由此进入放松时刻~</p>
+
+<div class="input-group">
+<label>账号</label>
+<input id="user" placeholder="请输入手机号">
+</div>
+
+<div class="input-group">
+<label>密码</label>
+<input id="pwd" type="password" placeholder="请输入密码">
+</div>
+
+<button onclick="login()">
+加油闯关
+</button>
+
+<div id="msg"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* 星空 */
+
+const stars=document.getElementById("stars");
+
+for(let i=0;i<80;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"%";
+s.style.top=Math.random()*100+"%";
+
+s.style.animationDelay=
+Math.random()*3+"s";
+
+stars.appendChild(s);
+
+}
+
+/* 登录 */
+
+function login(){
+
+const user=
+document.getElementById("user").value;
+
+const pwd=
+document.getElementById("pwd").value;
+
+const users=[
+"15090134975",
+"17508956775"
+];
+
+const password=
+"20030327530wq";
+
+if(users.includes(user) && pwd===password){
+
+document.getElementById("msg").style.color="#4ade80";
+
+document.getElementById("msg").innerHTML=
+"❤ Login Success";
+
+const bird=
+document.createElement("div");
+
+bird.className="successBird";
+
+bird.innerHTML="🐦";
+
+document.body.appendChild(bird);
+
+setTimeout(()=>{
+
+window.location.href="bird.html";
+
+},1200);
+
+}else{
+
+document.getElementById("msg").style.color="#ff6b6b";
+
+document.getElementById("msg").innerHTML=
+"账号或密码错误";
+
+}
+
+}
+
+</script>
+
 </body>
 </html>
