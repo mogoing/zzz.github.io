@@ -2,504 +2,145 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>洋蛋的登录页</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>登录 · 欢迎回家</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FF6B6B'/%3E%3Cstop offset='1' stop-color='%23FFD93D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='800' text-anchor='middle' fill='%23fff'%3E%3F%3C/text%3E%3C/svg%3E">
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Segoe UI","Microsoft YaHei",sans-serif;
-}
-
-body{
-height:100vh;
-overflow:hidden;
-background:
-radial-gradient(circle at top left,#8b5cf6 0%,transparent 35%),
-radial-gradient(circle at bottom right,#ec4899 0%,transparent 35%),
-linear-gradient(135deg,#0f172a,#1e293b,#334155);
-}
-
-/* 星空 */
-
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-pointer-events:none;
-}
-
-.star{
-position:absolute;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-animation:twinkle 3s infinite alternate;
-}
-
-@keyframes twinkle{
-from{
-opacity:.2;
-transform:scale(.8);
-}
-to{
-opacity:1;
-transform:scale(1.8);
-}
-}
-
-/* 布局 */
-
-.container{
-display:flex;
-height:100vh;
-}
-
-/* 左侧 */
-
-.left{
-flex:1;
-position:relative;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.logo{
-position:absolute;
-left:40px;
-top:30px;
-color:white;
-font-size:24px;
-font-weight:700;
-letter-spacing:1px;
-}
-
-.logo span{
-color:#ff4d4d;
-}
-
-/* 鸟群 */
-
-.birds{
-position:relative;
-width:520px;
-height:340px;
-}
-
-/* 红鸟 */
-
-.red{
-position:absolute;
-left:0;
-bottom:0;
-width:220px;
-height:220px;
-background:#ff4747;
-border-radius:50%;
-animation:float1 4s ease-in-out infinite;
-box-shadow:0 20px 40px rgba(255,0,0,.35);
-}
-
-/* 黑鸟 */
-
-.black{
-position:absolute;
-left:180px;
-bottom:0;
-width:180px;
-height:250px;
-background:#1f1f1f;
-border-radius:40px;
-transform:skewX(-8deg);
-animation:float2 5s ease-in-out infinite;
-box-shadow:0 20px 40px rgba(0,0,0,.4);
-}
-
-/* 黄鸟 */
-
-.yellow{
-position:absolute;
-left:330px;
-bottom:0;
-width:140px;
-height:220px;
-background:#ffe14f;
-border-radius:80px 80px 20px 20px;
-animation:float3 3.5s ease-in-out infinite;
-box-shadow:0 20px 40px rgba(255,230,0,.3);
-}
-
-.eye{
-position:absolute;
-width:12px;
-height:12px;
-background:#111;
-border-radius:50%;
-}
-
-.red .e1{left:78px;top:90px;}
-.red .e2{right:78px;top:90px;}
-
-.black .e1{left:58px;top:70px;}
-.black .e2{right:48px;top:70px;}
-
-.yellow .e1{left:45px;top:75px;}
-.yellow .e2{right:35px;top:75px;}
-
-.mouth{
-position:absolute;
-height:4px;
-background:#111;
-}
-
-.red .mouth{
-width:70px;
-left:75px;
-top:130px;
-}
-
-.yellow .mouth{
-width:50px;
-left:45px;
-top:120px;
-}
-
-/* 眉毛 */
-
-.red::before,
-.red::after{
-content:'';
-position:absolute;
-width:70px;
-height:10px;
-background:#111;
-top:60px;
-}
-
-.red::before{
-left:40px;
-transform:rotate(-10deg);
-}
-
-.red::after{
-right:40px;
-transform:rotate(10deg);
-}
-
-/* 动画 */
-
-@keyframes float1{
-50%{
-transform:translateY(-15px);
-}
-}
-
-@keyframes float2{
-50%{
-transform:skewX(-8deg) translateY(-20px);
-}
-}
-
-@keyframes float3{
-50%{
-transform:translateY(-12px);
-}
-}
-
-/* 右侧 */
-
-.right{
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-/* 毛玻璃 */
-
-.login{
-width:430px;
-padding:45px;
-border-radius:30px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(25px);
-
-border:1px solid rgba(255,255,255,.12);
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.25);
-}
-
-.login h1{
-color:white;
-font-size:42px;
-margin-bottom:10px;
-}
-
-.login p{
-color:rgba(255,255,255,.7);
-margin-bottom:30px;
-}
-
-.input-group{
-margin-bottom:18px;
-}
-
-.input-group label{
-display:block;
-color:white;
-margin-bottom:8px;
-font-size:14px;
-}
-
-.input-group input{
-width:100%;
-padding:16px;
-border:none;
-outline:none;
-border-radius:16px;
-font-size:15px;
-background:rgba(255,255,255,.1);
-color:white;
-}
-
-.input-group input::placeholder{
-color:rgba(255,255,255,.4);
-}
-
-.input-group input:focus{
-box-shadow:0 0 0 3px rgba(255,255,255,.15);
-}
-
-button{
-width:100%;
-height:58px;
-border:none;
-border-radius:18px;
-font-size:16px;
-font-weight:700;
-cursor:pointer;
-color:white;
-
-background:
-linear-gradient(135deg,#ff5f3a,#ff1f6d);
-
-transition:.35s;
-}
-
-button:hover{
-transform:translateY(-3px);
-box-shadow:0 15px 35px rgba(255,50,100,.4);
-}
-
-#msg{
-margin-top:18px;
-font-weight:600;
-text-align:center;
-}
-
-.successBird{
-position:fixed;
-font-size:60px;
-left:-100px;
-top:50%;
-transform:translateY(-50%);
-animation:fly 1.2s linear forwards;
-z-index:999;
-}
-
-@keyframes fly{
-to{
-left:120%;
-}
-}
-
-/* 手机端 */
-
-@media(max-width:768px){
-
-.container{
-flex-direction:column;
-}
-
-.left{
-height:40%;
-}
-
-.right{
-height:60%;
-}
-
-.birds{
-transform:scale(.65);
-}
-
-.logo{
-font-size:18px;
-left:20px;
-top:20px;
-}
-
-.login{
-width:92%;
-padding:30px;
-}
-
-.login h1{
-font-size:30px;
-}
-
-}
-
+  :root{
+    --coral:#FF6B6B; --sunny:#FFD93D; --mint:#4ECDC4; --grape:#9B5DE5; --pink:#FF9DE2;
+    --ink:#4A3F5C; --muted:#9A8FB5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+    background:linear-gradient(160deg,#FFF6E9,#FFE8D6);
+    color:var(--ink);overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;padding:16px;
+  }
+  .blob{position:fixed;border-radius:50%;filter:blur(50px);opacity:.55;z-index:0;animation:float 12s ease-in-out infinite}
+  .b1{width:38vmax;height:38vmax;background:var(--pink);top:-12vmax;left:-10vmax}
+  .b2{width:30vmax;height:30vmax;background:var(--mint);bottom:-10vmax;right:-8vmax;animation-delay:-4s}
+  .b3{width:22vmax;height:22vmax;background:var(--sunny);bottom:6vmax;left:-6vmax;opacity:.35;animation-delay:-8s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(3vmax)}}
+  .card{
+    position:relative;z-index:1;width:min(92vw,400px);
+    background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+    border-radius:24px;padding:34px 28px 26px;text-align:center;
+    box-shadow:0 20px 60px rgba(155,93,229,.16);
+    animation:rise .6s cubic-bezier(.2,.8,.3,1.1) both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
+  .logo{
+    width:56px;height:56px;margin:0 auto 14px;border-radius:18px;
+    background:linear-gradient(135deg,var(--coral),var(--sunny));
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;font-weight:800;color:#fff;box-shadow:0 10px 24px rgba(255,107,107,.4);
+  }
+  h1{
+    font-size:26px;letter-spacing:3px;
+    background:linear-gradient(90deg,var(--grape),var(--coral),var(--sunny));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{font-size:14px;color:var(--muted);margin:8px 0 24px}
+  .field{display:block;text-align:left;margin-bottom:16px}
+  .label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+  .field input{
+    width:100%;height:46px;border:2px solid #EEE6F6;border-radius:14px;padding:0 16px;
+    font-size:16px;color:var(--ink);background:#fff;outline:none;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .field input:focus{border-color:var(--grape);box-shadow:0 0 0 4px rgba(155,93,229,.12)}
+  .pwd-wrap{position:relative}
+  .pwd-wrap input{padding-right:56px}
+  .eye{
+    position:absolute;right:4px;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border:none;background:none;cursor:pointer;border-radius:50%;
+  }
+  .eye .ball{position:absolute;inset:9px;border:2px solid var(--muted);border-radius:50%;transition:.2s}
+  .eye .ball::after{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--muted);transition:.2s}
+  .eye.off .ball::after{background:transparent}
+  .error{min-height:18px;font-size:13px;color:var(--coral);margin-bottom:10px;opacity:0;transition:opacity .2s}
+  .error.show{opacity:1}
+  .card.shake{animation:shake .4s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+  .login-btn{
+    width:100%;height:48px;border:none;border-radius:14px;cursor:pointer;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    color:#fff;font-size:16px;font-weight:700;letter-spacing:6px;
+    box-shadow:0 10px 24px rgba(255,107,107,.35);
+    transition:transform .15s,filter .15s;
+  }
+  .login-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .login-btn:active{transform:translateY(0) scale(.98)}
+  .tip{font-size:13px;color:var(--muted);margin-top:18px;line-height:1.9}
+  @media (max-width:480px){
+    .card{padding:28px 20px 22px}
+    h1{font-size:23px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-
-<div class="stars" id="stars"></div>
-
-<div class="container">
-
-<div class="left">
-
-<div class="logo">
-<span>●</span> 小慧游戏盒
-</div>
-
-<div class="birds">
-
-<div class="red">
-<div class="eye e1"></div>
-<div class="eye e2"></div>
-<div class="mouth"></div>
-</div>
-
-<div class="black">
-<div class="eye e1"></div>
-<div class="eye e2"></div>
-</div>
-
-<div class="yellow">
-<div class="eye e1"></div>
-<div class="eye e2"></div>
-<div class="mouth"></div>
-</div>
-
-</div>
-
-</div>
-
-<div class="right">
-
-<div class="login">
-
-<h1>欢迎登陆</h1>
-
-<p>由此进入放松时刻~</p>
-
-<div class="input-group">
-<label>账号</label>
-<input id="user" placeholder="请输入手机号">
-</div>
-
-<div class="input-group">
-<label>密码</label>
-<input id="pwd" type="password" placeholder="请输入密码">
-</div>
-
-<button onclick="login()">
-加油闯关
-</button>
-
-<div id="msg"></div>
-
-</div>
-
-</div>
-
-</div>
-
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <main class="card">
+    <div class="logo">🍎</div>
+    <h1>想做咸鱼吗</h1>
+    <p class="sub">开盲盒般的畅快游玩</p>
+    <form id="loginForm" autocomplete="off">
+      <label class="field">
+        <span class="label">账号</span>
+        <input type="text" id="username" placeholder="请输入账号" required>
+      </label>
+      <label class="field">
+        <span class="label">密码</span>
+        <span class="pwd-wrap">
+          <input type="password" id="password" placeholder="请输入密码" required>
+          <button type="button" class="eye" id="eye" aria-label="显示或隐藏密码"><span class="ball"></span></button>
+        </span>
+      </label>
+      <p class="error" id="error">账号或密码不正确，请重试</p>
+      <button type="submit" class="login-btn">登 录</button>
+    </form>
+    <p class="tip">永远相信美好的事情即将发生<br>版所所有，违者必究</p>
+  </main>
 <script>
+  // ===== 用户列表（写死）：要加用户就在下面加一行 =====
+  const USERS = [
+    { username: 'admin',       password: 'password' },
+    { username: '17317101812', password: 'qwer1234' },
+    { username: '5201314', password: '200512183406' },
+    { username: 'lc1027', password: '2651635833' },
+    // { username: '新账号', password: '新密码' },
+  ];
 
-/* 星空 */
+  const form = document.getElementById('loginForm');
+  const err  = document.getElementById('error');
+  const card = document.querySelector('.card');
+  const eye  = document.getElementById('eye');
+  const pwd  = document.getElementById('password');
 
-const stars=document.getElementById("stars");
+  eye.addEventListener('click', () => {
+    eye.classList.toggle('off');
+    pwd.type = pwd.type === 'password' ? 'text' : 'password';
+  });
 
-for(let i=0;i<80;i++){
-
-let s=document.createElement("div");
-
-s.className="star";
-
-s.style.left=Math.random()*100+"%";
-s.style.top=Math.random()*100+"%";
-
-s.style.animationDelay=
-Math.random()*3+"s";
-
-stars.appendChild(s);
-
-}
-
-/* 登录 */
-
-function login(){
-
-const user=
-document.getElementById("user").value;
-
-const pwd=
-document.getElementById("pwd").value;
-
-const users=[
-"15090134975",
-"17508956775"
-];
-
-const password=
-"20030327530wq";
-
-if(users.includes(user) && pwd===password){
-
-document.getElementById("msg").style.color="#4ade80";
-
-document.getElementById("msg").innerHTML=
-"❤ Login Success";
-
-const bird=
-document.createElement("div");
-
-bird.className="successBird";
-
-bird.innerHTML="🐦";
-
-document.body.appendChild(bird);
-
-setTimeout(()=>{
-
-window.location.href="bird.html";
-
-},1200);
-
-}else{
-
-document.getElementById("msg").style.color="#ff6b6b";
-
-document.getElementById("msg").innerHTML=
-"账号或密码错误";
-
-}
-
-}
-
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value;
+    const ok = USERS.some(x => x.username === u && x.password === p);
+    if (ok) {
+      localStorage.setItem('blindbox_user', u);
+      location.href = 'main.html';
+    } else {
+      err.classList.add('show');
+      card.classList.remove('shake');
+      void card.offsetWidth;
+      card.classList.add('shake');
+    }
+  });
 </script>
-
 </body>
 </html>
