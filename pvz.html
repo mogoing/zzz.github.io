@@ -133,8 +133,10 @@
   function fit(){
     var vw = document.documentElement.clientWidth;
     var vh  = document.documentElement.clientHeight;
-    // 按设备类型判断：手机/平板永远 9:13.5 竖屏，桌面永远 13.5:9 横屏
-    var mobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // 按设备类型判断：真机永远 9:13.5 竖屏，桌面永远 13.5:9 横屏。
+    // 三重判据：UA 关键词 / 触屏且物理屏宽≤1024（手机开"桌面模式"时 UA 会被伪装，靠 screen.width 兜底）
+    var mobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+      || (navigator.maxTouchPoints > 0 && screen.width <= 1024);
     var W, H, BW, BH;
     if (!mobile) {
       // 桌面：13.5:9 横屏画布，内容按 720 宽渲染（完整横向布局）
