@@ -133,32 +133,17 @@
   function fit(){
     var vw = document.documentElement.clientWidth;
     var vh  = document.documentElement.clientHeight;
-    // 按设备类型判断：真机永远 9:13.5 竖屏，桌面永远 13.5:9 横屏。
-    // 三重判据：UA 关键词 / 触屏且物理屏宽≤1024（手机开"桌面模式"时 UA 会被伪装，靠 screen.width 兜底）
-    var mobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-      || (navigator.maxTouchPoints > 0 && screen.width <= 1024);
-    var W, H, BW, BH;
-    if (!mobile) {
-      // 桌面：13.5:9 横屏画布，内容按 720 宽渲染（完整横向布局）
-      var maxW = Math.min(vw - 16, 720);
-      var maxH = (vh - 80) * 13.5 / 9;
-      W = Math.max(220, Math.min(maxW, maxH));
-      H = W * 9 / 13.5;
-      BW = 720; BH = 470;
-    } else {
-      // 手机：9:13.5 竖屏画布，内容按 390 宽渲染（cover 铺满）
-      var maxW = Math.min(vw - 16, 720);
-      var maxH = (vh - 80) * 9 / 13.5;
-      W = Math.max(220, Math.min(maxW, maxH));
-      H = W * 13.5 / 9;
-      BW = 390; BH = 470;
-    }
+    // 所有设备统一 13.5:9 横向画布：宽 = 高 × 1.5
+    var maxW = Math.min(vw - 16, 720);        // 宽度上限
+    var maxH = (vh - 80) * 13.5 / 9;          // 高度上限换算成宽度
+    var W = Math.max(220, Math.min(maxW, maxH));
+    var H = W * 9 / 13.5;
     cv.style.width = W + 'px';
     cv.style.height = Math.round(H) + 'px';
-    // 桌面 contain（完整画面不裁切）；手机 cover（铺满画布不留白）
-    var s = (mobile ? Math.max(W / BW, H / BH) : Math.min(W / BW, H / BH)) * zoom;
-    inner.style.width = BW + 'px';
-    inner.style.height = BH + 'px';
+    // 内容按 720 宽渲染，contain 完整放进画布：画面不变形、不裁切、无滚动条
+    var s = Math.min(W / 720, H / 470) * zoom;
+    inner.style.width = '720px';
+    inner.style.height = '470px';
     inner.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
     $('sizeLabel').textContent = '画面 ' + Math.round(zoom * 100) + '%';
   }
