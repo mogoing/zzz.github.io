@@ -102,7 +102,7 @@
   <div class="wrap">
     <div class="canvas" id="canvas">
       <div class="inner" id="inner">
-        <iframe id="game" src="http://jspvz.com/plantsvszombies.htm" scrolling="no" allowfullscreen></iframe>
+        <iframe id="game" scrolling="no" allowfullscreen></iframe>
       </div>
       <div class="tip" id="tip">加载中…若浏览器弹出验证/权限提示请点允许，若出现全屏广告点右上角 ✕ 关闭</div>
     </div>
@@ -127,6 +127,10 @@
 
   var $ = function(id){ return document.getElementById(id); };
   var cv = $('canvas'), inner = $('inner'), game = $('game');
+
+  // GitHub Pages 等 https 环境：浏览器禁止嵌入 http 内容，自动换 https 链接；
+  // 本地 file:// 打开时保持 http（本地网络 https 可能连不上）
+  game.src = (location.protocol === 'https:' ? 'https:' : 'http:') + '//jspvz.com/plantsvszombies.htm';
 
   var zoom = 1;                    // 手动缩放倍率 0.7 ~ 1.5（暂停菜单 +/−，作用于画面内容）
 
