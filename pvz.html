@@ -42,10 +42,10 @@
     content:"";position:absolute;inset:0;border-radius:18px;z-index:3;pointer-events:none;
     box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);
   }
-  /* iframe 基准尺寸固定，整体等比缩放放进画布：内容完整、无滚动条 */
+  /* iframe 基准 13.5:9 固定，整体等比缩放放进画布：画面完整铺满、无滚动条 */
   .inner{
     position:absolute;top:50%;left:50%;
-    width:720px;height:470px;
+    width:960px;height:640px;
     transform:translate(-50%,-50%) scale(1);
     transform-origin:center center;
   }
@@ -140,10 +140,11 @@
     var H = W * 9 / 13.5;
     cv.style.width = W + 'px';
     cv.style.height = Math.round(H) + 'px';
-    // 内容按 720 宽渲染，contain 完整放进画布：画面不变形、不裁切、无滚动条
-    var s = Math.min(W / 720, H / 470) * zoom;
-    inner.style.width = '720px';
-    inner.style.height = '470px';
+    // 内容按 13.5:9（960×640）渲染：jspvz 固定高度、宽度自适应，
+    // 960 宽下游戏内画面（草坪+种子包栏）完整，画布 contain 后恰好铺满 13.5:9 画布
+    var s = Math.min(W / 960, H / 640) * zoom;
+    inner.style.width = '960px';
+    inner.style.height = '640px';
     inner.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
     $('sizeLabel').textContent = '画面 ' + Math.round(zoom * 100) + '%';
   }
