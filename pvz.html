@@ -42,10 +42,10 @@
     content:"";position:absolute;inset:0;border-radius:18px;z-index:3;pointer-events:none;
     box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);
   }
-  /* iframe 基准尺寸固定，用 scale 整体缩放进画布 —— 内容永远完整、永不出现滚动条 */
+  /* iframe 基准尺寸固定，整体等比缩放放进画布：内容完整、无滚动条 */
   .inner{
     position:absolute;top:50%;left:50%;
-    width:480px;height:900px;
+    width:720px;height:470px;
     transform:translate(-50%,-50%) scale(1);
     transform-origin:center center;
   }
@@ -102,9 +102,9 @@
   <div class="wrap">
     <div class="canvas" id="canvas">
       <div class="inner" id="inner">
-        <iframe id="game" scrolling="no" allowfullscreen></iframe>
+        <iframe id="game" src="http://jspvz.com/plantsvszombies.htm" scrolling="no" allowfullscreen></iframe>
       </div>
-      <div class="tip" id="tip">加载中…若浏览器弹出验证/权限提示请点允许，若出现全屏广告点右上角 ✕ 关闭</div>
+      <div class="tip" id="tip">加载中…若弹出全屏广告，点右上角 ✕ 关闭即可</div>
     </div>
   </div>
 
@@ -114,7 +114,7 @@
       <p>画面只是被遮住，游戏仍在后台运行。</p>
       <div class="size-row">
         <button class="s-btn" id="minus">−</button>
-        <span id="sizeLabel">画面</span>
+        <span id="sizeLabel">画面 100%</span>
         <button class="s-btn" id="plus">＋</button>
       </div>
       <button class="m-btn" id="resume">继续游戏</button>
@@ -128,37 +128,32 @@
   var $ = function(id){ return document.getElementById(id); };
   var cv = $('canvas'), inner = $('inner'), game = $('game');
 
-  // GitHub Pages 等 https 环境：浏览器禁止嵌入 http 内容，自动换 https 链接；
-  // 本地 file:// 打开时保持 http（本地网络 https 可能连不上）
-  game.src = (location.protocol === 'https:' ? 'https:' : 'http:') + '//jspvz.com/plantsvszombies.htm';
-
-  var zoom = 1;                    // 手动缩放倍率 0.7 ~ 1.5（暂停菜单 +/−，作用于画面内容）
+  var zoom = 1;   // 手动缩放倍率 0.7 ~ 1.5（暂停菜单 +/−）
 
   function fit(){
     var vw = document.documentElement.clientWidth;
     var vh  = document.documentElement.clientHeight;
-    // 按设备类型判断（而不是窗口宽度）：手机/平板等移动端永远 9:13.5 竖屏，桌面永远 13.5:9 横屏
+    // 按设备类型判断：手机/平板永远 9:13.5 竖屏，桌面永远 13.5:9 横屏
     var mobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     var W, H, BW, BH;
     if (!mobile) {
-      // 桌面：13.5:9 横屏画布，内容按 720 宽渲染（完整横向布局：标题/横幅/开始/关于都显示）
+      // 桌面：13.5:9 横屏画布，内容按 720 宽渲染（完整横向布局）
       var maxW = Math.min(vw - 16, 720);
-      var maxH = (vh - 80) * 13.5 / 9;   // 高度上限换算成宽度
+      var maxH = (vh - 80) * 13.5 / 9;
       W = Math.max(220, Math.min(maxW, maxH));
       H = W * 9 / 13.5;
       BW = 720; BH = 470;
     } else {
-      // 手机：9:13.5 竖屏画布，内容按 390 宽渲染（竖排布局，cover 铺满画布）
+      // 手机：9:13.5 竖屏画布，内容按 390 宽渲染（cover 铺满）
       var maxW = Math.min(vw - 16, 720);
-      var maxH = (vh - 80) * 9 / 13.5;   // 高度上限换算成宽度
+      var maxH = (vh - 80) * 9 / 13.5;
       W = Math.max(220, Math.min(maxW, maxH));
       H = W * 13.5 / 9;
       BW = 390; BH = 470;
     }
     cv.style.width = W + 'px';
     cv.style.height = Math.round(H) + 'px';
-    // 等比缩放 iframe 放进画布，再叠手动倍率：
-    // 桌面用 contain（完整画面不裁切）；手机用 cover（铺满画布不留白，保留标题与开始按钮）
+    // 桌面 contain（完整画面不裁切）；手机 cover（铺满画布不留白）
     var s = (mobile ? Math.max(W / BW, H / BH) : Math.min(W / BW, H / BH)) * zoom;
     inner.style.width = BW + 'px';
     inner.style.height = BH + 'px';
@@ -173,12 +168,11 @@
   $('home').addEventListener('click', function(){ location.href = 'main.html'; });
   $('back').addEventListener('click', function(){ location.href = 'main.html'; });
 
-  // 浏览器窗口大小 / 页面缩放 / 手机横竖屏切换时，重算画布
   window.addEventListener('resize', fit);
   window.addEventListener('orientationchange', fit);
 
   game.addEventListener('load', function(){ var t = $('tip'); t.style.opacity = '0'; });
-  setTimeout(function(){ var t = $('tip'); if (t) t.style.opacity = '0'; }, 12000);
+  setTimeout(function(){ var t = $('tip'); if (t) t.style.opacity = '0'; }, 6000);
   fit();
 </script>
 </body>
