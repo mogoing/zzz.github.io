@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>植物大战僵尸 · 在线版</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%239B5DE5'/%3E%3Cstop offset='1' stop-color='%23FF6B6B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='46' font-size='34' font-weight='800' text-anchor='middle' fill='%23fff'%3E%F0%9F%8C%BB%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#4A3F5C; --muted:#9A8FB5;
+    --coral:#FF6B6B; --grape:#9B5DE5; --sunny:#FFD93D; --mint:#4ECDC4; --pink:#FF9DE2;
+    --cvh:620px; /* 画面显示高度：620 可裁掉网站底部通知栏，可调 */
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+    height:100dvh;overflow:hidden;color:var(--ink);
+    background:linear-gradient(165deg,#FFF6E9,#FFE8D6);
+    display:flex;flex-direction:column;
+  }
+  header{
+    flex:none;display:flex;align-items:center;justify-content:space-between;
+    gap:10px;padding:10px 14px;z-index:6;
+  }
+  .h-btn{
+    flex:none;min-height:44px;border:none;border-radius:999px;cursor:pointer;
+    padding:0 16px;font-size:14px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    box-shadow:0 6px 16px rgba(255,107,107,.3);transition:transform .15s;
+  }
+  .h-btn:hover{transform:translateY(-1px)}
+  .h-btn:active{transform:scale(.94)}
+  h1{
+    font-size:20px;letter-spacing:2px;text-align:center;
+    background:linear-gradient(90deg,var(--grape),var(--coral),var(--sunny));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .wrap{
+    flex:1;min-height:0;padding:0 14px 14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .canvas{
+    position:relative;width:min(96vw,1080px);height:var(--cvh);
+    border-radius:18px;overflow:hidden;
+    box-shadow:0 20px 46px rgba(155,93,229,.28),0 0 0 4px rgba(255,255,255,.75);
+    background:#0d2f18;
+  }
+  .canvas::after{ /* 圆角描边 */
+    content:"";position:absolute;inset:0;border-radius:18px;z-index:3;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.22);pointer-events:none;
+  }
+  iframe{
+    position:absolute;left:0;top:0;width:100%;height:100%;border:0;
+  }
+  .tip{
+    position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:4;
+    max-width:92%;font-size:12px;color:#fff;text-align:center;
+    background:rgba(74,63,92,.62);padding:7px 14px;border-radius:999px;
+    white-space:nowrap;pointer-events:none;transition:opacity .4s;
+  }
+  /* ===== 暂停菜单 ===== */
+  .menu{
+    position:fixed;inset:0;z-index:20;display:none;
+    align-items:center;justify-content:center;
+    background:rgba(74,63,92,.42);backdrop-filter:blur(5px);
+  }
+  .menu.show{display:flex}
+  .menu-card{
+    width:min(88vw,330px);padding:26px 22px 22px;border-radius:22px;text-align:center;
+    background:linear-gradient(168deg,#FFF6E9,#FFE8D6);
+    box-shadow:0 24px 54px rgba(74,63,92,.38);
+    animation:pop .32s cubic-bezier(.2,.9,.3,1.3) both;
+  }
+  @keyframes pop{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:none}}
+  .menu-card h2{font-size:21px;letter-spacing:1px;margin-bottom:6px}
+  .menu-card p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+  .m-btn{
+    display:block;width:100%;min-height:46px;margin-top:11px;border:none;border-radius:999px;
+    font-size:15px;font-weight:800;color:#fff;cursor:pointer;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    box-shadow:0 8px 20px rgba(155,93,229,.3);transition:transform .12s;
+  }
+  .m-btn:active{transform:scale(.96)}
+  .m-btn.ghost{background:linear-gradient(135deg,#9A8FB5,#7B6FA0);box-shadow:0 8px 20px rgba(122,111,160,.28)}
+  .size-row{
+    display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;
+    padding-top:14px;border-top:1.5px dashed rgba(155,93,229,.25);
+  }
+  .size-row span{font-size:13px;font-weight:800;color:var(--grape)}
+  .s-btn{
+    width:42px;height:42px;border:none;border-radius:50%;cursor:pointer;
+    font-size:20px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,var(--mint),#2FBFB5);
+    box-shadow:0 6px 16px rgba(78,205,196,.35);
+  }
+  .s-btn:active{transform:scale(.9)}
+  .size-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+  @media (max-height:700px){
+    :root{--cvh:calc(100dvh - 112px)}
+  }
+  @media (max-width:520px){
+    h1{font-size:17px}
+    .h-btn{padding:0 12px;font-size:13px}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <button class="h-btn" id="back">‹ 返回主页</button>
+    <h1>🌻 植物大战僵尸</h1>
+    <button class="h-btn" id="pause">⏸ 暂停</button>
+  </header>
+  <div class="wrap">
+    <div class="canvas" id="canvas">
+      <iframe id="game" src="http://jspvz.com/plantsvszombies.htm" title="植物大战僵尸"></iframe>
+      <div class="tip" id="tip">加载中… 若出现全屏广告弹窗，点右上角 × 关闭即可</div>
+    </div>
+  </div>
+
+  <div class="menu" id="menu">
+    <div class="menu-card">
+      <h2>⏸ 已暂停</h2>
+      <p>画面只是被遮住，游戏仍在后台运行。<br>继续游戏即关闭遮罩。</p>
+      <button class="m-btn" id="resume">继续游戏</button>
+      <button class="m-btn ghost" id="home">返回主页</button>
+      <div class="size-row">
+        <button class="s-btn" id="minus" aria-label="减小画面">−</button>
+        <span id="cvLabel">画面 620</span>
+        <button class="s-btn" id="plus" aria-label="增大画面">＋</button>
+      </div>
+      <p class="size-note">画面调大能看到更多底部内容，但也可能露出网站的通知栏。</p>
+    </div>
+  </div>
+<script>
+  // 登录守卫
+  if (!localStorage.getItem('blindbox_user')) location.replace('index.html');
+  const $ = id => document.getElementById(id);
+
+  $('back').addEventListener('click', () => location.href = 'main.html');
+  $('home').addEventListener('click', () => location.href = 'main.html');
+  $('pause').addEventListener('click', () => $('menu').classList.add('show'));
+  $('resume').addEventListener('click', () => $('menu').classList.remove('show'));
+  $('menu').addEventListener('click', e => { if (e.target === $('menu')) $('menu').classList.remove('show'); });
+
+  // 画面高度调节（520 ~ 920，步长 40）
+  let cvh = 620;
+  const root = document.documentElement;
+  function paint(){
+    root.style.setProperty('--cvh', cvh + 'px');
+    $('cvLabel').textContent = '画面 ' + cvh;
+  }
+  $('minus').addEventListener('click', () => { cvh = Math.max(520, cvh - 40); paint(); });
+  $('plus').addEventListener('click',  () => { cvh = Math.min(920, cvh + 40); paint(); });
+
+  // iframe 加载完成隐藏提示（6s 兜底）
+  $('game').addEventListener('load', () => { const t = $('tip'); if (t) t.style.opacity = '0'; });
+  setTimeout(() => { const t = $('tip'); if (t) t.style.opacity = '0'; }, 6000);
+  // 画布内滑动不滚动页面（双端）
+  const cv = $('canvas');
+  document.addEventListener('touchmove', e => { if (cv.contains(e.target)) e.preventDefault(); }, {passive:false});
+</script>
+</body>
+</html>

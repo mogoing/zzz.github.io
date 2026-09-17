@@ -16,13 +16,62 @@
     min-height:100vh;color:var(--ink);
     background:linear-gradient(165deg,#FFF6E9,#FFE8D6);
     display:flex;flex-direction:column;align-items:center;
-    padding:20px 16px 44px;
+    padding:20px 16px 44px;overflow-x:hidden;
   }
   .blob{position:fixed;border-radius:50%;filter:blur(56px);opacity:.5;z-index:0;animation:float 14s ease-in-out infinite}
   .blob-a{width:36vmax;height:36vmax;background:var(--pink);top:-12vmax;left:-10vmax}
   .blob-b{width:28vmax;height:28vmax;background:var(--mint);bottom:-8vmax;right:-8vmax;animation-delay:-5s}
   .blob-c{width:20vmax;height:20vmax;background:var(--sunny);top:32%;right:4vmax;opacity:.32;animation-delay:-9s}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(2.6vmax)}}
+
+  /* ===== 画布装饰：线条、圆环、椭圆、点阵（淡淡色） ===== */
+  .deco{position:fixed;z-index:0;pointer-events:none;opacity:.4}
+  .deco-ring{
+    width:34vmin;height:34vmin;right:-6vmin;top:16%;
+    border:2.5px dashed rgba(155,93,229,.45);border-radius:50%;
+    animation:spin 46s linear infinite;
+  }
+  .deco-ring::after{
+    content:"";position:absolute;inset:14%;border:1.5px solid rgba(255,107,107,.35);border-radius:50%;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .deco-ellipse{
+    width:26vmin;height:9vmin;left:-7vmin;bottom:14%;border-radius:50%;
+    background:linear-gradient(90deg,rgba(78,205,196,.4),rgba(155,93,229,.22));
+    transform:rotate(-18deg);
+  }
+  .deco-line{
+    width:60vmin;height:16vmin;left:8%;top:6%;
+    border-bottom:3px solid rgba(255,180,120,.5);border-radius:50%;
+    transform:rotate(4deg);
+  }
+  .deco-line2{
+    width:40vmin;height:12vmin;right:-4vmin;bottom:4%;
+    border-bottom:3px solid rgba(255,157,226,.45);border-radius:50%;
+    transform:rotate(-6deg);
+  }
+  .deco-dots{
+    width:17vmin;height:11vmin;left:14%;bottom:26%;
+    background-image:radial-gradient(circle,rgba(255,107,107,.5) 3px,transparent 3.5px);
+    background-size:26px 26px;
+  }
+  .deco-dots2{
+    width:13vmin;height:9vmin;right:10%;top:36%;
+    background-image:radial-gradient(circle,rgba(78,205,196,.55) 3px,transparent 3.5px);
+    background-size:24px 24px;
+  }
+  .deco-star{
+    width:16px;height:16px;right:22%;top:12%;
+    background:linear-gradient(135deg,var(--sunny),#FFB84C);
+    clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    opacity:.65;
+  }
+  .deco-star2{
+    width:12px;height:12px;left:6%;top:40%;
+    background:linear-gradient(135deg,var(--coral),var(--pink));
+    clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    opacity:.55;
+  }
   header{
     position:relative;z-index:1;width:min(92vw,760px);
     display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;
@@ -43,8 +92,13 @@
   .logout:hover{transform:translateY(-2px)}
   .hint{position:relative;z-index:1;font-size:14px;color:var(--muted);margin-bottom:24px}
 
-  /* ===== 游戏墙（一排三个，可翻页） ===== */
-  .stage{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:26px;width:min(94vw,700px)}
+  /* ===== 游戏墙（一页六个：两排三个，行距约为盒子高度一半） ===== */
+  .stage{
+    position:relative;z-index:1;
+    display:flex;flex-wrap:wrap;justify-content:center;
+    column-gap:26px;row-gap:75px;
+    width:min(94vw,522px);margin-top:34px;
+  }
   .box{position:relative;width:150px;height:150px;cursor:pointer}
   .box.enter{animation:boxIn .4s cubic-bezier(.2,.9,.3,1.25) both}
   @keyframes boxIn{from{opacity:0;transform:translateY(16px) scale(.92)}to{opacity:1;transform:none}}
@@ -118,6 +172,30 @@
     display:flex;align-items:center;justify-content:center;
     font-size:12px;font-style:normal;line-height:1;box-shadow:0 2px 5px rgba(0,0,0,.14);
   }
+  /* 植物大战僵尸图标：小太阳 + 绿芽 */
+  .i-pvz{position:relative;width:26px;height:26px}
+  .i-pvz i{
+    position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 35% 32%,#FFF3B0,#FFC93C 62%,#FFA726);
+    box-shadow:0 2px 6px rgba(255,169,38,.5);
+  }
+  .i-pvz i::before{
+    content:"";position:absolute;inset:-6px;border-radius:50%;
+    background:repeating-conic-gradient(rgba(255,201,60,.9) 0 12deg,transparent 12deg 30deg);
+    -webkit-mask:radial-gradient(circle,#000 30%,transparent 55%);
+            mask:radial-gradient(circle,#000 30%,transparent 55%);
+  }
+  .i-pvz b{
+    position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);
+    width:6px;height:9px;border-radius:3px 3px 2px 2px;
+    background:linear-gradient(180deg,#57C785,#3BA66E);
+  }
+  .i-pvz b::before,.i-pvz b::after{
+    content:"";position:absolute;top:1px;width:6px;height:3.5px;border-radius:4px;
+    background:#57C785;
+  }
+  .i-pvz b::before{left:-5px;transform:rotate(28deg)}
+  .i-pvz b::after{right:-5px;transform:rotate(-28deg)}
   /* 敬请期待 */
   .soon{font-size:14px;font-weight:700;color:var(--muted)}
   .lock{width:20px;height:15px;border:3px solid var(--muted);border-top:none;border-radius:0 0 6px 6px;position:relative;margin-bottom:10px}
@@ -155,14 +233,22 @@
 
   @media (max-width:560px){
     h1{font-size:22px}
-    .box{width:min(28.5vw,128px);height:min(28.5vw,128px)}
-    .stage{gap:10px}
+    .box{width:min(27vw,128px);height:min(27vw,128px)}
+    .stage{column-gap:16px;row-gap:calc(min(27vw,128px) / 2 + 22px)}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.lid,.reveal{transition:none!important}}
 </style>
 </head>
 <body>
   <div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div>
+  <div class="deco deco-ring"></div>
+  <div class="deco deco-ellipse"></div>
+  <div class="deco deco-line"></div>
+  <div class="deco deco-line2"></div>
+  <div class="deco deco-dots"></div>
+  <div class="deco deco-dots2"></div>
+  <div class="deco deco-star"></div>
+  <div class="deco deco-star2"></div>
   <header>
     <div>
       <h1>多巴胺惊喜屋</h1>
@@ -185,15 +271,16 @@
     { name:'贪吃蛇',   desc:'经典街机', icon:'snake', target:'eatsnake.html' },
     { name:'连连看',   desc:'爱心连线', icon:'lian',  target:'lian.html' },
     { name:'开心消消乐', desc:'三消闯关', icon:'xiao',  target:'xiao.html' },
-    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'植物大战僵尸', desc:'在线版', icon:'pvz', target:'pvz.html' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
   ];
-  const PER_PAGE = 3;   // 一排三个
+  const PER_PAGE = 6;   // 一页六个（两排三个）
   const ICONS = {
     snake: '<span class="mini-snake"><i></i><i></i><i></i><i></i><i></i></span>',
     lian:  '<span class="i-lian"><b></b><i></i><u></u></span>',
     xiao:  '<span class="i-xiao"><i>🍑</i><i>🫐</i><i>🍈</i></span>',
+    pvz:   '<span class="i-pvz"><i></i><b></b></span>',
     soon:  '<span class="lock"></span>',
   };
 
@@ -241,6 +328,8 @@
 
   document.getElementById('prev').addEventListener('click', () => { if (page>1){ page--; render(); } });
   document.getElementById('next').addEventListener('click', () => { if (page<pages){ page++; render(); } });
+  // 只有一页时隐藏翻页
+  if (pages <= 1) document.querySelector('.pager').style.display = 'none';
 
   document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('blindbox_user');
