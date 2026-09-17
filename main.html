@@ -10,7 +10,7 @@
     --coral:#FF6B6B; --sunny:#FFD93D; --mint:#4ECDC4; --grape:#9B5DE5; --pink:#FF9DE2;
     --ink:#4A3F5C; --muted:#9A8FB5;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
     min-height:100vh;color:var(--ink);
@@ -42,10 +42,12 @@
   }
   .logout:hover{transform:translateY(-2px)}
   .hint{position:relative;z-index:1;font-size:14px;color:var(--muted);margin-bottom:24px}
-  .stage{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:26px;width:min(94vw,700px)}
 
-  /* ===== 盲盒 ===== */
-  .box{position:relative;width:150px;height:150px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  /* ===== 游戏墙（一排三个，可翻页） ===== */
+  .stage{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:26px;width:min(94vw,700px)}
+  .box{position:relative;width:150px;height:150px;cursor:pointer}
+  .box.enter{animation:boxIn .4s cubic-bezier(.2,.9,.3,1.25) both}
+  @keyframes boxIn{from{opacity:0;transform:translateY(16px) scale(.92)}to{opacity:1;transform:none}}
   .lid{
     position:absolute;top:0;left:4%;width:92%;height:34%;z-index:3;border-radius:14px 14px 6px 6px;
     display:flex;align-items:center;justify-content:center;
@@ -57,6 +59,9 @@
   .box.b1 .lid{background:linear-gradient(135deg,var(--coral),#FF9F6B)}
   .box.b2 .lid{background:linear-gradient(135deg,var(--mint),#7BDBCB)}
   .box.b3 .lid{background:linear-gradient(135deg,var(--grape),var(--pink))}
+  .box.b4 .lid{background:linear-gradient(135deg,var(--sunny),#FFB84C)}
+  .box.b5 .lid{background:linear-gradient(135deg,var(--pink),#FF9F6B)}
+  .box.b6 .lid{background:linear-gradient(135deg,#7BDBCB,var(--mint))}
   .body{
     position:absolute;bottom:0;left:0;width:100%;height:70%;z-index:1;border-radius:10px 10px 18px 18px;
     display:flex;align-items:center;justify-content:center;overflow:hidden;
@@ -66,6 +71,9 @@
   .box.b1 .body{background:linear-gradient(160deg,#FFB199,#FFE0B2)}
   .box.b2 .body{background:linear-gradient(160deg,#BFF0E8,#E4FAF6)}
   .box.b3 .body{background:linear-gradient(160deg,#E9C9FF,#F9E3FF)}
+  .box.b4 .body{background:linear-gradient(160deg,#FFF3C4,#FFF8E1)}
+  .box.b5 .body{background:linear-gradient(160deg,#FFD3EE,#FFEAF7)}
+  .box.b6 .body{background:linear-gradient(160deg,#D4F5F0,#ECFBF8)}
   .ribbon{
     position:absolute;top:9px;left:50%;transform:translateX(-50%);
     width:26%;height:24px;z-index:2;opacity:.95;
@@ -73,13 +81,19 @@
     clip-path:polygon(0 0,100% 0,100% 100%,50% 72%,0 100%);
   }
   .reveal{
-    position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;gap:6px;
+    position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;gap:7px;
     opacity:0;transform:scale(.6);
     transition:opacity .3s,transform .35s cubic-bezier(.2,.8,.3,1.3);
   }
   .box:hover .lid,.box.open .lid{transform:translateY(-16px) rotate(-5deg)}
   .box:hover .reveal,.box.open .reveal{opacity:1;transform:scale(1)}
   .box:hover .body,.box.open .body{box-shadow:0 14px 26px rgba(0,0,0,.1)}
+  .r-name{font-size:14px;font-weight:700}
+  .r-go{
+    font-size:14px;font-weight:700;color:#fff;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    padding:4px 12px;border-radius:999px;box-shadow:0 4px 10px rgba(255,107,107,.3);
+  }
   /* CSS 小蛇 */
   .mini-snake{display:flex;align-items:center}
   .mini-snake i{width:13px;height:13px;border-radius:4px;margin-left:-4px;background:linear-gradient(135deg,var(--mint),#2FBFB5);box-shadow:0 2px 4px rgba(0,0,0,.15)}
@@ -92,22 +106,57 @@
   }
   .mini-snake i:first-child::before{left:3px}
   .mini-snake i:first-child::after{right:3px}
-  .r-name{font-size:14px;font-weight:700}
-  .r-go{
-    font-size:14px;font-weight:700;color:#fff;
-    background:linear-gradient(135deg,var(--coral),var(--grape));
-    padding:4px 12px;border-radius:999px;box-shadow:0 4px 10px rgba(255,107,107,.3);
+  /* 连连看图标：一方一圆 + 连线 */
+  .i-lian{display:flex;align-items:center;gap:3px}
+  .i-lian b{width:14px;height:14px;border-radius:5px;background:linear-gradient(135deg,var(--coral),#FF9F6B);box-shadow:0 2px 4px rgba(0,0,0,.15)}
+  .i-lian i{width:12px;height:2.5px;border-radius:2px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+  .i-lian u{width:14px;height:14px;background:linear-gradient(135deg,var(--mint),#2FBFB5);box-shadow:0 2px 4px rgba(0,0,0,.15)}
+  /* 消消乐图标：三颗水果 */
+  .i-xiao{display:flex;gap:3px}
+  .i-xiao i{
+    width:17px;height:17px;border-radius:5px;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-style:normal;line-height:1;box-shadow:0 2px 5px rgba(0,0,0,.14);
   }
+  /* 敬请期待 */
   .soon{font-size:14px;font-weight:700;color:var(--muted)}
   .lock{width:20px;height:15px;border:3px solid var(--muted);border-top:none;border-radius:0 0 6px 6px;position:relative;margin-bottom:10px}
   .lock::before{
     content:"";position:absolute;top:-12px;left:50%;transform:translateX(-50%);
     width:11px;height:13px;border:3px solid var(--muted);border-bottom:none;border-radius:9px 9px 0 0;
   }
+
+  /* ===== 翻页 ===== */
+  .pager{
+    position:relative;z-index:1;display:flex;align-items:center;gap:16px;
+    margin-top:26px;
+  }
+  .p-btn{
+    width:44px;height:44px;border:none;border-radius:50%;cursor:pointer;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    color:#fff;font-size:20px;font-weight:800;
+    box-shadow:0 8px 20px rgba(155,93,229,.35);transition:transform .15s,opacity .2s;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .p-btn:active{transform:scale(.9)}
+  .p-btn:disabled{opacity:.3;cursor:default;transform:none}
+  .p-ind{
+    font-size:14px;font-weight:800;color:var(--grape);letter-spacing:1px;
+    background:rgba(255,255,255,.85);border-radius:999px;padding:8px 16px;
+    box-shadow:0 4px 14px rgba(155,93,229,.14);
+  }
+
+  .toast{
+    position:fixed;left:50%;top:14%;transform:translateX(-50%) translateY(-8px);
+    background:rgba(74,63,92,.92);color:#fff;font-size:14px;font-weight:700;
+    padding:10px 18px;border-radius:999px;z-index:40;opacity:0;transition:.3s;pointer-events:none;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
   @media (max-width:560px){
     h1{font-size:22px}
-    .box{width:128px;height:128px}
-    .stage{gap:18px}
+    .box{width:min(28.5vw,128px);height:min(28.5vw,128px)}
+    .stage{gap:10px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.lid,.reveal{transition:none!important}}
 </style>
@@ -123,64 +172,96 @@
   </header>
   <p class="hint">
   </p>
-  <section class="stage">
-    <div class="box b1" data-target="eatsnake.html">
-      <div class="lid">?</div>
-      <div class="body">
-        <span class="ribbon"></span>
-        <div class="reveal">
-          <span class="mini-snake"><i></i><i></i><i></i><i></i><i></i></span>
-          <span class="r-name">贪吃蛇</span>
-          <span class="r-go">进入</span>
-        </div>
-      </div>
-    </div>
-    <div class="box b2">
-      <div class="lid">?</div>
-      <div class="body">
-        <span class="ribbon"></span>
-        <div class="reveal">
-          <span class="lock"></span>
-          <span class="soon">敬请期待</span>
-        </div>
-      </div>
-    </div>
-    <div class="box b3">
-      <div class="lid">?</div>
-      <div class="body">
-        <span class="ribbon"></span>
-        <div class="reveal">
-          <span class="lock"></span>
-          <span class="soon">敬请期待</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="stage" id="stage"></section>
+  <nav class="pager">
+    <button class="p-btn" id="prev" aria-label="上一页">‹</button>
+    <span class="p-ind" id="pind"></span>
+    <button class="p-btn" id="next" aria-label="下一页">›</button>
+  </nav>
+  <div class="toast" id="toast"></div>
 <script>
+  // ===== 游戏列表：要加新游戏就往下面数组加一行即可（name=名字 desc=一句话 icon=图标 target=页面）=====
+  const GAMES = [
+    { name:'贪吃蛇',   desc:'经典街机', icon:'snake', target:'eatsnake.html' },
+    { name:'连连看',   desc:'爱心连线', icon:'lian',  target:'lian.html' },
+    { name:'开心消消乐', desc:'三消闯关', icon:'xiao',  target:'xiao.html' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+  ];
+  const PER_PAGE = 3;   // 一排三个
+  const ICONS = {
+    snake: '<span class="mini-snake"><i></i><i></i><i></i><i></i><i></i></span>',
+    lian:  '<span class="i-lian"><b></b><i></i><u></u></span>',
+    xiao:  '<span class="i-xiao"><i>🍑</i><i>🫐</i><i>🍈</i></span>',
+    soon:  '<span class="lock"></span>',
+  };
+
   const user = localStorage.getItem('blindbox_user');
   if (!user) location.replace('index.html');
   document.getElementById('hello').textContent = '你好，' + user;
+
+  const stage = document.getElementById('stage');
+  const pind  = document.getElementById('pind');
+  let page = 1;
+  const pages = Math.ceil(GAMES.length / PER_PAGE);
+
+  function render(){
+    stage.innerHTML = '';
+    const start = (page-1)*PER_PAGE;
+    GAMES.slice(start, start+PER_PAGE).forEach((g, idx) => {
+      const slot = (start + idx) % 6 + 1;
+      const box = document.createElement('div');
+      box.className = 'box b' + slot + ' enter';
+      box.style.animationDelay = (idx*0.07) + 's';
+      box.innerHTML =
+        '<div class="lid">?</div>' +
+        '<div class="body">' +
+          '<span class="ribbon"></span>' +
+          '<div class="reveal">' +
+            ICONS[g.icon] +
+            '<span class="r-name">' + g.name + '</span>' +
+            (g.target ? '<span class="r-go">进入</span>' : '<span class="soon">敬请期待</span>') +
+          '</div>' +
+        '</div>';
+      box.addEventListener('click', () => {
+        if (box.classList.contains('open')) {
+          if (g.target) location.href = g.target;
+          else toast('敬请期待 · 即将上线');
+        } else {
+          box.classList.add('open');
+        }
+      });
+      stage.appendChild(box);
+    });
+    pind.textContent = page + ' / ' + pages;
+    document.getElementById('prev').disabled = page <= 1;
+    document.getElementById('next').disabled = page >= pages;
+  }
+
+  document.getElementById('prev').addEventListener('click', () => { if (page>1){ page--; render(); } });
+  document.getElementById('next').addEventListener('click', () => { if (page<pages){ page++; render(); } });
 
   document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('blindbox_user');
     location.href = 'index.html';
   });
 
-  document.querySelectorAll('.box').forEach(box => {
-    box.addEventListener('click', () => {
-      if (box.classList.contains('open')) {
-        const target = box.dataset.target;
-        if (target) location.href = target;
-      } else {
-        box.classList.add('open');
-      }
-    });
-  });
+  let toastTimer = null;
+  function toast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>t.classList.remove('show'), 1600);
+  }
 
   // 预览用：main.html?open=1 自动打开第一个盲盒
   if (new URLSearchParams(location.search).get('open') === '1') {
-    document.querySelector('.box').classList.add('open');
+    setTimeout(()=>{ const b = stage.querySelector('.box'); if (b) b.classList.add('open'); }, 500);
   }
+
+  render();
 </script>
 </body>
 </html>
