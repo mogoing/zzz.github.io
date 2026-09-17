@@ -4,162 +4,168 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>植物大战僵尸 · 在线版</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%239B5DE5'/%3E%3Cstop offset='1' stop-color='%23FF6B6B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='46' font-size='34' font-weight='800' text-anchor='middle' fill='%23fff'%3E%F0%9F%8C%BB%3C/text%3E%3C/svg%3E">
 <style>
-  :root{
-    --ink:#4A3F5C; --muted:#9A8FB5;
-    --coral:#FF6B6B; --grape:#9B5DE5; --sunny:#FFD93D; --mint:#4ECDC4; --pink:#FF9DE2;
-    --cvh:620px; /* 画面显示高度：620 可裁掉网站底部通知栏，可调 */
-  }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{height:100%}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
-    height:100dvh;overflow:hidden;color:var(--ink);
-    background:linear-gradient(165deg,#FFF6E9,#FFE8D6);
     display:flex;flex-direction:column;
+    background:linear-gradient(160deg,#FFF6E8 0%,#FFE9F1 45%,#EAF4FF 100%);
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    color:#6B4E9E;user-select:none;-webkit-user-select:none;
   }
+  /* ===== 顶栏 ===== */
   header{
-    flex:none;display:flex;align-items:center;justify-content:space-between;
-    gap:10px;padding:10px 14px;z-index:6;
+    height:64px;flex:0 0 64px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 14px;gap:10px;
   }
-  .h-btn{
-    flex:none;min-height:44px;border:none;border-radius:999px;cursor:pointer;
-    padding:0 16px;font-size:14px;font-weight:800;color:#fff;
-    background:linear-gradient(135deg,var(--coral),var(--grape));
-    box-shadow:0 6px 16px rgba(255,107,107,.3);transition:transform .15s;
-  }
-  .h-btn:hover{transform:translateY(-1px)}
-  .h-btn:active{transform:scale(.94)}
-  h1{
-    font-size:20px;letter-spacing:2px;text-align:center;
-    background:linear-gradient(90deg,var(--grape),var(--coral),var(--sunny));
+  header h1{
+    font-size:clamp(15px,4vw,20px);font-weight:900;letter-spacing:1px;white-space:nowrap;
+    background:linear-gradient(90deg,#FF8FB1,#8B5CF6,#38BDF8);
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .wrap{
-    flex:1;min-height:0;padding:0 14px 14px;
-    display:flex;align-items:center;justify-content:center;
+  .h-btn{
+    flex:0 0 auto;border:none;border-radius:999px;cursor:pointer;
+    padding:9px 16px;font-size:14px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,#FFB3C1,#FF8FB1);
+    box-shadow:0 6px 16px rgba(255,143,177,.4);transition:transform .15s;
   }
+  .h-btn:active{transform:scale(.94)}
+  .h-btn.grape{background:linear-gradient(135deg,#A78BFA,#8B5CF6);box-shadow:0 6px 16px rgba(139,92,246,.4)}
+  /* ===== 画布区 ===== */
+  .wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:10px;min-height:0}
   .canvas{
-    position:relative;width:min(96vw,1080px);height:var(--cvh);
-    border-radius:18px;overflow:hidden;
-    box-shadow:0 20px 46px rgba(155,93,229,.28),0 0 0 4px rgba(255,255,255,.75);
+    position:relative;overflow:hidden;border-radius:18px;
+    box-shadow:0 20px 46px rgba(139,92,246,.28),0 0 0 4px rgba(255,255,255,.8);
     background:#0d2f18;
   }
-  .canvas::after{ /* 圆角描边 */
-    content:"";position:absolute;inset:0;border-radius:18px;z-index:3;
-    box-shadow:inset 0 0 0 2px rgba(255,255,255,.22);pointer-events:none;
+  .canvas::after{
+    content:"";position:absolute;inset:0;border-radius:18px;z-index:3;pointer-events:none;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);
   }
-  iframe{
-    position:absolute;left:0;top:0;width:100%;height:100%;border:0;
+  /* iframe 基准尺寸固定，用 scale 整体缩放进画布 —— 内容永远完整、永不出现滚动条 */
+  .inner{
+    position:absolute;top:50%;left:50%;
+    width:480px;height:900px;
+    transform:translate(-50%,-50%) scale(1);
+    transform-origin:center center;
   }
+  iframe{width:100%;height:100%;border:0;display:block}
   .tip{
-    position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:4;
-    max-width:92%;font-size:12px;color:#fff;text-align:center;
-    background:rgba(74,63,92,.62);padding:7px 14px;border-radius:999px;
-    white-space:nowrap;pointer-events:none;transition:opacity .4s;
+    position:absolute;left:12px;right:12px;bottom:10px;z-index:4;
+    text-align:center;font-size:12px;color:#fff;opacity:.85;
+    background:rgba(20,10,40,.55);border-radius:999px;padding:6px 10px;
+    transition:opacity .6s;pointer-events:none;
   }
   /* ===== 暂停菜单 ===== */
   .menu{
-    position:fixed;inset:0;z-index:20;display:none;
+    position:fixed;inset:0;z-index:10;display:none;
     align-items:center;justify-content:center;
-    background:rgba(74,63,92,.42);backdrop-filter:blur(5px);
+    background:rgba(40,20,70,.42);backdrop-filter:blur(4px);
   }
   .menu.show{display:flex}
   .menu-card{
-    width:min(88vw,330px);padding:26px 22px 22px;border-radius:22px;text-align:center;
-    background:linear-gradient(168deg,#FFF6E9,#FFE8D6);
-    box-shadow:0 24px 54px rgba(74,63,92,.38);
-    animation:pop .32s cubic-bezier(.2,.9,.3,1.3) both;
+    width:min(84vw,320px);padding:26px 22px;border-radius:22px;text-align:center;
+    background:linear-gradient(160deg,#FFF7FB,#F3EDFF);
+    box-shadow:0 24px 60px rgba(90,40,140,.35);
   }
-  @keyframes pop{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:none}}
-  .menu-card h2{font-size:21px;letter-spacing:1px;margin-bottom:6px}
-  .menu-card p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:14px}
-  .m-btn{
-    display:block;width:100%;min-height:46px;margin-top:11px;border:none;border-radius:999px;
-    font-size:15px;font-weight:800;color:#fff;cursor:pointer;
-    background:linear-gradient(135deg,var(--coral),var(--grape));
-    box-shadow:0 8px 20px rgba(155,93,229,.3);transition:transform .12s;
-  }
-  .m-btn:active{transform:scale(.96)}
-  .m-btn.ghost{background:linear-gradient(135deg,#9A8FB5,#7B6FA0);box-shadow:0 8px 20px rgba(122,111,160,.28)}
+  .menu-card h2{font-size:22px;font-weight:900;color:#7C3AED;margin-bottom:6px}
+  .menu-card p{font-size:13px;color:#8A7FA8;line-height:1.6;margin-bottom:14px}
   .size-row{
-    display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;
-    padding-top:14px;border-top:1.5px dashed rgba(155,93,229,.25);
+    display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px;
+    padding:12px 0;border-top:1.5px dashed rgba(139,92,246,.25);border-bottom:1.5px dashed rgba(139,92,246,.25);
   }
-  .size-row span{font-size:13px;font-weight:800;color:var(--grape)}
+  .size-row span{font-size:13px;font-weight:800;color:#7C3AED;min-width:80px}
   .s-btn{
     width:42px;height:42px;border:none;border-radius:50%;cursor:pointer;
-    font-size:20px;font-weight:800;color:#fff;
-    background:linear-gradient(135deg,var(--mint),#2FBFB5);
-    box-shadow:0 6px 16px rgba(78,205,196,.35);
+    font-size:20px;font-weight:900;color:#fff;
+    background:linear-gradient(135deg,#34D399,#22B8A5);
+    box-shadow:0 6px 16px rgba(52,211,153,.4);
   }
   .s-btn:active{transform:scale(.9)}
-  .size-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
-
-  @media (max-height:700px){
-    :root{--cvh:calc(100dvh - 112px)}
+  .m-btn{
+    display:block;width:100%;border:none;border-radius:999px;cursor:pointer;
+    padding:13px;margin-top:10px;font-size:16px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,#FF8FB1,#8B5CF6);
+    box-shadow:0 8px 20px rgba(139,92,246,.35);
   }
-  @media (max-width:520px){
-    h1{font-size:17px}
-    .h-btn{padding:0 12px;font-size:13px}
-  }
+  .m-btn:active{transform:scale(.97)}
+  .m-btn.ghost{background:linear-gradient(135deg,#9A8FB5,#7B6FA0);box-shadow:0 8px 20px rgba(122,111,160,.28)}
 </style>
 </head>
 <body>
   <header>
     <button class="h-btn" id="back">‹ 返回主页</button>
-    <h1>🌻 植物大战僵尸</h1>
-    <button class="h-btn" id="pause">⏸ 暂停</button>
+    <h1>植物大战僵尸</h1>
+    <button class="h-btn grape" id="pause">⏸ 暂停</button>
   </header>
+
   <div class="wrap">
     <div class="canvas" id="canvas">
-      <iframe id="game" src="http://jspvz.com/plantsvszombies.htm" title="植物大战僵尸"></iframe>
-      <div class="tip" id="tip">加载中… 若出现全屏广告弹窗，点右上角 × 关闭即可</div>
+      <div class="inner" id="inner">
+        <iframe id="game" src="http://jspvz.com/plantsvszombies.htm" scrolling="no" allowfullscreen></iframe>
+      </div>
+      <div class="tip" id="tip">加载中…若弹出全屏广告，点右上角 ✕ 关闭即可</div>
     </div>
   </div>
 
   <div class="menu" id="menu">
     <div class="menu-card">
       <h2>⏸ 已暂停</h2>
-      <p>画面只是被遮住，游戏仍在后台运行。<br>继续游戏即关闭遮罩。</p>
+      <p>画面只是被遮住，游戏仍在后台运行。</p>
+      <div class="size-row">
+        <button class="s-btn" id="minus">−</button>
+        <span id="sizeLabel">画面</span>
+        <button class="s-btn" id="plus">＋</button>
+      </div>
       <button class="m-btn" id="resume">继续游戏</button>
       <button class="m-btn ghost" id="home">返回主页</button>
-      <div class="size-row">
-        <button class="s-btn" id="minus" aria-label="减小画面">−</button>
-        <span id="cvLabel">画面 620</span>
-        <button class="s-btn" id="plus" aria-label="增大画面">＋</button>
-      </div>
-      <p class="size-note">画面调大能看到更多底部内容，但也可能露出网站的通知栏。</p>
     </div>
   </div>
+
 <script>
-  // 登录守卫
   if (!localStorage.getItem('blindbox_user')) location.replace('index.html');
-  const $ = id => document.getElementById(id);
 
-  $('back').addEventListener('click', () => location.href = 'main.html');
-  $('home').addEventListener('click', () => location.href = 'main.html');
-  $('pause').addEventListener('click', () => $('menu').classList.add('show'));
-  $('resume').addEventListener('click', () => $('menu').classList.remove('show'));
-  $('menu').addEventListener('click', e => { if (e.target === $('menu')) $('menu').classList.remove('show'); });
+  var $ = function(id){ return document.getElementById(id); };
+  var cv = $('canvas'), inner = $('inner'), game = $('game');
 
-  // 画面高度调节（520 ~ 920，步长 40）
-  let cvh = 620;
-  const root = document.documentElement;
-  function paint(){
-    root.style.setProperty('--cvh', cvh + 'px');
-    $('cvLabel').textContent = '画面 ' + cvh;
+  var zoom = 1;                    // 手动缩放倍率 0.7 ~ 1.5（暂停菜单 +/−，作用于画面内容）
+
+  function fit(){
+    var vw = document.documentElement.clientWidth;
+    var vh  = document.documentElement.clientHeight;
+    var maxW = Math.min(vw - 16, 720);        // 宽度上限
+    var maxH = (vh - 80) * 13.5 / 9;          // 高度上限换算成宽度（画布高 = 宽 × 9/13.5）
+    var W = Math.max(220, Math.min(maxW, maxH));     // 画布宽度，随视口自适应
+    var H = W * 9 / 13.5;                     // 画布高度，固定 13.5:9 横向比例
+    cv.style.width = W + 'px';
+    cv.style.height = Math.round(H) + 'px';
+    // 桌面按 720 宽渲染（完整横向布局：标题/横幅/开始/关于都显示，不含通知栏）
+    // 手机按 390 宽渲染（窄屏竖排布局，内容同样完整）
+    var desktop = vw > 560;
+    var BW = desktop ? 720 : 390;   // 桌面按 720 宽渲染（完整横向布局），手机按 390 宽渲染（窄屏竖排）
+    var BH = 470;                   // 内容到"关于"为止，不含底部通知栏，无滚动条
+    // 等比缩放 iframe 完整放进画布（contain，画面不被裁切、不变形、无滚动条），再叠手动倍率
+    var s = Math.min(W / BW, H / BH) * zoom;
+    inner.style.width = BW + 'px';
+    inner.style.height = BH + 'px';
+    inner.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+    $('sizeLabel').textContent = '画面 ' + Math.round(zoom * 100) + '%';
   }
-  $('minus').addEventListener('click', () => { cvh = Math.max(520, cvh - 40); paint(); });
-  $('plus').addEventListener('click',  () => { cvh = Math.min(920, cvh + 40); paint(); });
 
-  // iframe 加载完成隐藏提示（6s 兜底）
-  $('game').addEventListener('load', () => { const t = $('tip'); if (t) t.style.opacity = '0'; });
-  setTimeout(() => { const t = $('tip'); if (t) t.style.opacity = '0'; }, 6000);
-  // 画布内滑动不滚动页面（双端）
-  const cv = $('canvas');
-  document.addEventListener('touchmove', e => { if (cv.contains(e.target)) e.preventDefault(); }, {passive:false});
+  $('plus').addEventListener('click', function(){ zoom = Math.min(1.5, +(zoom + 0.1).toFixed(1)); fit(); });
+  $('minus').addEventListener('click', function(){ zoom = Math.max(0.7, +(zoom - 0.1).toFixed(1)); fit(); });
+  $('pause').addEventListener('click', function(){ $('menu').classList.add('show'); });
+  $('resume').addEventListener('click', function(){ $('menu').classList.remove('show'); });
+  $('home').addEventListener('click', function(){ location.href = 'main.html'; });
+  $('back').addEventListener('click', function(){ location.href = 'main.html'; });
+
+  // 浏览器窗口大小 / 页面缩放 / 手机横竖屏切换时，重算画布
+  window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+
+  game.addEventListener('load', function(){ var t = $('tip'); t.style.opacity = '0'; });
+  setTimeout(function(){ var t = $('tip'); if (t) t.style.opacity = '0'; }, 6000);
+  fit();
 </script>
 </body>
 </html>
