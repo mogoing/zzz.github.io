@@ -15,7 +15,7 @@
   }
   /* ===== 顶栏 ===== */
   header{
-    height:64px;flex:0 0 64px;display:flex;align-items:center;justify-content:space-between;
+    height:60px;flex:0 0 60px;display:flex;align-items:center;justify-content:space-between;
     padding:0 14px;gap:10px;
   }
   header h1{
@@ -31,8 +31,8 @@
   }
   .h-btn:active{transform:scale(.94)}
   .h-btn.grape{background:linear-gradient(135deg,#A78BFA,#8B5CF6);box-shadow:0 6px 16px rgba(139,92,246,.4)}
-  /* ===== 画布区 ===== */
-  .wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:10px;min-height:0}
+  /* ===== 画布 ===== */
+  .wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 10px 2px;min-height:0}
   .canvas{
     position:relative;overflow:hidden;border-radius:18px;
     box-shadow:0 20px 46px rgba(139,92,246,.28),0 0 0 4px rgba(255,255,255,.8);
@@ -42,19 +42,28 @@
     content:"";position:absolute;inset:0;border-radius:18px;z-index:3;pointer-events:none;
     box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);
   }
-  /* iframe 基准 13.5:9 固定，整体等比缩放放进画布：画面完整铺满、无滚动条 */
-  .inner{
+  /* 舞台 960×640（13.5:9），整体等比缩放进画布，超出部分裁掉 */
+  .stage{
     position:absolute;top:50%;left:50%;
-    width:960px;height:640px;
-    transform:translate(-50%,-50%) scale(1);
-    transform-origin:center center;
+    width:960px;height:640px;overflow:hidden;
+    transform:translate(-50%,-50%) scale(1);transform-origin:center center;
   }
-  iframe{width:100%;height:100%;border:0;display:block}
+  /* iframe 放大 1.06、向左偏移 32px、顶部左对齐：
+     裁掉 jspvz 页面自身的左侧黑边与底部通知栏，游戏画面铺满舞台，左侧植物槽完整 */
+  iframe{
+    position:absolute;top:0;left:-32px;width:960px;height:640px;border:0;display:block;
+    transform:scale(1.06);transform-origin:top left;
+  }
   .tip{
     position:absolute;left:12px;right:12px;bottom:10px;z-index:4;
     text-align:center;font-size:12px;color:#fff;opacity:.85;
     background:rgba(20,10,40,.55);border-radius:999px;padding:6px 10px;
     transition:opacity .6s;pointer-events:none;
+  }
+  /* 画布外提示（不挡游戏交互） */
+  .out-hint{
+    flex:0 0 auto;text-align:center;font-size:11px;line-height:1.4;
+    color:#A08BC8;padding:3px 14px 8px;
   }
   /* ===== 暂停菜单 ===== */
   .menu{
@@ -101,12 +110,13 @@
 
   <div class="wrap">
     <div class="canvas" id="canvas">
-      <div class="inner" id="inner">
+      <div class="stage" id="stage">
         <iframe id="game" src="http://jspvz.com/plantsvszombies.htm" scrolling="no" allowfullscreen></iframe>
       </div>
       <div class="tip" id="tip">加载中…若弹出全屏广告，点右上角 ✕ 关闭即可</div>
     </div>
   </div>
+  <div class="out-hint" id="outHint">若画面一直空白：点浏览器地址栏的盾牌图标 → 允许加载不安全内容 → 刷新页面</div>
 
   <div class="menu" id="menu">
     <div class="menu-card">
@@ -123,45 +133,43 @@
   </div>
 
 <script>
+  // ===== 登录守卫（与全站一致）=====
   if (!localStorage.getItem('blindbox_user')) location.replace('index.html');
 
-  var $ = function(id){ return document.getElementById(id); };
-  var cv = $('canvas'), inner = $('inner'), game = $('game');
+  (function(){
+    function $(id){ return document.getElementById(id); }
+    var cv = $('canvas'), stage = $('stage'), game = $('game'), tip = $('tip');
+    var zoom = 1;
 
-  var zoom = 1;   // 手动缩放倍率 0.7 ~ 1.5（暂停菜单 +/−）
+    // 全端统一 13.5:9 横向画布；舞台 960×640 等比缩放铺满
+    function fit(){
+      var vw = document.documentElement.clientWidth;
+      var vh = document.documentElement.clientHeight;
+      var maxW = Math.min(vw - 16, 720);
+      var maxH = (vh - 96) * 13.5 / 9;
+      var W = Math.max(220, Math.min(maxW, maxH));
+      var H = W * 9 / 13.5;
+      cv.style.width = W + 'px';
+      cv.style.height = Math.round(H) + 'px';
+      var s = Math.min(W / 960, H / 640) * zoom;
+      stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+      $('sizeLabel').textContent = '画面 ' + Math.round(zoom * 100) + '%';
+    }
 
-  function fit(){
-    var vw = document.documentElement.clientWidth;
-    var vh  = document.documentElement.clientHeight;
-    // 所有设备统一 13.5:9 横向画布：宽 = 高 × 1.5
-    var maxW = Math.min(vw - 16, 720);        // 宽度上限
-    var maxH = (vh - 80) * 13.5 / 9;          // 高度上限换算成宽度
-    var W = Math.max(220, Math.min(maxW, maxH));
-    var H = W * 9 / 13.5;
-    cv.style.width = W + 'px';
-    cv.style.height = Math.round(H) + 'px';
-    // 内容按 13.5:9（960×640）渲染：jspvz 固定高度、宽度自适应，
-    // 960 宽下游戏内画面（草坪+种子包栏）完整，画布 contain 后恰好铺满 13.5:9 画布
-    var s = Math.min(W / 960, H / 640) * zoom;
-    inner.style.width = '960px';
-    inner.style.height = '640px';
-    inner.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
-    $('sizeLabel').textContent = '画面 ' + Math.round(zoom * 100) + '%';
-  }
+    game.addEventListener('load', function(){ tip.style.opacity = '0'; });
+    setTimeout(function(){ tip.style.opacity = '0'; }, 8000);
 
-  $('plus').addEventListener('click', function(){ zoom = Math.min(1.5, +(zoom + 0.1).toFixed(1)); fit(); });
-  $('minus').addEventListener('click', function(){ zoom = Math.max(0.7, +(zoom - 0.1).toFixed(1)); fit(); });
-  $('pause').addEventListener('click', function(){ $('menu').classList.add('show'); });
-  $('resume').addEventListener('click', function(){ $('menu').classList.remove('show'); });
-  $('home').addEventListener('click', function(){ location.href = 'main.html'; });
-  $('back').addEventListener('click', function(){ location.href = 'main.html'; });
+    $('plus').addEventListener('click', function(){ zoom = Math.min(1.5, +(zoom + 0.1).toFixed(1)); fit(); });
+    $('minus').addEventListener('click', function(){ zoom = Math.max(0.7, +(zoom - 0.1).toFixed(1)); fit(); });
+    $('pause').addEventListener('click', function(){ $('menu').classList.add('show'); });
+    $('resume').addEventListener('click', function(){ $('menu').classList.remove('show'); });
+    $('home').addEventListener('click', function(){ location.href = 'main.html'; });
+    $('back').addEventListener('click', function(){ location.href = 'main.html'; });
 
-  window.addEventListener('resize', fit);
-  window.addEventListener('orientationchange', fit);
-
-  game.addEventListener('load', function(){ var t = $('tip'); t.style.opacity = '0'; });
-  setTimeout(function(){ var t = $('tip'); if (t) t.style.opacity = '0'; }, 6000);
-  fit();
+    window.addEventListener('resize', fit);
+    window.addEventListener('orientationchange', fit);
+    fit();
+  })();
 </script>
 </body>
 </html>
