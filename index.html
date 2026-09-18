@@ -106,6 +106,12 @@
     <p class="tip">永远相信美好的事情即将发生<br>版所所有，违者必究</p>
   </main>
 <script>
+  // ===== Service Worker：后台预缓存游戏资源，二次访问秒开 =====
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
   // ===== 用户列表（写死）：要加用户就在下面加一行 =====
   const USERS = [
     { username: 'admin',       password: 'password' },
