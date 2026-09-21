@@ -17,7 +17,7 @@ function qzoneShare() {
 }
 
 function isWanBa() {
-	return 1;
+	return 0;
 	//return 1 == fromType
 }
 
@@ -2171,13 +2171,11 @@ var Panel = function() {
 				void 0 != LocalStorage.get("openShake") && (this.openShake = LocalStorage.get("openShake")),
 				this.debugSound = {}, (this.isWanbarTouch() || getOS().isBadAndroid()) && (this.soundPlaying = !1, this.openShake = !1), (!isWanBa() || isDebug) && (qzoneVersion = [4, 6])
 			},
-			isWanbarTouch: function() {
-				return isTouch
-			},
+			isWanbarTouch: function() { return !1 },
 			getSoundObject: function(t) {
 				return {
 					id: t,
-					url: n + t + ".mp3",
+					url: n + t + ".wav",
 					bid: this.id++,
 					refresh: !1
 				}
@@ -2185,7 +2183,7 @@ var Panel = function() {
 			getMusicObject: function(t) {
 				return {
 					id: t,
-					url: n + t + ".mp3",
+					url: n + t + ".wav",
 					bid: this.id++,
 					refresh: !1,
 					loop: 999999
