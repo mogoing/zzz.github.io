@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>天天酷跑 · 酷跑历险记</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden}
+  body{
+    display:flex;flex-direction:column;
+    background:linear-gradient(160deg,#cdeaff 0%,#eaf6ff 45%,#fdf0f5 100%);
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    color:#3a5a8c;user-select:none;-webkit-user-select:none;
+  }
+  header{
+    height:54px;flex:0 0 54px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 12px;gap:10px;z-index:6;
+  }
+  header h1{
+    font-size:clamp(15px,4vw,19px);font-weight:900;letter-spacing:1px;white-space:nowrap;
+    background:linear-gradient(90deg,#FF8FB1,#8B5CF6,#38BDF8);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .h-btn{
+    flex:0 0 auto;border:none;border-radius:999px;cursor:pointer;
+    padding:9px 15px;font-size:14px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,#FFB3C1,#FF8FB1);
+    box-shadow:0 6px 16px rgba(255,143,177,.4);transition:transform .15s;
+  }
+  .h-btn:active{transform:scale(.94)}
+  .h-btn.grape{background:linear-gradient(135deg,#A78BFA,#8B5CF6);box-shadow:0 6px 16px rgba(139,92,246,.4)}
+  .wrap{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:0 8px 8px}
+  .frame{
+    position:relative;height:100%;border-radius:20px;overflow:hidden;
+    box-shadow:0 20px 46px rgba(56,120,200,.30),0 0 0 4px rgba(255,255,255,.85);
+    background:#39c6f5;
+  }
+  iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#39c6f5}
+  .out-hint{flex:0 0 auto;text-align:center;font-size:11px;color:#7c93c4;padding:2px 12px 6px}
+  .menu{
+    position:fixed;inset:0;z-index:10;display:none;
+    align-items:center;justify-content:center;background:rgba(30,60,110,.42);backdrop-filter:blur(4px);
+  }
+  .menu.show{display:flex}
+  .menu-card{
+    width:min(84vw,320px);padding:26px 22px;border-radius:22px;text-align:center;
+    background:linear-gradient(160deg,#F2F8FF,#F3EDFF);box-shadow:0 24px 60px rgba(40,80,150,.35);
+  }
+  .menu-card h2{font-size:22px;font-weight:900;color:#4f7bd6;margin-bottom:6px}
+  .menu-card p{font-size:13px;color:#7c93c4;line-height:1.6;margin-bottom:14px}
+  .size-row{
+    display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px;
+    padding:12px 0;border-top:1.5px dashed rgba(90,130,220,.25);border-bottom:1.5px dashed rgba(90,130,220,.25);
+  }
+  .size-row span{font-size:13px;font-weight:800;color:#4f7bd6;min-width:80px}
+  .s-btn{
+    width:42px;height:42px;border:none;border-radius:50%;cursor:pointer;font-size:20px;font-weight:900;color:#fff;
+    background:linear-gradient(135deg,#34D399,#22B8A5);box-shadow:0 6px 16px rgba(52,211,153,.4);
+  }
+  .s-btn:active{transform:scale(.9)}
+  .m-btn{
+    display:block;width:100%;border:none;border-radius:999px;cursor:pointer;
+    padding:13px;margin-top:10px;font-size:16px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,#5ab0f5,#8B5CF6);box-shadow:0 8px 20px rgba(90,130,240,.35);
+  }
+  .m-btn:active{transform:scale(.97)}
+  .m-btn.ghost{background:linear-gradient(135deg,#9db4d8,#7c93c4);box-shadow:0 8px 20px rgba(120,140,180,.28)}
+</style>
+</head>
+<body>
+  <header>
+    <button class="h-btn" id="back">‹ 返回主页</button>
+    <h1>天天酷跑</h1>
+    <button class="h-btn grape" id="pause">⏸ 暂停</button>
+  </header>
+
+  <div class="wrap">
+    <div class="frame" id="frame">
+      <iframe id="game" src="coolrun_web/runday/index.html" scrolling="no" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="out-hint">点击画面跳跃躲避障碍 · 电脑端可用鼠标点击</div>
+
+  <div class="menu" id="menu">
+    <div class="menu-card">
+      <h2>⏸ 已暂停</h2>
+      <p>竖屏游戏，手机上全屏体验最佳。</p>
+      <div class="size-row">
+        <button class="s-btn" id="minus">−</button>
+        <span id="sizeLabel">画面 100%</span>
+        <button class="s-btn" id="plus">＋</button>
+      </div>
+      <button class="m-btn" id="resume">继续游戏</button>
+      <button class="m-btn ghost" id="home">返回主页</button>
+    </div>
+  </div>
+
+<script>
+  if (!localStorage.getItem('blindbox_user')) location.replace('index.html');
+  (function(){
+    function $(id){ return document.getElementById(id); }
+    var frame=$('frame'), zoom=1;
+    function fit(){
+      var wrap=frame.parentElement.getBoundingClientRect();
+      var aw=wrap.width-8, ah=wrap.height;
+      var h=ah, w=h*9/16;
+      if(w>aw){ w=aw; h=w*16/9; }
+      w=Math.round(w*zoom); h=Math.round(h*zoom);
+      frame.style.width=w+'px'; frame.style.height=h+'px';
+      $('sizeLabel').textContent='画面 '+Math.round(zoom*100)+'%';
+    }
+    $('plus').addEventListener('click',function(){zoom=Math.min(1.4,+(zoom+0.1).toFixed(1));fit();});
+    $('minus').addEventListener('click',function(){zoom=Math.max(0.7,+(zoom-0.1).toFixed(1));fit();});
+    $('pause').addEventListener('click',function(){$('menu').classList.add('show');});
+    $('resume').addEventListener('click',function(){$('menu').classList.remove('show');});
+    $('home').addEventListener('click',function(){location.href='main.html';});
+    $('back').addEventListener('click',function(){location.href='main.html';});
+    window.addEventListener('resize',fit);
+    window.addEventListener('orientationchange',fit);
+    fit();
+  })();
+</script>
+</body>
+</html>
