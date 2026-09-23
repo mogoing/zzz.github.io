@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>注册 · 欢迎回家</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FF6B6B'/%3E%3Cstop offset='1' stop-color='%23FFD93D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='800' text-anchor='middle' fill='%23fff'%3E%3F%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --coral:#FF6B6B; --sunny:#FFD93D; --mint:#4ECDC4; --grape:#9B5DE5; --pink:#FF9DE2;
+    --ink:#4A3F5C; --muted:#9A8FB5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+    background:linear-gradient(160deg,#FFF6E9,#FFE8D6);
+    color:var(--ink);overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;padding:16px;
+  }
+  .blob{position:fixed;border-radius:50%;filter:blur(50px);opacity:.55;z-index:0;animation:float 12s ease-in-out infinite}
+  .b1{width:38vmax;height:38vmax;background:var(--pink);top:-12vmax;left:-10vmax}
+  .b2{width:30vmax;height:30vmax;background:var(--mint);bottom:-10vmax;right:-8vmax;animation-delay:-4s}
+  .b3{width:22vmax;height:22vmax;background:var(--sunny);bottom:6vmax;left:-6vmax;opacity:.35;animation-delay:-8s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(3vmax)}}
+  .card{
+    position:relative;z-index:1;width:min(92vw,400px);
+    background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+    border-radius:24px;padding:34px 28px 26px;text-align:center;
+    box-shadow:0 20px 60px rgba(155,93,229,.16);
+    animation:rise .6s cubic-bezier(.2,.8,.3,1.1) both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
+  .logo{
+    width:56px;height:56px;margin:0 auto 14px;border-radius:18px;
+    background:linear-gradient(135deg,var(--mint),var(--grape));
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;font-weight:800;color:#fff;box-shadow:0 10px 24px rgba(78,205,196,.4);
+  }
+  h1{
+    font-size:26px;letter-spacing:3px;
+    background:linear-gradient(90deg,var(--grape),var(--coral),var(--sunny));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{font-size:14px;color:var(--muted);margin:8px 0 24px}
+  .field{display:block;text-align:left;margin-bottom:16px}
+  .label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+  .field input{
+    width:100%;height:46px;border:2px solid #EEE6F6;border-radius:14px;padding:0 16px;
+    font-size:16px;color:var(--ink);background:#fff;outline:none;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .field input:focus{border-color:var(--grape);box-shadow:0 0 0 4px rgba(155,93,229,.12)}
+  .pwd-wrap{position:relative}
+  .pwd-wrap input{padding-right:56px}
+  .eye{
+    position:absolute;right:4px;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border:none;background:none;cursor:pointer;border-radius:50%;
+  }
+  .eye .ball{position:absolute;inset:9px;border:2px solid var(--muted);border-radius:50%;transition:.2s}
+  .eye .ball::after{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--muted);transition:.2s}
+  .eye.off .ball::after{background:transparent}
+  .error{min-height:18px;font-size:13px;color:var(--coral);margin-bottom:10px;opacity:0;transition:opacity .2s}
+  .error.show{opacity:1}
+  .card.shake{animation:shake .4s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+  .login-btn{
+    width:100%;height:48px;border:none;border-radius:14px;cursor:pointer;
+    background:linear-gradient(135deg,var(--mint),var(--grape));
+    color:#fff;font-size:16px;font-weight:700;letter-spacing:6px;
+    box-shadow:0 10px 24px rgba(78,205,196,.35);
+    transition:transform .15s,filter .15s;
+  }
+  .login-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .login-btn:active{transform:translateY(0) scale(.98)}
+  .login-btn:disabled{opacity:.6;cursor:wait;transform:none}
+  .back{display:inline-block;margin-top:14px;font-size:13px;color:var(--grape);font-weight:600;text-decoration:none;border-bottom:1px dashed rgba(155,93,229,.4);padding-bottom:1px}
+  .ok{
+    display:none;font-size:14px;font-weight:700;color:#2FBFB5;margin-bottom:12px;
+    background:rgba(78,205,196,.14);border-radius:999px;padding:8px 14px;
+  }
+  .ok.show{display:block}
+  @media (max-width:480px){
+    .card{padding:28px 20px 22px}
+    h1{font-size:23px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <main class="card">
+    <div class="logo">🎈</div>
+    <h1>注册新账号</h1>
+    <p class="sub">注册后金币、日记、留言都能云同步</p>
+    <p class="ok" id="okMsg">注册成功，3 秒后自动跳转登录…</p>
+    <form id="regForm" autocomplete="off">
+      <label class="field">
+        <span class="label">账号（至少2个字符）</span>
+        <input type="text" id="username" placeholder="给自己起个名字" required minlength="2" maxlength="20">
+      </label>
+      <label class="field">
+        <span class="label">密码</span>
+        <span class="pwd-wrap">
+          <input type="password" id="password" placeholder="设置密码" required minlength="4" maxlength="30">
+          <button type="button" class="eye" id="eye" aria-label="显示或隐藏密码"><span class="ball"></span></button>
+        </span>
+      </label>
+      <label class="field">
+        <span class="label">确认密码</span>
+        <span class="pwd-wrap">
+          <input type="password" id="password2" placeholder="再输一遍密码" required minlength="4" maxlength="30">
+          <button type="button" class="eye" id="eye2" aria-label="显示或隐藏密码"><span class="ball"></span></button>
+        </span>
+      </label>
+      <p class="error" id="error">注册失败</p>
+      <button type="submit" class="login-btn" id="regBtn">注 册</button>
+    </form>
+    <a class="back" href="index.html">‹ 返回登录</a>
+  </main>
+<script>
+  const API = 'https://zzz-backend.3122182865.workers.dev';
+
+  const form = document.getElementById('regForm');
+  const err  = document.getElementById('error');
+  const card = document.querySelector('.card');
+  const btn  = document.getElementById('regBtn');
+  const okMsg= document.getElementById('okMsg');
+
+  function bindEye(eyeId, pwdId) {
+    const eye = document.getElementById(eyeId);
+    const pwd = document.getElementById(pwdId);
+    eye.addEventListener('click', () => {
+      eye.classList.toggle('off');
+      pwd.type = pwd.type === 'password' ? 'text' : 'password';
+    });
+  }
+  bindEye('eye', 'password');
+  bindEye('eye2', 'password2');
+
+  function showErr(msg) {
+    err.textContent = msg;
+    err.classList.add('show');
+    card.classList.remove('shake');
+    void card.offsetWidth;
+    card.classList.add('shake');
+  }
+  function hideErr() { err.classList.remove('show'); }
+
+  function api(path, opts, timeout = 8000) {
+    return new Promise((resolve, reject) => {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), timeout);
+      fetch(API + path, Object.assign({ signal: ctrl.signal }, opts || {}))
+        .then(r => r.json().catch(() => ({ ok: false, error: '服务器响应异常' })))
+        .then(d => { clearTimeout(t); resolve(d); })
+        .catch(e => { clearTimeout(t); reject(e); });
+    });
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value;
+    const p2 = document.getElementById('password2').value;
+    if (u.length < 2) { showErr('账号至少2个字符'); return; }
+    if (p.length < 4) { showErr('密码至少4位'); return; }
+    if (p !== p2) { showErr('两次密码不一致'); return; }
+    hideErr();
+    btn.disabled = true;
+    btn.textContent = '注 册 中…';
+
+    api('/api/register', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ username: u, password: p })
+    }).then(d => {
+      if (d && d.ok) {
+        okMsg.classList.add('show');
+        form.style.display = 'none';
+        setTimeout(() => location.href = 'index.html?u=' + encodeURIComponent(u), 3000);
+      } else {
+        throw new Error(d && d.error ? d.error : '注册失败');
+      }
+    }).catch(errMsg => {
+      showErr(typeof errMsg === 'string' ? errMsg : '无法连接服务器，请稍后再试');
+      btn.disabled = false;
+      btn.textContent = '注 册';
+    });
+  });
+
+  // 从登录页跳来时自动填账号
+  const pre = new URLSearchParams(location.search).get('u');
+  if (pre) document.getElementById('username').value = pre;
+</script>
+</body>
+</html>
