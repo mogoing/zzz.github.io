@@ -73,8 +73,9 @@
     opacity:.55;
   }
   header{
-    position:relative;z-index:1;width:min(92vw,760px);
+    position:relative;z-index:1;width:min(94vw,760px);
     display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;
+    flex-wrap:wrap;
   }
   h1{
     font-size:26px;letter-spacing:3px;
@@ -82,6 +83,7 @@
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .user{font-size:14px;color:var(--muted);margin-top:2px}
+  .top-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .logout{
     flex:none;min-height:44px;display:flex;align-items:center;
     padding:0 16px;border:none;border-radius:999px;cursor:pointer;
@@ -90,6 +92,38 @@
     box-shadow:0 6px 16px rgba(255,107,107,.3);transition:transform .15s;
   }
   .logout:hover{transform:translateY(-2px)}
+  .logout:active{transform:scale(.96)}
+
+  /* ===== 钱包区 ===== */
+  .wallet{
+    position:relative;z-index:1;display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.82);border-radius:999px;padding:5px 8px 5px 6px;
+    box-shadow:0 6px 18px rgba(155,93,229,.12);
+  }
+  .wallet img{width:34px;height:34px;border-radius:50%;object-fit:cover;box-shadow:0 3px 8px rgba(255,180,60,.45)}
+  .wallet b{font-size:16px;color:var(--ink);min-width:28px;text-align:center}
+  .wallet .recharge{
+    flex:none;min-height:32px;padding:0 12px;border:none;border-radius:999px;cursor:pointer;
+    font-size:13px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,var(--sunny),#FF9F6B);
+    box-shadow:0 4px 12px rgba(255,159,107,.4);transition:transform .15s;
+  }
+  .wallet .recharge:active{transform:scale(.94)}
+
+  /* ===== 功能区按钮（留言 / 日记） ===== */
+  .fun-row{
+    position:relative;z-index:1;display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;justify-content:center;
+  }
+  .fun-btn{
+    flex:none;min-height:44px;display:flex;align-items:center;gap:7px;
+    padding:0 18px;border:none;border-radius:999px;cursor:pointer;
+    font-size:14px;font-weight:800;color:#fff;
+    box-shadow:0 8px 20px rgba(139,92,246,.22);transition:transform .15s;
+  }
+  .fun-btn:active{transform:scale(.95)}
+  .fun-btn.mint{background:linear-gradient(135deg,#4ECDC4,#2FBFB5);box-shadow:0 8px 20px rgba(47,191,181,.28)}
+  .fun-btn.grape{background:linear-gradient(135deg,#9B5DE5,#7C3AED);box-shadow:0 8px 20px rgba(124,58,237,.28)}
+
   .hint{position:relative;z-index:1;font-size:14px;color:var(--muted);margin-bottom:24px}
 
   /* ===== 游戏墙（一页六个：两排三个，行距约为盒子高度一半） ===== */
@@ -245,6 +279,8 @@
     h1{font-size:22px}
     .box{width:min(27vw,128px);height:min(27vw,128px)}
     .stage{column-gap:16px;row-gap:calc(min(27vw,128px) / 2 + 22px)}
+    header{justify-content:center;gap:8px}
+    .top-right{gap:8px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.lid,.reveal{transition:none!important}}
 </style>
@@ -264,10 +300,20 @@
       <h1>多巴胺惊喜屋</h1>
       <p class="user" id="hello"></p>
     </div>
-    <button class="logout" id="logout">退出登录</button>
+    <div class="top-right">
+      <div class="wallet">
+        <img src="assets/coin.png" alt="金币">
+        <b id="coinNum">0</b>
+        <button class="recharge" id="goRecharge">充值</button>
+      </div>
+      <button class="logout" id="logout">退出登录</button>
+    </div>
   </header>
-  <p class="hint">
-  </p>
+  <div class="fun-row">
+    <button class="fun-btn mint" id="goBoard">💬 留言板</button>
+    <button class="fun-btn grape" id="goDiary">📖 我的日记</button>
+  </div>
+  <p class="hint" id="hint"></p>
   <section class="stage" id="stage"></section>
   <nav class="pager">
     <button class="p-btn" id="prev" aria-label="上一页">‹</button>
@@ -276,6 +322,17 @@
   </nav>
   <div class="toast" id="toast"></div>
 <script>
+  // ===== 后端 API =====
+  const API = 'https://zzz-backend.3122182865.workers.dev';
+
+  // ===== 登录守卫 =====
+  const user = localStorage.getItem('blindbox_user');
+  if (!user) location.replace('index.html');
+  const pass = localStorage.getItem('blindbox_pass') || '';
+  const manager = localStorage.getItem('blindbox_manager') === '1';
+  const offline = localStorage.getItem('blindbox_offline') === '1';
+  document.getElementById('hello').textContent = offline ? '你好，' + user + '（离线）' : '你好，' + user;
+
   // ===== 游戏列表：要加新游戏就往下面数组加一行即可（name=名字 desc=一句话 icon=图标 target=页面）=====
   const GAMES = [
     { name:'贪吃蛇',   desc:'经典街机', icon:'snake', target:'eatsnake.html' },
@@ -295,10 +352,27 @@
     soon:  '<span class="lock"></span>',
   };
 
-  const user = localStorage.getItem('blindbox_user');
-  if (!user) location.replace('index.html');
-  document.getElementById('hello').textContent = '你好，' + user;
+  // ===== 金币拉取 =====
+  const coinNum = document.getElementById('coinNum');
+  function setCoin(n) {
+    coinNum.textContent = n;
+    localStorage.setItem('blindbox_coins', String(n));
+  }
+  setCoin(localStorage.getItem('blindbox_coins') || 0);
 
+  if (!offline && user && pass) {
+    fetch(API + '/api/user?username=' + encodeURIComponent(user) + '&password=' + encodeURIComponent(pass), { signal: AbortSignal.timeout(8000) })
+      .then(r => r.json())
+      .then(d => {
+        if (d && d.ok && d.user) {
+          setCoin(d.user.coins);
+          localStorage.setItem('blindbox_manager', d.user.manager ? '1' : '0');
+        }
+      })
+      .catch(() => {});
+  }
+
+  // ===== 渲染游戏墙 =====
   const stage = document.getElementById('stage');
   const pind  = document.getElementById('pind');
   let page = 1;
@@ -344,8 +418,17 @@
 
   document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('blindbox_user');
+    localStorage.removeItem('blindbox_pass');
+    localStorage.removeItem('blindbox_manager');
+    localStorage.removeItem('blindbox_coins');
+    localStorage.removeItem('blindbox_offline');
     location.href = 'index.html';
   });
+
+  // 功能入口
+  document.getElementById('goRecharge').addEventListener('click', () => location.href = 'recharge.html');
+  document.getElementById('goBoard').addEventListener('click', () => location.href = 'board.html#messages');
+  document.getElementById('goDiary').addEventListener('click', () => location.href = 'board.html#diary');
 
   let toastTimer = null;
   function toast(msg){
