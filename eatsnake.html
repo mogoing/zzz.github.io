@@ -96,6 +96,7 @@
     <div class="panel">
       <h2>游戏结束</h2>
       <div class="score-big" id="finalScore">0</div>
+      <p id="coinTip" style="display:none;color:#B8860B;font-weight:700;margin-bottom:14px"></p>
       <p>再接再厉</p>
       <div class="btns">
         <button class="btn green" id="restartBtn">再玩一次</button>
@@ -105,6 +106,31 @@
   </div>
 <script>
   if (!localStorage.getItem('blindbox_user')) location.replace('index.html');
+
+  // ===== 后端得分上报（破纪录/连败辛苦费 +金币）=====
+  const API = 'https://zzz-backend.3122182865.workers.dev';
+  const _user = localStorage.getItem('blindbox_user') || '';
+  const _pass = localStorage.getItem('blindbox_pass') || '';
+  const _offline = localStorage.getItem('blindbox_offline') === '1';
+  function reportScore(game, score) {
+    if (_offline || !_user || !_pass) return;
+    fetch(API + '/api/score', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ username: _user, password: _pass, game, score }),
+      signal: AbortSignal.timeout(8000)
+    }).then(r => r.json()).then(d => {
+      if (d && d.ok && d.coins_gained > 0) {
+        localStorage.setItem('blindbox_coins', String(d.balance || 0));
+        const p = document.getElementById('coinTip');
+        if (p) {
+          p.textContent = d.beat ? '🏅 打破纪录 +1 金币！' : '🍀 连败辛苦费 +1 金币！';
+          p.style.display = 'block';
+          setTimeout(() => p.style.display = 'none', 4000);
+        }
+      }
+    }).catch(() => {});
+  }
 
   const canvas = document.getElementById('game');
   const ctx = canvas.getContext('2d');
@@ -227,6 +253,7 @@
     document.getElementById('finalScore').textContent = score;
     document.getElementById('pauseMask').classList.remove('show');
     document.getElementById('overMask').classList.add('show');
+    reportScore('snake', score);
   }
 
   // 键盘控制
