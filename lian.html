@@ -168,6 +168,7 @@
     <div class="panel">
       <h2>过关啦！</h2>
       <p id="winText">清完啦！下一关随机新形状。</p>
+      <p id="winCoinTip" style="display:none;color:#B8860B;font-weight:700;margin-bottom:14px"></p>
       <div class="row">
         <button class="btn" id="nextLevel">下一关</button>
         <button class="btn ghost" id="winHome">返回主页</button>
@@ -178,6 +179,30 @@
 <script>
 (function(){
   'use strict';
+  /* ===== 后端得分上报（过关即上报关卡数）===== */
+  const API = 'https://zzz-backend.3122182865.workers.dev';
+  const _u = localStorage.getItem('blindbox_user') || '';
+  const _p = localStorage.getItem('blindbox_pass') || '';
+  const _off = localStorage.getItem('blindbox_offline') === '1';
+  function reportScore(game, score){
+    if (_off || !_u || !_p) return;
+    fetch(API + '/api/score', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ username: _u, password: _p, game, score }),
+      signal: AbortSignal.timeout(8000)
+    }).then(r => r.json()).then(d => {
+      if (d && d.ok && d.coins_gained > 0) {
+        localStorage.setItem('blindbox_coins', String(d.balance || 0));
+        const t = $('winCoinTip');
+        if (t) {
+          t.textContent = d.beat ? '🏅 打破纪录 +1 金币！' : '🍀 连败辛苦费 +1 金币！';
+          t.style.display = 'block';
+          setTimeout(() => t.style.display = 'none', 4000);
+        }
+      }
+    }).catch(() => {});
+  }
   /* ===== 配置 ===== */
   const N = 8;
   const EMOJIS = ['🦀','🐟','🐰','🍎','🍐','🥭','🍋','🍇','🥦','🍉','🥒','🍔','🍒'];
@@ -512,6 +537,7 @@
   function showWin(){
     $('winText').textContent = '「' + shape.name + '」清完啦！下一关随机新形状。';
     $('winMask').classList.add('show');
+    reportScore('lian', level);
   }
   function newGame(lv){
     level = lv;
