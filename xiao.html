@@ -232,6 +232,7 @@
       </div>
       <div class="bigscore"><span id="winScore">0</span><em> 分</em></div>
       <p id="winNote"></p>
+      <p id="winCoinTip" style="display:none;color:#B8860B;font-weight:700;margin-bottom:14px"></p>
       <div class="row">
         <button class="btn big" id="nextLevel">下一关</button>
         <button class="btn big ghost" id="winHome">返回主页</button>
@@ -253,6 +254,30 @@
 <script>
 (function(){
   'use strict';
+  /* ===== 后端得分上报（胜利上报总分）===== */
+  const API = 'https://zzz-backend.3122182865.workers.dev';
+  const _u = localStorage.getItem('blindbox_user') || '';
+  const _p = localStorage.getItem('blindbox_pass') || '';
+  const _off = localStorage.getItem('blindbox_offline') === '1';
+  function reportScore(game, score){
+    if (_off || !_u || !_p) return;
+    fetch(API + '/api/score', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ username: _u, password: _p, game, score }),
+      signal: AbortSignal.timeout(8000)
+    }).then(r => r.json()).then(d => {
+      if (d && d.ok && d.coins_gained > 0) {
+        localStorage.setItem('blindbox_coins', String(d.balance || 0));
+        const t = $('winCoinTip');
+        if (t) {
+          t.textContent = d.beat ? '🏅 打破纪录 +1 金币！' : '🍀 连败辛苦费 +1 金币！';
+          t.style.display = 'block';
+          setTimeout(() => t.style.display = 'none', 4000);
+        }
+      }
+    }).catch(() => {});
+  }
   /* ===== 可配置区 ===== */
   const SIZE = 8;                                   // 棋盘 8×8
   const FRUITS = ['🍑','🫐','🍈'];                    // 三种元素
@@ -600,6 +625,7 @@
     const bonus = moves * MOVE_BONUS;
     const total = score + bonus;
     $('winNote').textContent = '剩余 ' + moves + ' 步 × ' + MOVE_BONUS + ' = +' + bonus;
+    reportScore('xiao', total);
     // 计分动画
     $('winMask').classList.add('show');
     const starEls = document.querySelectorAll('#stars .star');
