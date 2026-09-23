@@ -75,12 +75,16 @@
   .login-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
   .login-btn:active{transform:translateY(0) scale(.98)}
   .login-btn:disabled{opacity:.6;cursor:wait;transform:none}
-  .links{display:flex;justify-content:center;gap:18px;margin-top:14px}
-  .links a{
-    font-size:13px;color:var(--grape);font-weight:600;text-decoration:none;
-    border-bottom:1px dashed rgba(155,93,229,.4);padding-bottom:1px;
+  .links{display:flex;justify-content:center;gap:18px;margin-top:16px}
+  .register-btn{
+    display:inline-block;min-width:150px;padding:11px 24px;border-radius:999px;
+    background:linear-gradient(135deg,var(--mint),#2EB5A4);
+    color:#fff;font-size:14px;font-weight:800;letter-spacing:2px;text-decoration:none;
+    box-shadow:0 8px 20px rgba(78,205,196,.35);
+    transition:transform .15s,filter .15s;
   }
-  .links a:active{opacity:.6}
+  .register-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .register-btn:active{transform:scale(.96)}
   .tip{font-size:13px;color:var(--muted);margin-top:16px;line-height:1.9}
   .offline-badge{
     display:none;margin-top:10px;font-size:12px;color:#B8860B;font-weight:600;
@@ -117,7 +121,7 @@
       <button type="submit" class="login-btn" id="loginBtn">登 录</button>
     </form>
     <div class="links">
-      <a href="register.html">注册新账号</a>
+      <a class="register-btn" href="register.html">注册新账号</a>
     </div>
     <span class="offline-badge" id="offlineBadge">离线模式 · 云功能不可用</span>
     <p class="tip">永远相信美好的事情即将发生<br>版所所有，违者必究</p>
