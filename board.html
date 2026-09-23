@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>留言板 · 日记</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%239B5DE5'/%3E%3Cstop offset='1' stop-color='%23FF9DE2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='800' text-anchor='middle' fill='%23fff'%3E%3F%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --coral:#FF6B6B; --sunny:#FFD93D; --mint:#4ECDC4; --grape:#9B5DE5; --pink:#FF9DE2;
+    --ink:#4A3F5C; --muted:#9A8FB5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+    min-height:100vh;color:var(--ink);
+    background:linear-gradient(165deg,#F6F0FF,#FFE8F1);
+    display:flex;flex-direction:column;align-items:center;
+    padding:20px 16px 44px;overflow-x:hidden;
+  }
+  .blob{position:fixed;border-radius:50%;filter:blur(56px);opacity:.45;z-index:0;animation:float 14s ease-in-out infinite}
+  .blob-a{width:36vmax;height:36vmax;background:var(--pink);top:-12vmax;left:-10vmax}
+  .blob-b{width:28vmax;height:28vmax;background:var(--mint);bottom:-8vmax;right:-8vmax;animation-delay:-5s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(2.6vmax)}}
+  header{
+    position:relative;z-index:1;width:min(94vw,640px);
+    display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;
+  }
+  h1{
+    font-size:24px;letter-spacing:2px;
+    background:linear-gradient(90deg,var(--grape),var(--pink),var(--coral));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .back{
+    flex:none;min-height:44px;display:flex;align-items:center;
+    padding:0 16px;border:none;border-radius:999px;cursor:pointer;
+    font-size:14px;font-weight:700;color:#fff;
+    background:linear-gradient(135deg,var(--mint),#2FBFB5);
+    box-shadow:0 6px 16px rgba(47,191,181,.3);transition:transform .15s;
+  }
+  .back:active{transform:scale(.96)}
+  .tabs{
+    position:relative;z-index:1;display:flex;gap:10px;margin-bottom:18px;
+    background:rgba(255,255,255,.75);border-radius:999px;padding:6px;
+    box-shadow:0 8px 24px rgba(155,93,229,.1);
+  }
+  .tab{
+    flex:none;min-height:42px;display:flex;align-items:center;gap:6px;
+    padding:0 22px;border:none;border-radius:999px;cursor:pointer;
+    font-size:15px;font-weight:800;color:var(--muted);background:transparent;
+    transition:.2s;
+  }
+  .tab.active{color:#fff;background:linear-gradient(135deg,var(--grape),var(--pink));box-shadow:0 6px 16px rgba(155,93,229,.35)}
+  .panel{
+    position:relative;z-index:1;width:min(94vw,640px);display:none;
+    background:rgba(255,255,255,.88);backdrop-filter:blur(10px);
+    border-radius:22px;padding:20px;box-shadow:0 16px 44px rgba(155,93,229,.12);
+  }
+  .panel.show{display:block}
+  .composer{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .composer textarea{
+    width:100%;min-height:88px;resize:vertical;border:2px solid #EEE6F6;border-radius:16px;
+    padding:12px 14px;font-size:15px;color:var(--ink);outline:none;font-family:inherit;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .composer textarea:focus{border-color:var(--grape);box-shadow:0 0 0 4px rgba(155,93,229,.12)}
+  .send{
+    align-self:flex-end;min-height:44px;padding:0 26px;border:none;border-radius:999px;cursor:pointer;
+    font-size:15px;font-weight:800;color:#fff;letter-spacing:2px;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    box-shadow:0 8px 20px rgba(255,107,107,.3);transition:transform .15s;
+  }
+  .send:active{transform:scale(.95)}
+  .send:disabled{opacity:.6;cursor:wait}
+  .sub{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+  .list{display:flex;flex-direction:column;gap:12px}
+  .item{
+    background:linear-gradient(160deg,#FFF7FB,#F4F0FF);border-radius:16px;padding:12px 14px;
+    animation:rise .35s both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .item .meta{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);margin-bottom:6px}
+  .item .name{font-weight:800;color:var(--grape)}
+  .item .who{display:inline-block;font-size:11px;color:#fff;background:linear-gradient(135deg,var(--sunny),#FF9F6B);border-radius:999px;padding:1px 8px;margin-left:6px}
+  .item p{font-size:15px;line-height:1.7;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+  .empty{text-align:center;color:var(--muted);font-size:14px;padding:30px 0}
+  .loading{text-align:center;color:var(--muted);font-size:14px;padding:20px 0}
+  .offline-tip{
+    position:relative;z-index:1;margin-top:14px;font-size:12.5px;color:#B8860B;
+    background:rgba(255,217,61,.16);border:1px dashed rgba(255,180,60,.55);
+    border-radius:999px;padding:7px 16px;display:none;
+  }
+  .offline-tip.show{display:block}
+  @media (max-width:480px){
+    .tab{padding:0 16px;font-size:14px}
+  }
+</style>
+</head>
+<body>
+  <div class="blob blob-a"></div><div class="blob blob-b"></div>
+  <header>
+    <h1 id="title">留言板</h1>
+    <button class="back" id="back">‹ 返回主页</button>
+  </header>
+  <div class="tabs">
+    <button class="tab active" id="tabMsg">💬 留言板</button>
+    <button class="tab" id="tabDiary">📖 我的日记</button>
+  </div>
+
+  <!-- ===== 留言板 ===== -->
+  <div class="panel show" id="panelMsg">
+    <div class="composer">
+      <textarea id="msgInput" maxlength="500" placeholder="说点什么吧…（公开可见，发出后不可删除）"></textarea>
+      <button class="send" id="msgSend">发 布</button>
+    </div>
+    <p class="sub">公开留言 · 所有人可见 · 发出即不可删除</p>
+    <div class="list" id="msgList"><div class="loading">加载中…</div></div>
+  </div>
+
+  <!-- ===== 日记 ===== -->
+  <div class="panel" id="panelDiary">
+    <div class="composer">
+      <textarea id="diaryInput" maxlength="2000" placeholder="写点只属于你自己的话…（仅自己可见）"></textarea>
+      <button class="send" id="diarySend">保 存</button>
+    </div>
+    <p class="sub">私密日记 · 仅自己（和管理员）可见</p>
+    <div class="list" id="diaryList"><div class="loading">加载中…</div></div>
+  </div>
+
+  <div class="offline-tip" id="offlineTip">当前为离线模式，留言/日记需联网登录后使用</div>
+
+<script>
+  const API = 'https://zzz-backend.3122182865.workers.dev';
+  const user = localStorage.getItem('blindbox_user');
+  if (!user) location.replace('index.html');
+  const pass = localStorage.getItem('blindbox_pass') || '';
+  const manager = localStorage.getItem('blindbox_manager') === '1';
+  const offline = localStorage.getItem('blindbox_offline') === '1';
+
+  document.getElementById('back').addEventListener('click', () => location.href = 'main.html');
+  const tabMsg = document.getElementById('tabMsg');
+  const tabDiary = document.getElementById('tabDiary');
+  const panelMsg = document.getElementById('panelMsg');
+  const panelDiary = document.getElementById('panelDiary');
+
+  function switchTo(which) {
+    const isMsg = which === 'messages';
+    tabMsg.classList.toggle('active', isMsg);
+    tabDiary.classList.toggle('active', !isMsg);
+    panelMsg.classList.toggle('show', isMsg);
+    panelDiary.classList.toggle('show', !isMsg);
+    document.getElementById('title').textContent = isMsg ? '留言板' : '我的日记';
+    if (isMsg) loadMessages(); else loadDiary();
+  }
+  tabMsg.addEventListener('click', () => { location.hash = 'messages'; switchTo('messages'); });
+  tabDiary.addEventListener('click', () => { location.hash = 'diary'; switchTo('diary'); });
+
+  function api(path, opts, timeout = 8000) {
+    return new Promise((resolve, reject) => {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), timeout);
+      fetch(API + path, Object.assign({ signal: ctrl.signal }, opts || {}))
+        .then(r => r.json().catch(() => ({ ok: false, error: '服务器响应异常' })))
+        .then(d => { clearTimeout(t); resolve(d); })
+        .catch(e => { clearTimeout(t); reject(e); });
+    });
+  }
+
+  // ===== 留言板 =====
+  const msgList = document.getElementById('msgList');
+  const msgInput = document.getElementById('msgInput');
+  const msgSend = document.getElementById('msgSend');
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function fmtTime(t) {
+    if (!t) return '';
+    const d = new Date(String(t).replace(' ', 'T') + (String(t).includes('Z') ? '' : 'Z'));
+    if (isNaN(d)) return String(t).slice(0, 16);
+    const p = n => String(n).padStart(2, '0');
+    return d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+  }
+
+  function loadMessages() {
+    if (offline) { msgList.innerHTML = '<div class="empty">离线模式无法查看留言</div>'; return; }
+    msgList.innerHTML = '<div class="loading">加载中…</div>';
+    api('/api/messages')
+      .then(d => {
+        if (!d || !d.ok) throw new Error();
+        const arr = d.messages || [];
+        if (!arr.length) { msgList.innerHTML = '<div class="empty">还没有留言，来抢沙发～</div>'; return; }
+        msgList.innerHTML = arr.map(m =>
+          '<div class="item"><div class="meta"><span class="name">' + esc(m.username) + '</span><span>' + fmtTime(m.created_at) + '</span></div><p>' + esc(m.content) + '</p></div>'
+        ).join('');
+      })
+      .catch(() => { msgList.innerHTML = '<div class="empty">留言加载失败，请检查网络后重试</div>'; });
+  }
+
+  msgSend.addEventListener('click', () => {
+    const content = msgInput.value.trim();
+    if (!content) return;
+    if (offline) { alert('离线模式无法发布留言'); return; }
+    msgSend.disabled = true;
+    api('/api/message', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ username: user, password: pass, content })
+    }).then(d => {
+      msgSend.disabled = false;
+      if (d && d.ok) {
+        msgInput.value = '';
+        loadMessages();
+      } else {
+        alert((d && d.error) || '发布失败');
+      }
+    }).catch(() => {
+      msgSend.disabled = false;
+      alert('无法连接服务器，请稍后再试');
+    });
+  });
+
+  // ===== 日记 =====
+  const diaryList = document.getElementById('diaryList');
+  const diaryInput = document.getElementById('diaryInput');
+  const diarySend = document.getElementById('diarySend');
+
+  function loadDiary() {
+    if (offline) { diaryList.innerHTML = '<div class="empty">离线模式无法查看日记</div>'; return; }
+    diaryList.innerHTML = '<div class="loading">加载中…</div>';
+    api('/api/diary?username=' + encodeURIComponent(user) + '&password=' + encodeURIComponent(pass))
+      .then(d => {
+        if (!d || !d.ok) throw new Error();
+        const arr = d.diary || [];
+        if (!arr.length) { diaryList.innerHTML = '<div class="empty">还没有日记，写下第一篇吧～</div>'; return; }
+        diaryList.innerHTML = arr.map(m => {
+          const who = manager && m.username && m.username !== user ? '<span class="who">' + esc(m.username) + '</span>' : '';
+          return '<div class="item"><div class="meta"><span class="name">' + esc(m.username || user) + '</span>' + who + '<span>' + fmtTime(m.created_at) + '</span></div><p>' + esc(m.content) + '</p></div>';
+        }).join('');
+      })
+      .catch(() => { diaryList.innerHTML = '<div class="empty">日记加载失败，请检查网络后重试</div>'; });
+  }
+
+  diarySend.addEventListener('click', () => {
+    const content = diaryInput.value.trim();
+    if (!content) return;
+    if (offline) { alert('离线模式无法保存日记'); return; }
+    diarySend.disabled = true;
+    api('/api/diary', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ username: user, password: pass, content })
+    }).then(d => {
+      diarySend.disabled = false;
+      if (d && d.ok) {
+        diaryInput.value = '';
+        loadDiary();
+      } else {
+        alert((d && d.error) || '保存失败');
+      }
+    }).catch(() => {
+      diarySend.disabled = false;
+      alert('无法连接服务器，请稍后再试');
+    });
+  });
+
+  // ===== 初始路由 =====
+  if (offline) document.getElementById('offlineTip').classList.add('show');
+  const hash = location.hash || '#messages';
+  switchTo(hash.indexOf('diary') >= 0 ? 'diary' : 'messages');
+</script>
+</body>
+</html>
