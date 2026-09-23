@@ -99,6 +99,17 @@
   }
   .m-btn:active{transform:scale(.97)}
   .m-btn.ghost{background:linear-gradient(135deg,#9A8FB5,#7B6FA0);box-shadow:0 8px 20px rgba(122,111,160,.28)}
+  .save-row{
+    display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;
+    padding:10px 0;border-top:1.5px dashed rgba(139,92,246,.25);border-bottom:1.5px dashed rgba(139,92,246,.25);
+  }
+  .save-row input{
+    width:110px;height:40px;border:2px solid #E6DDF5;border-radius:999px;padding:0 14px;
+    font-size:15px;text-align:center;color:#6B4E9E;outline:none;background:#fff;
+  }
+  .save-row input:focus{border-color:#7C3AED}
+  .m-btn.small{padding:10px 16px;font-size:14px;margin-top:0;min-height:40px;width:auto;flex:none}
+  .save-info{font-size:12.5px;color:#7C3AED;min-height:16px;margin-bottom:10px;font-weight:700}
 </style>
 </head>
 <body>
@@ -127,6 +138,12 @@
         <span id="sizeLabel">画面 100%</span>
         <button class="s-btn" id="plus">＋</button>
       </div>
+      <div class="save-row">
+        <input type="number" id="saveLevel" min="1" max="999" placeholder="当前关卡">
+        <button class="m-btn small" id="saveBtn">存档</button>
+        <button class="m-btn small ghost" id="loadBtn">读档</button>
+      </div>
+      <p class="save-info" id="saveInfo"></p>
       <button class="m-btn" id="resume">继续游戏</button>
       <button class="m-btn ghost" id="home">返回主页</button>
     </div>
@@ -165,6 +182,43 @@
     $('resume').addEventListener('click', function(){ $('menu').classList.remove('show'); });
     $('home').addEventListener('click', function(){ location.href = 'main.html'; });
     $('back').addEventListener('click', function(){ location.href = 'main.html'; });
+
+    // ===== 关卡存档 / 读档（Cloudflare D1）=====
+    var API = 'https://zzz-backend.3122182865.workers.dev';
+    var _u = localStorage.getItem('blindbox_user') || '';
+    var _p = localStorage.getItem('blindbox_pass') || '';
+    var _off = localStorage.getItem('blindbox_offline') === '1';
+    function saveInfo(msg){
+      var el = $('saveInfo');
+      el.textContent = msg;
+      clearTimeout(el._t);
+      el._t = setTimeout(function(){ el.textContent = ''; }, 4000);
+    }
+    $('saveBtn').addEventListener('click', function(){
+      var lv = parseInt($('saveLevel').value, 10);
+      if (!lv || lv < 1){ saveInfo('先在上方输入当前关卡数（如 3）'); return; }
+      if (_off || !_u || !_p){ saveInfo('离线模式，无法保存到云端'); return; }
+      fetch(API + '/api/save', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ username: _u, password: _p, game: 'pvz', data: JSON.stringify({ level: lv }) }),
+        signal: AbortSignal.timeout(8000)
+      }).then(function(r){ return r.json(); }).then(function(d){
+        saveInfo(d && d.ok ? '已保存：第 ' + lv + ' 关' : '保存失败，请稍后重试');
+      }).catch(function(){ saveInfo('保存失败（网络不通，可稍后再试）'); });
+    });
+    $('loadBtn').addEventListener('click', function(){
+      if (_off || !_u || !_p){ saveInfo('离线模式，无法读取云端存档'); return; }
+      fetch(API + '/api/save?game=pvz&username=' + encodeURIComponent(_u) + '&password=' + encodeURIComponent(_p), {
+        signal: AbortSignal.timeout(8000)
+      }).then(function(r){ return r.json(); }).then(function(d){
+        if (d && d.ok && d.save){
+          var lv = d.save.level ? parseInt(d.save.level, 10) : 0;
+          if (lv){ $('saveLevel').value = lv; saveInfo('已读到存档：第 ' + lv + ' 关'); }
+          else { $('saveLevel').value = ''; saveInfo('云端暂无关卡存档'); }
+        } else { saveInfo('没有找到存档'); }
+      }).catch(function(){ saveInfo('读取失败（网络不通，可稍后再试）'); });
+    });
 
     window.addEventListener('resize', fit);
     window.addEventListener('orientationchange', fit);
