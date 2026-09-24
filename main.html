@@ -331,6 +331,26 @@
     .stage-shell{width:min(96vw,560px);border-radius:18px;padding:12px 2px 12px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.lid,.reveal{transition:none!important}}
+
+  /* ===== APK 彩蛋：小螺丝帽 + 重力（仅 APK 环境显示，网页不生效） ===== */
+  .screw{
+    position:fixed;right:14px;bottom:16px;z-index:31;
+    width:34px;height:34px;display:none;align-items:center;justify-content:center;
+    font-size:26px;line-height:1;cursor:pointer;user-select:none;-webkit-user-select:none;
+    transition:transform .7s cubic-bezier(.25,1.3,.5,1),filter .2s;
+    filter:drop-shadow(0 2px 5px rgba(0,0,0,.18));
+  }
+  .screw.show{display:flex}
+  .screw:active{filter:brightness(.82)}
+  .screwdriver{
+    position:fixed;right:34px;top:-70px;z-index:30;
+    font-size:40px;line-height:1;pointer-events:none;
+    transition:transform 1.15s cubic-bezier(.3,1.4,.45,1);
+    filter:drop-shadow(0 8px 12px rgba(0,0,0,.28));
+  }
+  .screwdriver.drop{transform:translateY(calc(100vh - 30px)) rotate(-30deg)}
+  /* 重力体：平滑跟随传感器 */
+  header,.fun-row,.stage-shell{transition:transform .3s ease-out}
 </style>
 </head>
 <body>
@@ -370,6 +390,8 @@
     <div class="dots" id="dots"></div>
   </nav>
   <div class="toast" id="toast"></div>
+  <div class="screw" id="screw" title="?">🔩</div>
+  <div class="screwdriver" id="screwdriver">🪛</div>
 <script>
   // ===== 后端 API =====
   const API = 'https://api.mogoing.xyz';
@@ -390,6 +412,18 @@
     { name:'植物大战僵尸', desc:'在线版', icon:'pvz', target:'pvz.html' },
     { name:'天天酷跑', desc:'极速冲刺', icon:'run', target:'coolrun.html' },
     { name:'免费看剧', desc:'全网聚合', icon:'tv', target:'https://libretv-5m5.pages.dev' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
@@ -525,6 +559,43 @@
   // 预览用：main.html?open=1 自动打开第一个盲盒
   if (new URLSearchParams(location.search).get('open') === '1') {
     setTimeout(()=>{ const b = stage.querySelector('.box'); if (b) b.classList.add('open'); }, 500);
+  }
+
+  // ===== APK 彩蛋：小螺丝帽 + 重力（仅 APK 独有；网页版不生效） =====
+  const IS_APK = typeof AndroidBridge !== 'undefined' && AndroidBridge.getGravityX;
+  if (IS_APK) {
+    const screw = document.getElementById('screw');
+    const sd = document.getElementById('screwdriver');
+    const headerEl = document.querySelector('header');
+    const funRowEl = document.querySelector('.fun-row');
+    const shellEl = document.querySelector('.stage-shell');
+    screw.classList.add('show');
+    let turns = 0, totalRot = 0;
+    screw.addEventListener('click', () => {
+      turns++;
+      totalRot -= 360;                     // 逆时针转一圈
+      screw.style.transform = 'rotate(' + totalRot + 'deg)';
+      if (turns === 7) {
+        sd.classList.add('drop');           // 螺丝刀掉下来
+        toast('🔧 重力解锁！');
+        enableGravity();
+      }
+    });
+    function enableGravity(){
+      const max = 22;                       // 最大偏移（px），整体同向平移 → 堆积但不重叠
+      setInterval(() => {
+        let gx, gy;
+        try { gx = AndroidBridge.getGravityX(); gy = AndroidBridge.getGravityY(); }
+        catch (e) { return; }
+        if (!isFinite(gx) || !isFinite(gy)) return;
+        const nx = Math.max(-1, Math.min(1, gx / 9.8));          // 左右倾斜
+        const ny = Math.max(-1, Math.min(1, (9.8 - gy) / 9.8)); // 顶部上抬→上浮，平放→下沉
+        const ox = nx * max, oy = ny * max;
+        headerEl.style.transform   = 'translate(' + (ox * .7) + 'px,' + (oy * .7) + 'px)';
+        funRowEl.style.transform   = 'translate(' + (ox * .85) + 'px,' + (oy * .85) + 'px)';
+        shellEl.style.transform    = 'translate(' + ox + 'px,' + oy + 'px)';
+      }, 80);
+    }
   }
 
   render();
