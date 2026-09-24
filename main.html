@@ -9,6 +9,9 @@
   :root{
     --coral:#FF6B6B; --sunny:#FFD93D; --mint:#4ECDC4; --grape:#9B5DE5; --pink:#FF9DE2;
     --ink:#4A3F5C; --muted:#9A8FB5;
+    /* 盲盒尺寸与竖排间距：间距恒为盒子高度的一半，双端一致 */
+    --box:150px;
+    --row-gap:calc(var(--box) / 2);
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{
@@ -127,7 +130,7 @@
 
   .hint{position:relative;z-index:1;font-size:14px;color:var(--muted);margin-bottom:24px}
 
-  /* ===== 游戏墙：魔方滑动翻页（每页一屏，scroll-snap 吸附停靠） ===== */
+  /* ===== 游戏墙：魔方滑动翻页（自由滚动·无极悬停，不强制吸附） ===== */
   .stage-shell{
     position:relative;z-index:1;width:min(96vw,560px);
     margin-top:18px;
@@ -139,19 +142,19 @@
   }
   .stage{
     width:100%;display:flex;flex-direction:row;
-    overflow-x:auto;scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch; /* 惯性滚动：松手停在任意位置 */
     scrollbar-width:none;
   }
   .stage::-webkit-scrollbar{display:none}
   .page{
-    flex:none;width:100%;scroll-snap-align:center;
+    flex:none;width:100%;
     display:flex;flex-wrap:wrap;justify-content:center;
-    column-gap:26px;row-gap:75px;
+    column-gap:26px;row-gap:var(--row-gap);
     padding:0 12px 6px;
     box-sizing:border-box;
   }
-  .box{position:relative;width:150px;height:150px;cursor:pointer}
+  .box{position:relative;width:var(--box);height:var(--box);cursor:pointer}
   .box.enter{animation:boxIn .4s cubic-bezier(.2,.9,.3,1.25) both}
   @keyframes boxIn{from{opacity:0;transform:translateY(16px) scale(.92)}to{opacity:1;transform:none}}
   .lid{
@@ -314,8 +317,8 @@
 
   @media (max-width:560px){
     h1{font-size:22px}
-    .box{width:min(27vw,128px);height:min(27vw,128px)}
-    .page{column-gap:16px;row-gap:calc(min(27vw,128px) / 2 + 22px)}
+    :root{--box:min(27vw,128px)} /* 只改盒子尺寸，竖排间距自动保持一半，双端一致 */
+    .page{column-gap:16px}
     header{justify-content:center;gap:8px}
     .top-right{gap:8px}
     .stage-shell{border-radius:18px;padding:12px 2px 12px}
@@ -466,7 +469,8 @@
       dotsWrap.appendChild(dot);
     }
 
-    // 滑动吸附后更新指示点（scroll-snap 让手指松开自动停到整页，即"无极停住悬停"）
+    // 自由滚动（无极悬停）：松手停在任意位置，不做任何吸附
+    // 指示点仅用于"当前位置在哪一页"的视觉提示，随滚动联动
     let ticking = false;
     stage.addEventListener('scroll', () => {
       if (ticking) return;
