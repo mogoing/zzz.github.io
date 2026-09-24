@@ -240,6 +240,29 @@
   .i-run .leg{position:absolute;bottom:0;width:3.5px;height:11px;border-radius:2px;background:var(--ink)}
   .i-run .leg.l{right:11px;transform:rotate(35deg)}
   .i-run .leg.r{right:2px;transform:rotate(-25deg)}
+  /* 免费看剧图标：小荧幕 + 播放键 */
+  .i-tv{position:relative;width:30px;height:24px}
+  .i-tv .screen{
+    position:absolute;inset:0 0 4px 0;border-radius:5px;
+    background:linear-gradient(135deg,var(--grape),var(--pink));
+    box-shadow:0 2px 6px rgba(155,93,229,.4);
+  }
+  .i-tv .screen::before{
+    content:"";position:absolute;top:4px;left:9px;
+    border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #fff;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.2));
+  }
+  .i-tv .leg{
+    position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+    width:12px;height:4px;border-radius:2px;background:var(--ink);opacity:.65;
+  }
+  .i-tv .star{
+    position:absolute;top:-4px;right:-3px;width:10px;height:10px;
+    background:linear-gradient(135deg,var(--sunny),#FFB84C);
+    clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    animation:twinkle 1.6s ease-in-out infinite;
+  }
+  @keyframes twinkle{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.72);opacity:.7}}
   /* 敬请期待 */
   .soon{font-size:14px;font-weight:700;color:var(--muted)}
   .lock{width:20px;height:15px;border:3px solid var(--muted);border-top:none;border-radius:0 0 6px 6px;position:relative;margin-bottom:10px}
@@ -340,6 +363,7 @@
     { name:'开心消消乐', desc:'三消闯关', icon:'xiao',  target:'xiao.html' },
     { name:'植物大战僵尸', desc:'在线版', icon:'pvz', target:'pvz.html' },
     { name:'天天酷跑', desc:'极速冲刺', icon:'run', target:'coolrun.html' },
+    { name:'免费看剧', desc:'全网聚合', icon:'tv', target:'https://libretv-5m5.pages.dev' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
   ];
   const PER_PAGE = 6;   // 一页六个（两排三个）
@@ -349,6 +373,7 @@
     xiao:  '<span class="i-xiao"><i>🍑</i><i>🫐</i><i>🍈</i></span>',
     pvz:   '<span class="i-pvz"><i></i><b></b></span>',
     run:   '<span class="i-run"><span class="head"></span><span class="body"></span><span class="arm l"></span><span class="arm r"></span><span class="leg l"></span><span class="leg r"></span></span>',
+    tv:    '<span class="i-tv"><span class="screen"></span><span class="leg"></span><span class="star"></span></span>',
     soon:  '<span class="lock"></span>',
   };
 
