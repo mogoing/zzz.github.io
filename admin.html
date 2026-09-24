@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>管理后台 · 莫古游戏</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FF6B6B'/%3E%3Cstop offset='1' stop-color='%23FFD93D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='800' text-anchor='middle' fill='%23fff'%3E%3F%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --coral:#FF6B6B; --sunny:#FFD93D; --mint:#4ECDC4; --grape:#9B5DE5; --pink:#FF9DE2;
+    --ink:#4A3F5C; --muted:#9A8FB5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+    background:linear-gradient(160deg,#FFF6E9,#FFE8D6);
+    color:var(--ink);min-height:100vh;padding:20px 16px 48px;
+  }
+  .blob{position:fixed;border-radius:50%;filter:blur(50px);opacity:.5;z-index:0;animation:float 12s ease-in-out infinite;pointer-events:none}
+  .b1{width:36vmax;height:36vmax;background:var(--pink);top:-10vmax;left:-8vmax}
+  .b2{width:28vmax;height:28vmax;background:var(--mint);bottom:-8vmax;right:-6vmax;animation-delay:-4s}
+  .b3{width:20vmax;height:20vmax;background:var(--sunny);top:40vh;left:-6vmax;opacity:.3;animation-delay:-8s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(2.5vmax)}}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
+
+  /* 顶栏 */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+    border-radius:20px;padding:14px 18px;margin-bottom:18px;
+    box-shadow:0 12px 34px rgba(155,93,229,.14);
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:42px;height:42px;border-radius:13px;flex:none;
+    background:linear-gradient(135deg,var(--coral),var(--sunny));
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;font-weight:800;color:#fff;box-shadow:0 6px 16px rgba(255,107,107,.4);
+  }
+  .brand h1{font-size:18px;letter-spacing:2px}
+  .brand small{display:block;font-size:12px;color:var(--muted);font-weight:400;letter-spacing:0}
+  .btn{
+    border:none;border-radius:12px;padding:10px 18px;cursor:pointer;
+    font-size:14px;font-weight:700;color:#fff;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    box-shadow:0 6px 16px rgba(255,107,107,.3);
+    transition:transform .15s,filter .15s;
+  }
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .btn:active{transform:translateY(0) scale(.97)}
+  .btn.ghost{background:linear-gradient(135deg,var(--mint),#2EB5A9);box-shadow:0 6px 16px rgba(78,205,196,.3)}
+  .btn.small{padding:7px 13px;font-size:13px}
+
+  /* 指标卡 */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+  .stat{
+    background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+    border-radius:16px;padding:14px 12px;text-align:center;
+    box-shadow:0 8px 24px rgba(155,93,229,.1);
+  }
+  .stat b{display:block;font-size:26px;background:linear-gradient(135deg,var(--coral),var(--grape));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:12px;color:var(--muted);font-weight:600}
+
+  /* 操作面板 */
+  .panel{
+    background:rgba(255,255,255,.9);backdrop-filter:blur(14px);
+    border-radius:20px;padding:18px;margin-bottom:18px;
+    box-shadow:0 12px 34px rgba(155,93,229,.12);
+  }
+  .panel h2{font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .panel h2::before{content:"";width:8px;height:20px;border-radius:4px;background:linear-gradient(180deg,var(--coral),var(--sunny))}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .row input{
+    flex:1;min-width:120px;height:42px;border:2px solid #EEE6F6;border-radius:12px;padding:0 12px;
+    font-size:15px;color:var(--ink);background:#fff;outline:none;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .row input:focus{border-color:var(--grape);box-shadow:0 0 0 4px rgba(155,93,229,.12)}
+  .hint{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.7}
+
+  /* 用户表格 */
+  .table-wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+  th{font-size:12px;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid #F0E8F7;font-weight:700}
+  td{padding:9px 10px;border-bottom:1px solid #F7F1FB;vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  .u-admin{display:inline-block;background:linear-gradient(135deg,var(--coral),var(--grape));color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px}
+  .coin-badge{display:inline-block;background:rgba(255,217,61,.25);color:#B8860B;font-weight:700;border-radius:999px;padding:2px 10px;font-size:12px}
+  .del{background:linear-gradient(135deg,#FF6B6B,#FF4D6D);border:none;border-radius:9px;color:#fff;font-size:12px;font-weight:700;padding:5px 11px;cursor:pointer;transition:.15s}
+  .del:hover{filter:brightness(1.1)}
+  .del:disabled{opacity:.4;cursor:not-allowed}
+  .empty{text-align:center;color:var(--muted);padding:22px;font-size:14px}
+
+  /* 日记列表 */
+  .diary-list{display:flex;flex-direction:column;gap:10px;max-height:380px;overflow-y:auto}
+  .d-item{background:#FBF8FF;border:1px solid #F0E8F7;border-radius:14px;padding:12px 14px}
+  .d-item .d-head{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+  .d-item .d-head b{color:var(--grape)}
+  .d-item p{font-size:14px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+  .msg{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+    background:rgba(74,63,92,.92);color:#fff;padding:11px 22px;border-radius:999px;
+    font-size:14px;opacity:0;transition:.3s;z-index:9;pointer-events:none;white-space:nowrap}
+  .msg.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media (max-width:520px){
+    .stats{grid-template-columns:1fr 1fr}
+    .stat:last-child{grid-column:span 2}
+    .topbar{padding:12px 14px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap">
+    <!-- 顶栏 -->
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">⭐</div>
+        <h1>管理后台<small id="who"></small></h1>
+      </div>
+      <button class="btn ghost" onclick="goHome()">返回主页</button>
+    </div>
+
+    <!-- 指标 -->
+    <div class="stats">
+      <div class="stat"><b id="sUsers">-</b><span>用户总数</span></div>
+      <div class="stat"><b id="sCoins">-</b><span>金币总数</span></div>
+      <div class="stat"><b id="sDiary">-</b><span>日记条数</span></div>
+    </div>
+
+    <!-- 加金币 -->
+    <div class="panel">
+      <h2>发放金币</h2>
+      <div class="row">
+        <input type="text" id="addUser" placeholder="用户名">
+        <input type="number" id="addAmount" placeholder="数量（可正可负）" style="max-width:150px">
+        <button class="btn" onclick="addCoins()">发放</button>
+      </div>
+      <div class="hint">正数 = 加金币（充值到账）· 负数 = 扣金币（违规收回）</div>
+    </div>
+
+    <!-- 用户列表 -->
+    <div class="panel">
+      <h2>用户列表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>账号</th><th>金币</th><th>注册时间</th><th>操作</th></tr></thead>
+          <tbody id="userRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 全部日记（仅管理员可见） -->
+    <div class="panel">
+      <h2>全部日记</h2>
+      <div class="diary-list" id="diaryList"></div>
+    </div>
+  </div>
+  <div class="msg" id="msg"></div>
+
+<script>
+  // ===== 后端 API =====
+  const API = 'https://api.mogoing.xyz';
+
+  // ===== 登录守卫：仅管理员可进 =====
+  const user = localStorage.getItem('blindbox_user');
+  const manager = localStorage.getItem('blindbox_manager') === '1';
+  if (!user || !manager) { location.replace('index.html'); }
+  const pass = localStorage.getItem('blindbox_pass') || '';
+  document.getElementById('who').textContent = ' · ' + user;
+
+  // ===== 工具 =====
+  const $ = id => document.getElementById(id);
+  function toast(t){
+    const m = $('msg'); m.textContent = t; m.classList.add('show');
+    clearTimeout(m._t); m._t = setTimeout(() => m.classList.remove('show'), 2200);
+  }
+  function goHome(){ location.href = 'main.html'; }
+  function logOut(){ localStorage.clear(); location.href = 'index.html'; }
+  function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  // ===== 加载用户列表 =====
+  async function loadUsers(){
+    try {
+      const r = await fetch(`${API}/api/admin/users?admin_username=${encodeURIComponent(user)}&admin_password=${encodeURIComponent(pass)}`);
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '加载失败');
+      const users = d.users || [];
+      $('sUsers').textContent = users.length;
+      $('sCoins').textContent = users.reduce((a, u) => a + (u.coins || 0), 0);
+      const rows = users.map(u => `
+        <tr>
+          <td>${u.id}</td>
+          <td>${esc(u.username)} ${u.manager === 1 ? '<span class="u-admin">管理员</span>' : ''}</td>
+          <td><span class="coin-badge">🪙 ${u.coins}</span></td>
+          <td>${(u.created_at || '').slice(0, 10)}</td>
+          <td>${u.manager === 1 ? '<span style="color:var(--muted);font-size:12px">不可删</span>' :
+            `<button class="del" onclick="delUser('${esc(u.username)}')">删除</button>`}</td>
+        </tr>`).join('');
+      $('userRows').innerHTML = users.length ? rows : '<tr><td colspan="5" class="empty">暂无用户</td></tr>';
+    } catch (e) { toast('加载失败：' + e.message); }
+  }
+
+  // ===== 加金币 =====
+  async function addCoins(){
+    const username = $('addUser').value.trim();
+    const amount = parseInt($('addAmount').value, 10);
+    if (!username || !amount) return toast('请填写用户名和数量');
+    const btn = event.target; btn.disabled = true;
+    try {
+      const r = await fetch(`${API}/api/admin/addcoins`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ admin_username: user, admin_password: pass, username, amount })
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '失败');
+      toast(`✅ ${username} 金币 → ${d.coins}`);
+      $('addUser').value = ''; $('addAmount').value = '';
+      loadUsers();
+    } catch (e) { toast('失败：' + e.message); }
+    btn.disabled = false;
+  }
+
+  // ===== 删除用户 =====
+  async function delUser(username){
+    if (!confirm(`确定删除用户「${username}」吗？\n该用户的日记、留言、金币、分数、存档将全部清除，且不可恢复！`)) return;
+    try {
+      const r = await fetch(`${API}/api/admin/deleteuser`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ admin_username: user, admin_password: pass, username })
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '失败');
+      toast(`✅ 已删除 ${username}`);
+      loadUsers();
+    } catch (e) { toast('失败：' + e.message); }
+  }
+
+  // ===== 加载全部日记 =====
+  async function loadDiary(){
+    try {
+      const r = await fetch(`${API}/api/diary?username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`);
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '加载失败');
+      const list = d.diary || [];
+      $('sDiary').textContent = list.length;
+      $('diaryList').innerHTML = list.length
+        ? list.map(it => `
+            <div class="d-item">
+              <div class="d-head"><b>${esc(it.username || '用户' + it.user_id)}</b><span>${esc(it.created_at || '')}</span></div>
+              <p>${esc(it.content)}</p>
+            </div>`).join('')
+        : '<div class="empty">暂无日记</div>';
+    } catch (e) { $('diaryList').innerHTML = '<div class="empty">加载失败：' + esc(e.message) + '</div>'; }
+  }
+
+  loadUsers();
+  loadDiary();
+</script>
+</body>
+</html>
