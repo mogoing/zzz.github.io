@@ -127,12 +127,29 @@
 
   .hint{position:relative;z-index:1;font-size:14px;color:var(--muted);margin-bottom:24px}
 
-  /* ===== 游戏墙（一页六个：两排三个，行距约为盒子高度一半） ===== */
+  /* ===== 游戏墙：魔方滑动翻页（每页一屏，scroll-snap 吸附停靠） ===== */
+  .stage-shell{
+    position:relative;z-index:1;width:min(96vw,560px);
+    margin-top:18px;
+    /* 圆角裁切，避免滚动时两侧溢出 */
+    border-radius:24px;
+    box-shadow:0 18px 44px rgba(155,93,229,.16);
+    background:rgba(255,255,255,.45);
+    padding:14px 6px 16px;
+  }
   .stage{
-    position:relative;z-index:1;
+    width:100%;display:flex;flex-direction:row;
+    overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .stage::-webkit-scrollbar{display:none}
+  .page{
+    flex:none;width:100%;scroll-snap-align:center;
     display:flex;flex-wrap:wrap;justify-content:center;
     column-gap:26px;row-gap:75px;
-    width:min(94vw,522px);margin-top:34px;
+    padding:0 12px 6px;
+    box-sizing:border-box;
   }
   .box{position:relative;width:150px;height:150px;cursor:pointer}
   .box.enter{animation:boxIn .4s cubic-bezier(.2,.9,.3,1.25) both}
@@ -272,24 +289,20 @@
     width:11px;height:13px;border:3px solid var(--muted);border-bottom:none;border-radius:9px 9px 0 0;
   }
 
-  /* ===== 翻页 ===== */
+  /* ===== 翻页指示点（滑动吸附） ===== */
   .pager{
     position:relative;z-index:1;display:flex;align-items:center;gap:16px;
-    margin-top:26px;
+    margin-top:18px;
   }
-  .p-btn{
-    width:44px;height:44px;border:none;border-radius:50%;cursor:pointer;
+  .dots{display:flex;gap:10px;align-items:center;justify-content:center}
+  .dot{
+    width:11px;height:11px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(155,93,229,.35);transition:all .3s;padding:0;
+  }
+  .dot.active{
+    width:30px;border-radius:999px;
     background:linear-gradient(135deg,var(--coral),var(--grape));
-    color:#fff;font-size:20px;font-weight:800;
-    box-shadow:0 8px 20px rgba(155,93,229,.35);transition:transform .15s,opacity .2s;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .p-btn:active{transform:scale(.9)}
-  .p-btn:disabled{opacity:.3;cursor:default;transform:none}
-  .p-ind{
-    font-size:14px;font-weight:800;color:var(--grape);letter-spacing:1px;
-    background:rgba(255,255,255,.85);border-radius:999px;padding:8px 16px;
-    box-shadow:0 4px 14px rgba(155,93,229,.14);
+    box-shadow:0 3px 12px rgba(155,93,229,.5);
   }
 
   .toast{
@@ -302,9 +315,10 @@
   @media (max-width:560px){
     h1{font-size:22px}
     .box{width:min(27vw,128px);height:min(27vw,128px)}
-    .stage{column-gap:16px;row-gap:calc(min(27vw,128px) / 2 + 22px)}
+    .page{column-gap:16px;row-gap:calc(min(27vw,128px) / 2 + 22px)}
     header{justify-content:center;gap:8px}
     .top-right{gap:8px}
+    .stage-shell{border-radius:18px;padding:12px 2px 12px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.lid,.reveal{transition:none!important}}
 </style>
@@ -339,11 +353,11 @@
     <button class="fun-btn coral" id="goAdmin" style="display:none">⭐ 管理后台</button>
   </div>
   <p class="hint" id="hint"></p>
-  <section class="stage" id="stage"></section>
-  <nav class="pager">
-    <button class="p-btn" id="prev" aria-label="上一页">‹</button>
-    <span class="p-ind" id="pind"></span>
-    <button class="p-btn" id="next" aria-label="下一页">›</button>
+  <div class="stage-shell">
+    <section class="stage" id="stage"></section>
+  </div>
+  <nav class="pager" id="pager">
+    <div class="dots" id="dots"></div>
   </nav>
   <div class="toast" id="toast"></div>
 <script>
@@ -366,6 +380,11 @@
     { name:'植物大战僵尸', desc:'在线版', icon:'pvz', target:'pvz.html' },
     { name:'天天酷跑', desc:'极速冲刺', icon:'run', target:'coolrun.html' },
     { name:'免费看剧', desc:'全网聚合', icon:'tv', target:'https://libretv-5m5.pages.dev' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
+    { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
   ];
   const PER_PAGE = 6;   // 一页六个（两排三个）
@@ -399,49 +418,67 @@
       .catch(() => {});
   }
 
-  // ===== 渲染游戏墙 =====
+  // ===== 渲染游戏墙（滑动翻页） =====
   const stage = document.getElementById('stage');
-  const pind  = document.getElementById('pind');
-  let page = 1;
+  const dotsWrap = document.getElementById('dots');
   const pages = Math.ceil(GAMES.length / PER_PAGE);
 
   function render(){
     stage.innerHTML = '';
-    const start = (page-1)*PER_PAGE;
-    GAMES.slice(start, start+PER_PAGE).forEach((g, idx) => {
-      const slot = (start + idx) % 6 + 1;
-      const box = document.createElement('div');
-      box.className = 'box b' + slot + ' enter';
-      box.style.animationDelay = (idx*0.07) + 's';
-      box.innerHTML =
-        '<div class="lid">?</div>' +
-        '<div class="body">' +
-          '<span class="ribbon"></span>' +
-          '<div class="reveal">' +
-            ICONS[g.icon] +
-            '<span class="r-name">' + g.name + '</span>' +
-            (g.target ? '<span class="r-go">进入</span>' : '<span class="soon">敬请期待</span>') +
-          '</div>' +
-        '</div>';
-      box.addEventListener('click', () => {
-        if (box.classList.contains('open')) {
-          if (g.target) location.href = g.target;
-          else toast('敬请期待 · 即将上线');
-        } else {
-          box.classList.add('open');
-        }
+    dotsWrap.innerHTML = '';
+    for (let pi = 0; pi < pages; pi++){
+      const page = document.createElement('div');
+      page.className = 'page';
+      const start = pi * PER_PAGE;
+      GAMES.slice(start, start + PER_PAGE).forEach((g, idx) => {
+        const slot = (start + idx) % 6 + 1;
+        const box = document.createElement('div');
+        box.className = 'box b' + slot + ' enter';
+        box.style.animationDelay = (idx*0.07) + 's';
+        box.innerHTML =
+          '<div class="lid">?</div>' +
+          '<div class="body">' +
+            '<span class="ribbon"></span>' +
+            '<div class="reveal">' +
+              ICONS[g.icon] +
+              '<span class="r-name">' + g.name + '</span>' +
+              (g.target ? '<span class="r-go">进入</span>' : '<span class="soon">敬请期待</span>') +
+            '</div>' +
+          '</div>';
+        box.addEventListener('click', () => {
+          if (box.classList.contains('open')) {
+            if (g.target) location.href = g.target;
+            else toast('敬请期待 · 即将上线');
+          } else {
+            box.classList.add('open');
+          }
+        });
+        page.appendChild(box);
       });
-      stage.appendChild(box);
-    });
-    pind.textContent = page + ' / ' + pages;
-    document.getElementById('prev').disabled = page <= 1;
-    document.getElementById('next').disabled = page >= pages;
-  }
+      stage.appendChild(page);
+      // 指示点
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (pi === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', '第' + (pi+1) + '页');
+      dot.addEventListener('click', () => {
+        stage.scrollTo({ left: pi * stage.clientWidth, behavior: 'smooth' });
+      });
+      dotsWrap.appendChild(dot);
+    }
 
-  document.getElementById('prev').addEventListener('click', () => { if (page>1){ page--; render(); } });
-  document.getElementById('next').addEventListener('click', () => { if (page<pages){ page++; render(); } });
-  // 只有一页时隐藏翻页
-  if (pages <= 1) document.querySelector('.pager').style.display = 'none';
+    // 滑动吸附后更新指示点（scroll-snap 让手指松开自动停到整页，即"无极停住悬停"）
+    let ticking = false;
+    stage.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const w = stage.clientWidth || 1;
+        const cur = Math.round(stage.scrollLeft / w);
+        [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === cur));
+      });
+    });
+  }
 
   document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('blindbox_user');
