@@ -9,12 +9,12 @@
   :root{
     --coral:#FF6B6B; --sunny:#FFD93D; --mint:#4ECDC4; --grape:#9B5DE5; --pink:#FF9DE2;
     --ink:#4A3F5C; --muted:#9A8FB5;
-    /* 盲盒尺寸与竖排间距：间距恒为盒子高度的一半，双端一致 */
-    --box:150px;
-    --row-gap:calc(var(--box) / 2);
-    /* 无缝分页：列间空隙 = --gap，页左右各留半列空隙，
+    /* 盲盒尺寸：桌面端随窗口变大（19vw，上限330px），手机端 27vw */
+    --box:clamp(150px,19vw,330px);
+    --row-gap:calc(var(--box) / 2);   /* 竖排间距恒为盒子高度的一半 */
+    /* 无缝分页：列间空隙 = --gap，页左右各留半列间隙，
        两页相邻边合起来正好 = 一个列间隙 → 悬停中间时看不出是两页 */
-    --gap:26px;
+    --gap:calc(var(--box) / 6);
     --page-w:calc(3 * var(--box) + 3 * var(--gap)); /* 桌面 3 列：盒子+间隙刚好装满 */
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -136,7 +136,7 @@
 
   /* ===== 游戏墙：魔方滑动翻页（自由滚动·无极悬停，不强制吸附） ===== */
   .stage-shell{
-    position:relative;z-index:1;width:min(96vw,560px);
+    position:relative;z-index:1;width:min(96vw, calc(var(--page-w) + 44px));
     margin-top:18px;
     /* 圆角裁切，避免滚动时两侧溢出 */
     border-radius:24px;
@@ -322,13 +322,13 @@
   @media (max-width:560px){
     h1{font-size:22px}
     :root{
-      --box:min(27vw,128px); /* 只改盒子尺寸，竖排间距自动保持一半，双端一致 */
+      --box:min(27vw,128px); /* 手机端盒子比例 */
       --gap:16px;            /* 手机端列间隙 */
       --page-w:calc(2 * var(--box) + 2 * var(--gap)); /* 移动 2 列：盒子+间隙刚好装满 */
     }
     header{justify-content:center;gap:8px}
     .top-right{gap:8px}
-    .stage-shell{border-radius:18px;padding:12px 2px 12px}
+    .stage-shell{width:min(96vw,560px);border-radius:18px;padding:12px 2px 12px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.lid,.reveal{transition:none!important}}
 </style>
