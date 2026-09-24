@@ -12,6 +12,8 @@
     /* 盲盒尺寸与竖排间距：间距恒为盒子高度的一半，双端一致 */
     --box:150px;
     --row-gap:calc(var(--box) / 2);
+    /* 页内左右留白：页与页之间的空隙 = 两侧空隙的 2 倍，翻页悬停时两页边界清晰 */
+    --page-side:4%;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{
@@ -149,9 +151,9 @@
   .stage::-webkit-scrollbar{display:none}
   .page{
     flex:none;width:100%;
-    display:flex;flex-wrap:wrap;justify-content:center;
+    display:flex;flex-wrap:wrap;justify-content:space-between; /* 盒子往两边靠 */
     column-gap:26px;row-gap:var(--row-gap);
-    padding:0 12px 6px;
+    padding:0 var(--page-side) 6px; /* 页内左右留白 */
     box-sizing:border-box;
   }
   .box{position:relative;width:var(--box);height:var(--box);cursor:pointer}
@@ -317,7 +319,10 @@
 
   @media (max-width:560px){
     h1{font-size:22px}
-    :root{--box:min(27vw,128px)} /* 只改盒子尺寸，竖排间距自动保持一半，双端一致 */
+    :root{
+      --box:min(27vw,128px); /* 只改盒子尺寸，竖排间距自动保持一半，双端一致 */
+      --page-side:8%;        /* 手机端页间空隙更宽，悬停时更易分清两页 */
+    }
     .page{column-gap:16px}
     header{justify-content:center;gap:8px}
     .top-right{gap:8px}
