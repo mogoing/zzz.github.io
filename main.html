@@ -123,6 +123,7 @@
   .fun-btn:active{transform:scale(.95)}
   .fun-btn.mint{background:linear-gradient(135deg,#4ECDC4,#2FBFB5);box-shadow:0 8px 20px rgba(47,191,181,.28)}
   .fun-btn.grape{background:linear-gradient(135deg,#9B5DE5,#7C3AED);box-shadow:0 8px 20px rgba(124,58,237,.28)}
+.fun-btn.coral{background:linear-gradient(135deg,#FF6B6B,#FF4D6D);box-shadow:0 8px 20px rgba(255,77,109,.28)}
 
   .hint{position:relative;z-index:1;font-size:14px;color:var(--muted);margin-bottom:24px}
 
@@ -335,6 +336,7 @@
   <div class="fun-row">
     <button class="fun-btn mint" id="goBoard">💬 留言板</button>
     <button class="fun-btn grape" id="goDiary">📖 我的日记</button>
+    <button class="fun-btn coral" id="goAdmin" style="display:none">⭐ 管理后台</button>
   </div>
   <p class="hint" id="hint"></p>
   <section class="stage" id="stage"></section>
@@ -454,6 +456,14 @@
   document.getElementById('goRecharge').addEventListener('click', () => location.href = 'recharge.html');
   document.getElementById('goBoard').addEventListener('click', () => location.href = 'board.html#messages');
   document.getElementById('goDiary').addEventListener('click', () => location.href = 'board.html#diary');
+  // 管理员专属：显示管理后台入口
+  if (manager) {
+    const adminBtn = document.getElementById('goAdmin');
+    if (adminBtn) {
+      adminBtn.style.display = '';
+      adminBtn.addEventListener('click', () => location.href = 'admin.html');
+    }
+  }
 
   let toastTimer = null;
   function toast(msg){
