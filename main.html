@@ -617,10 +617,10 @@
     }
 
     // 物理重力 v3：盲盒快照克隆脱离（整盒视觉带走），按钮直接脱离；碰撞不重叠，四边空气墙
-        function startPhysics(){
+            function startPhysics(){
       const vw = innerWidth, vh = innerHeight;
       const items = [];
-      // 1) 顶部按钮：直接转 fixed 脱离（无入场动画，不会消失）
+      // 1) 顶部按钮：全部脱离（数量少，不占地方）
       [...document.querySelectorAll('.wallet, .logout, .fun-btn')].forEach(el => {
         const r = el.getBoundingClientRect();
         el.style.transition = 'none';
@@ -633,8 +633,15 @@
         el.style.zIndex = '20';
         items.push({ el, x: r.left, y: r.top, w: r.width, h: r.height, vx: 0, vy: 0 });
       });
-      // 2) 盲盒：快照克隆——把整盒视觉（盖/底座/缎带/渐变）克隆成独立 fixed 层，原件隐藏
-      [...document.querySelectorAll('.box')].forEach(box => {
+      // 2) 盲盒：只随机挑 5~7 个快照克隆脱离，其余留在架上
+      const boxes = [...document.querySelectorAll('.box')];
+      const n = 5 + Math.floor(Math.random() * 3);   // 5~7 个
+      const chosen = [];
+      while (chosen.length < n && boxes.length) {
+        const idx = Math.floor(Math.random() * boxes.length);
+        chosen.push(boxes.splice(idx, 1)[0]);
+      }
+      chosen.forEach(box => {
         const r = box.getBoundingClientRect();
         const clone = document.createElement('div');
         clone.className = box.className;      // 保留 box b1~b6 open 等类 → 内部视觉全部继承
@@ -657,7 +664,7 @@
           box.click();
         });
         document.body.appendChild(clone);
-        // 原件：固定到原位并隐藏（不再占布局，也保证不重复显示）
+        // 原件：固定到原位并隐藏（不再占布局）
         box.style.animation = 'none';
         box.style.transition = 'none';
         box.style.position = 'fixed';
@@ -671,26 +678,29 @@
         items.push({ el: clone, x: r.left, y: r.top, w: r.width, h: r.height, vx: 0, vy: 0 });
       });
       if (!items.length) return;
-      // 盒子脱离后，画布/指示点/提示全部隐藏
-      const shell = document.querySelector('.stage-shell');
-      const pager = document.getElementById('pager');
-      const hint = document.getElementById('hint');
-      if (shell) shell.style.display = 'none';
-      if (pager) pager.style.display = 'none';
-      if (hint) hint.style.display = 'none';
-      // 物理循环：重力驱动 + 空气墙 + 碰撞推开
-      let stop = false, last = performance.now();
+      // 物理循环：真实重力方向 + 空气墙 + 碰撞回弹 + 摇一摇冲量
+      let stop = false, last = performance.now(), lastShake = 0;
       function loop(now){
         if (stop) return;
         const dt = Math.min(0.05, (now - last) / 1000);
         last = now;
-        let gx = 0, gy = 0;
-        try { gx = AndroidBridge.getGravityX(); gy = AndroidBridge.getGravityY(); } catch (e) {}
+        let gx = 0, gy = 0, gz = 0;
+        try { gx = AndroidBridge.getGravityX(); gy = AndroidBridge.getGravityY(); gz = AndroidBridge.getGravityZ(); } catch (e) {}
         if (!isFinite(gx)) gx = 0;
         if (!isFinite(gy)) gy = 0;
-        // 手机右倾→向右滑；顶部上抬→上浮，平放→下沉
-        const ax = Math.max(-1, Math.min(1, gx / 9.8)) * 1.1;
-        const ay = Math.max(-1, Math.min(1, (9.8 - gy) / 9.8)) * 1.1;
+        if (!isFinite(gz)) gz = 0;
+        // 真实重力：手机正放(gy≈+9.8)→下沉；头朝下(gy≈-9.8)→上浮；左倾(gx≈+9.8)→向左
+        const ax = -Math.max(-1, Math.min(1, gx / 9.8)) * 0.6;
+        const ay =  Math.max(-1, Math.min(1, gy / 9.8)) * 0.6;
+        // 摇一摇检测：总加速度明显大于 1g → 随机冲量碰撞回弹
+        const mag = Math.sqrt(gx * gx + gy * gy + gz * gz);
+        if (mag > 13.5 && now - lastShake > 400) {
+          lastShake = now;
+          for (const it of items) {
+            it.vx += (Math.random() - 0.5) * 7;
+            it.vy += (Math.random() - 0.5) * 7;
+          }
+        }
         // 更新位置（带阻尼）
         for (const it of items) {
           it.vx = (it.vx + ax * dt * 60) * 0.90;
@@ -705,7 +715,7 @@
           it.el.style.left = it.x + 'px';
           it.el.style.top = it.y + 'px';
         }
-        // 碰撞解算：两轮迭代推开，堆积但不重叠
+        // 碰撞解算：两轮迭代推开 + 速度回弹（摇一摇时互相弹开）
         for (let iter = 0; iter < 2; iter++) {
           for (let i = 0; i < items.length; i++) {
             for (let j = i + 1; j < items.length; j++) {
@@ -716,11 +726,13 @@
               const oy = (a.h + b.h) / 2 - Math.abs(dy);
               if (ox > 0 && oy > 0) {
                 if (ox < oy) {
-                  const s = (dx >= 0 ? 1 : -1) * ox / 2;
-                  a.x -= s; b.x += s;
+                  const dir = dx >= 0 ? 1 : -1;
+                  a.x -= dir * ox / 2; b.x += dir * ox / 2;
+                  a.vx = -a.vx * 0.55; b.vx = -b.vx * 0.55;   // 水平回弹
                 } else {
-                  const s = (dy >= 0 ? 1 : -1) * oy / 2;
-                  a.y -= s; b.y += s;
+                  const dir = dy >= 0 ? 1 : -1;
+                  a.y -= dir * oy / 2; b.y += dir * oy / 2;
+                  a.vy = -a.vy * 0.55; b.vy = -b.vy * 0.55;   // 垂直回弹
                 }
                 a.el.style.left = a.x + 'px'; a.el.style.top = a.y + 'px';
                 b.el.style.left = b.x + 'px'; b.el.style.top = b.y + 'px';
