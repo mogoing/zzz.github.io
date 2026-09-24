@@ -576,7 +576,7 @@
   }
 
   // ===== APK 彩蛋 v2：螺丝帽 → 掉落螺丝/烟雾 → 物理重力（仅 APK 独有；网页版不生效） =====
-  const IS_APK = typeof AndroidBridge !== 'undefined' && AndroidBridge.getGravityX;
+  const IS_APK = (typeof AndroidBridge !== 'undefined' && AndroidBridge.getGravityX) || new URLSearchParams(location.search).get('easter') === '1'; // ?easter=1 调试彩蛋
   if (IS_APK) {
     const screw = document.getElementById('screw');
     screw.classList.add('show');
@@ -616,15 +616,14 @@
       }
     }
 
-    // 物理重力：每个盲盒/按钮各自脱离原位，受手机倾斜滑动，碰撞不重叠，四边空气墙
-    function startPhysics(){
+    // 物理重力 v3：盲盒快照克隆脱离（整盒视觉带走），按钮直接脱离；碰撞不重叠，四边空气墙
+        function startPhysics(){
       const vw = innerWidth, vh = innerHeight;
-      const els = [...document.querySelectorAll('.box, .wallet, .logout, .fun-btn')];
-      if (!els.length) return;
-      const items = els.map(el => {
+      const items = [];
+      // 1) 顶部按钮：直接转 fixed 脱离（无入场动画，不会消失）
+      [...document.querySelectorAll('.wallet, .logout, .fun-btn')].forEach(el => {
         const r = el.getBoundingClientRect();
         el.style.transition = 'none';
-        el.style.animation = 'none';
         el.style.position = 'fixed';
         el.style.left = r.left + 'px';
         el.style.top = r.top + 'px';
@@ -632,8 +631,46 @@
         el.style.height = r.height + 'px';
         el.style.margin = '0';
         el.style.zIndex = '20';
-        return { el, x: r.left, y: r.top, w: r.width, h: r.height, vx: 0, vy: 0 };
+        items.push({ el, x: r.left, y: r.top, w: r.width, h: r.height, vx: 0, vy: 0 });
       });
+      // 2) 盲盒：快照克隆——把整盒视觉（盖/底座/缎带/渐变）克隆成独立 fixed 层，原件隐藏
+      [...document.querySelectorAll('.box')].forEach(box => {
+        const r = box.getBoundingClientRect();
+        const clone = document.createElement('div');
+        clone.className = box.className;      // 保留 box b1~b6 open 等类 → 内部视觉全部继承
+        clone.innerHTML = box.innerHTML;      // lid/body/ribbon/reveal 整体带走
+        clone.style.position = 'fixed';
+        clone.style.left = r.left + 'px';
+        clone.style.top = r.top + 'px';
+        clone.style.width = r.width + 'px';
+        clone.style.height = r.height + 'px';
+        clone.style.margin = '0';
+        clone.style.zIndex = '20';
+        clone.style.animation = 'none';       // 停掉入场动画，不依赖它
+        clone.style.transition = 'none';
+        clone.style.opacity = '1';            // 强制可见（修复消失 bug）
+        clone.style.transform = 'none';
+        clone.style.visibility = 'visible';
+        // 点击功能跟随：先同步打开视觉，再触发原盒子的逻辑（开盒/跳转）
+        clone.addEventListener('click', () => {
+          if (!box.classList.contains('open')) clone.classList.add('open');
+          box.click();
+        });
+        document.body.appendChild(clone);
+        // 原件：固定到原位并隐藏（不再占布局，也保证不重复显示）
+        box.style.animation = 'none';
+        box.style.transition = 'none';
+        box.style.position = 'fixed';
+        box.style.left = r.left + 'px';
+        box.style.top = r.top + 'px';
+        box.style.width = r.width + 'px';
+        box.style.height = r.height + 'px';
+        box.style.margin = '0';
+        box.style.opacity = '0';
+        box.style.pointerEvents = 'none';
+        items.push({ el: clone, x: r.left, y: r.top, w: r.width, h: r.height, vx: 0, vy: 0 });
+      });
+      if (!items.length) return;
       // 盒子脱离后，画布/指示点/提示全部隐藏
       const shell = document.querySelector('.stage-shell');
       const pager = document.getElementById('pager');
@@ -641,7 +678,7 @@
       if (shell) shell.style.display = 'none';
       if (pager) pager.style.display = 'none';
       if (hint) hint.style.display = 'none';
-
+      // 物理循环：重力驱动 + 空气墙 + 碰撞推开
       let stop = false, last = performance.now();
       function loop(now){
         if (stop) return;
