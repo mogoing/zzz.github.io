@@ -12,8 +12,10 @@
     /* 盲盒尺寸与竖排间距：间距恒为盒子高度的一半，双端一致 */
     --box:150px;
     --row-gap:calc(var(--box) / 2);
-    /* 页内左右留白：页与页之间的空隙 = 两侧空隙的 2 倍，翻页悬停时两页边界清晰 */
-    --page-side:4%;
+    /* 无缝分页：列间空隙 = --gap，页左右各留半列空隙，
+       两页相邻边合起来正好 = 一个列间隙 → 悬停中间时看不出是两页 */
+    --gap:26px;
+    --page-w:calc(3 * var(--box) + 3 * var(--gap)); /* 桌面 3 列：盒子+间隙刚好装满 */
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{
@@ -150,10 +152,10 @@
   }
   .stage::-webkit-scrollbar{display:none}
   .page{
-    flex:none;width:100%;
-    display:flex;flex-wrap:wrap;justify-content:space-between; /* 盒子往两边靠 */
-    column-gap:26px;row-gap:var(--row-gap);
-    padding:0 var(--page-side) 6px; /* 页内左右留白 */
+    flex:none;width:var(--page-w);
+    display:flex;flex-wrap:wrap;justify-content:space-between; /* 盒子均匀排布，间距=--gap */
+    column-gap:var(--gap);row-gap:var(--row-gap);
+    padding:0 calc(var(--gap) / 2) 6px; /* 左右各半列间隙：页间=页内=--gap，无缝衔接 */
     box-sizing:border-box;
   }
   .box{position:relative;width:var(--box);height:var(--box);cursor:pointer}
@@ -321,9 +323,9 @@
     h1{font-size:22px}
     :root{
       --box:min(27vw,128px); /* 只改盒子尺寸，竖排间距自动保持一半，双端一致 */
-      --page-side:8%;        /* 手机端页间空隙更宽，悬停时更易分清两页 */
+      --gap:16px;            /* 手机端列间隙 */
+      --page-w:calc(2 * var(--box) + 2 * var(--gap)); /* 移动 2 列：盒子+间隙刚好装满 */
     }
-    .page{column-gap:16px}
     header{justify-content:center;gap:8px}
     .top-right{gap:8px}
     .stage-shell{border-radius:18px;padding:12px 2px 12px}
