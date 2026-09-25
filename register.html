@@ -194,5 +194,9 @@
   const pre = new URLSearchParams(location.search).get('u');
   if (pre) document.getElementById('username').value = pre;
 </script>
+<script>
+// ===== 安卓返回键：本页按返回 = 回登录页 =====
+window.addEventListener('androidback', function(){ location.href = 'index.html'; });
+</script>
 </body>
 </html>
