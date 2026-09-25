@@ -27,7 +27,7 @@
 			Gecko: i.indexOf("Gecko") > -1 && i.indexOf("KHTML") == -1
 		},
 		Server: {
-			List: [["1号(电信)", "http://pvz1.jspvz.com/", "NaN"], ["2号(联通)", "http://pvz2.jspvz.com/", "NaN"]],
+			List: [],
 			SpeedURL: "",
 			DataURL: "",
 			SpeedInx: 0,
@@ -2081,7 +2081,7 @@ InitGame = function() {
 	c = $User.Server,
 	b = c.List,
 	a = $("dProcess2"); ! $("dText1") && a.insertBefore(NewEle("dText1", "div", 0, {
-		innerHTML: '<span style="line-height:23px;font-size:15px;font-family:&#x9ED1;&#x4F53;;color:#F60;top:32px">欢迎来到<span style="font-family:Verdana;font-weight:700">JS</span>版植物大战僵尸,程序是个人作品,与任何公司无关。<span style="font-family:Verdana;font-weight:700">LonelyStar</span>保留对该程序版权所有,素材归POPCAP公司所有</span><br><br><div style="text-align:center"><b><a style="color:#FF0;font-size:15px;text-decoration:none" href="http://www.lonelystar.org/" target="_blank">作者主页</a>&nbsp;&nbsp;&nbsp;<a style="color:#FF0;font-size:15px;text-decoration:none" href="http://blog.lonelystar.org/view" target="_blank">给我留言</a></b></div>'
+		innerHTML: '<span style="line-height:23px;font-size:15px;font-family:&#x9ED1;&#x4F53;;color:#F60;top:32px">欢迎来到<span style="font-family:Verdana;font-weight:700">JS</span>版植物大战僵尸,程序是个人作品,与任何公司无关。<span style="font-family:Verdana;font-weight:700">LonelyStar</span>保留对该程序版权所有,素材归POPCAP公司所有</span><br><br><div style="text-align:center"><b>作者主页&nbsp;&nbsp;&nbsp;给我留言</b></div>'
 	},
 	0), a.firstChild);
 
@@ -2151,7 +2151,7 @@ PauseGame = function(c, a) {
 	b.Stop();
 	innerText(c, "回到游戏");
 	$("dMenu1").onclick = null; ! a && SetBlock($("dSurface"), $("dPause"));
-	$("dPauseAD").innerHTML = $User.Client.PC && oS.CenterContent ? '<object width="320" height="240" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0"><param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="false" /><param name="movie" value="images/link/flash.swf" /><param name="quality" value="high" /><param name="FlashVars" value="pubid=ca-games-pub-9213474815406375&channels=8885000954&contentid=%e9%9a%8f%e4%be%bf%e5%86%99&adType=graphical_fullscreen&adWidth=320&adHeight=240&descriptionUrl=http%3a%2f%2fwww.4399.com&ad_ul=zh_CN" /><embed width="320" height="240" allowscriptaccess="always" allowfullscreen="false" src="images/link/flash.swf?pubid=ca-games-pub-9213474815406375&channels=8885000954&contentid=%e9%9a%8f%e4%be%bf%e5%86%99&adType=graphical_fullscreen&adWidth=320&adHeight=240&descriptionUrl=http%3a%2f%2fwww.4399.com&ad_ul=zh_CN" quality="high" bgcolor="#ffffff" align="middle" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer_cn" /></object>': '<img src="images/Zombies/NewspaperZombie/1.gif">'
+	$("dPauseAD").innerHTML = '<img src="images/Zombies/NewspaperZombie/1.gif">'
 },
 ClickMenu = function() {
 	oSym.Timer && (AllAudioPaused(), PlayAudio("pause"), oSym.Stop(), SetBlock($("dSurface")), innerText($("dMenu0"), "回到游戏"), ShowOptions())
@@ -2486,7 +2486,7 @@ function(a) {
 		loop: true,
 		source: a
 	})
-}: function(a) { ! oS.Silence && ($("oEmbed").innerHTML = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="0" height="0" align="middle"><param name="allowScriptAccess" value="always"><param name="allowFullScreen" value="false" /><param name="movie" value="music/' + a + '.swf"><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" /><embed width="0" height="0" src="music/' + a + '" quality="high" pluginspage="http://www.adobe.com/go/getflashplayer_cn" align="middle" play="true" loop="true" scale="showall" wmode="window" devicefont="false" bgcolor="#ffffff" name="ad" menu="true" allowfullscreen="false" allowscriptaccess="always" salign="" type="application/x-shockwave-flash"></object>')
+}: function(a) { ! oS.Silence && ($("oEmbed").innerHTML = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="0" height="0" align="middle"><param name="allowScriptAccess" value="always"><param name="allowFullScreen" value="false" /><param name="movie" value="music/' + a + '.swf"><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" /><embed width="0" height="0" src="music/' + a + '" quality="high" align="middle" play="true" loop="true" scale="showall" wmode="window" devicefont="false" bgcolor="#ffffff" name="ad" menu="true" allowfullscreen="false" allowscriptaccess="always" salign="" type="application/x-shockwave-flash"></object>')
 },
 PauseMusic = $User.HTML5 ?
 function() {
