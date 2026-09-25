@@ -14,20 +14,10 @@
 <script src="js/md5.js"></script>
 <script id="JSProcess"></script>
 <body id="dBody" topmargin="0" leftmargin="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-<script>
-//每关小链接
-google_ad_client = "ca-pub-0191257348916303";
-google_ad_slot = "2263586206";
-google_ad_width = 468;
-google_ad_height = 15;
-</script>
 <!--相关链接-->
 <div id="dLvlLink">
 	<span>Game 相关的链接</span>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="http://www.baidu.com/s?wd=%D6%B2%CE%EF%B4%F3%D5%BD%BD%A9%CA%AC%CD%F8%D2%B3%B0%E6" target="_blank">搜索游戏内容</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="javascript:;" target="_blank" id="aLvlLink">本关攻略</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="http://www.lonelystar.org/html/1-1.htm" target="_blank">壁纸和音乐</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="http://blog.lonelystar.org" target="_blank">作者博客</a>
 </div>
 <div id="dAD2"></div>
 <div id="dAdFlash">
@@ -641,13 +631,7 @@ $User.Client.PC&&$User.HTTP?(
 ShowAD();
 
 (function(){
-	var Search=location.search,ar,Server=$User.Server,List=Server.List;
-	Search?(
-		ar=Search.split('?')[1].split('&'),
-		$('baseURL').href=Server.SpeedURL=List[Server.SpeedInx=ar[0]][1],
-		Server.DataURL=List[Server.DataInx=ar[1]][1],
-		document.write('<script src="'+List[Server.DataInx][1]+'asp/GetUser.asp"></scrip'+'t>')
-	):document.write('<script src="asp/GetUser.asp"></scrip'+'t>');
+	document.write('<script src="asp/GetUser.asp"></scrip'+'t>');
 	$('fRiddleAlreadyCreateGame').src='asp/GetImZombieCreateGameList222.asp?'+Math.random();
 })();
 
