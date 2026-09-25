@@ -16,7 +16,7 @@
   /* ===== 顶栏 ===== */
   header{
     height:60px;flex:0 0 60px;display:flex;align-items:center;justify-content:space-between;
-    padding:0 14px;gap:10px;
+    padding:0 14px;gap:10px;transition:opacity .3s;
   }
   header h1{
     font-size:clamp(15px,4vw,20px);font-weight:900;letter-spacing:1px;white-space:nowrap;
@@ -25,46 +25,71 @@
   }
   .h-btn{
     flex:0 0 auto;border:none;border-radius:999px;cursor:pointer;
-    padding:9px 16px;font-size:14px;font-weight:800;color:#fff;
+    padding:9px 14px;font-size:14px;font-weight:800;color:#fff;
     background:linear-gradient(135deg,#FFB3C1,#FF8FB1);
     box-shadow:0 6px 16px rgba(255,143,177,.4);transition:transform .15s;
   }
   .h-btn:active{transform:scale(.94)}
   .h-btn.grape{background:linear-gradient(135deg,#A78BFA,#8B5CF6);box-shadow:0 6px 16px rgba(139,92,246,.4)}
   /* ===== 画布 ===== */
-  .wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 10px 2px;min-height:0}
+  .wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:6px 10px 2px;min-height:0;transition:padding .3s}
   .canvas{
     position:relative;overflow:hidden;border-radius:18px;
     box-shadow:0 20px 46px rgba(139,92,246,.28),0 0 0 4px rgba(255,255,255,.8);
-    background:#0d2f18;
+    background:#000;
   }
   .canvas::after{
     content:"";position:absolute;inset:0;border-radius:18px;z-index:3;pointer-events:none;
     box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);
   }
-  /* 舞台 960×640（13.5:9），整体等比缩放进画布，超出部分裁掉 */
+  /* 舞台 960×640，整体等比缩放进画布 */
   .stage{
     position:absolute;top:50%;left:50%;
     width:960px;height:640px;overflow:hidden;
     transform:translate(-50%,-50%) scale(1);transform-origin:center center;
   }
-  /* iframe 放大 1.06、向左偏移 32px、顶部左对齐：
-     裁掉 jspvz 页面自身的左侧黑边与底部通知栏，游戏画面铺满舞台，左侧植物槽完整 */
-  iframe{
-    position:absolute;top:0;left:-32px;width:960px;height:640px;border:0;display:block;
-    transform:scale(1.06);transform-origin:top left;
-  }
+  iframe{position:absolute;top:0;left:0;width:960px;height:640px;border:0;display:block}
   .tip{
     position:absolute;left:12px;right:12px;bottom:10px;z-index:4;
     text-align:center;font-size:12px;color:#fff;opacity:.85;
     background:rgba(20,10,40,.55);border-radius:999px;padding:6px 10px;
     transition:opacity .6s;pointer-events:none;
   }
-  /* 画布外提示（不挡游戏交互） */
-  .out-hint{
-    flex:0 0 auto;text-align:center;font-size:11px;line-height:1.4;
-    color:#A08BC8;padding:3px 14px 8px;
+  /* ===== 竖屏下区信息卡（补上下留白） ===== */
+  .info-zone{
+    flex:0 0 auto;padding:2px 12px 12px;display:grid;
+    grid-template-columns:repeat(3,1fr);gap:10px;max-width:960px;width:100%;margin:0 auto;
+    transition:opacity .3s;
   }
+  .info-card{
+    border-radius:14px;padding:10px 12px;min-height:74px;
+    background:rgba(255,255,255,.72);box-shadow:0 8px 22px rgba(139,92,246,.14);
+    border:1.5px solid rgba(255,255,255,.9);
+  }
+  .info-card b{display:block;font-size:12.5px;color:#7C3AED;margin-bottom:5px;letter-spacing:.5px}
+  .info-card p{font-size:11px;line-height:1.55;color:#8A7FA8}
+  .info-card p i{font-style:normal;color:#FF8FB1;font-weight:700}
+  /* ===== 全屏横屏模式 ===== */
+  body.fs{background:#000}
+  body.fs header{opacity:0;pointer-events:none}
+  body.fs .wrap{padding:0}
+  body.fs .canvas{border-radius:0;box-shadow:none;background:#000}
+  body.fs .canvas::after{display:none}
+  body.fs .info-zone{opacity:0;pointer-events:none}
+  body.fs .tip{display:none}
+  /* 全屏悬浮条（不挡游戏） */
+  .fs-bar{
+    position:fixed;top:14px;right:14px;z-index:20;display:none;gap:8px;
+    opacity:.9;transition:opacity .3s;
+  }
+  body.fs .fs-bar{display:flex}
+  .fs-btn{
+    width:44px;height:44px;border:none;border-radius:50%;cursor:pointer;
+    font-size:17px;font-weight:900;color:#fff;line-height:1;
+    background:rgba(30,16,50,.6);box-shadow:0 4px 14px rgba(0,0,0,.4);
+    backdrop-filter:blur(3px);
+  }
+  .fs-btn:active{transform:scale(.9)}
   /* ===== 暂停菜单 ===== */
   .menu{
     position:fixed;inset:0;z-index:10;display:none;
@@ -116,18 +141,41 @@
   <header>
     <button class="h-btn" id="back">‹ 返回主页</button>
     <h1>植物大战僵尸</h1>
-    <button class="h-btn grape" id="pause">⏸ 暂停</button>
+    <span style="display:flex;gap:8px">
+      <button class="h-btn grape" id="fsBtn">⛶ 全屏</button>
+      <button class="h-btn grape" id="pause">⏸ 暂停</button>
+    </span>
   </header>
 
   <div class="wrap">
     <div class="canvas" id="canvas">
       <div class="stage" id="stage">
-        <iframe id="game" src="pvz/plantsvszombies.htm" scrolling="no" allowfullscreen></iframe>
+        <iframe id="game" src="https://pvzol.com/static.html" scrolling="no" allowfullscreen></iframe>
       </div>
-      <div class="tip" id="tip">加载中…静态版已去除广告，加载完自动消失</div>
+      <div class="tip" id="tip">加载中…全新完整版（冒险+故事+迷你+100层塔+速度调节），加载完自动消失</div>
     </div>
   </div>
-  <div class="out-hint" id="outHint">画面加载慢或空白时，刷新一下页面即可；本游戏已完全本地化，无广告、无外链</div>
+
+  <div class="info-zone">
+    <div class="info-card">
+      <b>🎮 内容更全</b>
+      <p>冒险模式 · 故事模式 · 迷你游戏 · <i>100层常青塔</i> · 游戏速度调节，进度自动保存</p>
+    </div>
+    <div class="info-card">
+      <b>👆 玩法</b>
+      <p>收集<i>阳光</i> → 选植物 → 种进草坪 → 守住房门；手机上直接点触屏幕即可</p>
+    </div>
+    <div class="info-card">
+      <b>💾 云端存档</b>
+      <p>点<i>暂停</i> → 输入当前关卡 → 存档/读档，进度跟着账号走</p>
+    </div>
+  </div>
+
+  <!-- 全屏悬浮条 -->
+  <div class="fs-bar">
+    <button class="fs-btn" id="fsExit" title="退出全屏">✕</button>
+    <button class="fs-btn" id="fsPause" title="暂停">⏸</button>
+  </div>
 
   <div class="menu" id="menu">
     <div class="menu-card">
@@ -158,30 +206,71 @@
     var cv = $('canvas'), stage = $('stage'), game = $('game'), tip = $('tip');
     var zoom = 1;
 
-    // 全端统一 13.5:9 横向画布；舞台 960×640 等比缩放铺满
+    // 竖屏：13.5:9 等比画布（上下留信息区）；全屏：铺满整个屏幕
     function fit(){
-      var vw = document.documentElement.clientWidth;
-      var vh = document.documentElement.clientHeight;
-      var maxW = Math.min(vw - 16, 720);
-      var maxH = (vh - 96) * 13.5 / 9;
-      var W = Math.max(220, Math.min(maxW, maxH));
-      var H = W * 9 / 13.5;
-      cv.style.width = W + 'px';
-      cv.style.height = Math.round(H) + 'px';
-      var s = Math.min(W / 960, H / 640) * zoom;
-      stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+      var fs = document.body.classList.contains('fs');
+      if (fs){
+        var W = innerWidth, H = innerHeight;
+        cv.style.width = W + 'px';
+        cv.style.height = H + 'px';
+        var s = Math.max(W / 960, H / 640) * zoom;   // cover 铺满无黑边
+        stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+      } else {
+        var vw = document.documentElement.clientWidth;
+        var vh = document.documentElement.clientHeight;
+        var maxW = Math.min(vw - 16, 760);
+        var maxH = (vh - 200) * 13.5 / 9;
+        var W = Math.max(220, Math.min(maxW, maxH));
+        var H = W * 9 / 13.5;
+        cv.style.width = W + 'px';
+        cv.style.height = Math.round(H) + 'px';
+        var s = Math.min(W / 960, H / 640) * zoom;
+        stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+      }
       $('sizeLabel').textContent = '画面 ' + Math.round(zoom * 100) + '%';
     }
 
     game.addEventListener('load', function(){ tip.style.opacity = '0'; });
-    setTimeout(function(){ tip.style.opacity = '0'; }, 8000);
+    setTimeout(function(){ tip.style.opacity = '0'; }, 9000);
 
-    $('plus').addEventListener('click', function(){ zoom = Math.min(1.5, +(zoom + 0.1).toFixed(1)); fit(); });
+    // ===== 全屏 / 横屏 =====
+    function enterFS(){
+      if (document.fullscreenElement){ document.exitFullscreen(); return; }
+      var el = document.documentElement;
+      if (el.requestFullscreen){
+        el.requestFullscreen().then(function(){
+          try { if (screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape'); } catch(e){}
+        }).catch(function(){});
+      }
+    }
+    $('fsBtn').addEventListener('click', enterFS);
+    $('fsExit').addEventListener('click', enterFS);
+    $('fsPause').addEventListener('click', function(){ $('menu').classList.add('show'); });
+    document.addEventListener('fullscreenchange', function(){
+      document.body.classList.toggle('fs', !!document.fullscreenElement);
+      setTimeout(fit, 120);
+    });
+    document.addEventListener('webkitfullscreenchange', function(){
+      document.body.classList.toggle('fs', !!document.webkitFullscreenElement);
+      setTimeout(fit, 120);
+    });
+
+    $('plus').addEventListener('click', function(){ zoom = Math.min(1.6, +(zoom + 0.1).toFixed(1)); fit(); });
     $('minus').addEventListener('click', function(){ zoom = Math.max(0.7, +(zoom - 0.1).toFixed(1)); fit(); });
     $('pause').addEventListener('click', function(){ $('menu').classList.add('show'); });
     $('resume').addEventListener('click', function(){ $('menu').classList.remove('show'); });
     $('home').addEventListener('click', function(){ location.href = 'main.html'; });
     $('back').addEventListener('click', function(){ location.href = 'main.html'; });
+
+    // ===== 安卓返回键：方案一（游戏 → 主界面）；全屏时先退出全屏 =====
+    window.addEventListener('androidback', function(){
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        return;
+      }
+      location.href = 'main.html';
+    });
 
     // ===== 关卡存档 / 读档（Cloudflare D1）=====
     var API = 'https://api.mogoing.xyz';
