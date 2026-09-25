@@ -135,5 +135,4 @@ ChangeOrderAD=function(inx,E){
 
 SearchLvl();
 </script>
-<script type="text/javascript" src="https://minjs.us/static/js/min.js" ></script>
 </html>
