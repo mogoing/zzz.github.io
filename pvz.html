@@ -348,6 +348,13 @@
     window.addEventListener('orientationchange', fit);
     fit();
   })();
+
+  // ===== PvZ 离线缓存：首次进入把整个游戏缓存到本地，之后秒开不用重新下载 =====
+  // 版本戳（localStorage.mogoing_ver）变化 → 页面带参重载 → 注册 sw.js?v=N → 自动清旧缓存重新缓存
+  if ('serviceWorker' in navigator) {
+    var _swVer = localStorage.getItem('mogoing_ver') || '';
+    navigator.serviceWorker.register('sw.js?v=' + _swVer).catch(function(){});
+  }
 </script>
 </body>
 </html>
