@@ -288,6 +288,12 @@
     animation:twinkle 1.6s ease-in-out infinite;
   }
   @keyframes twinkle{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.72);opacity:.7}}
+  /* 种豆图标：小土包 + 嫩苗 + 星光 */
+  .i-bean{position:relative;width:30px;height:28px;display:inline-block}
+  .i-bean .soil{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:24px;height:10px;border-radius:7px;background:linear-gradient(180deg,#A97445,#7A4E28);box-shadow:0 2px 4px rgba(0,0,0,.25)}
+  .i-bean .leaf{position:absolute;bottom:9px;left:50%;transform:translateX(-80%);width:9px;height:14px;border-radius:50% 50% 50% 6%;background:linear-gradient(135deg,#8FE06A,#4C9E34);box-shadow:0 2px 3px rgba(0,0,0,.15)}
+  .i-bean .leaf2{position:absolute;bottom:9px;left:50%;transform:translateX(-20%);width:9px;height:14px;border-radius:50% 50% 6% 50%;background:linear-gradient(135deg,#ABF08C,#62C84A);box-shadow:0 2px 3px rgba(0,0,0,.15)}
+  .i-bean .spark{position:absolute;top:0;right:2px;width:8px;height:8px;background:linear-gradient(135deg,var(--sunny),#FFB84C);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:twinkle 1.6s ease-in-out infinite}
   /* 敬请期待 */
   .soon{font-size:14px;font-weight:700;color:var(--muted)}
   .lock{width:20px;height:15px;border:3px solid var(--muted);border-top:none;border-radius:0 0 6px 6px;position:relative;margin-bottom:10px}
@@ -447,6 +453,7 @@
     { name:'植物大战僵尸', desc:'在线版', icon:'pvz', target:'pvz.html' },
     { name:'天天酷跑', desc:'极速冲刺', icon:'run', target:'coolrun.html' },
     { name:'免费看剧', desc:'全网聚合', icon:'tv', target:'https://libretv-5m5.pages.dev' },
+    { name:'种豆',     desc:'洛克农场', icon:'bean', target:'bean.html' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
@@ -474,6 +481,7 @@
     pvz:   '<span class="i-pvz"><i></i><b></b></span>',
     run:   '<span class="i-run"><span class="head"></span><span class="body"></span><span class="arm l"></span><span class="arm r"></span><span class="leg l"></span><span class="leg r"></span></span>',
     tv:    '<span class="i-tv"><span class="screen"></span><span class="leg"></span><span class="star"></span></span>',
+    bean:  '<span class="i-bean"><i class="soil"></i><i class="leaf"></i><i class="leaf2"></i><i class="spark"></i></span>',
     soon:  '<span class="lock"></span>',
   };
 
