@@ -228,7 +228,7 @@ body.night .stars{display:block}
 
 <script>
 /* ===== 版本戳热更新（与全站一致） ===== */
-(function(){var k='mogoing_ver';try{var v=localStorage.getItem(k);fetch('version.json?cb='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==v){localStorage.setItem(k,String(j.v));var q=location.search?'&v=':'?v=';location.replace(location.pathname+q+j.v)}}).catch(function(){})}catch(e){}})();
+(function(){var k='mogoing_ver';try{var v=localStorage.getItem(k);fetch('version.json?cb='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j&&j.v&&j.v!==v){localStorage.setItem(k,String(j.v));location.replace(location.origin+location.pathname+'?v='+j.v)}}).catch(function(){})}catch(e){}})();
 
 /* ===== 常量 ===== */
 var API='https://api.mogoing.xyz';
