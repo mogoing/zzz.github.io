@@ -93,6 +93,27 @@
     .pay-card{max-width:100%;width:100%}
   }
 </style>
+<!-- 热更新：内容版本变化自动带参重载，绕过缓存（无需重装 APK） -->
+<script>
+(function(){
+  var VER_URL = 'https://mogoing.github.io/zzz.github.io/version.json';
+  if (!window.fetch) return;
+  fetch(VER_URL, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
+    var ver = String((j && j.v) || 0);
+    try {
+      var old = localStorage.getItem('mogoing_ver');
+      if (old !== ver) {
+        localStorage.setItem('mogoing_ver', ver);
+        var p = location.pathname;
+        var q = location.search || '';
+        var sep = q.indexOf('?') >= 0 ? '&' : '?';
+        location.replace(p + q + sep + 'v=' + ver);
+      }
+    } catch(e){}
+  }).catch(function(){});
+})();
+</script>
+
 </head>
 <body>
   <div class="blob blob-a"></div><div class="blob blob-b"></div>
