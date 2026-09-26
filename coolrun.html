@@ -67,6 +67,27 @@
   .m-btn:active{transform:scale(.97)}
   .m-btn.ghost{background:linear-gradient(135deg,#9db4d8,#7c93c4);box-shadow:0 8px 20px rgba(120,140,180,.28)}
 </style>
+<!-- 热更新：内容版本变化自动带参重载，绕过缓存（无需重装 APK） -->
+<script>
+(function(){
+  var VER_URL = 'https://mogoing.github.io/zzz.github.io/version.json';
+  if (!window.fetch) return;
+  fetch(VER_URL, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
+    var ver = String((j && j.v) || 0);
+    try {
+      var old = localStorage.getItem('mogoing_ver');
+      if (old !== ver) {
+        localStorage.setItem('mogoing_ver', ver);
+        var p = location.pathname;
+        var q = location.search || '';
+        var sep = q.indexOf('?') >= 0 ? '&' : '?';
+        location.replace(p + q + sep + 'v=' + ver);
+      }
+    } catch(e){}
+  }).catch(function(){});
+})();
+</script>
+
 </head>
 <body>
   <header>
