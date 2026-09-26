@@ -2,394 +2,417 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>莫古菜园</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234da83a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23fff'%3E%E8%8F%9C%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237ED06A'/%3E%3Cstop offset='1' stop-color='%23FFD06B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-size='34' font-weight='800' text-anchor='middle' fill='%23fff'%3E%F0%9F%8C%B1%3C/text%3E%3C/svg%3E">
 <style>
+:root{
+  --ink:#4A3F5C; --muted:#9A8FB5;
+  --wood:#5d4226; --wood2:#7a5a34; --cream:#FFF3D6; --gold:#FFC94A;
+}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;overflow:hidden;font-family:'Microsoft YaHei','PingFang SC',sans-serif;user-select:none}
-#app{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#3f6a2f}
-.screen{position:relative;aspect-ratio:13.5/9;width:min(100vw,calc(100vh*1.5));background:linear-gradient(#8ecae6,#a8d8ea);border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4)}
-.bg{position:absolute;inset:0;background:url(bean/img/farm_bg2.jpg) center/cover no-repeat;opacity:.9;z-index:0}
-.top{position:absolute;left:0;right:0;top:0;height:9%;display:flex;align-items:center;justify-content:space-between;padding:0 2%;background:rgba(70,52,30,.82);border-bottom:2px solid #c89b5a;z-index:9}
-.top .l{display:flex;align-items:center;gap:2%}
-.coin{display:flex;align-items:center;gap:6px;background:linear-gradient(#ffd06b,#ff9d3d);color:#7a4d00;font-weight:900;font-size:clamp(12px,1.7vw,20px);padding:.15em .7em;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.3)}
-.coin i{width:1em;height:1em;background:url(bean/img/coin.png) center/contain no-repeat;display:inline-block}
-.top .r{display:flex;align-items:center;gap:1.5%}
-.clock{color:#ffe9a8;font-weight:800;font-size:clamp(11px,1.5vw,18px)}
-.weather{color:#ffe9a8;font-weight:800;font-size:clamp(12px,1.6vw,19px)}
-.dayicon{font-size:clamp(14px,1.9vw,22px)}
-.farm{position:absolute;left:50%;top:11%;transform:translateX(-50%);width:76%;aspect-ratio:1.732;z-index:4}
-.field{position:absolute;left:0;top:0;width:100%;height:100%}
-.cell{position:absolute;width:25%;height:25%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);cursor:pointer;background-size:cover;background-position:center;transition:filter .2s}
-.cell:active{filter:brightness(1.18)}
-.cell .plant{position:absolute;left:50%;top:50%;transform:translate(-50%,-54%);width:76%;height:76%;background-size:contain;background-position:center;background-repeat:no-repeat;pointer-events:none}
-.cell .badge{position:absolute;left:50%;bottom:1%;transform:translateX(-50%);font-size:clamp(8px,1.1vw,14px);font-weight:900;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);pointer-events:none;white-space:nowrap}
-.cell.ready{animation:readyglow 1.6s ease-in-out infinite}
-@keyframes readyglow{0%,100%{filter:drop-shadow(0 0 2px rgba(255,215,80,.8)) brightness(1)}50%{filter:drop-shadow(0 0 10px rgba(255,215,80,1)) brightness(1.06)}}
-.weedov{position:absolute;inset:0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:url(bean/img/plot_grass.png) center/cover no-repeat;opacity:.95;pointer-events:none}
-.weedov .wmark{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);font-size:clamp(13px,1.8vw,22px)}
-.bar{position:absolute;left:0;right:0;bottom:0;height:12%;background:linear-gradient(rgba(90,70,40,.95),rgba(70,52,30,.98));border-top:3px solid #c89b5a;display:flex;align-items:center;justify-content:space-evenly;z-index:9}
-.bar a{font-size:clamp(12px,1.7vw,20px);font-weight:900;color:#fff;text-decoration:none;padding:.4em 1.2em;border-radius:999px;box-shadow:0 3px 8px rgba(0,0,0,.35);border:2px solid rgba(255,255,255,.55);min-height:44px;display:flex;align-items:center;justify-content:center;gap:.4em}
-.bar .shop{background:linear-gradient(#ffd06b,#ff9d3d);color:#7a4d00}
-.bar .bag{background:linear-gradient(#7ed06a,#4da83a)}
-.bar .back{background:linear-gradient(#5aa7ff,#3f7fff)}
-.bar .barhint{color:#ffe9a8;font-size:clamp(9px,1.2vw,15px);font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.6)}
-.modal{position:absolute;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:20}
-.modal.show{display:flex}
-.panel{width:80%;max-height:86%;overflow-y:auto;background:linear-gradient(#ffefc9,#ffe2a8);border-radius:18px;padding:4% 4% 3%;box-shadow:0 10px 40px rgba(0,0,0,.5);border:3px solid #c89b5a;position:relative}
-.panel h3{text-align:center;color:#7a4d00;font-size:clamp(15px,2.2vw,26px);margin-bottom:3%;text-shadow:0 1px 0 #fff}
-.panel .x{position:absolute;right:3%;top:2.5%;width:1.5em;height:1.5em;background:#c0392b;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;font-size:clamp(13px,1.8vw,20px)}
-.seeds{display:grid;grid-template-columns:repeat(2,1fr);gap:3%}
-.seed{background:#fff;border-radius:14px;padding:3%;display:flex;flex-direction:column;align-items:center;gap:2px;border:2px solid #d8b26a;cursor:pointer}
-.seed .ic{width:2.6em;height:2.6em;background-size:contain;background-position:center;background-repeat:no-repeat}
-.seed .nm{font-weight:900;color:#5a3d1c;font-size:clamp(11px,1.5vw,18px)}
-.seed .pr{color:#b5622a;font-weight:800;font-size:clamp(10px,1.3vw,16px)}
-.seed .ct{color:#888;font-size:clamp(9px,1.2vw,14px)}
-.seed .bt{width:100%;padding:.35em 0;border-radius:999px;border:none;font-weight:900;color:#fff;font-size:clamp(10px,1.4vw,17px);cursor:pointer;background:linear-gradient(#ffd06b,#ff9d3d);margin-top:3px}
-.seed .bt:disabled{background:#bbb;color:#fff}
-.crops{display:grid;grid-template-columns:repeat(3,1fr);gap:3%}
-.crop{background:#fff;border-radius:12px;padding:4%;display:flex;flex-direction:column;align-items:center;gap:2px;border:2px solid #d8b26a;cursor:pointer}
-.crop .ic{width:2.8em;height:2.8em;background-size:contain;background-position:center;background-repeat:no-repeat}
-.crop .nm{font-weight:900;color:#5a3d1c;font-size:clamp(11px,1.5vw,18px)}
-.crop .ct{color:#b5622a;font-size:clamp(9px,1.2vw,14px)}
-.opts{display:flex;gap:3%;justify-content:center;flex-wrap:wrap}
-.opt{min-width:28%;padding:.5em 0;border-radius:999px;border:none;font-weight:900;color:#fff;font-size:clamp(11px,1.5vw,18px);cursor:pointer;box-shadow:0 3px 6px rgba(0,0,0,.3)}
-.opt.water{background:linear-gradient(#5aa7ff,#3f7fff)}
-.opt.fert{background:linear-gradient(#7ed06a,#4da83a)}
-.opt.del{background:linear-gradient(#e07a5f,#c0392b)}
-.opt:disabled{background:#bbb}
-.info{text-align:center;color:#5a3d1c;font-weight:800;font-size:clamp(12px,1.7vw,20px);margin-bottom:3%}
-.night{position:absolute;inset:0;background:linear-gradient(rgba(10,12,60,.42),rgba(10,12,60,.3));z-index:6;display:none;pointer-events:none}
-.night.on{display:block}
-.rain{position:absolute;inset:0;z-index:7;display:none;pointer-events:none;overflow:hidden}
-.rain.on{display:block}
-.drop{position:absolute;top:-10%;width:2px;height:8%;background:rgba(130,190,255,.5);border-radius:2px;animation:fall linear infinite}
-@keyframes fall{to{transform:translateY(1300%)}}
-.toast{position:absolute;left:50%;bottom:15%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;font-size:clamp(12px,1.7vw,20px);padding:.5em 1.3em;border-radius:14px;z-index:30;opacity:0;transition:opacity .25s;pointer-events:none;max-width:80%;text-align:center}
-.toast.show{opacity:1}
-.loading{position:absolute;inset:0;background:#3f6a2f;color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(14px,2vw,24px);font-weight:900;z-index:40}
+html,body{height:100%;overflow:hidden;touch-action:manipulation}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+  color:var(--ink);
+  background:#86c06e center/cover no-repeat fixed;
+}
+/* ===== 全屏背景层（天气/昼夜由 JS 换图，与田块完全解耦） ===== */
+#sky{position:fixed;inset:0;z-index:0;background:center/cover no-repeat;transition:background-image .6s}
+/* 雨丝层：只在背景上、田块下方（雨天） */
+#rain{position:fixed;inset:0;z-index:1;pointer-events:none;display:none;
+  background-image:repeating-linear-gradient(115deg,transparent 0 26px,rgba(190,215,255,.28) 26px 28px);
+  background-size:120px 100%;animation:rainfall .55s linear infinite}
+@keyframes rainfall{to{background-position:120px 0}}
+
+/* ===== 13.5:9 游戏画布（透明，露出全屏背景） ===== */
+.screen{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(100vw,calc(100vh*1.5));height:min(100vh,calc(100vw/1.5));
+  z-index:2;overflow:hidden;pointer-events:none;
+}
+.screen>*{pointer-events:auto}
+
+/* ===== 顶栏 ===== */
+.topbar{
+  position:absolute;left:3%;right:3%;top:2.5%;height:7.5%;
+  display:flex;align-items:center;justify-content:space-between;gap:2%;
+  background:rgba(255,250,235,.78);border:2px solid rgba(255,201,74,.75);
+  border-radius:999px;box-shadow:0 4px 14px rgba(90,60,25,.18);padding:0 2.2%;
+  backdrop-filter:blur(4px);
+}
+.pill{display:flex;align-items:center;gap:.45em;font-weight:800;color:var(--wood);white-space:nowrap}
+.pill .ico{width:1.35em;height:1.35em;flex:0 0 auto}
+#coins{font-size:clamp(14px,2vw,24px)}
+#wx{margin-left:auto}
+#wx .ico{width:1.2em;height:1.2em}
+#wx span{font-size:clamp(11px,1.5vw,18px)}
+#clock{font-size:clamp(11px,1.5vw,18px);letter-spacing:.02em}
+#date{font-size:clamp(10px,1.4vw,16px);color:#8a6a3f}
+
+/* ===== 田块：草边 + 16 菱形格 ===== */
+.farmwrap{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:86%;aspect-ratio:1.732}
+.edge{position:absolute;inset:-6.5%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+  background:url(bean/img/plot_grass.png) center/cover no-repeat;filter:saturate(1.05);z-index:0}
+.farm{position:absolute;inset:0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);z-index:1}
+.cell{position:absolute;width:25%;height:25%;
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+  background:center/cover no-repeat;cursor:pointer;
+  transition:filter .18s,transform .12s}
+.cell::before{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 0 2px rgba(84,58,28,.5)}
+.cell:active{transform:scale(.96)}
+.crop{position:absolute;left:12%;top:12%;width:76%;height:76%;object-fit:contain;pointer-events:none;z-index:2;display:none}
+.mature .crop{display:block;animation:glow 1.6s ease-in-out infinite}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 2px #FFE58A) drop-shadow(0 0 8px rgba(255,200,60,.55)) brightness(1)}
+  50%{filter:drop-shadow(0 0 4px #FFE58A) drop-shadow(0 0 16px rgba(255,210,80,.85)) brightness(1.06)}}
+@keyframes pop{0%{transform:scale(.2)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
+.cell .crop.pop{animation:pop .4s ease}
+
+/* ===== 底栏 ===== */
+.bottombar{
+  position:absolute;left:3%;right:3%;bottom:2.5%;height:8.5%;
+  display:flex;align-items:center;justify-content:space-evenly;gap:2%;
+  background:rgba(255,250,235,.82);border:2px solid rgba(255,201,74,.75);
+  border-radius:999px;box-shadow:0 4px 14px rgba(90,60,25,.18);
+  backdrop-filter:blur(4px);
+}
+.bbtn{
+  min-height:42px;padding:.35em 1.5em;border-radius:999px;border:2px solid rgba(255,255,255,.65);
+  font-weight:800;font-size:clamp(13px,1.9vw,22px);color:#fff;text-decoration:none;
+  display:flex;align-items:center;justify-content:center;gap:.4em;box-shadow:0 3px 8px rgba(0,0,0,.22);
+  transition:transform .12s,filter .12s;user-select:none;
+}
+.bbtn:active{transform:translateY(2px) scale(.97)}
+.bbtn .bico{width:1.2em;height:1.2em;flex:0 0 auto}
+#bShop{background:linear-gradient(#FFD06B,#FF9D3D);color:#7a4d00}
+#bBag{background:linear-gradient(#8BD67A,#4DA83A)}
+#bBack{background:linear-gradient(#5AA7FF,#3F7FFF)}
+.hud{position:absolute;left:3%;right:3%;bottom:14.5%;height:3.2%;display:flex;align-items:center;justify-content:center;gap:1.2em;
+  font-size:clamp(10px,1.3vw,15px);font-weight:800;color:rgba(255,250,230,.96);text-shadow:0 1px 3px rgba(40,25,5,.7);pointer-events:none}
+.hud b{color:var(--gold)}
+
+/* ===== 弹窗 ===== */
+.modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:8;display:none;
+  width:min(86%,420px);max-height:78%;border-radius:22px;overflow:hidden;
+  background:rgba(255,252,242,.97);border:2.5px solid rgba(255,201,74,.9);
+  box-shadow:0 18px 50px rgba(40,20,0,.35)}
+.modal.on{display:flex;flex-direction:column}
+.mhead{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;
+  background:linear-gradient(135deg,#FFD06B,#FFB14A);color:#5d3c00;font-weight:900;font-size:clamp(15px,2vw,22px)}
+.mhead .mclose{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.85);border:none;font-weight:900;font-size:16px;color:#a05c00;cursor:pointer}
+.mbody{overflow-y:auto;padding:10px 12px}
+.mrow{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;margin-bottom:8px;background:#FFF6E0;border:1.5px solid rgba(255,201,74,.5)}
+.mrow .mico{width:44px;height:44px;object-fit:contain;flex:0 0 auto}
+.mrow .minfo{flex:1;min-width:0}
+.mrow .mname{font-weight:800;color:#5d4226;font-size:clamp(13px,1.7vw,17px)}
+.mrow .msub{font-size:clamp(10px,1.3vw,13px);color:#a08050;font-weight:600}
+.mrow .mbtn{min-height:38px;padding:.2em 1.1em;border-radius:999px;border:none;font-weight:800;font-size:clamp(12px,1.6vw,16px);cursor:pointer;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.18);flex:0 0 auto}
+.mbtn.buy{background:linear-gradient(#FFD06B,#FF9D3D);color:#7a4d00}
+.mbtn.sell{background:linear-gradient(#8BD67A,#4DA83A)}
+.mbtn:active{transform:scale(.95)}
+.mempty{text-align:center;color:#b49a6a;font-weight:700;padding:18px 0;font-size:clamp(12px,1.6vw,16px)}
+
+/* 种子选择浮窗（点已开垦泥土时弹出） */
+.seedbar{position:absolute;left:50%;bottom:15%;transform:translateX(-50%);z-index:7;display:none;
+  background:rgba(255,252,242,.97);border:2px solid rgba(255,201,74,.9);border-radius:18px;
+  box-shadow:0 10px 30px rgba(40,20,0,.3);padding:8px 10px;gap:8px;max-width:94%}
+.seedbar.on{display:flex;flex-wrap:wrap;justify-content:center}
+.seeditem{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 8px;border-radius:12px;cursor:pointer;background:#FFF6E0;border:1.5px solid rgba(255,201,74,.5);min-width:56px}
+.seeditem img{width:34px;height:34px;object-fit:contain}
+.seeditem span{font-size:clamp(9px,1.2vw,12px);font-weight:800;color:#5d4226}
+.seeditem:active{transform:scale(.93)}
+.seedbar .sclose{margin-left:2px;width:26px;height:26px;border-radius:50%;background:#ffe;border:1.5px solid #c8a05c;font-weight:900;color:#a05c00;cursor:pointer;align-self:center}
+
+/* ===== 飘字（金币增减，轻量） ===== */
+.fly{position:fixed;z-index:9;pointer-events:none;font-weight:900;color:#FFD06B;
+  text-shadow:0 1px 2px rgba(80,50,0,.4);animation:fly 1s ease forwards;font-size:clamp(15px,2.2vw,26px)}
+@keyframes fly{0%{opacity:0;transform:translateY(6px) scale(.8)}20%{opacity:1;transform:translateY(0) scale(1.05)}100%{opacity:0;transform:translateY(-44px) scale(1)}}
 </style>
 </head>
 <body>
-<div id="app"><div class="screen">
-  <div class="bg"></div>
-  <div class="night" id="night"></div>
-  <div class="rain" id="rain"></div>
-  <div class="top">
-    <div class="l">
-      <span class="coin"><i></i><span id="coin">…</span></span>
-      <span class="dayicon" id="dayicon">☀️</span>
-    </div>
-    <div class="r">
-      <span class="weather" id="weather">天气加载中…</span>
-      <span class="clock" id="clock">--:--</span><span class="clock" id="date">　</span>
-    </div>
+<div id="sky"></div>
+<div id="rain"></div>
+
+<div class="screen">
+  <div class="topbar">
+    <div class="pill"><img class="ico" src="bean/img/coin.png" alt="金币"><span id="coins">0</span></div>
+    <div class="pill" id="wx"><img class="ico" src="bean/img/weather_sun.png" alt="天气"><span id="wtext">晴天</span></div>
+    <div class="pill" id="clock">--:--</div>
+    <div class="pill" id="date"></div>
   </div>
-  <div class="farm"><div class="field" id="field"></div></div>
-  <div class="bar">
-    <a class="shop" href="javascript:openShop()">🛒 商店</a>
-    <a class="bag" href="javascript:openBag()">🎒 口袋</a>
-    <a class="back" href="main.html">返回</a><span class="barhint">点草地开垦 · 点泥土播种 · 成熟可摘</span>
+
+  <div class="farmwrap">
+    <div class="edge"></div>
+    <div class="farm" id="farm"></div>
   </div>
-  <div class="modal" id="shopModal"><div class="panel">
-    <div class="x" onclick="closeModal('shopModal')">×</div>
-    <h3>山姆大婶的商店</h3>
-    <div class="seeds" id="shopList"></div>
-  </div></div>
-  <div class="modal" id="plantModal"><div class="panel">
-    <div class="x" onclick="closeModal('plantModal')">×</div>
-    <h3>选择种子播种</h3>
-    <div class="crops" id="plantList"></div>
-  </div></div>
-  <div class="modal" id="opModal"><div class="panel">
-    <div class="x" onclick="closeModal('opModal')">×</div>
-    <h3 id="opTitle">地块操作</h3>
-    <div class="info" id="opInfo"></div>
-    <div class="opts" id="opBtns"></div>
-  </div></div>
-  <div class="toast" id="toast"></div>
-  <div class="loading" id="loading">登录中…</div>
-</div></div>
+
+  <div class="hud" id="hud"><span>开垦 <b id="hDig">0</b>/16</span><span>收获 <b id="hHar">0</b></span><span>今日菜价 <b id="hPrice">--</b></span></div>
+
+  <div class="bottombar">
+    <a class="bbtn" id="bShop" href="javascript:openShop()"><img class="bico" src="bean/img/ico_shop.png" alt="">商店</a>
+    <a class="bbtn" id="bBag" href="javascript:openBag()"><img class="bico" src="bean/img/ico_bag.png" alt="">口袋</a>
+    <a class="bbtn" id="bBack" href="main.html"><img class="bico" src="bean/img/ico_back.png" alt="">返回</a>
+  </div>
+
+  <div class="seedbar" id="seedbar"></div>
+
+  <div class="modal" id="modal">
+    <div class="mhead"><span id="mTitle">商店</span><button class="mclose" onclick="closeModal()">✕</button></div>
+    <div class="mbody" id="mBody"></div>
+  </div>
+</div>
+
 <script>
 'use strict';
+/* ================= 配置 ================= */
 var API='https://api.mogoing.xyz';
+var IMG='bean/img/';
 var CROPS={
- apple:{name:'苹果',base:1,growH:2,unit:2,seed:'bean/img/seed/apple_seed.png',img:function(s){return'bean/img/apple_s'+s+'.webp'}},
- pear:{name:'梨',base:1,growH:3,unit:2,seed:'bean/img/seed/pear_seed.png',img:function(s){return'bean/img/pear_s'+s+'.webp'}},
- corn:{name:'玉米',base:3,growH:3,unit:1,seed:'bean/img/seed/corn_seed.png',img:function(s){return'bean/img/corn_s'+s+'.webp'}},
- pumpkin:{name:'南瓜',base:8,growH:6,unit:1,seed:'bean/img/seed/pumpkin_seed.png',img:function(s){return'bean/img/pumpkin_s'+s+'.webp'}},
- strawberry:{name:'草莓',base:5,growH:4,unit:1,seed:'bean/img/seed/strawberry_seed.png',img:function(s){return'bean/img/strawberry_s'+s+'.webp'}},
- carrot:{name:'胡萝卜',base:2,growH:2,unit:1,seed:'bean/img/seed/carrot_seed.png',img:function(s){return'bean/img/carrot_s'+s+'.webp'}}
+  apple:{name:'苹果',base:1,growH:2,seedRate:2,seed:'seed/apple_seed.png',imgs:['apple_s1.webp','apple_s2.webp','apple_s3.webp','apple_s4.webp']},
+  pear:{name:'梨',base:1,growH:3,seedRate:2,seed:'seed/pear_seed.png',imgs:['pear_s1.webp','pear_s2.webp','pear_s3.webp','pear_s4.webp']},
+  corn:{name:'玉米',base:3,growH:3,seedRate:1,seed:'seed/corn_seed.png',imgs:['corn_s1.webp','corn_s2.webp','corn_s3.webp','corn_s4.webp']},
+  pumpkin:{name:'南瓜',base:8,growH:6,seedRate:1,seed:'seed/pumpkin_seed.png',imgs:['pumpkin_s1.webp','pumpkin_s2.webp','pumpkin_s3.webp','pumpkin_s4.webp']},
+  strawberry:{name:'草莓',base:5,growH:4,seedRate:1,seed:'seed/strawberry_seed.png',imgs:['strawberry_s1.webp','strawberry_s2.webp','strawberry_s3.webp','strawberry_s4.webp']},
+  carrot:{name:'胡萝卜',base:2,growH:2,seedRate:1,seed:'seed/carrot_seed.png',imgs:['carrot_s1.webp','carrot_s2.webp','carrot_s3.webp','carrot_s4.webp']}
 };
-var KEYS=['apple','pear','corn','pumpkin','strawberry','carrot'];
-var UN='',PW='';
-var state={plots:[],inv:{apple:0,pear:0,corn:0,pumpkin:0,strawberry:0,carrot:0},digCount:0};
-var myCoins=0,WX='晴';
-var curOp=null,saveTimer=null;
+/* 菱形格定位（百分比）：16 格交叉排列，坐标源于已验收几何网格 */
+var POS=[[37.5,0],[25,12.5],[12.5,25],[0,37.5],[50,12.5],[37.5,25],[25,37.5],[12.5,50],
+         [62.5,25],[50,37.5],[37.5,50],[25,62.5],[75,37.5],[62.5,50],[50,62.5],[37.5,75]];
+
+/* ================= 状态 ================= */
+var UN='',PW='',coins=0;
+var plots=[];            /* {s:-1草/0地/1土/2作物, c:-1, st:0-3, pa:0, w:0, f:0} */
+var inv={seed:{apple:0,pear:0,corn:0,pumpkin:0,strawberry:0,carrot:0},
+         crop:{apple:0,pear:0,corn:0,pumpkin:0,strawberry:0,carrot:0}};
+var digCount=0,harvest=0,weather='sun',night=false;
+var cells=[];
+
+/* ================= 工具 ================= */
 function $(id){return document.getElementById(id)}
-function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('show')},1600)}
-function dayFactor(){var d=new Date();var n=(d.getFullYear()*372+(d.getMonth()+1)*31+d.getDate())%997;return 0.75+((n*7)%50)/100}
-function seedPrice(k){return Math.max(1,Math.round(CROPS[k].base*0.5*dayFactor()))}
-function sellPrice(k){return Math.max(1,Math.round(CROPS[k].base*dayFactor()))}
-function digCost(){return 10+state.digCount*2}
-function calcStage(p){
- if(!p.crop)return 0;
- var el=(Date.now()-p.plantedAt)/3600000;
- var f=el/CROPS[p.crop].growH;
- if(f>=1)return 4;if(f>=0.75)return 3;if(f>=0.5)return 2;if(f>=0.25)return 1;return 0;
+function req(url,opt){opt=opt||{};opt.headers=opt.headers||{};opt.headers['User-Agent']='Mozilla/5.0 bean';
+  return fetch(url,opt).then(function(r){return r.json()})}
+function saveTimer(){clearTimeout(saveTimer.t);saveTimer.t=setTimeout(saveRemote,900)}
+function fly(x,y,txt,color){var d=document.createElement('div');d.className='fly';d.textContent=txt;
+  d.style.left=x+'px';d.style.top=y+'px';if(color)d.style.color=color;
+  document.body.appendChild(d);setTimeout(function(){d.remove()},1000)}
+
+/* ================= 价格与天气 ================= */
+function dayHash(){var d=new Date(),v=d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+  var h=0;v=(v+'').split('');for(var i=0;i<v.length;i++)h=(h*31+(+v[i]))%997;
+  return h%50} /* 0-49 */
+function priceOf(c){return Math.max(1,Math.round(c.base*(0.75+dayHash()/100)*(weather==='rain'?1.2:1)))}
+function seedPrice(c){return Math.max(1,Math.round(c.base*0.5*(0.75+dayHash()/100)))}
+function applyWeather(){
+  var h=new Date().getHours();night=(h<6||h>=19);
+  var key=(night?'night_':'day_')+weather;
+  $('sky').style.backgroundImage='url('+IMG+'farm_'+key+'.jpg)';
+  $('rain').style.display=weather==='rain'?'block':'none';
+  $('wtext').textContent=(weather==='rain'?'雨天':(night?'夜晚':'晴天'));
+  $('wx').querySelector('img').src=IMG+(weather==='rain'?'weather_rain':'weather_sun')+'.png';
+  $('hPrice').textContent=priceOf(CROPS.apple)+'金';
 }
-function yieldOf(p){return 1+(p.watered?1:0)+(p.fertilized?2:0)}
-function req(url,body){return fetch(url,{method:body?'POST':'GET',headers:{'content-type':'application/json'},body:body?JSON.stringify(body):undefined}).then(function(r){return r.json()}).catch(function(){return{ok:false,error:'网络错误'}})}
-function cellPos(i){var a=Math.floor(i/4),b=i%4;return{l:37.5+12.5*a-12.5*b,t:12.5*(a+b)}}
-function setCoinsEl(n){myCoins=n;$('coin').textContent=n}
-function saveState(){clearTimeout(saveTimer);saveTimer=setTimeout(function(){req(API+'/api/save',{username:UN,password:PW,game:'bean',data:state}).then(function(){})},600)}
-/* ===== 田块渲染 ===== */
-function bgOf(p){
- if(!p.dug)return 'url(bean/img/plot_grass.png) center/cover no-repeat';
- if(p.weed)return 'url(bean/img/plot_grass.png) center/cover no-repeat';
- return 'url(bean/img/plot_soil.png) center/cover no-repeat';
+function fetchWeather(){
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(function(p){
+      var lat=p.coords.latitude,lng=p.coords.longitude;
+      req('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lng+'&current_weather=true').then(function(j){
+        var wc=(j&&j.current_weather&&j.current_weather.weathercode!=null)?j.current_weather.weathercode:2;
+        weather=(wc>=45&&wc<=67)||(wc>=71&&wc<=77)?'rain':'sun';
+        applyWeather();saveRemote();
+      }).catch(function(){weather='sun';applyWeather()});
+    },function(){weather='sun';applyWeather()}, {timeout:8000});
+  }else{weather='sun';applyWeather()}
 }
-function renderField(){
- var el=$('field'),h='';
- for(var i=0;i<16;i++){
-  var p=state.plots[i]||{};
-  var pos=cellPos(i);
-  var st=calcStage(p);
-  var html='<div class="cell" data-i="'+i+'" onclick="tapCell('+i+')" style="left:'+pos.l+'%;top:'+pos.t+'%;background:'+bgOf(p)+'">';
-  if(p.dug&&p.crop&&!p.weed){
-   var img=st===0?CROPS[p.crop].seed:(st>=4?CROPS[p.crop].img(4):CROPS[p.crop].img(st));
-   html+='<div class="plant" style="background-image:url('+img+')"></div>';
-   if(st>=4)html+='<div class="badge">可摘!</div>';
-   else html+='<div class="badge">'+(st===0?'刚种':'生长中')+(p.watered?'💧':'')+(p.fertilized?'🌿':'')+'</div>';
-  }else if(p.dug&&p.weed){
-   html+='<div class="weedov"><span class="wmark">🌿 长草</span></div>';
-  }else if(p.dug){
-   html+='<div class="badge">+ 播种</div>';
-  }else{
-   html+='<div class="badge">开垦</div>';
+
+/* ================= 时钟 ================= */
+function tick(){
+  var d=new Date(),hh=d.getHours();
+  $('clock').textContent=(hh<10?'0':'')+hh+':'+(d.getMinutes()<10?'0':'')+d.getMinutes();
+  $('date').textContent=(d.getMonth()+1)+'月'+d.getDate()+'日';
+}
+setInterval(tick,10000);tick();
+
+/* ================= 田块渲染 ================= */
+function buildFarm(){
+  var f=$('farm');var h='';
+  for(var i=0;i<16;i++){
+    h+='<div class="cell" id="c'+i+'" style="left:'+POS[i][0]+'%;top:'+POS[i][1]+'%" onclick="tap('+i+')">'+
+       '<img class="crop" id="cr'+i+'" draggable="false"></div>';
   }
-  html+='</div>';
-  h+=html;
- }
- el.innerHTML=h;
+  f.innerHTML=h;
+  for(var i=0;i<16;i++){cells.push($('c'+i))}
 }
-function tapCell(i){
- var p=state.plots[i]||{};
- if(!p.dug){digPlot(i);return}
- if(p.weed){reDig(i);return}
- if(!p.crop){openPlant(i);return}
- var st=calcStage(p);
- if(st>=4){harvest(i);return}
- openOp(i);
+function bgOf(p){
+  if(p.s===-1)return IMG+'plot_grass.png';
+  if(p.s===0)return IMG+'plot_grass.png';
+  return IMG+'plot_soil.png';
 }
-/* ===== 开垦 ===== */
-function digPlot(i){
- var c=digCost();
- closeAll();
- var btns='<button class="opt dig" onclick="doDig('+i+')">花费 '+c+' 金币开垦</button>';
- $('opTitle').textContent='开垦新农田';
- $('opInfo').textContent='第 '+(state.digCount+1)+' 块地 · 越往后越贵';
- $('opBtns').innerHTML=btns;
- $('opModal').classList.add('show');
+function renderCell(i){
+  var p=plots[i],el=cells[i],im=$('cr'+i);
+  el.style.backgroundImage='url('+bgOf(p)+')';
+  el.style.filter='';
+  el.classList.remove('mature');
+  if(p.s===-1){el.style.filter='brightness(.8) saturate(.9)'}
+  if(p.s===2){
+    var c=CROPS[p.c];
+    im.src=IMG+c.imgs[p.st];
+    im.style.display='block';
+    if(p.st===3){el.classList.add('mature')}
+  }else{
+    im.style.display='none';im.removeAttribute('src');
+  }
 }
-function doDig(i){
- var c=digCost();
- apiSpend(c).then(function(ok){
-  if(!ok)return;
-  var p=state.plots[i]||{};p.dug=true;p.dugAt=Date.now();p.weed=false;p.crop=null;
-  state.plots[i]=p;state.digCount++;closeAll();renderField();saveState();toast('开垦成功！');
- });
+function renderAll(){for(var i=0;i<16;i++)renderCell(i);refreshHud()}
+function refreshHud(){
+  $('hDig').textContent=digCount;
+  $('hHar').textContent=harvest;
 }
-function reDig(i){
- var c=digCost();
- apiSpend(c).then(function(ok){
-  if(!ok)return;
-  var p=state.plots[i];p.weed=false;p.crop=null;p.dugAt=Date.now();
-  closeAll();renderField();saveState();toast('荒地被重新开垦！');
- });
+
+/* ================= 生长推进 ================= */
+function advance(){
+  var now=Date.now(),dirty=false;
+  for(var i=0;i<16;i++){
+    var p=plots[i];
+    if(p.s!==2||p.st>=3)continue;
+    var c=CROPS[p.c];
+    if(now-p.pa>=c.growH*3600*1000){p.st++;dirty=true}
+    renderCell(i);
+  }
+  if(dirty)saveTimer();
 }
-/* ===== 播种 ===== */
-function openPlant(i){
- curOp=i;
- var h='';
- KEYS.forEach(function(k){
-  var c=CROPS[k];
-  h+='<div class="crop" onclick="doPlant(\''+k+'\')"><div class="ic" style="background-image:url('+c.seed+')"></div><div class="nm">'+c.name+'</div><div class="ct">库存 '+state.inv[k]+' 个</div></div>';
- });
- $('plantList').innerHTML=h;
- $('plantModal').classList.add('show');
+setInterval(advance,15000);
+
+/* ================= 交互 ================= */
+function tap(i){
+  var p=plots[i];
+  if(p.s===-1){           /* 长草：除杂草 */
+    p.s=0;renderCell(i);saveTimer();return;
+  }
+  if(p.s===0){            /* 未开垦：开垦 */
+    var cost=10+digCount*2;
+    if(coins<cost){flyP(i,'金币不足');shake(cells[i]);return}
+    spend(cost);p.s=1;digCount++;renderCell(i);saveTimer();return;
+  }
+  if(p.s===1){            /* 已开垦：选种子 */
+    openSeedbar(i);return;
+  }
+  if(p.s===2){
+    if(p.st===3){         /* 成熟：收获 */
+      var c=CROPS[p.c],amt=1+p.w+p.f;
+      inv.crop[p.c]+=amt;harvest++;
+      p.s=1;p.c=-1;p.st=0;p.w=0;p.f=0;
+      renderCell(i);
+      var pr=priceOf(c)*amt;gain(pr);
+      saveTimer();return;
+    }
+    shake(cells[i]);      /* 未熟：轻晃 */
+  }
 }
-function doPlant(k){
- var i=curOp;
- if(state.inv[k]<=0){toast('没有'+CROPS[k].name+'种子，先去商店买');return}
- var p=state.plots[i];
- if(p.crop||!p.dug||p.weed)return;
- state.inv[k]--;p.crop=k;p.plantedAt=Date.now();p.watered=false;p.fertilized=false;
- closeAll();renderField();saveState();toast('种下了'+CROPS[k].name+'！');
+function shake(el){el.style.animation='';void el.offsetWidth;el.style.animation='digpop .32s ease'}
+function flyP(i,txt){var el=cells[i],r=el.getBoundingClientRect();
+  fly(r.left+r.width/2,r.top+8,txt)}
+
+/* ================= 金币 ================= */
+function spend(n){coins-=n;$('coins').textContent=coins;
+  req(API+'/api/spend',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({username:UN,password:PW,amount:n})}).catch(function(){})}
+function gain(n){coins+=n;$('coins').textContent=coins;
+  req(API+'/api/gain',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({username:UN,password:PW,amount:n})}).catch(function(){})}
+
+/* ================= 种子选择 ================= */
+var selPlot=-1;
+function openSeedbar(i){
+  selPlot=i;
+  var sb=$('seedbar');var h='';var has=false;
+  for(var k in CROPS){
+    if(inv.seed[k]>0){has=true;
+      h+='<div class="seeditem" onclick="plant(\''+k+'\')"><img src="'+IMG+CROPS[k].seed+'"><span>'+inv.seed[k]+'</span></div>';
+    }
+  }
+  if(!has){flyP(i,'没种子');return}
+  h+='<button class="sclose" onclick="closeSeedbar()">✕</button>';
+  sb.innerHTML=h;sb.classList.add('on');
 }
-/* ===== 浇水/施肥/铲除 ===== */
-function openOp(i){
- curOp=i;
- var p=state.plots[i],st=calcStage(p);
- var c=CROPS[p.crop];
- var y=yieldOf(p);
- $('opTitle').textContent=c.name+' 管理';
- $('opInfo').textContent='成熟约 '+c.growH+' 小时 · 预计产量 '+y+' 个（卖 '+sellPrice(p.crop)+' 金/个）';
- var b='';
- b+='<button class="opt water" '+(p.watered?'disabled':'')+' onclick="doWater()">💧 浇水'+(p.watered?'✓':'')+'</button>';
- b+='<button class="opt fert" '+(p.fertilized?'disabled':'')+' onclick="doFert()">🌿 施肥'+(p.fertilized?'✓':'')+'</button>';
- b+='<button class="opt del" onclick="doRemove()">🗑 铲除</button>';
- $('opBtns').innerHTML=b;
- $('opModal').classList.add('show');
+function closeSeedbar(){$('seedbar').classList.remove('on')}
+function plant(k){
+  if(selPlot<0)return;
+  var p=plots[selPlot];
+  if(p.s!==1)return;
+  inv.seed[k]--;p.s=2;p.c=k;p.st=0;p.pa=Date.now();p.w=0;p.f=0;
+  closeSeedbar();renderCell(selPlot);
+  var im=$('cr'+selPlot);im.classList.add('pop');setTimeout(function(){im.classList.remove('pop')},420);
+  saveTimer();
 }
-function doWater(){var p=state.plots[curOp];if(p.watered)return;p.watered=true;closeAll();renderField();saveState();toast('浇水了！产量+1')}
-function doFert(){var p=state.plots[curOp];if(p.fertilized)return;p.fertilized=true;closeAll();renderField();saveState();toast('施肥了！产量+2')}
-function doRemove(){
- var p=state.plots[curOp],k=p.crop;
- if(!confirm('铲掉 '+CROPS[k].name+'？不返还种子'))return;
- p.crop=null;p.watered=false;p.fertilized=false;
- closeAll();renderField();saveState();toast('已铲除，种子不返还');
-}
-/* ===== 收获 ===== */
-function harvest(i){
- var p=state.plots[i],k=p.crop;
- var y=yieldOf(p),pr=sellPrice(k),gain=y*pr;
- closeAll();
- $('opTitle').textContent='收获 '+CROPS[k].name;
- $('opInfo').textContent='产量 '+y+' 个 × 今日价 '+pr+' 金 = '+gain+' 金币';
- $('opBtns').innerHTML='<button class="opt fert" onclick="doHarvest('+i+')">收 获 +'+gain+' 金</button>';
- $('opModal').classList.add('show');
-}
-function doHarvest(i){
- var p=state.plots[i],k=p.crop;
- var gain=yieldOf(p)*sellPrice(k);
- apiGain(gain).then(function(ok){
-  if(!ok)return;
-  p.crop=null;p.watered=false;p.fertilized=false;p.harvestAt=Date.now();
-  closeAll();renderField();saveState();toast('收获 '+CROPS[k].name+'，+'+gain+' 金币！');
- });
-}
-/* ===== 长草 ===== */
-function checkWeed(){
- var now=Date.now(),changed=false;
- for(var i=0;i<16;i++){
-  var p=state.plots[i];
-  if(!p||!p.dug||p.weed||p.crop)continue;
-  var ref=p.harvestAt||p.dugAt;
-  if(ref&&now-ref>48*3600000){p.weed=true;changed=true}
- }
- if(changed){renderField();saveState()}
-}
-/* ===== 商店/口袋 ===== */
+
+/* ================= 商店 / 口袋 ================= */
 function openShop(){
- var h='';
- KEYS.forEach(function(k){
-  var c=CROPS[k],pr=seedPrice(k),cost=pr*c.unit;
-  h+='<div class="seed"><div class="ic" style="background-image:url('+c.seed+')"></div><div class="nm">'+c.name+'种子</div><div class="pr">'+cost+' 金 / '+c.unit+' 个</div><div class="ct">成熟约 '+c.growH+' 小时</div><button class="bt" onclick="buySeed(\''+k+'\')">购 买</button></div>';
- });
- $('shopList').innerHTML=h;
- $('shopModal').classList.add('show');
+  $('mTitle').textContent='商店';
+  var h='';
+  for(var k in CROPS){
+    var c=CROPS[k],sp=seedPrice(c);
+    h+='<div class="mrow"><img class="mico" src="'+IMG+c.seed+'"><div class="minfo">'+
+       '<div class="mname">'+c.name+'种子</div><div class="msub">今日 '+sp+' 金 / '+c.seedRate+' 个</div></div>'+
+       '<button class="mbtn buy" onclick="buySeed(\''+k+'\')">'+sp+'金</button></div>';
+  }
+  $('mBody').innerHTML=h;openModal();
 }
 function buySeed(k){
- var c=CROPS[k],cost=seedPrice(k)*c.unit;
- apiSpend(cost).then(function(ok){
-  if(!ok)return;
-  state.inv[k]+=c.unit;
-  openShop();renderField();saveState();toast('买到 '+c.unit+' 个'+c.name+'种子！');
- });
+  var c=CROPS[k],sp=seedPrice(c);
+  if(coins<sp){flyP(6,'金币不足');return}
+  spend(sp);inv.seed[k]+=c.seedRate;renderShop();saveTimer();
 }
 function openBag(){
- var h='';
- KEYS.forEach(function(k){
-  var c=CROPS[k];
-  h+='<div class="seed"><div class="ic" style="background-image:url('+c.seed+')"></div><div class="nm">'+c.name+'种子</div><div class="ct">库存 '+state.inv[k]+' 个</div></div>';
- });
- $('shopList').innerHTML=h;
- $('shopModal').classList.add('show');
-}
-/* ===== 金币 ===== */
-function apiSpend(n){
- return req(API+'/api/spend',{username:UN,password:PW,amount:n}).then(function(j){
-  if(j&&j.ok){setCoinsEl(j.coins);return true}
-  toast(j&&j.error||'金币不足');return false;
- });
-}
-function apiGain(n){
- return req(API+'/api/gain',{username:UN,password:PW,amount:n}).then(function(j){
-  if(j&&j.ok){setCoinsEl(j.coins);return true}
-  toast(j&&j.error||'操作失败');return false;
- });
-}
-function closeModal(id){$(id).classList.remove('show')}
-function closeAll(){['shopModal','plantModal','opModal'].forEach(function(id){$(id).classList.remove('show')})}
-/* ===== 昼夜/天气/时钟 ===== */
-function tick(){
- var d=new Date(),h=d.getHours();
- $('clock').textContent=(h<10?'0':'')+h+':'+(d.getMinutes()<10?'0':'')+d.getMinutes();
- $('date').textContent=(d.getMonth()+1)+'月'+d.getDate()+'日';
- var night=!(h>=6&&h<18);
- $('night').classList.toggle('on',night);
- $('dayicon').textContent=night?'🌙':'☀️';
-}
-function loadWeather(){
- if(!navigator.geolocation){setWX('晴');return}
- navigator.geolocation.getCurrentPosition(function(pos){
-  var la=pos.coords.latitude.toFixed(2),lo=pos.coords.longitude.toFixed(2);
-  fetch('https://api.open-meteo.com/v1/forecast?latitude='+la+'&longitude='+lo+'&current_weather=true').then(function(r){return r.json()}).then(function(j){
-   var c=(j.current_weather&&j.current_weather.weathercode)||0;
-   var code=(j.current_weather&&j.current_weather.weathercode)||0;
-   if(code>=51&&code<=67||code>=80&&code<=82||code>=95&&code<=99)setWX('雨');
-   else if(code>=71&&code<=77)setWX('雪');
-   else setWX('晴');
-  }).catch(function(){setWX('晴')});
- },function(){setWX('晴')},{timeout:6000});
-}
-function setWX(w){
- WX=w;
- $('weather').textContent=w==='雨'?'🌧 雨天':(w==='雪'?'🌨 雪天':'🌤 晴天');
- $('rain').classList.toggle('on',w==='雨');
- if(w==='雨'&&!$('rain').children.length){
-  var r=$('rain');
-  for(var i=0;i<24;i++){
-   var d=document.createElement('div');d.className='drop';
-   d.style.left=(Math.random()*100)+'%';
-   d.style.animationDuration=(0.5+Math.random()*0.6)+'s';
-   d.style.animationDelay=(Math.random()*1.5)+'s';
-   r.appendChild(d);
+  $('mTitle').textContent='口袋';
+  var h='';var any=false;
+  for(var k in CROPS){
+    var c=CROPS[k];
+    if(inv.crop[k]>0){any=true;
+      var pr=priceOf(c);
+      h+='<div class="mrow"><img class="mico" src="'+IMG+c.imgs[3]+'"><div class="minfo">'+
+         '<div class="mname">'+c.name+'</div><div class="msub">'+inv.crop[k]+' 个 · 今日 '+pr+' 金/个</div></div>'+
+         '<button class="mbtn sell" onclick="sellCrop(\''+k+'\')">卖出</button></div>';
+    }
   }
- }
+  if(!any)h='<div class="mempty">还没有收获，去种点什么吧</div>';
+  $('mBody').innerHTML=h;openModal();
 }
-/* ===== 加载/初始化 ===== */
+function sellCrop(k){
+  var c=CROPS[k],pr=priceOf(c),n=inv.crop[k];
+  if(n<=0)return;
+  inv.crop[k]=0;gain(pr*n);openBag();saveTimer();
+}
+function renderShop(){if($('modal').classList.contains('on')&&$('mTitle').textContent==='商店')openShop()}
+function openModal(){$('modal').classList.add('on')}
+function closeModal(){$('modal').classList.remove('on')}
+
+/* ================= 存档 ================= */
+function saveRemote(){
+  var data={plots:plots,inv:inv,digCount:digCount,harvest:harvest};
+  req(API+'/api/save?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)+'&game=bean',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(data)}).catch(function(){});
+}
 function loadRemote(){
- req(API+'/api/save?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)+'&game=bean').then(function(j){
-  if(j&&j.ok&&j.save&&j.save.data){
-   try{
-    var s=j.save.data;
-    state.plots=s.plots||[];
-    for(var k in s.inv)state.inv[k]=s.inv[k]||0;
-    state.digCount=s.digCount||0;
-   }catch(e){}
-  }
-  finishInit();
- });
+  req(API+'/api/save?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)+'&game=bean').then(function(j){
+    if(j&&j.ok&&j.data){
+      var d=j.data;
+      plots=d.plots||makePlots();inv=d.inv||inv;digCount=d.digCount||0;harvest=d.harvest||0;
+    }else{plots=makePlots()}
+    renderAll();
+  }).catch(function(){plots=makePlots();renderAll()});
 }
-function finishInit(){
- var d=new Date();
- if(d.getFullYear()<2026)toast('手机时间不对，作物时间会乱');
- $('loading').style.display='none';
- renderField();tick();loadWeather();
- setInterval(tick,10000);
- setInterval(checkWeed,60000);
-}
+function makePlots(){var a=[];for(var i=0;i<16;i++)a.push({s:0,c:-1,st:0,pa:0,w:0,f:0});return a}
+
+/* ================= 启动 ================= */
 UN=localStorage.getItem('blindbox_user')||'';
 PW=localStorage.getItem('blindbox_pass')||'';
 if(!UN||!PW){location.href='index.html';}
 req(API+'/api/user?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)).then(function(j){
- if(j&&j.ok){setCoinsEl(j.user.coins||0);loadRemote()}
- else{location.href='index.html'}
-});
+  if(j&&j.ok){coins=j.user.coins||0;$('coins').textContent=coins;buildFarm();loadRemote();fetchWeather();}
+  else{location.href='index.html';}
+}).catch(function(){location.href='index.html'});
 </script>
 </body>
 </html>
-
