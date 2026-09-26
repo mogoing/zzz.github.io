@@ -62,12 +62,12 @@ body{
 }
 
 /* ===== 田块：草边 + 16 菱形格（素材直贴，菱形靠 PNG 素材本身呈现，不依赖 CSS 裁剪） ===== */
-.farmwrap{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:94vw;max-width:calc(60vh*1.732);aspect-ratio:1.732}
+.farmwrap{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:94vw;max-width:calc(60vh*1.55);aspect-ratio:1.55}
 .edge{position:absolute;inset:-7%;z-index:0;
   background:url(bean/img/plot_grass.png) center/contain no-repeat;filter:saturate(1.05)}
 .farm{position:absolute;inset:0;z-index:1;background:#5d4226;border-radius:2%}
 .cell{position:absolute;width:25%;height:25%;
-  background:center/contain no-repeat;cursor:pointer;
+  background:center/140% auto no-repeat;cursor:pointer;
   transition:filter .18s,transform .12s}
 .cell:active{transform:scale(.96)}
 .crop{position:absolute;left:10%;top:10%;width:80%;height:80%;object-fit:contain;pointer-events:none;z-index:2;display:none}
@@ -396,7 +396,7 @@ function openShop(){
   $('mTitle').textContent='商店';
   var h='',sum=0;
   for(var k in CROPS){
-    var c=CROPS[k],sp=seedPrice(c),per=c.seedRate,q=shopQty[k]||1;
+    var c=CROPS[k],sp=seedPrice(c),per=c.seedRate,q=shopQty[k]||0;
     var rate=String(parseFloat((per/sp).toFixed(1)));
     h+='<div class="mrow"><img class="mico" src="'+IMG+c.seed+'"><div class="minfo">'+
        '<div class="mname">'+c.fn+'</div><div class="msub">当日 1 币 '+rate+' 个</div></div>'+
@@ -406,7 +406,7 @@ function openShop(){
   $('mBody').innerHTML=h;$('mSum').textContent=sum;openModal();
 }
 function qtyChg(k,d){
-  shopQty[k]=Math.max(1,Math.min(99,(shopQty[k]||1)+d));
+  shopQty[k]=Math.max(0,Math.min(99,(shopQty[k]||0)+d));
   if($('modal').classList.contains('on')&&$('mTitle').textContent==='商店')openShop();
 }
 function checkout(){
