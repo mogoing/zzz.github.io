@@ -234,12 +234,14 @@
       window.__fsW = d.w || innerWidth;
       window.__fsH = d.h || innerHeight;
       document.body.classList.add('fs');
-      setTimeout(fit, 80);
+      fit();
+      setTimeout(fit, 150);
     });
     window.addEventListener('apkfsx', function(){
       document.body.classList.remove('fs');
       window.__fsW = window.__fsH = 0;
-      setTimeout(fit, 80);
+      fit();
+      setTimeout(fit, 150);
     });
 
     game.addEventListener('load', function(){ tip.style.opacity = '0'; });
