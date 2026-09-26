@@ -136,6 +136,27 @@
   .m-btn.small{padding:10px 16px;font-size:14px;margin-top:0;min-height:40px;width:auto;flex:none}
   .save-info{font-size:12.5px;color:#7C3AED;min-height:16px;margin-bottom:10px;font-weight:700}
 </style>
+<!-- 热更新：内容版本变化自动带参重载，绕过缓存（无需重装 APK） -->
+<script>
+(function(){
+  var VER_URL = 'https://mogoing.github.io/zzz.github.io/version.json';
+  if (!window.fetch) return;
+  fetch(VER_URL, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
+    var ver = String((j && j.v) || 0);
+    try {
+      var old = localStorage.getItem('mogoing_ver');
+      if (old !== ver) {
+        localStorage.setItem('mogoing_ver', ver);
+        var p = location.pathname;
+        var q = location.search || '';
+        var sep = q.indexOf('?') >= 0 ? '&' : '?';
+        location.replace(p + q + sep + 'v=' + ver);
+      }
+    } catch(e){}
+  }).catch(function(){});
+})();
+</script>
+
 </head>
 <body>
   <header>
