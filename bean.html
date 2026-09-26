@@ -34,20 +34,33 @@ body{
 .topbar .coin i{width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe98a,#f0b400 60%,#d99a00);display:inline-block;box-shadow:inset 0 -2px 3px rgba(0,0,0,.15)}
 .topbar .wx{font-size:20px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.85);border-radius:12px;box-shadow:0 2px 6px rgba(160,100,30,.3)}
 /* ============ 农场区 ============ */
-.farmwrap{flex:1 1 auto;position:relative;overflow:hidden}
+.farmwrap{flex:1 1 auto;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#e3f5b8 0%,#cfe795 55%,#bcd97e 100%)}
+.farmhint{
+  position:absolute;left:50%;bottom:5%;transform:translateX(-50%);z-index:3;
+  background:rgba(255,255,240,.85);border:2px solid #cfe795;border-radius:14px;
+  padding:7px 16px;color:#5a7a2a;font-size:12px;font-weight:700;line-height:1.5;
+  text-align:center;box-shadow:0 3px 10px rgba(90,140,40,.25);white-space:nowrap;
+}
 .farm{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(96vw, 700px);aspect-ratio:13.5/9;
-  background:url('bean/img/background.jpg') center/cover no-repeat;
-  border-radius:18px;box-shadow:0 8px 26px rgba(60,110,30,.35);
-  border:3px solid rgba(255,255,255,.65);
+  width:min(94vw, 820px);aspect-ratio:16/9;
+  background:url('bean/img/farm_bg.jpg') center/cover no-repeat;
+  border-radius:16px;box-shadow:0 8px 26px rgba(60,110,30,.4);
+  border:3px solid rgba(255,255,255,.75);
 }
 /* 地块网格 */
 .grid{
-  position:absolute;inset:21% 11% 22% 11%;display:grid;
-  grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:5%;
+  position:absolute;inset:16% 52% 20% 0%;display:grid;
+  grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:0;
   z-index:5;
 }
+.shopbtn{
+  position:absolute;top:6%;right:6%;z-index:15;border:none;cursor:pointer;
+  background:linear-gradient(180deg,#ffe28a,#ffb84c);color:#7a4a15;
+  font-size:13px;font-weight:900;padding:6px 12px;border-radius:999px;
+  box-shadow:0 3px 8px rgba(120,80,20,.4);line-height:1;
+}
+.shopbtn:active{transform:scale(.93)}
 .plot{position:relative;border-radius:14%;overflow:hidden;cursor:pointer;transition:transform .15s}
 .plot:active{transform:scale(.94)}
 .plot.grass{background:linear-gradient(150deg,#b5e881,#82c957);box-shadow:inset 0 0 0 2px rgba(255,255,255,.55),inset 0 -6px 10px rgba(60,130,20,.35),0 3px 7px rgba(0,0,0,.16);border-radius:20%}
@@ -95,19 +108,19 @@ body{
 .dock{
   flex:0 0 auto;background:linear-gradient(180deg,#fffbe8,#ffe9b8);
   border-top:3px solid #e8c878;box-shadow:0 -4px 14px rgba(160,100,30,.25);
-  padding:6px 8px calc(8px + env(safe-area-inset-bottom));z-index:20;
+  padding:7px 8px calc(10px + env(safe-area-inset-bottom));z-index:20;
 }
 .dock .tabs{display:flex;gap:6px;margin-bottom:6px}
 .dock .tab{flex:1;text-align:center;font-size:12px;font-weight:800;color:#8a6a2a;padding:4px 0;border-radius:999px;background:rgba(255,255,255,.6);cursor:pointer}
 .dock .tab.on{background:linear-gradient(180deg,#ffd66a,#f0a93c);color:#5a3a10;box-shadow:0 2px 5px rgba(180,120,30,.3)}
 .seeds{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
 .seed{
-  position:relative;display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:14px;
+  position:relative;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:14px;
   background:rgba(255,255,255,.9);box-shadow:0 2px 6px rgba(160,100,30,.2);cursor:pointer;transition:transform .12s, box-shadow .12s;
 }
 .seed:active{transform:scale(.95)}
 .seed.on{box-shadow:0 0 0 3px #ffb347,0 4px 10px rgba(255,150,40,.4);background:#fffdf2}
-.seed .ic{width:38px;height:38px;flex:0 0 auto;border-radius:12px;overflow:hidden;background:#f6ecd8;display:flex;align-items:center;justify-content:center}
+.seed .ic{width:46px;height:46px;flex:0 0 auto;border-radius:13px;overflow:hidden;background:#f6ecd8;display:flex;align-items:center;justify-content:center}
 .seed .ic img{width:90%;height:90%;object-fit:contain}
 .seed .nm{font-size:13px;font-weight:900;color:#5a3a12}
 .seed .cnt{font-size:11px;color:#8a6a2a;font-weight:700}
@@ -183,6 +196,8 @@ body.night .stars{display:block}
   <div class="farmwrap">
     <div class="farm" id="farm">
       <div class="grid" id="grid"></div>
+      <button class="shopbtn" onclick="openShop()">🏪 商店</button>
+      <div class="farmhint">🌱 点绿色地块开垦 · 播种 · 成熟收获<br><span style="font-size:.86em;opacity:.85">价格随日期与天气浮动，雨天菜价高</span></div>
     </div>
   </div>
   <!-- 底部操作栏 -->
@@ -450,6 +465,27 @@ function buySeed(id){
     coins-=cost;state.seeds[id]=(state.seeds[id]||0)+c.seedUnit;
     renderTopCoins();renderSeedBar();saveState();toast('已购买 '+c.seedUnit+' 个'+c.name+'种子');
   });
+}
+
+/* farm 空白区点击提示 */
+(function(){
+  var f=document.getElementById('farm');
+  if(f)f.addEventListener('click',function(e){
+    if(e.target.closest('.plot')||e.target.closest('.shopbtn'))return;
+    toast('🏪 点右上角商店买种子');
+  });
+})();
+
+/* ===== 商店 ===== */
+function openShop(){
+  var html='<h3>🏪 山姆大婶的商店</h3><div class="info">今日种子价（随日期波动 ±30%，雨天菜价 +20%、雪天 +10%）</div>';
+  var order=['apple','pear','watermelon','corn','tomato','strawberry'];
+  for(var k=0;k<order.length;k++){
+    var id=order[k],c=CROPS[id];
+    html+='<div class="row"><span class="kv">'+c.name+' 种子</span><span class="kv" style="white-space:nowrap">🪙 '+seedPrice(id)+' / '+c.seedUnit+' 个</span><button class="btn go" style="flex:none;padding:6px 16px" onclick="buySeed(\''+id+'\')">购买</button></div>';
+  }
+  html+='<div style="margin-top:12px;text-align:center"><button class="btn cancel" style="flex:none;padding:9px 26px" onclick="closePanel()">关闭</button></div>';
+  panelHTML(html);showPanel();
 }
 
 /* ===== API 封装 ===== */
