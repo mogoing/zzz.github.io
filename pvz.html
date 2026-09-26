@@ -36,7 +36,7 @@
   .canvas{
     position:relative;overflow:hidden;border-radius:18px;
     box-shadow:0 20px 46px rgba(139,92,246,.28),0 0 0 4px rgba(255,255,255,.8);
-    background:#000;
+    background:linear-gradient(160deg,#FFF6E8 0%,#FFE9F1 45%,#EAF4FF 100%);
   }
   .canvas::after{
     content:"";position:absolute;inset:0;border-radius:18px;z-index:3;pointer-events:none;
@@ -73,7 +73,7 @@
   body.fs{background:#000}
   body.fs header{opacity:0;pointer-events:none}
   body.fs .wrap{padding:0}
-  body.fs .canvas{border-radius:0;box-shadow:none;background:#000}
+  body.fs .canvas{border-radius:0;box-shadow:none;background:linear-gradient(160deg,#FFF6E8 0%,#FFE9F1 45%,#EAF4FF 100%)}
   body.fs .canvas::after{display:none}
   body.fs .info-zone{opacity:0;pointer-events:none}
   body.fs .tip{display:none}
@@ -206,29 +206,41 @@
     var cv = $('canvas'), stage = $('stage'), game = $('game'), tip = $('tip');
     var zoom = 1;
 
-    // 竖屏：13.5:9 等比画布（上下留信息区）；全屏：铺满整个屏幕
+    // 竖屏：画布贴满顶栏与信息区之间的全部空间（无下方白条）；
+    // 全屏：画布铺满整个屏幕（APK 原生全屏时用其传入的实际尺寸）。
     function fit(){
       var fs = document.body.classList.contains('fs');
+      var headerEl = document.querySelector('header'), infoEl = document.querySelector('.info-zone');
       if (fs){
-        var W = innerWidth, H = innerHeight;
+        var W = window.__fsW || innerWidth, H = window.__fsH || innerHeight;
         cv.style.width = W + 'px';
         cv.style.height = H + 'px';
-        var s = Math.max(W / 960, H / 640) * zoom;   // cover 铺满无黑边
+        var s = Math.min(W / 960, H / 640) * zoom;   // contain：完整显示、不裁切
         stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
       } else {
-        var vw = document.documentElement.clientWidth;
-        var vh = document.documentElement.clientHeight;
-        var maxW = Math.min(vw - 16, 760);
-        var maxH = (vh - 200) * 13.5 / 9;
-        var W = Math.max(220, Math.min(maxW, maxH));
-        var H = W * 9 / 13.5;
-        cv.style.width = W + 'px';
-        cv.style.height = Math.round(H) + 'px';
-        var s = Math.min(W / 960, H / 640) * zoom;
+        var availW = Math.max(220, innerWidth - 12);
+        var availH = Math.max(160, innerHeight - headerEl.offsetHeight - infoEl.offsetHeight - 8);
+        cv.style.width = availW + 'px';
+        cv.style.height = availH + 'px';
+        var s = Math.min(availW / 960, availH / 640) * zoom;
         stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
       }
       $('sizeLabel').textContent = '画面 ' + Math.round(zoom * 100) + '%';
     }
+
+    // APK 原生全屏信号（WebView 里 fullscreenchange 不触发，由 App 层派发）
+    window.addEventListener('apkfs', function(e){
+      var d = (e && e.detail) || {};
+      window.__fsW = d.w || innerWidth;
+      window.__fsH = d.h || innerHeight;
+      document.body.classList.add('fs');
+      setTimeout(fit, 80);
+    });
+    window.addEventListener('apkfsx', function(){
+      document.body.classList.remove('fs');
+      window.__fsW = window.__fsH = 0;
+      setTimeout(fit, 80);
+    });
 
     game.addEventListener('load', function(){ tip.style.opacity = '0'; });
     setTimeout(function(){ tip.style.opacity = '0'; }, 9000);
