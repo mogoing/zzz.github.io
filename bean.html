@@ -103,7 +103,7 @@ body{
   background:rgba(45,30,8,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .modal.on{display:block}
 .panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(94vw,560px);height:min(88vh,640px);border-radius:24px;overflow:hidden;
+  width:min(96vw,620px);height:min(93vh,760px);border-radius:24px;overflow:hidden;
   background:linear-gradient(#FFFBF0,#FFEED0);border:3px solid rgba(255,201,74,.95);
   box-shadow:0 24px 60px rgba(40,20,0,.45);display:flex;flex-direction:column}
 .mhead{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;
@@ -117,7 +117,15 @@ body{
 .mrow .minfo{flex:1;min-width:0}
 .mrow .mname{font-weight:900;color:#5d4226;font-size:clamp(14px,1.8vw,18px)}
 .mrow .msub{font-size:clamp(11px,1.4vw,14px);color:#a08050;font-weight:600;margin-top:2px}
-.mrow .mbtn{min-height:42px;padding:.25em 1.2em;border-radius:999px;border:none;font-weight:900;font-size:clamp(13px,1.7vw,17px);cursor:pointer;color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.2);flex:0 0 auto}
+.mrow .mbtn{min-height:44px;padding:.25em 1.1em;border-radius:999px;border:none;font-weight:900;font-size:clamp(13px,1.7vw,17px);cursor:pointer;color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.2);flex:0 0 auto}
+.qty{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+.qty button{width:32px;height:32px;border-radius:10px;border:2px solid #c8902c;background:#FFF;font-weight:900;font-size:18px;color:#a05c00;cursor:pointer;line-height:1;box-shadow:0 2px 3px rgba(0,0,0,.12)}
+.qty button:active{transform:scale(.9)}
+.qty b{min-width:22px;text-align:center;font-weight:900;color:#5d4226;font-size:clamp(15px,1.9vw,19px)}
+.msum{flex:0 0 auto;padding:12px 18px;border-top:3px solid rgba(255,201,74,.85);
+  background:linear-gradient(135deg,#FFD06B,#FFA93C);display:flex;align-items:center;justify-content:flex-end;
+  font-weight:900;color:#5d3c00;font-size:clamp(15px,2vw,20px)}
+.msum b{font-size:1.25em;color:#a02010}
 .mbtn.buy{background:linear-gradient(#FFD06B,#FF9D3D);color:#7a4d00}
 .mbtn.sell{background:linear-gradient(#8BD67A,#4DA83A)}
 .mbtn:active{transform:scale(.94)}
@@ -169,6 +177,7 @@ body{
     <div class="panel">
       <div class="mhead"><span id="mTitle">商店</span><button class="mclose" onclick="closeModal()">✕</button></div>
       <div class="mbody" id="mBody"></div>
+      <div class="msum"><span>一共 <b id="mSum">0</b> 金</span></div>
     </div>
   </div>
 </div>
@@ -179,13 +188,13 @@ body{
 var API='https://api.mogoing.xyz';
 var IMG='bean/img/';
 var CROPS={
-  apple:{name:'苹果',base:1,growH:2,seedRate:2,seed:'seed/apple_seed.png',imgs:['apple_s1.webp','apple_s2.webp','apple_s3.webp','apple_s4.webp']},
-  pear:{name:'梨',base:1,growH:3,seedRate:2,seed:'seed/pear_seed.png',imgs:['pear_s1.webp','pear_s2.webp','pear_s3.webp','pear_s4.webp']},
-  corn:{name:'玉米',base:3,growH:3,seedRate:1,seed:'seed/corn_seed.png',imgs:['corn_s1.webp','corn_s2.webp','corn_s3.webp','corn_s4.webp']},
-  pumpkin:{name:'南瓜',base:8,growH:6,seedRate:1,seed:'seed/pumpkin_seed.png',imgs:['pumpkin_s1.webp','pumpkin_s2.webp','pumpkin_s3.webp','pumpkin_s4.webp']},
-  strawberry:{name:'草莓',base:5,growH:4,seedRate:1,seed:'seed/strawberry_seed.png',imgs:['strawberry_s1.webp','strawberry_s2.webp','strawberry_s3.webp','strawberry_s4.webp']},
-  carrot:{name:'胡萝卜',base:2,growH:2,seedRate:1,seed:'seed/carrot_seed.png',imgs:['carrot_s1.webp','carrot_s2.webp','carrot_s3.webp','carrot_s4.webp']},
-  radish:{name:'白萝卜',base:2,growH:4,seedRate:1,seed:'seed/radish_seed.png',imgs:['radish_s1.webp','radish_s2.webp','radish_s3.webp','radish_s4.webp']}
+  apple:{name:'苹果',fn:'奇幻苹果树种子',base:1,growH:2,seedRate:2,seed:'seed/apple_seed.png',imgs:['apple_s1.webp','apple_s2.webp','apple_s3.webp','apple_s4.webp']},
+  pear:{name:'梨',fn:'永远不分梨种子',base:1,growH:3,seedRate:2,seed:'seed/pear_seed.png',imgs:['pear_s1.webp','pear_s2.webp','pear_s3.webp','pear_s4.webp']},
+  corn:{name:'玉米',fn:'黄金魔玉米种子',base:3,growH:3,seedRate:1,seed:'seed/corn_seed.png',imgs:['corn_s1.webp','corn_s2.webp','corn_s3.webp','corn_s4.webp']},
+  pumpkin:{name:'南瓜',fn:'幽灵南瓜种子',base:8,growH:6,seedRate:1,seed:'seed/pumpkin_seed.png',imgs:['pumpkin_s1.webp','pumpkin_s2.webp','pumpkin_s3.webp','pumpkin_s4.webp']},
+  strawberry:{name:'草莓',fn:'绯红魔莓种子',base:5,growH:4,seedRate:1,seed:'seed/strawberry_seed.png',imgs:['strawberry_s1.webp','strawberry_s2.webp','strawberry_s3.webp','strawberry_s4.webp']},
+  carrot:{name:'胡萝卜',fn:'玉兔灵萝卜种子',base:2,growH:2,seedRate:1,seed:'seed/carrot_seed.png',imgs:['carrot_s1.webp','carrot_s2.webp','carrot_s3.webp','carrot_s4.webp']},
+  radish:{name:'白萝卜',fn:'霜雪白萝卜种子',base:2,growH:4,seedRate:1,seed:'seed/radish_seed.png',imgs:['radish_s1.webp','radish_s2.webp','radish_s3.webp','radish_s4.webp']}
 };
 /* 备选作物（素材已备好，启用需补生长阶段图）：
    tomato番茄 eggplant茄子 pepper辣椒 watermelon西瓜 —— 种子图标已就绪(seed/xxx_seed.png) */
@@ -205,7 +214,8 @@ var cells=[];
 function $(id){return document.getElementById(id)}
 function req(url,opt){opt=opt||{};opt.headers=opt.headers||{};opt.headers['User-Agent']='Mozilla/5.0 bean';
   return fetch(url,opt).then(function(r){return r.json()})}
-function saveTimer(){clearTimeout(saveTimer.t);saveTimer.t=setTimeout(saveRemote,900)}
+function saveTimer(){clearTimeout(saveTimer.t);saveTimer.t=setTimeout(saveRemote,600)}
+function saveNow(){clearTimeout(saveTimer.t);saveRemote()}
 function fly(x,y,txt,color){var d=document.createElement('div');d.className='fly';d.textContent=txt;
   d.style.left=x+'px';d.style.top=y+'px';if(color)d.style.color=color;
   document.body.appendChild(d);setTimeout(function(){d.remove()},1000)}
@@ -374,21 +384,30 @@ function plant(k){
 }
 
 /* ================= 商店 / 口袋 ================= */
+var shopQty={};
 function openShop(){
   $('mTitle').textContent='商店';
-  var h='';
+  var h='',sum=0;
   for(var k in CROPS){
-    var c=CROPS[k],sp=seedPrice(c);
+    var c=CROPS[k],sp=seedPrice(c),per=c.seedRate,q=shopQty[k]||1;
+    var rate=String(parseFloat((per/sp).toFixed(1)));
     h+='<div class="mrow"><img class="mico" src="'+IMG+c.seed+'"><div class="minfo">'+
-       '<div class="mname">'+c.name+'种子</div><div class="msub">今日 '+sp+' 金 / '+c.seedRate+' 个</div></div>'+
-       '<button class="mbtn buy" onclick="buySeed(\''+k+'\')">'+sp+'金</button></div>';
+       '<div class="mname">'+c.fn+'</div><div class="msub">当日 1 币 '+rate+' 个</div></div>'+
+       '<div class="qty"><button onclick="qtyChg(\''+k+'\',-1)">−</button><b>'+q+'</b><button onclick="qtyChg(\''+k+'\',1)">+</button></div>'+
+       '<button class="mbtn buy" onclick="buySeed(\''+k+'\')">'+q*sp+'金</button></div>';
+    sum+=q*sp;
   }
-  $('mBody').innerHTML=h;openModal();
+  $('mBody').innerHTML=h;$('mSum').textContent=sum;openModal();
+}
+function qtyChg(k,d){
+  shopQty[k]=Math.max(1,Math.min(99,(shopQty[k]||1)+d));
+  if($('modal').classList.contains('on')&&$('mTitle').textContent==='商店')openShop();
 }
 function buySeed(k){
-  var c=CROPS[k],sp=seedPrice(c);
-  if(coins<sp){flyP(6,'金币不足');return}
-  spend(sp);inv.seed[k]+=c.seedRate;renderShop();saveTimer();
+  var c=CROPS[k],sp=seedPrice(c),q=shopQty[k]||1,cost=q*sp;
+  if(coins<cost){flyP(6,'金币不足');return}
+  spend(cost);inv.seed[k]+=q*c.seedRate;
+  renderShop();saveNow();
 }
 function openBag(){
   $('mTitle').textContent='口袋';
@@ -398,7 +417,7 @@ function openBag(){
     if(inv.crop[k]>0){any=true;
       var pr=priceOf(c);
       h+='<div class="mrow"><img class="mico" src="'+IMG+c.imgs[3]+'"><div class="minfo">'+
-         '<div class="mname">'+c.name+'</div><div class="msub">'+inv.crop[k]+' 个 · 今日 '+pr+' 金/个</div></div>'+
+         '<div class="mname">'+c.fn.replace(/种子$/,'')+'</div><div class="msub">'+inv.crop[k]+' 个 · 今日 '+pr+' 金/个</div></div>'+
          '<button class="mbtn sell" onclick="sellCrop(\''+k+'\')">卖出</button></div>';
     }
   }
@@ -418,14 +437,18 @@ function closeModal(){$('modal').classList.remove('on')}
 function saveRemote(){
   var data={plots:plots,inv:inv,digCount:digCount,harvest:harvest};
   req(API+'/api/save?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)+'&game=bean',{
-    method:'POST',headers:{'Content-Type':'application/json'},
+    method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
     body:JSON.stringify(data)}).catch(function(){});
 }
+window.addEventListener('pagehide',function(){if(UN&&UN!=='tester')saveRemote()});
 function loadRemote(){
   req(API+'/api/save?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)+'&game=bean').then(function(j){
-    if(j&&j.ok&&j.data){
-      var d=j.data;
-      plots=d.plots||makePlots();inv=d.inv||inv;digCount=d.digCount||0;harvest=d.harvest||0;
+    if(j&&j.ok&&j.save){
+      var d=j.save;
+      if(d.plots&&d.plots.length===16){plots=d.plots}else{plots=makePlots()}
+      if(d.inv&&d.inv.seed){inv=d.inv}
+      else if(d.inv){var ni={seed:{},crop:{}};for(var k in CROPS){ni.seed[k]=d.inv[k]||0;ni.crop[k]=0}inv=ni}
+      digCount=d.digCount||0;harvest=d.harvest||0;
     }else{plots=makePlots()}
     renderAll();
   }).catch(function(){plots=makePlots();renderAll()});
@@ -439,7 +462,6 @@ if(!UN||!PW){location.href='index.html';}
 req(API+'/api/user?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)).then(function(j){
   if(j&&j.ok){coins=j.user.coins||0;$('coins').textContent=coins;buildFarm();loadRemote();fetchWeather();}
   else{location.href='index.html';}
-}).catch(function(){location.href='index.html'});
-</script>
+}).catch(function(){location.href='index.html'});</script>
 </body>
 </html>
