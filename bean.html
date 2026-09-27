@@ -472,7 +472,7 @@ function closeModal(){$('modal').classList.remove('on')}
 /* ================= 存档 ================= */
 var saveInFlight=false,saveQueued=false,saveRetry=0;
 function saveRemote(){
-  if(!UN||UN==='tester')return Promise.resolve();
+  if(!UN)return Promise.resolve();
   if(saveInFlight){saveQueued=true;return Promise.resolve()}
   saveInFlight=true;$('saveState').textContent='保存中…';
   var payload={username:UN,password:PW,game:'bean',data:{plots:plots,inv:inv,digCount:digCount,harvest:harvest}};
@@ -485,7 +485,7 @@ function saveRemote(){
     })
     .then(function(){saveInFlight=false;if(saveQueued){saveQueued=false;saveRemote()}});
 }
-window.addEventListener('pagehide',function(){if(UN&&UN!=='tester')saveRemote()});
+window.addEventListener('pagehide',function(){if(UN)saveRemote()});
 function loadRemote(){
   req(API+'/api/save?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)+'&game=bean').then(function(j){
     if(j&&j.ok&&j.save){
