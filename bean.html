@@ -85,7 +85,7 @@ body{
 
 /* ===== 底栏（洛克王国木牌按钮） ===== */
 .bottombar{
-  position:absolute;left:1.5%;right:1.5%;bottom:2%;height:9.5%;
+  position:absolute;left:1.5%;right:1.5%;bottom:10.5%;height:8.5%;
   display:flex;align-items:center;justify-content:space-evenly;gap:2%;
 }
 .bbtn{
@@ -99,9 +99,20 @@ body{
 .bbtn::before{content:"";position:absolute;inset:3px;border-radius:11px;border:2px solid rgba(255,255,255,.35);pointer-events:none}
 .bbtn:active{transform:translateY(4px);box-shadow:0 0 0 #6b3f15, 0 2px 4px rgba(70,40,10,.3)}
 .bbtn .bico{width:1.25em;height:1.25em;flex:0 0 auto;filter:drop-shadow(0 1px 0 rgba(255,255,255,.35))}
-.hud{position:absolute;left:3%;right:3%;bottom:15%;height:3.4%;display:flex;align-items:center;justify-content:center;gap:1.4em;
+.seedtray{position:absolute;left:1.5%;right:1.5%;bottom:1%;height:8.5%;z-index:5;display:flex;align-items:center;justify-content:center;gap:clamp(4px,1vw,12px);padding:5px 8px;
+  overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;background:rgba(255,252,242,.94);border:2px solid rgba(255,201,74,.9);border-radius:18px;
+  box-shadow:0 5px 16px rgba(40,20,0,.26);backdrop-filter:blur(5px)}
+.seedtray::-webkit-scrollbar{display:none}
+.seeditem{position:relative;display:flex;flex:1 0 0;max-width:92px;min-width:42px;height:100%;align-items:center;justify-content:center;padding:3px;border-radius:13px;cursor:pointer;
+  background:linear-gradient(#fff9e9,#ffe9b9);border:2px solid rgba(255,201,74,.5);box-shadow:0 2px 4px rgba(150,100,30,.1);transition:transform .12s,border-color .12s,background .12s}
+.seeditem img{width:min(100%,clamp(28px,5vw,46px));height:70%;object-fit:contain;pointer-events:none}
+.seeditem span{position:absolute;right:-3px;bottom:-3px;min-width:20px;padding:1px 5px;border-radius:999px;background:#fff;border:1.5px solid #e5b74b;color:#684719;font-size:clamp(9px,1.2vw,12px);font-weight:900;line-height:1.25;text-align:center}
+.seeditem.selected{border-color:#f09031;background:linear-gradient(#fff1bd,#ffd56c);box-shadow:0 0 0 2px rgba(255,255,255,.8),0 3px 9px rgba(205,117,25,.35);transform:translateY(-3px)}
+.seeditem.off{filter:grayscale(.8);opacity:.56}
+.hud{position:absolute;left:3%;right:3%;bottom:20%;height:3.4%;display:flex;align-items:center;justify-content:center;gap:1.4em;
   font-size:clamp(11px,1.4vw,16px);font-weight:800;color:rgba(255,250,230,.98);text-shadow:0 1px 3px rgba(40,25,5,.75);pointer-events:none}
 .hud b{color:var(--gold)}
+#saveState{font-size:.88em;color:#fff6c8;opacity:.92}
 
 /* ===== 弹窗（全屏覆盖） ===== */
 .modal{position:fixed;inset:0;z-index:30;display:none;
@@ -140,18 +151,15 @@ body{
 .mbtn:active{transform:scale(.94)}
 .mempty{text-align:center;color:#b49a6a;font-weight:700;padding:40px 0;font-size:clamp(13px,1.7vw,17px)}
 
-/* 种子选择浮窗 */
-.seedbar{position:absolute;left:50%;bottom:16%;transform:translateX(-50%);z-index:20;display:none;
-  background:rgba(255,252,242,.97);border:2.5px solid rgba(255,201,74,.9);border-radius:20px;
-  box-shadow:0 12px 34px rgba(40,20,0,.32);padding:10px 12px;gap:8px;max-width:96%}
-.seedbar.on{display:flex;flex-wrap:wrap;justify-content:center}
-.seeditem{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 10px;border-radius:14px;cursor:pointer;background:#FFF6E0;border:2px solid rgba(255,201,74,.55);min-width:64px;box-shadow:0 2px 4px rgba(150,100,30,.1)}
-.seeditem img{width:44px;height:44px;object-fit:contain}
-.seeditem span{font-size:clamp(10px,1.3vw,13px);font-weight:900;color:#5d4226}
 .seeditem:active{transform:scale(.92)}
-.seeditem.off{filter:grayscale(1);opacity:.4;cursor:not-allowed}
-.seeditem.off:active{transform:none}
-.seedbar .sclose{margin-left:4px;width:30px;height:30px;border-radius:50%;background:#ffe;border:2px solid #c8a05c;font-weight:900;color:#a05c00;cursor:pointer;align-self:center}
+@media (max-width:640px){
+  .farmwrap{top:46%;width:94vw;max-width:calc(56vh*1.55)}
+  .bottombar{left:2%;right:2%;bottom:10.5%;height:8.5%;gap:2%}
+  .bbtn{min-width:0;flex:1;min-height:42px;padding:.25em .45em;border-radius:13px;font-size:clamp(12px,3.2vw,16px)}
+  .seedtray{left:2%;right:2%;gap:4px;padding:4px 5px;border-radius:15px}
+  .seeditem{min-width:38px;border-radius:11px}
+  .hud{bottom:20%;gap:.8em;font-size:11px}
+}
 
 /* ===== 飘字 ===== */
 .fly{position:fixed;z-index:40;pointer-events:none;font-weight:900;color:#FFD06B;
@@ -174,7 +182,7 @@ body{
     <div class="farm" id="farm"></div>
   </div>
 
-  <div class="hud" id="hud"><span>开垦 <b id="hDig">0</b>/16</span><span>收获 <b id="hHar">0</b></span><span>今日菜价 <b id="hPrice">--</b></span></div>
+  <div class="hud" id="hud"><span>开垦 <b id="hDig">0</b>/16</span><span>收获 <b id="hHar">0</b></span><span>今日菜价 <b id="hPrice">--</b></span><span id="saveState">已同步</span></div>
 
   <div class="bottombar">
     <a class="bbtn" id="bShop" href="javascript:openShop()"><img class="bico" src="bean/img/ico_shop.png" alt="">商店</a>
@@ -182,7 +190,7 @@ body{
     <a class="bbtn" id="bBack" href="main.html"><img class="bico" src="bean/img/ico_back.png" alt="">返回</a>
   </div>
 
-  <div class="seedbar" id="seedbar"></div>
+  <div class="seedtray" id="seedtray" aria-label="种子栏"></div>
 
   <div class="modal" id="modal">
     <div class="panel">
@@ -297,9 +305,8 @@ function buildFarm(){
   for(var i=0;i<16;i++){cells.push($('c'+i))}
 }
 function bgOf(p){
-  if(p.s===-1)return IMG+'plot_grass.png';
-  if(p.s===0)return IMG+'plot_grass.png';
-  return IMG+'plot_soil.png';
+  if(p.s===-1||p.s===0)return IMG+'plot_grass_new.webp';
+  return IMG+'plot_soil_new.webp';
 }
 function renderCell(i){
   var p=plots[i],el=cells[i],im=$('cr'+i);
@@ -316,7 +323,7 @@ function renderCell(i){
     im.style.display='none';im.removeAttribute('src');
   }
 }
-function renderAll(){for(var i=0;i<16;i++)renderCell(i);refreshHud()}
+function renderAll(){for(var i=0;i<16;i++)renderCell(i);refreshHud();renderSeedTray()}
 function refreshHud(){
   $('hDig').textContent=digCount;
   $('hHar').textContent=harvest;
@@ -348,8 +355,9 @@ function tap(i){
     if(coins<cost){flyP(i,'金币不足');shake(cells[i]);return}
     spend(cost);p.s=1;digCount++;renderCell(i);saveTimer();return;
   }
-  if(p.s===1){            /* 已开垦：选种子 */
-    openSeedbar(i);return;
+  if(p.s===1){            /* 已开垦：用底部当前选中的种子 */
+    if((inv.seed[selectedSeed]||0)>0){plant(i,selectedSeed);return}
+    flyP(i,'先在商店购买'+CROPS[selectedSeed].name+'种子');return;
   }
   if(p.s===2){
     if(p.st===3){         /* 成熟：收获 */
@@ -375,29 +383,30 @@ function gain(n){coins+=n;$('coins').textContent=coins;
   req(API+'/api/gain',{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({username:UN,password:PW,amount:n})}).catch(function(){})}
 
-/* ================= 种子选择 ================= */
-var selPlot=-1;
-function openSeedbar(i){
-  selPlot=i;
-  var sb=$('seedbar');var h='';var has=false;
+/* ================= 种子栏与播种 ================= */
+var selectedSeed='apple';
+function renderSeedTray(){
+  var tray=$('seedtray');if(!tray)return;
+  var h='';
   for(var k in CROPS){
     var n=inv.seed[k]||0;
-    if(n>0)has=true;
-    h+='<div class="seeditem'+(n>0?'':' off')+'"'+(n>0?' onclick="plant(\''+k+'\')"':'')+'>'+
-       '<img src="'+IMG+CROPS[k].seed+'"><span>'+(n>0?n:'0')+'</span></div>';
+    h+='<button type="button" class="seeditem'+(k===selectedSeed?' selected':'')+(n>0?'':' off')+'"'+
+       ' title="'+CROPS[k].name+'种子 '+n+' 个" aria-label="'+CROPS[k].name+'种子 '+n+' 个" onclick="selectSeed(\''+k+'\')">'+
+       '<img src="'+IMG+CROPS[k].seed+'" alt=""><span>'+n+'</span></button>';
   }
-  if(!has){flyP(i,'没种子，先去商店买');return}
-  h+='<button class="sclose" onclick="closeSeedbar()">✕</button>';
-  sb.innerHTML=h;sb.classList.add('on');
+  tray.innerHTML=h;
 }
-function closeSeedbar(){$('seedbar').classList.remove('on')}
-function plant(k){
-  if(selPlot<0)return;
-  var p=plots[selPlot];
+function selectSeed(k){
+  selectedSeed=k;renderSeedTray();
+  if(!(inv.seed[k]||0))fly(innerWidth/2,innerHeight*.72,'去商店购买'+CROPS[k].name+'种子','#a05c00');
+}
+function plant(i,k){
+  var p=plots[i];
   if(p.s!==1)return;
+  if((inv.seed[k]||0)<1){flyP(i,'种子不够了');return}
   inv.seed[k]--;p.s=2;p.c=k;p.st=0;p.pa=Date.now();p.w=0;p.f=0;
-  closeSeedbar();renderCell(selPlot);
-  var im=$('cr'+selPlot);im.classList.add('pop');setTimeout(function(){im.classList.remove('pop')},420);
+  renderCell(i);renderSeedTray();
+  var im=$('cr'+i);im.classList.add('pop');setTimeout(function(){im.classList.remove('pop')},420);
   saveTimer();
 }
 
@@ -431,6 +440,7 @@ function checkout(){
   if(coins<total){flyP(6,'金币不足');return}
   spend(total);
   for(var k in need){inv.seed[k]+=need[k]*CROPS[k].seedRate}
+  renderSeedTray();
   shopQty={};
   renderShop();saveNow();
   fly(innerWidth/2,innerHeight*0.28,'购买成功 ✨','#6bb13c');
@@ -460,11 +470,20 @@ function openModal(){$('modal').classList.add('on')}
 function closeModal(){$('modal').classList.remove('on')}
 
 /* ================= 存档 ================= */
+var saveInFlight=false,saveQueued=false,saveRetry=0;
 function saveRemote(){
-  var data={plots:plots,inv:inv,digCount:digCount,harvest:harvest};
-  req(API+'/api/save?username='+encodeURIComponent(UN)+'&password='+encodeURIComponent(PW)+'&game=bean',{
-    method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
-    body:JSON.stringify(data)}).catch(function(){});
+  if(!UN||UN==='tester')return Promise.resolve();
+  if(saveInFlight){saveQueued=true;return Promise.resolve()}
+  saveInFlight=true;$('saveState').textContent='保存中…';
+  var payload={username:UN,password:PW,game:'bean',data:{plots:plots,inv:inv,digCount:digCount,harvest:harvest}};
+  return fetch(API+'/api/save',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,body:JSON.stringify(payload)})
+    .then(function(r){return r.json().then(function(j){if(!r.ok||!j||!j.ok)throw new Error((j&&j.error)||'save failed');return j})})
+    .then(function(){saveRetry=0;$('saveState').textContent='已保存'})
+    .catch(function(){
+      $('saveState').textContent='保存失败，稍后重试';
+      if(saveRetry<2){saveRetry++;setTimeout(saveRemote,1500*saveRetry)}
+    })
+    .then(function(){saveInFlight=false;if(saveQueued){saveQueued=false;saveRemote()}});
 }
 window.addEventListener('pagehide',function(){if(UN&&UN!=='tester')saveRemote()});
 function loadRemote(){
