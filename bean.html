@@ -17,7 +17,7 @@ body{
 }
 /* ===== 全屏背景层：横版场景适配桌面与手机，天气用轻色调表达 ===== */
 #sky{position:fixed;inset:0;z-index:0;background-color:#8fc6ee;
-  background-image:linear-gradient(rgba(255,255,255,.02),rgba(255,255,255,.02)),url('bean/img/farm_bg2.jpg');
+  background-image:linear-gradient(rgba(255,255,255,.02),rgba(255,255,255,.02)),url('bean/img/farm_scene_sun.webp');
   background-size:cover;background-position:center;transition:background-image .6s,filter .6s}
 /* 雨丝层：雨天/雷雨时显示，只在下层 */
 #rain{position:fixed;inset:0;z-index:1;pointer-events:none;display:none;
@@ -61,7 +61,7 @@ body{
 #date{font-size:clamp(10px,1.3vw,15px);color:#8a6a3f}
 @media (max-width:640px){
   #date{display:none}
-  #sky{background-position:right center}
+  #sky{background-position:center center}
   .topbar{top:.6%;height:6.4%}
   .wxbar{gap:6px;padding:2px 10px;font-size:11px}
   .coinbox{gap:5px;padding:2px 10px 2px 6px}
@@ -69,7 +69,7 @@ body{
 }
 
 /* ===== 田块：草边 + 16 菱形格（素材直贴，菱形靠 PNG 素材本身呈现，不依赖 CSS 裁剪） ===== */
-.farmwrap{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:94vw;max-width:calc(60vh*1.55);aspect-ratio:1.55}
+.farmwrap{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:94vw;max-width:calc(48vh*1.55);aspect-ratio:1.55}
 .farm{position:absolute;inset:0;z-index:1}
 .cell{position:absolute;width:25%;height:25%;
   background:center/120% auto no-repeat;cursor:pointer;
@@ -153,12 +153,14 @@ body{
 
 .seeditem:active{transform:scale(.92)}
 @media (max-width:640px){
-  .farmwrap{top:46%;width:94vw;max-width:calc(56vh*1.55)}
   .bottombar{left:2%;right:2%;bottom:10.5%;height:8.5%;gap:2%}
   .bbtn{min-width:0;flex:1;min-height:42px;padding:.25em .45em;border-radius:13px;font-size:clamp(12px,3.2vw,16px)}
   .seedtray{left:2%;right:2%;gap:4px;padding:4px 5px;border-radius:15px}
   .seeditem{min-width:38px;border-radius:11px}
   .hud{bottom:20%;gap:.8em;font-size:11px}
+}
+@media (orientation:portrait){
+  .farmwrap{top:64%;width:78vw;max-width:calc(32vh*1.55)}
 }
 
 /* ===== 飘字 ===== */
@@ -251,14 +253,17 @@ var WICO={sun:'weather_sun',cloud:'weather_cloud',overcast:'weather_cloud',rain:
 function applyWeather(){
   var h=new Date().getHours();night=(h<6||h>=19);
   var sky=$('sky');
-  var tint='rgba(255,255,255,.02)';
-  if(night)tint='rgba(29,35,76,.48)';
-  else if(weather==='rain'||weather==='storm')tint='rgba(47,94,143,.28)';
-  else if(weather==='snow')tint='rgba(220,237,255,.22)';
-  else if(weather==='cloud'||weather==='overcast')tint='rgba(210,224,235,.20)';
-  var rain=weather==='rain'||weather==='storm',portrait=innerHeight>innerWidth;
-  sky.style.backgroundImage='linear-gradient('+tint+','+tint+'),url('+IMG+'farm_bg2.jpg)';
-  sky.style.backgroundPosition=portrait?'right center':'center center';
+  var scene='farm_scene_sun.webp',tint='rgba(255,255,255,.01)';
+  if(weather==='storm'){scene='farm_scene_storm.webp';tint='rgba(12,26,50,.08)'}
+  else if(weather==='snow'){scene='farm_scene_fog.webp';tint='rgba(225,238,255,.04)'}
+  else if(night){scene='farm_scene_night.webp';tint='rgba(8,18,48,.06)'}
+  else if(weather==='rain'){scene='farm_scene_rain.webp';tint='rgba(28,67,100,.06)'}
+  else if(weather==='overcast'){scene='farm_scene_fog.webp';tint='rgba(110,130,150,.04)'}
+  else if(weather==='cloud'){scene='farm_scene_cloud.webp';tint='rgba(110,130,150,.03)'}
+  else if(h>=17){scene='farm_scene_dusk.webp'}
+  var rain=weather==='rain'||weather==='storm';
+  sky.style.backgroundImage='linear-gradient('+tint+','+tint+'),url('+IMG+scene+')';
+  sky.style.backgroundPosition='center center';
   $('rain').style.display=rain?'block':'none';
   $('snow').style.display=weather==='snow'?'block':'none';
   $('wtext').textContent=(night?'夜晚·':'')+WNAME[weather];
