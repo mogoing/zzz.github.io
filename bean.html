@@ -100,16 +100,18 @@ body {
     background: rgba(0, 0, 0, .22);
 }
 
-/* ========== 田块：菱形按钮（16 块） ========== */
+/* ========== 田块：菱形按钮（16 块） ==========
+   关键：clip-path 裁剪成菱形，点击区域贴合菱形，
+   点空白处不会触发（与手写版完全一致） */
 .diamond {
     background: transparent;
     padding: 0;
     border-radius: 0;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 .diamond img {
     width: 110%;
     height: 102%;
-    object-fit: contain;
     pointer-events: none;
     display: block;
 }
@@ -819,9 +821,9 @@ function renderFarm() {
         var p = plots[i];
         var inner = '';
         if (p.s === 0) {
-            inner = '<img src="' + S('bean/cao.png') + '" style="width:110%;height:102%;object-fit:contain;display:block">';
+            inner = '<img src="' + S('bean/cao.png') + '" style="width:110%;height:102%;">';
         } else if (p.s === 1) {
-            inner = '<img src="' + S('bean/img/plot_soil.png') + '" style="width:110%;height:102%;object-fit:contain;display:block">';
+            inner = '<img src="' + S('bean/img/plot_soil.png') + '" style="width:110%;height:102%;">';
         } else {
             var st = stageOf(i);
             inner = cropHtml(p.c, st);
