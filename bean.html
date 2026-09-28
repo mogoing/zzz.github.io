@@ -8,7 +8,7 @@
   ============ 种豆（洛克农场） ============
   素材版本号：改这里即可强制手机刷新所有图片/音频缓存
 -->
-<script>var V='2';function A(u){return u+'?v='+V;}</script>
+<script>var V='3';function A(u){return u+'?v='+V;}</script>
 <style>
 /* ========== 基础重置 ========== */
 * {
@@ -199,7 +199,7 @@ body {
     right: 0;
     bottom: 0;
     height: 17%;
-    background-image: url("bean/seedbg.jpg?v=2");
+    background-image: url("bean/seedbg.jpg?v=3");
     background-size: cover;
     background-position: center;
     gap: 8px;
@@ -588,11 +588,11 @@ body {
 
 <div class="phone">
     <!-- 天气背景 -->
-    <img class="phone-bg" id="bgImg" src="bean/bg/bg_sunny.jpg?v=2" alt="">
+    <img class="phone-bg" id="bgImg" src="bean/bg/bg_sunny.jpg?v=3" alt="">
 
     <!-- 顶部：金币 + 天气 + 返回 -->
     <div class="coins">
-        <img src="bean/img/coin.png?v=2" alt="金币">
+        <img src="bean/img/coin.png?v=3" alt="金币">
         <span id="coinN">0</span>
     </div>
     <div class="title" id="weatherTxt">天气加载中…</div>
@@ -610,7 +610,7 @@ body {
     <button class="btn admbtn" id="admBtn" onclick="openAdm()">管理菜地</button>
 
     <!-- 背景音乐 -->
-    <audio id="bgAudio" src="bean/background.mp3?v=2" preload="auto"></audio>
+    <audio id="bgAudio" src="bean/background.mp3?v=3" preload="auto"></audio>
 
     <!-- 商店卡片 -->
     <div class="card" id="shopCard">
@@ -661,6 +661,9 @@ body {
 
     <!-- 提示 -->
     <div class="toast" id="toast"></div>
+
+    <!-- 预加载提示 -->
+    <div id="preload" style="position:absolute;inset:0;background:rgba(30,20,10,.72);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;z-index:50;letter-spacing:2px;">加载中…</div>
 </div>
 
 <script>
@@ -684,6 +687,14 @@ if (!UN || !PW) { location.href = 'index.html'; }
 
 /* 素材路径统一加版本号，绕过手机缓存 */
 function S(u) { return u + '?v=' + V; }
+/* 图片加载失败时换参数重试一次（绕过旧缓存/瞬时网络错误） */
+function rtry(el) {
+    if (el.dataset.r) return;
+    el.dataset.r = '1';
+    var s = el.src.replace(/[?&]r=\d+/, '');
+    el.src = s + (s.indexOf('?') > 0 ? '&' : '?') + 'r=' + Date.now();
+}
+
 
 /* =====================================================
    1. 作物配置表
@@ -821,9 +832,9 @@ function renderFarm() {
         var p = plots[i];
         var inner = '';
         if (p.s === 0) {
-            inner = '<img src="' + S('bean/cao.png') + '" style="width:110%;height:102%;">';
+            inner = '<img src="' + S('bean/cao.png') + '" style="width:110%;height:102%;" onerror="rtry(this)">';
         } else if (p.s === 1) {
-            inner = '<img src="' + S('bean/img/plot_soil.png') + '" style="width:110%;height:102%;">';
+            inner = '<img src="' + S('bean/img/plot_soil.png') + '" style="width:110%;height:102%;" onerror="rtry(this)">';
         } else {
             var st = stageOf(i);
             inner = cropHtml(p.c, st);
@@ -843,7 +854,7 @@ function renderSeedbar() {
         var on = (selectedSeed === k) ? ' on' : '';
         var z = (n <= 0) ? ' zero' : '';
         h += '<div class="seed-item' + on + z + '" onclick="pickSeed(\'' + k + '\')">' +
-             '<img src="' + S('bean/seed/' + c.seed) + '">' +
+             '<img src="' + S('bean/seed/' + c.seed) + '" onerror="rtry(this)">' +
              '<span class="cnt">' + n + '</span>' +
              '<div>' + c.name + '</div></div>';
     }
@@ -1289,6 +1300,34 @@ function renderAll() {
     renderSeedbar();
     refreshCoin();
 }
+/* =====================================================
+   12.5 素材预加载：进入页面就并行下载全部图片/音频，
+       避免首屏空白和等待（GitHub 国内访问慢的兜底）
+   ===================================================== */
+function preloadAssets() {
+    var list = ['bean/cao.png', 'bean/img/plot_soil.png'];
+    for (var i = 0; i < KEYS.length; i++) list.push('bean/seed/' + CROPS[KEYS[i]].seed);
+    list = list.concat([
+        'bean/seedbg.jpg',
+        'bean/bg/bg_sunny.jpg', 'bean/bg/bg_cloudy.jpg', 'bean/bg/bg_overcast.jpg',
+        'bean/bg/bg_rain.jpg', 'bean/bg/bg_storm.jpg', 'bean/bg/bg_night.jpg', 'bean/bg/bg_dusk.jpg',
+        'bean/img/coin.png', 'bean/background.mp3'
+    ]);
+    var n = list.length, done = 0;
+    for (var j = 0; j < n; j++) {
+        (function(u) {
+            var img = new Image();
+            img.onload = img.onerror = function() { if (++done >= n) preloadDone(); };
+            img.src = S(u);
+        })(list[j]);
+    }
+    setTimeout(preloadDone, 6000);   // 兜底：6 秒后结束预加载状态
+}
+function preloadDone() {
+    var t = $('preload');
+    if (t) t.style.display = 'none';
+}
+
 
 /* =====================================================
    13. 音频 / 返回 / 提示
@@ -1332,6 +1371,7 @@ req(API + '/api/user?username=' + encodeURIComponent(UN) +
         if (manager == 1) $('admBtn').style.display = 'block';
         loadRemote();
         fetchWeather();
+        preloadAssets();
     } else {
         location.href = 'index.html';
     }
