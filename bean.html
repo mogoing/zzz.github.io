@@ -422,26 +422,31 @@ body {
 
 
 /* =========================================================
-   以下为增量功能样式 —— 在用户手写样式之上【追加】，不改动上方任何一条
+   增量功能样式 —— 在用户手写样式之上【追加】，不改动上方任何一条
    ========================================================= */
 
-/* ---- 金币（右上角） ---- */
+/* ---- 金币（顶部居中） ---- */
 .coins {
     position: absolute;
     top: 4%;
-    right: 4%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 8;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
     color: #fff;
     font-size: 17px;
     font-weight: 900;
     text-shadow: 0 2px 5px rgba(0,0,0,.55);
+    background: rgba(122, 74, 20, .35);
+    border-radius: 20px;
+    padding: 2px 12px 2px 6px;
 }
 .coins img { width: 24px; height: 24px; }
 
-/* ---- 管理员按钮（底部一排第三个，仅管理员可见） ---- */
+/* ---- 管理员按钮 ---- */
 .adm {
     right: 0%;
     bottom: 18%;
@@ -454,40 +459,43 @@ body {
     font-weight: 900;
 }
 
-/* ---- 种子栏背景修正：原 seedbg.png 不存在，用 seedbg.jpg ---- */
+/* ---- 种子栏背景修正 ---- */
 .seed { background-image: url("bean/seedbg.jpg?v=3") !important; }
 
-/* ---- 背包占位图隐藏：crop1~3.jpg 不存在，背包功能改用弹出层 ---- */
+/* ---- 背包占位图隐藏 ---- */
 .bagshop img { display: none; }
 
-/* ---- 田块按钮去掉浏览器默认样式，图片铺满菱形 ---- */
+/* ---- 田块按钮去默认样式 ---- */
 .btn.diamond1,.btn.diamond2,.btn.diamond4,.btn.diamond5,.btn.diamond6,
 .btn.diamond7,.btn.diamond8,.btn.diamond9,.btn.diamond10,.btn.diamond11,
 .btn.diamond12,.btn.diamond13,.btn.diamond14,.btn.diamond15,.btn.diamond16,
 .btn.diamond17 { padding: 0; background: transparent; border-radius: 0; cursor: pointer; }
 
-/* ---- 种子栏数量角标（右下角，手写粗体） ---- */
+/* ---- 种子栏数量角标（Q版手绘数字图片） ---- */
 .seed-item { position: relative; }
 .cnt {
     position: absolute;
-    right: -4px;
-    bottom: -2px;
-    min-width: 17px;
-    height: 17px;
-    line-height: 17px;
-    padding: 0 3px;
-    border-radius: 9px;
-    background: #ff5a3c;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 900;
-    text-align: center;
-    font-family: "Segoe Print", "Comic Sans MS", "KaiTi", cursive;
-    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    right: -2px;
+    bottom: 0px;
     z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
 }
+.cnt .numimg { height: 17px; width: auto; }
 
-/* ---- 全屏圆角卡片面板（商店/背包/管理员共用） ---- */
+/* ---- 背包数量（Q版手绘数字图片） ---- */
+.cnt2 {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    display: flex;
+    align-items: flex-end;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+}
+.cnt2 .numimg { height: 15px; width: auto; }
+
+/* ---- 全屏圆角卡片面板 ---- */
 .panel {
     position: absolute;
     left: 4%;
@@ -633,24 +641,8 @@ body {
 .bag-item img { width: 44px; height: 44px; object-fit: contain; }
 .bag-name { font-size: 11px; color: #7a5a2a; text-align: center; line-height: 1.2; }
 .bag-empty { grid-column: 1 / -1; text-align: center; color: #b09060; font-size: 14px; padding: 40px 0; }
-.cnt2 {
-    position: absolute;
-    right: 4px;
-    top: 4px;
-    min-width: 17px;
-    height: 17px;
-    line-height: 17px;
-    padding: 0 3px;
-    border-radius: 9px;
-    background: #ff5a3c;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 900;
-    text-align: center;
-    font-family: "Segoe Print", "Comic Sans MS", "KaiTi", cursive;
-}
 
-/* ---- 作物操作面板（浇水/施肥/铲掉） ---- */
+/* ---- 作物操作面板 ---- */
 .ops {
     position: absolute;
     left: 14%;
@@ -722,6 +714,8 @@ body {
     border-bottom: 1px solid #f0e2cc;
 }
 .adm-mid { flex: 1; font-size: 12px; color: #5a3a15; font-weight: 900; }
+.adm-mid .adm-qty { display: inline-flex; align-items: flex-end; vertical-align: -2px; margin-left: 2px; }
+.adm-mid .adm-qty .numimg { height: 13px; width: auto; }
 .adm-row button {
     width: 30px;
     height: 30px;
@@ -820,9 +814,9 @@ img.ripe { filter: drop-shadow(0 0 6px #ffd93d); }
 
 <div class="phone">
     <img class="phone-bg" src="background.jpg" alt="">
-    <!-- 金币（右上角） -->
-    <div class="coins"><img src="bean/img/coin.png?v=3" alt="金币"><span id="coinN">0</span></div>
-    <!-- 管理员按钮（仅管理员可见） -->
+    <!-- 金币（顶部居中） -->
+    <div class="coins"><img src="bean/img/coin.png?v=4" alt="金币"><span id="coinN">0</span></div>
+    <!-- 管理员按钮 -->
     <button class="btn adm" id="admBtn" onclick="openAdm()" style="display:none">管理</button>
 
 
@@ -898,39 +892,39 @@ img.ripe { filter: drop-shadow(0 0 6px #ffd93d); }
 
 <div class="seed">
     <div class="seed-item">
-        <img class="appleseed" src="seed/appleseed.png" alt="" onclick="pickSeed(this,'apple')"><span class="cnt">0</span>
+        <img class="appleseed" src="seed/appleseed.png" alt="" onclick="pickSeed(this,'apple')"><span class="cnt"></span>
         <div>苹果种子</div>
     </div>
     <div class="seed-item">
-        <img class="pineseed" src="seed/pineseed.png" alt="" onclick="pickSeed(this,'pine')"><span class="cnt">0</span>
+        <img class="pineseed" src="seed/pineseed.png" alt="" onclick="pickSeed(this,'pine')"><span class="cnt"></span>
         <div>松树种子</div>
     </div>
     <div class="seed-item">
-        <img class="candyseed" src="seed/candyseed.png" alt="" onclick="pickSeed(this,'candy')"><span class="cnt">0</span>
+        <img class="candyseed" src="seed/candyseed.png" alt="" onclick="pickSeed(this,'candy')"><span class="cnt"></span>
         <div>糖果种子</div>
     </div>
     <div class="seed-item">
-        <img class="roseseed" src="seed/roseseed.png" alt="" onclick="pickSeed(this,'rose')"><span class="cnt">0</span>
+        <img class="roseseed" src="seed/roseseed.png" alt="" onclick="pickSeed(this,'rose')"><span class="cnt"></span>
         <div>玫瑰种子</div>
     </div>
     <div class="seed-item">
-        <img class="potatoseed" src="seed/potatoseed.png" alt="" onclick="pickSeed(this,'potato')"><span class="cnt">0</span>
+        <img class="potatoseed" src="seed/potatoseed.png" alt="" onclick="pickSeed(this,'potato')"><span class="cnt"></span>
         <div>土豆种子</div>
     </div>
     <div class="seed-item">
-        <img class="mushroomseed" src="seed/mushroomseed.png" alt="" onclick="pickSeed(this,'mushroomseed')"><span class="cnt">0</span>
+        <img class="mushroomseed" src="seed/mushroomseed.png" alt="" onclick="pickSeed(this,'mushroomseed')"><span class="cnt"></span>
         <div>蘑菇种子</div>
     </div>
     <div class="seed-item">
-        <img class="pumpkinseed" src="seed/pumpkinseed.png" alt="" onclick="pickSeed(this,'pumpkin')"><span class="cnt">0</span>
+        <img class="pumpkinseed" src="seed/pumpkinseed.png" alt="" onclick="pickSeed(this,'pumpkin')"><span class="cnt"></span>
         <div>南瓜种子</div>
     </div>
     <div class="seed-item">
-        <img class="cabbageseed" src="seed/cabbageseed.png" alt="" onclick="pickSeed(this,'cabbage')"><span class="cnt">0</span>
+        <img class="cabbageseed" src="seed/cabbageseed.png" alt="" onclick="pickSeed(this,'cabbage')"><span class="cnt"></span>
         <div>白菜种子</div>
     </div>
     <div class="seed-item">
-        <img class="radishseed" src="seed/radishseed.png" alt="" onclick="pickSeed(this,'radish')"><span class="cnt">0</span>
+        <img class="radishseed" src="seed/radishseed.png" alt="" onclick="pickSeed(this,'radish')"><span class="cnt"></span>
         <div>萝卜种子</div>
     </div>
 </div>
@@ -1041,27 +1035,41 @@ function pickSeed(el, seedType) {
 
 
 /* =========================================================
-   增量功能 JS —— 在用户手写 JS 之后【追加】，不改动用户已有代码
-   （用户的 audio 播放、pickSeed 选中逻辑均原样保留）
+   增量功能 JS（v4）—— 在用户手写 JS 之后【追加】，不改动用户已有代码
+   本轮：金币居中显示 / 返回按钮绑定 / Q版手绘数字角标 /
+        存档增强（fetch keepalive + sendBeacon + 多事件兜底）/
+        天气背景改用 .phone-bg 选择器
    ========================================================= */
 (function () {
     'use strict';
-    var V = '3';
+    var V = '4';
     var API = 'https://api.mogoing.xyz';
     var U = localStorage.getItem('blindbox_user') || '';
     var P = localStorage.getItem('blindbox_pass') || '';
     var PLOTS = 16;
-    var OPEN_PRICE = 10;   // 第 k 块地开垦价 = (k+1)*10 金币
+    var OPEN_PRICE = 10;
     var manager = false;
 
-    /* ---- 素材路径：统一加 bean/ 前缀 + 版本号 ---- */
     function S(u) {
         if (/^(https?:|data:|blob:)/.test(u)) return u;
         if (u.indexOf('bean/') === 0) return u + '?v=' + V;
         return 'bean/' + u + '?v=' + V;
     }
 
-    /* ---- 作物配置（key 与用户种子栏 pickSeed 的 seedType 一一对应） ---- */
+    /* ---- Q版手绘数字渲染：123 → 三张数字图 ---- */
+    function numHTML(n) {
+        n = String(n == null ? 0 : n);
+        var h = '';
+        for (var i = 0; i < n.length; i++) {
+            var c = n.charAt(i);
+            if (c === '-') { h += '<img class="numimg" src="' + S('num/minus.png') + '">'; continue; }
+            if (!/[0-9]/.test(c)) continue;
+            h += '<img class="numimg" src="' + S('num/' + c + '.png') + '">';
+        }
+        return h || '<img class="numimg" src="' + S('num/0.png') + '">';
+    }
+
+    /* ---- 作物配置 ---- */
     var CROPS = {
         apple:        { name: '奇幻苹果树种子', seed: 'appleseed.png',    per: 2, grow: 4, multi: true  },
         pine:         { name: '常青松果种子',   seed: 'pineseed.png',     per: 2, grow: 4, multi: false },
@@ -1075,13 +1083,12 @@ function pickSeed(el, seedType) {
     };
     var KEYS = ['apple', 'pine', 'candy', 'rose', 'potato', 'mushroomseed', 'pumpkin', 'cabbage', 'radish'];
 
-    /* ---- 游戏状态 ---- */
     var state = { plots: [], inv: { seed: {}, crop: {} }, coins: 0 };
     (function initPlots() { for (var i = 0; i < PLOTS; i++) state.plots.push({ o: false, c: null }); })();
 
     function $(id) { return document.getElementById(id); }
 
-    /* ---- 素材路径运行时修复：用户 HTML 里的静态引用自动补前缀 ---- */
+    /* ---- 素材路径运行时修复 ---- */
     function fixStaticPaths() {
         document.querySelectorAll('img, audio').forEach(function (el) {
             var src = el.getAttribute('src');
@@ -1090,6 +1097,12 @@ function pickSeed(el, seedType) {
             var fixed = src.indexOf('bean/') === 0 ? src : 'bean/' + src;
             el.setAttribute('src', fixed + '?v=' + V);
         });
+    }
+
+    /* ---- 返回按钮绑定（用户手写按钮没有 onclick，增量补上） ---- */
+    function bindBack() {
+        var b = document.querySelector('.btn.back');
+        if (b) b.onclick = function () { location.href = 'main.html'; };
     }
 
     /* ---- 提示 ---- */
@@ -1103,7 +1116,7 @@ function pickSeed(el, seedType) {
         toastT = setTimeout(function () { t.classList.remove('show'); }, 2200);
     }
 
-    /* ---- 生长阶段：0种子 1刚种 2茁壮 3快熟 4可收 ---- */
+    /* ---- 生长阶段 ---- */
     function stageOf(c) {
         var el = (Date.now() / 1000) - (c.p || Date.now() / 1000);
         var grow = (CROPS[c.t].grow || 4) * 3600;
@@ -1111,9 +1124,9 @@ function pickSeed(el, seedType) {
         return st > 4 ? 4 : (st < 0 ? 0 : st);
     }
     function growSrc(key, st) {
-        return 'bean/grow/' + key + '_' + st + '.png?v=' + V;   // 生长素材欠着，放图即生效
+        return 'bean/grow/' + key + '_' + st + '.png?v=' + V;
     }
-    function fallbackGrow(img, key) {                            // grow 图缺失时回退种子图
+    function fallbackGrow(img, key) {
         img.onerror = null;
         img.setAttribute('src', S('seed/' + CROPS[key].seed));
     }
@@ -1142,7 +1155,7 @@ function pickSeed(el, seedType) {
         }
     }
 
-    /* ---- 渲染种子栏角标（用户种子栏结构不动，只更新数量） ---- */
+    /* ---- 种子栏角标（Q版手绘数字） ---- */
     function renderSeedbar() {
         var items = document.querySelectorAll('.seed-item');
         for (var i = 0; i < items.length; i++) {
@@ -1156,7 +1169,7 @@ function pickSeed(el, seedType) {
                 var x = state.inv.seed[k];
                 q = (typeof x === 'number') ? x : (x.q || 0);
             }
-            cnt.textContent = q;
+            cnt.innerHTML = numHTML(q);
         }
     }
 
@@ -1169,7 +1182,8 @@ function pickSeed(el, seedType) {
         return fetch(API + path, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
+            keepalive: true
         }).then(function (r) { return r.json(); }).catch(function () { return { ok: false }; });
     }
     function spend(n) {
@@ -1187,21 +1201,33 @@ function pickSeed(el, seedType) {
         });
     }
 
-    /* ---- 存档（600ms 防抖 + 关闭页面强制保存） ---- */
+    /* ---- 存档（fetch keepalive 优先，sendBeacon text/plain 兜底） ---- */
     var svT = null;
+    var loaded = false;   // 存档加载完成前禁止保存（防止空 state 覆盖后端）
     function saveNow() {
+        if (!loaded) return;
         var d = { plots: state.plots, inv: state.inv, coins: state.coins };
-        try {
-            navigator.sendBeacon(API + '/api/save', JSON.stringify({ username: U, password: P, game: 'bean', data: d }));
-        } catch (e) {
-            apiPost('/api/save', { username: U, password: P, game: 'bean', data: d });
-        }
+        var body = JSON.stringify({ username: U, password: P, game: 'bean', data: d });
+        fetch(API + '/api/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: body,
+            keepalive: true
+        }).catch(function () {
+            // 兜底：sendBeacon 只能发简单请求，用 text/plain（后端 json() 不检查 content-type）
+            try { navigator.sendBeacon(API + '/api/save', new Blob([body], { type: 'text/plain' })); } catch (e) {}
+        });
     }
     function saveSoon() {
         if (svT) clearTimeout(svT);
         svT = setTimeout(saveNow, 600);
     }
-    window.addEventListener('pagehide', function () { saveNow(); });
+    function saveAll() { saveNow(); }
+    window.addEventListener('pagehide', saveAll);
+    window.addEventListener('beforeunload', saveAll);
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') saveNow();
+    });
 
     function loadRemote() {
         fetch(API + '/api/save?username=' + encodeURIComponent(U) + '&password=' + encodeURIComponent(P) + '&game=bean')
@@ -1210,17 +1236,19 @@ function pickSeed(el, seedType) {
                     var d = j.save;
                     if (d.plots) state.plots = d.plots;
                     if (d.inv) state.inv = d.inv;
-                    // 注意：金币以服务端 /api/user 余额为权威，不读存档里的旧 coins
+                    // 金币以服务端余额为权威
                 }
                 for (var i = 0; i < PLOTS; i++) if (!state.plots[i]) state.plots[i] = { o: false, c: null };
                 refreshCoin(); renderFarm(); renderSeedbar();
+                loaded = true;
             }).catch(function () {
                 for (var i2 = 0; i2 < PLOTS; i2++) if (!state.plots[i2]) state.plots[i2] = { o: false, c: null };
                 refreshCoin(); renderFarm(); renderSeedbar();
+                loaded = true;
             });
     }
 
-    /* ---- 开垦动画（铲子） ---- */
+    /* ---- 开垦动画 ---- */
     var digEl = null;
     function digAnim(i, cb) {
         var el = $('plot' + i);
@@ -1235,7 +1263,7 @@ function pickSeed(el, seedType) {
         setTimeout(function () { digEl.style.display = 'none'; cb && cb(); }, 900);
     }
 
-    /* ---- 点击田块：开垦 / 种植 / 操作 ---- */
+    /* ---- 点击田块 ---- */
     function clickPlot(i) {
         var p = state.plots[i] || { o: false, c: null };
         if (!p.o) {
@@ -1318,7 +1346,7 @@ function pickSeed(el, seedType) {
         toast('铲掉了（种子不返还）');
     }
 
-    /* ---- 生长检查（每 10 秒） ---- */
+    /* ---- 生长检查 ---- */
     function growTick() {
         for (var i = 0; i < PLOTS; i++) {
             var p = state.plots[i];
@@ -1376,7 +1404,7 @@ function pickSeed(el, seedType) {
         toast('购买成功，花费 ' + total + ' 金币');
     }
 
-    /* ---- 背包（全部/作物/种子） ---- */
+    /* ---- 背包 ---- */
     var bagTab = 'all';
     function openBag() { setBagTab('all'); $('bagPanel').classList.add('show'); }
     function closeBag() { $('bagPanel').classList.remove('show'); }
@@ -1406,7 +1434,7 @@ function pickSeed(el, seedType) {
             for (var i = 0; i < rows.length; i++) {
                 var r = rows[i], c = CROPS[r.k];
                 h += '<div class="bag-item"><img src="' + S('seed/' + c.seed) + '" onerror="rtryImg(this)">'
-                    + '<div class="bag-name">' + c.name + '</div><span class="cnt2">' + r.q + '</span></div>';
+                    + '<div class="bag-name">' + c.name + '</div><span class="cnt2">' + numHTML(r.q) + '</span></div>';
             }
         }
         $('bagRows').innerHTML = h;
@@ -1429,7 +1457,7 @@ function pickSeed(el, seedType) {
             var k = KEYS[i], c = CROPS[k];
             h += '<div class="adm-row">'
                 + '<img src="' + S('seed/' + c.seed) + '" style="width:36px;height:36px;object-fit:contain;border-radius:8px">'
-                + '<div class="adm-mid"><div>' + c.name + '</div><div style="font-size:11px;color:#a06020">1币' + c.per + '个 · 库存' + qof(k) + '</div></div>'
+                + '<div class="adm-mid"><div>' + c.name + '</div><div style="font-size:11px;color:#a06020">1币' + c.per + '个 · 库存<span class="adm-qty">' + numHTML(qof(k)) + '</span></div></div>'
                 + '<button onclick="admMinus(\'' + k + '\')">−</button><button onclick="admPlus(\'' + k + '\')">+</button>'
                 + '<button onclick="admPriceMinus(\'' + k + '\')">价−</button><button onclick="admPricePlus(\'' + k + '\')">价+</button>'
                 + '</div>';
@@ -1458,7 +1486,7 @@ function pickSeed(el, seedType) {
         var n = parseInt($('admGiveN').value || '100', 10);
         if (!n || n < 1) return;
         gain(n);
-        saveSoon();   // 地块/库存最新状态一并存档
+        saveSoon();
         toast('给自己发放 ' + n + ' 金币');
     }
     function admProgress(v) {
@@ -1474,9 +1502,9 @@ function pickSeed(el, seedType) {
         saveSoon(); renderFarm();
     }
 
-    /* ---- 天气与昼夜背景 ---- */
+    /* ---- 天气与昼夜背景（修复：改用 .phone-bg 选择器） ---- */
     function fetchWeather() {
-        var lat = 32.52, lon = 112.36;   // 默认：南阳市新野县
+        var lat = 32.52, lon = 112.36;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (pos) {
                 loadW(pos.coords.latitude, pos.coords.longitude);
@@ -1499,7 +1527,7 @@ function pickSeed(el, seedType) {
                 var h = new Date().getHours();
                 if (h >= 19 || h < 5) bg = 'bg_night.jpg';
                 else if (h >= 17) bg = 'bg_dusk.jpg';
-                var b = $('bgImg');
+                var b = document.querySelector('.phone-bg');   // 用户背景图（原绑定 id=bgImg 不存在，改 class）
                 if (b) b.setAttribute('src', S(bg));
                 var wea = { 0: '晴', 1: '基本晴', 2: '多云', 3: '阴', 45: '雾', 48: '雾', 51: '毛毛雨', 53: '毛毛雨', 55: '毛毛雨', 61: '小雨', 63: '中雨', 65: '大雨', 66: '冻雨', 67: '冻雨', 71: '小雪', 73: '中雪', 75: '大雪', 77: '雪粒', 80: '阵雨', 81: '阵雨', 82: '大雨', 95: '雷雨', 96: '雷雨', 99: '雷雨' };
                 var t = document.querySelector('.title');
@@ -1515,9 +1543,10 @@ function pickSeed(el, seedType) {
         img.src = s + (s.indexOf('?') > 0 ? '&' : '?') + 'r=' + Date.now();
     };
     function preloadAssets() {
-        var list = ['cao.png', 'img/plot_soil.png', 'seedbg.jpg'];
+        var list = ['cao.png', 'img/plot_soil.png', 'seedbg.jpg', 'img/coin.png'];
         for (var i = 0; i < KEYS.length; i++) list.push('seed/' + CROPS[KEYS[i]].seed);
-        list = list.concat(['bg/bg_sunny.jpg', 'bg/bg_cloudy.jpg', 'bg/bg_overcast.jpg', 'bg/bg_rain.jpg', 'bg/bg_storm.jpg', 'bg/bg_night.jpg', 'bg/bg_dusk.jpg', 'img/coin.png', 'background.mp3']);
+        for (var d = 0; d <= 9; d++) list.push('num/' + d + '.png');
+        list = list.concat(['bg/bg_sunny.jpg', 'bg/bg_cloudy.jpg', 'bg/bg_overcast.jpg', 'bg/bg_rain.jpg', 'bg/bg_storm.jpg', 'bg/bg_night.jpg', 'bg/bg_dusk.jpg', 'background.mp3']);
         var n = list.length, done = 0;
         for (var j = 0; j < n; j++) {
             (function (u) {
@@ -1552,13 +1581,14 @@ function pickSeed(el, seedType) {
 
     document.addEventListener('DOMContentLoaded', function () {
         fixStaticPaths();
+        bindBack();
         init();
     });
 
     /* 暴露给内联 onclick 的全局函数 */
     window.clickPlot = clickPlot;
-    window.openseedshop = openShop;   // 用户手写按钮的 onclick
-    window.opencropsbag = openBag;    // 用户手写按钮的 onclick
+    window.openseedshop = openShop;
+    window.opencropsbag = openBag;
     window.openShop = openShop; window.closeShop = closeShop;
     window.shopPlus = shopPlus; window.shopMinus = shopMinus; window.settleShop = settleShop;
     window.openBag = openBag; window.closeBag = closeBag; window.setBagTab = setBagTab;
