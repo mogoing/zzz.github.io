@@ -15,7 +15,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background: #222;
+    background: #fbf3e2; /* 米白填充，背景图以外的地方 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -822,7 +822,7 @@ body {
     box-shadow: 0 3px 8px rgba(255,210,122,.5);
 }
 .bag-market:active { transform: scale(.95); }
-.bag-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 6px; overflow-y: auto; }
+.bag-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 6px 10px 14px; overflow-y: auto; flex: 1; align-content: start; }
 .bag-item {
     position: relative;
     background: #fff8ec;
@@ -831,7 +831,7 @@ body {
     padding: 6px 4px 4px;
     text-align: center;
 }
-.bag-item img { width: 64%; height: auto; object-fit: contain; }
+.bag-item img { width: 62%; height: auto; object-fit: contain; margin-top: 6px; }
 .bag-num {
     position: absolute;
     top: -8px;
@@ -840,12 +840,16 @@ body {
     height: 24px;
     border-radius: 50%;
     background: #fff;
+    font-family: 'CaveatB', cursive; /* 手写体数字，不用图片 */
+    font-size: 20px;
+    font-weight: 700;
+    color: #e0564e;
     line-height: 24px;
     text-align: center;
     box-shadow: 0 1px 3px rgba(0,0,0,.35);
     padding: 0 3px;
 }
-.num-img { height: 19px; width: auto; vertical-align: middle; }
+.num-txt { font-size: 20px; vertical-align: middle; }
 .bag-name { font-size: 11px; color: #7a4a14; font-weight: 700; }
 </style>
 </head>
@@ -860,8 +864,8 @@ body {
     <!-- 金币（1/3 位置） -->
     <div class="coins" id="coinBar"><img src="bean/img/coin.png" alt=""><span id="coinN">0</span></div>
 
-    <div class="title">
-        南阳市新野县 晴 20°C
+    <div class="title" id="weatherTitle">
+        南阳市新野县 天气获取中…
     </div>
 
 
@@ -1410,14 +1414,9 @@ function bagTab(tab, btn) {
     if (btn) btn.classList.add('on');
     renderBag();
 }
-/* ---- Q版手绘数字图片（bean/num/，按位拼接） ---- */
+/* ---- Q版手绘数字：直接用 CaveatB 手写字体（bean/fonts/），不用图片 ---- */
 function numImg(n) {
-    var s = String(n || 0);
-    var h = '';
-    for (var i = 0; i < s.length; i++) {
-        h += '<img class="num-img" src="bean/num/' + s[i] + '.png?v=' + V + '">';
-    }
-    return h;
+    return '<span class="num-txt">' + (n || 0) + '</span>';
 }
 /* 背包图片加载失败回退到种子图 */
 function bagerr(img, crop) {
@@ -1814,6 +1813,18 @@ function weatherFactorFor(code) {
 
 /* ---- 天气背景：定位 + open-meteo → bean/bg/ 7 张 ---- */
 var weatherCode = -1;
+/* WMO weather_code → 中文 */
+function weatherText(code) {
+    if (code <= 1) return '晴';
+    if (code === 2) return '多云';
+    if (code === 3) return '阴';
+    if (code === 45 || code === 48) return '雾';
+    if (code >= 95) return '雷暴';
+    if (code >= 80) return '阵雨';
+    if (code >= 71) return '雪';
+    if (code >= 51) return '雨';
+    return '多云';
+}
 function applyWeatherBg() {
     var bg = document.querySelector('.phone-bg');
     if (!bg) return;
@@ -1825,11 +1836,11 @@ function applyWeatherBg() {
     } else if (hh >= 20 || hh < 6) {
         map = 'bg_night';
     } else if (weatherCode >= 0) {
-        if (weatherCode <= 0) map = 'bg_sunny';
-        else if (weatherCode <= 3) map = 'bg_cloudy';
+        if (weatherCode <= 1) map = 'bg_sunny';
+        else if (weatherCode === 2) map = 'bg_cloudy';                 /* 多云 */
+        else if (weatherCode === 3 || weatherCode === 45 || weatherCode === 48) map = 'bg_overcast'; /* 阴/雾 */
         else if (weatherCode >= 95) map = 'bg_storm';
-        else if (weatherCode >= 51) map = 'bg_rain';
-        else map = 'bg_overcast';
+        else map = 'bg_rain';                                          /* 雨/雪/阵雨 */
     } else {
         return; /* 未拿到天气：保持默认背景 */
     }
@@ -1840,13 +1851,18 @@ function loadWeather() {
     navigator.geolocation.getCurrentPosition(function (pos) {
         var lat = pos.coords.latitude;
         var lon = pos.coords.longitude;
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current=weather_code&timezone=auto', { cache: 'no-store' })
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current=weather_code,temperature_2m&timezone=auto', { cache: 'no-store' })
             .then(function (r) { return r.json(); }).then(function (j) {
                 if (j.current && typeof j.current.weather_code !== 'undefined') {
                     weatherCode = j.current.weather_code;
                     weatherFactor = weatherFactorFor(weatherCode);
                     applyWeatherBg();
                     renderShopPrices();
+                    var t = document.getElementById('weatherTitle');
+                    if (t) {
+                        var temp = (typeof j.current.temperature_2m !== 'undefined') ? Math.round(j.current.temperature_2m) + '°C' : '';
+                        t.innerHTML = '南阳市新野县 ' + weatherText(weatherCode) + (temp ? ' ' + temp : '');
+                    }
                 }
             }).catch(function () {});
     }, function () {}, { timeout: 8000 });
