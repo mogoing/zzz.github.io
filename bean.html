@@ -497,6 +497,21 @@ body {
 /* 金币：放在返回主页下方，与按钮左对齐 */
 .coins { top: 52px; left: 12px; transform: none; }
 
+/* 种植植物叠加层：居中、突破菱形框、不挡点击 */
+.plant {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 6;
+    object-fit: contain;
+    animation: plantPop .35s ease;
+}
+@keyframes plantPop {
+    0%   { transform: translate(-50%, -50%) scale(.4); opacity: 0; }
+    70%  { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
 /* ---- 翻土动画：小耙子（用户素材 rake.png，放大 130%） ---- */
 .digger {
     display: none;
@@ -1654,15 +1669,35 @@ function renderCrops() {
     for (var i = 0; i < PLOT_ORDER.length; i++) {
         var btn = document.querySelector('button.' + PLOT_ORDER[i].replace('d', 'diamond'));
         if (!btn) continue;
-        var img = btn.querySelector('img');
-        if (!img) continue;
         var p = plots[i];
-        if (p.o && p.crop) {
-            var stage = Math.min(4, p.grow || 0);
-            img.src = cropImgUrl(p.crop, stage);
-            fallbackSeedImg(img, p.crop);
-        }
+        plantEl(i, btn);
     }
+}
+
+/* 种植植物：叠加在泥土上方（不替换泥土图），种在田块正中心，允许突破菱形框限制 */
+function plantEl(i, btn) {
+    var p = plots[i];
+    var ph = document.querySelector('.phone');
+    if (!ph) return;
+    var el = document.getElementById('plant' + i);
+    if (!(p.o && p.crop)) {
+        if (el) el.remove();
+        return;
+    }
+    if (!el) {
+        el = document.createElement('img');
+        el.id = 'plant' + i;
+        el.className = 'plant';
+        ph.appendChild(el);
+    }
+    var br = btn.getBoundingClientRect();
+    var pr = ph.getBoundingClientRect();
+    el.style.left = (br.left - pr.left + br.width / 2) + 'px';
+    el.style.top = (br.top - pr.top + br.height / 2) + 'px';
+    el.style.width = (br.width * 1.6) + 'px';
+    var stage = Math.min(4, p.grow || 0);
+    el.src = cropImgUrl(p.crop, stage);
+    fallbackSeedImg(el, p.crop);
 }
 
 /* ---- 种植 ---- */
@@ -1847,10 +1882,7 @@ function applyWeatherBg() {
     bg.src = 'bean/bg/' + map + '.jpg?v=' + V;
 }
 function loadWeather() {
-    if (!navigator.geolocation) return;
-    navigator.geolocation.getCurrentPosition(function (pos) {
-        var lat = pos.coords.latitude;
-        var lon = pos.coords.longitude;
+    var doFetch = function (lat, lon, city) {
         fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current=weather_code,temperature_2m&timezone=auto', { cache: 'no-store' })
             .then(function (r) { return r.json(); }).then(function (j) {
                 if (j.current && typeof j.current.weather_code !== 'undefined') {
@@ -1861,11 +1893,35 @@ function loadWeather() {
                     var t = document.getElementById('weatherTitle');
                     if (t) {
                         var temp = (typeof j.current.temperature_2m !== 'undefined') ? Math.round(j.current.temperature_2m) + '°C' : '';
-                        t.innerHTML = '南阳市新野县 ' + weatherText(weatherCode) + (temp ? ' ' + temp : '');
+                        t.innerHTML = '南阳市新野县' + (city ? ' ' + city : '') + ' ' + weatherText(weatherCode) + (temp ? ' ' + temp : '');
                     }
-                }
-            }).catch(function () {});
-    }, function () {}, { timeout: 8000 });
+                } else { weatherFail(); }
+            }).catch(function () { weatherFail(); });
+    };
+    var weatherFail = function () {
+        var t = document.getElementById('weatherTitle');
+        if (t) t.innerHTML = '南阳市新野县 天气获取失败';
+    };
+    var freeIp = function () {
+        fetch('https://freeipapi.com/api/json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) {
+            if (j && j.latitude) doFetch(j.latitude, j.longitude, j.cityName || '');
+            else defaultLoc();
+        }).catch(function () { defaultLoc(); });
+    };
+    var ipFallback = function () {
+        /* 定位失败 → IP 定位（免费源）→ 再失败用新野默认坐标 */
+        fetch('https://ipapi.co/json/', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) {
+            if (j && j.latitude) doFetch(j.latitude, j.longitude, j.city || '');
+            else freeIp();
+        }).catch(function () { freeIp(); });
+    };
+    var defaultLoc = function () {
+        doFetch(32.52, 112.36, '(默认定位)');
+    };
+    if (!navigator.geolocation) { ipFallback(); return; }
+    navigator.geolocation.getCurrentPosition(function (pos) {
+        doFetch(pos.coords.latitude, pos.coords.longitude, '');
+    }, function () { ipFallback(); }, { timeout: 6000 });
 }
 
 /* ---- 全局配置（管理调价，存后端 /api/cfg） ---- */
