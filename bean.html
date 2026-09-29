@@ -497,19 +497,19 @@ body {
 /* 金币：放在返回主页下方，与按钮左对齐 */
 .coins { top: 52px; left: 12px; transform: none; }
 
-/* 种植植物叠加层：居中、突破菱形框、不挡点击 */
+/* 种植植物叠加层：根部（图片底部）对齐田块中心，向上生长、突破菱形框、不挡点击 */
 .plant {
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -100%);
     pointer-events: none;
     z-index: 6;
     object-fit: contain;
     animation: plantPop .35s ease;
 }
 @keyframes plantPop {
-    0%   { transform: translate(-50%, -50%) scale(.4); opacity: 0; }
-    70%  { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    0%   { transform: translate(-50%, -100%) scale(.4); opacity: 0; }
+    70%  { transform: translate(-50%, -100%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -100%) scale(1); opacity: 1; }
 }
 
 /* ---- 翻土动画：小耙子（用户素材 rake.png，放大 130%） ---- */
