@@ -497,19 +497,19 @@ body {
 /* 金币：放在返回主页下方，与按钮左对齐 */
 .coins { top: 52px; left: 12px; transform: none; }
 
-/* 种植植物叠加层：根部（图片底部）对齐田块中心，向上生长、突破菱形框、不挡点击 */
+/* 种植植物叠加层：根部对齐田块中心再上移 40% 图高，向上生长、突破菱形框、不挡点击 */
 .plant {
     position: absolute;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -140%);
     pointer-events: none;
     z-index: 6;
     object-fit: contain;
     animation: plantPop .35s ease;
 }
 @keyframes plantPop {
-    0%   { transform: translate(-50%, -100%) scale(.4); opacity: 0; }
-    70%  { transform: translate(-50%, -100%) scale(1.1); opacity: 1; }
-    100% { transform: translate(-50%, -100%) scale(1); opacity: 1; }
+    0%   { transform: translate(-50%, -140%) scale(.4); opacity: 0; }
+    70%  { transform: translate(-50%, -140%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -140%) scale(1); opacity: 1; }
 }
 
 /* ---- 翻土动画：小耙子（用户素材 rake.png，放大 130%） ---- */
@@ -1694,7 +1694,7 @@ function plantEl(i, btn) {
     var pr = ph.getBoundingClientRect();
     el.style.left = (br.left - pr.left + br.width / 2) + 'px';
     el.style.top = (br.top - pr.top + br.height / 2) + 'px';
-    el.style.width = (br.width * 1.6) + 'px';
+    el.style.width = (br.width * 0.8) + 'px';
     var stage = Math.min(4, p.grow || 0);
     el.src = cropImgUrl(p.crop, stage);
     fallbackSeedImg(el, p.crop);
@@ -1882,7 +1882,7 @@ function applyWeatherBg() {
     bg.src = 'bean/bg/' + map + '.jpg?v=' + V;
 }
 function loadWeather() {
-    var doFetch = function (lat, lon, city) {
+    var doFetch = function (lat, lon) {
         fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current=weather_code,temperature_2m&timezone=auto', { cache: 'no-store' })
             .then(function (r) { return r.json(); }).then(function (j) {
                 if (j.current && typeof j.current.weather_code !== 'undefined') {
@@ -1893,7 +1893,7 @@ function loadWeather() {
                     var t = document.getElementById('weatherTitle');
                     if (t) {
                         var temp = (typeof j.current.temperature_2m !== 'undefined') ? Math.round(j.current.temperature_2m) + '°C' : '';
-                        t.innerHTML = '南阳市新野县' + (city ? ' ' + city : '') + ' ' + weatherText(weatherCode) + (temp ? ' ' + temp : '');
+                        t.innerHTML = '南阳市新野县 ' + weatherText(weatherCode) + (temp ? ' ' + temp : '');
                     }
                 } else { weatherFail(); }
             }).catch(function () { weatherFail(); });
@@ -1902,26 +1902,14 @@ function loadWeather() {
         var t = document.getElementById('weatherTitle');
         if (t) t.innerHTML = '南阳市新野县 天气获取失败';
     };
-    var freeIp = function () {
-        fetch('https://freeipapi.com/api/json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) {
-            if (j && j.latitude) doFetch(j.latitude, j.longitude, j.cityName || '');
-            else defaultLoc();
-        }).catch(function () { defaultLoc(); });
-    };
-    var ipFallback = function () {
-        /* 定位失败 → IP 定位（免费源）→ 再失败用新野默认坐标 */
-        fetch('https://ipapi.co/json/', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) {
-            if (j && j.latitude) doFetch(j.latitude, j.longitude, j.city || '');
-            else freeIp();
-        }).catch(function () { freeIp(); });
-    };
     var defaultLoc = function () {
-        doFetch(32.52, 112.36, '(默认定位)');
+        doFetch(32.52, 112.36);
     };
-    if (!navigator.geolocation) { ipFallback(); return; }
+    /* 手机 WebView 无定位权限时 GPS 会失败：直接回退新野默认坐标，保证与网页端一致 */
+    if (!navigator.geolocation) { defaultLoc(); return; }
     navigator.geolocation.getCurrentPosition(function (pos) {
-        doFetch(pos.coords.latitude, pos.coords.longitude, '');
-    }, function () { ipFallback(); }, { timeout: 6000 });
+        doFetch(pos.coords.latitude, pos.coords.longitude);
+    }, function () { defaultLoc(); }, { timeout: 6000 });
 }
 
 /* ---- 全局配置（管理调价，存后端 /api/cfg） ---- */
