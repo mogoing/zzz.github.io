@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP 官网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-gradient {
+                background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            }
+            .btn-shadow {
+                box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 flex flex-col">
+    <!-- 导航栏 -->
+    <header class="w-full bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-primary">APP名称</h1>
+            <nav>
+                <a href="#about" class="text-gray-600 hover:text-primary mx-2">介绍</a>
+                <a href="#download" class="text-gray-600 hover:text-primary mx-2">下载</a>
+                <a id="github-link" href="" target="_blank" class="text-gray-600 hover:text-primary mx-2">GitHub</a>
+            </nav>
+        </div>
+    </header>
+    <!-- 主内容区 -->
+    <main class="flex-grow flex items-center justify-center px-4 py-16" id="download">
+        <div class="text-center max-w-2xl">
+            <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-gray-800 mb-6">
+                欢迎使用我的APP
+            </h2>
+            <p class="text-gray-600 text-lg mb-4">
+                当前最新版本：<span id="version-text" class="font-semibold text-primary">加载中...</span>
+            </p>
+            <!-- 下载按钮 -->
+            <button 
+                id="download-btn"
+                class="inline-block bg-gradient text-white px-10 py-4 rounded-full text-xl font-medium btn-shadow hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                <i class="fa fa-android mr-2"></i>
+                获取最新 APK
+            </button>
+            
+            <p class="mt-4 text-sm text-gray-500">
+                自动从 GitHub Releases 获取安装包
+            </p>
+            <!-- ========== 新增：使用在线版 超链接 ========== -->
+            <div class="mt-6">
+                <a href="https://mogoing.github.io/zzz.github.io/" target="_blank" class="text-primary hover:underline text-lg">
+                    <i class="fa fa-globe mr-1"></i> 使用在线版
+                </a>
+            </div>
+            <!-- =========================================== -->
+        </div>
+    </main>
+    <!-- 关于区域 -->
+    <section id="about" class="bg-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">关于本应用</h3>
+            <p class="text-gray-600 max-w-xl mx-auto">
+                开源项目，源代码托管在 GitHub。欢迎 Star、提交Issue。
+            </p>
+        </div>
+    </section>
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>© 2026 APP名称 | 开源项目</p>
+            <p class="mt-2 text-gray-400">本应用开源免费，仅供学习使用</p>
+        </div>
+    </footer>
+<script>
+// ========== 在这里修改你的仓库信息 ==========
+const GITHUB_OWNER = "mogoing";
+const GITHUB_REPO = "zzz.github.io";
+// ============================================
+const versionText = document.getElementById('version-text');
+const downloadBtn = document.getElementById('download-btn');
+const githubLink = document.getElementById('github-link');
+// 设置github主页链接
+githubLink.href = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}`;
+let apkUrl = null;
+// 请求最新release
+async function fetchLatestRelease() {
+    try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases/latest`);
+        if (!res.ok) throw new Error('获取失败');
+        const data = await res.json();
+        const tagName = data.tag_name;
+        versionText.innerText = tagName;
+        // 在assets里找到后缀为.apk的文件
+        const apkAsset = data.assets.find(item => item.name.endsWith('.apk'));
+        if(apkAsset){
+            apkUrl = apkAsset.browser_download_url;
+            downloadBtn.disabled = false;
+        }else{
+            versionText.innerText = "未找到APK";
+            downloadBtn.disabled = true;
+        }
+    } catch (err) {
+        console.error(err);
+        versionText.innerText = "版本获取失败";
+        downloadBtn.disabled = true;
+    }
+}
+// 点击按钮触发下载
+downloadBtn.addEventListener('click', ()=>{
+    if(apkUrl){
+        window.open(apkUrl, '_self');
+    }
+})
+// 页面加载自动拉取版本
+fetchLatestRelease();
+</script>
+</body>
+</html>
