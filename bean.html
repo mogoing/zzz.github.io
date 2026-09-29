@@ -1417,6 +1417,7 @@ function shopBuy() {
     }).then(function (r) { return r.json(); }).then(function (j) {
         if (j.ok) { state.coins = j.balance; refreshCoin(); }
     }).catch(function () {});
+    hidePanel('seedShop'); /* 购买完成自动关闭商店 */
     toast('购买成功，花费 ' + total + ' 币');
 }
 
@@ -1692,11 +1693,12 @@ function plantEl(i, btn) {
     }
     var br = btn.getBoundingClientRect();
     var pr = ph.getBoundingClientRect();
+    var stage = Math.min(4, p.grow || 0);
+    var drop = (stage === 0) ? 0.25 : 0.15; /* 刚种下(0)埋深一点，其余状态 0.15 */
     el.style.left = (br.left - pr.left + br.width / 2) + 'px';
-    el.style.bottom = (pr.height - (br.top - pr.top + br.height / 2) - br.height * 0.15) + 'px';
+    el.style.bottom = (pr.height - (br.top - pr.top + br.height / 2) - br.height * drop) + 'px';
     el.style.width = (br.width * 0.8) + 'px';
     el.style.height = (br.width * 0.8) + 'px';
-    var stage = Math.min(4, p.grow || 0);
     el.src = cropImgUrl(p.crop, stage);
     fallbackSeedImg(el, p.crop);
 }
