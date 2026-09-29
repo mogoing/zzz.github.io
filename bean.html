@@ -289,19 +289,6 @@ body {
     );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 开始按钮 */
 .seedshop {
     left: 0%;
@@ -352,7 +339,7 @@ body {
     right: 0%;
     bottom: 0%; 
     height: 17%;
-    background-image: url("seedbg.png");
+    background-image: url("bean/seedbg.jpg");
     background-size: cover;       /* 铺满整个容器，图片会拉伸填充 */
     background-position: center;  /* 图片居中 */
     background-repeat: no-repeat;/* 禁止图片重复平铺 */
@@ -419,17 +406,36 @@ body {
     margin-left: 4%; /* 调整这个数值控制第一张离左侧距离 */
 }
 
+/* 种子卡片右上角数量角标（手写体 + 圆圈背景） */
+.seed-item { position: relative; }
+.seed-num {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    color: #e0564e;
+    font-family: 'CaveatB', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: center;
+    text-shadow: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,.35);
+    z-index: 2;
+    padding: 0 4px;
+}
 
 
-/* =========================================================
-   增量功能样式 —— 在用户手写样式之上【追加】，不改动上方任何一条
-   ========================================================= */
+/* ===== 增量（在用户原版之上追加，不动上方任何一条） ===== */
 
-/* ---- 金币（顶部居中） ---- */
+/* 金币：位置在画面约 1/3 处（用户要求往左移） */
 .coins {
     position: absolute;
     top: 4%;
-    left: 50%;
+    left: 33%;
     transform: translateX(-50%);
     z-index: 8;
     display: flex;
@@ -446,398 +452,401 @@ body {
 }
 .coins img { width: 24px; height: 24px; }
 
-/* ---- 管理员按钮 ---- */
-.adm {
+/* 提示气泡 */
+#toastMsg {
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    transform: translateX(-50%);
+    z-index: 99;
+    background: rgba(0,0,0,.65);
+    color: #fff;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 14px;
+    pointer-events: none;
+    transition: opacity .3s;
+    opacity: 0;
+}
+
+/* ===== 第二步增量 ===== */
+
+/* 手写粗体数字（bean/fonts/caveat-bold.woff2） */
+@font-face {
+    font-family: 'CaveatB';
+    src: url('bean/fonts/caveat-bold.woff2') format('woff2');
+}
+
+/* 返回按钮：与天天酷跑/植物大战僵尸一致（胶囊渐变） */
+.btn.back {
+    width: auto;
+    height: auto;
+    left: 12px;
+    top: 12px;
+    padding: 9px 15px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFB3C1, #FF8FB1);
+    box-shadow: 0 6px 16px rgba(255,143,177,.4);
+    transition: transform .15s;
+    z-index: 9;
+}
+.btn.back:active { transform: scale(.94); }
+
+/* 金币：放在返回主页下方，与按钮左对齐 */
+.coins { top: 52px; left: 12px; transform: none; }
+
+/* ---- 翻土动画：小耙子（用户素材 rake.png，放大 130%） ---- */
+.digger {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    z-index: 5;
+    transition: transform .3s, opacity .3s;
+}
+.btn.digging .digger {
+    display: block;
+    animation: digMove .55s ease forwards;
+}
+/* 挖完：耙子消失 → 土块出现 → 耙子停到地块外（phone 层）淡入 */
+.phone > .digger.rest {
+    display: block;
+    left: 82%;
+    top: 33%;
+    transform: rotate(22deg);
+    opacity: 0;
+    animation: none;
+}
+.phone > .digger.rest.on {
+    opacity: .9;
+}
+@keyframes digMove {
+    0%   { transform: translate(-50%, -50%) rotate(-45deg); opacity: 0; }
+    25%  { transform: translate(-50%, -15%) rotate(-45deg); opacity: 1; }
+    45%  { transform: translate(-50%, -50%) rotate(15deg);  opacity: 1; }
+    60%  { transform: translate(-50%, -50%) rotate(-12deg); opacity: 1; }
+    75%  { transform: translate(-50%, -58%) rotate(12deg);  opacity: 0; }
+    100% { transform: translate(-50%, -58%) rotate(12deg);  opacity: 0; }
+}
+
+/* 管理：每个地块单独的生长进度滑块 */
+.ap-grow {
+    width: 100%;
+    height: 6px;
+    margin: 4px 0;
+    accent-color: #ff8c42;
+}
+
+/* 管理员按钮（仅管理员显示） */
+.btn.adm {
     right: 0%;
     bottom: 18%;
     width: 90px;
     height: 55px;
-    z-index: 7;
+    z-index: 12;
     display: none;
     background: linear-gradient(135deg, #ffb347, #ff8c42);
     color: #fff;
     font-weight: 900;
 }
 
-/* ---- 种子栏背景修正 ---- */
-.seed { background-image: url("bean/seedbg.jpg?v=3") !important; }
+/* ---- 翻土动画：小铲子 ---- */
 
-/* ---- 背包占位图隐藏 ---- */
-.bagshop img { display: none; }
-
-/* ---- 田块按钮去默认样式 ---- */
-.btn.diamond1,.btn.diamond2,.btn.diamond4,.btn.diamond5,.btn.diamond6,
-.btn.diamond7,.btn.diamond8,.btn.diamond9,.btn.diamond10,.btn.diamond11,
-.btn.diamond12,.btn.diamond13,.btn.diamond14,.btn.diamond15,.btn.diamond16,
-.btn.diamond17 { padding: 0; background: transparent; border-radius: 0; cursor: pointer; }
-
-/* ---- 种子栏数量角标（Q版手绘数字图片） ---- */
-.seed-item { position: relative; }
-.cnt {
-    position: absolute;
-    right: -2px;
-    bottom: 0px;
-    z-index: 2;
-    display: flex;
-    align-items: flex-end;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-}
-.cnt .numimg { height: 17px; width: auto; }
-
-/* ---- 背包数量（Q版手绘数字图片） ---- */
-.cnt2 {
-    position: absolute;
-    right: 2px;
-    top: 2px;
-    display: flex;
-    align-items: flex-end;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-}
-.cnt2 .numimg { height: 15px; width: auto; }
-
-/* ---- 全屏圆角卡片面板 ---- */
+/* ---- 全屏圆角面板（商店/背包/管理通用） ---- */
 .panel {
     position: absolute;
-    left: 4%;
-    right: 4%;
-    top: 5%;
-    bottom: 5%;
-    border-radius: 24px;
-    background: rgba(255, 252, 246, .98);
-    z-index: 20;
+    inset: 4% 3% 3% 3%;
+    z-index: 60;
     display: none;
     flex-direction: column;
+    border-radius: 24px;
+    background: linear-gradient(170deg, #FFF9EC, #FDF1DC);
+    box-shadow: 0 24px 60px rgba(80,50,10,.35);
     overflow: hidden;
-    box-shadow: 0 12px 40px rgba(0,0,0,.35);
 }
 .panel.show { display: flex; }
 .panel-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 18px;
-    font-size: 17px;
+    padding: 14px 18px 10px;
+    font-size: 18px;
     font-weight: 900;
-    color: #7a4a21;
-    border-bottom: 2px dashed #e8d5b5;
-    flex-shrink: 0;
+    color: #8a5a20;
 }
-.panel-head b { font-size: 15px; }
-.panel-close {
-    width: 32px;
-    height: 32px;
-    line-height: 30px;
-    text-align: center;
+.panel-x {
+    width: 30px; height: 30px;
+    border: none;
     border-radius: 50%;
-    background: #ffd9a8;
-    color: #a06020;
+    background: linear-gradient(135deg, #ffb3c1, #ff8fb1);
+    color: #fff;
     font-size: 16px;
     font-weight: 900;
-    border: none;
     cursor: pointer;
 }
-.panel-body { flex: 1; overflow-y: auto; padding: 12px; }
-.panel-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 18px;
-    border-top: 2px dashed #e8d5b5;
-    font-size: 15px;
-    font-weight: 900;
-    color: #7a4a21;
-    flex-shrink: 0;
-}
-.settle {
-    border: none;
-    border-radius: 18px;
-    padding: 9px 22px;
-    background: linear-gradient(135deg, #ffd93d, #ff9f43);
-    color: #7a3a00;
-    font-size: 15px;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 3px 8px rgba(255, 160, 60, .4);
-}
-.settle.danger { background: linear-gradient(135deg, #ff8a8a, #ff5252); color: #fff; }
+.panel-x:active { transform: scale(.92); }
 
-/* ---- 商店种子行 ---- */
+/* ---- 种子商店 ---- */
+.shop-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px 14px;
+}
 .shop-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 6px;
-    border-bottom: 1px solid #f0e2cc;
+    padding: 8px 6px;
+    border-bottom: 1.5px dashed rgba(138,90,32,.18);
 }
-.shop-img {
-    width: 52px;
-    height: 52px;
+.shop-icon {
+    width: 44px; height: 44px;
     object-fit: contain;
     border-radius: 12px;
-    background: #fff3dd;
-    padding: 4px;
-    flex-shrink: 0;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,.12);
 }
 .shop-mid { flex: 1; }
-.shop-name { font-size: 14px; font-weight: 900; color: #5a3a15; }
-.shop-price { font-size: 11px; color: #c08a4a; margin-top: 2px; }
-.shop-qty { display: flex; align-items: center; gap: 8px; }
+.shop-name { font-size: 15px; font-weight: 900; color: #5d3a10; }
+.shop-price { font-size: 12px; color: #b08040; margin-top: 2px; }
+.shop-qty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
 .shop-qty button {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    width: 26px; height: 26px;
     border: none;
-    background: #ffe3b8;
-    color: #a06020;
-    font-size: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffb347, #ff8c42);
+    color: #fff;
+    font-size: 15px;
     font-weight: 900;
     cursor: pointer;
-    line-height: 28px;
 }
+.shop-qty button:active { transform: scale(.9); }
 .shop-qty span {
     min-width: 22px;
     text-align: center;
     font-size: 16px;
     font-weight: 900;
-    color: #5a3a15;
+    color: #5d3a10;
 }
+.panel-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    background: rgba(255,220,160,.35);
+    border-top: 1.5px solid rgba(255,200,130,.5);
+    font-size: 15px;
+    font-weight: 900;
+    color: #8a5a20;
+}
+.panel-foot button {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 26px;
+    font-size: 15px;
+    font-weight: 900;
+    color: #fff;
+    background: linear-gradient(135deg, #ffb347, #ff8c42);
+    box-shadow: 0 6px 14px rgba(255,140,66,.4);
+    cursor: pointer;
+}
+.panel-foot button:active { transform: scale(.96); }
 
 /* ---- 背包 ---- */
 .bag-tabs {
     display: flex;
     gap: 8px;
-    padding: 10px 14px 4px;
-    flex-shrink: 0;
+    padding: 4px 14px 10px;
 }
-.bag-tab {
+.bag-tabs .bt {
     flex: 1;
     border: none;
-    border-radius: 14px;
+    border-radius: 999px;
     padding: 8px 0;
-    background: #f4e8d4;
-    color: #8a6a3a;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 900;
+    color: #b08040;
+    background: rgba(255,220,160,.35);
     cursor: pointer;
 }
-.bag-tab.on { background: #ffb347; color: #fff; }
+.bag-tabs .bt.on {
+    color: #fff;
+    background: linear-gradient(135deg, #ffb347, #ff8c42);
+}
 .bag-grid {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px 14px 14px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    padding: 12px;
-    align-content: start;
 }
-.bag-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    background: #fff7ea;
-    border-radius: 14px;
-    padding: 10px 4px 6px;
+.bag-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 0;
+    font-size: 15px;
+    color: #b08040;
 }
-.bag-item img { width: 44px; height: 44px; object-fit: contain; }
-.bag-name { font-size: 11px; color: #7a5a2a; text-align: center; line-height: 1.2; }
-.bag-empty { grid-column: 1 / -1; text-align: center; color: #b09060; font-size: 14px; padding: 40px 0; }
-
-/* ---- 作物操作面板 ---- */
-.ops {
-    position: absolute;
-    left: 14%;
-    right: 14%;
-    bottom: 22%;
-    z-index: 21;
-    background: rgba(255, 252, 246, .98);
-    border-radius: 20px;
-    padding: 14px;
-    display: none;
-    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+.bag-cell {
     text-align: center;
 }
-.ops.show { display: block; }
-#opsName { font-size: 15px; font-weight: 900; color: #5a3a15; }
-#opsInfo { font-size: 11px; color: #b09060; margin: 4px 0 10px; }
-.ops-btns { display: flex; gap: 8px; justify-content: center; }
-.ops-btn {
-    flex: 1;
-    border: none;
-    border-radius: 14px;
-    padding: 10px 0;
-    background: linear-gradient(135deg, #b8e6ff, #6cc6ff);
-    color: #1a4a7a;
-    font-size: 13px;
-    font-weight: 900;
-    cursor: pointer;
+.bag-cell img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,.12);
 }
-.ops-btn.danger { background: linear-gradient(135deg, #ffb3b3, #ff6b6b); color: #fff; }
-.ops-close {
-    margin-top: 10px;
-    border: none;
-    background: transparent;
-    color: #a09070;
+.bag-cell .bq {
     font-size: 12px;
-    cursor: pointer;
+    font-weight: 900;
+    color: #5d3a10;
+    margin-top: 3px;
 }
 
-/* ---- 管理员 ---- */
-.adm-tools {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-}
-.adm-tools input[type=number] {
-    width: 80px;
-    border: 1px solid #e8d5b5;
-    border-radius: 10px;
-    padding: 6px 8px;
-    font-size: 13px;
-}
-.adm-prog {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 2px;
-    font-size: 12px;
-    color: #7a5a2a;
-    font-weight: 900;
-}
-.adm-prog input[type=range] { flex: 1; }
+/* ---- 管理界面 ---- */
 .adm-row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 2px;
-    border-bottom: 1px solid #f0e2cc;
-}
-.adm-mid { flex: 1; font-size: 12px; color: #5a3a15; font-weight: 900; }
-.adm-mid .adm-qty { display: inline-flex; align-items: flex-end; vertical-align: -2px; margin-left: 2px; }
-.adm-mid .adm-qty .numimg { height: 13px; width: auto; }
-.adm-row button {
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-    background: #ffe3b8;
-    color: #a06020;
-    font-size: 15px;
+    gap: 10px;
+    padding: 8px 14px;
+    font-size: 13px;
     font-weight: 900;
+    color: #5d3a10;
+}
+.adm-row b { color: #e0564e; }
+.adm-plots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding: 4px 14px;
+    max-height: 230px;
+    overflow-y: auto;
+}
+.adm-plot {
+    background: #fff7e6;
+    border: 1.5px solid #e8c48a;
+    border-radius: 10px;
+    padding: 6px 4px;
+    text-align: center;
+}
+.adm-plot .ap-name { font-size: 11px; font-weight: 900; color: #8a5a20; }
+.adm-plot .ap-st { font-size: 10px; color: #b08040; margin: 3px 0; min-height: 14px; }
+.adm-plot .ap-btns button {
+    font-size: 10px;
+    border: none;
+    border-radius: 8px;
+    padding: 2px 6px;
+    margin: 2px 1px;
+    background: #ffb347;
+    color: #fff;
     cursor: pointer;
 }
-
-/* ---- 提示 toast ---- */
-.toast {
-    position: absolute;
-    left: 12%;
-    right: 12%;
-    top: 9%;
-    z-index: 40;
-    background: rgba(40, 25, 10, .85);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 900;
-    text-align: center;
-    padding: 12px 14px;
-    border-radius: 16px;
-    opacity: 0;
-    transform: translateY(-8px);
-    transition: all .25s ease;
-    pointer-events: none;
-}
-.toast.show { opacity: 1; transform: translateY(0); }
-
-/* ---- 铲子开垦动画 ---- */
-#digger {
-    position: fixed;
-    width: 40px;
-    height: 60px;
-    z-index: 99;
-    display: none;
-    pointer-events: none;
-}
-.dig-anim { animation: dig .9s ease; }
-@keyframes dig {
-    0%   { transform: rotate(25deg) translateY(0); }
-    30%  { transform: rotate(-70deg) translateY(12px); }
-    60%  { transform: rotate(25deg) translateY(0); }
-    100% { transform: rotate(25deg) translateY(0); }
-}
-#digger::before {
-    content: '';
-    position: absolute;
-    left: 16px;
-    top: 0;
-    width: 8px;
-    height: 32px;
-    background: linear-gradient(#d99a5b, #b07a3f);
-    border-radius: 3px;
-}
-#digger::after {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 28px;
-    width: 30px;
-    height: 24px;
-    background: linear-gradient(#9db8d8, #6d88ab);
-    border-radius: 8px 8px 3px 3px;
-    clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
-}
-
-/* ---- 预加载遮罩 ---- */
-#preload {
-    position: absolute;
-    inset: 0;
-    background: rgba(30, 20, 10, .72);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 900;
-    z-index: 50;
-    letter-spacing: 2px;
-}
-
-/* ---- 成熟作物光圈 ---- */
-img.ripe { filter: drop-shadow(0 0 6px #ffd93d); }
-
-/* ===== v5 增量 ===== */
-/* 手写粗体数字字体（本地字体库，非图片） */
-@font-face {
-    font-family: 'CaveatB';
-    src: url('bean/fonts/caveat-bold.woff2?v=5') format('woff2');
-    font-weight: 700;
-    font-display: swap;
-}
-/* 屏幕比例不同时，背景图铺不满的区域用乳白米黄兜底 */
-body { background: #FBF3E4; }
-/* 修复：背包打不开——多余占位 div 与背包按钮同 class 重叠遮挡 */
-div.bagshop { display: none !important; }
-/* 数字角标改字体渲染 */
-.cnt .numimg { font-family: 'CaveatB', cursive; font-weight: 700; font-size: 17px; line-height: 1; color: #fff; text-shadow: 0 1px 2px rgba(60,20,0,.55); display: inline-block; }
-.cnt2 .numimg { font-family: 'CaveatB', cursive; font-weight: 700; font-size: 15px; line-height: 1; color: #fff; text-shadow: 0 1px 2px rgba(60,20,0,.55); display: inline-block; }
-.adm-mid .adm-qty .numimg { font-family: 'CaveatB', cursive; font-weight: 700; font-size: 13px; line-height: 1; color: #fff; text-shadow: 0 1px 2px rgba(60,20,0,.55); display: inline-block; }
-/* 浇水/施肥已用过 → 置灰 */
-.ops-btn.dis { opacity: .45; filter: grayscale(1); pointer-events: none; }
-/* 管理员：地块独立管理 */
-.adm-label { font-size: 12px; font-weight: 900; color: #8a5a20; margin-top: 8px; }
-.adm-plots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px 0; max-height: 230px; overflow-y: auto; }
-.adm-plot { background: #fff7e6; border: 1.5px solid #e8c48a; border-radius: 10px; padding: 6px 4px; text-align: center; }
-.adm-plot .ap-name { font-size: 11px; font-weight: 900; color: #8a5a20; }
-.adm-plot .ap-st { font-size: 10px; color: #b08040; margin: 3px 0; min-height: 14px; word-break: break-all; }
-.adm-plot .ap-btns button { font-size: 10px; border: none; border-radius: 8px; padding: 2px 6px; margin: 2px 1px; background: #ffb347; color: #fff; cursor: pointer; }
 .adm-plot .ap-btns button.danger { background: #e0564e; }
-/* 保险：背包/管理/商店按钮提高层级，防止手机端被任何元素遮挡点不开 */
-.btn.bagshop { z-index: 12; }
-.btn.adm { z-index: 12; }
-.btn.seedshop { z-index: 12; }
-/* 背景图加载失败/未切换时，用乳白米黄兜底（不露黑） */
-.phone-bg { background: #FBF3E4; }
+.adm-mini-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 900;
+    color: #fff;
+    background: linear-gradient(135deg, #ffb347, #ff8c42);
+    cursor: pointer;
+}
+.adm-mini-btn:active { transform: scale(.95); }
+.adm-mini-btn.danger { background: linear-gradient(135deg, #f0806e, #e0564e); }
 
+/* ===== 第三批：地块操作菜单 / 菜市场按钮 / 背包卡片 ===== */
+.act-menu {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    transform: translateX(-50%);
+    z-index: 60;
+    display: none;
+    background: linear-gradient(160deg, #fff8ec, #ffe3c2);
+    border: 3px solid #ffb347;
+    border-radius: 18px;
+    padding: 12px 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    min-width: 200px;
+}
+.act-menu.show { display: block; }
+.act-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #a05a1c;
+    text-align: center;
+    margin-bottom: 8px;
+}
+.act-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.act-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #ffb347, #ff8c42);
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(255,140,66,.4);
+}
+.act-btn:active { transform: scale(.94); }
+.act-btn.act-harvest { background: linear-gradient(135deg, #7ed957, #4caf50); box-shadow: 0 3px 8px rgba(76,175,80,.4); }
+.act-btn.act-danger { background: linear-gradient(135deg, #f0806e, #e0564e); box-shadow: 0 3px 8px rgba(224,86,78,.4); }
+.act-btn.act-close { background: linear-gradient(135deg, #b8b8b8, #9c9c9c); box-shadow: none; }
+.act-btn.act-done { background: linear-gradient(135deg, #c9c9c9, #b0b0b0); box-shadow: none; }
+
+.bag-market {
+    display: none;
+    margin: 6px auto 2px;
+    padding: 7px 16px;
+    border: none;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #7a4a14;
+    background: linear-gradient(135deg, #ffe3a3, #ffd27a);
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(255,210,122,.5);
+}
+.bag-market:active { transform: scale(.95); }
+.bag-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 6px; overflow-y: auto; }
+.bag-item {
+    position: relative;
+    background: #fff8ec;
+    border: 2px solid #ffd27a;
+    border-radius: 12px;
+    padding: 6px 4px 4px;
+    text-align: center;
+}
+.bag-item img { width: 64%; height: auto; object-fit: contain; }
+.bag-num {
+    position: absolute;
+    top: -8px;
+    right: -6px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    line-height: 24px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,.35);
+    padding: 0 3px;
+}
+.num-img { height: 19px; width: auto; vertical-align: middle; }
+.bag-name { font-size: 11px; color: #7a4a14; font-weight: 700; }
 </style>
 </head>
 
@@ -846,70 +855,67 @@ div.bagshop { display: none !important; }
 
 
 <div class="phone">
-    <img class="phone-bg" src="background.jpg" alt="">
-    <!-- 金币（顶部居中） -->
-    <div class="coins"><img src="bean/img/coin.png?v=5" alt="金币"><span id="coinN">0</span></div>
-    <!-- 管理员按钮 -->
-    <button class="btn adm" id="admBtn" onclick="openAdm()" style="display:none">管理</button>
+    <img class="phone-bg" src="bean/background.jpg" alt="">
 
-
+    <!-- 金币（1/3 位置） -->
+    <div class="coins" id="coinBar"><img src="bean/img/coin.png" alt=""><span id="coinN">0</span></div>
 
     <div class="title">
         南阳市新野县 晴 20°C
     </div>
 
 
-    <button class="btn back">
-        ←
+    <button class="btn back" onclick="goBack()">
+        ‹ 返回主页
     </button>
 
-<button class="btn diamond1" id="plot0" onclick="clickPlot(0)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond1">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond2" id="plot1" onclick="clickPlot(1)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond2">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond4" id="plot2" onclick="clickPlot(2)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond4">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond5" id="plot3" onclick="clickPlot(3)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond5">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond6" id="plot4" onclick="clickPlot(4)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond6">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond7" id="plot5" onclick="clickPlot(5)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond7">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond8" id="plot6" onclick="clickPlot(6)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond8">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond9" id="plot7" onclick="clickPlot(7)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond9">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond10" id="plot8" onclick="clickPlot(8)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond10">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond11" id="plot9" onclick="clickPlot(9)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond11">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond12" id="plot10" onclick="clickPlot(10)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond12">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond13" id="plot11" onclick="clickPlot(11)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond13">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond14" id="plot12" onclick="clickPlot(12)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond14">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond15" id="plot13" onclick="clickPlot(13)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond15">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond16" id="plot14" onclick="clickPlot(14)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond16">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
-<button class="btn diamond17" id="plot15" onclick="clickPlot(15)">
-    <img id="imgD1" src="cao.png" style="width:110%;height:102%;">
+<button class="btn diamond17">
+    <img id="imgD1" src="bean/cao.png" style="width:110%;height:102%;">
 </button>
 
 
@@ -922,111 +928,147 @@ div.bagshop { display: none !important; }
     onclick="opencropsbag()">
         作物背包
     </button>
+    <button class="btn adm" id="admBtn" onclick="openAdm()">
+        管理
+    </button>
 
 <div class="seed">
     <div class="seed-item">
-        <img class="appleseed" src="seed/appleseed.png" alt="" onclick="pickSeed(this,'apple')"><span class="cnt"></span>
+        <img class="appleseed" src="bean/seed/appleseed.png" alt="" onclick="pickSeed(this,'apple')">
+        <span class="seed-num">0</span>
         <div>苹果种子</div>
     </div>
     <div class="seed-item">
-        <img class="pineseed" src="seed/pineseed.png" alt="" onclick="pickSeed(this,'pine')"><span class="cnt"></span>
+        <img class="pineseed" src="bean/seed/pineseed.png" alt="" onclick="pickSeed(this,'pine')">
+        <span class="seed-num">0</span>
         <div>松树种子</div>
     </div>
     <div class="seed-item">
-        <img class="candyseed" src="seed/candyseed.png" alt="" onclick="pickSeed(this,'candy')"><span class="cnt"></span>
+        <img class="candyseed" src="bean/seed/candyseed.png" alt="" onclick="pickSeed(this,'candy')">
+        <span class="seed-num">0</span>
         <div>糖果种子</div>
     </div>
     <div class="seed-item">
-        <img class="roseseed" src="seed/roseseed.png" alt="" onclick="pickSeed(this,'rose')"><span class="cnt"></span>
+        <img class="roseseed" src="bean/seed/roseseed.png" alt="" onclick="pickSeed(this,'rose')">
+        <span class="seed-num">0</span>
         <div>玫瑰种子</div>
     </div>
     <div class="seed-item">
-        <img class="potatoseed" src="seed/potatoseed.png" alt="" onclick="pickSeed(this,'potato')"><span class="cnt"></span>
+        <img class="potatoseed" src="bean/seed/potatoseed.png" alt="" onclick="pickSeed(this,'potato')">
+        <span class="seed-num">0</span>
         <div>土豆种子</div>
     </div>
     <div class="seed-item">
-        <img class="mushroomseed" src="seed/mushroomseed.png" alt="" onclick="pickSeed(this,'mushroomseed')"><span class="cnt"></span>
+        <img class="mushroomseed" src="bean/seed/mushroomseed.png" alt="" onclick="pickSeed(this,'mushroomseed')">
+        <span class="seed-num">0</span>
         <div>蘑菇种子</div>
     </div>
     <div class="seed-item">
-        <img class="pumpkinseed" src="seed/pumpkinseed.png" alt="" onclick="pickSeed(this,'pumpkin')"><span class="cnt"></span>
+        <img class="pumpkinseed" src="bean/seed/pumpkinseed.png" alt="" onclick="pickSeed(this,'pumpkin')">
+        <span class="seed-num">0</span>
         <div>南瓜种子</div>
     </div>
     <div class="seed-item">
-        <img class="cabbageseed" src="seed/cabbageseed.png" alt="" onclick="pickSeed(this,'cabbage')"><span class="cnt"></span>
+        <img class="cabbageseed" src="bean/seed/cabbageseed.png" alt="" onclick="pickSeed(this,'cabbage')">
+        <span class="seed-num">0</span>
         <div>白菜种子</div>
     </div>
     <div class="seed-item">
-        <img class="radishseed" src="seed/radishseed.png" alt="" onclick="pickSeed(this,'radish')"><span class="cnt"></span>
+        <img class="radishseed" src="bean/seed/radishseed.png" alt="" onclick="pickSeed(this,'radish')">
+        <span class="seed-num">0</span>
         <div>萝卜种子</div>
     </div>
 </div>
 
-<div class="bagshop">
-    <img src="crop1.jpg" alt="">
-    <img src="crop2.jpg" alt="">
-    <img src="crop3.jpg" alt="">
+<audio id="bgAudio" src="bean/background.mp3"></audio>
+<div id="toastMsg"></div>
+
+<!-- 地块操作菜单（浇水/施肥/铲除/收获） -->
+<div class="act-menu" id="actMenu"></div>
+
+<!-- 种子商店 -->
+<div class="panel" id="seedShop">
+    <div class="panel-head"><span>种子商店</span><button class="panel-x" onclick="closeSeedShop()">×</button></div>
+    <div class="shop-list">
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/appleseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">苹果种子</div><div class="shop-price">当日 1币 2个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('apple')">−</button><span id="qty_apple">0</span><button onclick="shopPlus('apple')">+</button></div>
+        </div>
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/pineseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">松树种子</div><div class="shop-price">当日 1币 1个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('pine')">−</button><span id="qty_pine">0</span><button onclick="shopPlus('pine')">+</button></div>
+        </div>
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/candyseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">糖果种子</div><div class="shop-price">当日 1币 1个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('candy')">−</button><span id="qty_candy">0</span><button onclick="shopPlus('candy')">+</button></div>
+        </div>
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/roseseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">玫瑰种子</div><div class="shop-price">当日 1币 1个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('rose')">−</button><span id="qty_rose">0</span><button onclick="shopPlus('rose')">+</button></div>
+        </div>
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/potatoseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">土豆种子</div><div class="shop-price">当日 1币 2个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('potato')">−</button><span id="qty_potato">0</span><button onclick="shopPlus('potato')">+</button></div>
+        </div>
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/mushroomseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">蘑菇种子</div><div class="shop-price">当日 1币 2个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('mushroomseed')">−</button><span id="qty_mushroomseed">0</span><button onclick="shopPlus('mushroomseed')">+</button></div>
+        </div>
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/pumpkinseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">南瓜种子</div><div class="shop-price">当日 1币 1个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('pumpkin')">−</button><span id="qty_pumpkin">0</span><button onclick="shopPlus('pumpkin')">+</button></div>
+        </div>
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/cabbageseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">白菜种子</div><div class="shop-price">当日 1币 2个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('cabbage')">−</button><span id="qty_cabbage">0</span><button onclick="shopPlus('cabbage')">+</button></div>
+        </div>
+        <div class="shop-row">
+            <img class="shop-icon" src="bean/seed/radishseed.png" alt="">
+            <div class="shop-mid"><div class="shop-name">萝卜种子</div><div class="shop-price">当日 1币 1个</div></div>
+            <div class="shop-qty"><button onclick="shopMinus('radish')">−</button><span id="qty_radish">0</span><button onclick="shopPlus('radish')">+</button></div>
+        </div>
+    </div>
+    <div class="panel-foot"><span>一共 <b id="shopTotal">0</b> 币</span><button onclick="shopBuy()">结算</button></div>
 </div>
-<audio id="bgAudio" src="background.mp3"></audio>
-    <!-- 商店面板 -->
-    <div class="panel" id="shopPanel">
-        <div class="panel-head"><b>种子商店</b><button class="panel-close" onclick="closeShop()">×</button></div>
-        <div class="panel-body" id="shopRows"></div>
-        <div class="panel-foot"><span id="shopTotal">共 0 币</span><button class="settle" onclick="settleShop()">结算</button></div>
+
+<!-- 作物背包 -->
+<div class="panel" id="bagPanel">
+    <div class="panel-head"><span>背包</span><button class="panel-x" onclick="closeBag()">×</button></div>
+    <div class="bag-tabs">
+        <button class="bt on" onclick="bagTab('all', this)">全部</button>
+        <button class="bt" onclick="bagTab('crop', this)">作物</button>
+        <button class="bt" onclick="bagTab('seed', this)">种子</button>
     </div>
-
-    <!-- 背包面板 -->
-    <div class="panel" id="bagPanel">
-        <div class="panel-head"><b>作物背包</b><button class="panel-close" onclick="closeBag()">×</button></div>
-        <div class="bag-tabs">
-            <button class="bag-tab on" id="btAll" onclick="setBagTab('all')">全部</button>
-            <button class="bag-tab" id="btCrop" onclick="setBagTab('crop')">作物</button>
-            <button class="bag-tab" id="btSeed" onclick="setBagTab('seed')">种子</button>
-        </div>
-        <div class="panel-body bag-grid" id="bagRows"></div>
+    <div class="bag-market" id="bagMarket" onclick="openMarket()">🥬 菜市场（早市 7:00-8:00）</div>
+    <div class="bag-grid" id="bagGrid">
+        <div class="bag-empty">背包空空如也～</div>
     </div>
+</div>
 
-    <!-- 作物操作面板 -->
-    <div class="ops" id="opsPanel">
-        <div id="opsName">作物</div>
-        <div id="opsInfo"></div>
-        <div class="ops-btns">
-            <button class="ops-btn" id="opsWaterBtn" onclick="opsWater()">💧 浇水</button>
-            <button class="ops-btn" id="opsFertBtn" onclick="opsFert()">🌿 施肥</button>
-            <button class="ops-btn danger" onclick="opsDig()">⛏ 铲掉</button>
-        </div>
-        <button class="ops-close" onclick="closeOps()">关闭</button>
+<!-- 管理后台 -->
+<div class="panel" id="admPanel">
+    <div class="panel-head"><span>管理后台</span><button class="panel-x" onclick="closeAdm()">×</button></div>
+    <div class="adm-row">金币总数 <b id="admCoins">0</b></div>
+    <div class="adm-plots" id="admPlots"></div>
+    <div class="adm-row">
+        苹果库存 <button class="adm-mini-btn" onclick="admStock('apple',-1)">−</button><b id="admStock_apple">0</b><button class="adm-mini-btn" onclick="admStock('apple',1)">+</button>
+        单价 <button class="adm-mini-btn" onclick="admPrice('apple',-1)">−</button><b id="admPrice_apple">1</b><button class="adm-mini-btn" onclick="admPrice('apple',1)">+</button>
     </div>
-
-    <!-- 管理员面板 -->
-    <div class="panel" id="admPanel">
-        <div class="panel-head"><b>管理菜地</b><button class="panel-close" onclick="closeAdm()">×</button></div>
-        <div class="panel-body">
-            <div class="adm-tools">
-                <input id="admGiveN" type="number" value="100" min="1">
-                <button class="settle" onclick="admGive()">发放金币</button>
-            </div>
-            <div class="adm-tools">
-                <button class="settle" onclick="admOpenAll()">全部开垦</button>
-                <button class="settle danger" onclick="admResetAll()">重置菜地</button>
-                <button class="settle danger" onclick="admClear()">一键清空</button>
-            </div>
-            <div class="adm-prog">生长进度：<input type="range" min="0" max="100" value="0" oninput="admProgress(this.value)"><span id="admProgVal">0/4</span></div>
-            <div class="adm-label">地块管理（独立控制每块地）</div>
-            <div class="adm-plots" id="admPlots"></div>
-            <div class="adm-label">种子库存与价格</div>
-            <div id="admRows"></div>
-        </div>
+    <div class="adm-row">
+        <button class="adm-mini-btn" onclick="admClearAll()">一键清空菜地</button>
+        <button class="adm-mini-btn danger" onclick="admReset()">重置</button>
+        <button class="adm-mini-btn" onclick="admGiveCoin()">发放金币</button>
     </div>
+</div>
 
-    <!-- 提示 -->
-    <div class="toast" id="toast"></div>
-    <!-- 预加载遮罩 -->
-    <div id="preload">加载中…</div>
-
-
-
- 
 
 
 
@@ -1068,611 +1110,820 @@ function pickSeed(el, seedType) {
     }
 }
 
+</script>
 
+<script>
+/* ===== 增量：登录 + 金币 + 翻土 + 存档（ES5 兼容写法） ===== */
+var API = 'https://api.mogoing.xyz';
+var U = localStorage.getItem('blindbox_user') || '';
+var P = localStorage.getItem('blindbox_pass') || '';
+var V = '7';
+if (!U || !P) { location.href = 'index.html'; }
 
-/* =========================================================
-   增量功能 JS（v4）—— 在用户手写 JS 之后【追加】，不改动用户已有代码
-   本轮：金币居中显示 / 返回按钮绑定 / Q版手绘数字角标 /
-        存档增强（fetch keepalive + sendBeacon + 多事件兜底）/
-        天气背景改用 .phone-bg 选择器
-   ========================================================= */
-(function () {
-    'use strict';
-    var V = '6';
-    var API = 'https://api.mogoing.xyz';
-    var U = localStorage.getItem('blindbox_user') || '';
-    var P = localStorage.getItem('blindbox_pass') || '';
-    var PLOTS = 16;
-    var OPEN_PRICE = 10;
-    var manager = false;
+/* 素材路径：已带 bean/ 前缀的直接加版本号 */
+function S(u) {
+    if (/^(https?:|data:|blob:)/.test(u)) return u;
+    if (u.indexOf('bean/') === 0) return u + '?v=' + V;
+    return 'bean/' + u + '?v=' + V;
+}
 
-    function S(u) {
-        if (/^(https?:|data:|blob:)/.test(u)) return u;
-        if (u.indexOf('bean/') === 0) return u + '?v=' + V;
-        return 'bean/' + u + '?v=' + V;
-    }
+/* 16 块田：HTML class 顺序 diamond1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17（无 3） */
+var PLOT_ORDER = ['d1','d2','d4','d5','d6','d7','d8','d9','d10','d11','d12','d13','d14','d15','d16','d17'];
+var plots = [];
+for (var pi = 0; pi < PLOT_ORDER.length; pi++) plots.push({ o: false });
 
-    /* ---- 手写粗体数字渲染（本地字体库，非图片） ---- */
-    function numHTML(n) {
-        n = String(n == null ? 0 : n);
-        var h = '';
-        for (var i = 0; i < n.length; i++) {
-            var c = n.charAt(i);
-            if (/[0-9.\-]/.test(c)) h += '<span class="numimg">' + c + '</span>';
-        }
-        return h || '<span class="numimg">0</span>';
-    }
+var state = { coins: 0, inv: {} };
+var loaded = false;   // 存档加载完成前禁止保存（防止空状态覆盖后端）
+var OPEN_COST = 10;   // 开垦一块地花费 10 金币
 
-    /* ---- 作物配置 ---- */
-    var CROPS = {
-        apple:        { name: '奇幻苹果树种子', seed: 'appleseed.png',    per: 2, grow: 4, multi: true  },
-        pine:         { name: '常青松果种子',   seed: 'pineseed.png',     per: 2, grow: 4, multi: false },
-        candy:        { name: '彩虹糖果种子',   seed: 'candyseed.png',    per: 3, grow: 3, multi: false },
-        rose:         { name: '月光玫瑰种子',   seed: 'roseseed.png',     per: 1, grow: 5, multi: false },
-        potato:       { name: '黄金土豆种子',   seed: 'potatoseed.png',   per: 2, grow: 3, multi: false },
-        mushroomseed: { name: '秘境蘑菇种子',   seed: 'mushroomseed.png', per: 1, grow: 4, multi: false },
-        pumpkin:      { name: '魔法南瓜种子',   seed: 'pumpkinseed.png',  per: 1, grow: 6, multi: false },
-        cabbage:      { name: '翡翠白菜种子',   seed: 'cabbageseed.png',  per: 2, grow: 4, multi: false },
-        radish:       { name: '白玉萝卜种子',   seed: 'radishseed.png',   per: 1, grow: 3, multi: false }
-    };
-    var KEYS = ['apple', 'pine', 'candy', 'rose', 'potato', 'mushroomseed', 'pumpkin', 'cabbage', 'radish'];
+/* ---- 金币显示 ---- */
+function refreshCoin() {
+    var el = document.getElementById('coinN');
+    if (el) el.textContent = state.coins;
+}
 
-    var state = { plots: [], inv: { seed: {}, crop: {} }, coins: 0 };
-    (function initPlots() { for (var i = 0; i < PLOTS; i++) state.plots.push({ o: false, c: null }); })();
+/* ---- 提示气泡 ---- */
+function toast(msg) {
+    var t = document.getElementById('toastMsg');
+    if (!t) return;
+    t.textContent = msg;
+    t.style.opacity = '1';
+    clearTimeout(t._tm);
+    t._tm = setTimeout(function () { t.style.opacity = '0'; }, 1800);
+}
 
-    function $(id) { return document.getElementById(id); }
-
-    /* ---- 素材路径运行时修复 ---- */
-    function fixStaticPaths() {
-        // 兼容旧 WebView：NodeList.forEach 在 Chromium 51 以下不可用，改用 for 循环
-        var imgs = document.querySelectorAll('img, audio');
-        for (var i = 0; i < imgs.length; i++) {
-            var el = imgs[i];
-            var src = el.getAttribute('src');
-            if (!src) continue;
-            if (/^(https?:|data:|blob:)/.test(src)) continue;
-            var fixed = src.indexOf('bean/') === 0 ? src : 'bean/' + src;
-            el.setAttribute('src', fixed + '?v=' + V);
-        }
-    }
-
-    /* ---- 返回按钮绑定（用户手写按钮没有 onclick，增量补上） ---- */
-    function bindBack() {
-        var b = document.querySelector('.btn.back');
-        if (b) b.onclick = function () { location.href = 'main.html'; };
-    }
-
-    /* ---- 提示 ---- */
-    var toastT = null;
-    function toast(msg) {
-        var t = $('toast');
-        if (!t) return;
-        t.textContent = msg;
-        t.classList.add('show');
-        clearTimeout(toastT);
-        toastT = setTimeout(function () { t.classList.remove('show'); }, 2200);
-    }
-
-    /* ---- 生长阶段 ---- */
-    function stageOf(c) {
-        var el = (Date.now() / 1000) - (c.p || Date.now() / 1000);
-        var grow = (CROPS[c.t].grow || 4) * 3600;
-        var st = Math.floor(el / grow * 5);
-        return st > 4 ? 4 : (st < 0 ? 0 : st);
-    }
-    function growSrc(key, st) {
-        return 'bean/grow/' + key + '_' + st + '.png?v=' + V;
-    }
-    function fallbackGrow(img, key) {
-        img.onerror = null;
-        img.setAttribute('src', S('seed/' + CROPS[key].seed));
-    }
-
-    /* ---- 渲染田块 ---- */
-    function renderFarm() {
-        for (var i = 0; i < PLOTS; i++) {
-            var el = $('plot' + i);
-            if (!el) continue;
-            var p = state.plots[i] || { o: false, c: null };
-            var img = el.querySelector('img');
-            if (!img) continue;
-            img.onerror = null;
-            if (!p.o) {
-                img.setAttribute('src', S('cao.png'));
-                img.classList.remove('ripe');
-            } else if (!p.c) {
-                img.setAttribute('src', S('img/plot_soil.png'));
-                img.classList.remove('ripe');
-            } else {
-                var st = stageOf(p.c);
-                img.setAttribute('src', growSrc(p.c.t, st));
-                if (st >= 4) img.classList.add('ripe'); else img.classList.remove('ripe');
-                (function (img2, key) { img2.onerror = function () { fallbackGrow(img2, key); }; })(img, p.c.t);
+/* ---- 后端：读用户金币 ---- */
+function loadUser() {
+    fetch(API + '/api/user?username=' + encodeURIComponent(U) + '&password=' + encodeURIComponent(P), { cache: 'no-store' })
+        .then(function (r) { return r.json(); }).then(function (j) {
+            if (!j.ok || !j.user) { location.href = 'index.html'; return; }
+            state.coins = j.user.coins || 0;
+            refreshCoin();
+            /* 管理员显示管理按钮 */
+            if (j.user.manager) {
+                var ab = document.getElementById('admBtn');
+                if (ab) ab.style.display = 'block';
             }
-        }
-    }
+            loadRemote();
+        }).catch(function () {});
+}
 
-    /* ---- 种子栏角标（Q版手绘数字） ---- */
-    function renderSeedbar() {
-        var items = document.querySelectorAll('.seed-item');
-        for (var i = 0; i < items.length; i++) {
-            var img = items[i].querySelector('img');
-            var cnt = items[i].querySelector('.cnt');
-            if (!img || !cnt) continue;
-            var m = (img.getAttribute('onclick') || '').match(/'(\w+)'\)/);
-            var k = m ? m[1] : null;
-            var q = 0;
-            if (k && state.inv.seed[k]) {
-                var x = state.inv.seed[k];
-                q = (typeof x === 'number') ? x : (x.q || 0);
-            }
-            cnt.innerHTML = numHTML(q);
-        }
-    }
-
-    /* ---- 金币 ---- */
-    function refreshCoin() {
-        var el = $('coinN');
-        if (el) el.textContent = state.coins;
-    }
-    function apiPost(path, body) {
-        return fetch(API + path, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
-            keepalive: true
-        }).then(function (r) { return r.json(); }).catch(function () { return { ok: false }; });
-    }
-    function spend(n) {
-        state.coins -= n;
-        refreshCoin();
-        apiPost('/api/spend', { username: U, password: P, amount: n }).then(function (j) {
-            if (j.ok) { state.coins = j.balance; refreshCoin(); }
-        });
-    }
-    function gain(n) {
-        state.coins += n;
-        refreshCoin();
-        apiPost('/api/gain', { username: U, password: P, amount: n }).then(function (j) {
-            if (j.ok) { state.coins = j.balance; refreshCoin(); }
-        });
-    }
-
-    /* ---- 存档（fetch keepalive 优先，sendBeacon text/plain 兜底） ---- */
-    var svT = null;
-    var loaded = false;   // 存档加载完成前禁止保存（防止空 state 覆盖后端）
-    function saveNow() {
-        if (!loaded) return;
-        var d = { plots: state.plots, inv: state.inv, coins: state.coins };
-        var body = JSON.stringify({ username: U, password: P, game: 'bean', data: d });
-        fetch(API + '/api/save', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: body,
-            keepalive: true
-        }).catch(function () {
-            // 兜底：sendBeacon 只能发简单请求，用 text/plain（后端 json() 不检查 content-type）
-            try { navigator.sendBeacon(API + '/api/save', new Blob([body], { type: 'text/plain' })); } catch (e) {}
-        });
-    }
-    function saveSoon() {
-        if (svT) clearTimeout(svT);
-        svT = setTimeout(saveNow, 600);
-    }
-    function saveAll() { saveNow(); }
-    window.addEventListener('pagehide', saveAll);
-    window.addEventListener('beforeunload', saveAll);
-    document.addEventListener('visibilitychange', function () {
-        if (document.visibilityState === 'hidden') saveNow();
-    });
-
-    function loadRemote() {
-        fetch(API + '/api/save?username=' + encodeURIComponent(U) + '&password=' + encodeURIComponent(P) + '&game=bean')
-            .then(function (r) { return r.json(); }).then(function (j) {
-                if (j.ok && j.save) {
-                    var d = j.save;
-                    if (d.plots) state.plots = d.plots;
-                    if (d.inv) state.inv = d.inv;
-                    // 金币以服务端余额为权威
+/* ---- 后端：读存档（地块状态） ---- */
+function loadRemote() {
+    fetch(API + '/api/save?username=' + encodeURIComponent(U) + '&password=' + encodeURIComponent(P) + '&game=bean', { cache: 'no-store' })
+        .then(function (r) { return r.json(); }).then(function (j) {
+            if (j.ok && j.save && j.save.plots) {
+                for (var i = 0; i < PLOT_ORDER.length && i < j.save.plots.length; i++) {
+                    var src = j.save.plots[i] || {};
+                    plots[i].o = !!src.o;
+                    plots[i].crop = src.crop || '';
+                    plots[i].grow = src.grow || 0;
+                    plots[i].plantedAt = src.plantedAt || 0;
+                    plots[i].watered = !!src.watered;
+                    plots[i].fertilized = !!src.fertilized;
                 }
-                for (var i = 0; i < PLOTS; i++) if (!state.plots[i]) state.plots[i] = { o: false, c: null };
-                refreshCoin(); renderFarm(); renderSeedbar();
-                loaded = true;
-            }).catch(function () {
-                for (var i2 = 0; i2 < PLOTS; i2++) if (!state.plots[i2]) state.plots[i2] = { o: false, c: null };
-                refreshCoin(); renderFarm(); renderSeedbar();
-                loaded = true;
-            });
-    }
+            }
+            if (j.ok && j.save && j.save.inv) state.inv = j.save.inv;
+            loaded = true;
+            renderFarm();
+            renderCrops();
+            renderSeedNums();
+        }).catch(function () { loaded = true; });
+}
 
-    /* ---- 开垦动画 ---- */
-    var digEl = null;
-    function digAnim(i, cb) {
-        var el = $('plot' + i);
-        if (!el) { cb && cb(); return; }
-        var phone = document.querySelector('.phone').getBoundingClientRect();
-        var r = el.getBoundingClientRect();
-        if (!digEl) { digEl = document.createElement('div'); digEl.id = 'digger'; document.body.appendChild(digEl); }
-        digEl.style.display = 'block';
-        digEl.style.left = (r.left - phone.left + r.width / 2 - 20) + 'px';
-        digEl.style.top = (r.top - phone.top + r.height / 2 - 36) + 'px';
-        digEl.className = 'dig-anim';
-        setTimeout(function () { digEl.style.display = 'none'; cb && cb(); }, 900);
+/* ---- 种子卡片右上角数量角标（Q版手绘数字图片 bean/num/） ---- */
+function renderSeedNums() {
+    var keys = ['apple', 'pine', 'candy', 'rose', 'potato', 'mushroomseed', 'pumpkin', 'cabbage', 'radish'];
+    var items = document.querySelectorAll('.seed-item');
+    for (var i = 0; i < items.length && i < keys.length; i++) {
+        var el = items[i].querySelector('.seed-num');
+        if (!el) continue;
+        el.innerHTML = numImg(state.inv[keys[i]] || 0);
     }
+}
 
-    /* ---- 点击田块 ---- */
-    function clickPlot(i) {
-        var p = state.plots[i] || { o: false, c: null };
+/* ---- 渲染田块：已开垦的显示土块 ---- */
+function renderFarm() {
+    for (var i = 0; i < PLOT_ORDER.length; i++) {
+        var btn = document.querySelector('button.' + PLOT_ORDER[i].replace('d', 'diamond'));
+        if (!btn) continue;
+        var img = btn.querySelector('img');
+        if (!img) continue;
+        if (plots[i].o) img.src = S('img/plot_soil.png');
+        else img.src = S('cao.png');
+    }
+}
+
+/* ---- 翻土（开垦） ---- */
+function plotIdx(btn) {
+    var m = (btn.className || '').match(/diamond(\d+)/);
+    if (!m) return -1;
+    var n = parseInt(m[1], 10);
+    return n < 3 ? n - 1 : n - 2;
+}
+function digPlot(btn) {
+    var idx = plotIdx(btn);
+    if (idx < 0) return;
+    var p = plots[idx];
+    if (p.o) { toast('这块地已经开垦过了'); return; }
+    if (state.coins < OPEN_COST) { toast('金币不足，开垦需要 ' + OPEN_COST + ' 金币'); return; }
+    state.coins -= OPEN_COST;
+    refreshCoin();
+    p.o = true;
+    var img = btn.querySelector('img');
+    var dig = btn.querySelector('.digger');
+    /* 翻土动画：小耙子挖 → 变土块，耙完放旁边 */
+    btn.classList.add('digging');
+    if (dig) dig.style.display = 'block';
+    /* 挖土开始：场外旧耙子消失（只保留当前挖的这个） */
+    var oldRests = document.querySelectorAll('.phone > .digger.rest');
+    for (var ri = 0; ri < oldRests.length; ri++) {
+        var or = oldRests[ri];
+        if (or.parentNode) or.parentNode.removeChild(or);
+    }
+    setTimeout(function () {
+        if (img) img.src = S('img/plot_soil.png');
+        btn.classList.remove('digging');
+        if (dig) {
+            /* 耙完：把耙子移出田块，停到 phone 层（地块外的工具区），淡入出现 */
+            var ph = document.querySelector('.phone');
+            if (ph && dig.parentNode !== ph) ph.appendChild(dig);
+            dig.classList.add('rest');
+            setTimeout(function () { dig.classList.add('on'); }, 30);
+        }
+    }, 550);
+    toast('开垦成功，花费 ' + OPEN_COST + ' 金币');
+    saveSoon();
+    /* 扣币同步到后端 */
+    fetch(API + '/api/spend', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: U, password: P, amount: OPEN_COST }),
+        cache: 'no-store',
+        keepalive: true
+    }).then(function (r) { return r.json(); }).then(function (j) {
+        if (j.ok) { state.coins = j.balance; refreshCoin(); }
+    }).catch(function () {});
+}
+
+/* ---- 给每块田装上小耙子（动画元素） ---- */
+function addDiggers() {
+    for (var i = 0; i < PLOT_ORDER.length; i++) {
+        var btn = document.querySelector('button.' + PLOT_ORDER[i].replace('d', 'diamond'));
+        if (!btn) continue;
+        if (btn.querySelector('.digger')) continue;
+        var d = document.createElement('img');
+        d.className = 'digger';
+        d.src = S('img/rake.png');
+        d.alt = '';
+        btn.appendChild(d);
+    }
+}
+
+/* ---- 存档（600ms 防抖 + 页面关闭兜底） ---- */
+var svT = null;
+function saveNow() {
+    if (!loaded) return;
+    var d = { plots: plots, coins: state.coins, inv: state.inv };
+    var body = JSON.stringify({ username: U, password: P, game: 'bean', data: d });
+    fetch(API + '/api/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: body,
+        cache: 'no-store',
+        keepalive: true
+    }).catch(function () {
+        /* 兜底：sendBeacon 只能发简单请求，用 text/plain（后端不检查 content-type） */
+        try { navigator.sendBeacon(API + '/api/save', new Blob([body], { type: 'text/plain' })); } catch (e) {}
+    });
+}
+function saveSoon() {
+    if (svT) clearTimeout(svT);
+    svT = setTimeout(saveNow, 600);
+}
+window.addEventListener('pagehide', function () { if (loaded) saveNow(); });
+
+/* ---- 绑定田块点击 ---- */
+document.addEventListener('DOMContentLoaded', function () {
+    addDiggers();
+    var btns = document.querySelectorAll('.phone button');
+    for (var i = 0; i < btns.length; i++) {
+        var cls = btns[i].className || '';
+        if (cls.indexOf('diamond') < 0) continue;
+        (function (btn) {
+            btn.addEventListener('click', function () { digPlot(btn); });
+        })(btns[i]);
+    }
+    loadUser();
+});
+
+/* ===== 第二步：返回主页 ===== */
+function goBack() {
+    location.href = 'main.html';
+}
+
+/* ===== 第二步：面板开关（商店/背包/管理） ===== */
+function openSeedShop() { showPanel('seedShop'); }
+function closeSeedShop() { hidePanel('seedShop'); }
+function opencropsbag() { showPanel('bagPanel'); }
+function closeBag() { hidePanel('bagPanel'); }
+function openAdm() { showPanel('admPanel'); renderAdm(); }
+function closeAdm() { hidePanel('admPanel'); }
+function showPanel(id) {
+    var p = document.getElementById(id);
+    if (p) p.classList.add('show');
+}
+function hidePanel(id) {
+    var p = document.getElementById(id);
+    if (p) p.classList.remove('show');
+}
+/* 打开商店时刷新总价 */
+function openseedshop() {
+    showPanel('seedShop');
+    shopTotal();
+}
+
+/* ---- 种子商店：数量 ± 与总价（真实价格：基础兑换率 × 季节/天气 × 管理加成） ---- */
+var shopSel = {};
+var SHOP_RATE = { apple: 2, pine: 1, candy: 1, rose: 1, potato: 2, mushroomseed: 2, pumpkin: 1, cabbage: 2, radish: 1 }; // 1币几个
+function shopPlus(k) {
+    shopSel[k] = (shopSel[k] || 0) + 1;
+    var el = document.getElementById('qty_' + k);
+    if (el) el.textContent = shopSel[k];
+    shopTotal();
+}
+function shopMinus(k) {
+    shopSel[k] = Math.max(0, (shopSel[k] || 0) - 1);
+    var el = document.getElementById('qty_' + k);
+    if (el) el.textContent = shopSel[k];
+    shopTotal();
+}
+function shopTotal() {
+    var total = 0;
+    for (var k in SHOP_RATE) {
+        var n = shopSel[k] || 0;
+        if (n > 0) total += Math.ceil(n / priceRate(k));
+    }
+    var el = document.getElementById('shopTotal');
+    if (el) el.textContent = total;
+    return total;
+}
+function shopBuy() {
+    var total = shopTotal();
+    if (total <= 0) { toast('先选择要买的种子'); return; }
+    if (state.coins < total) { toast('金币不足，需要 ' + total + ' 币'); return; }
+    state.coins -= total;
+    refreshCoin();
+    var got = {};
+    for (var k in shopSel) {
+        var n = shopSel[k] || 0;
+        if (n > 0) { state.inv[k] = (state.inv[k] || 0) + n; got[k] = n; }
+    }
+    shopSel = {};
+    for (var k2 in SHOP_RATE) {
+        var el2 = document.getElementById('qty_' + k2);
+        if (el2) el2.textContent = '0';
+    }
+    shopTotal();
+    renderSeedNums();
+    renderBagIfOpen();
+    saveSoon();
+    /* 同步扣币到后端 */
+    fetch(API + '/api/spend', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: U, password: P, amount: total }),
+        cache: 'no-store',
+        keepalive: true
+    }).then(function (r) { return r.json(); }).then(function (j) {
+        if (j.ok) { state.coins = j.balance; refreshCoin(); }
+    }).catch(function () {});
+    toast('购买成功，花费 ' + total + ' 币');
+}
+
+/* ---- 背包：分类切换（真实数据） ---- */
+var bagTabNow = 'all';
+function bagTab(tab, btn) {
+    bagTabNow = tab;
+    var tabs = document.querySelectorAll('.bag-tabs .bt');
+    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('on');
+    if (btn) btn.classList.add('on');
+    renderBag();
+}
+/* ---- Q版手绘数字图片（bean/num/，按位拼接） ---- */
+function numImg(n) {
+    var s = String(n || 0);
+    var h = '';
+    for (var i = 0; i < s.length; i++) {
+        h += '<img class="num-img" src="bean/num/' + s[i] + '.png?v=' + V + '">';
+    }
+    return h;
+}
+/* 背包图片加载失败回退到种子图 */
+function bagerr(img, crop) {
+    img.onerror = null;
+    img.src = S('seed/' + crop + 'seed.png');
+}
+function renderBag() {
+    var grid = document.getElementById('bagGrid');
+    if (!grid) return;
+    var items = [];
+    for (var k in state.inv) {
+        var n = state.inv[k];
+        if (!n) continue;
+        var isCrop = k.indexOf('_crop') > 0;
+        var cropKey = isCrop ? k.replace('_crop', '') : k;
+        if (bagTabNow === 'crop' && !isCrop) continue;
+        if (bagTabNow === 'seed' && isCrop) continue;
+        items.push({ key: k, cropKey: cropKey, n: n, isCrop: isCrop });
+    }
+    if (items.length === 0) {
+        grid.innerHTML = '<div class="bag-empty">背包空空如也～</div>';
+        return;
+    }
+    var h = '';
+    for (var i = 0; i < items.length; i++) {
+        var it = items[i];
+        var src = it.isCrop ? fruitImgUrl(it.cropKey) : S('seed/' + it.cropKey + 'seed.png');
+        var nm = CROP_NAMES[it.cropKey] || it.cropKey;
+        var label = it.isCrop ? nm : nm + '种子';
+        h += '<div class="bag-item"><img src="' + src + '" onerror="bagerr(this,\'' + it.cropKey + '\')"><span class="bag-num">' + numImg(it.n) + '</span><div class="bag-name">' + label + '</div></div>';
+    }
+    grid.innerHTML = h;
+}
+function renderBagIfOpen() {
+    var panel = document.getElementById('bagPanel');
+    if (panel && panel.classList.contains('show')) renderBag();
+}
+
+/* ---- 管理：地块状态化渲染（按钮随状态显示，每块单独生长进度） ---- */
+function renderAdm() {
+    /* 打开时先同步生长 */
+    for (var g = 0; g < plots.length; g++) {
+        var pg = plots[g];
+        if (pg.o && pg.crop) pg.grow = growCalc(pg);
+    }
+    var box = document.getElementById('admPlots');
+    if (!box) return;
+    var h = '';
+    for (var i = 0; i < PLOT_ORDER.length; i++) {
+        var p = plots[i];
+        var st, btns = '';
         if (!p.o) {
-            var cnt = 0;
-            for (var k = 0; k < PLOTS; k++) if (state.plots[k] && state.plots[k].o) cnt++;
-            var cost = (cnt + 1) * OPEN_PRICE;
-            if (state.coins < cost) { toast('金币不足：开垦需 ' + cost + ' 币（现有 ' + state.coins + '）'); return; }
-            digAnim(i, function () {
-                p.o = true;
-                spend(cost);
-                saveSoon(); renderFarm();
-                toast('开垦成功，花费 ' + cost + ' 金币');
-            });
-            return;
-        }
-        if (!p.c) {
-            if (!selectedSeed) { toast('先到种子商店买种子，再在下方种子栏点选'); return; }
-            var q = state.inv.seed[selectedSeed];
-            q = (typeof q === 'number') ? q : (q ? q.q : 0);
-            if (q <= 0) { toast('没有 ' + CROPS[selectedSeed].name + ' 了，去商店购买'); return; }
-            if (typeof state.inv.seed[selectedSeed] === 'number') {
-                state.inv.seed[selectedSeed] = q - 1;
-                if (state.inv.seed[selectedSeed] <= 0) delete state.inv.seed[selectedSeed];
-            } else {
-                state.inv.seed[selectedSeed].q = q - 1;
-                if (state.inv.seed[selectedSeed].q <= 0) delete state.inv.seed[selectedSeed];
-            }
-            p.c = { t: selectedSeed, p: Date.now() / 1000, w: 0, f: 0 };
-            saveSoon(); renderFarm(); renderSeedbar();
-            toast('种下了 ' + CROPS[selectedSeed].name);
-            return;
-        }
-        if (stageOf(p.c) >= 4) { harvest(i); return; }
-        showOps(i);
-    }
-
-    /* ---- 收获 ---- */
-    function harvest(i) {
-        var p = state.plots[i];
-        var c = p.c;
-        var qty = 1 + (c.w || 0) + (c.f || 0);
-        var old = state.inv.crop[c.t];
-        state.inv.crop[c.t] = { q: ((typeof old === 'number' ? old : (old ? old.q : 0)) + qty), ts: Date.now() };
-        var name = CROPS[c.t].name;
-        if (CROPS[c.t].multi) {
-            c.p = Date.now() / 1000; c.w = 0; c.f = 0;
-            toast('收获 ' + qty + ' 个' + name + '！果树继续结果');
+            st = '未开垦';
+            btns = '<button onclick="admPlotUI(' + i + ')">开垦</button>';
+        } else if (!p.crop) {
+            st = '已开垦';
+            btns = '<button onclick="admPlotUI(' + i + ')">种植</button>';
         } else {
-            p.c = null;
-            toast('收获 ' + qty + ' 个' + name + '，已放入背包');
+            st = '已种植 成长' + (p.grow || 0) + '/5';
+            btns = '<button onclick="admPlotUI(' + i + ')">浇水</button><button onclick="admPlotUI(' + i + ')">施肥</button><button class="danger" onclick="admPlotUI(' + i + ')">铲除</button>';
         }
-        saveSoon(); renderFarm(); renderSeedbar();
+        h += '<div class="adm-plot"><div class="ap-name">地块' + (i + 1) + '</div><div class="ap-st">' + st + '</div>';
+        if (p.o && p.crop) {
+            h += '<input type="range" class="ap-grow" min="0" max="5" value="' + (p.grow || 0) + '" oninput="admGrow(' + i + ', this.value)">';
+        }
+        h += '<div class="ap-btns">' + btns + '</div></div>';
     }
+    box.innerHTML = h;
+    var cn = document.getElementById('admCoins');
+    if (cn) cn.textContent = state.coins;
+    /* 价格加成显示 */
+    for (var pk in SHOP_RATE) {
+        var pe = document.getElementById('admPrice_' + pk);
+        if (pe) pe.textContent = priceBoost[pk] || 0;
+    }
+}
+/* 管理：单独调整某地块生长进度（同步种植时间，避免被时间计算覆盖） */
+function admGrow(i, v) {
+    var p = plots[i];
+    if (!p) return;
+    p.grow = parseInt(v, 10) || 0;
+    var c = CROPS[p.crop];
+    if (c && p.crop) p.plantedAt = Date.now() - Math.floor(p.grow * c.cycle / 5);
+    var st = document.querySelectorAll('#admPlots .ap-st')[i];
+    if (st) st.textContent = '已种植 成长' + p.grow + '/5';
+    renderCrops();
+    saveSoon();
+}
+function admPlotUI(i) {
+    var p = plots[i];
+    if (!p) return;
+    if (!p.o) {
+        /* 开垦 */
+        if (state.coins < OPEN_COST) { toast('金币不足，开垦需要 ' + OPEN_COST + ' 币'); return; }
+        state.coins -= OPEN_COST;
+        refreshCoin();
+        p.o = true;
+        toast('开垦成功');
+    } else if (!p.crop) {
+        /* 种植：用背包里第一个有货的种子 */
+        var k = null;
+        for (var j = 0; j < CROP_KEYS.length; j++) {
+            if ((state.inv[CROP_KEYS[j]] || 0) > 0) { k = CROP_KEYS[j]; break; }
+        }
+        if (!k) { toast('背包里没有种子，先去商店买'); renderAdm(); return; }
+        state.inv[k] -= 1;
+        p.crop = k;
+        p.plantedAt = Date.now();
+        p.grow = 0;
+        p.watered = false;
+        p.fertilized = false;
+        toast('种下了' + (CROP_NAMES[k] || k));
+    } else {
+        /* 已种植：打开操作菜单（浇/施/铲/收） */
+        showActMenu(i);
+        renderAdm();
+        return;
+    }
+    renderAdm();
+    renderSeedNums();
+    saveSoon();
+}
+function admStock(k, d) {
+    state.inv[k] = Math.max(0, (state.inv[k] || 0) + d);
+    var el = document.getElementById('admStock_' + k);
+    if (el) el.textContent = state.inv[k];
+    renderSeedNums();
+    renderBagIfOpen();
+    saveSoon();
+}
+function admPrice(k, d) {
+    priceBoost[k] = Math.max(-5, Math.min(10, (priceBoost[k] || 0) + d));
+    var el = document.getElementById('admPrice_' + k);
+    if (el) el.textContent = priceBoost[k];
+    renderShopPrices();
+    saveCfg();
+    toast(k + ' 价格加成 ' + (priceBoost[k] >= 0 ? '+' : '') + priceBoost[k] + '0%');
+}
+function admClearAll() {
+    if (!confirm('一键清空所有地块？')) return;
+    for (var i = 0; i < plots.length; i++) plots[i] = { o: false };
+    renderFarm();
+    renderCrops();
+    renderAdm();
+    saveSoon();
+    toast('菜地已清空');
+}
+function admReset() {
+    if (!confirm('重置菜地、背包和金币？')) return;
+    for (var i = 0; i < plots.length; i++) plots[i] = { o: false };
+    state.inv = {};
+    state.coins = 0;
+    refreshCoin();
+    renderFarm();
+    renderCrops();
+    renderSeedNums();
+    renderAdm();
+    renderBagIfOpen();
+    saveSoon();
+    toast('已重置');
+}
+function admGiveCoin() {
+    /* 给当前账号发放 100 金币 */
+    fetch(API + '/api/gain', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: U, password: P, amount: 100 }),
+        cache: 'no-store'
+    }).then(function (r) { return r.json(); }).then(function (j) {
+        if (j.ok) { state.coins = j.balance; refreshCoin(); renderAdm(); toast('发放 100 金币'); }
+    }).catch(function () {});
+}
+</script>
 
-    /* ---- 作物操作面板 ---- */
-    var opsIdx = -1;
-    function showOps(i) {
-        opsIdx = i;
-        var p = state.plots[i];
-        var c = p.c;
-        $('opsName').textContent = CROPS[c.t].name;
-        $('opsInfo').textContent = '生长阶段 ' + (stageOf(c) + 1) + '/5 · 产量加成 +' + ((c.w || 0) + (c.f || 0));
-        $('opsPanel').classList.add('show');
-        var wb = $('opsWaterBtn'), fb = $('opsFertBtn');
-        if (wb) wb.classList.toggle('dis', !!c.w);
-        if (fb) fb.classList.toggle('dis', !!c.f);
-    }
-    function closeOps() { $('opsPanel').classList.remove('show'); opsIdx = -1; }
-    function opsWater() {
-        if (opsIdx < 0) return;
-        var c = state.plots[opsIdx].c; if (!c) return;
-        if (c.w) { toast('这块地已经浇过水啦'); return; }
-        c.w = 0.5;
-        saveSoon(); showOps(opsIdx); toast('浇了水，产量 +0.5');
-    }
-    function opsFert() {
-        if (opsIdx < 0) return;
-        var c = state.plots[opsIdx].c; if (!c) return;
-        if (c.f) { toast('这块地已经施过肥啦'); return; }
-        c.f = 0.5;
-        saveSoon(); showOps(opsIdx); toast('施了肥，产量 +0.5');
-    }
-    function opsDig() {
-        if (opsIdx < 0) return;
-        state.plots[opsIdx].c = null;
-        closeOps();
-        saveSoon(); renderFarm();
-        toast('铲掉了（种子不返还）');
-    }
+<script>
+/* ===== 第三批：种植闭环 / 生长 / 水肥铲 / 收获 / 价格 / 天气 / 全局配置（ES5） ===== */
 
-    /* ---- 生长检查 ---- */
-    function growTick() {
-        for (var i = 0; i < PLOTS; i++) {
-            var p = state.plots[i];
-            if (p && p.c) {
-                var st = stageOf(p.c);
-                if (st !== p._st) {
-                    if (st === 4) toast(CROPS[p.c.t].name + ' 成熟了，点击收获！');
-                    p._st = st;
-                }
-            }
-        }
-        renderFarm();
-    }
+/* 作物配置：cycle 生长周期（毫秒）、type tree=多次性 once=一次性 */
+var CROPS = {
+    apple:  { cycle: 5 * 3600 * 1000,  type: 'tree' },
+    pine:   { cycle: 8 * 3600 * 1000,  type: 'tree' },
+    rose:   { cycle: 6 * 3600 * 1000,  type: 'tree' },
+    candy:  { cycle: 30 * 1000,        type: 'once' },
+    potato: { cycle: 12 * 3600 * 1000, type: 'once' },
+    mushroomseed: { cycle: 10 * 3600 * 1000, type: 'once' },
+    pumpkin:{ cycle: 24 * 3600 * 1000, type: 'once' },
+    cabbage:{ cycle: 8 * 3600 * 1000,  type: 'once' },
+    radish: { cycle: 6 * 3600 * 1000,  type: 'once' }
+};
+var CROP_NAMES = { apple: '苹果', pine: '松果', rose: '玫瑰', candy: '糖果', potato: '土豆', mushroomseed: '蘑菇', pumpkin: '南瓜', cabbage: '白菜', radish: '萝卜' };
+var CROP_KEYS = ['apple', 'pine', 'candy', 'rose', 'potato', 'mushroomseed', 'pumpkin', 'cabbage', 'radish'];
 
-    /* ---- 种子商店 ---- */
-    var shopQty = {};
-    function openShop() {
-        for (var k in CROPS) shopQty[k] = 0;
-        renderShop();
-        $('shopPanel').classList.add('show');
-    }
-    function closeShop() { $('shopPanel').classList.remove('show'); }
-    function renderShop() {
-        var h = '';
-        var total = 0;
-        for (var i = 0; i < KEYS.length; i++) {
-            var k = KEYS[i], c = CROPS[k], q = shopQty[k] || 0;
-            var cost = q > 0 ? Math.ceil(q / c.per) : 0;
-            total += cost;
-            h += '<div class="shop-row">'
-                + '<img class="shop-img" src="' + S('seed/' + c.seed) + '" onerror="rtryImg(this)">'
-                + '<div class="shop-mid"><div class="shop-name">' + c.name + '</div><div class="shop-price">当日 1 币 ' + c.per + ' 个</div></div>'
-                + '<div class="shop-qty"><button onclick="shopMinus(\'' + k + '\')">−</button><span>' + q + '</span><button onclick="shopPlus(\'' + k + '\')">+</button></div>'
-                + '</div>';
+/* ---- 生长：按种植时间算 grow 0-5 ---- */
+function growCalc(p) {
+    if (!p.o || !p.crop) return 0;
+    var c = CROPS[p.crop];
+    if (!c) return p.grow || 0;
+    var el = Date.now() - (p.plantedAt || 0);
+    var g = Math.floor(el / (c.cycle / 5));
+    if (g < 0) g = 0;
+    if (g > 5) g = 5;
+    return g;
+}
+function tickGrow() {
+    var changed = false;
+    for (var i = 0; i < plots.length; i++) {
+        var p = plots[i];
+        if (p.o && p.crop) {
+            var g = growCalc(p);
+            if (g !== (p.grow || 0)) { p.grow = g; changed = true; }
         }
-        $('shopRows').innerHTML = h;
-        $('shopTotal').textContent = '共 ' + total + ' 币';
     }
-    function shopPlus(k) { shopQty[k] = (shopQty[k] || 0) + 1; renderShop(); }
-    function shopMinus(k) { if ((shopQty[k] || 0) <= 0) return; shopQty[k]--; renderShop(); }
-    function settleShop() {
-        var total = 0;
-        for (var k in shopQty) { var q = shopQty[k] || 0; if (q > 0) total += Math.ceil(q / CROPS[k].per); }
-        if (total <= 0) { toast('先点 + 选择要买的种子数量'); return; }
-        if (state.coins < total) { toast('金币不足：需要 ' + total + ' 币（现有 ' + state.coins + '）'); return; }
-        for (var k2 in shopQty) {
-            var q2 = shopQty[k2] || 0;
-            if (q2 > 0) {
-                var old = state.inv.seed[k2];
-                state.inv.seed[k2] = { q: (typeof old === 'number' ? old : (old ? old.q : 0)) + q2, ts: Date.now() };
-            }
-        }
-        spend(total);
-        saveSoon(); renderSeedbar(); closeShop();
-        toast('购买成功，花费 ' + total + ' 金币');
-    }
-
-    /* ---- 背包 ---- */
-    var bagTab = 'all';
-    function openBag() { setBagTab('all'); $('bagPanel').classList.add('show'); }
-    function closeBag() { $('bagPanel').classList.remove('show'); }
-    function setBagTab(t) {
-        bagTab = t;
-        var tabs = document.querySelectorAll('.bag-tab');
-        for (var i = 0; i < tabs.length; i++) tabs[i].classList.toggle('on', tabs[i].getAttribute('onclick').indexOf(t) >= 0);
-        renderBag();
-    }
-    function renderBag() {
-        var rows = [];
-        function push(type, k, x) {
-            var q = (typeof x === 'number') ? x : (x ? x.q : 0);
-            var ts = (typeof x === 'number') ? 0 : (x ? x.ts || 0 : 0);
-            if (q <= 0) return;
-            if (bagTab === 'crop' && type !== 'crop') return;
-            if (bagTab === 'seed' && type !== 'seed') return;
-            rows.push({ type: type, k: k, q: q, ts: ts });
-        }
-        for (var k in state.inv.crop) push('crop', k, state.inv.crop[k]);
-        for (var k2 in state.inv.seed) push('seed', k2, state.inv.seed[k2]);
-        rows.sort(function (a, b) { return (b.ts - a.ts) || 0; });
-        var h = '';
-        if (!rows.length) {
-            h = '<div class="bag-empty">背包空空如也～去种点东西吧</div>';
-        } else {
-            for (var i = 0; i < rows.length; i++) {
-                var r = rows[i], c = CROPS[r.k];
-                h += '<div class="bag-item"><img src="' + S('seed/' + c.seed) + '" onerror="rtryImg(this)">'
-                    + '<div class="bag-name">' + c.name + '</div><span class="cnt2">' + numHTML(r.q) + '</span></div>';
-            }
-        }
-        $('bagRows').innerHTML = h;
-    }
-
-    /* ---- 管理员 ---- */
-    function qof(k) {
-        var x = state.inv.seed[k];
-        return (typeof x === 'number') ? x : (x ? x.q : 0);
-    }
-    function setQ(k, n) {
-        if (n <= 0) { delete state.inv.seed[k]; return; }
-        state.inv.seed[k] = { q: n, ts: Date.now() };
-    }
-    function openAdm() { renderAdm(); $('admPanel').classList.add('show'); }
-    function closeAdm() { $('admPanel').classList.remove('show'); }
-    function renderAdm() {
-        /* 地块独立管理（管理员逐块控制） */
-        var g = '';
-        for (var i = 0; i < PLOTS; i++) {
-            var p = state.plots[i];
-            var stt = !p.o ? '未开垦' : (p.c ? (CROPS[p.c.t] ? CROPS[p.c.t].name : '作物') + ' Lv' + (stageOf(p.c) + 1) : '已开垦');
-            g += '<div class="adm-plot"><div class="ap-name">地块' + (i + 1) + '</div><div class="ap-st">' + stt + '</div>'
-                + '<div class="ap-btns"><button onclick="admPlotToggle(' + i + ')">' + (p.o ? '封地' : '开垦') + '</button>'
-                + (p.c ? '<button class="danger" onclick="admPlotDig(' + i + ')">铲除</button>' : '') + '</div></div>';
-        }
-        var ap = $('admPlots');
-        if (ap) ap.innerHTML = g;
-        var h = '';
-        for (var i = 0; i < KEYS.length; i++) {
-            var k = KEYS[i], c = CROPS[k];
-            h += '<div class="adm-row">'
-                + '<img src="' + S('seed/' + c.seed) + '" style="width:36px;height:36px;object-fit:contain;border-radius:8px">'
-                + '<div class="adm-mid"><div>' + c.name + '</div><div style="font-size:11px;color:#a06020">1币' + c.per + '个 · 库存<span class="adm-qty">' + numHTML(qof(k)) + '</span></div></div>'
-                + '<button onclick="admMinus(\'' + k + '\')">−</button><button onclick="admPlus(\'' + k + '\')">+</button>'
-                + '<button onclick="admPriceMinus(\'' + k + '\')">价−</button><button onclick="admPricePlus(\'' + k + '\')">价+</button>'
-                + '</div>';
-        }
-        $('admRows').innerHTML = h;
-    }
-    function admPlus(k) { setQ(k, qof(k) + 1); saveSoon(); renderAdm(); renderSeedbar(); }
-    function admMinus(k) { if (qof(k) <= 0) return; setQ(k, qof(k) - 1); saveSoon(); renderAdm(); renderSeedbar(); }
-    function admPricePlus(k) { CROPS[k].per++; renderAdm(); }
-    function admPriceMinus(k) { if (CROPS[k].per > 1) CROPS[k].per--; renderAdm(); }
-    function admClear() {
-        state.plots = [];
-        for (var i = 0; i < PLOTS; i++) state.plots.push({ o: false, c: null });
-        saveSoon(); renderFarm(); toast('菜地已一键清空');
-    }
-    function admOpenAll() {
-        for (var i = 0; i < PLOTS; i++) { if (!state.plots[i].o) { state.plots[i].o = true; state.plots[i].c = null; } }
-        saveSoon(); renderFarm(); toast('全部地块已开垦（免费）');
-    }
-    function admResetAll() {
-        state.plots = [];
-        for (var i = 0; i < PLOTS; i++) state.plots.push({ o: false, c: null });
-        saveSoon(); renderFarm(); toast('菜地已重置为未开垦');
-    }
-    function admGive() {
-        var n = parseInt($('admGiveN').value || '100', 10);
-        if (!n || n < 1) return;
-        gain(n);
+    if (changed) {
+        renderCrops();
+        renderAdmIfOpen();
         saveSoon();
-        toast('给自己发放 ' + n + ' 金币');
     }
-    function admPlotToggle(i) {
-        var p = state.plots[i];
-        p.o = !p.o;
-        if (!p.o) p.c = null;
-        saveSoon(); renderFarm(); renderAdm();
-        toast('地块' + (i + 1) + (p.o ? '已开垦' : '已封地'));
-    }
-    function admPlotDig(i) {
-        var p = state.plots[i];
-        if (!p.o) return;
-        p.c = null;
-        saveSoon(); renderFarm(); renderAdm();
-        toast('地块' + (i + 1) + '的作物已铲除');
-    }
-    function admProgress(v) {
-        var st = Math.round(v / 100 * 4);
-        for (var i = 0; i < PLOTS; i++) {
-            var p = state.plots[i];
-            if (p && p.c) {
-                p.c.p = Date.now() / 1000 - (st / 5 * ((CROPS[p.c.t].grow || 4) * 3600));
-                p._st = st;
-            }
-        }
-        $('admProgVal').textContent = st + '/4';
-        saveSoon(); renderFarm();
-    }
+}
+setInterval(tickGrow, 5000);
 
-    /* ---- 天气与昼夜背景（修复：改用 .phone-bg 选择器） ---- */
-    function fetchWeather() {
-        var lat = 32.52, lon = 112.36;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (pos) {
-                loadW(pos.coords.latitude, pos.coords.longitude);
-            }, function () { loadW(lat, lon); }, { timeout: 5000 });
-        } else { loadW(lat, lon); }
-    }
-    function loadW(lat, lon) {
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current_weather=true')
-            .then(function (r) { return r.json(); }).then(function (j) {
-                if (!j || !j.current_weather) return;
-                var wmo = j.current_weather.weathercode;
-                var bg = 'bg_sunny.jpg';
-                if (wmo >= 95) bg = 'bg_storm.jpg';
-                else if (wmo === 71 || wmo === 73 || wmo === 75 || wmo === 77 || wmo === 85 || wmo === 86 ||
-                    wmo === 51 || wmo === 53 || wmo === 55 || wmo === 56 || wmo === 57 ||
-                    wmo === 61 || wmo === 63 || wmo === 65 || wmo === 66 || wmo === 67 ||
-                    wmo === 80 || wmo === 81 || wmo === 82) bg = 'bg_rain.jpg';
-                else if (wmo >= 45) bg = 'bg_overcast.jpg';
-                else if (wmo === 3 || wmo === 2) bg = 'bg_cloudy.jpg';
-                var h = new Date().getHours();
-                if (h >= 19 || h < 5) bg = 'bg_night.jpg';
-                else if (h >= 17) bg = 'bg_dusk.jpg';
-                var b = document.querySelector('.phone-bg');   // 用户背景图（原绑定 id=bgImg 不存在，改 class）
-                if (b) b.setAttribute('src', S('bg/' + bg));   // 背景图在 bean/bg/ 目录下，必须带 bg/ 前缀
-                var wea = { 0: '晴', 1: '基本晴', 2: '多云', 3: '阴', 45: '雾', 48: '雾', 51: '毛毛雨', 53: '毛毛雨', 55: '毛毛雨', 61: '小雨', 63: '中雨', 65: '大雨', 66: '冻雨', 67: '冻雨', 71: '小雪', 73: '中雪', 75: '大雪', 77: '雪粒', 80: '阵雨', 81: '阵雨', 82: '大雨', 95: '雷雨', 96: '雷雨', 99: '雷雨' };
-                var t = document.querySelector('.title');
-                if (t) t.textContent = '南阳市新野县 ' + (wea[wmo] || '多云') + ' ' + Math.round(j.current_weather.temperature) + '°C';
-            }).catch(function () {});
-    }
-
-    /* ---- 素材预加载 + 失败重试 ---- */
-    window.rtryImg = function (img) {
-        if (img.dataset.r) return;
-        img.dataset.r = '1';
-        var s = img.src.replace(/[?&]r=\d+/, '');
-        img.src = s + (s.indexOf('?') > 0 ? '&' : '?') + 'r=' + Date.now();
+/* ---- 作物图片：grow/{crop}{stage}.png 缺失回退种子图 ---- */
+function cropImgUrl(crop, stage) {
+    return 'bean/grow/' + crop + stage + '.png?v=' + V;
+}
+function fruitImgUrl(crop) {
+    return 'bean/crop/' + crop + '.png?v=' + V;
+}
+function fallbackSeedImg(img, crop) {
+    img.onerror = function () {
+        img.onerror = null;
+        img.src = S('seed/' + crop + 'seed.png');
     };
-    function preloadAssets() {
-        var list = ['cao.png', 'img/plot_soil.png', 'seedbg.jpg', 'img/coin.png'];
-        for (var i = 0; i < KEYS.length; i++) list.push('seed/' + CROPS[KEYS[i]].seed);
-        // v5：数字改用本地字体库渲染（bean/fonts/caveat-bold.woff2），不再预载数字图片
-        list = list.concat(['bg/bg_sunny.jpg', 'bg/bg_cloudy.jpg', 'bg/bg_overcast.jpg', 'bg/bg_rain.jpg', 'bg/bg_storm.jpg', 'bg/bg_night.jpg', 'bg/bg_dusk.jpg', 'background.mp3']);
-        var n = list.length, done = 0;
-        for (var j = 0; j < n; j++) {
-            (function (u) {
-                var img = new Image();
-                img.onload = img.onerror = function () { if (++done >= n) preloadDone(); };
-                img.src = S(u);
-            })(list[j]);
+}
+function renderCrops() {
+    for (var i = 0; i < PLOT_ORDER.length; i++) {
+        var btn = document.querySelector('button.' + PLOT_ORDER[i].replace('d', 'diamond'));
+        if (!btn) continue;
+        var img = btn.querySelector('img');
+        if (!img) continue;
+        var p = plots[i];
+        if (p.o && p.crop) {
+            var stage = Math.min(4, p.grow || 0);
+            img.src = cropImgUrl(p.crop, stage);
+            fallbackSeedImg(img, p.crop);
         }
-        setTimeout(preloadDone, 6000);
     }
-    function preloadDone() {
-        var t = $('preload');
-        if (t) t.style.display = 'none';
-    }
+}
 
-    /* ---- 启动 ---- */
-    function init() {
-        if (!U || !P) { location.href = 'index.html'; return; }
-        fetch(API + '/api/user?username=' + encodeURIComponent(U) + '&password=' + encodeURIComponent(P))
+/* ---- 种植 ---- */
+function plantOn(idx) {
+    var p = plots[idx];
+    if (!p || !p.o) return;
+    if (p.crop) return;
+    if (!selectedSeed) { toast('先在下面选一颗种子'); return; }
+    if ((state.inv[selectedSeed] || 0) < 1) { toast('这个种子没有了'); return; }
+    state.inv[selectedSeed] -= 1;
+    p.crop = selectedSeed;
+    p.plantedAt = Date.now();
+    p.grow = 0;
+    p.watered = false;
+    p.fertilized = false;
+    renderSeedNums();
+    renderCrops();
+    saveSoon();
+    toast('种下了' + (CROP_NAMES[selectedSeed] || selectedSeed) + '种子');
+}
+
+/* ---- 地块操作菜单（浇水/施肥/铲除/收获） ---- */
+var actIdx = -1;
+function showActMenu(i) {
+    var p = plots[i];
+    if (!p || !p.o || !p.crop) return;
+    actIdx = i;
+    var menu = document.getElementById('actMenu');
+    if (!menu) return;
+    var nm = CROP_NAMES[p.crop] || p.crop;
+    var h = '<div class="act-title">地块' + (i + 1) + ' · ' + nm + ' 成长' + (p.grow || 0) + '/5</div>';
+    h += '<div class="act-btns">';
+    if ((p.grow || 0) >= 5) h += '<button class="act-btn act-harvest" onclick="actHarvest(' + i + ')">收获</button>';
+    h += '<button class="act-btn' + (p.watered ? ' act-done' : '') + '" onclick="actWater(' + i + ')">' + (p.watered ? '已浇水' : '浇水') + '</button>';
+    h += '<button class="act-btn' + (p.fertilized ? ' act-done' : '') + '" onclick="actFertilize(' + i + ')">' + (p.fertilized ? '已施肥' : '施肥') + '</button>';
+    h += '<button class="act-btn act-danger" onclick="actDigUp(' + i + ')">铲除</button>';
+    h += '<button class="act-btn act-close" onclick="closeActMenu()">关闭</button>';
+    h += '</div>';
+    menu.innerHTML = h;
+    menu.classList.add('show');
+}
+function closeActMenu() {
+    var menu = document.getElementById('actMenu');
+    if (menu) menu.classList.remove('show');
+    actIdx = -1;
+}
+function actWater(i) {
+    var p = plots[i];
+    if (!p || !p.crop) return;
+    if (p.watered) { toast('已经浇过水了'); return; }
+    p.watered = true;
+    saveSoon();
+    showActMenu(i);
+    toast('浇水完成，产量 +0.5');
+}
+function actFertilize(i) {
+    var p = plots[i];
+    if (!p || !p.crop) return;
+    if (p.fertilized) { toast('已经施过肥了'); return; }
+    p.fertilized = true;
+    saveSoon();
+    showActMenu(i);
+    toast('施肥完成，产量 +0.5');
+}
+function actDigUp(i) {
+    var p = plots[i];
+    if (!p || !p.crop) return;
+    if (!confirm('铲掉这块地的' + (CROP_NAMES[p.crop] || p.crop) + '？不会返还种子。')) return;
+    p.crop = '';
+    p.grow = 0;
+    p.plantedAt = 0;
+    p.watered = false;
+    p.fertilized = false;
+    renderFarm();
+    renderCrops();
+    closeActMenu();
+    saveSoon();
+    toast('已铲除');
+}
+function actHarvest(i) {
+    var p = plots[i];
+    if (!p || !p.crop) return;
+    if ((p.grow || 0) < 5) { toast('还没成熟'); return; }
+    var c = CROPS[p.crop];
+    var mul = 1 + (p.watered ? 0.5 : 0) + (p.fertilized ? 0.5 : 0);
+    var yieldN = Math.floor(1 * mul); /* 向下取整：0.5/0.9 都算 0 */
+    var nm = CROP_NAMES[p.crop] || p.crop;
+    if (yieldN < 1) { toast('产量不足 1 个，本次收获 0 个'); }
+    else toast('收获了 ' + yieldN + ' 个' + nm);
+    var key = p.crop + '_crop';
+    state.inv[key] = (state.inv[key] || 0) + yieldN;
+    if (c.type === 'tree') {
+        p.grow = 0;
+        p.plantedAt = Date.now();
+        p.watered = false;
+        p.fertilized = false;
+    } else {
+        p.crop = '';
+        p.grow = 0;
+        p.plantedAt = 0;
+        p.watered = false;
+        p.fertilized = false;
+    }
+    renderFarm();
+    renderCrops();
+    renderBagIfOpen();
+    closeActMenu();
+    saveSoon();
+}
+
+/* ---- 价格：基础兑换率 × 季节 × 天气 × 管理加成 ---- */
+var priceBoost = {};
+var seasonFactor = 1;
+var weatherFactor = 1;
+function priceRate(k) {
+    return (SHOP_RATE[k] || 1) * seasonFactor * weatherFactor * (1 + (priceBoost[k] || 0) / 10);
+}
+function renderShopPrices() {
+    var rows = document.querySelectorAll('.shop-row');
+    for (var i = 0; i < rows.length; i++) {
+        var img = rows[i].querySelector('.shop-icon');
+        var key = '';
+        if (img) {
+            var m = (img.src || '').match(/(\w+)seed\.png/);
+            if (m) key = m[1];
+        }
+        var priceEl = rows[i].querySelector('.shop-price');
+        if (priceEl && key) {
+            var r = priceRate(key);
+            var show = Math.round(r * 10) / 10;
+            priceEl.textContent = '当日 1币 ' + show + '个';
+        }
+    }
+}
+function seasonFactorFor(month) {
+    if (month >= 6 && month <= 8) return 1.1;  /* 夏 */
+    if (month >= 3 && month <= 5) return 1.05; /* 春 */
+    if (month >= 9 && month <= 11) return 1.0; /* 秋 */
+    return 0.9;                                /* 冬 */
+}
+function weatherFactorFor(code) {
+    if (code >= 95) return 1.15;                 /* 雷暴 */
+    if (code >= 51 && code <= 67) return 1.1;    /* 雨 */
+    if (code <= 0) return 1.05;                  /* 晴 */
+    if (code <= 3) return 1.0;                   /* 多云 */
+    return 0.95;                                 /* 阴/雾 */
+}
+
+/* ---- 天气背景：定位 + open-meteo → bean/bg/ 7 张 ---- */
+var weatherCode = -1;
+function applyWeatherBg() {
+    var bg = document.querySelector('.phone-bg');
+    if (!bg) return;
+    var map = '';
+    var d = new Date();
+    var hh = d.getHours();
+    if (hh >= 18 && hh < 20) {
+        map = 'bg_dusk';
+    } else if (hh >= 20 || hh < 6) {
+        map = 'bg_night';
+    } else if (weatherCode >= 0) {
+        if (weatherCode <= 0) map = 'bg_sunny';
+        else if (weatherCode <= 3) map = 'bg_cloudy';
+        else if (weatherCode >= 95) map = 'bg_storm';
+        else if (weatherCode >= 51) map = 'bg_rain';
+        else map = 'bg_overcast';
+    } else {
+        return; /* 未拿到天气：保持默认背景 */
+    }
+    bg.src = 'bean/bg/' + map + '.jpg?v=' + V;
+}
+function loadWeather() {
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(function (pos) {
+        var lat = pos.coords.latitude;
+        var lon = pos.coords.longitude;
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current=weather_code&timezone=auto', { cache: 'no-store' })
             .then(function (r) { return r.json(); }).then(function (j) {
-                if (!j.ok || !j.user) { location.href = 'index.html'; return; }
-                state.coins = j.user.coins || 0;
-                manager = !!j.user.manager;
-                if (manager) { var b = $('admBtn'); if (b) b.style.display = 'block'; }
-                refreshCoin();
-                loadRemote();
-            }).catch(function () { location.href = 'index.html'; });
-        fetchWeather();
-        preloadAssets();
-        setInterval(growTick, 10000);
+                if (j.current && typeof j.current.weather_code !== 'undefined') {
+                    weatherCode = j.current.weather_code;
+                    weatherFactor = weatherFactorFor(weatherCode);
+                    applyWeatherBg();
+                    renderShopPrices();
+                }
+            }).catch(function () {});
+    }, function () {}, { timeout: 8000 });
+}
+
+/* ---- 全局配置（管理调价，存后端 /api/cfg） ---- */
+function renderAdmIfOpen() {
+    var p = document.getElementById('admPanel');
+    if (p && p.classList.contains('show')) renderAdm();
+}
+function saveCfg() {
+    fetch(API + '/api/cfg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: U, password: P, cfg: { boost: priceBoost } }),
+        cache: 'no-store'
+    }).then(function (r) { return r.json(); }).then(function (j) {
+        if (!j.ok) toast('价格保存失败（后端需更新）');
+    }).catch(function () { toast('价格保存失败（后端未更新）'); });
+}
+function loadCfg() {
+    fetch(API + '/api/cfg', { cache: 'no-store' })
+        .then(function (r) { return r.json(); }).then(function (j) {
+            if (j.ok && j.cfg && j.cfg.boost) {
+                for (var k in j.cfg.boost) priceBoost[k] = j.cfg.boost[k];
+                renderShopPrices();
+                renderAdmIfOpen();
+            }
+        }).catch(function () {});
+}
+
+/* ---- 菜市场按钮（仅早市 7:00-8:00 显示） ---- */
+function openMarket() { toast('菜市场建设中，敬请期待～'); }
+function checkMarketTime() {
+    var btn = document.getElementById('bagMarket');
+    if (!btn) return;
+    var d = new Date();
+    var mins = d.getHours() * 60 + d.getMinutes();
+    btn.style.display = (mins >= 420 && mins < 480) ? 'block' : 'none';
+}
+
+/* ---- 已开垦/已种植地块点击：种植或操作菜单（capture 拦截，不动原绑定） ---- */
+document.addEventListener('click', function (e) {
+    var t = e.target;
+    /* 点击操作菜单以外的区域：关闭菜单 */
+    var inMenu = false;
+    var tt = t;
+    while (tt && tt !== document.body) {
+        if (tt.id === 'actMenu' || (tt.className && String(tt.className).indexOf('act-') > -1)) { inMenu = true; break; }
+        tt = tt.parentNode;
     }
+    if (!inMenu) closeActMenu();
+    while (t && t !== document.body) {
+        if (t.tagName === 'BUTTON' && t.className && String(t.className).indexOf('diamond') > -1) {
+            var idx = plotIdx(t);
+            if (idx >= 0 && plots[idx].o) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (plots[idx].crop) showActMenu(idx);
+                else plantOn(idx);
+            }
+            return;
+        }
+        t = t.parentNode;
+    }
+}, true);
 
-    document.addEventListener('DOMContentLoaded', function () {
-        fixStaticPaths();
-        bindBack();
-        init();
-    });
-
-    /* 暴露给内联 onclick 的全局函数 */
-    window.clickPlot = clickPlot;
-    window.openseedshop = openShop;
-    window.opencropsbag = openBag;
-    window.openShop = openShop; window.closeShop = closeShop;
-    window.shopPlus = shopPlus; window.shopMinus = shopMinus; window.settleShop = settleShop;
-    window.openBag = openBag; window.closeBag = closeBag; window.setBagTab = setBagTab;
-    window.showOps = showOps; window.closeOps = closeOps;
-    window.opsWater = opsWater; window.opsFert = opsFert; window.opsDig = opsDig;
-    window.openAdm = openAdm; window.closeAdm = closeAdm;
-    window.admPlus = admPlus; window.admMinus = admMinus;
-    window.admPricePlus = admPricePlus; window.admPriceMinus = admPriceMinus;
-    window.admClear = admClear; window.admOpenAll = admOpenAll; window.admResetAll = admResetAll;
-    window.admGive = admGive; window.admProgress = admProgress;
-    window.admPlotToggle = admPlotToggle; window.admPlotDig = admPlotDig;
-    window.fallbackGrow = fallbackGrow;
+/* ---- 初始化 ---- */
+(function () {
+    if (!U || !P) return;
+    seasonFactor = seasonFactorFor(new Date().getMonth());
+    applyWeatherBg();
+    loadWeather();
+    loadCfg();
+    checkMarketTime();
+    setInterval(checkMarketTime, 60000);
 })();
-
 </script>
 
 
