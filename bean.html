@@ -831,6 +831,12 @@ div.bagshop { display: none !important; }
 .adm-plot .ap-st { font-size: 10px; color: #b08040; margin: 3px 0; min-height: 14px; word-break: break-all; }
 .adm-plot .ap-btns button { font-size: 10px; border: none; border-radius: 8px; padding: 2px 6px; margin: 2px 1px; background: #ffb347; color: #fff; cursor: pointer; }
 .adm-plot .ap-btns button.danger { background: #e0564e; }
+/* 保险：背包/管理/商店按钮提高层级，防止手机端被任何元素遮挡点不开 */
+.btn.bagshop { z-index: 12; }
+.btn.adm { z-index: 12; }
+.btn.seedshop { z-index: 12; }
+/* 背景图加载失败/未切换时，用乳白米黄兜底（不露黑） */
+.phone-bg { background: #FBF3E4; }
 
 </style>
 </head>
@@ -1072,7 +1078,7 @@ function pickSeed(el, seedType) {
    ========================================================= */
 (function () {
     'use strict';
-    var V = '5';
+    var V = '6';
     var API = 'https://api.mogoing.xyz';
     var U = localStorage.getItem('blindbox_user') || '';
     var P = localStorage.getItem('blindbox_pass') || '';
@@ -1118,13 +1124,16 @@ function pickSeed(el, seedType) {
 
     /* ---- 素材路径运行时修复 ---- */
     function fixStaticPaths() {
-        document.querySelectorAll('img, audio').forEach(function (el) {
+        // 兼容旧 WebView：NodeList.forEach 在 Chromium 51 以下不可用，改用 for 循环
+        var imgs = document.querySelectorAll('img, audio');
+        for (var i = 0; i < imgs.length; i++) {
+            var el = imgs[i];
             var src = el.getAttribute('src');
-            if (!src) return;
-            if (/^(https?:|data:|blob:)/.test(src)) return;
+            if (!src) continue;
+            if (/^(https?:|data:|blob:)/.test(src)) continue;
             var fixed = src.indexOf('bean/') === 0 ? src : 'bean/' + src;
             el.setAttribute('src', fixed + '?v=' + V);
-        });
+        }
     }
 
     /* ---- 返回按钮绑定（用户手写按钮没有 onclick，增量补上） ---- */
@@ -1589,7 +1598,7 @@ function pickSeed(el, seedType) {
                 if (h >= 19 || h < 5) bg = 'bg_night.jpg';
                 else if (h >= 17) bg = 'bg_dusk.jpg';
                 var b = document.querySelector('.phone-bg');   // 用户背景图（原绑定 id=bgImg 不存在，改 class）
-                if (b) b.setAttribute('src', S(bg));
+                if (b) b.setAttribute('src', S('bg/' + bg));   // 背景图在 bean/bg/ 目录下，必须带 bg/ 前缀
                 var wea = { 0: '晴', 1: '基本晴', 2: '多云', 3: '阴', 45: '雾', 48: '雾', 51: '毛毛雨', 53: '毛毛雨', 55: '毛毛雨', 61: '小雨', 63: '中雨', 65: '大雨', 66: '冻雨', 67: '冻雨', 71: '小雪', 73: '中雪', 75: '大雪', 77: '雪粒', 80: '阵雨', 81: '阵雨', 82: '大雨', 95: '雷雨', 96: '雷雨', 99: '雷雨' };
                 var t = document.querySelector('.title');
                 if (t) t.textContent = '南阳市新野县 ' + (wea[wmo] || '多云') + ' ' + Math.round(j.current_weather.temperature) + '°C';
