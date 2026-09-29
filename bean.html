@@ -497,19 +497,19 @@ body {
 /* 金币：放在返回主页下方，与按钮左对齐 */
 .coins { top: 52px; left: 12px; transform: none; }
 
-/* 种植植物叠加层：根部对齐田块中心再上移 40% 图高，向上生长、突破菱形框、不挡点击 */
+/* 种植植物叠加层：底部（根部）固定在田块中心，高度锁定，向上生长、突破菱形框、不挡点击 */
 .plant {
     position: absolute;
-    transform: translate(-50%, -140%);
+    transform: translate(-50%, 0);
     pointer-events: none;
     z-index: 6;
     object-fit: contain;
     animation: plantPop .35s ease;
 }
 @keyframes plantPop {
-    0%   { transform: translate(-50%, -140%) scale(.4); opacity: 0; }
-    70%  { transform: translate(-50%, -140%) scale(1.1); opacity: 1; }
-    100% { transform: translate(-50%, -140%) scale(1); opacity: 1; }
+    0%   { transform: translate(-50%, 0) scale(.4); opacity: 0; }
+    70%  { transform: translate(-50%, 0) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, 0) scale(1); opacity: 1; }
 }
 
 /* ---- 翻土动画：小耙子（用户素材 rake.png，放大 130%） ---- */
@@ -1136,7 +1136,7 @@ function pickSeed(el, seedType) {
 var API = 'https://api.mogoing.xyz';
 var U = localStorage.getItem('blindbox_user') || '';
 var P = localStorage.getItem('blindbox_pass') || '';
-var V = '7';
+var V = '8';
 if (!U || !P) { location.href = 'index.html'; }
 
 /* 素材路径：已带 bean/ 前缀的直接加版本号 */
@@ -1693,7 +1693,7 @@ function plantEl(i, btn) {
     var br = btn.getBoundingClientRect();
     var pr = ph.getBoundingClientRect();
     el.style.left = (br.left - pr.left + br.width / 2) + 'px';
-    el.style.top = (br.top - pr.top + br.height / 2) + 'px';
+    el.style.bottom = (pr.height - (br.top - pr.top + br.height / 2)) + 'px';
     el.style.width = (br.width * 0.8) + 'px';
     el.style.height = (br.width * 0.8) + 'px';
     var stage = Math.min(4, p.grow || 0);
@@ -1901,16 +1901,22 @@ function loadWeather() {
     };
     var weatherFail = function () {
         var t = document.getElementById('weatherTitle');
-        if (t) t.innerHTML = '南阳市新野县 天气获取失败';
+        if (t) t.innerHTML = '南阳市新野县 点击刷新';
     };
-    var defaultLoc = function () {
-        doFetch(32.52, 112.36);
+    var freeIp = function () {
+        fetch('https://freeipapi.com/api/json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) {
+            if (j && j.latitude) doFetch(j.latitude, j.longitude);
+            else weatherFail();
+        }).catch(function () { weatherFail(); });
     };
-    /* 手机 WebView 无定位权限时 GPS 会失败：直接回退新野默认坐标，保证与网页端一致 */
-    if (!navigator.geolocation) { defaultLoc(); return; }
-    navigator.geolocation.getCurrentPosition(function (pos) {
-        doFetch(pos.coords.latitude, pos.coords.longitude);
-    }, function () { defaultLoc(); }, { timeout: 6000 });
+    var ipFallback = function () {
+        /* 只用 IP 定位城市（无需 GPS 权限）；两个免费源轮流，全失败 → 点击刷新 */
+        fetch('https://ipapi.co/json/', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) {
+            if (j && j.latitude) doFetch(j.latitude, j.longitude);
+            else freeIp();
+        }).catch(function () { freeIp(); });
+    };
+    ipFallback();
 }
 
 /* ---- 全局配置（管理调价，存后端 /api/cfg） ---- */
@@ -1981,6 +1987,8 @@ document.addEventListener('click', function (e) {
     seasonFactor = seasonFactorFor(new Date().getMonth());
     applyWeatherBg();
     loadWeather();
+    var _wt = document.getElementById('weatherTitle');
+    if (_wt) { _wt.style.cursor = 'pointer'; _wt.onclick = function () { loadWeather(); }; }
     loadCfg();
     checkMarketTime();
     setInterval(checkMarketTime, 60000);
