@@ -1694,7 +1694,7 @@ function plantEl(i, btn) {
     var br = btn.getBoundingClientRect();
     var pr = ph.getBoundingClientRect();
     var stage = Math.min(4, p.grow || 0);
-    var drop = (stage === 0) ? 0.35 : 0.15; /* 刚种下(0)埋深一点，其余状态 0.15 */
+    var drop = (stage === 0) ? 0.5 : 0.15; /* 刚种下(0)埋深一点，其余状态 0.15 */
     el.style.left = (br.left - pr.left + br.width / 2) + 'px';
     el.style.bottom = (pr.height - (br.top - pr.top + br.height / 2) - br.height * drop) + 'px';
     el.style.width = (br.width * 0.8) + 'px';
