@@ -805,6 +805,33 @@ body {
 /* ---- 成熟作物光圈 ---- */
 img.ripe { filter: drop-shadow(0 0 6px #ffd93d); }
 
+/* ===== v5 增量 ===== */
+/* 手写粗体数字字体（本地字体库，非图片） */
+@font-face {
+    font-family: 'CaveatB';
+    src: url('bean/fonts/caveat-bold.woff2?v=5') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+/* 屏幕比例不同时，背景图铺不满的区域用乳白米黄兜底 */
+body { background: #FBF3E4; }
+/* 修复：背包打不开——多余占位 div 与背包按钮同 class 重叠遮挡 */
+div.bagshop { display: none !important; }
+/* 数字角标改字体渲染 */
+.cnt .numimg { font-family: 'CaveatB', cursive; font-weight: 700; font-size: 17px; line-height: 1; color: #fff; text-shadow: 0 1px 2px rgba(60,20,0,.55); display: inline-block; }
+.cnt2 .numimg { font-family: 'CaveatB', cursive; font-weight: 700; font-size: 15px; line-height: 1; color: #fff; text-shadow: 0 1px 2px rgba(60,20,0,.55); display: inline-block; }
+.adm-mid .adm-qty .numimg { font-family: 'CaveatB', cursive; font-weight: 700; font-size: 13px; line-height: 1; color: #fff; text-shadow: 0 1px 2px rgba(60,20,0,.55); display: inline-block; }
+/* 浇水/施肥已用过 → 置灰 */
+.ops-btn.dis { opacity: .45; filter: grayscale(1); pointer-events: none; }
+/* 管理员：地块独立管理 */
+.adm-label { font-size: 12px; font-weight: 900; color: #8a5a20; margin-top: 8px; }
+.adm-plots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px 0; max-height: 230px; overflow-y: auto; }
+.adm-plot { background: #fff7e6; border: 1.5px solid #e8c48a; border-radius: 10px; padding: 6px 4px; text-align: center; }
+.adm-plot .ap-name { font-size: 11px; font-weight: 900; color: #8a5a20; }
+.adm-plot .ap-st { font-size: 10px; color: #b08040; margin: 3px 0; min-height: 14px; word-break: break-all; }
+.adm-plot .ap-btns button { font-size: 10px; border: none; border-radius: 8px; padding: 2px 6px; margin: 2px 1px; background: #ffb347; color: #fff; cursor: pointer; }
+.adm-plot .ap-btns button.danger { background: #e0564e; }
+
 </style>
 </head>
 
@@ -815,7 +842,7 @@ img.ripe { filter: drop-shadow(0 0 6px #ffd93d); }
 <div class="phone">
     <img class="phone-bg" src="background.jpg" alt="">
     <!-- 金币（顶部居中） -->
-    <div class="coins"><img src="bean/img/coin.png?v=4" alt="金币"><span id="coinN">0</span></div>
+    <div class="coins"><img src="bean/img/coin.png?v=5" alt="金币"><span id="coinN">0</span></div>
     <!-- 管理员按钮 -->
     <button class="btn adm" id="admBtn" onclick="openAdm()" style="display:none">管理</button>
 
@@ -958,8 +985,8 @@ img.ripe { filter: drop-shadow(0 0 6px #ffd93d); }
         <div id="opsName">作物</div>
         <div id="opsInfo"></div>
         <div class="ops-btns">
-            <button class="ops-btn" onclick="opsWater()">💧 浇水</button>
-            <button class="ops-btn" onclick="opsFert()">🌿 施肥</button>
+            <button class="ops-btn" id="opsWaterBtn" onclick="opsWater()">💧 浇水</button>
+            <button class="ops-btn" id="opsFertBtn" onclick="opsFert()">🌿 施肥</button>
             <button class="ops-btn danger" onclick="opsDig()">⛏ 铲掉</button>
         </div>
         <button class="ops-close" onclick="closeOps()">关闭</button>
@@ -979,6 +1006,9 @@ img.ripe { filter: drop-shadow(0 0 6px #ffd93d); }
                 <button class="settle danger" onclick="admClear()">一键清空</button>
             </div>
             <div class="adm-prog">生长进度：<input type="range" min="0" max="100" value="0" oninput="admProgress(this.value)"><span id="admProgVal">0/4</span></div>
+            <div class="adm-label">地块管理（独立控制每块地）</div>
+            <div class="adm-plots" id="admPlots"></div>
+            <div class="adm-label">种子库存与价格</div>
             <div id="admRows"></div>
         </div>
     </div>
@@ -1042,7 +1072,7 @@ function pickSeed(el, seedType) {
    ========================================================= */
 (function () {
     'use strict';
-    var V = '4';
+    var V = '5';
     var API = 'https://api.mogoing.xyz';
     var U = localStorage.getItem('blindbox_user') || '';
     var P = localStorage.getItem('blindbox_pass') || '';
@@ -1056,17 +1086,15 @@ function pickSeed(el, seedType) {
         return 'bean/' + u + '?v=' + V;
     }
 
-    /* ---- Q版手绘数字渲染：123 → 三张数字图 ---- */
+    /* ---- 手写粗体数字渲染（本地字体库，非图片） ---- */
     function numHTML(n) {
         n = String(n == null ? 0 : n);
         var h = '';
         for (var i = 0; i < n.length; i++) {
             var c = n.charAt(i);
-            if (c === '-') { h += '<img class="numimg" src="' + S('num/minus.png') + '">'; continue; }
-            if (!/[0-9]/.test(c)) continue;
-            h += '<img class="numimg" src="' + S('num/' + c + '.png') + '">';
+            if (/[0-9.\-]/.test(c)) h += '<span class="numimg">' + c + '</span>';
         }
-        return h || '<img class="numimg" src="' + S('num/0.png') + '">';
+        return h || '<span class="numimg">0</span>';
     }
 
     /* ---- 作物配置 ---- */
@@ -1323,20 +1351,28 @@ function pickSeed(el, seedType) {
     function showOps(i) {
         opsIdx = i;
         var p = state.plots[i];
-        $('opsName').textContent = CROPS[p.c.t].name;
-        $('opsInfo').textContent = '生长阶段 ' + (stageOf(p.c) + 1) + '/5 · 产量加成 +' + ((p.c.w || 0) + (p.c.f || 0));
+        var c = p.c;
+        $('opsName').textContent = CROPS[c.t].name;
+        $('opsInfo').textContent = '生长阶段 ' + (stageOf(c) + 1) + '/5 · 产量加成 +' + ((c.w || 0) + (c.f || 0));
         $('opsPanel').classList.add('show');
+        var wb = $('opsWaterBtn'), fb = $('opsFertBtn');
+        if (wb) wb.classList.toggle('dis', !!c.w);
+        if (fb) fb.classList.toggle('dis', !!c.f);
     }
     function closeOps() { $('opsPanel').classList.remove('show'); opsIdx = -1; }
     function opsWater() {
         if (opsIdx < 0) return;
-        state.plots[opsIdx].c.w = (state.plots[opsIdx].c.w || 0) + 1;
-        saveSoon(); showOps(opsIdx); toast('浇了水，产量 +1');
+        var c = state.plots[opsIdx].c; if (!c) return;
+        if (c.w) { toast('这块地已经浇过水啦'); return; }
+        c.w = 0.5;
+        saveSoon(); showOps(opsIdx); toast('浇了水，产量 +0.5');
     }
     function opsFert() {
         if (opsIdx < 0) return;
-        state.plots[opsIdx].c.f = (state.plots[opsIdx].c.f || 0) + 1;
-        saveSoon(); showOps(opsIdx); toast('施了肥，产量 +1');
+        var c = state.plots[opsIdx].c; if (!c) return;
+        if (c.f) { toast('这块地已经施过肥啦'); return; }
+        c.f = 0.5;
+        saveSoon(); showOps(opsIdx); toast('施了肥，产量 +0.5');
     }
     function opsDig() {
         if (opsIdx < 0) return;
@@ -1452,6 +1488,17 @@ function pickSeed(el, seedType) {
     function openAdm() { renderAdm(); $('admPanel').classList.add('show'); }
     function closeAdm() { $('admPanel').classList.remove('show'); }
     function renderAdm() {
+        /* 地块独立管理（管理员逐块控制） */
+        var g = '';
+        for (var i = 0; i < PLOTS; i++) {
+            var p = state.plots[i];
+            var stt = !p.o ? '未开垦' : (p.c ? (CROPS[p.c.t] ? CROPS[p.c.t].name : '作物') + ' Lv' + (stageOf(p.c) + 1) : '已开垦');
+            g += '<div class="adm-plot"><div class="ap-name">地块' + (i + 1) + '</div><div class="ap-st">' + stt + '</div>'
+                + '<div class="ap-btns"><button onclick="admPlotToggle(' + i + ')">' + (p.o ? '封地' : '开垦') + '</button>'
+                + (p.c ? '<button class="danger" onclick="admPlotDig(' + i + ')">铲除</button>' : '') + '</div></div>';
+        }
+        var ap = $('admPlots');
+        if (ap) ap.innerHTML = g;
         var h = '';
         for (var i = 0; i < KEYS.length; i++) {
             var k = KEYS[i], c = CROPS[k];
@@ -1488,6 +1535,20 @@ function pickSeed(el, seedType) {
         gain(n);
         saveSoon();
         toast('给自己发放 ' + n + ' 金币');
+    }
+    function admPlotToggle(i) {
+        var p = state.plots[i];
+        p.o = !p.o;
+        if (!p.o) p.c = null;
+        saveSoon(); renderFarm(); renderAdm();
+        toast('地块' + (i + 1) + (p.o ? '已开垦' : '已封地'));
+    }
+    function admPlotDig(i) {
+        var p = state.plots[i];
+        if (!p.o) return;
+        p.c = null;
+        saveSoon(); renderFarm(); renderAdm();
+        toast('地块' + (i + 1) + '的作物已铲除');
     }
     function admProgress(v) {
         var st = Math.round(v / 100 * 4);
@@ -1545,7 +1606,7 @@ function pickSeed(el, seedType) {
     function preloadAssets() {
         var list = ['cao.png', 'img/plot_soil.png', 'seedbg.jpg', 'img/coin.png'];
         for (var i = 0; i < KEYS.length; i++) list.push('seed/' + CROPS[KEYS[i]].seed);
-        for (var d = 0; d <= 9; d++) list.push('num/' + d + '.png');
+        // v5：数字改用本地字体库渲染（bean/fonts/caveat-bold.woff2），不再预载数字图片
         list = list.concat(['bg/bg_sunny.jpg', 'bg/bg_cloudy.jpg', 'bg/bg_overcast.jpg', 'bg/bg_rain.jpg', 'bg/bg_storm.jpg', 'bg/bg_night.jpg', 'bg/bg_dusk.jpg', 'background.mp3']);
         var n = list.length, done = 0;
         for (var j = 0; j < n; j++) {
@@ -1599,6 +1660,7 @@ function pickSeed(el, seedType) {
     window.admPricePlus = admPricePlus; window.admPriceMinus = admPriceMinus;
     window.admClear = admClear; window.admOpenAll = admOpenAll; window.admResetAll = admResetAll;
     window.admGive = admGive; window.admProgress = admProgress;
+    window.admPlotToggle = admPlotToggle; window.admPlotDig = admPlotDig;
     window.fallbackGrow = fallbackGrow;
 })();
 
