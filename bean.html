@@ -1695,6 +1695,7 @@ function plantEl(i, btn) {
     el.style.left = (br.left - pr.left + br.width / 2) + 'px';
     el.style.top = (br.top - pr.top + br.height / 2) + 'px';
     el.style.width = (br.width * 0.8) + 'px';
+    el.style.height = (br.width * 0.8) + 'px';
     var stage = Math.min(4, p.grow || 0);
     el.src = cropImgUrl(p.crop, stage);
     fallbackSeedImg(el, p.crop);
