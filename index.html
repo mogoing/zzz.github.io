@@ -272,15 +272,24 @@
   const pwd  = document.getElementById('password');
   const btn  = document.getElementById('loginBtn');
 
-  // ===== 上次登录账号：写死展示，不让修改 =====
-  // 优先读本地保存的上次登录记录；没有则固定显示默认账号（17317101812）
+  // ===== 上次登录账号：登录过的才默认展示 =====
+  // 有本地保存记录 → 默认上次登录账号；从未登录过 → 显示"未登录"，不预设任何账号
   const savedUser = localStorage.getItem('blindbox_user');
   const savedPass = localStorage.getItem('blindbox_pass');
-  const LAST_USER = savedUser || '17317101812';
-  const LAST_PASS = savedPass || 'qwer1234';
+  const hasSaved = !!(savedUser && savedPass);
+  const LAST_USER = savedUser || '';
+  const LAST_PASS = savedPass || '';
 
-  lastUserEl.textContent = LAST_USER;
-  lastAvatarEl.textContent = LAST_USER.charAt(0).toUpperCase();
+  if (hasSaved) {
+    lastUserEl.textContent = LAST_USER;
+    lastAvatarEl.textContent = LAST_USER.charAt(0).toUpperCase();
+  } else {
+    lastLogin.classList.add('empty');
+    lastAvatarEl.style.display = 'none';
+    lastUserEl.textContent = '未登录 · 点开始或登录其他账号';
+    const tag = lastLogin.querySelector('.tag');
+    if (tag) tag.style.display = 'none';
+  }
 
   // ===== 背景音乐 =====
   const bgm = document.getElementById('bgm');
@@ -315,6 +324,12 @@
 
   // ===== 开始按钮：直接用上次登录账号进入 =====
   startBtn.addEventListener('click', () => {
+    if (!LAST_USER) {
+      // 从未登录过：展开完整登录表单让用户输入
+      fullForm.classList.add('show');
+      switchLink.textContent = '收起';
+      return;
+    }
     startBtn.disabled = true;
     startBtn.textContent = '进 入 中…';
     doLogin(LAST_USER, LAST_PASS);
