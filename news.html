@@ -287,6 +287,7 @@
     try {
       const r = await fetch(`${API}/api/save?username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}&game=signin`);
       const d = await r.json();
+      if (!d.ok && d.error === '未登录') { authExpired(); return; }
       const s = d.save || {};
       const today = fmtDate(new Date());
       const yesterday = fmtDate(new Date(Date.now() - 864e5));
@@ -338,6 +339,19 @@
       </div>`;
   }
 
+  // ===== 登录状态失效：清当前登录态（保留上次登录记忆），回登录页重新登录 =====
+  function authExpired(){
+    try {
+      localStorage.removeItem('blindbox_user');
+      localStorage.removeItem('blindbox_pass');
+      localStorage.removeItem('blindbox_manager');
+      localStorage.removeItem('blindbox_coins');
+      localStorage.removeItem('blindbox_offline');
+    } catch(e){}
+    toast('⚠️ 登录状态失效，请重新登录');
+    setTimeout(() => location.replace('index.html'), 1200);
+  }
+
   async function doSign(){
     if (signState.done) return;
     if (signState.backendDown) return toast('⚠️ 网络不可用，无法签到，请稍后再试');
@@ -349,7 +363,10 @@
         body: JSON.stringify({ username:user, password:pass, amount: signState.todayGift })
       });
       const d1 = await r1.json();
-      if (!d1.ok) throw new Error(d1.error || '领取失败');
+      if (!d1.ok) {
+        if (d1.error === '未登录') { authExpired(); return; }
+        throw new Error(d1.error || '领取失败');
+      }
       // 记录签到状态（含本周已签集合 weekly）
       const ti = todayIdx();
       const weekly = signState.weekly.slice();
