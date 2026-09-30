@@ -27,24 +27,76 @@
   .card{
     position:relative;z-index:1;width:min(92vw,400px);
     background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
-    border-radius:24px;padding:34px 28px 26px;text-align:center;
+    border-radius:24px;padding:30px 28px 24px;text-align:center;
     box-shadow:0 20px 60px rgba(155,93,229,.16);
     animation:rise .6s cubic-bezier(.2,.8,.3,1.1) both;
+    margin-top:36px;
   }
   @keyframes rise{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
-  .logo{
-    width:56px;height:56px;margin:0 auto 14px;border-radius:18px;
-    background:linear-gradient(135deg,var(--coral),var(--sunny));
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;font-weight:800;color:#fff;box-shadow:0 10px 24px rgba(255,107,107,.4);
+
+  /* 大 Logo：页面中间偏上 */
+  .logo-img{
+    width:min(56vw,220px);height:auto;margin:-78px auto 4px;display:block;
+    filter:drop-shadow(0 14px 26px rgba(255,107,107,.28));
+    animation:pop .8s cubic-bezier(.2,.9,.3,1.15) .12s both;
   }
+  @keyframes pop{from{opacity:0;transform:scale(.6) translateY(14px)}to{opacity:1;transform:none}}
   h1{
     font-size:26px;letter-spacing:3px;
     background:linear-gradient(90deg,var(--grape),var(--coral),var(--sunny));
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .sub{font-size:14px;color:var(--muted);margin:8px 0 24px}
-  .field{display:block;text-align:left;margin-bottom:16px}
+  .sub{font-size:14px;color:var(--muted);margin:6px 0 18px}
+
+  /* 上次登录卡片 */
+  .last-login{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:linear-gradient(135deg,rgba(255,214,61,.14),rgba(255,107,107,.10));
+    border:2px dashed rgba(255,180,60,.55);border-radius:16px;
+    padding:12px 14px;margin-bottom:16px;text-align:left;
+  }
+  .last-login .avatar{
+    width:44px;height:44px;flex:none;border-radius:50%;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:20px;font-weight:800;box-shadow:0 6px 14px rgba(255,107,107,.35);
+  }
+  .last-login .info{flex:1;min-width:0}
+  .last-login .info .t{font-size:12px;color:var(--muted)}
+  .last-login .info .u{
+    font-size:17px;font-weight:700;color:var(--ink);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .last-login .tag{
+    flex:none;font-size:11px;color:var(--grape);font-weight:700;
+    background:rgba(155,93,229,.12);border-radius:999px;padding:4px 10px;
+  }
+  .last-login.empty{justify-content:center;border-style:solid;border-color:#F0E8F8}
+  .last-login.empty .info .u{font-size:14px;color:var(--muted);text-align:center;width:100%}
+
+  /* 开始按钮 */
+  .start-btn{
+    width:100%;height:52px;border:none;border-radius:16px;cursor:pointer;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    color:#fff;font-size:18px;font-weight:800;letter-spacing:8px;
+    box-shadow:0 12px 28px rgba(255,107,107,.38);
+    transition:transform .15s,filter .15s;
+    margin-bottom:12px;
+  }
+  .start-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .start-btn:active{transform:translateY(0) scale(.98)}
+  .start-btn:disabled{opacity:.6;cursor:wait;transform:none}
+
+  .switch-link{
+    font-size:13px;color:var(--grape);font-weight:600;cursor:pointer;text-decoration:none;
+    border-bottom:1px dashed rgba(155,93,229,.4);padding-bottom:1px;background:none;border-top:none;border-left:none;border-right:none;
+  }
+  .switch-link:active{opacity:.6}
+
+  /* 完整登录表单（默认隐藏） */
+  .full-form{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed #EFE6F8;animation:rise .4s both}
+  .full-form.show{display:block}
+  .field{display:block;text-align:left;margin-bottom:14px}
   .label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
   .field input{
     width:100%;height:46px;border:2px solid #EEE6F6;border-radius:14px;padding:0 16px;
@@ -75,21 +127,41 @@
   .login-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
   .login-btn:active{transform:translateY(0) scale(.98)}
   .login-btn:disabled{opacity:.6;cursor:wait;transform:none}
-  .links{display:flex;justify-content:center;gap:18px;margin-top:14px}
+  .links{display:flex;justify-content:center;gap:18px;margin-top:12px}
   .links a{
     font-size:13px;color:var(--grape);font-weight:600;text-decoration:none;
     border-bottom:1px dashed rgba(155,93,229,.4);padding-bottom:1px;
   }
   .links a:active{opacity:.6}
-  .tip{font-size:13px;color:var(--muted);margin-top:16px;line-height:1.9}
+  .tip{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.9}
   .offline-badge{
     display:none;margin-top:10px;font-size:12px;color:#B8860B;font-weight:600;
     background:rgba(255,217,61,.18);border:1px dashed rgba(255,180,60,.6);
     border-radius:999px;padding:5px 12px;
   }
   .offline-badge.show{display:inline-block}
+
+  /* 音乐开关 */
+  .music-btn{
+    position:fixed;top:calc(env(safe-area-inset-top, 0px) + 14px);right:14px;z-index:9;
+    width:46px;height:46px;border:none;border-radius:50%;cursor:pointer;
+    background:rgba(255,255,255,.8);backdrop-filter:blur(8px);
+    box-shadow:0 6px 18px rgba(155,93,229,.18);
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;transition:transform .15s,opacity .2s;
+  }
+  .music-btn:active{transform:scale(.92)}
+  .music-btn.muted{opacity:.55}
+  .music-btn .eq{display:none;gap:2px;align-items:flex-end;height:16px}
+  .music-btn.playing .eq{display:flex}
+  .music-btn.playing .note{display:none}
+  .eq i{width:3px;background:var(--grape);border-radius:2px;animation:eq 1s ease-in-out infinite}
+  .eq i:nth-child(2){animation-delay:.2s}
+  .eq i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:5px}50%{height:16px}}
+
   @media (max-width:480px){
-    .card{padding:28px 20px 22px}
+    .card{padding:26px 20px 20px}
     h1{font-size:23px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -118,28 +190,52 @@
 </head>
 <body>
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <button class="music-btn" id="musicBtn" aria-label="背景音乐开关">
+    <span class="note">🎵</span>
+    <span class="eq"><i></i><i></i><i></i></span>
+  </button>
+  <audio id="bgm" src="assets/login_bgm.mp3" loop preload="auto"></audio>
+
   <main class="card">
-    <div class="logo">🍎</div>
+    <img class="logo-img" src="assets/logo.png" alt="丰稔季">
     <h1>想做咸鱼吗</h1>
     <p class="sub">开盲盒般的畅快游玩</p>
-    <form id="loginForm" autocomplete="off">
-      <label class="field">
-        <span class="label">账号</span>
-        <input type="text" id="username" placeholder="请输入账号" required>
-      </label>
-      <label class="field">
-        <span class="label">密码</span>
-        <span class="pwd-wrap">
-          <input type="password" id="password" placeholder="请输入密码" required>
-          <button type="button" class="eye" id="eye" aria-label="显示或隐藏密码"><span class="ball"></span></button>
-        </span>
-      </label>
-      <p class="error" id="error">账号或密码不正确，请重试</p>
-      <button type="submit" class="login-btn" id="loginBtn">登 录</button>
-    </form>
-    <div class="links">
-      <a href="register.html">注册新账号</a>
+
+    <!-- 上次登录（写死展示，不可修改账号） -->
+    <div class="last-login" id="lastLogin">
+      <div class="avatar" id="lastAvatar">🍀</div>
+      <div class="info">
+        <div class="t">上次登录</div>
+        <div class="u" id="lastUser">—</div>
+      </div>
+      <span class="tag">默认</span>
     </div>
+
+    <button type="button" class="start-btn" id="startBtn">开 始</button>
+    <button type="button" class="switch-link" id="switchLink">登录其他账号</button>
+
+    <!-- 完整登录表单（点“登录其他账号”展开） -->
+    <div class="full-form" id="fullForm">
+      <form id="loginForm" autocomplete="off">
+        <label class="field">
+          <span class="label">账号</span>
+          <input type="text" id="username" placeholder="请输入账号" required>
+        </label>
+        <label class="field">
+          <span class="label">密码</span>
+          <span class="pwd-wrap">
+            <input type="password" id="password" placeholder="请输入密码" required>
+            <button type="button" class="eye" id="eye" aria-label="显示或隐藏密码"><span class="ball"></span></button>
+          </span>
+        </label>
+        <p class="error" id="error">账号或密码不正确，请重试</p>
+        <button type="submit" class="login-btn" id="loginBtn">登 录</button>
+      </form>
+      <div class="links">
+        <a href="register.html">注册新账号</a>
+      </div>
+    </div>
+
     <span class="offline-badge" id="offlineBadge">离线模式 · 云功能不可用</span>
     <p class="tip">永远相信美好的事情即将发生<br>版所所有，违者必究</p>
   </main>
@@ -163,12 +259,66 @@
     // { username: '新账号', password: '新密码' },
   ];
 
+  const lastLogin = document.getElementById('lastLogin');
+  const lastUserEl = document.getElementById('lastUser');
+  const lastAvatarEl = document.getElementById('lastAvatar');
+  const startBtn = document.getElementById('startBtn');
+  const switchLink = document.getElementById('switchLink');
+  const fullForm = document.getElementById('fullForm');
   const form = document.getElementById('loginForm');
   const err  = document.getElementById('error');
   const card = document.querySelector('.card');
   const eye  = document.getElementById('eye');
   const pwd  = document.getElementById('password');
   const btn  = document.getElementById('loginBtn');
+
+  // ===== 上次登录账号：写死展示，不让修改 =====
+  // 优先读本地保存的上次登录记录；没有则固定显示默认账号（17317101812）
+  const savedUser = localStorage.getItem('blindbox_user');
+  const savedPass = localStorage.getItem('blindbox_pass');
+  const LAST_USER = savedUser || '17317101812';
+  const LAST_PASS = savedPass || 'qwer1234';
+
+  lastUserEl.textContent = LAST_USER;
+  lastAvatarEl.textContent = LAST_USER.charAt(0).toUpperCase();
+
+  // ===== 背景音乐 =====
+  const bgm = document.getElementById('bgm');
+  const musicBtn = document.getElementById('musicBtn');
+  let playing = false;
+
+  function tryPlay() {
+    if (playing) return;
+    bgm.play().then(() => {
+      playing = true;
+      musicBtn.classList.add('playing');
+      musicBtn.classList.remove('muted');
+    }).catch(() => {});
+  }
+  function toggleMusic() {
+    if (playing) { bgm.pause(); playing = false; musicBtn.classList.remove('playing'); musicBtn.classList.add('muted'); }
+    else { tryPlay(); }
+  }
+  musicBtn.addEventListener('click', toggleMusic);
+  // 页面任意点击/触摸时尝试播放（兼容浏览器自动播放限制）
+  ['click','touchstart'].forEach(ev => {
+    document.addEventListener(ev, tryPlay, { once: true });
+  });
+  // APK WebView 可能允许自动播放，尝试一次
+  window.addEventListener('load', () => { setTimeout(tryPlay, 500); });
+
+  // ===== 登录其他账号：展开表单 =====
+  switchLink.addEventListener('click', () => {
+    fullForm.classList.toggle('show');
+    switchLink.textContent = fullForm.classList.contains('show') ? '返回上次登录' : '登录其他账号';
+  });
+
+  // ===== 开始按钮：直接用上次登录账号进入 =====
+  startBtn.addEventListener('click', () => {
+    startBtn.disabled = true;
+    startBtn.textContent = '进 入 中…';
+    doLogin(LAST_USER, LAST_PASS);
+  });
 
   eye.addEventListener('click', () => {
     eye.classList.toggle('off');
@@ -186,7 +336,7 @@
 
   function enterOnline(u, manager, coins) {
     localStorage.setItem('blindbox_user', u);
-    localStorage.setItem('blindbox_pass', pwd.value);
+    localStorage.setItem('blindbox_pass', pwd.value || LAST_PASS);
     localStorage.setItem('blindbox_manager', manager ? '1' : '0');
     localStorage.setItem('blindbox_coins', String(coins || 0));
     localStorage.setItem('blindbox_offline', '0');
@@ -205,15 +355,7 @@
     });
   }
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const u = document.getElementById('username').value.trim();
-    const p = pwd.value;
-    if (!u || !p) { showErr('请输入账号和密码'); return; }
-    hideErr();
-    btn.disabled = true;
-    btn.textContent = '登 录 中…';
-
+  function doLogin(u, p) {
     // 1) 优先后端登录
     api('/api/login', {
       method: 'POST',
@@ -236,11 +378,30 @@
         localStorage.setItem('blindbox_offline', '1');
         location.href = 'main.html';
       } else {
-        showErr('无法连接服务器，且本地账号验证失败');
-        btn.disabled = false;
-        btn.textContent = '登 录';
+        if (startBtn.disabled) {
+          startBtn.disabled = false;
+          startBtn.textContent = '开 始';
+          fullForm.classList.add('show');
+          switchLink.textContent = '返回上次登录';
+          showErr('上次登录账号验证失败，请登录其他账号');
+        } else {
+          showErr('无法连接服务器，且本地账号验证失败');
+          btn.disabled = false;
+          btn.textContent = '登 录';
+        }
       }
     });
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const u = document.getElementById('username').value.trim();
+    const p = pwd.value;
+    if (!u || !p) { showErr('请输入账号和密码'); return; }
+    hideErr();
+    btn.disabled = true;
+    btn.textContent = '登 录 中…';
+    doLogin(u, p);
   });
 </script>
 <script>
