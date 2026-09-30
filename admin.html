@@ -212,6 +212,22 @@
       </div>
     </div>
 
+    <!-- 发布邮件 -->
+    <div class="panel">
+      <h2>发布邮件 <span style="font-size:11px;color:var(--muted);font-weight:400">（发送给所有用户 · 可附金币奖励）</span></h2>
+      <div class="row" style="margin-bottom:8px">
+        <input type="text" id="mailTitle" placeholder="邮件标题">
+      </div>
+      <div class="row" style="margin-bottom:8px">
+        <textarea id="mailBody" style="width:100%;min-height:80px;border:2px solid #EEE6F6;border-radius:11px;padding:10px 12px;font-size:13px;color:var(--ink);background:#fff;outline:none;resize:vertical;font-family:inherit;line-height:1.6" placeholder="邮件正文（前几个字会显示在列表摘要）"></textarea>
+      </div>
+      <div class="row">
+        <input type="number" id="mailReward" placeholder="奖励金币（0=无奖励）" style="max-width:180px" min="0">
+        <button class="btn" onclick="publishMail()">📮 发布邮件</button>
+      </div>
+      <div class="hint">发布后所有用户都可在「邮件中心」看到；带奖励的邮件用户点击「立即领取」金币实时到账</div>
+    </div>
+
     <!-- 全部日记（按用户分组） -->
     <div class="panel">
       <h2>全部日记 <span style="font-size:11px;color:var(--muted);font-weight:400">（按用户分组 · 可编辑/删除/新增）</span></h2>
@@ -442,6 +458,33 @@
       toast('✅ 日记已删除');
       loadDiary();
     } catch (e) { toast('失败：' + e.message); }
+  }
+
+  // ===== 发布邮件（写入全局 cfg.mails，所有用户可见） =====
+  async function publishMail(){
+    const title = $('mailTitle').value.trim();
+    const body = $('mailBody').value.trim();
+    const reward = Math.max(0, parseInt($('mailReward').value, 10) || 0);
+    if (!title || !body) return toast('请填写标题和正文');
+    try {
+      // 读现有 cfg
+      const r0 = await fetch(`${API}/api/cfg`);
+      const d0 = await r0.json();
+      const cfg = d0.cfg || {};
+      const mails = Array.isArray(cfg.mails) ? cfg.mails : [];
+      const id = Date.now();
+      mails.push({ id, title, body, reward, date: new Date().toISOString() });
+      // 写回 cfg
+      const r = await fetch(`${API}/api/cfg`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ username: user, password: pass, cfg: { ...cfg, mails } })
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '失败');
+      toast('✅ 邮件已发布给所有用户');
+      $('mailTitle').value = ''; $('mailBody').value = ''; $('mailReward').value = '';
+    } catch (e) { toast('发布失败：' + e.message); }
   }
 
   loadUsers();

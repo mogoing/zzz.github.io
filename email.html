@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>邮件中心 · 莫古游戏</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FF6B6B'/%3E%3Cstop offset='1' stop-color='%23FFD93D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='800' text-anchor='middle' fill='%23fff'%3E%3F%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --coral:#FF6B6B; --sunny:#FFD93D; --mint:#4ECDC4; --grape:#9B5DE5; --pink:#FF9DE2;
+    --ink:#4A3F5C; --muted:#9A8FB5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+    background:linear-gradient(160deg,#FFF6E9,#FFE8D6);
+    color:var(--ink);min-height:100vh;padding:16px 14px 48px;
+  }
+  .blob{position:fixed;border-radius:50%;filter:blur(50px);opacity:.5;z-index:0;animation:float 12s ease-in-out infinite;pointer-events:none}
+  .b1{width:36vmax;height:36vmax;background:var(--pink);top:-10vmax;left:-8vmax}
+  .b2{width:28vmax;height:28vmax;background:var(--mint);bottom:-8vmax;right:-6vmax;animation-delay:-4s}
+  .b3{width:20vmax;height:20vmax;background:var(--sunny);top:40vh;left:-6vmax;opacity:.3;animation-delay:-8s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(2.5vmax)}}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto}
+
+  .toprow{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    background:rgba(255,255,255,.88);backdrop-filter:blur(14px);
+    border-radius:18px;padding:12px 14px;margin-bottom:14px;
+    box-shadow:0 10px 30px rgba(155,93,229,.13);flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{
+    width:40px;height:40px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--coral),var(--sunny));
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;font-weight:800;color:#fff;box-shadow:0 6px 14px rgba(255,107,107,.4);
+  }
+  .brand h1{font-size:17px;letter-spacing:1px}
+  .brand small{display:block;font-size:11px;color:var(--muted);font-weight:400;letter-spacing:0}
+  .btn{
+    border:none;border-radius:11px;padding:9px 16px;cursor:pointer;
+    font-size:13px;font-weight:700;color:#fff;flex:none;
+    background:linear-gradient(135deg,var(--coral),var(--grape));
+    box-shadow:0 5px 14px rgba(255,107,107,.3);
+    transition:transform .15s,filter .15s;
+  }
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .btn:active{transform:translateY(0) scale(.97)}
+  .btn.ghost{background:linear-gradient(135deg,var(--mint),#2EB5A9);box-shadow:0 5px 14px rgba(78,205,196,.3)}
+
+  /* 邮件列表 */
+  .mail-list{display:flex;flex-direction:column;gap:10px}
+  .mail{
+    background:rgba(255,255,255,.92);backdrop-filter:blur(14px);
+    border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(155,93,229,.10);
+    transition:.25s;
+  }
+  .mail-head{
+    display:flex;align-items:center;gap:10px;padding:13px 14px;cursor:pointer;
+    user-select:none;
+  }
+  .m-dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 3px rgba(255,107,107,.2)}
+  .m-main{flex:1;min-width:0}
+  .m-title{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .m-excerpt{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+  .m-arrow{flex:none;color:var(--muted);font-size:12px;transition:transform .3s}
+  /* 展开态 */
+  .mail.open .m-arrow{transform:rotate(180deg)}
+  .mail.open{border:2px solid #F0DDFA;box-shadow:0 10px 30px rgba(155,93,229,.16)}
+  .mail-body{
+    display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;
+  }
+  .mail-body-in{overflow:hidden;min-height:0}
+  .mail.open .mail-body{grid-template-rows:1fr}
+  .mail-content{
+    padding:2px 16px 16px 34px;font-size:13px;line-height:1.8;color:var(--ink);
+  }
+  .claim-row{display:flex;justify-content:flex-end;margin-top:12px}
+  .claim{
+    border:none;border-radius:999px;padding:9px 22px;cursor:pointer;
+    font-size:13px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,var(--coral),var(--sunny));
+    box-shadow:0 5px 14px rgba(255,107,107,.32);
+    transition:transform .15s,filter .15s;
+  }
+  .claim:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .claim:active{transform:scale(.95)}
+  /* 已读 */
+  .mail.read{opacity:.62}
+  .mail.read .m-dot{background:#C9C2D8;box-shadow:none}
+  .mail.read .m-title{color:var(--muted)}
+
+  .footer-row{display:flex;justify-content:flex-end;margin-top:14px}
+  .delread{
+    border:2px solid #F0E6FA;border-radius:999px;padding:8px 18px;cursor:pointer;
+    font-size:12px;font-weight:700;color:var(--muted);background:#FBF6FF;transition:.2s;
+  }
+  .delread:hover{border-color:var(--coral);color:var(--coral)}
+  .delread:active{transform:scale(.96)}
+  .empty{text-align:center;color:var(--muted);padding:40px 10px;font-size:13px}
+
+  .msg{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+    background:rgba(74,63,92,.92);color:#fff;padding:10px 20px;border-radius:999px;
+    font-size:13px;opacity:0;transition:.3s;z-index:9;pointer-events:none;white-space:nowrap}
+  .msg.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<!-- 热更新：内容版本变化自动带参重载，绕过缓存（无需重装 APK） -->
+<script>
+(function(){
+  var VER_URL = 'https://mogoing.github.io/zzz.github.io/version.json';
+  if (!window.fetch) return;
+  fetch(VER_URL, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
+    var ver = String((j && j.v) || 0);
+    try {
+      var old = localStorage.getItem('mogoing_ver');
+      if (old !== ver) {
+        localStorage.setItem('mogoing_ver', ver);
+        var p = location.pathname;
+        var q = location.search || '';
+        var sep = q.indexOf('?') >= 0 ? '&' : '?';
+        location.replace(p + q + sep + 'v=' + ver);
+      }
+    } catch(e){}
+  }).catch(function(){});
+})();
+</script>
+</head>
+<body>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap">
+    <div class="toprow">
+      <div class="brand">
+        <div class="logo">✉️</div>
+        <h1>邮件中心<small id="who"></small></h1>
+      </div>
+      <button class="btn ghost" onclick="goHome()">回主页</button>
+    </div>
+
+    <div class="mail-list" id="mailList"></div>
+    <div class="footer-row"><button class="delread" id="delRead" onclick="deleteRead()">🗑️ 删除已读</button></div>
+  </div>
+  <div class="msg" id="msg"></div>
+
+<script>
+  const API = 'https://api.mogoing.xyz';
+  const $ = id => document.getElementById(id);
+  const user = localStorage.getItem('blindbox_user');
+  const pass = localStorage.getItem('blindbox_pass') || '';
+  if (!user) location.replace('index.html');
+  $('who').textContent = ' · ' + user;
+
+  function toast(t){
+    const m = $('msg'); m.textContent = t; m.classList.add('show');
+    clearTimeout(m._t); m._t = setTimeout(() => m.classList.remove('show'), 2000);
+  }
+  function goHome(){ location.href = 'main.html'; }
+  function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  // 页面等级最低：replace 掉历史，任何页面返回都不会回到本页
+  if (history.replaceState) history.replaceState(null, '', location.href);
+
+  // ===== 邮件数据 =====
+  // 第一封内置邮件（管理员发布的新邮件会从后端 cfg 合并进来）
+  let MAILS = [
+    { id:'m1', title:'丰稔季来了！', excerpt:'每日登录即可特赠您 18 币！', body:'丰稔季正式开启！活动期间每日登录即可领取 18 金币特惠，前往活动中心签到，更多好礼等你拿！', reward:18, date:'2026-09-30' }
+  ];
+  // 每用户状态：已读/已领/已删除的邮件 id
+  let MINE = { read:[], claimed:[], deleted:[] };
+
+  async function loadMails(){
+    // 管理员发布的新邮件存于全局 cfg.mails
+    try {
+      const r = await fetch(`${API}/api/cfg`);
+      const d = await r.json();
+      const cfg = d.cfg || {};
+      if (Array.isArray(cfg.mails)) {
+        const extra = cfg.mails.map(m => ({ id:'m'+m.id, title:m.title, excerpt:m.excerpt, body:m.body, reward:m.reward||0, date:(m.date||'').slice(0,10) }));
+        MAILS = MAILS.concat(extra);
+      }
+    } catch(e){}
+    // 读自己的状态
+    try {
+      const r2 = await fetch(`${API}/api/save?username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}&game=mailbox`);
+      const d2 = await r2.json();
+      const s = d2.save || {};
+      MINE = { read: s.read||[], claimed: s.claimed||[], deleted: s.deleted||[] };
+    } catch(e){}
+  }
+
+  async function saveMine(){
+    await fetch(`${API}/api/save`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ username:user, password:pass, game:'mailbox', data: MINE })
+    });
+  }
+
+  function render(){
+    const list = MAILS.filter(m => !MINE.deleted.includes(m.id));
+    if (!list.length) {
+      $('mailList').innerHTML = '<div class="empty">📭 没有邮件啦，多关注活动中心哦</div>';
+      return;
+    }
+    $('mailList').innerHTML = list.map(m => {
+      const read = MINE.read.includes(m.id);
+      const claimed = MINE.claimed.includes(m.id);
+      return `
+        <div class="mail ${read?'read':''}" id="mail_${m.id}" onclick="toggleMail('${m.id}')">
+          <div class="mail-head">
+            <span class="m-dot"></span>
+            <div class="m-main">
+              <div class="m-title">${esc(m.title)}</div>
+              <div class="m-excerpt">${esc(m.excerpt)}…</div>
+            </div>
+            <span class="m-arrow">▾</span>
+          </div>
+          <div class="mail-body">
+            <div class="mail-body-in">
+              <div class="mail-content">
+                <div style="font-size:11px;color:var(--muted);margin-bottom:6px">${m.date}</div>
+                ${esc(m.body)}
+                ${m.reward > 0 && !claimed ? `
+                  <div class="claim-row"><button class="claim" onclick="event.stopPropagation();claim('${m.id}')">立即领取 · ${m.reward}币</button></div>` : ''}
+                ${m.reward > 0 && claimed ? `
+                  <div class="claim-row"><span style="font-size:12px;color:var(--mint);font-weight:700">✅ 已领取 ${m.reward} 币</span></div>` : ''}
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+    $('delRead').style.display = MINE.read.length ? '' : 'none';
+  }
+
+  function toggleMail(id){
+    const el = document.getElementById('mail_' + id);
+    if (!el) return;
+    const open = el.classList.contains('open');
+    // 折叠所有
+    document.querySelectorAll('.mail.open').forEach(x => x.classList.remove('open'));
+    if (!open) {
+      el.classList.add('open');
+      // 标记已读
+      if (!MINE.read.includes(id)) {
+        MINE.read.push(id);
+        saveMine();
+        el.classList.add('read');
+        $('delRead').style.display = '';
+      }
+    }
+  }
+
+  async function claim(id){
+    const m = MAILS.find(x => x.id === id);
+    if (!m || MINE.claimed.includes(id)) return;
+    try {
+      const r = await fetch(`${API}/api/gain`, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ username:user, password:pass, amount:m.reward })
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || '领取失败');
+      MINE.claimed.push(id);
+      if (!MINE.read.includes(id)) MINE.read.push(id);
+      await saveMine();
+      toast(`🎉 到账 ${m.reward} 金币！余额 ${d.balance}`);
+      // 自动折叠（移除 open）
+      document.querySelectorAll('.mail.open').forEach(x => x.classList.remove('open'));
+      render();
+    } catch(e){ toast('领取失败：' + e.message); }
+  }
+
+  async function deleteRead(){
+    const n = MINE.read.length;
+    if (!n) return toast('没有已读邮件');
+    MINE.deleted = MINE.deleted.concat(MINE.read);
+    MINE.read = [];
+    await saveMine();
+    toast(`已删除 ${n} 封已读邮件`);
+    render();
+  }
+
+  (async function init(){
+    await loadMails();
+    render();
+  })();
+</script>
+</body>
+</html>

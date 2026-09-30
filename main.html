@@ -96,7 +96,7 @@
   .user{font-size:14px;color:var(--muted);margin-top:2px}
   .top-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .top-icon{
-    flex:none;width:46px;height:46px;padding:6px;border:none;border-radius:14px;cursor:pointer;
+    flex:none;width:69px;height:69px;padding:9px;border:none;border-radius:18px;cursor:pointer;
     background:rgba(255,255,255,.85);backdrop-filter:blur(8px);
     box-shadow:0 6px 16px rgba(155,93,229,.14);transition:transform .15s,filter .15s;
     display:flex;align-items:center;justify-content:center;
@@ -348,7 +348,7 @@
     header{justify-content:space-between;gap:8px}
     .brand-logo{height:42px}
     .top-right{gap:8px}
-    .top-icon{width:42px;height:42px;border-radius:12px}
+    .top-icon{width:63px;height:63px;border-radius:16px}
     .stage-shell{width:min(96vw,560px);border-radius:18px;padding:12px 2px 12px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.lid,.reveal{transition:none!important}}
@@ -598,9 +598,9 @@
   document.getElementById('goRecharge').addEventListener('click', () => location.href = 'recharge.html');
   document.getElementById('goBoard').addEventListener('click', () => location.href = 'board.html#messages');
   document.getElementById('goDiary').addEventListener('click', () => location.href = 'board.html#diary');
-  // 活动 / 邮件（跳转目标待定，先提示）
-  document.getElementById('goNews').addEventListener('click', () => toast('活动中心 · 即将上线'));
-  document.getElementById('goEmails').addEventListener('click', () => toast('邮件中心 · 即将上线'));
+  // 活动 / 邮件
+  document.getElementById('goNews').addEventListener('click', () => location.href = 'news.html');
+  document.getElementById('goEmails').addEventListener('click', () => location.href = 'email.html');
   // 管理员专属：显示管理后台入口
   if (manager) {
     const adminBtn = document.getElementById('goAdmin');
