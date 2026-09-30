@@ -261,7 +261,7 @@
   function switchAct(id){
     curAct = id; renderList();
     const act = ACTS.find(a => a.id === id);
-    $('content').innerHTML = act.render();
+    $('content').innerHTML = `<div class="act show">${act.render()}</div>`;
     const el = document.querySelector('.act.show');
     if (el) { el.classList.remove('show'); void el.offsetWidth; el.classList.add('show'); }
     if (id === 'sign') initSign();
