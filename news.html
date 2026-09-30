@@ -276,38 +276,62 @@
   // 规则：每天登录送 1 币；连续第 7 天「周日好礼」双倍给 2 币；与个人账户打通
   let signState = { done:false, streak:0, todayGift:0, bonusToday:false };
   function fmtDate(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+  // 真实星期：周一=1 … 周六=6，周日=7
+  function todayIdx(){ const d = new Date().getDay(); return d === 0 ? 7 : d; }
+  const isTodaySunday = () => todayIdx() === 7;
 
   async function loadSign(){
+    // 本地记录做双保险（后端异常时也能识别"今天已签"）
+    let local = null;
+    try { local = JSON.parse(localStorage.getItem('news_signin_' + user) || 'null'); } catch(e){}
+    const today = fmtDate(new Date());
+    const yesterday = fmtDate(new Date(Date.now() - 864e5));
+    signState.bonusToday = isTodaySunday();
+    signState.todayGift = signState.bonusToday ? 2 : 1;
     try {
       const r = await fetch(`${API}/api/save?username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}&game=signin`);
       const d = await r.json();
       const s = d.save || {};
-      const today = fmtDate(new Date());
-      const yesterday = fmtDate(new Date(Date.now() - 864e5));
-      if (s.lastDate === today) {
+      const remoteDone = (s.lastDate === today);
+      const localDone = !!(local && local.date === today);
+      if (remoteDone || localDone) {
         signState.done = true;
-        signState.streak = s.streak || 1;
-        signState.bonusToday = (signState.streak % 7 === 0);
+        signState.streak = Math.max(s.streak || local.streak || 1, 1);
       } else {
-        signState.streak = (s.lastDate === yesterday) ? ((s.streak || 0) + 1) : 1;
-        signState.bonusToday = (signState.streak % 7 === 0);
+        const base = (s.lastDate === yesterday) ? (s.streak || 0)
+                   : ((local && local.date === yesterday) ? (local.streak || 0) : 0);
+        signState.streak = base + 1;
+        signState.done = false;
       }
-      signState.todayGift = signState.bonusToday ? 2 : 1;
-    } catch(e){ signState.streak = 0; signState.todayGift = 1; }
+    } catch(e){
+      // 后端不可用：仅靠本地判断
+      if (local && local.date === today) {
+        signState.done = true;
+        signState.streak = local.streak || 1;
+      } else {
+        signState.streak = (local && local.date === yesterday) ? ((local.streak || 0) + 1) : 1;
+        signState.done = false;
+      }
+    }
   }
 
   function renderSign(){
-    const pos = (signState.streak % 7) || 7;
+    const ti = todayIdx();
+    const wks = ['周一','周二','周三','周四','周五','周六','周日'];
     const days = [1,2,3,4,5,6,7].map(n => {
       let cls = 'day';
-      if (n <= pos) cls += ' on';
-      if (n === pos) cls += ' today';
-      return `<div class="${cls}"><b>${n}</b><small>${n===7?'周日好礼':'+1币'}</small></div>`;
+      if (n === ti && signState.done) cls += ' on';
+      if (n === ti) cls += ' today';
+      let small;
+      if (n === 7) small = signState.done && ti === 7 ? '周日好礼·已领' : '周日好礼';
+      else if (n === ti) small = '今天';
+      else small = '+1币';
+      return `<div class="${cls}"><b>${wks[n-1]}</b><small>${small}</small></div>`;
     }).join('');
     return `
       <div class="sign-card">
         <div class="sign-title">签到送金币</div>
-        <div class="sign-sub">每天登录送 <b style="color:var(--coral)">1 金币</b> · 连续第 7 天「周日好礼」双倍 <b style="color:var(--sunny)">2 金币</b></div>
+        <div class="sign-sub">每天登录送 <b style="color:var(--coral)">1 金币</b> · 每周日「周日好礼」双倍 <b style="color:var(--sunny)">2 金币</b></div>
         <div class="streak-row">${days}</div>
         <button class="sign-btn ${signState.done?'done':''}" id="signBtn" ${signState.done?'disabled':''} onclick="doSign()">
           ${signState.done ? (signState.bonusToday ? '✅ 今日已签（周日好礼 +2币）' : '✅ 今日已签 +1币') : (signState.bonusToday ? '🎁 今日签到大奖 +2币' : '✋ 签到领金币 +1币')}
@@ -319,6 +343,9 @@
   async function doSign(){
     if (signState.done) return;
     const btn = $('signBtn'); if (btn) btn.disabled = true;
+    // 先本地标记今天已签（双保险：即使后端存档失败也不再重复领取）
+    const key = 'news_signin_' + user;
+    try { localStorage.setItem(key, JSON.stringify({ date: fmtDate(new Date()), streak: signState.streak })); } catch(e){}
     try {
       // 领取金币
       const r1 = await fetch(`${API}/api/gain`, {
@@ -327,17 +354,24 @@
       });
       const d1 = await r1.json();
       if (!d1.ok) throw new Error(d1.error || '领取失败');
-      // 记录签到状态
-      const r2 = await fetch(`${API}/api/save`, {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ username:user, password:pass, game:'signin', data:{ lastDate: fmtDate(new Date()), streak: signState.streak } })
-      });
-      const d2 = await r2.json();
-      if (!d2.ok) throw new Error(d2.error || '存档失败');
+      // 记录签到状态（存档失败不回退：金币已到账，按钮照常变灰）
+      let syncOk = true;
+      try {
+        const r2 = await fetch(`${API}/api/save`, {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ username:user, password:pass, game:'signin', data:{ lastDate: fmtDate(new Date()), streak: signState.streak } })
+        });
+        const d2 = await r2.json();
+        syncOk = !!(d2 && d2.ok);
+      } catch(e2){ syncOk = false; }
       signState.done = true;
-      toast(signState.bonusToday ? `🎁 周日好礼！到账 ${signState.todayGift} 金币，余额 ${d1.balance}` : `✅ 签到成功！到账 1 金币，余额 ${d1.balance}`);
+      toast(signState.bonusToday
+        ? `🎁 周日好礼！到账 ${signState.todayGift} 金币，余额 ${d1.balance}`
+        : `✅ 签到成功！到账 1 金币，余额 ${d1.balance}${syncOk ? '' : '（状态同步延迟）'}`);
       renderContent();
     } catch(e){
+      // 领取失败：回退本地标记，按钮恢复可点
+      try { localStorage.removeItem(key); } catch(e2){}
       toast('签到失败：' + e.message);
       const b2 = $('signBtn'); if (b2) b2.disabled = false;
     }
