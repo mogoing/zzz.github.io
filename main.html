@@ -84,6 +84,10 @@
     display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;
     flex-wrap:wrap;
   }
+  .brand-logo{
+    height:52px;width:auto;display:block;
+    filter:drop-shadow(0 6px 12px rgba(255,107,107,.25));
+  }
   h1{
     font-size:26px;letter-spacing:3px;
     background:linear-gradient(90deg,var(--grape),var(--coral),var(--sunny));
@@ -91,6 +95,15 @@
   }
   .user{font-size:14px;color:var(--muted);margin-top:2px}
   .top-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .top-icon{
+    flex:none;width:46px;height:46px;padding:6px;border:none;border-radius:14px;cursor:pointer;
+    background:rgba(255,255,255,.85);backdrop-filter:blur(8px);
+    box-shadow:0 6px 16px rgba(155,93,229,.14);transition:transform .15s,filter .15s;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .top-icon img{width:100%;height:100%;object-fit:contain;pointer-events:none}
+  .top-icon:hover{transform:translateY(-2px)}
+  .top-icon:active{transform:scale(.92)}
   .logout{
     flex:none;min-height:44px;display:flex;align-items:center;
     padding:0 16px;border:none;border-radius:999px;cursor:pointer;
@@ -332,8 +345,10 @@
       --gap:16px;            /* 手机端列间隙 */
       --page-w:calc(2 * var(--box) + 2 * var(--gap)); /* 移动 2 列：盒子+间隙刚好装满 */
     }
-    header{justify-content:center;gap:8px}
+    header{justify-content:space-between;gap:8px}
+    .brand-logo{height:42px}
     .top-right{gap:8px}
+    .top-icon{width:42px;height:42px;border-radius:12px}
     .stage-shell{width:min(96vw,560px);border-radius:18px;padding:12px 2px 12px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important}.lid,.reveal{transition:none!important}}
@@ -406,11 +421,13 @@
   <div class="deco deco-star"></div>
   <div class="deco deco-star2"></div>
   <header>
-    <div>
-      <h1>多巴胺惊喜屋</h1>
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo.png" alt="丰稔季" id="brandLogo">
       <p class="user" id="hello"></p>
     </div>
     <div class="top-right">
+      <button class="top-icon" id="goNews" title="活动"><img src="assets/news.png" alt="活动"></button>
+      <button class="top-icon" id="goEmails" title="邮件"><img src="assets/emails.png" alt="邮件"></button>
       <div class="wallet">
         <img src="assets/coin.png" alt="金币">
         <b id="coinNum">0</b>
@@ -581,6 +598,9 @@
   document.getElementById('goRecharge').addEventListener('click', () => location.href = 'recharge.html');
   document.getElementById('goBoard').addEventListener('click', () => location.href = 'board.html#messages');
   document.getElementById('goDiary').addEventListener('click', () => location.href = 'board.html#diary');
+  // 活动 / 邮件（跳转目标待定，先提示）
+  document.getElementById('goNews').addEventListener('click', () => toast('活动中心 · 即将上线'));
+  document.getElementById('goEmails').addEventListener('click', () => toast('邮件中心 · 即将上线'));
   // 管理员专属：显示管理后台入口
   if (manager) {
     const adminBtn = document.getElementById('goAdmin');
