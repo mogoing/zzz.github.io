@@ -100,14 +100,14 @@
   .top-icon img{width:100%;height:100%;object-fit:contain;pointer-events:none}
   .top-icon:hover{transform:translateY(-2px)}
   .top-icon:active{transform:scale(.92)}
-  /* 留言板未读红色角标：有未读留言时显示，全部已读后消失 */
+  /* 留言板未读红色角标：有未读留言时显示在「留言板」按钮右上角，全部已读后消失 */
   .badge{
-    position:absolute;top:-7px;right:-7px;min-width:21px;height:21px;padding:0 5px;
+    position:absolute;top:-8px;right:-6px;min-width:21px;height:21px;padding:0 5px;
     border-radius:999px;background:linear-gradient(135deg,#ff4757,#ff6b81);
     color:#fff;font-size:12px;font-weight:800;line-height:1;
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 2px 8px rgba(255,71,87,.55),0 0 0 2px #fff;
-    font-family:Arial,sans-serif;
+    font-family:Arial,sans-serif;pointer-events:none;
   }
   .logout{
     flex:none;min-height:44px;display:flex;align-items:center;
@@ -145,6 +145,7 @@
     padding:0 18px;border:none;border-radius:999px;cursor:pointer;
     font-size:14px;font-weight:800;color:#fff;
     box-shadow:0 8px 20px rgba(139,92,246,.22);transition:transform .15s;
+    position:relative;
   }
   .fun-btn:active{transform:scale(.95)}
   .fun-btn.mint{background:linear-gradient(135deg,#4ECDC4,#2FBFB5);box-shadow:0 8px 20px rgba(47,191,181,.28)}
@@ -438,11 +439,10 @@
     <div class="top-right">
       <button class="top-icon" id="goNews" title="活动"><img src="assets/news.png" alt="活动"></button>
       <button class="top-icon" id="goEmails" title="邮件"><img src="assets/emails.png" alt="邮件"></button>
-      <button class="top-icon" id="goBoardTop" title="留言板"><img src="assets/board.png" alt="留言板"><b class="badge" id="boardBadge" style="display:none">0</b></button>
     </div>
   </header>
   <div class="fun-row">
-    <button class="fun-btn mint" id="goBoard">💬 留言板</button>
+    <button class="fun-btn mint" id="goBoard">💬 留言板<b class="badge" id="boardBadge" style="display:none">0</b></button>
     <button class="fun-btn grape" id="goDiary">📖 我的日记</button>
     <button class="fun-btn coral" id="goAdmin" style="display:none">⭐ 管理后台</button>
     <button class="logout" id="logout">退出登录</button>
@@ -628,7 +628,6 @@
   // 功能入口
   document.getElementById('goRecharge').addEventListener('click', () => location.href = 'recharge.html');
   document.getElementById('goBoard').addEventListener('click', () => location.href = 'board.html#messages');
-  document.getElementById('goBoardTop').addEventListener('click', () => location.href = 'board.html#messages');
   document.getElementById('goDiary').addEventListener('click', () => location.href = 'board.html#diary');
   // 活动 / 邮件
   document.getElementById('goNews').addEventListener('click', () => location.href = 'news.html');
