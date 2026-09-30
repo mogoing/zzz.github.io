@@ -203,6 +203,24 @@
     return d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
   }
 
+  // 打开留言板看到留言即标记已读（每用户独立，存后端 game=board_read）
+  function markRead(ids){
+    if (offline || !Array.isArray(ids) || !ids.length) return;
+    api('/api/save?username=' + encodeURIComponent(user) + '&password=' + encodeURIComponent(pass) + '&game=board_read')
+      .then(d => {
+        let read = (d && d.ok && d.save && Array.isArray(d.save.read)) ? d.save.read.slice() : [];
+        let changed = false;
+        ids.forEach(i => { if (i != null && read.indexOf(i) === -1) { read.push(i); changed = true; } });
+        if (!changed) return;
+        return api('/api/save', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ username: user, password: pass, game: 'board_read', data: { read } })
+        });
+      })
+      .catch(() => {});
+  }
+
   function loadMessages() {
     if (offline) { msgList.innerHTML = '<div class="empty">离线模式无法查看留言</div>'; return; }
     msgList.innerHTML = '<div class="loading">加载中…</div>';
@@ -214,6 +232,7 @@
         msgList.innerHTML = arr.map(m =>
           '<div class="item"><div class="meta"><span class="name">' + esc(m.username) + '</span><span>' + fmtTime(m.created_at) + '</span></div><p>' + esc(m.content) + '</p></div>'
         ).join('');
+        markRead(arr.map(m => m.id));
       })
       .catch(() => { msgList.innerHTML = '<div class="empty">留言加载失败，请检查网络后重试</div>'; });
   }

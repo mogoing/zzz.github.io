@@ -95,11 +95,20 @@
     flex:none;width:69px;height:69px;padding:2px;border:none;border-radius:18px;cursor:pointer;
     background:rgba(255,255,255,.85);backdrop-filter:blur(8px);
     box-shadow:0 6px 16px rgba(155,93,229,.14);transition:transform .15s,filter .15s;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:center;position:relative;
   }
   .top-icon img{width:100%;height:100%;object-fit:contain;pointer-events:none}
   .top-icon:hover{transform:translateY(-2px)}
   .top-icon:active{transform:scale(.92)}
+  /* 留言板未读红色角标：有未读留言时显示，全部已读后消失 */
+  .badge{
+    position:absolute;top:-7px;right:-7px;min-width:21px;height:21px;padding:0 5px;
+    border-radius:999px;background:linear-gradient(135deg,#ff4757,#ff6b81);
+    color:#fff;font-size:12px;font-weight:800;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 8px rgba(255,71,87,.55),0 0 0 2px #fff;
+    font-family:Arial,sans-serif;
+  }
   .logout{
     flex:none;min-height:44px;display:flex;align-items:center;
     padding:0 16px;border:none;border-radius:999px;cursor:pointer;
@@ -429,6 +438,7 @@
     <div class="top-right">
       <button class="top-icon" id="goNews" title="活动"><img src="assets/news.png" alt="活动"></button>
       <button class="top-icon" id="goEmails" title="邮件"><img src="assets/emails.png" alt="邮件"></button>
+      <button class="top-icon" id="goBoardTop" title="留言板"><img src="assets/board.png" alt="留言板"><b class="badge" id="boardBadge" style="display:none">0</b></button>
     </div>
   </header>
   <div class="fun-row">
@@ -518,6 +528,31 @@
       .catch(() => {});
   }
 
+  // ===== 留言板未读角标：有未读留言显示红圈条数，全部已读后消失 =====
+  const boardBadge = document.getElementById('boardBadge');
+  async function loadBoardBadge(){
+    if (!boardBadge) return;
+    try {
+      const r1 = await fetch(API + '/api/messages', { signal: AbortSignal.timeout(8000) });
+      const d1 = await r1.json();
+      if (!d1 || !d1.ok) throw new Error();
+      const all = d1.messages || [];
+      if (!all.length) { boardBadge.style.display = 'none'; return; }
+      let readIds = [];
+      if (!offline && user && pass) {
+        try {
+          const r2 = await fetch(API + '/api/save?username=' + encodeURIComponent(user) + '&password=' + encodeURIComponent(pass) + '&game=board_read', { signal: AbortSignal.timeout(8000) });
+          const d2 = await r2.json();
+          if (d2 && d2.ok && d2.save && Array.isArray(d2.save.read)) readIds = d2.save.read;
+        } catch(e2){}
+      }
+      const unread = all.filter(m => m.id != null && readIds.indexOf(m.id) === -1).length;
+      if (unread > 0) { boardBadge.textContent = unread > 99 ? '99+' : unread; boardBadge.style.display = 'flex'; }
+      else boardBadge.style.display = 'none';
+    } catch(e){ boardBadge.style.display = 'none'; }
+  }
+  loadBoardBadge();
+
   // ===== 渲染游戏墙（滑动翻页） =====
   const stage = document.getElementById('stage');
   const dotsWrap = document.getElementById('dots');
@@ -593,6 +628,7 @@
   // 功能入口
   document.getElementById('goRecharge').addEventListener('click', () => location.href = 'recharge.html');
   document.getElementById('goBoard').addEventListener('click', () => location.href = 'board.html#messages');
+  document.getElementById('goBoardTop').addEventListener('click', () => location.href = 'board.html#messages');
   document.getElementById('goDiary').addEventListener('click', () => location.href = 'board.html#diary');
   // 活动 / 邮件
   document.getElementById('goNews').addEventListener('click', () => location.href = 'news.html');
