@@ -1793,8 +1793,8 @@ function actHarvest(i) {
     var key = p.crop + '_crop';
     state.inv[key] = (state.inv[key] || 0) + yieldN;
     if (c.type === 'tree') {
-        p.grow = 3;
-        p.plantedAt = Date.now() - 3 * (c.cycle / 5); /* 摘果后回到状态3，继续长到5 */
+        p.grow = 2;
+        p.plantedAt = Date.now() - 2 * (c.cycle / 5); /* 摘果后回到状态2，继续长到5 */
         p.watered = false;
         p.fertilized = false;
     } else {
