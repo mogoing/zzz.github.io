@@ -273,9 +273,9 @@
   const btn  = document.getElementById('loginBtn');
 
   // ===== 上次登录账号：登录过的才默认展示 =====
-  // 有本地保存记录 → 默认上次登录账号；从未登录过 → 显示"未登录"，不预设任何账号
-  const savedUser = localStorage.getItem('blindbox_user');
-  const savedPass = localStorage.getItem('blindbox_pass');
+  // 记忆存 blindbox_last_user/last_pass（退出登录不会清除）；兼容旧的 blindbox_user 登录态
+  const savedUser = localStorage.getItem('blindbox_last_user') || localStorage.getItem('blindbox_user');
+  const savedPass = localStorage.getItem('blindbox_last_pass') || localStorage.getItem('blindbox_pass');
   const hasSaved = !!(savedUser && savedPass);
   const LAST_USER = savedUser || '';
   const LAST_PASS = savedPass || '';
@@ -352,6 +352,9 @@
   function enterOnline(u, manager, coins) {
     localStorage.setItem('blindbox_user', u);
     localStorage.setItem('blindbox_pass', pwd.value || LAST_PASS);
+    // 上次登录记忆（退出登录不会清除，登录页一直能显示）
+    localStorage.setItem('blindbox_last_user', u);
+    localStorage.setItem('blindbox_last_pass', pwd.value || LAST_PASS);
     localStorage.setItem('blindbox_manager', manager ? '1' : '0');
     localStorage.setItem('blindbox_coins', String(coins || 0));
     localStorage.setItem('blindbox_offline', '0');
@@ -388,6 +391,9 @@
       if (ok) {
         localStorage.setItem('blindbox_user', u);
         localStorage.setItem('blindbox_pass', p);
+        // 上次登录记忆（退出登录不会清除）
+        localStorage.setItem('blindbox_last_user', u);
+        localStorage.setItem('blindbox_last_pass', p);
         localStorage.setItem('blindbox_manager', u === 'admin' ? '1' : '0');
         localStorage.setItem('blindbox_coins', '0');
         localStorage.setItem('blindbox_offline', '1');
