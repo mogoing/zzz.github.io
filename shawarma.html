@@ -314,6 +314,7 @@ function newCust(){
   const price = 6 + (order.length-1)*2 + (S.ups.pita||0) + (S.ups.pack||0);
   return { img: CUST_IMG[Math.floor(Math.random()*CUST_IMG.length)],
     order, price, x: W+140, t: 0, born: S.time,
+    qIndex: activeCusts().length,            // 生成时定死队列位，不随前面离开补位
     state:'active', anger: 0, star:0, paid:false, gold:0, leaveT:0 };
 }
 function activeCusts(){ return S.custs.filter(c=>c.state!=='left'); }
@@ -408,15 +409,14 @@ function drawCusts(now){
   // 位置：active 顾客按序排队（错落站开，避免重叠）
   const act = activeCusts();
   act.forEach((c,i)=>{
-    const targetX = W*0.66 + i*190;                // 后面的顾客往左贴上前位高光框（素材透明边距补偿）
+    const targetX = W*0.66 + c.qIndex*175;         // 固定队列位：贴高光框排队，前面走了不补位
     c.x += (targetX - c.x)*0.08;
     if(Math.abs(targetX-c.x)<1) c.x=targetX;
   });
   S.custs.forEach(c=>{
     const img = IMG[c.img]; if(!img.complete) return;
     const ch = H*0.19, cw = ch*(img.width/img.height);
-    const idx = act.indexOf(c);
-    const cy = H*0.432 - 15 - (idx>0 ? Math.min(20, idx*7) : 0);  // 顾客整体上移 1/4 高，中间偏上站位
+    const cy = H*0.432 - 15 - (c.qIndex>0 ? Math.min(20, c.qIndex*7) : 0);  // 顾客整体上移 1/4 高，中间偏上站位
     if(c.y===undefined) c.y = -60;
     c.y += (cy - c.y)*0.18;                          // 新顾客从上方落下，不横穿队列
     // 离开淡出
