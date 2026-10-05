@@ -8,6 +8,7 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
 html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#ffe9d6}
 #cv{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+
 /* ===== 顶栏 ===== */
 #top{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:8px;padding:0 10px;z-index:20;
   background:linear-gradient(135deg,#ff9a76 0%,#ffb067 50%,#ffd36e 100%);
@@ -23,6 +24,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
 #coin{min-width:86px}
 #coin .ic{display:inline-block;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe98a,#f6b42e 60%,#d98a12);border:2px solid #a96a08;
   box-shadow:inset 0 -2px 3px rgba(160,90,0,.45)}
+
 /* ===== 底栏 ===== */
 #bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:8px 6px calc(8px + env(safe-area-inset-bottom));
   background:linear-gradient(0deg,#ffb067 0%,#ffd36e 100%);box-shadow:0 -3px 12px rgba(255,120,80,.3)}
@@ -30,22 +32,18 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
 .ig{width:52px;height:52px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;
   border:3px solid #ff8f3c;position:relative;cursor:pointer;transition:transform .12s;box-shadow:0 3px 0 rgba(190,90,20,.25)}
 .ig img{width:42px;height:42px;object-fit:contain;pointer-events:none}
-.ig .tag{position:absolute;top:-9px;right:-9px;background:#e8452c;color:#fff;font-size:12px;font-weight:800;min-width:20px;height:20px;
-  border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px;border:2px solid #fff}
-.ig.on{background:#fff7e0;border-color:#ff5f2e;transform:scale(1.08);box-shadow:0 0 0 3px rgba(255,95,46,.25)}
-.ig.gray{filter:grayscale(.9) brightness(.92);border-color:#cbb9a8}
-.ig.small{width:46px;height:46px}
-.ig.small img{width:36px;height:36px}
 .ig:active{transform:scale(.94)}
 #bar .btn{border:0;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;
   padding:0 10px;color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.15);transition:transform .12s}
 #bar .btn:active{transform:scale(.94)}
 #btnRoll{background:linear-gradient(135deg,#3ec9a0,#2fa97e)}
 #btnTrash{background:linear-gradient(135deg,#ff8a8a,#e8605a)}
-#btnStep{width:62px;background:linear-gradient(135deg,#4ac7ff,#2f9fe9);display:none}
+
+/* ===== 提示 ===== */
 #hint{position:fixed;left:50%;transform:translateX(-50%);bottom:118px;z-index:25;background:rgba(50,30,10,.78);color:#fff;
   font-size:14px;font-weight:600;padding:7px 18px;border-radius:18px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s}
 #hint.show{opacity:1}
+
 /* ===== 弹层 ===== */
 .mask{position:fixed;inset:0;background:rgba(60,30,5,.55);z-index:30;display:none;align-items:center;justify-content:center;padding:14px}
 .mask.show{display:flex}
@@ -57,6 +55,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
   background:linear-gradient(135deg,#ff9a3d,#ff5f2e);box-shadow:0 4px 0 rgba(180,60,0,.3)}
 .gbtn:active{transform:translateY(2px)}
 .gbtn.gray{background:linear-gradient(135deg,#ccc,#9a9a9a);box-shadow:0 4px 0 rgba(0,0,0,.15)}
+
 /* 升级商店 */
 #shop .row{display:flex;align-items:center;gap:10px;padding:9px 8px;border-radius:14px;background:#fff;margin-bottom:8px;box-shadow:0 2px 6px rgba(150,70,0,.08)}
 #shop .row img{width:44px;height:44px;object-fit:contain}
@@ -67,10 +66,12 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
 #shop .up{border:0;border-radius:12px;padding:7px 12px;font-weight:800;color:#fff;font-size:13px;cursor:pointer;background:linear-gradient(135deg,#4ac7ff,#2f9fe9)}
 #shop .up:disabled{background:#ddd;color:#999}
 #shop .up.max{background:linear-gradient(135deg,#ffd76e,#ffab2e);color:#8a4d00}
+
 /* 结算 */
 #sett .star{font-size:34px;letter-spacing:6px;text-align:center;color:#ffb400;text-shadow:0 2px 0 #a96a08}
 #sett .line{display:flex;justify-content:space-between;padding:7px 2px;font-size:15px;color:#7a3d10;border-bottom:1px dashed #e6c39a}
 #sett .line b{color:#e8452c}
+
 /* 开始页 */
 #start .logo{display:block;margin:0 auto 12px;width:150px;height:150px;object-fit:contain;animation:bob 2.2s infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
@@ -150,7 +151,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
 
 <script>
 'use strict';
-/* roundRect polyfill */
+/* ================= 基础 ================= */
 if(!CanvasRenderingContext2D.prototype.roundRect){
   CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
     r = Math.min(r, w/2, h/2);
@@ -159,7 +160,6 @@ if(!CanvasRenderingContext2D.prototype.roundRect){
     return this;
   };
 }
-/* ================= 素材与基础 ================= */
 const CV = document.getElementById('cv'), ctx = CV.getContext('2d');
 let W = 0, H = 0, DPR = Math.min(window.devicePixelRatio||1, 2);
 function resize(){
@@ -173,6 +173,7 @@ const API = 'https://api.mogoing.xyz';
 const U = localStorage.getItem('blindbox_user')||'', P = localStorage.getItem('blindbox_pass')||'';
 if(!U){ location.replace('index.html'); }
 
+/* ================= 素材（同步直连加载，每张独立就绪） ================= */
 const IMG = {};
 const IMG_KEYS = {
   pita:'shawarma/ing/pita.png', chicken:'shawarma/ing/chicken.png', beef:'shawarma/ing/beef.png',
@@ -182,13 +183,13 @@ const IMG_KEYS = {
   c1:'shawarma/ing/c1.png', c2:'shawarma/ing/c2.png', c3:'shawarma/ing/c3.png', c4:'shawarma/ing/c4.png',
   kitchen:'shawarma/bg/kitchen.jpg', street:'shawarma/bg/street.png', logo:'shawarma/bg/logo.jpg'
 };
-let imgLoaded = 0, imgTotal = Object.keys(IMG_KEYS).length;
 for(const k in IMG_KEYS){
   const im = new Image();
-  im.onload = ()=>{ imgLoaded++; };
   im.src = IMG_KEYS[k];
   IMG[k] = im;
 }
+/* 图片是否真的可用（complete 可能是 404 的假阳性，必须 naturalWidth>0） */
+function imgOK(k){ const i = IMG[k]; return !!(i && i.complete && i.naturalWidth>0); }
 
 /* ================= 核心状态 ================= */
 const S = {
@@ -197,7 +198,7 @@ const S = {
   time: 90,                 // 营业剩余秒
   money: 0,                 // 今日营收（已实时入账，此仅展示）
   serveN: 0, okN: 0,
-  ups: { roast:0, pita:0, knife:0, sauce:0, sign:0, pack:0 },  // 5 类升级 ×3 级
+  ups: { roast:0, pita:0, knife:0, sauce:0, sign:0, pack:0 },  // 6 类升级 ×3 级
   wrap: [],                 // 当前卷饼配料
   wrapState: 'make',        // make | roll | box | ready
   wrapT: 0,
@@ -215,7 +216,6 @@ const UP_DEF = {
   pack: {n:'📦 包装精美', d:'好评概率 +10%', cost:[12,36,72], icon:'wrap'},
 };
 const CUST_IMG = ['c1','c2','c3','c4'];
-// 配料：肉必含，其余从生菜/番茄/黄瓜/洋葱/蒜酱选
 const INGS = [
   {k:'pita',    name:'饼皮', must:false},
   {k:'chicken', name:'烤肉', must:true},
@@ -280,7 +280,6 @@ function loadState(){
     document.getElementById('stDay').textContent = S.day;
   });
 }
-/* 封顶：未满级判断 */
 function upCost(key){
   const lv = S.ups[key]||0;
   if(lv>=3) return -1;
@@ -314,7 +313,6 @@ function newCust(){
   const price = 6 + (order.length-1)*2 + (S.ups.pita||0) + (S.ups.pack||0);
   return { img: CUST_IMG[Math.floor(Math.random()*CUST_IMG.length)],
     order, price, x: W+140, t: 0, born: S.time,
-    qIndex: activeCusts().length,            // 生成时定死队列位，不随前面离开补位
     state:'active', anger: 0, star:0, paid:false, gold:0, leaveT:0 };
 }
 function activeCusts(){ return S.custs.filter(c=>c.state!=='left'); }
@@ -344,10 +342,6 @@ function rollWrap(){
   if(S.wrap.length<2){ flash('再放些配料！'); return; }
   S.wrapState='roll'; S.wrapT=0;
 }
-function boxWrap(){
-  if(S.wrapState!=='roll') return;
-  S.wrapState='box'; S.wrapT=0;
-}
 function deliver(){
   if(S.wrapState!=='box') return;
   const target = frontCust();
@@ -376,47 +370,46 @@ function discard(){ if(S.stage!=='day') return; S.wrap=[]; S.wrapState='make'; f
 
 /* ================= 绘制 ================= */
 function drawBg(){
-  // 背景：厨房
-  if(IMG.kitchen && IMG.kitchen.complete && imgLoaded===imgTotal){
+  if(imgOK('kitchen')){
     const k = IMG.kitchen;
     const sc = Math.max(W/k.width, H/k.height);
     ctx.drawImage(k, W/2-k.width*sc/2, H/2-k.height*sc/2, k.width*sc, k.height*sc);
     ctx.fillStyle='rgba(255,235,210,.25)';
     ctx.fillRect(0,0,W,H);
   } else {
+    // 背景未就绪：米色底 + 暖色圆点装饰（不阻塞画面）
     ctx.fillStyle='#ffe9d6'; ctx.fillRect(0,0,W,H);
-    ctx.fillStyle='rgba(255,140,60,.15)';
-    for(let i=0;i<40;i++){
-      ctx.beginPath(); ctx.arc(Math.random()*W, Math.random()*H, 20+Math.random()*60, 0, 7);
+    ctx.fillStyle='rgba(255,140,60,.12)';
+    for(let i=0;i<28;i++){
+      ctx.beginPath(); ctx.arc((i*137.3)%W, (i*97.7)%H, 26+(i*13)%52, 0, 7);
       ctx.fill();
     }
   }
 }
 function drawGrill(){
-  const g = IMG.grill; if(!g.complete) return;
+  if(!imgOK('grill')) return;
   const gh = H*0.26, gw = gh*1.2;
   const gx = W*0.07, gy = H - gh - 124;   // 坐在底栏上沿，不被遮
-  ctx.save();
-  ctx.drawImage(g, gx, gy, gw, gh);
-  ctx.restore();
+  ctx.drawImage(IMG.grill, gx, gy, gw, gh);
   S.grillBox = {x:gx, y:gy, w:gw, h:gh};
-  // 提示
   ctx.fillStyle='rgba(80,30,0,.6)'; ctx.font='800 15px sans-serif';
   ctx.textAlign='center';
   ctx.fillText('✂ 点这里切肉', gx+gw/2, gy-10);
 }
 function drawCusts(now){
-  // 位置：active 顾客按序排队（错落站开，避免重叠）
+  // 站位：active 顾客按序排队，前面走了后面顺承补位（平滑左移）
   const act = activeCusts();
   act.forEach((c,i)=>{
-    const targetX = W*0.66 + c.qIndex*168;         // 固定队列位：贴高光框排队，前面走了不补位
+    const targetX = W*0.66 + i*168;                // 补位：i 是当前队列序号
     c.x += (targetX - c.x)*0.08;
     if(Math.abs(targetX-c.x)<1) c.x=targetX;
   });
   S.custs.forEach(c=>{
-    const img = IMG[c.img]; if(!img.complete) return;
+    if(!imgOK(c.img)) return;
+    const img = IMG[c.img];
     const ch = H*0.19, cw = ch*(img.width/img.height);
-    const cy = H*0.432 - 15 - (c.qIndex>0 ? Math.min(20, c.qIndex*7) : 0);  // 顾客整体上移 1/4 高，中间偏上站位
+    const idx = act.indexOf(c);
+    const cy = H*0.432 - 15 - (idx>0 ? Math.min(20, idx*7) : 0);  // 中间偏上，错落站位
     if(c.y===undefined) c.y = -60;
     c.y += (cy - c.y)*0.18;                          // 新顾客从上方落下，不横穿队列
     // 离开淡出
@@ -424,14 +417,14 @@ function drawCusts(now){
     if(c.state==='left' && c.leaveT>0) alpha = Math.max(0, 1-c.leaveT/1.2);
     ctx.globalAlpha = alpha;
     ctx.drawImage(img, c.x-cw/2, c.y, cw, ch);
-    // 生气时间条
+    // 耐心条
     const remain = Math.max(0, custTimeMax()-c.anger);
     if(c.state!=='left'){
       ctx.fillStyle='rgba(0,0,0,.35)'; ctx.fillRect(c.x-cw/2, cy-16, cw, 6);
       ctx.fillStyle= remain<custTimeMax()*0.25 ? '#e8452c' : '#ffd76e';
       ctx.fillRect(c.x-cw/2, cy-16, cw*(remain/custTimeMax()), 6);
     }
-    // 订单气泡
+    // 订单气泡（贴头顶）
     if(c.state==='active'){
       const bubW = c.order.length*34+20, bubH=46;
       const bx = c.x - bubW/2, by = c.y - 6;
@@ -491,7 +484,6 @@ function drawAssemble(now){
       const s = 58;
       ctx.drawImage(im, ax+aw/2 - (S.wrap.length-1)*step/2 + i*step - s/2, ay+ah/2-s/2, s, s);
     });
-
   } else {
     // 卷起动画：配料聚拢 + 饼皮收缩成卷
     const p = Math.min(1, S.wrapT/0.6);
@@ -500,7 +492,8 @@ function drawAssemble(now){
       S.wrap.forEach((k,i)=>{
         const im=IMG[k]; if(!im.complete) return;
         const s = 58*(1-p*0.6);
-        const x = cx + (ax+aw/2-(S.wrap.length-1)*Math.max(26, aw/S.wrap.length)/2 + i*Math.max(26, aw/S.wrap.length) - cx)*(1-p);
+        const step = Math.max(26, aw/S.wrap.length);
+        const x = cx + (ax+aw/2-(S.wrap.length-1)*step/2 + i*step - cx)*(1-p);
         ctx.drawImage(im, x-s/2, cy2-s/2, s, s);
       });
       const pita = IMG.pita;
@@ -521,16 +514,6 @@ function drawAssemble(now){
         ctx.drawImage(wimg, -52, -52, 104, 104);
         ctx.restore();
       }
-
-    }
-  }
-}
-function drawHUDCanvas(now){
-  if(S.stage==='day'){
-    ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font='800 14px sans-serif'; ctx.textAlign='left';
-    ctx.fillText('👥 '+S.custs.length, 12, H-72);
-    if(S.wrap.length){
-      ctx.fillText('卷饼配料：'+S.wrap.join('/'), 12, H-50);
     }
   }
 }
@@ -540,7 +523,6 @@ function render(now){
   drawGrill();
   drawCusts(now);
   drawAssemble(now);
-  drawHUDCanvas(now);
   requestAnimationFrame(render);
 }
 
@@ -614,13 +596,13 @@ CV.addEventListener('click', e=>{
   if(S.grillBox && x>S.grillBox.x && x<S.grillBox.x+S.grillBox.w && y>S.grillBox.y && y<S.grillBox.y+S.grillBox.h){
     addIng('chicken'); return;
   }
-  // 点顾客交付：命中顾客全身+高光外扩框
+  // 点顾客交付：命中顾客全身 + 高光外扩框
   const c = frontCust();
   if(c && !c.paid){
     const ch = H*0.19;
     const cimg = IMG[c.img];
-    const cw = cimg&&cimg.complete ? ch*(cimg.width/cimg.height) : ch;
-    const pad = 26;                                  // 高光外扩余量，点到框边也算
+    const cw = cimg && cimg.complete ? ch*(cimg.width/cimg.height) : ch;
+    const pad = 26;
     const hx = c.x - cw/2 - pad, hy = c.y - pad, hw = cw + pad*2, hh = ch + pad*2;
     if(x>hx && x<hx+hw && y>hy && y<hy+hh){ deliver(); }
   }
@@ -633,7 +615,6 @@ MENU.forEach(i=>{
   b.className = 'ig';
   b.innerHTML = '<img src="'+IMG_KEYS[i.k]+'">';
   b.onclick = ()=>addIng(i.k);
-  if(i.must) b.classList.add('must');
   ingRow.appendChild(b);
 });
 document.getElementById('btnRoll').onclick = rollWrap;
@@ -666,6 +647,7 @@ function playBgm(){
   bgm.play().catch(()=>{});
 }
 
+/* ===== 升级商店 ===== */
 function openShop(){
   renderShop();
   document.getElementById('shop').classList.add('show');
@@ -688,15 +670,14 @@ function renderShop(){
 let last = performance.now();
 function loop(now){
   const dt = Math.min(100, now-last); last = now;
-  update(dt);          // 毫秒
+  update(dt);
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
 requestAnimationFrame(render);
 
 /* ================= 启动 ================= */
-const logo = document.getElementById('logoImg');
-logo.src = IMG_KEYS.logo;
+document.getElementById('logoImg').src = IMG_KEYS.logo;
 syncCoinFromServer();
 loadState().then(()=>{
   setCoin(localCoins);
