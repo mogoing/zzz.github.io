@@ -90,6 +90,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
   <div class="hud" id="hudDay">第 1 天</div>
   <div class="hud" id="hudTime">90s</div>
   <div class="hud" id="coin"><span class="ic"></span>&nbsp;<b id="coinN">0</b></div>
+  <button class="btn" id="btnPause" style="font-size:18px">⏸</button>
   <button class="btn" id="btnMute" style="font-size:18px">🔊</button>
 </div>
 <audio id="bgm" src="shawarma/bgm.wav" loop preload="auto"></audio>
@@ -122,6 +123,16 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
     <div class="sub">收入实时入账账户金币 · 升级扣金币</div>
     <div id="shopList"></div>
     <button class="gbtn" id="shopClose">收工</button>
+  </div>
+</div>
+
+<!-- 暂停 -->
+<div class="mask" id="pause">
+  <div class="card">
+    <h2>⏸ 已暂停</h2>
+    <div class="sub">休息一下，慢慢做</div>
+    <button class="gbtn" id="btnResume">▶ 继续</button>
+    <button class="gbtn gray" id="btnPauseQuit" style="margin-top:8px">← 返回主页</button>
   </div>
 </div>
 
@@ -186,7 +197,7 @@ for(const k in IMG_KEYS){
 /* ================= 核心状态 ================= */
 const S = {
   day: 1, total: 0, sat: 100,
-  stage: 'start',           // start | day | night
+  stage: 'start', paused: false,           // start | day | night
   time: 90,                 // 营业剩余秒
   money: 0,                 // 今日营收（已实时入账，此仅展示）
   serveN: 0, okN: 0,
@@ -218,6 +229,7 @@ const INGS = [
   {k:'onion',   name:'洋葱', must:false},
   {k:'garlic',  name:'蒜酱', must:false},
 ];
+const MENU = INGS.filter(i=>i.k!=='chicken');   // 烤肉来自切肉，底部不放按钮
 
 /* ================= 后端 ================= */
 function api(path, body){
@@ -396,17 +408,18 @@ function drawGrill(){
   ctx.fillText('✂ 点这里切肉', gx+gw/2, gy-10);
 }
 function drawCusts(now){
-  // 位置：active 顾客按序排队
+  // 位置：active 顾客按序排队（错落站开，避免重叠）
   const act = activeCusts();
   act.forEach((c,i)=>{
-    const targetX = i===0 ? W*0.60 : W - 70 - (i-1)*80;
+    const targetX = i===0 ? W*0.58 : W - 60 - (i-1)*96;
     c.x += (targetX - c.x)*0.08;
     if(Math.abs(targetX-c.x)<1) c.x=targetX;
   });
   S.custs.forEach(c=>{
     const img = IMG[c.img]; if(!img.complete) return;
-    const ch = H*0.22, cw = ch*(img.width/img.height);
-    const cy = H - ch*1.05;
+    const ch = H*0.19, cw = ch*(img.width/img.height);
+    const idx = act.indexOf(c);
+    const cy = H - ch*1.18 - (idx>0 ? Math.min(24, idx*8) : 0);  // 队列依次略低，错落不重叠
     // 离开淡出
     let alpha = 1;
     if(c.state==='left' && c.leaveT>0) alpha = Math.max(0, 1-c.leaveT/1.2);
@@ -422,7 +435,7 @@ function drawCusts(now){
     // 订单气泡
     if(c.state==='active'){
       const bubW = c.order.length*34+20, bubH=46;
-      const bx = c.x - bubW/2, by = cy - ch - 8;
+      const bx = c.x - bubW/2, by = cy - ch - 6;
       ctx.fillStyle='#fff'; ctx.strokeStyle='#ff8f3c'; ctx.lineWidth=3;
       ctx.beginPath();
       ctx.moveTo(bx,by+bubH); ctx.lineTo(bx,by+bubH-14); ctx.lineTo(bx+10,by+bubH);
@@ -432,6 +445,11 @@ function drawCusts(now){
         const im=IMG[k]; if(!im.complete) return;
         ctx.drawImage(im, bx+12+i*34-6, by+8, 30,30);
       });
+    }
+    // box 状态下 front 顾客：头顶交付引导
+    if(S.wrapState==='box' && c.state==='active' && frontCust()===c && Math.sin(now/200)>-0.2){
+      ctx.fillStyle='#e8452c'; ctx.font='900 22px sans-serif'; ctx.textAlign='center';
+      ctx.fillText('👆', c.x, cy-ch-52);
     }
     // 已交付：金币与星星
     if(c.paid){
@@ -452,30 +470,58 @@ function drawCusts(now){
     ctx.globalAlpha = 1;
   });
 }
-function drawAssemble(){
-  const ax = W*0.30, ay = H*0.42, aw = W*0.30, ah = H*0.26;
+function drawAssemble(now){
+  const ax = W*0.30, ay = H*0.40, aw = W*0.30, ah = H*0.28;
   // 台面
   ctx.fillStyle='rgba(255,255,255,.65)';
   ctx.beginPath(); ctx.roundRect(ax-16, ay-12, aw+32, ah+30, 18); ctx.fill();
   ctx.strokeStyle='rgba(200,110,30,.5)'; ctx.lineWidth=3; ctx.stroke();
   ctx.fillStyle='#b3541e'; ctx.font='800 14px sans-serif'; ctx.textAlign='center';
   ctx.fillText('🧺 制作台', ax+aw/2, ay-20);
-  // 卷饼内容
-  const step = Math.max(26, aw/(S.wrap.length||1));
-  S.wrap.forEach((k,i)=>{
-    const im=IMG[k]; if(!im.complete) return;
-    const s = 58;
-    ctx.drawImage(im, ax+aw/2 - (S.wrap.length-1)*step/2 + i*step - s/2, ay+ah/2-s/2, s, s);
-  });
-  if(S.wrapState!=='make'){
-    // 卷起/包装动画
-    const im = S.wrapState==='box' ? IMG.wrap : IMG.pita;
-    if(im.complete){
-      const p = Math.min(1, S.wrapT/0.35);
-      const s = 40 + (1-p)*18;
-      ctx.globalAlpha = Math.max(.3, 1-p);
-      ctx.drawImage(im, ax+aw/2-s/2, ay+ah/2-s/2, s, s);
-      ctx.globalAlpha = 1;
+  if(S.wrapState==='make'){
+    // 配料平铺
+    const step = Math.max(26, aw/(S.wrap.length||1));
+    S.wrap.forEach((k,i)=>{
+      const im=IMG[k]; if(!im.complete) return;
+      const s = 58;
+      ctx.drawImage(im, ax+aw/2 - (S.wrap.length-1)*step/2 + i*step - s/2, ay+ah/2-s/2, s, s);
+    });
+    if(S.wrap.length===0){
+      ctx.fillStyle='#c99a72'; ctx.font='600 14px sans-serif'; ctx.textAlign='center';
+      ctx.fillText('先摊饼皮 → 切烤肉 → 加配料', ax+aw/2, ay+ah/2+5);
+    }
+  } else {
+    // 卷起动画：配料聚拢 + 饼皮收缩成卷
+    const p = Math.min(1, S.wrapT/0.6);
+    const cx = ax+aw/2, cy2 = ay+ah/2;
+    if(S.wrapState==='roll'){
+      S.wrap.forEach((k,i)=>{
+        const im=IMG[k]; if(!im.complete) return;
+        const s = 58*(1-p*0.6);
+        const x = cx + (ax+aw/2-(S.wrap.length-1)*Math.max(26, aw/S.wrap.length)/2 + i*Math.max(26, aw/S.wrap.length) - cx)*(1-p);
+        ctx.drawImage(im, x-s/2, cy2-s/2, s, s);
+      });
+      const pita = IMG.pita;
+      if(pita.complete){
+        const w2 = 120*(1-p*0.45), h2 = 120*(1-p*0.45);
+        ctx.save(); ctx.translate(cx,cy2); ctx.rotate(p*0.5);
+        ctx.drawImage(pita, -w2/2, -h2/2, w2, h2);
+        ctx.restore();
+      }
+      ctx.fillStyle='#7a3d10'; ctx.font='800 16px sans-serif'; ctx.textAlign='center';
+      ctx.fillText('🌯 卷起中…', cx, cy2+70);
+    } else {
+      // box：完整卷饼在台上
+      const wimg = IMG.wrap;
+      if(wimg.complete){
+        const bob = Math.sin(now/260)*5;
+        ctx.save(); ctx.translate(cx, cy2+bob);
+        ctx.drawImage(wimg, -52, -52, 104, 104);
+        ctx.restore();
+      }
+      ctx.fillStyle='#e8452c'; ctx.font='900 17px sans-serif'; ctx.textAlign='center';
+      const blink = Math.sin(now/200)>-0.2;
+      if(blink) ctx.fillText('👇 点顾客 交付卷饼！', cx, cy2+78);
     }
   }
 }
@@ -493,7 +539,7 @@ function render(now){
   drawBg();
   drawGrill();
   drawCusts(now);
-  drawAssemble();
+  drawAssemble(now);
   drawHUDCanvas(now);
   requestAnimationFrame(render);
 }
@@ -501,6 +547,7 @@ function render(now){
 /* ================= 更新 ================= */
 function update(dt){
   const s = dt/1000;   // dt 为毫秒
+  if(S.paused) return;
   if(S.stage==='day'){
     S.time -= s;
     document.getElementById('hudTime').textContent = Math.ceil(S.time)+'s';
@@ -577,7 +624,7 @@ CV.addEventListener('click', e=>{
 
 /* ================= DOM 绑定 ================= */
 const ingRow = document.getElementById('ingRow');
-INGS.forEach(i=>{
+MENU.forEach(i=>{
   const b = document.createElement('div');
   b.className = 'ig';
   b.innerHTML = '<img src="'+IMG_KEYS[i.k]+'">';
@@ -595,6 +642,11 @@ document.getElementById('settNext').onclick = ()=>{ beginDay(true); };
 document.getElementById('settShop').onclick = ()=>{ document.getElementById('sett').classList.remove('show'); openShop(); };
 document.getElementById('shopClose').onclick = ()=>{ document.getElementById('shop').classList.remove('show'); };
 document.getElementById('btnShop').onclick = openShop;
+
+/* ===== 暂停 ===== */
+document.getElementById('btnPause').onclick = ()=>{ S.paused = true; document.getElementById('pause').classList.add('show'); };
+document.getElementById('btnResume').onclick = ()=>{ S.paused = false; document.getElementById('pause').classList.remove('show'); };
+document.getElementById('btnPauseQuit').onclick = ()=>{ location.href='main.html'; };
 
 /* ===== BGM ===== */
 const bgm = document.getElementById('bgm');
