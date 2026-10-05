@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>愤怒的小鸟 · 原版</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;background:#0e2a3a;font-family:'PingFang SC','Microsoft YaHei',sans-serif}
+#top{position:fixed;top:0;left:0;right:0;height:50px;z-index:100;display:flex;align-items:center;gap:10px;padding:0 10px;
+  background:linear-gradient(135deg,rgba(16,60,90,.92),rgba(30,120,80,.92));backdrop-filter:blur(4px)}
+#top .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:rgba(255,255,255,.95);color:#145c8a;
+  font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+#top .btn:active{transform:translateY(1px)}
+#top .t{color:#fff;font-size:16px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+#top .sp{flex:1}
+#frame{position:fixed;inset:0;width:100%;height:100%;border:0;background:#0e2a3a}
+#loading{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:radial-gradient(circle at 50% 40%,#3a8fbf 0%,#0e2a3a 70%);transition:opacity .4s}
+#loading .b{font-size:60px;animation:flap 1.1s infinite}
+@keyframes flap{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-16px) rotate(8deg)}}
+#loading .t{color:#fff;font-size:18px;font-weight:800;letter-spacing:2px}
+#loading .bar{width:220px;height:10px;background:rgba(255,255,255,.2);border-radius:6px;overflow:hidden}
+#loading .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd93d,#ff8f3c);border-radius:6px;transition:width .3s}
+#loading .p{color:#cfe8ff;font-size:12px}
+</style>
+</head>
+<body>
+<div id="top">
+  <button class="btn" id="btnBack">← 主页</button>
+  <div class="t">🐦 愤怒的小鸟</div>
+  <div class="sp"></div>
+</div>
+
+<iframe id="frame" src="angry/index.html" allow="fullscreen" scrolling="no" frameborder="0"></iframe>
+
+<div id="loading">
+  <div class="b">🐦</div>
+  <div class="t">愤怒的小鸟 · 加载中</div>
+  <div class="bar"><i id="barFill"></i></div>
+  <div class="p" id="pct">0%</div>
+</div>
+
+<script>
+'use strict';
+document.getElementById('btnBack').onclick = ()=>{ location.href='main.html'; };
+/* 监听 iframe 内 Unity 加载进度（同源可访问） */
+const barFill = document.getElementById('barFill'), pct = document.getElementById('pct');
+const loading = document.getElementById('loading');
+function check(){
+  try{
+    const doc = document.getElementById('frame').contentDocument;
+    if(!doc) return;
+    const bar = doc.getElementById('unity-progress-bar-full');
+    const lb = doc.getElementById('unity-loading-bar');
+    if(bar && lb && lb.style.display !== 'none'){
+      const w = parseFloat(bar.style.width) || 0;
+      barFill.style.width = w + '%';
+      pct.textContent = Math.round(w) + '%';
+    } else {
+      /* 加载条隐藏 = 引擎就绪 */
+      loading.style.opacity = '0';
+      setTimeout(()=>{ loading.style.display='none'; }, 500);
+      return;
+    }
+  }catch(e){}
+  setTimeout(check, 300);
+}
+setTimeout(check, 500);
+/* 兜底：60 秒后不管怎样都隐藏加载层（Unity 错误提示会显示在画布上） */
+setTimeout(()=>{ loading.style.opacity='0'; setTimeout(()=>{ loading.style.display='none'; }, 500); }, 60000);
+</script>
+</body>
+</html>
