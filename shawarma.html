@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>沙威玛传奇 · 摆摊经营</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#ffe9d6}
+#cv{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+/* ===== 顶栏 ===== */
+#top{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:8px;padding:0 10px;z-index:20;
+  background:linear-gradient(135deg,#ff9a76 0%,#ffb067 50%,#ffd36e 100%);
+  box-shadow:0 3px 12px rgba(255,120,80,.35)}
+#top .btn{min-width:46px;height:36px;border:0;border-radius:18px;background:rgba(255,255,255,.92);color:#c25e1a;
+  font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;
+  box-shadow:0 2px 0 rgba(0,0,0,.08)}
+#top .btn:active{transform:translateY(1px)}
+#top .sp{flex:1}
+#top .hud{background:rgba(255,255,255,.92);border-radius:16px;padding:5px 14px;font-weight:800;color:#b3541e;font-size:15px;
+  display:flex;align-items:center;gap:6px;box-shadow:0 2px 0 rgba(0,0,0,.06)}
+#top .hud b{color:#e8452c;font-size:16px}
+#coin{min-width:86px}
+#coin .ic{display:inline-block;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe98a,#f6b42e 60%,#d98a12);border:2px solid #a96a08;
+  box-shadow:inset 0 -2px 3px rgba(160,90,0,.45)}
+/* ===== 底栏 ===== */
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+  background:linear-gradient(0deg,#ffb067 0%,#ffd36e 100%);box-shadow:0 -3px 12px rgba(255,120,80,.3)}
+#bar .row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.ig{width:52px;height:52px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;
+  border:3px solid #ff8f3c;position:relative;cursor:pointer;transition:transform .12s;box-shadow:0 3px 0 rgba(190,90,20,.25)}
+.ig img{width:42px;height:42px;object-fit:contain;pointer-events:none}
+.ig .tag{position:absolute;top:-9px;right:-9px;background:#e8452c;color:#fff;font-size:12px;font-weight:800;min-width:20px;height:20px;
+  border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px;border:2px solid #fff}
+.ig.on{background:#fff7e0;border-color:#ff5f2e;transform:scale(1.08);box-shadow:0 0 0 3px rgba(255,95,46,.25)}
+.ig.gray{filter:grayscale(.9) brightness(.92);border-color:#cbb9a8}
+.ig.small{width:46px;height:46px}
+.ig.small img{width:36px;height:36px}
+.ig:active{transform:scale(.94)}
+#bar .btn{border:0;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  padding:0 10px;color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.15);transition:transform .12s}
+#bar .btn:active{transform:scale(.94)}
+#btnRoll{background:linear-gradient(135deg,#3ec9a0,#2fa97e)}
+#btnWrap{background:linear-gradient(135deg,#7b5bff,#5a3fd6)}
+#btnTrash{background:linear-gradient(135deg,#ff8a8a,#e8605a)}
+#btnShop{background:linear-gradient(135deg,#ffd76e,#ffab2e);color:#8a4d00}
+#btnStep{width:62px;background:linear-gradient(135deg,#4ac7ff,#2f9fe9);display:none}
+#hint{position:fixed;left:50%;transform:translateX(-50%);bottom:118px;z-index:25;background:rgba(50,30,10,.78);color:#fff;
+  font-size:14px;font-weight:600;padding:7px 18px;border-radius:18px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s}
+#hint.show{opacity:1}
+/* ===== 弹层 ===== */
+.mask{position:fixed;inset:0;background:rgba(60,30,5,.55);z-index:30;display:none;align-items:center;justify-content:center;padding:14px}
+.mask.show{display:flex}
+.card{background:linear-gradient(160deg,#fff8ec,#ffe8c9);border-radius:22px;padding:22px;max-width:560px;width:100%;
+  box-shadow:0 12px 40px rgba(120,50,0,.35);border:4px solid #ffbe6e;max-height:86vh;overflow:auto}
+.card h2{color:#b3541e;text-align:center;font-size:24px;margin-bottom:8px}
+.card .sub{color:#a07050;text-align:center;font-size:14px;margin-bottom:14px}
+.gbtn{display:block;margin:10px auto 0;border:0;border-radius:20px;padding:12px 40px;font-size:18px;font-weight:800;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,#ff9a3d,#ff5f2e);box-shadow:0 4px 0 rgba(180,60,0,.3)}
+.gbtn:active{transform:translateY(2px)}
+.gbtn.gray{background:linear-gradient(135deg,#ccc,#9a9a9a);box-shadow:0 4px 0 rgba(0,0,0,.15)}
+/* 升级商店 */
+#shop .row{display:flex;align-items:center;gap:10px;padding:9px 8px;border-radius:14px;background:#fff;margin-bottom:8px;box-shadow:0 2px 6px rgba(150,70,0,.08)}
+#shop .row img{width:44px;height:44px;object-fit:contain}
+#shop .nm{flex:1}
+#shop .nm .t{font-weight:800;color:#7a3d10;font-size:15px}
+#shop .nm .d{color:#b0855f;font-size:12px}
+#shop .lv{color:#e8452c;font-weight:800;font-size:13px;text-align:center;min-width:58px}
+#shop .up{border:0;border-radius:12px;padding:7px 12px;font-weight:800;color:#fff;font-size:13px;cursor:pointer;background:linear-gradient(135deg,#4ac7ff,#2f9fe9)}
+#shop .up:disabled{background:#ddd;color:#999}
+#shop .up.max{background:linear-gradient(135deg,#ffd76e,#ffab2e);color:#8a4d00}
+/* 结算 */
+#sett .star{font-size:34px;letter-spacing:6px;text-align:center;color:#ffb400;text-shadow:0 2px 0 #a96a08}
+#sett .line{display:flex;justify-content:space-between;padding:7px 2px;font-size:15px;color:#7a3d10;border-bottom:1px dashed #e6c39a}
+#sett .line b{color:#e8452c}
+/* 开始页 */
+#start .logo{display:block;margin:0 auto 12px;width:150px;height:150px;object-fit:contain;animation:bob 2.2s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+#start .tagline{color:#a07050;text-align:center;font-size:14px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+
+<div id="hint"></div>
+
+<div id="top">
+  <button class="btn" id="btnBack">← 主页</button>
+  <div class="sp"></div>
+  <div class="hud" id="hudDay">第 1 天</div>
+  <div class="hud" id="hudTime">90s</div>
+  <div class="hud" id="coin"><span class="ic"></span>&nbsp;<b id="coinN">0</b></div>
+  <button class="btn" id="btnMute" style="font-size:18px">🔊</button>
+</div>
+<audio id="bgm" src="shawarma/bgm.wav" loop preload="auto"></audio>
+
+<div id="bar">
+  <div class="row" id="ingRow"></div>
+  <div class="row" style="margin-top:6px">
+    <button class="btn" id="btnShop">🏪 升级</button>
+    <button class="btn" id="btnTrash">🗑 丢弃</button>
+    <button class="btn" id="btnRoll" style="min-width:86px">🌯 卷起</button>
+    <button class="btn" id="btnWrap" style="min-width:86px">📦 包装</button>
+  </div>
+</div>
+
+<!-- 开始页 -->
+<div class="mask show" id="start">
+  <div class="card">
+    <img class="logo" id="logoImg" alt="">
+    <h2>沙威玛传奇</h2>
+    <div class="tagline">切肉 · 配料 · 卷饼 · 收款 —— 今天是营业的第 <b id="stDay">1</b> 天</div>
+    <button class="gbtn" id="btnStart">🔥 开始一天</button>
+    <button class="gbtn gray" id="btnQuit" style="margin-top:8px">← 返回主页</button>
+  </div>
+</div>
+
+<!-- 升级商店 -->
+<div class="mask" id="shop">
+  <div class="card" id="shopCard">
+    <h2>🏪 升级商店</h2>
+    <div class="sub">收入实时入账账户金币 · 升级扣金币</div>
+    <div id="shopList"></div>
+    <button class="gbtn" id="shopClose">收工</button>
+  </div>
+</div>
+
+<!-- 结算 -->
+<div class="mask" id="sett">
+  <div class="card">
+    <h2>🌙 打烊结算</h2>
+    <div class="star" id="settStar">★★★</div>
+    <div style="margin:12px 0"></div>
+    <div class="line"><span>今日接待</span><b id="settN">0</b></div>
+    <div class="line"><span>满意交付</span><b id="settOk">0</b></div>
+    <div class="line"><span>今日营收</span><b id="settMoney">0</b></div>
+    <div class="line"><span>顾客满意度</span><b id="settSat">100%</b></div>
+    <div class="line"><span>累计营收</span><b id="settTotal">0</b></div>
+    <button class="gbtn" id="settNext">🌞 开始下一天</button>
+    <button class="gbtn gray" id="settShop">🏪 先升级</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+/* roundRect polyfill */
+if(!CanvasRenderingContext2D.prototype.roundRect){
+  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
+    r = Math.min(r, w/2, h/2);
+    this.moveTo(x+r,y); this.arcTo(x+w,y,x+w,y+h,r); this.arcTo(x+w,y+h,x,y+h,r);
+    this.arcTo(x,y+h,x,y,r); this.arcTo(x,y,x+w,y,r); this.closePath();
+    return this;
+  };
+}
+/* ================= 素材与基础 ================= */
+const CV = document.getElementById('cv'), ctx = CV.getContext('2d');
+let W = 0, H = 0, DPR = Math.min(window.devicePixelRatio||1, 2);
+function resize(){
+  W = window.innerWidth; H = window.innerHeight;
+  CV.width = W*DPR; CV.height = H*DPR; CV.style.width = W+'px'; CV.style.height = H+'px';
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+window.addEventListener('resize', resize); resize();
+
+const API = 'https://api.mogoing.xyz';
+const U = localStorage.getItem('blindbox_user')||'', P = localStorage.getItem('blindbox_pass')||'';
+if(!U){ location.replace('index.html'); }
+
+const IMG = {};
+const IMG_KEYS = {
+  pita:'shawarma/ing/pita.png', chicken:'shawarma/ing/chicken.png', beef:'shawarma/ing/beef.png',
+  lettuce:'shawarma/ing/lettuce.png', tomato:'shawarma/ing/tomato.png', cucumber:'shawarma/ing/cucumber.png',
+  onion:'shawarma/ing/onion.png', garlic:'shawarma/ing/garlic.png', wrap:'shawarma/ing/wrap.png',
+  grill:'shawarma/ing/grill.png',
+  c1:'shawarma/ing/c1.png', c2:'shawarma/ing/c2.png', c3:'shawarma/ing/c3.png', c4:'shawarma/ing/c4.png',
+  kitchen:'shawarma/bg/kitchen.png', street:'shawarma/bg/street.png', logo:'shawarma/bg/logo.png'
+};
+let imgLoaded = 0, imgTotal = Object.keys(IMG_KEYS).length;
+for(const k in IMG_KEYS){
+  const im = new Image();
+  im.onload = ()=>{ imgLoaded++; };
+  im.src = IMG_KEYS[k];
+  IMG[k] = im;
+}
+
+/* ================= 核心状态 ================= */
+const S = {
+  day: 1, total: 0, sat: 100,
+  stage: 'start',           // start | day | night
+  time: 90,                 // 营业剩余秒
+  money: 0,                 // 今日营收（已实时入账，此仅展示）
+  serveN: 0, okN: 0,
+  ups: { roast:0, pita:0, knife:0, sauce:0, sign:0, pack:0 },  // 5 类升级 ×3 级
+  wrap: [],                 // 当前卷饼配料
+  wrapState: 'make',        // make | roll | box | ready
+  wrapT: 0,
+  custs: [],                // 顾客队列
+  nextCustT: 6,
+  coins: 0,
+  best: 0,
+};
+const UP_DEF = {
+  roast:{n:'🔥 烤肉技术', d:'切肉更快', cost:[10,30,60], icon:'chicken'},
+  pita: {n:'🫓 饼皮质量', d:'每个卷饼售价 +1', cost:[10,30,60], icon:'pita'},
+  knife:{n:'🔪 刀工大师', d:'一刀出两片肉', cost:[15,40,80], icon:'cucumber'},
+  sauce:{n:'🧄 秘制蒜酱', d:'小费概率 +8%', cost:[12,35,70], icon:'garlic'},
+  sign: {n:'🏮 招牌响亮', d:'顾客来得更快', cost:[15,45,90], icon:'tomato'},
+  pack: {n:'📦 包装精美', d:'好评概率 +10%', cost:[12,36,72], icon:'wrap'},
+};
+const CUST_IMG = ['c1','c2','c3','c4'];
+// 配料：肉必含，其余从生菜/番茄/黄瓜/洋葱/蒜酱选
+const INGS = [
+  {k:'pita',    name:'饼皮', must:false},
+  {k:'chicken', name:'烤肉', must:true},
+  {k:'lettuce', name:'生菜', must:false},
+  {k:'tomato',  name:'番茄', must:false},
+  {k:'cucumber',name:'黄瓜', must:false},
+  {k:'onion',   name:'洋葱', must:false},
+  {k:'garlic',  name:'蒜酱', must:false},
+];
+
+/* ================= 后端 ================= */
+function api(path, body){
+  const ctl = new AbortController();
+  const timer = setTimeout(()=>ctl.abort(), 3000);
+  return fetch(API+path, {method:body?'POST':'GET', headers:{'Content-Type':'application/json'},
+    body: body?JSON.stringify(body):undefined, signal:ctl.signal})
+    .then(r=>r.json()).catch(()=>({ok:false,error:'网络错误'})).finally(()=>clearTimeout(timer));
+}
+let localCoins = parseInt(localStorage.getItem('blindbox_coins')||'0',10)||0;
+function setCoin(n){
+  S.coins = Math.max(0, Math.round(n)); localCoins = S.coins;
+  localStorage.setItem('blindbox_coins', String(S.coins));
+  document.getElementById('coinN').textContent = S.coins;
+}
+function syncCoinFromServer(){
+  api('/api/user?username='+encodeURIComponent(U)+'&password='+encodeURIComponent(P)).then(d=>{
+    if(d && d.ok && typeof d.coins==='number'){ setCoin(d.coins); }
+  });
+}
+function gainCoins(n){   // 收入入账
+  if(n<1) return;
+  setCoin(S.coins + n);
+  api('/api/gain', {username:U, password:P, amount:n}).then(d=>{ if(d && d.ok){ setCoin(d.balance); } });
+}
+function spendCoins(n){  // 消费扣币，返回成功与否
+  return api('/api/spend', {username:U, password:P, amount:n}).then(d=>{
+    if(d && d.ok){ setCoin(d.balance); return true; }
+    if(S.coins>=n){ setCoin(S.coins-n); return true; }   // 后端不可用→本地扣款
+    return false;
+  });
+}
+let saveTimer = null;
+function saveState(now){
+  const data = { day:S.day, total:S.total, sat:S.sat, ups:S.ups, best:S.best, money:S.money, serveN:S.serveN, okN:S.okN };
+  if(now){ clearTimeout(saveTimer); saveTimer=null; }
+  if(saveTimer) return;
+  saveTimer = setTimeout(()=>{
+    saveTimer = null;
+    api('/api/save', {username:U, password:P, game:'shawarma', data}).then(()=>{});
+  }, now?0:2500);
+}
+function loadState(){
+  return api('/api/save?username='+encodeURIComponent(U)+'&password='+encodeURIComponent(P)+'&game=shawarma').then(d=>{
+    if(d && d.ok && d.save){
+      const s = d.save;
+      S.day = s.day||1; S.total = s.total||0; S.sat = s.sat==null?100:s.sat;
+      S.ups = s.ups||S.ups; S.best = s.best||0;
+      S.money = s.money||0; S.serveN = s.serveN||0; S.okN = s.okN||0;
+    }
+    document.getElementById('hudDay').textContent = '第 '+S.day+' 天';
+    document.getElementById('stDay').textContent = S.day;
+  });
+}
+/* 封顶：未满级判断 */
+function upCost(key){
+  const lv = S.ups[key]||0;
+  if(lv>=3) return -1;
+  return UP_DEF[key].cost[lv];
+}
+function buyUp(key){
+  const c = upCost(key);
+  if(c<0) return;
+  spendCoins(c).then(ok=>{
+    if(ok){ S.ups[key]=(S.ups[key]||0)+1; saveState(true); renderShop(); }
+    else flash('金币不足！');
+  });
+}
+
+/* ================= 提示 ================= */
+let hintT=0;
+function flash(t){ const el=document.getElementById('hint'); el.textContent=t; el.classList.add('show'); clearTimeout(hintT); hintT=setTimeout(()=>el.classList.remove('show'),1600); }
+
+/* ================= 顾客 ================= */
+function genOrder(){
+  const extra = INGS.filter(i=>i.k!=='chicken' && i.k!=='pita');
+  const n = 1+Math.floor(Math.random()*3);          // 1-3 种配料
+  const picked = [];
+  const pool = extra.slice();
+  for(let i=0;i<n && pool.length;i++){ picked.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0].k); }
+  picked.push('chicken');                            // 必含肉
+  return picked;
+}
+function newCust(){
+  const order = genOrder();
+  const price = 6 + (order.length-1)*2 + (S.ups.pita||0) + (S.ups.pack||0);
+  return { img: CUST_IMG[Math.floor(Math.random()*CUST_IMG.length)],
+    order, price, x: W+140, t: 0, born: S.time,
+    state:'active', anger: 0, star:0, paid:false, gold:0, leaveT:0 };
+}
+function activeCusts(){ return S.custs.filter(c=>c.state!=='left'); }
+function frontCust(){ const a = activeCusts(); return a.length? a[0] : null; }
+function custTimeMax(){ return 55 - (S.ups.sign||0)*8; }  // 耐心：招牌升级延长
+
+/* ================= 卷饼制作 ================= */
+function addIng(k){
+  if(S.stage!=='day' || S.wrapState!=='make') return;
+  const base = INGS.find(i=>i.k===k);
+  const same = S.wrap.filter(x=>x===k).length;
+  if(k==='pita'){ if(S.wrap.length===0){ S.wrap.push(k); } else { flash('饼皮已摊开'); return; } }
+  else if(k==='chicken'){
+    if(S.wrap.length===0){ flash('先摊饼皮！'); return; }
+    if(same>=2){ flash('肉够多啦'); return; }
+    S.wrap.push(k);
+  }
+  else {
+    if(same>=2){ flash('放太多啦'); return; }
+    if(S.wrap.length===0){ flash('先摊饼皮！'); return; }
+    S.wrap.push(k);
+  }
+  flash(base.name+' +1');
+}
+function rollWrap(){
+  if(S.wrapState!=='make') return;
+  if(S.wrap.length<2){ flash('再放些配料！'); return; }
+  S.wrapState='roll'; S.wrapT=0;
+}
+function boxWrap(){
+  if(S.wrapState!=='roll') return;
+  S.wrapState='box'; S.wrapT=0;
+}
+function deliver(){
+  if(S.wrapState!=='box') return;
+  const target = frontCust();
+  if(!target){ flash('没有顾客在柜台'); return; }
+  const need = target.order.slice();
+  let extra = 0;
+  for(const k of S.wrap){ const i=need.indexOf(k); if(i>=0) need.splice(i,1); else extra++; }
+  const missing = need.length;
+  const allOk = missing===0 && extra===0;
+  const tUsed = 55 - target.anger;                    // 用时越短越好
+  let star = allOk ? (tUsed<22 ? 3 : 2) : (extra<=1&&missing<=1 ? 2 : 1);
+  if(!allOk && (missing+extra)>2) star = 0;
+  if(allOk && Math.random() < (S.ups.sauce||0)*0.08) star = Math.min(3,star+1);
+  const mult = [0, .8, 1.2, 1.5][star];
+  const gold = Math.max(0, Math.round(target.price*mult));
+  target.star = star; target.gold = gold; target.paid = true; target.state='left';
+  S.wrap = []; S.wrapState='make';
+  S.serveN++; if(star>0) S.okN++;
+  S.total += gold; S.money += gold;
+  if(star>0){ gainCoins(gold); }
+  saveState();
+  flash(star===0 ? '做错了…顾客没要' : (star===3?'⭐⭐⭐ 完美！':'⭐ 交付成功 +'+gold+' 币'));
+}
+function discard(){ if(S.stage!=='day') return; S.wrap=[]; S.wrapState='make'; flash('卷饼丢弃了'); }
+
+/* ================= 绘制 ================= */
+function drawBg(){
+  // 背景：厨房
+  if(IMG.kitchen && IMG.kitchen.complete && imgLoaded===imgTotal){
+    const k = IMG.kitchen;
+    const sc = Math.max(W/k.width, H/k.height);
+    ctx.drawImage(k, W/2-k.width*sc/2, H/2-k.height*sc/2, k.width*sc, k.height*sc);
+    ctx.fillStyle='rgba(255,235,210,.25)';
+    ctx.fillRect(0,0,W,H);
+  } else {
+    ctx.fillStyle='#ffe9d6'; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='rgba(255,140,60,.15)';
+    for(let i=0;i<40;i++){
+      ctx.beginPath(); ctx.arc(Math.random()*W, Math.random()*H, 20+Math.random()*60, 0, 7);
+      ctx.fill();
+    }
+  }
+}
+function drawGrill(){
+  const g = IMG.grill; if(!g.complete) return;
+  const gh = H*0.26, gw = gh*1.2;
+  const gx = W*0.07, gy = H - gh - 124;   // 坐在底栏上沿，不被遮
+  ctx.save();
+  ctx.drawImage(g, gx, gy, gw, gh);
+  ctx.restore();
+  S.grillBox = {x:gx, y:gy, w:gw, h:gh};
+  // 提示
+  ctx.fillStyle='rgba(80,30,0,.6)'; ctx.font='800 15px sans-serif';
+  ctx.textAlign='center';
+  ctx.fillText('✂ 点这里切肉', gx+gw/2, gy-10);
+}
+function drawCusts(now){
+  // 位置：active 顾客按序排队
+  const act = activeCusts();
+  act.forEach((c,i)=>{
+    const targetX = i===0 ? W*0.60 : W - 70 - (i-1)*80;
+    c.x += (targetX - c.x)*0.08;
+    if(Math.abs(targetX-c.x)<1) c.x=targetX;
+  });
+  S.custs.forEach(c=>{
+    const img = IMG[c.img]; if(!img.complete) return;
+    const ch = H*0.22, cw = ch*(img.width/img.height);
+    const cy = H - ch*1.05;
+    // 离开淡出
+    let alpha = 1;
+    if(c.state==='left' && c.leaveT>0) alpha = Math.max(0, 1-c.leaveT/1.2);
+    ctx.globalAlpha = alpha;
+    ctx.drawImage(img, c.x-cw/2, cy, cw, ch);
+    // 生气时间条
+    const remain = Math.max(0, custTimeMax()-c.anger);
+    if(c.state!=='left'){
+      ctx.fillStyle='rgba(0,0,0,.35)'; ctx.fillRect(c.x-cw/2, cy-16, cw, 6);
+      ctx.fillStyle= remain<custTimeMax()*0.25 ? '#e8452c' : '#ffd76e';
+      ctx.fillRect(c.x-cw/2, cy-16, cw*(remain/custTimeMax()), 6);
+    }
+    // 订单气泡
+    if(c.state==='active'){
+      const bubW = c.order.length*34+20, bubH=46;
+      const bx = c.x - bubW/2, by = cy - ch - 8;
+      ctx.fillStyle='#fff'; ctx.strokeStyle='#ff8f3c'; ctx.lineWidth=3;
+      ctx.beginPath();
+      ctx.moveTo(bx,by+bubH); ctx.lineTo(bx,by+bubH-14); ctx.lineTo(bx+10,by+bubH);
+      ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.roundRect(bx,by,bubW,bubH,12); ctx.fill(); ctx.stroke();
+      c.order.forEach((k,i)=>{
+        const im=IMG[k]; if(!im.complete) return;
+        ctx.drawImage(im, bx+12+i*34-6, by+8, 30,30);
+      });
+    }
+    // 已交付：金币与星星
+    if(c.paid){
+      const bob = Math.sin(now/300+c.x)*6;
+      ctx.font='800 22px sans-serif'; ctx.textAlign='center';
+      if(c.star>0){
+        ctx.fillStyle='#ffb400'; ctx.strokeStyle='#a96a08'; ctx.lineWidth=2;
+        ctx.strokeText('★'.repeat(c.star), c.x, cy-40+bob);
+        ctx.fillText('★'.repeat(c.star), c.x, cy-40+bob);
+      } else {
+        ctx.fillStyle='#888'; ctx.fillText('✗', c.x, cy-40+bob);
+      }
+      if(c.gold>0){
+        ctx.fillStyle='#e8452c'; ctx.font='800 16px sans-serif';
+        ctx.fillText('+'+c.gold, c.x, cy-14+bob);
+      }
+    }
+    ctx.globalAlpha = 1;
+  });
+}
+function drawAssemble(){
+  const ax = W*0.30, ay = H*0.42, aw = W*0.30, ah = H*0.26;
+  // 台面
+  ctx.fillStyle='rgba(255,255,255,.65)';
+  ctx.beginPath(); ctx.roundRect(ax-16, ay-12, aw+32, ah+30, 18); ctx.fill();
+  ctx.strokeStyle='rgba(200,110,30,.5)'; ctx.lineWidth=3; ctx.stroke();
+  ctx.fillStyle='#b3541e'; ctx.font='800 14px sans-serif'; ctx.textAlign='center';
+  ctx.fillText('🧺 制作台', ax+aw/2, ay-20);
+  // 卷饼内容
+  const step = Math.max(26, aw/(S.wrap.length||1));
+  S.wrap.forEach((k,i)=>{
+    const im=IMG[k]; if(!im.complete) return;
+    const s = 58;
+    ctx.drawImage(im, ax+aw/2 - (S.wrap.length-1)*step/2 + i*step - s/2, ay+ah/2-s/2, s, s);
+  });
+  if(S.wrapState!=='make'){
+    // 卷起/包装动画
+    const im = S.wrapState==='box' ? IMG.wrap : IMG.pita;
+    if(im.complete){
+      const p = Math.min(1, S.wrapT/0.35);
+      const s = 40 + (1-p)*18;
+      ctx.globalAlpha = Math.max(.3, 1-p);
+      ctx.drawImage(im, ax+aw/2-s/2, ay+ah/2-s/2, s, s);
+      ctx.globalAlpha = 1;
+    }
+  }
+}
+function drawHUDCanvas(now){
+  if(S.stage==='day'){
+    ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font='800 14px sans-serif'; ctx.textAlign='left';
+    ctx.fillText('👥 '+S.custs.length, 12, H-72);
+    if(S.wrap.length){
+      ctx.fillText('卷饼配料：'+S.wrap.join('/'), 12, H-50);
+    }
+  }
+}
+function render(now){
+  ctx.clearRect(0,0,W,H);
+  drawBg();
+  drawGrill();
+  drawCusts(now);
+  drawAssemble();
+  drawHUDCanvas(now);
+  requestAnimationFrame(render);
+}
+
+/* ================= 更新 ================= */
+function update(dt){
+  const s = dt/1000;   // dt 为毫秒
+  if(S.stage==='day'){
+    S.time -= s;
+    document.getElementById('hudTime').textContent = Math.ceil(S.time)+'s';
+    // 生成顾客
+    S.nextCustT -= s;
+    const interval = Math.max(4.5, 8 - (S.ups.sign||0)*0.9);
+    if(S.nextCustT<=0 && activeCusts().length<5){
+      S.nextCustT = interval;
+      S.custs.push(newCust());
+    }
+    // 顾客状态
+    S.custs.forEach(c=>{
+      if(c.state!=='left'){
+        c.anger += s*(1 + (S.ups.roast||0)*0.06);
+        if(c.anger >= custTimeMax()){
+          const wasFront = (frontCust()===c);
+          c.state='left'; c.leaveT=0;
+          S.sat = Math.max(30, S.sat - (wasFront?6:3));
+          if(wasFront) flash('顾客等太久走了…');
+        }
+      } else {
+        c.leaveT += s;
+      }
+    });
+    S.custs = S.custs.filter(c=>c.leaveT<1.6);
+    // 卷饼动画
+    if(S.wrapState!=='make'){ S.wrapT += s; if(S.wrapT>0.35 && S.wrapState==='roll') S.wrapState='box'; }
+    if(S.time<=0){ endDay(); }
+  }
+}
+
+/* ================= 结算 ================= */
+function endDay(){
+  S.stage='night';
+  const n = S.serveN, ok = S.okN;
+  const satNew = Math.max(30, Math.min(100, Math.round(S.sat*0.6 + (ok/Math.max(1,n))*100*0.4)));
+  S.sat = satNew;
+  document.getElementById('settN').textContent = n;
+  document.getElementById('settOk').textContent = ok;
+  document.getElementById('settMoney').textContent = S.money+' 币';
+  document.getElementById('settSat').textContent = satNew+'%';
+  document.getElementById('settTotal').textContent = S.total+' 币';
+  document.getElementById('settStar').textContent = '★'.repeat(Math.max(1,Math.min(3, Math.round(ok/Math.max(1,n)*3))));
+  saveState(true);
+  document.getElementById('sett').classList.add('show');
+}
+function beginDay(inc){
+  document.getElementById('sett').classList.remove('show');
+  document.getElementById('start').classList.remove('show');
+  if(inc){ S.day++; }
+  S.time = 90; S.money=0; S.serveN=0; S.okN=0; S.sat=Math.max(30,S.sat);
+  S.custs=[]; S.nextCustT=4; S.wrap=[]; S.wrapState='make';
+  document.getElementById('hudDay').textContent='第 '+S.day+' 天';
+  document.getElementById('stDay').textContent=S.day;
+  S.stage='day';
+  flash('第 '+S.day+' 天开张！');
+}
+
+/* ================= 交互 ================= */
+CV.addEventListener('click', e=>{
+  if(S.stage!=='day') return;
+  const x = e.clientX, y = e.clientY;
+  // 切肉
+  if(S.grillBox && x>S.grillBox.x && x<S.grillBox.x+S.grillBox.w && y>S.grillBox.y && y<S.grillBox.y+S.grillBox.h){
+    addIng('chicken'); return;
+  }
+  // 点顾客交付
+  const c = frontCust();
+  if(c && !c.paid){
+    const ch = H*0.22;
+    if(Math.abs(x-c.x) < ch*0.6 && y > H-ch*1.5){ deliver(); }
+  }
+});
+
+/* ================= DOM 绑定 ================= */
+const ingRow = document.getElementById('ingRow');
+INGS.forEach(i=>{
+  const b = document.createElement('div');
+  b.className = 'ig';
+  b.innerHTML = '<img src="'+IMG_KEYS[i.k]+'">';
+  b.onclick = ()=>addIng(i.k);
+  if(i.must) b.classList.add('must');
+  ingRow.appendChild(b);
+});
+document.getElementById('btnRoll').onclick = rollWrap;
+document.getElementById('btnWrap').onclick = boxWrap;
+document.getElementById('btnTrash').onclick = discard;
+document.getElementById('btnBack').onclick = ()=>{ location.href='main.html'; };
+document.getElementById('btnQuit').onclick = ()=>{ location.href='main.html'; };
+document.getElementById('btnStart').onclick = ()=>{ playBgm(); beginDay(false); };
+document.getElementById('settNext').onclick = ()=>{ beginDay(true); };
+document.getElementById('settShop').onclick = ()=>{ document.getElementById('sett').classList.remove('show'); openShop(); };
+document.getElementById('shopClose').onclick = ()=>{ document.getElementById('shop').classList.remove('show'); };
+document.getElementById('btnShop').onclick = openShop;
+
+/* ===== BGM ===== */
+const bgm = document.getElementById('bgm');
+let muted = localStorage.getItem('shawarma_mute')==='1';
+document.getElementById('btnMute').textContent = muted?'🔇':'🔊';
+document.getElementById('btnMute').onclick = ()=>{
+  muted = !muted;
+  localStorage.setItem('shawarma_mute', muted?'1':'0');
+  document.getElementById('btnMute').textContent = muted?'🔇':'🔊';
+  if(muted){ bgm.pause(); } else { bgm.play().catch(()=>{}); }
+};
+function playBgm(){
+  if(muted) return;
+  bgm.volume = 0.45;
+  bgm.play().catch(()=>{});
+}
+
+function openShop(){
+  renderShop();
+  document.getElementById('shop').classList.add('show');
+}
+function renderShop(){
+  const list = document.getElementById('shopList');
+  list.innerHTML='';
+  for(const k in UP_DEF){
+    const u = UP_DEF[k], lv = S.ups[k]||0, c = upCost(k);
+    const row = document.createElement('div'); row.className='row';
+    row.innerHTML = '<img src="'+IMG_KEYS[u.icon]+'"><div class="nm"><div class="t">'+u.n+'</div><div class="d">'+u.d+'</div></div>'+
+      '<div class="lv">Lv'+(lv||0)+'/'+(lv>=3?'MAX':3)+'</div>'+
+      '<button class="up'+(lv>=3?' max':'')+'" '+(lv>=3?'disabled':'')+'>'+(lv>=3?'已满级':('升级 '+c+' 币'))+'</button>';
+    row.querySelector('.up').onclick = ()=>buyUp(k);
+    list.appendChild(row);
+  }
+}
+
+/* ================= 主循环 ================= */
+let last = performance.now();
+function loop(now){
+  const dt = Math.min(100, now-last); last = now;
+  update(dt);          // 毫秒
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+requestAnimationFrame(render);
+
+/* ================= 启动 ================= */
+const logo = document.getElementById('logoImg');
+logo.src = IMG_KEYS.logo;
+syncCoinFromServer();
+loadState().then(()=>{
+  setCoin(localCoins);
+  document.getElementById('stDay').textContent = S.day;
+});
+window.addEventListener('beforeunload', ()=>{ saveState(true); });
+</script>
+</body>
+</html>
