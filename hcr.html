@@ -86,7 +86,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
     <div class="logo">🚙⛰️</div>
     <h2>登山赛车</h2>
     <div class="sub">踩油门翻山越岭 · 捡金币 · 别翻车 · 注意油量</div>
-    <button class="gbtn" id="btnStart">🔥 出发！</button>
+    <button class="gbtn" id="btnStart" disabled style="opacity:.55">⏳ 素材加载中…</button>
+    <div class="sub" id="loadInfo">正在加载车辆素材…</div>
     <button class="gbtn gray" id="btnQuit" style="margin-top:8px">← 返回主页</button>
   </div>
 </div>
@@ -134,7 +135,7 @@ if(!U){ location.replace('index.html'); }
 const IMG = {};
 const KEYS = { body:'hcr/car_body.png', head:'hcr/car_head.png', wheel:'hcr/wheel.png' };
 for(const k in KEYS){ const im = new Image(); im.src = KEYS[k]; IMG[k] = im; }
-function imgOK(k){ const i = IMG[k]; return !!(i && i.complete && i.naturalWidth>0); }
+function imgOK(k){ const i = IMG[k]; return !!(i && i.naturalWidth>0); }
 
 /* ================= 状态 ================= */
 const G = {
@@ -531,6 +532,25 @@ requestAnimationFrame(render);
 genTerrain();
 genItems();
 syncCoinFromServer();
+/* 素材加载监控：齐了才让玩家出发 */
+const btnStart = document.getElementById('btnStart');
+const loadInfo = document.getElementById('loadInfo');
+const imgKeys = Object.keys(KEYS);
+let imgErr = [];
+for(const k in KEYS){ IMG[k].onerror = ()=>{ imgErr.push(k); }; }
+(function waitAssets(){
+  const done = imgKeys.filter(k => imgOK(k)).length;
+  loadInfo.textContent = imgErr.length ? '⚠️ 素材加载失败：'+imgErr.join('、')+'（刷新重试）'
+    : '正在加载车辆素材 '+done+'/'+imgKeys.length+' …';
+  if(done === imgKeys.length){
+    loadInfo.textContent = '素材已就绪 ✓';
+    btnStart.textContent = '🔥 出发！';
+    btnStart.disabled = false;
+    btnStart.style.opacity = 1;
+  } else {
+    setTimeout(waitAssets, 250);
+  }
+})();
 </script>
 </body>
 </html>
