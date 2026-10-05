@@ -276,6 +276,15 @@
   .i-pvz b::before{left:-5px;transform:rotate(28deg)}
   .i-pvz b::after{right:-5px;transform:rotate(-28deg)}
   /* 天天酷跑图标：奔跑小人 */
+  .i-hcr{position:relative;width:52px;height:46px}
+  .i-hcr .hill{position:absolute;left:2px;bottom:2px;width:48px;height:20px;background:linear-gradient(135deg,#8fd46a,#4a9e3a);border-radius:60% 60% 0 0/80% 80% 0 0}
+  .i-hcr .hill2{position:absolute;right:0;bottom:4px;width:20px;height:12px;background:linear-gradient(135deg,#a8e08a,#6cbe52);border-radius:60% 60% 0 0/80% 80% 0 0}
+  .i-hcr .car{position:absolute;left:8px;bottom:16px;width:32px;height:14px;background:linear-gradient(90deg,#e8452c,#ff8a5a);border-radius:5px 9px 4px 4px;box-shadow:inset 0 3px 0 rgba(255,255,255,.25)}
+  .i-hcr .car::before{content:'';position:absolute;left:-4px;top:10px;width:8px;height:8px;background:#2a2a3a;border-radius:50%;box-shadow:inset 2px 2px 0 #555}
+  .i-hcr .car::after{content:'';position:absolute;right:-4px;top:10px;width:8px;height:8px;background:#2a2a3a;border-radius:50%;box-shadow:inset 2px 2px 0 #555}
+  .i-hcr .head{position:absolute;left:16px;bottom:28px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd0e8,#ff7ab0)}
+  .i-hcr .flag{position:absolute;left:44px;top:0;width:2px;height:16px;background:#c98a3a}
+  .i-hcr .flag::after{content:'';position:absolute;top:0;left:2px;width:8px;height:6px;background:linear-gradient(90deg,#ffd93d,#ff8f3c);clip-path:polygon(0 0,100% 50%,0 100%)}
   .i-run{position:relative;width:28px;height:26px}
   .i-run .head{position:absolute;top:0;right:1px;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE0BD,#F5A96F)}
   .i-run .body{position:absolute;top:8px;right:6px;width:8px;height:12px;border-radius:4px;background:linear-gradient(135deg,var(--coral),var(--grape));transform:rotate(-18deg)}
@@ -478,6 +487,7 @@
     { name:'免费看剧', desc:'全网聚合', icon:'tv', target:'https://libretv-5m5.pages.dev' },
     { name:'种豆',     desc:'洛克农场', icon:'bean', target:'bean.html?v=20260929' },
     { name:'沙威玛',   desc:'摆摊传奇', icon:'shaw', target:'shawarma.html' },
+    { name:'登山赛车', desc:'翻山越岭', icon:'hcr', target:'hcr.html?v=20261006' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
     { name:'敬请期待', desc:'即将上线', icon:'soon', target:'' },
@@ -508,6 +518,7 @@
     bean:  '<span class="i-bean"><i class="soil"></i><i class="leaf"></i><i class="leaf2"></i><i class="spark"></i></span>',
     soon:  '<span class="lock"></span>',
     shaw:  '<span style="font-size:38px;line-height:1">🌯</span>',
+    hcr:   '<span class="i-hcr"><i class="hill"></i><i class="hill2"></i><i class="car"></i><i class="head"></i><i class="flag"></i></span>',
   };
 
   // ===== 金币拉取 =====
