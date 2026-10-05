@@ -75,26 +75,10 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
 #start .logo{display:block;margin:0 auto 12px;width:150px;height:150px;object-fit:contain;animation:bob 2.2s infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 #start .tagline{color:#a07050;text-align:center;font-size:14px;margin-bottom:6px}
-
-/* ===== 加载屏 ===== */
-#loader{position:fixed;inset:0;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff7e6,#ffe9c7);}
-#loader .ld-logo{width:min(26vw,150px);height:min(26vw,150px);object-fit:contain;border-radius:22px;box-shadow:0 12px 30px rgba(255,160,60,.35);background:#fff;}
-#loader .ld-title{margin-top:16px;font-size:min(6vw,26px);font-weight:800;color:#c96f2a;letter-spacing:3px;}
-#loader .ld-bar{width:min(70vw,420px);height:14px;margin-top:22px;background:#f3ddbc;border-radius:7px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.08);}
-#loader .ld-bar>div{height:100%;width:0%;background:linear-gradient(90deg,#ffb84d,#ff7a2f);border-radius:7px;transition:width .25s;}
-#loader .ld-row{width:min(70vw,420px);display:flex;justify-content:space-between;margin-top:10px;font-size:13px;color:#a9743f;}
 </style>
 </head>
 <body>
 <canvas id="cv"></canvas>
-<!-- 加载屏 -->
-<div id="loader">
-  <img class="ld-logo" id="loaderLogo" alt="">
-  <div class="ld-title">沙威玛传奇</div>
-  <div class="ld-bar"><div id="ldFill"></div></div>
-  <div class="ld-row"><span id="ldPct">0%</span><span id="ldTip">正在检查版本更新…</span></div>
-</div>
-
 
 <div id="hint"></div>
 
@@ -107,7 +91,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
   <button class="btn" id="btnPause" style="font-size:18px">⏸</button>
   <button class="btn" id="btnMute" style="font-size:18px">🔊</button>
 </div>
-<audio id="bgm" loop preload="auto"></audio>
+<audio id="bgm" src="shawarma/bgm.mp3" loop preload="auto"></audio>
 
 <div id="bar">
   <div class="row" id="ingRow"></div>
@@ -199,67 +183,12 @@ const IMG_KEYS = {
   kitchen:'shawarma/bg/kitchen.jpg', street:'shawarma/bg/street.png', logo:'shawarma/bg/logo.jpg'
 };
 let imgLoaded = 0, imgTotal = Object.keys(IMG_KEYS).length;
-
-/* ===== 加载屏 + 素材缓存 + 热更新 ===== */
-const EXPECT_V = 23;                     // 与 version.json 同步，发布新版时递增
-const cacheOK = ('caches' in window);    // Cache API 可用性（https/localhost 可用）
-async function loadAsset(url, ver){
-  const abs = new URL(url, location.href).href;
-  try{
-    if(cacheOK){
-      const c = await caches.open('shawarma-v'+ver);
-      let r = await c.match(abs);
-      if(!r){                              // 缓存未命中 → 下载并写入缓存
-        r = await fetch(abs, {cache:'no-store'});
-        if(r && r.ok){ try{ await c.put(abs, r.clone()); }catch(e){} }
-      }
-      if(r && r.ok) return URL.createObjectURL(await r.blob());
-    }
-    const r2 = await fetch(abs);           // 无 Cache API 时直接下载
-    if(r2.ok) return URL.createObjectURL(await r2.blob());
-  }catch(e){}
-  return abs;                              // 极端降级：直接原 URL（如 file:// 环境）
+for(const k in IMG_KEYS){
+  const im = new Image();
+  im.onload = ()=>{ imgLoaded++; };
+  im.src = IMG_KEYS[k];
+  IMG[k] = im;
 }
-function ldPct(n,t){
-  const p = Math.min(100, Math.round(n/t*100));
-  document.getElementById('ldFill').style.width = p+'%';
-  document.getElementById('ldPct').textContent = p+'%';
-}
-async function boot(){
-  const assets = Object.values(IMG_KEYS).concat(['shawarma/bgm.mp3']);
-  let CACHE_VER = EXPECT_V;
-  document.getElementById('ldTip').textContent = '正在检查版本更新…';
-  try{
-    const r = await fetch('version.json?t='+Date.now(), {cache:'no-store'});
-    const j = await r.json();
-    if(j && j.v > EXPECT_V){               // 热更新：线上版本前进 → 清旧缓存全量重下
-      CACHE_VER = j.v;
-      if(cacheOK){
-        const keys = await caches.keys();
-        await Promise.all(keys.filter(k=>k.indexOf('shawarma-')===0).map(k=>caches.delete(k)));
-      }
-    }
-  }catch(e){}
-  let n = 0;
-  const bgm = document.getElementById('bgm');
-  for(const k in IMG_KEYS){
-    document.getElementById('ldTip').textContent = '正在加载素材 '+(n+1)+'/'+assets.length+' …';
-    const im = new Image();
-    im.onload = ()=>{ imgLoaded++; };
-    im.src = await loadAsset(IMG_KEYS[k], CACHE_VER);
-    IMG[k] = im;
-    n++; ldPct(n, assets.length);
-  }
-  document.getElementById('ldTip').textContent = '正在加载音效…';
-  bgm.src = await loadAsset('shawarma/bgm.mp3', CACHE_VER);
-  n++; ldPct(n, assets.length);
-  const ll = document.getElementById('loaderLogo');
-  if(IMG.logo && IMG.logo.src) ll.src = IMG.logo.src;
-  const lm = document.getElementById('logoImg');        // 开始菜单顶部 logo 一并填充
-  if(lm && IMG.logo && IMG.logo.src) lm.src = IMG.logo.src;
-  document.getElementById('loader').style.display = 'none';
-}
-boot();
 
 /* ================= 核心状态 ================= */
 const S = {
