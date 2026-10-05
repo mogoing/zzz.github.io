@@ -409,7 +409,7 @@ function drawCusts(now){
   // 位置：active 顾客按序排队（错落站开，避免重叠）
   const act = activeCusts();
   act.forEach((c,i)=>{
-    const targetX = W*0.66 + c.qIndex*175;         // 固定队列位：贴高光框排队，前面走了不补位
+    const targetX = W*0.66 + c.qIndex*168;         // 固定队列位：贴高光框排队，前面走了不补位
     c.x += (targetX - c.x)*0.08;
     if(Math.abs(targetX-c.x)<1) c.x=targetX;
   });
