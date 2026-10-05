@@ -408,7 +408,7 @@ function drawCusts(now){
   // 位置：active 顾客按序排队（错落站开，避免重叠）
   const act = activeCusts();
   act.forEach((c,i)=>{
-    const targetX = W*0.66 + i*228;                // 间距=高光框宽+空隙，框与框不重叠
+    const targetX = W*0.66 + i*205;                // 间距=高光框宽，框贴着框
     c.x += (targetX - c.x)*0.08;
     if(Math.abs(targetX-c.x)<1) c.x=targetX;
   });
@@ -476,7 +476,7 @@ function drawCusts(now){
   });
 }
 function drawAssemble(now){
-  const ax = W*0.15, ay = H*0.26 - 15, aw = W*0.30, ah = H*0.28;
+  const ax = 21, ay = H*0.26 - 15, aw = W*0.30, ah = H*0.28;
   // 台面
   ctx.fillStyle='rgba(255,255,255,.65)';
   ctx.beginPath(); ctx.roundRect(ax-16, ay-12, aw+32, ah+30, 18); ctx.fill();
