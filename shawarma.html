@@ -412,7 +412,7 @@ function drawCusts(now){
   // 位置：active 顾客按序排队（错落站开，避免重叠）
   const act = activeCusts();
   act.forEach((c,i)=>{
-    const targetX = W*0.66 + i*116;                // 从中间偏上往右排，后面的依次靠后
+    const targetX = W*0.66 + i*228;                // 间距=高光框宽+空隙，框与框不重叠
     c.x += (targetX - c.x)*0.08;
     if(Math.abs(targetX-c.x)<1) c.x=targetX;
   });
@@ -420,7 +420,7 @@ function drawCusts(now){
     const img = IMG[c.img]; if(!img.complete) return;
     const ch = H*0.19, cw = ch*(img.width/img.height);
     const idx = act.indexOf(c);
-    const cy = H*0.48 - 15 - (idx>0 ? Math.min(20, idx*7) : 0);  // 随制作台上移，中间偏上站位
+    const cy = H*0.432 - 15 - (idx>0 ? Math.min(20, idx*7) : 0);  // 顾客整体上移 1/4 高，中间偏上站位
     if(c.y===undefined) c.y = -60;
     c.y += (cy - c.y)*0.18;                          // 新顾客从上方落下，不横穿队列
     // 离开淡出
@@ -480,7 +480,7 @@ function drawCusts(now){
   });
 }
 function drawAssemble(now){
-  const ax = W*0.225, ay = H*0.26 - 15, aw = W*0.30, ah = H*0.28;
+  const ax = W*0.15, ay = H*0.26 - 15, aw = W*0.30, ah = H*0.28;
   // 台面
   ctx.fillStyle='rgba(255,255,255,.65)';
   ctx.beginPath(); ctx.roundRect(ax-16, ay-12, aw+32, ah+30, 18); ctx.fill();
