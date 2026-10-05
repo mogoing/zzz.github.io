@@ -93,7 +93,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
   <button class="btn" id="btnPause" style="font-size:18px">⏸</button>
   <button class="btn" id="btnMute" style="font-size:18px">🔊</button>
 </div>
-<audio id="bgm" src="shawarma/bgm.wav" loop preload="auto"></audio>
+<audio id="bgm" src="shawarma/bgm.mp3" loop preload="auto"></audio>
 
 <div id="bar">
   <div class="row" id="ingRow"></div>
@@ -356,16 +356,17 @@ function deliver(){
   const target = frontCust();
   if(!target){ flash('没有顾客在柜台'); return; }
   const need = target.order.slice();
+  const content = S.wrap.filter(k=>k!=='pita');      // 饼皮是包装，不算配料
   let extra = 0;
-  for(const k of S.wrap){ const i=need.indexOf(k); if(i>=0) need.splice(i,1); else extra++; }
+  for(const k of content){ const i=need.indexOf(k); if(i>=0) need.splice(i,1); else extra++; }
   const missing = need.length;
   const allOk = missing===0 && extra===0;
   const tUsed = 55 - target.anger;                    // 用时越短越好
   let star = allOk ? (tUsed<22 ? 3 : 2) : (extra<=1&&missing<=1 ? 2 : 1);
   if(!allOk && (missing+extra)>2) star = 0;
   if(allOk && Math.random() < (S.ups.sauce||0)*0.08) star = Math.min(3,star+1);
-  const mult = [0, .8, 1.2, 1.5][star];
-  const gold = Math.max(0, Math.round(target.price*mult));
+  // 成功交付固定 1 币，做错 0 币（星级仅作反馈）
+  const gold = allOk ? 1 : 0;
   target.star = star; target.gold = gold; target.paid = true; target.state='left';
   S.wrap = []; S.wrapState='make';
   S.serveN++; if(star>0) S.okN++;
@@ -411,7 +412,7 @@ function drawCusts(now){
   // 位置：active 顾客按序排队（错落站开，避免重叠）
   const act = activeCusts();
   act.forEach((c,i)=>{
-    const targetX = i===0 ? W*0.58 : W - 60 - (i-1)*96;
+    const targetX = W*0.66 + i*96;                 // 从中间偏上往右排，先到先服务
     c.x += (targetX - c.x)*0.08;
     if(Math.abs(targetX-c.x)<1) c.x=targetX;
   });
@@ -419,12 +420,14 @@ function drawCusts(now){
     const img = IMG[c.img]; if(!img.complete) return;
     const ch = H*0.19, cw = ch*(img.width/img.height);
     const idx = act.indexOf(c);
-    const cy = H - ch*1.18 - (idx>0 ? Math.min(24, idx*8) : 0);  // 队列依次略低，错落不重叠
+    const cy = H*0.62 - (idx>0 ? Math.min(20, idx*7) : 0);   // 中间偏上站位
+    if(c.y===undefined) c.y = -60;
+    c.y += (cy - c.y)*0.18;                          // 新顾客从上方落下，不横穿队列
     // 离开淡出
     let alpha = 1;
     if(c.state==='left' && c.leaveT>0) alpha = Math.max(0, 1-c.leaveT/1.2);
     ctx.globalAlpha = alpha;
-    ctx.drawImage(img, c.x-cw/2, cy, cw, ch);
+    ctx.drawImage(img, c.x-cw/2, c.y, cw, ch);
     // 生气时间条
     const remain = Math.max(0, custTimeMax()-c.anger);
     if(c.state!=='left'){
@@ -435,7 +438,7 @@ function drawCusts(now){
     // 订单气泡
     if(c.state==='active'){
       const bubW = c.order.length*34+20, bubH=46;
-      const bx = c.x - bubW/2, by = cy - ch - 6;
+      const bx = c.x - bubW/2, by = c.y - ch - 6;
       ctx.fillStyle='#fff'; ctx.strokeStyle='#ff8f3c'; ctx.lineWidth=3;
       ctx.beginPath();
       ctx.moveTo(bx,by+bubH); ctx.lineTo(bx,by+bubH-14); ctx.lineTo(bx+10,by+bubH);
@@ -449,7 +452,7 @@ function drawCusts(now){
     // box 状态下 front 顾客：头顶交付引导
     if(S.wrapState==='box' && c.state==='active' && frontCust()===c && Math.sin(now/200)>-0.2){
       ctx.fillStyle='#e8452c'; ctx.font='900 22px sans-serif'; ctx.textAlign='center';
-      ctx.fillText('👆', c.x, cy-ch-52);
+      ctx.fillText('👆', c.x, c.y-ch-52);
     }
     // 已交付：金币与星星
     if(c.paid){
