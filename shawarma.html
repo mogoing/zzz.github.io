@@ -41,9 +41,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
   padding:0 10px;color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.15);transition:transform .12s}
 #bar .btn:active{transform:scale(.94)}
 #btnRoll{background:linear-gradient(135deg,#3ec9a0,#2fa97e)}
-#btnWrap{background:linear-gradient(135deg,#7b5bff,#5a3fd6)}
 #btnTrash{background:linear-gradient(135deg,#ff8a8a,#e8605a)}
-#btnShop{background:linear-gradient(135deg,#ffd76e,#ffab2e);color:#8a4d00}
 #btnStep{width:62px;background:linear-gradient(135deg,#4ac7ff,#2f9fe9);display:none}
 #hint{position:fixed;left:50%;transform:translateX(-50%);bottom:118px;z-index:25;background:rgba(50,30,10,.78);color:#fff;
   font-size:14px;font-weight:600;padding:7px 18px;border-radius:18px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s}
@@ -98,10 +96,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Micr
 <div id="bar">
   <div class="row" id="ingRow"></div>
   <div class="row" style="margin-top:6px">
-    <button class="btn" id="btnShop">🏪 升级</button>
     <button class="btn" id="btnTrash" style="min-width:100px;height:46px;font-size:17px;border-radius:23px">🗑 丢弃</button>
     <button class="btn" id="btnRoll" style="min-width:104px;height:46px;font-size:17px;border-radius:23px">🌯 卷起</button>
-    <button class="btn" id="btnWrap" style="min-width:86px">📦 包装</button>
   </div>
 </div>
 
@@ -641,7 +637,6 @@ MENU.forEach(i=>{
   ingRow.appendChild(b);
 });
 document.getElementById('btnRoll').onclick = rollWrap;
-document.getElementById('btnWrap').onclick = boxWrap;
 document.getElementById('btnTrash').onclick = discard;
 document.getElementById('btnBack').onclick = ()=>{ location.href='main.html'; };
 document.getElementById('btnQuit').onclick = ()=>{ location.href='main.html'; };
@@ -649,7 +644,6 @@ document.getElementById('btnStart').onclick = ()=>{ playBgm(); beginDay(false); 
 document.getElementById('settNext').onclick = ()=>{ beginDay(true); };
 document.getElementById('settShop').onclick = ()=>{ document.getElementById('sett').classList.remove('show'); openShop(); };
 document.getElementById('shopClose').onclick = ()=>{ document.getElementById('shop').classList.remove('show'); };
-document.getElementById('btnShop').onclick = openShop;
 
 /* ===== 暂停 ===== */
 document.getElementById('btnPause').onclick = ()=>{ S.paused = true; document.getElementById('pause').classList.add('show'); };
