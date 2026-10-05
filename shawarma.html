@@ -438,7 +438,7 @@ function drawCusts(now){
     // 订单气泡
     if(c.state==='active'){
       const bubW = c.order.length*34+20, bubH=46;
-      const bx = c.x - bubW/2, by = c.y - ch + 8;
+      const bx = c.x - bubW/2, by = c.y - 6;
       ctx.fillStyle='#fff'; ctx.strokeStyle='#ff8f3c'; ctx.lineWidth=3;
       ctx.beginPath();
       ctx.moveTo(bx,by+bubH); ctx.lineTo(bx,by+bubH-14); ctx.lineTo(bx+10,by+bubH);
@@ -457,7 +457,7 @@ function drawCusts(now){
       ctx.lineWidth = 5 + 3*pulse;
       ctx.shadowColor = 'rgba(255,190,40,'+(0.8+0.2*pulse)+')';
       ctx.shadowBlur = 18 + 12*pulse;
-      ctx.beginPath(); ctx.roundRect(c.x-cw/2-6, c.y-ch-6, cw+12, ch+12, 18); ctx.stroke();
+      ctx.beginPath(); ctx.roundRect(c.x-cw/2-8, c.y-8, cw+16, ch+16, 20); ctx.stroke();
       ctx.restore();
     }
     // 已交付：金币与星星
@@ -480,7 +480,7 @@ function drawCusts(now){
   });
 }
 function drawAssemble(now){
-  const ax = W*0.30, ay = H*0.26 - 15, aw = W*0.30, ah = H*0.28;
+  const ax = W*0.225, ay = H*0.26 - 15, aw = W*0.30, ah = H*0.28;
   // 台面
   ctx.fillStyle='rgba(255,255,255,.65)';
   ctx.beginPath(); ctx.roundRect(ax-16, ay-12, aw+32, ah+30, 18); ctx.fill();
@@ -618,11 +618,15 @@ CV.addEventListener('click', e=>{
   if(S.grillBox && x>S.grillBox.x && x<S.grillBox.x+S.grillBox.w && y>S.grillBox.y && y<S.grillBox.y+S.grillBox.h){
     addIng('chicken'); return;
   }
-  // 点顾客交付
+  // 点顾客交付：命中顾客全身+高光外扩框
   const c = frontCust();
   if(c && !c.paid){
-    const ch = H*0.22;
-    if(Math.abs(x-c.x) < ch*0.6 && y > H-ch*1.5){ deliver(); }
+    const ch = H*0.19;
+    const cimg = IMG[c.img];
+    const cw = cimg&&cimg.complete ? ch*(cimg.width/cimg.height) : ch;
+    const pad = 26;                                  // 高光外扩余量，点到框边也算
+    const hx = c.x - cw/2 - pad, hy = c.y - pad, hw = cw + pad*2, hh = ch + pad*2;
+    if(x>hx && x<hx+hw && y>hy && y<hy+hh){ deliver(); }
   }
 });
 
