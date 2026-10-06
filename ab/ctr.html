@@ -19,7 +19,7 @@ html,body{width:100%;height:100%;background:#fdf6e3;overflow:hidden}
 #err .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:#e8842c;color:#fff;font-size:14px;font-weight:800;cursor:pointer}
 </style></head><body>
 <div id="top"><button class="btn" id="btnBack">← 主页</button><div class="t">🍬 割绳子</div><button class="btn" id="btnFull">⛶ 全屏</button></div>
-<div id="stage"><div id="gamebox"><iframe id="g" src="ctr/crazy/index.html" allowfullscreen></iframe>
+<div id="stage"><div id="gamebox"><iframe id="g" src="ctr_cn/index.htm" allowfullscreen></iframe>
 <div id="loading"><div class="candy">🍬</div><div>割绳子加载中…</div></div>
 </div></div>
 <div id="err"><div style="padding:0 24px">游戏加载失败，请检查网络后重试</div><button class="btn" onclick="location.reload()">重试</button></div>
@@ -27,7 +27,7 @@ html,body{width:100%;height:100%;background:#fdf6e3;overflow:hidden}
 function fit(){
   var st=document.getElementById('stage');
   var w=st.clientWidth,h=st.clientHeight;
-  var A=13.5/9; /* 9:13.5 竖屏画布 */
+  var A=9/16; /* 16:9 横屏画布（割绳子横屏玩） */
   var bw=Math.min(w, h/A);
   var bh=bw*A;
   var gb=document.getElementById('gamebox');
