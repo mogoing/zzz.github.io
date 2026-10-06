@@ -34,7 +34,7 @@ function fit(){
   gb.style.width=bw+'px';gb.style.height=bh+'px';
 }
 window.addEventListener('resize',fit);fit();
-document.getElementById('btnBack').onclick=function(){location.href='main.html';};
+document.getElementById('btnBack').onclick=function(){location.href='../main.html';};
 document.getElementById('btnFull').onclick=function(){var el=document.getElementById('gamebox');if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();};
 var g=document.getElementById('g');
 var loaded=false;
