@@ -423,8 +423,8 @@
   .dlrow .dbar{width:56px;height:6px;border-radius:3px;background:#F1E8D8;overflow:hidden;flex:none}
   .dlrow .dbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FFD93D,#FF8F3C);transition:width .3s}
   /* ===== 左上角 Logo 抽屉菜单：界面右移 2/3，左侧滑出菜单 ===== */
-  body{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-  body.menu-open{transform:translateX(66.66vw)}
+  #app{width:100%;display:flex;flex-direction:column;align-items:center;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  body.menu-open #app{transform:translateX(66.66vw)}
   #menu{position:fixed;left:0;top:0;width:66.66vw;height:100vh;z-index:400;transform:translateX(-100%);
     transition:transform .35s cubic-bezier(.2,.8,.2,1);
     background:linear-gradient(165deg,#FFF6E9,#FFE8D6);
@@ -495,6 +495,7 @@
   <div class="deco deco-dots2"></div>
   <div class="deco deco-star"></div>
   <div class="deco deco-star2"></div>
+  <div id="app">
   <header>
     <div class="brand">
       <img class="brand-logo" src="assets/logo.png" alt="丰稔季" id="brandLogo">
@@ -1012,5 +1013,6 @@ document.getElementById('menuMask').addEventListener('click', function(){
 // ===== 安卓返回键：本页按返回 = 回登录页 =====
 window.addEventListener('androidback', function(){ location.href = 'index.html'; });
 </script>
+</div>
 </body>
 </html>
