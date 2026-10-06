@@ -23,6 +23,7 @@ html,body{width:100%;height:100%;background:#fdf6e3;overflow:hidden}
 <div id="loading"><div class="candy">🍬</div><div>割绳子加载中…</div></div>
 </div></div>
 <div id="err"><div style="padding:0 24px">游戏加载失败，请检查网络后重试</div><button class="btn" onclick="location.reload()">重试</button></div>
+<div id="diag" style="position:fixed;left:8px;bottom:8px;z-index:300;background:rgba(0,0,0,.72);color:#fff;font-size:11px;line-height:1.5;padding:5px 9px;border-radius:7px;font-family:monospace;pointer-events:none">诊断中…</div>
 <script>
 function fit(){
   var st=document.getElementById('stage');
@@ -38,7 +39,28 @@ document.getElementById('btnBack').onclick=function(){location.href='../main.htm
 document.getElementById('btnFull').onclick=function(){var el=document.getElementById('gamebox');if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();};
 var g=document.getElementById('g');
 var loaded=false;
-g.addEventListener('load',function(){setTimeout(function(){document.getElementById('loading').style.display='none';},800);});
+/* 黑屏诊断：WebGL 状态 + iframe 加载状态 */
+(function(){
+  var d=document.getElementById('diag');
+  function setDiag(t){ if(d) d.textContent=t; }
+  try {
+    var c=document.createElement('canvas');
+    var gl2=c.getContext('webgl2'), gl=c.getContext('webgl')||c.getContext('experimental-webgl');
+    setDiag('WebGL2:'+(gl2?'OK':'✗')+' WebGL:'+(gl?'OK':'✗')+' · iframe:未加载');
+  } catch(e){ setDiag('WebGL:异常('+e.message+')'); }
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    var win=null;
+    try{ win=g.contentWindow; }catch(e){}
+    var ctr=null;
+    try{ ctr=win && win.CTR ? '已入游戏' : null; }catch(e){}
+    var base='WebGL2:'+(function(){try{return !!document.createElement('canvas').getContext('webgl2')}catch(e){return false}}()?'OK':'✗')+' · iframe:'+(loaded?'已加载':'加载中')+' · '+(ctr||('等待'+tries+'s'));
+    setDiag(base);
+    if (ctr || tries>15) clearInterval(iv);
+  },1000);
+})();
+g.addEventListener('load',function(){loaded=true;setTimeout(function(){document.getElementById('loading').style.display='none';},800);});
 setTimeout(function(){if(!loaded){document.getElementById('loading').style.display='none';}},20000);
 window.addEventListener('error',function(){document.getElementById('loading').style.display='none';});
 </script>
