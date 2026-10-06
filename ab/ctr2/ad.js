@@ -1,0 +1,1 @@
+window.onloadAd=function(){};

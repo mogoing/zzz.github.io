@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <title>割绳子2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <style>
+          html,body { margin:0; padding:0; overflow:hidden; background:#000; width:100%; height:100%; }
+    </style>
+    <script>
+      // 强制中文
+      try {
+        Object.defineProperty(navigator, 'languages', { get: function(){ return ['zh-CN','zh','en']; } });
+        Object.defineProperty(navigator, 'language', { get: function(){ return 'zh-CN'; } });
+      } catch(e){}
+    </script>
+    <script src="./config.js"></script>
+    <script src="./ad.js"></script>
+    <script>
+      window.famobi_gameID = "cut-the-rope";
+      window.famobi_gameJS = [
+        "ctrr.js",
+        function () { Ctrr.main("ja"); }
+      ];
+      // v1.js 加载 famobi API（提供 window.famobi 适配层）
+      (function(d,url){ var s=d.createElement("script"); s.src=url+""; (d.head||d.documentElement).appendChild(s); })(document, "html5games/gameapi/v1.js?e=");
+    </script>
+    <script>
+      // 自写引导：v1.js 自动链在某些环境不触发（无广告 SDK 时），此脚本兜底手动加载游戏主体
+      (function(){
+        var deps = [
+          "html5games/gameapi/zepto.min.js",
+          "html5games/gameapi/detection.js",
+          "html5games/gameapi/fenster.js",
+          "html5games/gameapi/famobi_analytics_v1.js",
+          "ctrr.js"
+        ];
+        var started = false;
+        function boot(){
+          if (started) return;
+          if (typeof Ctrr !== "undefined") return; // v1.js 已自动加载
+          started = true;
+          var i = 0;
+          function next(){
+            if (i >= deps.length) {
+              try { Ctrr.main("ja"); } catch(e){ console.log("CTR 启动失败:", e && e.message); }
+              return;
+            }
+            var s = document.createElement("script");
+            s.src = deps[i++];
+            s.onload = function(){ setTimeout(next, 120); };
+            s.onerror = function(){ setTimeout(next, 120); };
+            (document.head||document.documentElement).appendChild(s);
+          }
+          next();
+        }
+        setTimeout(boot, 2500);
+        setTimeout(boot, 5000);
+        setTimeout(boot, 8000);
+      })();
+    </script>
+</head>
+<body class="container"></body></html>
