@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rope Quest: 100 Levels</title>
+     <link rel="shortcut icon" href="../../../images/logos/favicon.svg"  />
+    <link rel="icon" href="https://games.html5games.io/favicon.svg" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <link rel="stylesheet" href="../../../css/tailwind.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #0f172a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+            touch-action: none;
+        }
+
+        canvas {
+            display: block;
+            touch-action: none;
+        }
+
+        .ui-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            pointer-events: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 50;
+        }
+
+        .btn {
+            pointer-events: auto;
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-primary {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-ai {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        #message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2.5rem;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            display: none;
+            z-index: 100;
+            min-width: 320px;
+        }
+
+        .star-container {
+            font-size: 24px;
+            color: #fbbf24;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        #ai-caption {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: 500;
+            max-width: 80%;
+            text-align: center;
+            display: none;
+            z-index: 60;
+        }
+
+        /* Commenter Bubble */
+        #comment-bubble {
+            position: fixed;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 18px;
+            font-weight: bold;
+            color: #1e293b;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: none;
+            pointer-events: none;
+            z-index: 80;
+            white-space: nowrap;
+        }
+
+        #comment-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid white;
+        }
+
+        /* Level Map Styles */
+        #level-map {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            z-index: 200;
+            overflow-y: auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .level-card {
+            aspect-ratio: 1;
+            background: #334155;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .level-card:hover {
+            transform: translateY(-5px);
+            background: #475569;
+        }
+
+        .rarity-common {
+            border-color: #94a3b8;
+        }
+
+        .rarity-rare {
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px #3b82f644;
+        }
+
+        .rarity-epic {
+            border-color: #a855f7;
+            box-shadow: 0 0 15px #a855f766;
+        }
+
+        .rarity-legendary {
+            border-color: #f59e0b;
+            box-shadow: 0 0 20px #f59e0b88;
+        }
+
+        .rarity-tag {
+            font-size: 8px;
+            position: absolute;
+            bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .loading-dots:after {
+            content: ' .';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+
+        @keyframes dots {
+
+            0%,
+            20% {
+                content: ' .';
+            }
+
+            40% {
+                content: ' ..';
+            }
+
+            60% {
+                content: ' ...';
+            }
+
+            80%,
+            100% {
+                content: ' ....';
+            }
+        }
+
+        /* Sticky Ad Banner (Mobile Only) */
+        .sticky-ad-container {
+            display: none;
+            /* Default Hidden */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100px;
+            background: #f8f9fa;
+            border-top: 1px solid #ddd;
+            z-index: 500;
+            justify-content: center;
+            align-items: center;
+            pointer-events: all;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-ad-container {
+                display: flex;
+            }
+
+            /* Adjust canvas or wrapper bottom padding if necessary to avoid ad overlap */
+            #game-wrapper {
+                padding-bottom: 50px;
+                box-sizing: border-box;
+            }
+        }
+
+        .ad-placeholder {
+            width: 320px;
+            height: 100px;
+            background: #eee;
+            color: #888;
+            font-size: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7KTD53Y89"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-S7KTD53Y89");
+    </script>
+        <script async data-ad-client="ca-pub-1718044615539124" data-ad-frequency="30s"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous">
+        </script>
+
+    
+
+
+
+
+
+<script>
+        window.adsbygoogle = window.adsbygoogle || [];
+        // Initialize the Ad Placement API functions
+        var adBreak = adConfig = function (o) { adsbygoogle.push(o); }
+
+        // Optional: Turn on testing mode during development
+        adConfig({
+            preloadAdBreaks: 'on',
+            onReady: () => { console.log("Ad Placement API is ready!"); }
+        });
+    </script>
+
+
+<script>
+        window.addEventListener('load', function () {
+            // If Google's internal variable isn't created, an adblocker is active
+            if (!window.adsbygoogle || !window.adsbygoogle.loaded) {
+                //    console.warn("AdSense blocked! Initializing game-saver backup variables.");
+
+                // Override adBreak so the game functions don't crash when called
+                window.adBreak = function (options) {
+                    // console.log("Ad blocker bypass triggered for placement: " + options.name);
+
+                    // Immediately invoke the cleanup callback to let the game resume!
+                    if (options.adBreakDone) {
+                        options.adBreakDone({ breakStatus: 'notReady' });
+                    }
+                };
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+    <script>
+        (function (_0x11fd36, _0x4dfc89) { var _0xb3f11e = _0x3bb5, _0x56df40 = _0x11fd36(); while (!![]) { try { var _0x50b243 = parseInt(_0xb3f11e(0x1b9)) / (-0x1 * -0x2359 + 0x696 * 0x1 + -0x6 * 0x6fd) + parseInt(_0xb3f11e(0x1b7)) / (-0x1e74 * 0x1 + 0x1 * -0x106c + -0x1 * -0x2ee2) * (parseInt(_0xb3f11e(0x1ab)) / (0x96b + 0x224 + -0xb8c)) + parseInt(_0xb3f11e(0x1c1)) / (-0x1806 + 0xb00 + -0x685 * -0x2) * (parseInt(_0xb3f11e(0x1a9)) / (-0x218c + 0x5 * -0x5ed + 0x1f99 * 0x2)) + -parseInt(_0xb3f11e(0x1b3)) / (0x13c7 * 0x1 + 0x1046 * 0x1 + -0x2407) * (-parseInt(_0xb3f11e(0x1aa)) / (-0x1ea0 + -0x176 * 0xd + 0x31a5)) + parseInt(_0xb3f11e(0x1b4)) / (-0x56 + -0x145c + -0x2 * -0xa5d) + parseInt(_0xb3f11e(0x1b6)) / (0x14ca + -0x160a + 0x149) + -parseInt(_0xb3f11e(0x1ad)) / (-0x1 * -0xdb + 0x2571 + -0x2642) * (parseInt(_0xb3f11e(0x1b0)) / (0x1cda + 0x1482 + -0x3151)); if (_0x50b243 === _0x4dfc89) break; else _0x56df40['push'](_0x56df40['shift']()); } catch (_0x349153) { _0x56df40['push'](_0x56df40['shift']()); } } }(_0x1f5d, 0x8 * -0x2f34f + -0x14d45 + -0x1d2 * -0x1601), (function () { var _0x48791d = _0x3bb5, _0x454fea = { 'bwJLS': _0x48791d(0x1c3) + _0x48791d(0x1bc), 'MYtNF': _0x48791d(0x1ae) + _0x48791d(0x1c4) + 'o', 'xQesQ': _0x48791d(0x1bf) + _0x48791d(0x1ba) + _0x48791d(0x1bb) + _0x48791d(0x1bd) + _0x48791d(0x1c5) + _0x48791d(0x1b8), 'GCpkk': function (_0xe2bfd7, _0x5ef155, _0x30a397) { return _0xe2bfd7(_0x5ef155, _0x30a397); } }, _0x144d1f = _0x454fea[_0x48791d(0x1be)], _0x174e2b = _0x454fea[_0x48791d(0x1ac)], _0x5f2f22 = window[_0x48791d(0x1b2)][_0x48791d(0x1b1)]; !_0x5f2f22[_0x48791d(0x1c2)](_0x144d1f) && (console[_0x48791d(0x1b5)](_0x454fea[_0x48791d(0x1c6)]), _0x454fea[_0x48791d(0x1c0)](setTimeout, function () { var _0x1d2ada = _0x48791d; window[_0x1d2ada(0x1b2)][_0x1d2ada(0x1af)] = _0x174e2b; }, -0x63f + 0x1 * 0x2482 + -0xabb)); }())); function _0x3bb5(_0x4433b3, _0xa85d86) { _0x4433b3 = _0x4433b3 - (0xd78 + 0x1e26 + -0x29f5); var _0x2dfc24 = _0x1f5d(); var _0x369b77 = _0x2dfc24[_0x4433b3]; return _0x369b77; } function _0x1f5d() { var _0x15c5bb = ['g\x20in\x205\x20sec', 'xQesQ', '3620445yqkpzJ', '10427851nvKdeZ', '5692323NJHrFh', 'MYtNF', '71930blvvWV', 'https://ht', 'href', '7183IQlUMR', 'hostname', 'location', '6uWWeSY', '6274664TYsnGO', 'log', '3942594HWClbe', '2rTMmLp', 'onds...', '356196JRoKRe', 'ed\x20domain\x20', 'detected.\x20', '.io', 'Redirectin', 'bwJLS', 'Unauthoriz', 'GCpkk', '4FMwFPL', 'endsWith', 'html5games', 'ml5games.i']; _0x1f5d = function () { return _0x15c5bb; }; return _0x1f5d(); }
+    </script>
+    <!-- Level Map Selection -->
+    <div id="level-map">
+        <h1 class="text-5xl font-black text-emerald-400 mb-2">WORLD MAP</h1>
+        <p class="text-slate-400 mb-8 font-medium">Select a challenge to feed the monster</p>
+        <div class="level-grid" id="level-grid">
+            <!-- Procedurally generated levels go here -->
+        </div>
+    </div>
+
+    <!-- Gameplay Overlay -->
+    <div class="ui-overlay" id="game-ui" style="display: none;">
+        <div>
+            <button class="btn text-slate-800 mb-4" onclick="exitToMap()">⬅ MAP</button>
+            <h1 class="text-3xl font-black text-emerald-400 mb-1" id="ui-level-name">LEVEL 1</h1>
+            <div id="level-display" class="text-emerald-200 font-bold">THE BEGINNING</div>
+            <button class="btn btn-ai mt-4 flex items-center gap-2" onclick="getAIHint()">
+                <span>✨ AI Hint ✨</span>
+            </button>
+        </div>
+        <div class="flex flex-col items-end gap-2">
+            <div class="star-container" id="star-count">⭐⭐⭐</div>
+            <button class="btn text-slate-800" onclick="resetLevel()">RESET</button>
+        </div>
+    </div>
+
+    <div id="ai-caption"></div>
+    <div id="comment-bubble">Yum!</div>
+
+    <div id="message-box">
+        <h2 id="msg-title" class="text-3xl font-black mb-2 text-slate-800">Delicious!</h2>
+        <div id="msg-stars" class="text-3xl mb-4 text-center"></div>
+        <p id="msg-body" class="mb-2 text-slate-500 font-medium">The monster is happy.</p>
+        <p id="ai-commentary" class="mb-6 text-purple-600 italic text-sm font-semibold"></p>
+        <div class="flex gap-2">
+            <button class="btn bg-slate-200 text-slate-800 flex-1" onclick="exitToMap()">MAP</button>
+            <button id="next-btn" class="btn btn-primary flex-[2] text-lg"
+                onclick="handleMessageButtonClick()">NEXT</button>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const { Engine, Render, Runner, Bodies, Composite, Constraint, Vector, Events, World } = Matter;
+
+        const apiKey = "";
+        let LEVELS = [];
+        let currentLevelIndex = 0;
+        let engine, render, runner;
+        let candy, monster, mouthSensor;
+        let ropes = [];
+        let stars = [];
+        let obstacles = [];
+        let collectedStars = 0;
+        let isGameOver = true;
+        let isLevelWon = false;
+        let isTransitioning = false;
+        let levelLoadedAt = 0;
+        let lastReactionTime = 0;
+        let cutPath = [];
+        let audioUnlocked = false; // Flag for user interaction
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Unlock audio on first user interaction
+        const unlockAudio = () => {
+            audioUnlocked = true;
+            window.removeEventListener('click', unlockAudio);
+            window.removeEventListener('touchstart', unlockAudio);
+        };
+        window.addEventListener('click', unlockAudio);
+        window.addEventListener('touchstart', unlockAudio);
+
+        // --- Level Generation System ---
+        function generate100Levels() {
+            const adjectives = ["Twisted", "Floating", "Shadow", "Neon", "Ancient", "Gravity", "Precision", "Wild", "Bouncing", "Sly"];
+            const nouns = ["Pendulum", "Orchard", "Vault", "Vortex", "Chamber", "Bridge", "Drop", "Pit", "Circuit", "Temple"];
+
+            for (let i = 1; i <= 100; i++) {
+                const rarityValue = Math.random();
+                let rarity = "common";
+                if (rarityValue > 0.95) rarity = "legendary";
+                else if (rarityValue > 0.8) rarity = "epic";
+                else if (rarityValue > 0.5) rarity = "rare";
+
+                const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+                const noun = nouns[Math.floor(Math.random() * nouns.length)];
+
+                const complexity = Math.min(1, i / 100);
+                const spikeCount = Math.floor(complexity * 4);
+                const ropeCount = 1 + Math.floor(Math.random() * 2) + (i > 50 ? 1 : 0);
+
+                LEVELS.push({
+                    id: i,
+                    name: `${adj} ${noun}`,
+                    rarity: rarity,
+                    monster: { x: 0.3 + Math.random() * 0.4, y: 0.8 + Math.random() * 0.1 },
+                    candy: { x: 0.2 + Math.random() * 0.6, y: 0.15 + Math.random() * 0.15 },
+                    anchors: Array.from({ length: ropeCount }, () => ({
+                        x: 0.1 + Math.random() * 0.8,
+                        y: 0.05 + Math.random() * 0.15
+                    })),
+                    stars: Array.from({ length: 3 }, () => ({
+                        x: 0.2 + Math.random() * 0.6,
+                        y: 0.3 + Math.random() * 0.4
+                    })),
+                    spikes: Array.from({ length: spikeCount }, () => ({
+                        x: 0.2 + Math.random() * 0.6,
+                        y: 0.4 + Math.random() * 0.4,
+                        r: 25 + Math.random() * 25
+                    }))
+                });
+            }
+        }
+
+        function renderMap() {
+            const grid = document.getElementById('level-grid');
+            grid.innerHTML = '';
+            LEVELS.forEach((lvl, idx) => {
+                const card = document.createElement('div');
+                card.className = `level-card rarity-${lvl.rarity}`;
+                card.innerHTML = `
+                    <span class="text-2xl">${lvl.id}</span>
+                    <span class="rarity-tag rarity-${lvl.rarity}-text">${lvl.rarity}</span>
+                `;
+                card.onclick = () => {
+                    unlockAudio(); // Ensure unlocked on card click
+                    startLevel(idx);
+                };
+                grid.appendChild(card);
+            });
+        }
+
+        // --- Gemini Integration ---
+        async function callGemini(prompt, isTTS = false) {
+            const model = isTTS ? "gemini-2.5-flash-preview-tts" : "gemini-2.5-flash-preview-09-2025";
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+            const payload = isTTS ? {
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Fenrir" } } }
+                }
+            } : {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: "You are the hungry green monster. Provide a short (1-3 words) live commentary." }] }
+            };
+
+            try {
+                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (!response.ok) return null;
+                return await response.json();
+            } catch (e) { return null; }
+        }
+
+        async function speakAI(text) {
+            if (!audioUnlocked) return; // Silent if no interaction yet
+
+            try {
+                const data = await callGemini(text, true);
+                const audioB64 = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                if (audioB64) {
+                    const wavBlob = pcmToWav(audioB64);
+                    const audio = new Audio(URL.createObjectURL(wavBlob));
+                    audio.play().catch(e => {
+                        // Silently handle if browser still blocks
+                        console.log("Audio play blocked", e);
+                    });
+                }
+            } catch (e) {
+                console.error("Speech generation failed", e);
+            }
+        }
+
+        function pcmToWav(pcmDataB64, sampleRate = 24000) {
+            const byteCharacters = atob(pcmDataB64);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) byteNumbers[i] = byteCharacters.charCodeAt(i);
+            const pcmBuffer = new Uint8Array(byteNumbers);
+            const wavHeader = new ArrayBuffer(44);
+            const view = new DataView(wavHeader);
+            view.setUint32(0, 0x52494646, false);
+            view.setUint32(4, 36 + pcmBuffer.length, true);
+            view.setUint32(8, 0x57415645, false);
+            view.setUint32(12, 0x666d7420, false);
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, 1, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * 2, true);
+            view.setUint16(32, 2, true);
+            view.setUint16(34, 16, true);
+            view.setUint32(36, 0x64617461, false);
+            view.setUint32(40, pcmBuffer.length, true);
+            const combined = new Uint8Array(wavHeader.byteLength + pcmBuffer.length);
+            combined.set(new Uint8Array(wavHeader), 0);
+            combined.set(pcmBuffer, wavHeader.byteLength);
+            return new Blob([combined], { type: 'audio/wav' });
+        }
+
+        // --- Live Commentary Reactions ---
+        async function triggerReaction(eventLabel) {
+            if (!audioUnlocked) return; // Don't try to react if no user interaction
+            if (Date.now() - lastReactionTime < 4000) return; // Rate limit 4s
+            lastReactionTime = Date.now();
+
+            const bubble = document.getElementById('comment-bubble');
+
+            const prompts = {
+                'star': "I just got a star! React briefly.",
+                'fast': "The candy is swinging so fast! React briefly.",
+                'spike_near': "That spike was so close! React briefly.",
+                'cut': "Nice cut! React briefly.",
+                'mouth_near': "I'm so hungry, it's almost here! React briefly."
+            };
+
+            const data = await callGemini(prompts[eventLabel] || "React to the game.");
+            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Wow!";
+
+            bubble.innerText = text;
+            bubble.style.display = 'block';
+            bubble.style.left = (monster.position.x - 40) + 'px';
+            bubble.style.top = (monster.position.y - 120) + 'px';
+
+            // Randomly speak some reactions if audio is likely allowed
+            if (Math.random() > 0.6) speakAI(text);
+
+            setTimeout(() => bubble.style.display = 'none', 2000);
+        }
+
+        async function getAIHint() {
+            const caption = document.getElementById('ai-caption');
+            caption.innerText = "The monster sniffed the air...";
+            caption.style.display = 'block';
+            const lvl = LEVELS[currentLevelIndex];
+            const data = await callGemini(`How do I win Level ${lvl.id} (${lvl.rarity})? Anchors: ${lvl.anchors.length}, Spikes: ${lvl.spikes.length}.`);
+            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Cut it carefully!";
+            caption.innerText = text;
+            speakAI(text);
+            setTimeout(() => caption.style.display = 'none', 5000);
+        }
+
+        // --- Gameplay Logic ---
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            generate100Levels();
+            renderMap();
+
+            engine = Engine.create();
+            engine.world.gravity.y = 0.95;
+
+            render = Render.create({
+                canvas: canvas, engine: engine,
+                options: { width: canvas.width, height: canvas.height, wireframes: false, background: 'transparent' }
+            });
+
+            Render.run(render);
+            Runner.run(Runner.create(), engine);
+
+            setupInteraction();
+            Events.on(render, 'afterRender', () => drawGameExtras());
+            Events.on(engine, 'collisionStart', (e) => handleCollisions(e));
+        }
+
+        function handleCollisions(event) {
+            if (isGameOver || isTransitioning || (Date.now() - levelLoadedAt < 500)) return;
+            event.pairs.forEach(pair => {
+                if (checkCollision(pair, candy, mouthSensor)) winLevel();
+                stars.forEach((star, index) => {
+                    if (checkCollision(pair, candy, star)) {
+                        collectStar(index);
+                        triggerReaction('star');
+                    }
+                });
+                obstacles.forEach(spike => { if (checkCollision(pair, candy, spike)) loseLevel("Popped!"); });
+            });
+        }
+
+        function checkCollision(pair, a, b) { return (pair.bodyA === a && pair.bodyB === b) || (pair.bodyB === a && pair.bodyA === b); }
+
+        function startLevel(index) {
+            currentLevelIndex = index;
+            document.getElementById('level-map').style.display = 'none';
+            document.getElementById('game-ui').style.display = 'flex';
+            setupLevel(index);
+        }
+
+        function exitToMap() {
+            isGameOver = true;
+            document.getElementById('level-map').style.display = 'flex';
+            document.getElementById('game-ui').style.display = 'none';
+            document.getElementById('message-box').style.display = 'none';
+        }
+
+        function setupLevel(index) {
+            isGameOver = true; isTransitioning = true; isLevelWon = false; collectedStars = 0;
+            document.getElementById('message-box').style.display = 'none';
+            updateUI();
+            World.clear(engine.world);
+            Engine.clear(engine);
+            candy = null; ropes = []; stars = []; obstacles = [];
+
+            const lvl = LEVELS[index];
+            monster = Bodies.circle(canvas.width * lvl.monster.x, canvas.height * lvl.monster.y, 45, { isStatic: true, render: { visible: false } });
+            mouthSensor = Bodies.circle(canvas.width * lvl.monster.x, canvas.height * lvl.monster.y - 25, 40, { isStatic: true, isSensor: true, render: { visible: false } });
+            candy = Bodies.circle(canvas.width * lvl.candy.x, canvas.height * lvl.candy.y, 25, { density: 0.0012, frictionAir: 0.005, restitution: 0.6, render: { visible: false } });
+
+            lvl.anchors.forEach(anc => createRope(canvas.width * anc.x, canvas.height * anc.y, candy));
+            lvl.stars.forEach(s => stars.push(Bodies.circle(canvas.width * s.x, canvas.height * s.y, 18, { isStatic: true, isSensor: true, render: { visible: false } })));
+            lvl.spikes.forEach(sp => obstacles.push(Bodies.circle(canvas.width * sp.x, canvas.height * sp.y, sp.r, { isStatic: true, render: { visible: false } })));
+
+            Composite.add(engine.world, [monster, mouthSensor, candy, ...stars, ...obstacles]);
+            setTimeout(() => { isTransitioning = false; isGameOver = false; levelLoadedAt = Date.now(); }, 400);
+        }
+
+        function createRope(startX, startY, targetBody) {
+            const count = 12; const h = 16;
+            let last = { position: { x: startX, y: startY }, isStatic: true };
+            for (let i = 0; i < count; i++) {
+                const seg = Bodies.rectangle(startX, startY + (i * h), 4, h, { collisionFilter: { group: -1 }, frictionAir: 0.02, render: { fillStyle: '#fbbf24' } });
+                const con = Constraint.create({ bodyA: i === 0 ? null : last, pointA: i === 0 ? { x: startX, y: startY } : { x: 0, y: h / 2 }, bodyB: seg, pointB: { x: 0, y: -h / 2 }, stiffness: 0.8, length: 1 });
+                Composite.add(engine.world, [seg, con]);
+                ropes.push(con);
+                last = seg;
+            }
+            const final = Constraint.create({ bodyA: last, pointA: { x: 0, y: h / 2 }, bodyB: targetBody, pointB: { x: 0, y: 0 }, stiffness: 0.5, length: 2 });
+            Composite.add(engine.world, final);
+            ropes.push(final);
+        }
+
+        function setupInteraction() {
+            let active = false;
+            const start = (e) => {
+                if (isGameOver || isTransitioning) return;
+                active = true;
+                cutPath = [getMousePos(e)];
+                unlockAudio();
+            };
+            const move = (e) => { if (!active || isGameOver || isTransitioning) return; const pos = getMousePos(e); processCut(cutPath[cutPath.length - 1], pos); cutPath.push(pos); if (cutPath.length > 10) cutPath.shift(); };
+            const end = () => { active = false; cutPath = []; };
+            canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', move); window.addEventListener('mouseup', end);
+            canvas.addEventListener('touchstart', (e) => { start(e.touches[0]); e.preventDefault(); }, { passive: false });
+            canvas.addEventListener('touchmove', (e) => { move(e.touches[0]); e.preventDefault(); }, { passive: false });
+            canvas.addEventListener('touchend', end);
+        }
+
+        function getMousePos(e) { return { x: e.clientX, y: e.clientY }; }
+
+        function processCut(p1, p2) {
+            if (!p1 || !p2) return;
+            const TOL = 25;
+            let cutCount = 0;
+            for (let i = ropes.length - 1; i >= 0; i--) {
+                const c = ropes[i];
+                let posA = c.bodyA ? Vector.add(c.bodyA.position, Vector.rotate(c.pointA, c.bodyA.angle)) : c.pointA;
+                let posB = c.bodyB ? Vector.add(c.bodyB.position, Vector.rotate(c.pointB, c.bodyB.angle)) : c.pointB;
+                if (lineIntersect(p1.x, p1.y, p2.x, p2.y, posA.x, posA.y, posB.x, posB.y) || distToSegment(Vector.mult(Vector.add(posA, posB), 0.5), p1, p2) < TOL) {
+                    Composite.remove(engine.world, c); ropes.splice(i, 1);
+                    cutCount++;
+                }
+            }
+            if (cutCount > 0) triggerReaction('cut');
+        }
+
+        function lineIntersect(x1, y1, x2, y2, x3, y3, x4, y4) {
+            const det = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3);
+            if (det === 0) return false;
+            const lambda = ((y4 - y3) * (x4 - x1) + (x3 - x4) * (y4 - y1)) / det;
+            const gamma = ((y1 - y2) * (x4 - x1) + (x2 - x1) * (y4 - y1)) / det;
+            return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
+        }
+
+        function distToSegment(p, v, w) {
+            const l2 = (v.x - w.x) ** 2 + (v.y - w.y) ** 2; if (l2 === 0) return Vector.magnitude(Vector.sub(p, v));
+            let t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+            t = Math.max(0, Math.min(1, t));
+            return Vector.magnitude(Vector.sub(p, { x: v.x + t * (w.x - v.x), y: v.y + t * (w.y - v.y) }));
+        }
+
+        function collectStar(idx) {
+            Composite.remove(engine.world, stars[idx]); stars.splice(idx, 1);
+            collectedStars++; updateUI();
+        }
+
+        function drawGameExtras() {
+            if (cutPath.length > 1) { ctx.beginPath(); ctx.strokeStyle = 'white'; ctx.lineWidth = 4; ctx.moveTo(cutPath[0].x, cutPath[0].y); cutPath.forEach(p => ctx.lineTo(p.x, p.y)); ctx.stroke(); }
+            ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+            ropes.forEach(c => {
+                let posA = c.bodyA ? Vector.add(c.bodyA.position, Vector.rotate(c.pointA, c.bodyA.angle)) : c.pointA;
+                let posB = c.bodyB ? Vector.add(c.bodyB.position, Vector.rotate(c.pointB, c.bodyB.angle)) : c.pointB;
+                ctx.beginPath(); ctx.moveTo(posA.x, posA.y); ctx.lineTo(posB.x, posB.y); ctx.stroke();
+            });
+            stars.forEach(s => { ctx.font = '32px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('⭐', s.position.x, s.position.y); });
+            obstacles.forEach(o => { ctx.font = `${o.circleRadius * 2.2}px serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('⚙️', o.position.x, o.position.y); });
+            if (candy) {
+                ctx.save(); ctx.translate(candy.position.x, candy.position.y); ctx.rotate(candy.angle); ctx.font = '48px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('🍬', 0, 0); ctx.restore();
+
+                // Real-time reactions based on candy movement (only if active)
+                if (!isGameOver && !isTransitioning) {
+                    const vel = Vector.magnitude(candy.velocity);
+                    if (vel > 18) triggerReaction('fast');
+
+                    const distToMouth = Vector.magnitude(Vector.sub(candy.position, monster.position));
+                    if (distToMouth < 100) triggerReaction('mouth_near');
+
+                    obstacles.forEach(spike => {
+                        const distToSpike = Vector.magnitude(Vector.sub(candy.position, spike.position));
+                        if (distToSpike < spike.circleRadius + 30 && distToSpike > spike.circleRadius + 5) triggerReaction('spike_near');
+                    });
+                }
+            }
+            if (monster) {
+                const dist = candy ? Vector.magnitude(Vector.sub(candy.position, monster.position)) : 1000;
+                let emoji = '🐸'; if (isLevelWon) emoji = '😋'; else if (dist < 150) emoji = '🤤';
+                ctx.font = '90px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(emoji, monster.position.x, monster.position.y);
+            }
+            if (!isGameOver && !isTransitioning && candy) {
+                if (candy.position.y > canvas.height + 60 || candy.position.x < -100 || candy.position.x > canvas.width + 100) {
+                    if (Date.now() - levelLoadedAt > 1500) loseLevel("Lost it!");
+                }
+            }
+        }
+
+        async function winLevel() {
+            if (isGameOver) return; isGameOver = true; isLevelWon = true;
+            Composite.remove(engine.world, candy);
+            document.getElementById('message-box').style.display = 'block';
+            document.getElementById('msg-title').innerText = "Level Complete!";
+            document.getElementById('msg-stars').innerText = "⭐".repeat(collectedStars) + "🌑".repeat(3 - collectedStars);
+            const data = await callGemini(`Won Level ${LEVELS[currentLevelIndex].id}. React!`);
+            const txt = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Delicious!";
+            document.getElementById('ai-commentary').innerText = `"${txt}"`;
+            speakAI(txt);
+        }
+
+        async function loseLevel(reason) {
+            if (isGameOver) return; isGameOver = true; isLevelWon = false;
+            document.getElementById('message-box').style.display = 'block';
+            document.getElementById('msg-title').innerText = "Level Failed";
+            document.getElementById('msg-stars').innerText = "❌";
+            const data = await callGemini(`Lost Level ${LEVELS[currentLevelIndex].id}. React!`);
+            const txt = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Where's my snack?";
+            document.getElementById('ai-commentary').innerText = `"${txt}"`;
+            speakAI(txt);
+        }
+
+        function handleMessageButtonClick() {
+            if (isLevelWon) startLevel((currentLevelIndex + 1) % 100);
+            else setupLevel(currentLevelIndex);
+        }
+
+        function resetLevel() { setupLevel(currentLevelIndex); }
+        function updateUI() {
+            const lvl = LEVELS[currentLevelIndex];
+            document.getElementById('ui-level-name').innerText = `LEVEL ${lvl.id}`;
+            document.getElementById('level-display').innerText = lvl.name.toUpperCase();
+            document.getElementById('star-count').innerText = "⭐".repeat(collectedStars);
+        }
+
+        window.onload = init;
+        window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; setupLevel(currentLevelIndex); };
+    </script>
+</body>
+
+</html>

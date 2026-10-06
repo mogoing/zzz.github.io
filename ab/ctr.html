@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>割绳子</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;touch-action:none;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;background:#fdf6e3;overflow:hidden}
+#top{position:fixed;top:0;left:0;right:0;height:48px;z-index:100;display:flex;align-items:center;gap:8px;padding:0 8px;background:linear-gradient(135deg,#7fb24e,#4e8d3c);box-shadow:0 2px 8px rgba(0,0,0,.18)}
+#top .btn{height:34px;border:0;border-radius:17px;padding:0 14px;background:rgba(255,255,255,.95);color:#2c5e22;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.18)}
+#top .btn:active{transform:translateY(1px)}
+#top .t{color:#fff;font-size:17px;font-weight:900;flex:1;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,.25);letter-spacing:2px}
+#stage{position:fixed;top:48px;left:0;right:0;bottom:0;background:#fdf6e3;display:flex;align-items:center;justify-content:center}
+#gamebox{position:relative;background:#000;border-radius:10px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+#gamebox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+#loading{position:absolute;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 40%,#fffbe8 0%,#eef3dc 70%);color:#4e8d3c;font-size:18px;font-weight:900}
+#loading .candy{font-size:60px;animation:pulse 1.1s infinite}
+@keyframes pulse{0%,100%{transform:scale(1) rotate(-4deg)}50%{transform:scale(1.18) rotate(4deg)}}
+#err{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(253,246,227,.97);color:#7b341e;font-size:16px;text-align:center}
+#err .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:#e8842c;color:#fff;font-size:14px;font-weight:800;cursor:pointer}
+</style></head><body>
+<div id="top"><button class="btn" id="btnBack">← 主页</button><div class="t">🍬 割绳子</div><button class="btn" id="btnFull">⛶ 全屏</button></div>
+<div id="stage"><div id="gamebox"><iframe id="g" src="ctr/crazy/index.html" allowfullscreen></iframe>
+<div id="loading"><div class="candy">🍬</div><div>割绳子加载中…</div></div>
+</div></div>
+<div id="err"><div style="padding:0 24px">游戏加载失败，请检查网络后重试</div><button class="btn" onclick="location.reload()">重试</button></div>
+<script>
+function fit(){
+  var st=document.getElementById('stage');
+  var w=st.clientWidth,h=st.clientHeight;
+  var A=13.5/9; /* 9:13.5 竖屏画布 */
+  var bw=Math.min(w, h/A);
+  var bh=bw*A;
+  var gb=document.getElementById('gamebox');
+  gb.style.width=bw+'px';gb.style.height=bh+'px';
+}
+window.addEventListener('resize',fit);fit();
+document.getElementById('btnBack').onclick=function(){location.href='main.html';};
+document.getElementById('btnFull').onclick=function(){var el=document.getElementById('gamebox');if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();};
+var g=document.getElementById('g');
+var loaded=false;
+g.addEventListener('load',function(){setTimeout(function(){document.getElementById('loading').style.display='none';},800);});
+setTimeout(function(){if(!loaded){document.getElementById('loading').style.display='none';}},20000);
+window.addEventListener('error',function(){document.getElementById('loading').style.display='none';});
+</script>
+</body></html>

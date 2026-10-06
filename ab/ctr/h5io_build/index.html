@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Cut The Rope| Free HTML5 Games - html5games.io</title>
+     <link rel="shortcut icon" href="../../../images/logos/favicon.svg"  />
+    <link rel="icon" href="https://games.html5games.io/favicon.svg" type="image/png">
+    <meta name="title" content="Play Cut The Rope| Free HTML5 Games - html5games.io">
+    <meta name="description"
+        content="Play Cut The Rope for free on html5games.io! Experience high-octane directly in your browser. No downloads, no install, just instant play.">
+    <meta name="keywords"
+        content="html5 games, free online games, browser games, cyber drift 2026, racing games, play games online, mobile games, unblocked games">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="html5games.io">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://games.html5games.io/games/cuttherope/gameplay/index.html">
+    <meta property="og:title" content="Play Cut The Rope| Free HTML5 Games - html5games.io">
+    <meta property="og:description"
+        content="Play Cut The Rope for free on html5games.io! Experience high-octane directly in your browser. No downloads, no install, just instant play.">
+    <meta property="og:image" content="https://games.html5games.io/games/cuttherope/gameplay/images/banner.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://games.html5games.io/games/cuttherope/gameplay/index.html">
+    <meta property="twitter:title" content="Play Cut The Rope| Free HTML5 Games - html5games.io">
+    <meta property="twitter:description"
+        content="Play Cut The Rope for free on html5games.io! Experience high-octane directly in your browser. No downloads, no install, just instant play.">
+    <meta property="twitter:image" content="https://games.html5games.io/games/cuttherope/gameplay/images/banner.png">
+
+    <meta name="theme-color" content="#2dfb54">
+    <link rel="canonical" href="https://games.html5games.io/games/cuttherope/gameplay/index.html" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["SoftwareApplication", "VideoGame"],
+  "name": "Cut The Rope",
+  "url": "https://games.html5games.io/games/cuttherope/gameplay/index.html",
+  "image": "https://games.html5games.io/games/cuttherope/gameplay/images/banner.png",
+  "description": "Play Cut The Rope for free on html5games.io! Experience high-octane directly in your browser. No downloads, no install, just instant play.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "WEB",
+  "genre": "Adventure",
+  "playMode": "SinglePlayer",
+  "author": {
+    "@type": "Organization",
+    "name": "html5games.io"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "125"
+  }
+}
+</script>
+
+    <script async data-ad-client="ca-pub-1718044615539124" data-ad-frequency="30s"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous">
+        </script>
+
+    
+
+
+
+
+
+<script>
+        window.adsbygoogle = window.adsbygoogle || [];
+        // Initialize the Ad Placement API functions
+        var adBreak = adConfig = function (o) { adsbygoogle.push(o); }
+
+        // Optional: Turn on testing mode during development
+        adConfig({
+            preloadAdBreaks: 'on',
+            onReady: () => { console.log("Ad Placement API is ready!"); }
+        });
+    </script>
+
+
+<script>
+        window.addEventListener('load', function () {
+            // If Google's internal variable isn't created, an adblocker is active
+            if (!window.adsbygoogle || !window.adsbygoogle.loaded) {
+                //    console.warn("AdSense blocked! Initializing game-saver backup variables.");
+
+                // Override adBreak so the game functions don't crash when called
+                window.adBreak = function (options) {
+                    // console.log("Ad blocker bypass triggered for placement: " + options.name);
+
+                    // Immediately invoke the cleanup callback to let the game resume!
+                    if (options.adBreakDone) {
+                        options.adBreakDone({ breakStatus: 'notReady' });
+                    }
+                };
+            }
+        });
+    </script>
+
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7KTD53Y89"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-S7KTD53Y89");
+    </script>
+
+    
+    <title>Cut The Rope - Splash Screen</title>
+     <link rel="shortcut icon" href="../../images/logos/favicon.svg"  />
+     <link rel="icon" type="image/png" href="https://games.html5games.io/favicon.png" sizes="48x48">
+    <style>
+        :root {
+            --primary-glow: rgba(255, 69, 0, 0.6);
+            --bg-color: #0a0a0a;
+            --accent-color: #ff4500;
+            --text-color: #ffffff;
+            --warning-red: #ff0000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ambient background effect */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #1a0a0a 0%, #000 100%);
+            z-index: -1;
+        }
+
+        .background-glow {
+            position: fixed;
+            bottom: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 40%;
+            background: radial-gradient(ellipse at center, var(--primary-glow) 0%, transparent 70%);
+            filter: blur(50px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        /* Container for the splash screen content */
+        .splash-container {
+            width: 100%;
+            max-width: 500px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Top: Logo Section */
+        .logo-section {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        .game-logo {
+            max-width: 85%;
+            max-height: 120px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.3));
+        }
+
+        /* CSS Fallback Logo Style */
+        .logo-fallback {
+            display: none;
+            font-weight: 900;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-color), 2px 2px 0px #000;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        /* Middle: Character Section */
+        .character-section {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .character-image {
+            max-width: 90%;
+            max-height: 45vh;
+            object-fit: contain;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+        }
+
+        /* CSS/SVG Fallback Character */
+        .character-fallback {
+            display: none;
+            width: 200px;
+            height: 200px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Bottom: Action Section */
+        .action-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .play-button {
+            background: linear-gradient(180deg, #ff6a00 0%, #e63900 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--primary-glow), 0 5px 0 #802000;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        .play-button:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 10px var(--primary-glow), 0 1px 0 #802000;
+        }
+
+        .version-tag {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        /* State management for missing images */
+        .img-failed .game-logo,
+        .img-failed .character-image {
+            display: none;
+        }
+
+        .img-failed .logo-fallback,
+        .img-failed .character-fallback {
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px var(--primary-glow);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 30px var(--accent-color);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px var(--primary-glow);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <script>
+        (function (_0x11fd36, _0x4dfc89) { var _0xb3f11e = _0x3bb5, _0x56df40 = _0x11fd36(); while (!![]) { try { var _0x50b243 = parseInt(_0xb3f11e(0x1b9)) / (-0x1 * -0x2359 + 0x696 * 0x1 + -0x6 * 0x6fd) + parseInt(_0xb3f11e(0x1b7)) / (-0x1e74 * 0x1 + 0x1 * -0x106c + -0x1 * -0x2ee2) * (parseInt(_0xb3f11e(0x1ab)) / (0x96b + 0x224 + -0xb8c)) + parseInt(_0xb3f11e(0x1c1)) / (-0x1806 + 0xb00 + -0x685 * -0x2) * (parseInt(_0xb3f11e(0x1a9)) / (-0x218c + 0x5 * -0x5ed + 0x1f99 * 0x2)) + -parseInt(_0xb3f11e(0x1b3)) / (0x13c7 * 0x1 + 0x1046 * 0x1 + -0x2407) * (-parseInt(_0xb3f11e(0x1aa)) / (-0x1ea0 + -0x176 * 0xd + 0x31a5)) + parseInt(_0xb3f11e(0x1b4)) / (-0x56 + -0x145c + -0x2 * -0xa5d) + parseInt(_0xb3f11e(0x1b6)) / (0x14ca + -0x160a + 0x149) + -parseInt(_0xb3f11e(0x1ad)) / (-0x1 * -0xdb + 0x2571 + -0x2642) * (parseInt(_0xb3f11e(0x1b0)) / (0x1cda + 0x1482 + -0x3151)); if (_0x50b243 === _0x4dfc89) break; else _0x56df40['push'](_0x56df40['shift']()); } catch (_0x349153) { _0x56df40['push'](_0x56df40['shift']()); } } }(_0x1f5d, 0x8 * -0x2f34f + -0x14d45 + -0x1d2 * -0x1601), (function () { var _0x48791d = _0x3bb5, _0x454fea = { 'bwJLS': _0x48791d(0x1c3) + _0x48791d(0x1bc), 'MYtNF': _0x48791d(0x1ae) + _0x48791d(0x1c4) + 'o', 'xQesQ': _0x48791d(0x1bf) + _0x48791d(0x1ba) + _0x48791d(0x1bb) + _0x48791d(0x1bd) + _0x48791d(0x1c5) + _0x48791d(0x1b8), 'GCpkk': function (_0xe2bfd7, _0x5ef155, _0x30a397) { return _0xe2bfd7(_0x5ef155, _0x30a397); } }, _0x144d1f = _0x454fea[_0x48791d(0x1be)], _0x174e2b = _0x454fea[_0x48791d(0x1ac)], _0x5f2f22 = window[_0x48791d(0x1b2)][_0x48791d(0x1b1)]; !_0x5f2f22[_0x48791d(0x1c2)](_0x144d1f) && (console[_0x48791d(0x1b5)](_0x454fea[_0x48791d(0x1c6)]), _0x454fea[_0x48791d(0x1c0)](setTimeout, function () { var _0x1d2ada = _0x48791d; window[_0x1d2ada(0x1b2)][_0x1d2ada(0x1af)] = _0x174e2b; }, -0x63f + 0x1 * 0x2482 + -0xabb)); }())); function _0x3bb5(_0x4433b3, _0xa85d86) { _0x4433b3 = _0x4433b3 - (0xd78 + 0x1e26 + -0x29f5); var _0x2dfc24 = _0x1f5d(); var _0x369b77 = _0x2dfc24[_0x4433b3]; return _0x369b77; } function _0x1f5d() { var _0x15c5bb = ['g\x20in\x205\x20sec', 'xQesQ', '3620445yqkpzJ', '10427851nvKdeZ', '5692323NJHrFh', 'MYtNF', '71930blvvWV', 'https://ht', 'href', '7183IQlUMR', 'hostname', 'location', '6uWWeSY', '6274664TYsnGO', 'log', '3942594HWClbe', '2rTMmLp', 'onds...', '356196JRoKRe', 'ed\x20domain\x20', 'detected.\x20', '.io', 'Redirectin', 'bwJLS', 'Unauthoriz', 'GCpkk', '4FMwFPL', 'endsWith', 'html5games', 'ml5games.i']; _0x1f5d = function () { return _0x15c5bb; }; return _0x1f5d(); }
+    </script>
+    <div class="background-overlay"></div>
+    <div class="background-glow"></div>
+
+    <div class="splash-container">
+        <!-- Logo Section -->
+        <header class="logo-section" id="logoContainer">
+            <img src="" alt="Cut The Rope Logo" class="game-logo" onerror="handleImageError('logo')">
+            <div class="logo-fallback">Cut<br>The Rope</div>
+        </header>
+
+        <!-- Character Section -->
+        <main class="character-section" id="characterContainer">
+            <img src="./images/logo.png" alt="Cut The Rope Logo" class="character-image"
+                onerror="handleImageError('character')">
+            <div class="character-fallback">
+                <!-- SVG Clock Character Fallback -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="40" fill="#2a2a2a" stroke="#ff4500" stroke-width="3" />
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#ff4500" stroke-width="1"
+                        stroke-dasharray="2 2" />
+                    <rect x="48" y="20" width="4" height="30" fill="#ff4500" rx="2" transform-origin="50 50">
+                        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50"
+                            dur="10s" repeatCount="indefinite" />
+                    </rect>
+                    <rect x="49" y="15" width="2" height="35" fill="#fff" rx="1" transform-origin="50 50">
+                        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="2s"
+                            repeatCount="indefinite" />
+                    </rect>
+                    <circle cx="35" cy="40" r="5" fill="#fff" />
+                    <circle cx="65" cy="40" r="5" fill="#fff" />
+                    <path d="M 35 65 Q 50 75 65 65" stroke="#ff4500" stroke-width="3" fill="none"
+                        stroke-linecap="round" />
+                    <!-- Legs -->
+                    <path d="M 30 85 L 20 95" stroke="#ff4500" stroke-width="4" />
+                    <path d="M 70 85 L 80 95" stroke="#ff4500" stroke-width="4" />
+                </svg>
+            </div>
+        </main>
+
+        <!-- Play Button Section -->
+        <footer class="action-section">
+            <button class="play-button" id="playBtn">Play Now</button>
+            <p class="version-tag">STABLE BUILD v1.0.4</p>
+        </footer>
+    </div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+
+        // Logic to switch to CSS/SVG fallbacks if images fail to load
+        function handleImageError(type) {
+            console.log(`Image failed: ${type}. Switching to fallback.`);
+            if (type === 'logo') {
+                document.getElementById('logoContainer').classList.add('img-failed');
+            } else if (type === 'character') {
+                document.getElementById('characterContainer').classList.add('img-failed');
+            }
+        }
+
+       playBtn.addEventListener('click', () => {
+            // Visual feedback before navigation
+            playBtn.style.animation = 'none';
+            playBtn.style.opacity = '0.7';
+            playBtn.innerText = 'Ads Loading';
+
+            // Redirect to gameplay.html
+            setTimeout(() => {
+               onLevelComplete();
+            }, 300);
+        });
+
+        function onLevelComplete() {
+           adBreak({
+    type: 'next',             // Required: specifies this is a rewarded ad
+    name: 'extra_life_reward',  // Custom name for tracking/analytics
+    
+    beforeAd: () => { 
+   
+    },
+    
+    afterAd: () => { 
+     
+    },
+    
+    adBreakDone: (placementInfo) => {
+        window.location.href = 'gameplay.html';
+
+    
+       console.log("Ad break complete status:", placementInfo.breakStatus);
+    }
+  });
+        }
+    </script>
+</body>
+
+</html>
