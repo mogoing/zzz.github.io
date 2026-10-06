@@ -402,6 +402,26 @@
     22%{opacity:.85}
     100%{transform:translateY(calc(100vh - 46px)) scale(1.7);opacity:0}
   }
+  /* ===== 资源预下载中心 ===== */
+  #goDl{background:linear-gradient(135deg,#7ED957,#4CAF50);box-shadow:0 8px 20px rgba(76,175,80,.3)}
+  #goDl.done{background:linear-gradient(135deg,#B8E986,#7ED957);box-shadow:0 8px 20px rgba(126,217,87,.35)}
+  #dlMask{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(74,63,92,.45);backdrop-filter:blur(3px)}
+  #dlMask.show{display:flex}
+  #dlPanel{width:min(92vw,420px);max-height:82vh;background:linear-gradient(165deg,#FFFDF5,#FFF3E0);border-radius:22px;padding:18px 16px;box-shadow:0 16px 40px rgba(74,63,92,.35);display:flex;flex-direction:column;gap:12px;overflow:hidden}
+  #dlPanel h3{font-size:17px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;flex:none}
+  #dlPanel h3 button{border:0;background:var(--sunny);color:#5a4a00;font-size:15px;font-weight:800;width:30px;height:30px;border-radius:50%;cursor:pointer}
+  #dlTotal{height:14px;border-radius:7px;background:#F1E8D8;overflow:hidden;position:relative;flex:none}
+  #dlTotal i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FF6B6B,#FFD93D,#4ECDC4);border-radius:7px;transition:width .3s}
+  #dlTotalT{font-size:13px;color:var(--muted);text-align:right;margin-top:2px;flex:none}
+  #dlRows{overflow-y:auto;display:flex;flex-direction:column;gap:6px;flex:1;padding-right:2px}
+  .dlrow{display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:7px 10px;font-size:12px;color:var(--ink)}
+  .dlrow .dn{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .dlrow .ds{min-width:50px;text-align:right;font-weight:800;color:var(--muted);font-size:12px}
+  .dlrow.ok .ds{color:#4CAF50}
+  .dlrow.fail .ds{color:#E53935}
+  .dlrow.loading .ds{color:#FF8F3C}
+  .dlrow .dbar{width:56px;height:6px;border-radius:3px;background:#F1E8D8;overflow:hidden;flex:none}
+  .dlrow .dbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FFD93D,#FF8F3C);transition:width .3s}
 </style>
 <!-- 热更新：内容版本变化自动带参重载，绕过缓存（无需重装 APK） -->
 <script>
@@ -453,10 +473,19 @@
   <div class="fun-row">
     <button class="fun-btn mint" id="goBoard">💬 留言板<b class="badge" id="boardBadge" style="display:none">0</b></button>
     <button class="fun-btn grape" id="goDiary">📖 我的日记</button>
+    <button class="fun-btn" id="goDl" style="background:linear-gradient(135deg,#7ED957,#4CAF50);box-shadow:0 8px 20px rgba(76,175,80,.3)">⬇️ 资源</button>
     <button class="fun-btn coral" id="goAdmin" style="display:none">⭐ 管理后台</button>
     <button class="logout" id="logout">退出登录</button>
   </div>
   <p class="hint" id="hint"></p>
+  <div id="dlMask">
+    <div id="dlPanel">
+      <h3>⬇️ 资源下载中心 <button id="dlClose">✕</button></h3>
+      <div id="dlTotal"><i></i></div>
+      <div id="dlTotalT">准备中…</div>
+      <div id="dlRows"></div>
+    </div>
+  </div>
   <div class="stage-shell">
     <section class="stage" id="stage"></section>
   </div>
@@ -848,6 +877,91 @@
   }
 
   render();
+/* ===== 资源预下载中心：进页面自动后台下载，杜绝中途损坏 ===== */
+var DL_LIST = [
+  ['ab/ruffle.js',465076,'Ruffle 启动器'],
+  ['ab/core.ruffle.c80159b526e567babaf5.js',108322,'Ruffle 内核 A'],
+  ['ab/core.ruffle.f000070ea72f8ae4fe3a.js',114739,'Ruffle 内核 B'],
+  ['ab/72a20ef1c0b8ceb37720.wasm.gz',4976993,'渲染引擎 A（压缩）'],
+  ['ab/826bb0938097485a2c9d.wasm.gz',4984326,'渲染引擎 B（压缩）'],
+  ['ab/angry_birds.swf?v=44',7122218,'愤怒的小鸟'],
+  ['ab/cursed-treasure-1.swf',7987921,'被诅咒的宝藏'],
+  ['ab/skisafari.swf',10319667,'滑雪大冒险']
+];
+var dlTotalBytes = 0, dlGotBytes = 0, dlFailed = 0, dlBusy = false, dlAllDone = false;
+DL_LIST.forEach(function(x){ dlTotalBytes += x[1]; });
+var goDl = document.getElementById('goDl');
+var dlMask = document.getElementById('dlMask');
+var dlRows = document.getElementById('dlRows');
+var dlTotalBar = document.querySelector('#dlTotal i');
+var dlTotalT = document.getElementById('dlTotalT');
+function fmtMB(n){ return (n/1048576).toFixed(1) + 'MB'; }
+function makeDlRow(name, size){
+  var r = document.createElement('div');
+  r.className = 'dlrow';
+  r.innerHTML = '<span class="dn">' + name + '</span><span class="dbar"><i></i></span><span class="ds">' + fmtMB(size) + '</span>';
+  return { el: r, bar: r.querySelector('.dbar i'), st: r.querySelector('.ds') };
+}
+var dlItems = DL_LIST.map(function(x){
+  var row = makeDlRow(x[2], x[1]);
+  dlRows.appendChild(row.el);
+  return { name: x[2], url: x[0], size: x[1], el: row.el, bar: row.bar, st: row.st, done: false };
+});
+function dlRefresh(){
+  var pct = dlTotalBytes ? Math.round(dlGotBytes / dlTotalBytes * 100) : 0;
+  dlTotalBar.style.width = pct + '%';
+  dlTotalT.textContent = fmtMB(dlGotBytes) + ' / ' + fmtMB(dlTotalBytes) + ' · ' + pct + '%';
+  if (dlBusy) { goDl.textContent = '⬇️ ' + pct + '%'; }
+  else if (dlAllDone && dlFailed === 0) { goDl.textContent = '✅ 已就绪'; goDl.classList.add('done'); }
+  else if (dlAllDone) { goDl.textContent = '⚠️ ' + dlFailed + '个失败'; }
+}
+async function dlOne(it){
+  it.el.className = 'dlrow loading';
+  it.st.textContent = '下载中';
+  var got = null;
+  for (var t = 0; t < 3 && got === null; t++){
+    try {
+      var r = await fetch(it.url, t > 0 ? { cache: 'reload' } : {});
+      if (!r.ok) continue;
+      var b = await r.arrayBuffer();
+      if (b.byteLength === it.size) got = b;
+    } catch(e){}
+  }
+  if (got) {
+    dlGotBytes += it.size;
+    it.done = true;
+    it.el.className = 'dlrow ok';
+    it.st.textContent = '✅ 完整';
+    it.bar.style.width = '100%';
+    it.el.title = '已下载完整 ' + fmtMB(it.size);
+  } else {
+    dlFailed++;
+    it.el.className = 'dlrow fail';
+    it.st.textContent = '失败';
+  }
+  dlRefresh();
+}
+async function dlStart(){
+  if (dlBusy) return;
+  dlBusy = true;
+  goDl.textContent = '⬇️ 开始…';
+  for (var i = 0; i < dlItems.length; i++){
+    if (dlItems[i].done) continue;
+    await dlOne(dlItems[i]);
+  }
+  dlBusy = false;
+  dlAllDone = true;
+  dlRefresh();
+}
+goDl.addEventListener('click', function(){
+  dlMask.classList.add('show');
+  if (!dlBusy && !dlAllDone) dlStart();
+});
+document.getElementById('dlClose').addEventListener('click', function(){ dlMask.classList.remove('show'); });
+dlMask.addEventListener('click', function(e){ if (e.target === dlMask) dlMask.classList.remove('show'); });
+dlRefresh();
+/* 进页面自动开始预下载 */
+setTimeout(dlStart, 600);
 </script>
 <script>
 // ===== 安卓返回键：本页按返回 = 回登录页 =====
