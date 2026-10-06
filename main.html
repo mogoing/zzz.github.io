@@ -552,9 +552,7 @@
     { name:'沙威玛',   desc:'摆摊传奇', icon:'shaw', target:'shawarma.html' },
     { name:'登山赛车', desc:'翻山越岭', icon:'hcr', target:'hcr.html?v=39' },
     { name:'割绳子',   desc:'糖果物理', icon:'ctr', target:'ab/ctr.html' },
-    { name:'滑雪大冒险', desc:'躲雪崩', icon:'ski', target:'ski.html' },
     { name:'愤怒的小鸟', desc:'原版弹弓', icon:'ab', target:'ab.html' },
-    { name:'被诅咒的宝藏', desc:'恶魔塔防', icon:'gem', target:'ab/cursed.html?v=41' },
   ];
   const PER_PAGE = 6;   // 一页六个（两排三个）
   const ICONS = {
@@ -570,8 +568,6 @@
     ab:    '<span style="font-size:38px;line-height:1">🐦</span>',
     hcr:   '<span class="i-hcr"><i class="hill"></i><i class="hill2"></i><i class="car"></i><i class="head"></i><i class="flag"></i></span>',
     ctr:   '<span style="font-size:38px;line-height:1">🍬</span>',
-    ski:   '<span class="i-ski">🎿</span>',
-    gem:   '<span style="font-size:38px;line-height:1">💎</span>',
   };
 
   // ===== 金币拉取 =====
@@ -896,7 +892,7 @@
 
   render();
 /* ===== 资源预下载中心：进页面自动后台下载，杜绝中途损坏 ===== */
-var DL_VER = 'v49';
+var DL_VER = 'v53c';
 var DL_LIST = [
   ['ab/ruffle.js?v=47',465076,'Ruffle 启动器'],
   ['ab/core.ruffle.c80159b526e567babaf5.js',108322,'Ruffle 内核 A'],
@@ -904,8 +900,19 @@ var DL_LIST = [
   ['ab/72a20ef1c0b8ceb37720.wasm.gz',4976993,'渲染引擎 A（压缩）'],
   ['ab/826bb0938097485a2c9d.wasm.gz',4984326,'渲染引擎 B（压缩）'],
   ['ab/angry_birds.swf?v=47',7122218,'愤怒的小鸟'],
-  ['ab/cursed-treasure-1.swf',7987921,'被诅咒的宝藏'],
-  ['ab/skisafari.swf',10319667,'滑雪大冒险']
+  ['ab/ctr_cn/viverse-game-interface.js',1540542,'割绳子 加载器'],
+  ['ab/ctr_cn/ctr.min.js',782857,'割绳子 游戏主体'],
+  ['ab/ctr_cn/playcanvas-stable.min.js',478559,'割绳子 渲染引擎'],
+  ['ab/ctr_cn/index.umd.js',304623,'割绳子 引导'],
+  ['ab/ctr_cn/storage-sdk.umd.js',7046,'割绳子 存储SDK'],
+  ['ab/ctr_cn/famobi.json',960,'割绳子 配置'],
+  ['ab/ctr_cn/res/loader.avif',13186,'割绳子 加载动画'],
+  ['ab/ctr_cn/res/loader_bg.jpg',22263,'割绳子 加载背景'],
+  ['ab/ctr_cn/res/strings.json',47035,'割绳子 中文文本'],
+  ['ab/ctr_cn/res/menu/ui.avif',158811,'割绳子 菜单UI'],
+  ['ab/ctr_cn/res/menu/ui.json',21407,'割绳子 菜单配置'],
+  ['ab/ctr_cn/res/audio/aac/sound.aac',334758,'割绳子 音效'],
+  ['ab/ctr_cn/res/box01/maps.json',53856,'割绳子 关卡数据']
 ];
 var dlTotalBytes = 0, dlGotBytes = 0, dlFailed = 0, dlBusy = false, dlAllDone = false;
 DL_LIST.forEach(function(x){ dlTotalBytes += x[1]; });
