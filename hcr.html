@@ -3,114 +3,456 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>登山赛车 · 原版</title>
+<title>登山赛车 · 原版素材</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
-html,body{width:100%;height:100%;overflow:hidden;background:#1c1e26;font-family:'PingFang SC','Microsoft YaHei',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;background:#10151c;font-family:'PingFang SC','Microsoft YaHei',sans-serif;touch-action:none}
 #top{position:fixed;top:0;left:0;right:0;height:50px;z-index:100;display:flex;align-items:center;gap:10px;padding:0 10px;
-  background:linear-gradient(135deg,rgba(40,44,58,.95),rgba(70,52,30,.95));backdrop-filter:blur(4px)}
-#top .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:rgba(255,255,255,.95);color:#3a3020;
+  background:linear-gradient(135deg,rgba(28,36,48,.96),rgba(64,50,26,.96));backdrop-filter:blur(4px)}
+#top .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:rgba(255,255,255,.95);color:#2a2a3a;
   font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.2)}
 #top .btn:active{transform:translateY(1px)}
-#top .t{color:#fff;font-size:16px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+#top .t{color:#fff;font-size:16px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.5);white-space:nowrap}
 #top .sp{flex:1}
-#stage{position:fixed;top:50px;left:0;right:0;bottom:0;background:#1c1e26;display:flex;align-items:center;justify-content:center}
-#stage ruffle-player{width:100%;height:100%}
-#loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
-  background:radial-gradient(circle at 50% 40%,#4a5a3a 0%,#1c1e26 70%);z-index:50}
-#loading .car{font-size:64px;animation:bounce 1s infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-#loading .lt{color:#fff;font-size:18px;font-weight:800;letter-spacing:2px}
-#loading .ld{color:#e8e0cf;font-size:13px;margin-top:-6px}
-#err{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;
-  background:rgba(16,18,24,.96);text-align:center;padding:30px}
-#err .e{font-size:52px}
-#err .et{color:#ffd93d;font-size:20px;font-weight:800}
-#err .ed{color:#cfd8e8;font-size:14px;line-height:1.8;max-width:340px}
+#wrap{position:fixed;top:50px;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:#0c1118}
+#canvas{display:block;background:#9fd4f0}
+#hud{position:fixed;z-index:90;pointer-events:none;display:flex;align-items:center;gap:8px;padding:8px 14px;
+  background:rgba(0,0,0,.35);border-radius:20px;backdrop-filter:blur(2px)}
+#hud .coin{width:26px;height:26px}
+#hud .num{color:#ffd93d;font-size:20px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.7);min-width:34px}
+#hud .sep{color:#fff;opacity:.6;font-size:15px}
+#hud .dist{color:#fff;font-size:20px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.7)}
+#ctrl{position:fixed;z-index:95;display:flex;justify-content:space-between;pointer-events:none}
+.pedal{width:72px;height:72px;border-radius:50%;border:0;pointer-events:auto;cursor:pointer;
+  box-shadow:0 4px 0 rgba(0,0,0,.35), inset 0 -6px 0 rgba(0,0,0,.18);transition:transform .05s;font-size:0}
+.pedal:active{transform:scale(.94)}
+#gas{background:radial-gradient(circle at 35% 30%,#8ef08e,#2fb85a 70%)}
+#gas::after{content:'▶';color:#0a3d1a;font-size:34px;font-weight:900}
+#brk{background:radial-gradient(circle at 35% 30%,#ff9b8e,#e04a32 70%)}
+#brk::after{content:'◀';color:#3d0a0a;font-size:34px;font-weight:900}
+#rotateTip{position:fixed;z-index:80;left:50%;top:60px;transform:translateX(-50%);color:#ffd93d;font-size:13px;
+  font-weight:800;background:rgba(0,0,0,.5);padding:6px 14px;border-radius:16px;display:none}
+#ov{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;
+  background:rgba(8,12,18,.82);backdrop-filter:blur(4px)}
+#ov .box{width:min(340px,86vw);background:linear-gradient(160deg,#2a3a4a,#1a2430);border-radius:22px;padding:26px 20px 22px;
+  text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.6);border:2px solid rgba(255,255,255,.12)}
+#ov .bt{color:#fff;font-size:24px;font-weight:900;margin-bottom:6px}
+#ov .bs{color:#9fb4c8;font-size:14px;margin-bottom:18px;line-height:1.7}
+#ov .row{display:flex;gap:12px;justify-content:center}
+#ov .big{flex:1;max-width:150px;height:48px;border:0;border-radius:24px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.3)}
+#ov .green{background:linear-gradient(90deg,#7ce88a,#2fb85a);color:#0a3d1a}
+#ov .gray{background:linear-gradient(90deg,#8a9ab0,#55647a);color:#fff}
+#err{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  background:rgba(8,12,18,.95);text-align:center;padding:30px}
+#err .e{font-size:48px}
+#err .et{color:#ffd93d;font-size:20px;font-weight:900}
+#err .ed{color:#9fb4c8;font-size:14px;line-height:1.7;max-width:320px}
 #err .eb{height:44px;border:0;border-radius:22px;padding:0 34px;background:linear-gradient(90deg,#ffd93d,#ff8f3c);color:#5a2d00;
-  font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.3)}
+  font-size:16px;font-weight:900;cursor:pointer}
 </style>
 </head>
 <body>
 <div id="top">
   <button class="btn" id="btnBack">← 主页</button>
-  <div class="t">🚗 登山赛车 · 原版</div>
+  <div class="t">🚗 登山赛车</div>
   <div class="sp"></div>
   <button class="btn" id="btnFull">⛶ 全屏</button>
 </div>
 
-<div id="stage"></div>
-
-<div id="loading">
-  <div class="car">🚗</div>
-  <div class="lt">登山赛车 · 启动中</div>
-  <div class="ld">首次加载约 17MB（Flash 模拟器 + 游戏），请保持网络畅通</div>
+<div id="wrap">
+  <canvas id="canvas"></canvas>
 </div>
+<div id="hud"><img class="coin" src="hcr/coin.png" alt=""><span class="num" id="hudCoin">0</span><span class="sep">|</span><span class="dist" id="hudDist">0m</span></div>
+<div id="ctrl">
+  <button class="pedal" id="brk"></button>
+  <button class="pedal" id="gas"></button>
+</div>
+<div id="rotateTip">建议横屏游玩，画面更开阔</div>
 
+<div id="ov">
+  <div class="box">
+    <div class="bt" id="ovTitle">已暂停</div>
+    <div class="bs" id="ovSub">中途休息一下</div>
+    <div class="row" id="ovBtns"></div>
+  </div>
+</div>
 <div id="err">
   <div class="e">🚗💥</div>
-  <div class="et" id="errTitle">加载失败</div>
-  <div class="ed" id="errDesc">未知错误，请重试。</div>
+  <div class="et">素材加载失败</div>
+  <div class="ed" id="errDesc">游戏图片未能加载，请检查网络后重试。</div>
   <button class="eb" id="errBtn">重试</button>
 </div>
 
 <script>
 'use strict';
-document.getElementById('btnBack').onclick = ()=>{ location.href='main.html'; };
-document.getElementById('errBtn').onclick = ()=>{ location.reload(); };
-
-var stage = document.getElementById('stage');
-var loading = document.getElementById('loading');
-
-function showErr(m) {
-  var t = document.getElementById('errTitle');
-  var d = document.getElementById('errDesc');
-  var mm = String(m || '');
-  if (/memory|Memory|Out of/i.test(mm)) {
-    t.textContent = '设备内存不足';
-    d.textContent = 'Flash 模拟器需要约 14MB 运行内存，当前设备内存紧张。建议：关闭其他应用后重试，或换一台手机/电脑。';
-  } else if (/fetch|Fetch|network|Network|load|Load|404|401|403/i.test(mm)) {
-    t.textContent = '下载中断';
-    d.textContent = '游戏资源下载失败（网络不稳定）。建议：连接稳定 Wi-Fi 后重试；首次加载完会被浏览器缓存，下次秒开。';
-  } else if (/mime|MIME|wasm/i.test(mm)) {
-    t.textContent = '环境不兼容';
-    d.textContent = '浏览器未能正确识别游戏组件。建议：更新浏览器后重试。';
-  } else {
-    t.textContent = '启动异常';
-    d.textContent = (mm ? mm.slice(0, 160) : '未知错误') + '。建议：刷新重试；反复失败请换电脑打开。';
+/* ============ 素材 ============ */
+var ASSETS = {
+  jeep: 'hcr/jeep.png',
+  coin: 'hcr/coin.png',
+  ground: 'hcr/terrain-ground.png',
+  surface: 'hcr/terrain-surface.png',
+  sky: 'hcr/sky-bg.png'
+};
+var imgs = {}, loaded = 0, total = 5;
+function loadAll(cb) {
+  var k;
+  for (k in ASSETS) {
+    (function(key){
+      var img = new Image();
+      img.onload = function(){ loaded++; if (loaded === total) cb(); };
+      img.onerror = function(){ document.getElementById('err').style.display='flex'; };
+      img.src = ASSETS[key];
+      imgs[key] = img;
+    })(k);
   }
-  loading.style.display = 'none';
-  document.getElementById('err').style.display = 'flex';
 }
 
-/* 复用 ab/ 的 Ruffle 播放器（0 外链） */
-var s = document.createElement('script');
-s.src = 'ab/ruffle.js';
-s.onload = function() {
-  window.RufflePlayer = window.RufflePlayer || {};
-  window.RufflePlayer.config = {
-    autoplay: 'on',
-    unmuteOverlay: 'hidden',
-    letterbox: 'off',
-    allowScriptAccess: false
-  };
-  var ruffle = window.RufflePlayer.newest();
-  if (!ruffle) { showErr('Ruffle 初始化失败，请更新浏览器'); return; }
-  var player = ruffle.createPlayer();
-  player.style.width = '100%';
-  player.style.height = '100%';
-  stage.appendChild(player);
-  player.load('ab/hill-climb-racing.swf').then(function() {
-    loading.style.display = 'none';
-  }).catch(function(e) {
-    showErr(e);
+/* ============ 游戏状态 ============ */
+var W = 960, H = 540;
+var canvas, ctx;
+var state = 'loading';
+var car = { x: 180, y: 0, vx: 0, vy: 0, angle: 0, airborne: false, headHit: false };
+var coinsGot = 0, dist = 0;
+var keys = { gas: false, brk: false };
+var coinList = [];
+var TERRAIN = [];
+var T_LEN = 6000, T_STEP = 8;
+var carW = 90, carH = 46;
+var groundY = 400;
+var lastT = 0;
+
+/* ============ 地形生成 ============ */
+function genTerrain() {
+  TERRAIN = [];
+  var n = Math.floor(T_LEN / T_STEP) + 1;
+  var i, x, y;
+  for (i = 0; i < n; i++) {
+    x = i * T_STEP;
+    y = groundY
+      - 40 * Math.sin(x * 0.0022 + 0.6)
+      - 26 * Math.sin(x * 0.0047 + 2.1)
+      - 14 * Math.sin(x * 0.0089 + 4.2)
+      - 8 * Math.sin(x * 0.017 + 1.3);
+    if (x > 1500 && x < 2600) {
+      y -= 60 * Math.sin((x - 1500) * 0.012);
+    }
+    TERRAIN.push(y);
+  }
+  coinList = [];
+  var cx;
+  for (cx = 420; cx < 5600; cx += 260) {
+    coinList.push({ x: cx, y: terrainY(cx) - 58, taken: false });
+  }
+}
+
+function terrainY(x) {
+  if (x < 0) x = 0;
+  if (x > T_LEN - T_STEP) x = T_LEN - T_STEP;
+  var i = Math.floor(x / T_STEP);
+  var f = (x - i * T_STEP) / T_STEP;
+  return TERRAIN[i] * (1 - f) + TERRAIN[i + 1] * f;
+}
+function terrainSlope(x) {
+  return (terrainY(x + T_STEP) - terrainY(x - T_STEP)) / (2 * T_STEP);
+}
+
+/* ============ 物理 ============ */
+var G = 1500, POWER = 900, BRAKE = 1400, FRICTION = 0.6, BOUNCE = 0.32, HEAD_LIMIT = 62;
+
+function resetCar() {
+  car.x = 180; car.vx = 0; car.vy = 0; car.angle = 0;
+  car.airborne = false; car.headHit = false;
+  coinsGot = 0; dist = 0;
+  coinList.forEach(function(c){ c.taken = false; });
+  document.getElementById('hudCoin').textContent = '0';
+  document.getElementById('hudDist').textContent = '0m';
+  lastT = 0;
+}
+
+function step(dt) {
+  if (dt > 0.05) dt = 0.05;
+  var slope = terrainSlope(car.x);
+  var theta = Math.atan(slope);
+
+  if (!car.airborne) {
+    var angDiff = normalizeAng(theta - car.angle);
+    car.angle += angDiff * Math.min(1, dt * 6);
+    var a = 0;
+    if (keys.gas) a += POWER;
+    if (keys.brk) a -= BRAKE;
+    a -= G * Math.sin(theta);
+    if (!keys.gas && !keys.brk) a -= car.vx * 0.0012;
+    car.vx += a * dt;
+    var maxV = 780;
+    if (car.vx > maxV) car.vx = maxV;
+    if (car.vx < -260) car.vx = -260;
+    car.x += car.vx * dt;
+    car.y = terrainY(car.x) - carH * 0.5;
+    var nextSlope = terrainSlope(car.x + 30);
+    if (nextSlope < -0.30 && car.vx > 330) {
+      car.airborne = true;
+      car.vy = -Math.min(560, Math.abs(nextSlope) * 620);
+      car.vx *= 0.96;
+    }
+  } else {
+    car.vy += G * dt;
+    car.x += car.vx * dt;
+    car.y += car.vy * dt;
+    var targetA = car.vy > 0 ? 0 : -0.15;
+    car.angle += normalizeAng(targetA - car.angle) * Math.min(1, dt * 2.5);
+    var gy2 = terrainY(car.x);
+    var bottom = car.y + carH * 0.5;
+    if (bottom >= gy2) {
+      var slopeDeg = Math.atan(terrainSlope(car.x)) * 180 / Math.PI;
+      var angDeg = car.angle * 180 / Math.PI;
+      if (Math.abs(normalizeAng(angDeg - slopeDeg)) > HEAD_LIMIT) {
+        car.headHit = true;
+        endGame(false);
+        return;
+      }
+      car.y = gy2 - carH * 0.5;
+      car.airborne = false;
+      car.angle = Math.atan(terrainSlope(car.x));
+      car.vy = 0;
+    }
+  }
+
+  var cc, dxx, dyy;
+  for (cc = 0; cc < coinList.length; cc++) {
+    var c = coinList[cc];
+    if (c.taken) continue;
+    dxx = c.x - car.x;
+    dyy = c.y - (car.y - carH * 0.2);
+    if (dxx * dxx + dyy * dyy < 55 * 55) {
+      c.taken = true;
+      coinsGot++;
+      document.getElementById('hudCoin').textContent = coinsGot;
+    }
+  }
+
+  var nd = Math.max(0, Math.floor((car.x - 120) / 8));
+  if (nd > dist) {
+    dist = nd;
+    document.getElementById('hudDist').textContent = dist + 'm';
+  }
+
+  if (car.x > T_LEN - 200) {
+    car.vx = 0;
+    car.x = T_LEN - 200;
+    endGame(true);
+  }
+}
+
+function normalizeAng(a) {
+  while (a > Math.PI) a -= 2 * Math.PI;
+  while (a < -Math.PI) a += 2 * Math.PI;
+  return a;
+}
+
+/* ============ 渲染 ============ */
+function render() {
+  ctx.clearRect(0, 0, W, H);
+  var viewX0 = Math.floor(car.x) - 60;
+  var i;
+
+  var sky = ctx.createLinearGradient(0, 0, 0, H * 0.7);
+  sky.addColorStop(0, '#6db4e8');
+  sky.addColorStop(0.6, '#b8e2f6');
+  sky.addColorStop(1, '#dff2fa');
+  ctx.fillStyle = sky;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.fillStyle = 'rgba(255,240,180,.9)';
+  ctx.beginPath(); ctx.arc(W - 120, 70, 34, 0, 7); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,.75)';
+  ctx.beginPath(); ctx.ellipse(180, 90, 52, 20, 0, 0, 7); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(600, 130, 44, 16, 0, 0, 7); ctx.fill();
+
+  ctx.fillStyle = 'rgba(120,170,190,.4)';
+  ctx.beginPath();
+  ctx.moveTo(0, H * 0.62);
+  for (i = 0; i <= W; i += 24) {
+    var wx = i + car.x * 0.25;
+    ctx.lineTo(i, H * 0.62 - 40 * Math.abs(Math.sin(wx * 0.003 + 1)) - 20 * Math.sin(wx * 0.007));
+  }
+  ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath(); ctx.fill();
+
+  ctx.fillStyle = '#8a5a2a';
+  ctx.fillRect(0, H * 0.55, W, H * 0.45);
+  ctx.fillStyle = '#6e4520';
+  ctx.fillRect(0, H * 0.78, W, H * 0.22);
+
+  var tx, ty, tprevY = null;
+  for (tx = viewX0; tx <= viewX0 + W + 120; tx += 6) {
+    ty = terrainY(tx);
+    var sx = tx - viewX0;
+    if (tprevY !== null) {
+      ctx.strokeStyle = '#4e7a34';
+      ctx.lineWidth = 9;
+      ctx.beginPath(); ctx.moveTo(sx - 6, tprevY); ctx.lineTo(sx, ty); ctx.stroke();
+      ctx.strokeStyle = '#6ba34a';
+      ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.moveTo(sx - 6, tprevY - 2); ctx.lineTo(sx, ty - 2); ctx.stroke();
+    }
+    tprevY = ty;
+  }
+
+  ctx.fillStyle = 'rgba(120,190,80,.5)';
+  for (i = 0; i < 90; i++) {
+    var gx = viewX0 + Math.floor(Math.random() * (W + 120));
+    ctx.fillRect(gx - viewX0, terrainY(gx) - 2, 3, 7);
+  }
+
+  var cc;
+  for (cc = 0; cc < coinList.length; cc++) {
+    var c = coinList[cc];
+    if (c.taken) continue;
+    var scx = c.x - viewX0;
+    if (scx < -40 || scx > W + 40) continue;
+    var bob = Math.sin((performance.now() / 300) + cc) * 6;
+    var flip = Math.abs(Math.sin(performance.now() / 240 + cc));
+    ctx.save();
+    ctx.translate(scx, c.y + bob);
+    ctx.scale(Math.max(0.15, flip), 1);
+    ctx.drawImage(imgs.coin, -14, -14, 28, 28);
+    ctx.restore();
+  }
+
+  drawCar();
+}
+
+function drawCar() {
+  var sx = 260;
+  var sy = car.y;
+  ctx.save();
+  ctx.translate(sx, sy);
+  ctx.rotate(car.angle);
+  ctx.fillStyle = 'rgba(0,0,0,.18)';
+  ctx.beginPath();
+  ctx.ellipse(0, carH * 0.45, carW * 0.52, 8, 0, 0, 7);
+  ctx.fill();
+  ctx.drawImage(imgs.jeep, -carW * 0.5, -carH * 0.5, carW, carH);
+  ctx.fillStyle = '#ffd8a8';
+  ctx.beginPath(); ctx.arc(carW * 0.18, -carH * 0.28, 7, 0, 7); ctx.fill();
+  ctx.restore();
+}
+
+/* ============ 游戏循环 ============ */
+function loop(t) {
+  if (!lastT) lastT = t;
+  var dt = (t - lastT) / 1000;
+  lastT = t;
+  if (state === 'play') step(dt);
+  render();
+  requestAnimationFrame(loop);
+}
+
+/* ============ 控制 ============ */
+function bindControls() {
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keys.gas = true;
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keys.brk = true;
+    if (e.key === 'p' || e.key === 'P' || e.key === 'Escape') togglePause();
+    e.preventDefault();
   });
-  document.getElementById('btnFull').onclick = function() {
-    try { stage.requestFullscreen && stage.requestFullscreen(); } catch(e){}
-  };
+  document.addEventListener('keyup', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keys.gas = false;
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keys.brk = false;
+  });
+  var g = document.getElementById('gas'), b = document.getElementById('brk');
+  g.addEventListener('pointerdown', function(e){ e.preventDefault(); keys.gas = true; });
+  g.addEventListener('pointerup', function(){ keys.gas = false; });
+  g.addEventListener('pointerleave', function(){ keys.gas = false; });
+  g.addEventListener('pointercancel', function(){ keys.gas = false; });
+  b.addEventListener('pointerdown', function(e){ e.preventDefault(); keys.brk = true; });
+  b.addEventListener('pointerup', function(){ keys.brk = false; });
+  b.addEventListener('pointerleave', function(){ keys.brk = false; });
+  b.addEventListener('pointercancel', function(){ keys.brk = false; });
+  g.addEventListener('touchstart', function(e){ e.preventDefault(); keys.gas = true; }, {passive:false});
+  g.addEventListener('touchend', function(e){ e.preventDefault(); keys.gas = false; }, {passive:false});
+  b.addEventListener('touchstart', function(e){ e.preventDefault(); keys.brk = true; }, {passive:false});
+  b.addEventListener('touchend', function(e){ e.preventDefault(); keys.brk = false; }, {passive:false});
+}
+
+/* ============ UI ============ */
+function showOv(title, sub, btns) {
+  document.getElementById('ovTitle').textContent = title;
+  document.getElementById('ovSub').textContent = sub;
+  var box = document.getElementById('ovBtns');
+  box.innerHTML = '';
+  btns.forEach(function(b){
+    var el = document.createElement('button');
+    el.className = 'big ' + b.cls;
+    el.textContent = b.txt;
+    el.onclick = b.fn;
+    box.appendChild(el);
+  });
+  document.getElementById('ov').style.display = 'flex';
+}
+function hideOv(){ document.getElementById('ov').style.display = 'none'; }
+
+function togglePause() {
+  if (state === 'play') {
+    state = 'pause';
+    showOv('已暂停', '休息一下，随时继续', [
+      {txt:'继续', cls:'green', fn:function(){ state='play'; hideOv(); }},
+      {txt:'返回主页', cls:'gray', fn:function(){ location.href='main.html'; }}
+    ]);
+  } else if (state === 'pause') {
+    state = 'play';
+    hideOv();
+  }
+}
+
+function endGame(win) {
+  state = 'over';
+  showOv(win ? '到达终点！' : (car.headHit ? '车手摔晕了！' : '游戏结束'),
+    '里程 ' + dist + 'm · 金币 ' + coinsGot + (win ? '，太棒了！' : '，别急，再来一次'),
+    [
+      {txt:'再来一次', cls:'green', fn:function(){ resetCar(); state='play'; hideOv(); }},
+      {txt:'返回主页', cls:'gray', fn:function(){ location.href='main.html'; }}
+    ]);
+}
+
+/* ============ 适配 ============ */
+function fit() {
+  var c = document.getElementById('canvas');
+  var w = window.innerWidth, h = window.innerHeight - 50;
+  var scale = Math.min(w / W, h / H);
+  var cw = Math.floor(W * scale), ch = Math.floor(H * scale);
+  c.style.width = cw + 'px';
+  c.style.height = ch + 'px';
+  var top = 50 + (h - ch) / 2;
+  var hud = document.getElementById('hud');
+  hud.style.top = (top + 8) + 'px';
+  hud.style.left = Math.max(8, (w - cw) / 2 + 8) + 'px';
+  var ctrl = document.getElementById('ctrl');
+  ctrl.style.top = (top + ch - 96) + 'px';
+  ctrl.style.left = (w - cw) / 2 + 'px';
+  ctrl.style.width = cw + 'px';
+  document.getElementById('rotateTip').style.display = (h < w ? 'none' : 'block');
+  c.width = W; c.height = H;
+  ctx = c.getContext('2d');
+}
+window.addEventListener('resize', fit);
+
+/* ============ 启动 ============ */
+document.getElementById('btnBack').onclick = function(){ location.href='main.html'; };
+document.getElementById('errBtn').onclick = function(){ location.reload(); };
+document.getElementById('btnFull').onclick = function(){
+  var el = document.getElementById('wrap');
+  if (el.requestFullscreen) el.requestFullscreen();
 };
-s.onerror = function() { showErr('模拟器组件下载失败，请检查网络后重试'); };
-document.body.appendChild(s);
+loadAll(function(){
+  canvas = document.getElementById('canvas');
+  ctx = canvas.getContext('2d');
+  genTerrain();
+  resetCar();
+  fit();
+  bindControls();
+  state = 'play';
+  requestAnimationFrame(loop);
+});
 </script>
 </body>
 </html>
