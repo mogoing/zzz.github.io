@@ -111,6 +111,10 @@ s.onload = function() {
 };
 s.onerror = function() { showErr('模拟器组件下载失败，请检查网络后重试'); };
 document.body.appendChild(s);
+/* 注册 Service Worker：wasm 走 gz 预压缩，传输量降 65% */
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('ab/sw.js?v=44').catch(function(){});
+}
 </script>
 </body>
 </html>
