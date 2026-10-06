@@ -3,554 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>登山赛车 · 山丘冲刺</title>
+<title>登山赛车 · 原版</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
-html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#bfe3ff}
-#cv{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
-
-/* ===== 顶栏 ===== */
-#top{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:8px;padding:0 10px;z-index:20;
-  background:linear-gradient(135deg,#7ec8ff 0%,#a8e063 50%,#7ee8a0 100%);
-  box-shadow:0 3px 12px rgba(60,150,120,.35)}
-#top .btn{min-width:46px;height:36px;border:0;border-radius:18px;background:rgba(255,255,255,.94);color:#1c7f5c;
-  font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;
-  box-shadow:0 2px 0 rgba(0,0,0,.08)}
+html,body{width:100%;height:100%;overflow:hidden;background:#1c1e26;font-family:'PingFang SC','Microsoft YaHei',sans-serif}
+#top{position:fixed;top:0;left:0;right:0;height:50px;z-index:100;display:flex;align-items:center;gap:10px;padding:0 10px;
+  background:linear-gradient(135deg,rgba(40,44,58,.95),rgba(70,52,30,.95));backdrop-filter:blur(4px)}
+#top .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:rgba(255,255,255,.95);color:#3a3020;
+  font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.2)}
 #top .btn:active{transform:translateY(1px)}
+#top .t{color:#fff;font-size:16px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.4)}
 #top .sp{flex:1}
-#top .hud{background:rgba(255,255,255,.94);border-radius:16px;padding:5px 12px;font-weight:800;color:#1c7f5c;font-size:15px;
-  display:flex;align-items:center;gap:6px;box-shadow:0 2px 0 rgba(0,0,0,.06)}
-#top .hud b{color:#e8452c;font-size:16px}
-#coin{min-width:74px}
-#coin .ic{display:inline-block;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe98a,#f6b42e 60%,#d98a12);border:2px solid #a96a08;
-  box-shadow:inset 0 -2px 3px rgba(160,90,0,.45)}
-
-/* ===== 底部操作按钮（画布外） ===== */
-#ctrl{position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom));z-index:20;display:flex;justify-content:space-between;padding:0 16px;pointer-events:none}
-#ctrl .pedal{pointer-events:auto;width:84px;height:84px;border-radius:50%;border:0;font-size:30px;font-weight:800;color:#fff;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(0,0,0,.18);transition:transform .1s;
-  -webkit-user-select:none;user-select:none}
-#ctrl .pedal:active,#ctrl .pedal.on{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
-#pedalBrake{background:linear-gradient(160deg,#ff7a7a,#e8452c)}
-#pedalGas{background:linear-gradient(160deg,#4ac7ff,#1f8fe0)}
-#pedalGas::after{content:'油门';font-size:15px;position:absolute;margin-top:30px}
-#pedalBrake::after{content:'刹车';font-size:15px;position:absolute;margin-top:30px}
-
-/* ===== 提示 ===== */
-#hint{position:fixed;left:50%;transform:translateX(-50%);bottom:130px;z-index:25;background:rgba(30,60,90,.8);color:#fff;
-  font-size:14px;font-weight:600;padding:7px 18px;border-radius:18px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s}
-#hint.show{opacity:1}
-
-/* ===== 弹层 ===== */
-.mask{position:fixed;inset:0;background:rgba(20,50,70,.55);z-index:30;display:none;align-items:center;justify-content:center;padding:14px}
-.mask.show{display:flex}
-.card{background:linear-gradient(160deg,#f0fbff,#e2f6e0);border-radius:22px;padding:22px;max-width:480px;width:100%;
-  box-shadow:0 12px 40px rgba(0,60,90,.35);border:4px solid #8fd4ff;max-height:86vh;overflow:auto;text-align:center}
-.card h2{color:#145c8a;font-size:24px;margin-bottom:8px}
-.card .sub{color:#5a8aa8;font-size:14px;margin-bottom:14px}
-.gbtn{display:block;margin:10px auto 0;border:0;border-radius:20px;padding:12px 40px;font-size:18px;font-weight:800;color:#fff;cursor:pointer;
-  background:linear-gradient(135deg,#4ac7ff,#1f8fe0);box-shadow:0 4px 0 rgba(10,80,130,.3)}
-.gbtn:active{transform:translateY(2px)}
-.gbtn.gray{background:linear-gradient(135deg,#ccc,#9a9a9a);box-shadow:0 4px 0 rgba(0,0,0,.15)}
-#sett .line{display:flex;justify-content:space-between;padding:7px 2px;font-size:15px;color:#145c8a;border-bottom:1px dashed #bfe3ff}
-#sett .line b{color:#e8452c}
-#sett .big{margin:10px 0;font-size:20px;font-weight:800;color:#f6b42e;text-shadow:0 2px 0 #a96a08}
-#start .logo{font-size:56px;margin-bottom:6px;animation:bob 2.2s infinite}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+#stage{position:fixed;top:50px;left:0;right:0;bottom:0;background:#1c1e26;display:flex;align-items:center;justify-content:center}
+#stage ruffle-player{width:100%;height:100%}
+#loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:radial-gradient(circle at 50% 40%,#4a5a3a 0%,#1c1e26 70%);z-index:50}
+#loading .car{font-size:64px;animation:bounce 1s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+#loading .lt{color:#fff;font-size:18px;font-weight:800;letter-spacing:2px}
+#loading .ld{color:#e8e0cf;font-size:13px;margin-top:-6px}
+#err{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:rgba(16,18,24,.96);text-align:center;padding:30px}
+#err .e{font-size:52px}
+#err .et{color:#ffd93d;font-size:20px;font-weight:800}
+#err .ed{color:#cfd8e8;font-size:14px;line-height:1.8;max-width:340px}
+#err .eb{height:44px;border:0;border-radius:22px;padding:0 34px;background:linear-gradient(90deg,#ffd93d,#ff8f3c);color:#5a2d00;
+  font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.3)}
 </style>
 </head>
 <body>
-<canvas id="cv"></canvas>
-
-<div id="hint"></div>
-
 <div id="top">
   <button class="btn" id="btnBack">← 主页</button>
+  <div class="t">🚗 登山赛车 · 原版</div>
   <div class="sp"></div>
-  <div class="hud" id="hudDist">0 m</div>
-  <div class="hud" id="coin"><span class="ic"></span>&nbsp;<b id="coinN">0</b></div>
-  <div class="hud" id="hudFuel" style="min-width:96px;padding:4px 10px">
-    <span style="font-size:16px">⛽</span><b id="fuelBar" style="display:inline-block;width:46px;height:12px;background:#fff;border-radius:6px;overflow:hidden;vertical-align:middle"><i id="fuelFill" style="display:block;height:100%;width:100%;background:linear-gradient(90deg,#ffd76e,#ff8f3c)"></i></b>
-  </div>
-  <button class="btn" id="btnPause" style="font-size:18px">⏸</button>
+  <button class="btn" id="btnFull">⛶ 全屏</button>
 </div>
 
-<div id="ctrl">
-  <button class="pedal" id="pedalBrake">🛑</button>
-  <button class="pedal" id="pedalGas">🔥</button>
+<div id="stage"></div>
+
+<div id="loading">
+  <div class="car">🚗</div>
+  <div class="lt">登山赛车 · 启动中</div>
+  <div class="ld">首次加载约 17MB（Flash 模拟器 + 游戏），请保持网络畅通</div>
 </div>
 
-<!-- 开始页 -->
-<div class="mask show" id="start">
-  <div class="card">
-    <div class="logo">🚙⛰️</div>
-    <h2>登山赛车</h2>
-    <div class="sub">踩油门翻山越岭 · 捡金币 · 别翻车 · 注意油量</div>
-    <button class="gbtn" id="btnStart" disabled style="opacity:.55">⏳ 素材加载中…</button>
-    <div class="sub" id="loadInfo">正在加载车辆素材…</div>
-    <button class="gbtn gray" id="btnQuit" style="margin-top:8px">← 返回主页</button>
-  </div>
-</div>
-
-<!-- 暂停 -->
-<div class="mask" id="pause">
-  <div class="card">
-    <h2>⏸ 已暂停</h2>
-    <div class="sub">休息一下再翻山</div>
-    <button class="gbtn" id="btnResume">▶ 继续</button>
-    <button class="gbtn gray" id="btnPauseQuit" style="margin-top:8px">← 返回主页</button>
-  </div>
-</div>
-
-<!-- 结算 -->
-<div class="mask" id="sett">
-  <div class="card">
-    <h2 id="settTitle">💥 翻车了</h2>
-    <div class="big" id="settDist">0 m</div>
-    <div style="margin:8px 0"></div>
-    <div class="line"><span>捡到金币</span><b id="settCoins">0</b></div>
-    <div class="line"><span>到账账户金币</span><b id="settReward">+0</b></div>
-    <button class="gbtn" id="settAgain">🔄 再来一局</button>
-    <button class="gbtn gray" id="settHome" style="margin-top:8px">← 返回主页</button>
-  </div>
+<div id="err">
+  <div class="e">🚗💥</div>
+  <div class="et" id="errTitle">加载失败</div>
+  <div class="ed" id="errDesc">未知错误，请重试。</div>
+  <button class="eb" id="errBtn">重试</button>
 </div>
 
 <script>
 'use strict';
-/* ================= 基础 ================= */
-const CV = document.getElementById('cv'), ctx = CV.getContext('2d');
-let W = 0, H = 0, DPR = Math.min(window.devicePixelRatio||1, 2);
-function resize(){
-  W = window.innerWidth; H = window.innerHeight;
-  CV.width = W*DPR; CV.height = H*DPR; CV.style.width = W+'px'; CV.style.height = H+'px';
-  ctx.setTransform(DPR,0,0,DPR,0,0);
-}
-window.addEventListener('resize', resize); resize();
-
-const API = 'https://api.mogoing.xyz';
-const U = localStorage.getItem('blindbox_user')||'', P = localStorage.getItem('blindbox_pass')||'';
-if(!U){ location.replace('index.html'); }
-
-/* ================= 素材 ================= */
-const IMG = {};
-const KEYS = { body:'hcr/car_body.png', head:'hcr/car_head.png', wheel:'hcr/wheel.png' };
-for(const k in KEYS){ const im = new Image(); im.src = KEYS[k]; IMG[k] = im; }
-function imgOK(k){ const i = IMG[k]; return !!(i && i.naturalWidth>0); }
-
-/* ================= 状态 ================= */
-const G = {
-  stage:'start', paused:false, over:false,
-  camX:0,
-  x:0, y:0, vx:0, vy:0, a:0, va:0,        // 车位置/速度/角度/角速度
-  wheelSpin:0, wheelSpin2:0,
-  gas:false, brake:false,
-  fuel:100, coins:0,
-  dist:0, flipT:0,
-  maxX:0,
-  fuelT:0, coinT:0,
-  reward:0,
-};
-/* 车体参数 */
-const R = 60;            // 轮半径（px）
-const AXLE = 330;        // 轴距（两轮心水平距 px）
-const ACC = 920;         // 油门加速度
-const BRAKE = 620;       // 刹车减速度
-const GRAV = 1500;       // 重力
-const VMAX = 1050;       // 最高速度
-
-/* ================= 地形 ================= */
-const SAMP = 8;          // 采样间隔 px
-const TERRAIN = 80000;   // 总长 px（4 像素=1米，即 20km）
-let HMap = null;
-function genTerrain(){
-  HMap = new Float32Array(Math.ceil(TERRAIN/SAMP)+2);
-  // 平滑起伏：多层正弦叠加 + 伪随机相位
-  function hash(n){ n = (n*9301+49297)%233280; return n/233280; }
-  const layers = [
-    {amp:120, freq:1/2400},
-    {amp:90,  freq:1/1300},
-    {amp:55,  freq:1/620},
-    {amp:30,  freq:1/300},
-    {amp:18,  freq:1/140},
-  ];
-  let prev = 0;
-  for(let i=0;i<HMap.length;i++){
-    const x = i*SAMP;
-    let h = 0;
-    for(const L of layers){ h += L.amp * Math.sin(x*L.freq*6.2832 + hash(Math.floor(x*L.freq))*6.2832); }
-    // 偶尔来个大坡（爬坡乐趣）
-    const bump = hash(Math.floor(x/9000));
-    if(bump>0.86){ h += (bump-0.86)/0.14 * 260 * Math.sin(x/2600 + hash(Math.floor(x/9000))*6.2832); }
-    // 平滑限制最大坡度（7px/8px ≈ 41°，可爬）
-    let nh = h + 380;                       // 基线高度
-    const dh = nh - prev;
-    if(dh > 7) nh = prev + 7;
-    if(dh < -7) nh = prev - 7;
-    prev = nh;
-    HMap[i] = nh;
-  }
-  // 起点 300px 拉平，避免开局悬崖
-  for(let i=0;i<38;i++){ const t = i/38; HMap[i] = 380*(1-t) + HMap[i]*t; }
-}
-function groundY(wx){
-  if(wx<0) return HMap[0];
-  const i = Math.floor(wx/SAMP);
-  if(i>=HMap.length-1) return HMap[HMap.length-1];
-  const f = (wx - i*SAMP)/SAMP;
-  return HMap[i]*(1-f) + HMap[i+1]*f;
-}
-function groundAngle(wx){   // 地面坡度角
-  const d = 30;
-  return Math.atan2(groundY(wx+d)-groundY(wx-d), d*2);
-}
-
-/* ================= 道具（金币/油桶） ================= */
-let items = [];
-function genItems(){
-  items = [];
-  let x = 500;
-  while(x < TERRAIN-600){
-    const y = groundY(x);
-    // 金币串：1-4 个，离地 50-120
-    const n = 1 + Math.floor(Math.random()*4);
-    for(let i=0;i<n;i++){
-      items.push({type:'coin', x:x+i*46, y:y-(60+Math.random()*80), t:Math.random()*6});
-    }
-    x += n*46 + 240 + Math.random()*360;
-    // 油桶：概率
-    if(Math.random()<0.55){
-      items.push({type:'fuel', x:x+180, y:groundY(x+180)-(70+Math.random()*40), t:Math.random()*6});
-      x += 560;
-    }
-  }
-}
-
-/* ================= 后端 ================= */
-function api(path, body){
-  const ctl = new AbortController();
-  const timer = setTimeout(()=>ctl.abort(), 3000);
-  return fetch(API+path, {method:body?'POST':'GET', headers:{'Content-Type':'application/json'},
-    body: body?JSON.stringify(body):undefined, signal:ctl.signal})
-    .then(r=>r.json()).catch(()=>({ok:false,error:'网络错误'})).finally(()=>clearTimeout(timer));
-}
-let localCoins = parseInt(localStorage.getItem('blindbox_coins')||'0',10)||0;
-function setCoin(n){
-  localCoins = Math.max(0, Math.round(n));
-  localStorage.setItem('blindbox_coins', String(localCoins));
-  document.getElementById('coinN').textContent = localCoins;
-}
-function syncCoinFromServer(){
-  api('/api/user?username='+encodeURIComponent(U)+'&password='+encodeURIComponent(P)).then(d=>{
-    if(d && d.ok && typeof d.coins==='number'){ setCoin(d.coins); }
-  });
-}
-function gainCoins(n){
-  if(n<1) return;
-  setCoin(localCoins + n);
-  api('/api/gain', {username:U, password:P, amount:n}).then(d=>{ if(d && d.ok){ setCoin(d.balance); } });
-}
-
-/* ================= 游戏流程 ================= */
-function startGame(){
-  G.stage='day'; G.over=false; G.paused=false;
-  G.x=60; G.y=groundY(60)-R; G.vx=0; G.vy=0; G.a=groundAngle(60); G.va=0;
-  G.wheelSpin=0; G.wheelSpin2=0; G.gas=false; G.brake=false;
-  G.fuel=100; G.coins=0; G.dist=0; G.flipT=0; G.maxX=0;
-  G.camX = -W*0.28;
-  document.getElementById('start').classList.remove('show');
-  document.getElementById('sett').classList.remove('show');
-  document.getElementById('hudFuel').style.display='';
-  document.getElementById('ctrl').style.display='';
-  flash('出发！踩油门翻山去 🚀');
-}
-function gameOver(reason){
-  G.stage='over'; G.over=true;
-  const m = Math.max(0, Math.floor(G.dist/4));
-  // 奖励：1 基础 + 每 1000m +1 + 每 10 金币 +1
-  const r = 1 + Math.floor(m/1000) + Math.floor(G.coins/10);
-  G.reward = r;
-  document.getElementById('settTitle').textContent = reason;
-  document.getElementById('settDist').textContent = m+' m';
-  document.getElementById('settCoins').textContent = G.coins;
-  document.getElementById('settReward').textContent = '+'+r+' 币';
-  document.getElementById('sett').classList.add('show');
-  document.getElementById('ctrl').style.display='none';
-  gainCoins(r);
-}
-
-/* ================= 物理更新 ================= */
-function update(dt){
-  const s = Math.min(0.05, dt/1000);
-  if(G.paused || G.stage!=='day') return;
-  const c = Math.cos(G.a), sn = Math.sin(G.a);
-  /* 动力（沿车身方向） */
-  let ax = 0, ay = 0;
-  if(G.gas){ ax += c*ACC; ay += sn*ACC; }
-  if(G.brake){ ax -= c*BRAKE; ay -= sn*BRAKE; }
-  G.vx += ax*s; G.vy += ay*s;
-  /* 重力 */
-  G.vy += GRAV*s;
-  /* 两轮位置 + 理想贴地高度 */
-  const fX = G.x + c*AXLE/2, bX = G.x - c*AXLE/2;
-  const fY = G.y + sn*AXLE/2, bY = G.y - sn*AXLE/2;
-  const fI = groundY(fX)-R, bI = groundY(bX)-R;
-  const dF = fI - fY, dB = bI - bY;          // 正=轮在地面上方（悬空），负=轮在地里
-  /* 弹簧-阻尼：轮子被压入地面时产生抬升力，悬空时重力主导 */
-  G.vy += 150*(dF + dB)*s;
-  const grounded = (dF < -2) || (dB < -2);
-  if(grounded){ G.vy -= 4.5*G.vy*s; }        // 贴地阻尼，防弹跳
-  /* 移动 */
-  G.x += G.vx*s; G.y += G.vy*s;
-  /* 角度弹簧：车身跟随两轮高度差 */
-  const tA = Math.atan2(bI - fI, AXLE);
-  let diff = tA - G.a;
-  while(diff > Math.PI) diff -= 6.2832;
-  while(diff < -Math.PI) diff += 6.2832;
-  const airG = grounded ? 1 : 0.07;
-  G.a += diff*s*10*airG;
-  G.va = grounded ? 0 : diff*s*10*0.07;
-  /* 贴地摩擦：沿坡速度保留，法向速度压缩（软落地） */
-  if(grounded){
-    const pa = groundAngle(G.x);
-    const vA = G.vx*Math.cos(pa) + G.vy*Math.sin(pa);
-    const vN = -G.vx*Math.sin(pa) + G.vy*Math.cos(pa);
-    G.vx = vA*Math.cos(pa)*0.995 - vN*Math.sin(pa)*0.55;
-    G.vy = vA*Math.sin(pa)*0.995 + vN*Math.cos(pa)*0.55;
-  }
-/* 轮子转速 */
-  const fwd = G.vx*c + G.vy*sn;
-  G.wheelSpin += (fwd/R)*s; G.wheelSpin2 = G.wheelSpin;
-  /* 里程 */
-  G.maxX = Math.max(G.maxX, G.x);
-  G.dist = G.maxX;
-  document.getElementById('hudDist').textContent = Math.floor(G.dist/4)+' m';
-  /* 燃料 */
-  G.fuel -= (0.28 + (G.gas?1.15:0))*s;
-  if(G.fuel<=0){ G.fuel=0; gameOver('⛽ 没油了…'); return; }
-  document.getElementById('fuelFill').style.width = Math.max(0,Math.min(100,G.fuel))+'%';
-  /* 道具拾取 */
-  const ccx = G.x;
-  for(let i=items.length-1;i>=0;i--){
-    const it = items[i];
-    if(Math.abs(it.x-ccx) < 110 && Math.abs(it.y - G.y) < 160){
-      if(it.type==='coin'){ G.coins++; flash('🪙 +1'); }
-      else { G.fuel = Math.min(100, G.fuel+35); flash('⛽ 油量 +35%'); }
-      items.splice(i,1);
-    }
-  }
-  /* 翻车判定：车身竖立/头朝下持续 */
-  let na = G.a % (Math.PI*2);
-  if(na > Math.PI) na -= Math.PI*2;
-  if(Math.abs(na) > 1.75 && Math.abs(G.vy) < 450){
-    G.flipT += s;
-    if(G.flipT > 0.5){ gameOver('💥 翻车了！'); return; }
-  } else { G.flipT = 0; }
-  /* 相机跟随 */
-  G.camX = G.x - W*0.28;
-}
-
-/* ================= 绘制 ================= */
-function drawSky(){
-  const g = ctx.createLinearGradient(0,0,0,H);
-  g.addColorStop(0,'#7ec8ff'); g.addColorStop(0.55,'#bfe3ff'); g.addColorStop(1,'#d8f0d8');
-  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
-  /* 太阳 */
-  ctx.fillStyle='rgba(255,240,170,.9)';
-  ctx.beginPath(); ctx.arc(W-130, 90, 44, 0, 7); ctx.fill();
-  ctx.fillStyle='rgba(255,255,255,.8)';
-  for(let i=0;i<6;i++){
-    ctx.beginPath(); ctx.arc(W-210+(i%3)*70, 140+Math.floor(i/3)*46, 24, 0, 7); ctx.fill();
-  }
-  /* 远山 */
-  ctx.fillStyle='rgba(120,190,150,.45)';
-  ctx.beginPath(); ctx.moveTo(0,H*0.55);
-  for(let sx=0;sx<=W;sx+=40){
-    const wx = G.camX + sx;
-    const hgt = 130 + 70*Math.sin(wx/700+2) + 50*Math.sin(wx/300+7);
-    ctx.lineTo(sx, H*0.55-hgt);
-  }
-  ctx.lineTo(W,H*0.6); ctx.lineTo(0,H*0.6); ctx.closePath(); ctx.fill();
-  ctx.fillStyle='rgba(150,210,160,.6)';
-  ctx.beginPath(); ctx.moveTo(0,H*0.72);
-  for(let sx=0;sx<=W;sx+=40){
-    const wx = G.camX + sx;
-    const hgt = 90 + 55*Math.sin(wx/500+1) + 40*Math.sin(wx/220+4);
-    ctx.lineTo(sx, H*0.72-hgt);
-  }
-  ctx.lineTo(W,H*0.78); ctx.lineTo(0,H*0.78); ctx.closePath(); ctx.fill();
-}
-function drawTerrain(){
-  const sx0 = Math.max(0, Math.floor(G.camX/SAMP)-1), sx1 = Math.ceil((G.camX+W)/SAMP)+1;
-  /* 地表 */
-  ctx.beginPath();
-  ctx.moveTo(0, H+40);
-  for(let i=sx0;i<=sx1;i++){
-    const wx = i*SAMP;
-    ctx.lineTo(wx-G.camX, groundY(wx)-_camBase());
-  }
-  ctx.lineTo(W, H+40); ctx.closePath();
-  const g = ctx.createLinearGradient(0, H-260, 0, H);
-  g.addColorStop(0,'#8fca5a'); g.addColorStop(1,'#5d9e3a');
-  ctx.fillStyle = g; ctx.fill();
-  /* 地表草边 */
-  ctx.strokeStyle='#7fb84e'; ctx.lineWidth=4; ctx.beginPath();
-  for(let i=sx0;i<=sx1;i++){
-    const wx = i*SAMP;
-    const sy = groundY(wx)-_camBase();
-    if(i===sx0) ctx.moveTo(wx-G.camX, sy); else ctx.lineTo(wx-G.camX, sy);
-  }
-  ctx.stroke();
-  /* 地皮纹理：小短线 */
-  ctx.strokeStyle='rgba(80,140,50,.5)'; ctx.lineWidth=2;
-  for(let i=sx0;i<=sx1;i+=3){
-    const wx = i*SAMP;
-    const sy = groundY(wx)-_camBase();
-    ctx.beginPath(); ctx.moveTo(wx-G.camX-5, sy+12); ctx.lineTo(wx-G.camX+5, sy+16); ctx.stroke();
-  }
-}
-function drawItems(){
-  for(const it of items){
-    if(it.x < G.camX-80 || it.x > G.camX+W+80) continue;
-    const sx = it.x-G.camX, sy = it.y-_camBase();
-    if(it.type==='coin'){
-      /* 旋转金币 */
-      const w = 26*Math.abs(Math.cos(it.t));
-      const bob = Math.sin(it.t*1.6)*4;
-      ctx.save(); ctx.translate(sx, sy+bob);
-      if(w>2){
-        const g = ctx.createLinearGradient(-w/2,0,w/2,0);
-        g.addColorStop(0,'#b97b12'); g.addColorStop(0.5,'#ffe98a'); g.addColorStop(1,'#b97b12');
-        ctx.fillStyle=g;
-        ctx.beginPath(); ctx.ellipse(0,0, w/2, 16, 0, 0, 7); ctx.fill();
-        ctx.strokeStyle='#8a5a08'; ctx.lineWidth=2; ctx.stroke();
-        if(w>8){
-          ctx.fillStyle='#8a5a08'; ctx.font='800 15px sans-serif'; ctx.textAlign='center';
-          ctx.fillText('¥', 0, 6);
-        }
-      }
-      ctx.restore();
-    } else {
-      /* 油桶 */
-      ctx.save(); ctx.translate(sx, sy);
-      ctx.fillStyle='#e8452c';
-      ctx.beginPath(); ctx.roundRect(-20,-26,40,34,8); ctx.fill();
-      ctx.fillStyle='#fff'; ctx.fillRect(-20,-20,40,5);
-      ctx.fillStyle='#8a2a14';
-      ctx.beginPath(); ctx.arc(0,-26,7,0,7); ctx.fill();
-      ctx.restore();
-    }
-  }
-}
-function drawCar(now){
-  if(!imgOK('body')) return;
-  const sx = G.x-G.camX, sy = G.y-_camBase();
-  ctx.save(); ctx.translate(sx, sy); ctx.rotate(G.a);
-  /* 轮子（独立旋转） */
-  if(imgOK('wheel')){
-    const wr = R+6;
-    ctx.save(); ctx.translate(-AXLE/2, 0); ctx.rotate(G.wheelSpin2); ctx.drawImage(IMG.wheel, -wr, -wr, wr*2, wr*2); ctx.restore();
-    ctx.save(); ctx.translate(AXLE/2, 0); ctx.rotate(G.wheelSpin); ctx.drawImage(IMG.wheel, -wr, -wr, wr*2, wr*2); ctx.restore();
-  }
-  /* 车身 */
-  const bw = 599/1.9, bh = 209/1.9;
-  ctx.drawImage(IMG.body, -bw/2, -bh+6, bw, bh);
-  /* 司机头 */
-  if(imgOK('head')){
-    const hw = 422/2.05, hh = 303/2.05;
-    const hx = 55/1.9 - 599/1.9/2 + 422/2.05/2;   // 对齐：head 左缘偏移 +55
-    ctx.drawImage(IMG.head, hx-hw/2, -bh+6+(-26)/1.9, hw, hh);
-  }
-  ctx.restore();
-  /* 轮子旋转可视化（速度线） */
-  if(Math.abs(G.vx) > 160 && G.stage==='day'){
-    ctx.fillStyle='rgba(255,255,255,.5)';
-    for(let i=0;i<3;i++){
-      ctx.beginPath(); ctx.arc(sx-90-i*26, sy-40, 6, 0, 7); ctx.fill();
-    }
-  }
-}
-/* 相机基准：地面绘制 y 偏移 */
-const _camY = { v: 0 };
-function _camBase(){ return _camY.v; }
-
-function render(now){
-  ctx.clearRect(0,0,W,H);
-  /* 相机垂直偏移：让车保持在屏幕 55% 处 */
-  _camY.v = G.y - H*0.55;
-  drawSky();
-  drawTerrain();
-  drawItems();
-  drawCar(now);
-  requestAnimationFrame(render);
-}
-
-/* ================= 提示 ================= */
-let hintT=0;
-function flash(t){ const el=document.getElementById('hint'); el.textContent=t; el.classList.add('show'); clearTimeout(hintT); hintT=setTimeout(()=>el.classList.remove('show'),1300); }
-
-/* ================= 交互 ================= */
-function bindPedal(id, key){
-  const el = document.getElementById(id);
-  function set(v){ G[key]=v; el.classList.toggle('on', v); }
-  el.addEventListener('pointerdown', e=>{ e.preventDefault(); set(true); });
-  el.addEventListener('pointerup', e=>{ set(false); });
-  el.addEventListener('pointerleave', e=>{ set(false); });
-  el.addEventListener('pointercancel', e=>{ set(false); });
-}
-bindPedal('pedalGas','gas');
-bindPedal('pedalBrake','brake');
-/* 键盘（电脑） */
-window.addEventListener('keydown', e=>{
-  if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') G.gas=true;
-  if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') G.brake=true;
-});
-window.addEventListener('keyup', e=>{
-  if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') G.gas=false;
-  if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') G.brake=false;
-});
-
 document.getElementById('btnBack').onclick = ()=>{ location.href='main.html'; };
-document.getElementById('btnQuit').onclick = ()=>{ location.href='main.html'; };
-document.getElementById('btnStart').onclick = startGame;
-document.getElementById('settAgain').onclick = startGame;
-document.getElementById('settHome').onclick = ()=>{ location.href='main.html'; };
-document.getElementById('btnPause').onclick = ()=>{ if(G.stage!=='day')return; G.paused=true; document.getElementById('pause').classList.add('show'); };
-document.getElementById('btnResume').onclick = ()=>{ G.paused=false; document.getElementById('pause').classList.remove('show'); };
-document.getElementById('btnPauseQuit').onclick = ()=>{ location.href='main.html'; };
+document.getElementById('errBtn').onclick = ()=>{ location.reload(); };
 
-/* ================= 主循环 ================= */
-let last = performance.now();
-function loop(now){
-  const dt = Math.min(100, now-last); last = now;
-  update(dt);
-  requestAnimationFrame(loop);
-}
-requestAnimationFrame(loop);
-requestAnimationFrame(render);
+var stage = document.getElementById('stage');
+var loading = document.getElementById('loading');
 
-/* ================= 启动 ================= */
-genTerrain();
-genItems();
-syncCoinFromServer();
-/* 素材加载监控：齐了才让玩家出发 */
-const btnStart = document.getElementById('btnStart');
-const loadInfo = document.getElementById('loadInfo');
-const imgKeys = Object.keys(KEYS);
-let imgErr = [];
-for(const k in KEYS){ IMG[k].onerror = ()=>{ imgErr.push(k); }; }
-(function waitAssets(){
-  const done = imgKeys.filter(k => imgOK(k)).length;
-  loadInfo.textContent = imgErr.length ? '⚠️ 素材加载失败：'+imgErr.join('、')+'（刷新重试）'
-    : '正在加载车辆素材 '+done+'/'+imgKeys.length+' …';
-  if(done === imgKeys.length){
-    loadInfo.textContent = '素材已就绪 ✓';
-    btnStart.textContent = '🔥 出发！';
-    btnStart.disabled = false;
-    btnStart.style.opacity = 1;
+function showErr(m) {
+  var t = document.getElementById('errTitle');
+  var d = document.getElementById('errDesc');
+  var mm = String(m || '');
+  if (/memory|Memory|Out of/i.test(mm)) {
+    t.textContent = '设备内存不足';
+    d.textContent = 'Flash 模拟器需要约 14MB 运行内存，当前设备内存紧张。建议：关闭其他应用后重试，或换一台手机/电脑。';
+  } else if (/fetch|Fetch|network|Network|load|Load|404|401|403/i.test(mm)) {
+    t.textContent = '下载中断';
+    d.textContent = '游戏资源下载失败（网络不稳定）。建议：连接稳定 Wi-Fi 后重试；首次加载完会被浏览器缓存，下次秒开。';
+  } else if (/mime|MIME|wasm/i.test(mm)) {
+    t.textContent = '环境不兼容';
+    d.textContent = '浏览器未能正确识别游戏组件。建议：更新浏览器后重试。';
   } else {
-    setTimeout(waitAssets, 250);
+    t.textContent = '启动异常';
+    d.textContent = (mm ? mm.slice(0, 160) : '未知错误') + '。建议：刷新重试；反复失败请换电脑打开。';
   }
-})();
+  loading.style.display = 'none';
+  document.getElementById('err').style.display = 'flex';
+}
+
+/* 复用 ab/ 的 Ruffle 播放器（0 外链） */
+var s = document.createElement('script');
+s.src = 'ab/ruffle.js';
+s.onload = function() {
+  window.RufflePlayer = window.RufflePlayer || {};
+  window.RufflePlayer.config = {
+    autoplay: 'on',
+    unmuteOverlay: 'hidden',
+    letterbox: 'off',
+    allowScriptAccess: false
+  };
+  var ruffle = window.RufflePlayer.newest();
+  if (!ruffle) { showErr('Ruffle 初始化失败，请更新浏览器'); return; }
+  var player = ruffle.createPlayer();
+  player.style.width = '100%';
+  player.style.height = '100%';
+  stage.appendChild(player);
+  player.load('ab/hill-climb-racing.swf').then(function() {
+    loading.style.display = 'none';
+  }).catch(function(e) {
+    showErr(e);
+  });
+  document.getElementById('btnFull').onclick = function() {
+    try { stage.requestFullscreen && stage.requestFullscreen(); } catch(e){}
+  };
+};
+s.onerror = function() { showErr('模拟器组件下载失败，请检查网络后重试'); };
+document.body.appendChild(s);
 </script>
 </body>
 </html>
