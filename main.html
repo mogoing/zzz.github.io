@@ -422,6 +422,10 @@
   .dlrow.loading .ds{color:#FF8F3C}
   .dlrow .dbar{width:56px;height:6px;border-radius:3px;background:#F1E8D8;overflow:hidden;flex:none}
   .dlrow .dbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FFD93D,#FF8F3C);transition:width .3s}
+  .dlrow.dlgroup{font-weight:800;cursor:pointer;background:linear-gradient(90deg,#FFF6E0,#FFEBB5);border:1px solid #F3D98B}
+  .dlrow.dlgroup::before{content:'▸ ';color:#D97706}
+  .dlrow.dlgroup.open::before{content:'▾ ';color:#D97706}
+  .dlrow.dlsub{padding-left:2.4em;font-size:11px;opacity:.9;border-radius:8px;margin-top:2px}
   /* ===== 左上角 Logo 抽屉菜单：界面右移 2/3，左侧滑出菜单 ===== */
   #app{width:100%;display:flex;flex-direction:column;align-items:center;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
   body.menu-open #app{transform:translateX(66.66vw)}
@@ -934,11 +938,43 @@ function makeDlRow(name, size){
   r.innerHTML = '<span class="dn">' + name + '</span><span class="dbar"><i></i></span><span class="ds">' + fmtMB(size) + '</span>';
   return { el: r, bar: r.querySelector('.dbar i'), st: r.querySelector('.ds') };
 }
-var dlItems = DL_LIST.map(function(x){
-  var row = makeDlRow(x[2], x[1]);
+var dlItems = [], dlGroups = {};
+DL_LIST.forEach(function(x){
+  var isCtr = x[2].indexOf('割绳子') === 0;
+  var row = makeDlRow(isCtr ? x[2].replace('割绳子 ', '') : x[2], x[1]);
   dlRows.appendChild(row.el);
-  return { name: x[2], url: x[0], size: x[1], el: row.el, bar: row.bar, st: row.st, done: false };
+  var it = { name: x[2], url: x[0], size: x[1], el: row.el, bar: row.bar, st: row.st, done: false };
+  if (isCtr) {
+    it.el.classList.add('dlsub');
+    it.el.style.display = 'none';
+    var g = dlGroups['割绳子'] || (dlGroups['割绳子'] = { name: '割绳子', total: 0, done: 0, subs: [] });
+    it.g = g;
+    g.subs.push(it);
+    g.total++;
+  } else {
+    dlItems.push(it);
+  }
 });
+/* 割绳子合并成一项：生成组行（显示 已下载/总数），点击展开/收起子项 */
+Object.keys(dlGroups).forEach(function(gname){
+  var g = dlGroups[gname];
+  var gr = makeDlRow(gname, 0);
+  gr.el.classList.add('dlgroup');
+  g.row = gr;
+  gr.st.textContent = '0/' + g.total;
+  var first = g.subs[0].el;
+  dlRows.insertBefore(gr.el, first);
+  gr.el.addEventListener('click', function(){
+    var open = gr.el.classList.toggle('open');
+    g.subs.forEach(function(s){ s.el.style.display = open ? '' : 'none'; });
+  });
+});
+function dlRefreshGroup(g){
+  if (!g || !g.row) return;
+  g.row.st.textContent = g.done + '/' + g.total;
+  g.row.bar.style.width = (g.total ? Math.round(g.done / g.total * 100) : 0) + '%';
+  g.row.el.title = g.name + ' ' + g.done + '/' + g.total;
+}
 function dlRefresh(){
   var pct = dlTotalBytes ? Math.round(dlGotBytes / dlTotalBytes * 100) : 0;
   dlTotalBar.style.width = pct + '%';
@@ -971,6 +1007,7 @@ async function dlOne(it){
     it.el.className = 'dlrow fail';
     it.st.textContent = '失败';
   }
+  if (it.g) dlRefreshGroup(it.g);
   dlRefresh();
 }
 async function dlStart(){
@@ -985,14 +1022,27 @@ async function dlStart(){
       it.st.textContent = '✅ 完整';
       it.bar.style.width = '100%';
     });
+    Object.keys(dlGroups).forEach(function(gname){
+      var g = dlGroups[gname];
+      g.done = g.total;
+      g.subs.forEach(function(s){
+        s.done = true;
+        s.el.className = 'dlrow dlsub ok';
+        s.st.textContent = '✅ 完整';
+        s.bar.style.width = '100%';
+      });
+      dlRefreshGroup(g);
+    });
     dlRefresh();
     return;
   }
   dlBusy = true;
   goDl.textContent = '⬇️ 开始…';
-  for (var i = 0; i < dlItems.length; i++){
-    if (dlItems[i].done) continue;
-    await dlOne(dlItems[i]);
+  var allItems = dlItems.slice();
+  Object.keys(dlGroups).forEach(function(gname){ allItems = allItems.concat(dlGroups[gname].subs); });
+  for (var i = 0; i < allItems.length; i++){
+    if (allItems[i].done) continue;
+    await dlOne(allItems[i]);
   }
   dlBusy = false;
   dlAllDone = true;
