@@ -4,25 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>愤怒的小鸟 · 原版</title>
+<link rel="stylesheet" href="angry/TemplateData/style.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
 html,body{width:100%;height:100%;overflow:hidden;background:#0e2a3a;font-family:'PingFang SC','Microsoft YaHei',sans-serif}
 #top{position:fixed;top:0;left:0;right:0;height:50px;z-index:100;display:flex;align-items:center;gap:10px;padding:0 10px;
-  background:linear-gradient(135deg,rgba(16,60,90,.92),rgba(30,120,80,.92));backdrop-filter:blur(4px)}
+  background:linear-gradient(135deg,rgba(16,60,90,.95),rgba(30,120,80,.95));backdrop-filter:blur(4px)}
 #top .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:rgba(255,255,255,.95);color:#145c8a;
   font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.15)}
 #top .btn:active{transform:translateY(1px)}
 #top .t{color:#fff;font-size:16px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.4)}
 #top .sp{flex:1}
-#frame{position:fixed;inset:0;width:100%;height:100%;border:0;background:#0e2a3a}
-#loading{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
-  background:radial-gradient(circle at 50% 40%,#3a8fbf 0%,#0e2a3a 70%);transition:opacity .4s}
-#loading .b{font-size:60px;animation:flap 1.1s infinite}
-@keyframes flap{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-16px) rotate(8deg)}}
-#loading .t{color:#fff;font-size:18px;font-weight:800;letter-spacing:2px}
-#loading .bar{width:220px;height:10px;background:rgba(255,255,255,.2);border-radius:6px;overflow:hidden}
-#loading .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd93d,#ff8f3c);border-radius:6px;transition:width .3s}
-#loading .p{color:#cfe8ff;font-size:12px}
+#unity-container{position:fixed;top:50px;left:0;right:0;bottom:0;background:#0e2a3a}
+/* 手机全屏 */
+#unity-container.unity-mobile #unity-canvas{width:100%;height:100%}
+#unity-loading-bar{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 40%,#3a8fbf 0%,#0e2a3a 70%);z-index:50}
+#unity-loading-bar .bird{font-size:64px;animation:flap 1.1s infinite}
+@keyframes flap{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+#unity-loading-bar .lt{color:#fff;font-size:18px;font-weight:800;letter-spacing:2px}
+#unity-progress-bar-empty{width:230px;height:12px;background:rgba(255,255,255,.2);border-radius:8px;overflow:hidden}
+#unity-progress-bar-full{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd93d,#ff8f3c);border-radius:8px}
+#unity-loading-bar .p{color:#cfe8ff;font-size:13px;min-height:18px}
+#unity-warning{position:absolute;left:50%;transform:translateX(-50%);top:70px;z-index:60;display:none}
+#unity-footer{display:none}
+#err{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:rgba(10,26,38,.96);text-align:center;padding:30px}
+#err .e{font-size:52px}
+#err .et{color:#ffd93d;font-size:20px;font-weight:800}
+#err .ed{color:#cfe8ff;font-size:14px;line-height:1.8;max-width:320px}
+#err .eb{height:44px;border:0;border-radius:22px;padding:0 34px;background:linear-gradient(90deg,#ffd93d,#ff8f3c);color:#5a2d00;
+  font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.3)}
 </style>
 </head>
 <body>
@@ -32,43 +43,113 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0e2a3a;font-family:
   <div class="sp"></div>
 </div>
 
-<iframe id="frame" src="angry/index.html" allow="fullscreen" scrolling="no" frameborder="0"></iframe>
+<div id="unity-container" class="unity-desktop">
+  <canvas id="unity-canvas" width=960 height=540 tabindex="-1"></canvas>
+  <div id="unity-loading-bar">
+    <div class="bird">🐦</div>
+    <div class="lt">愤怒的小鸟 · 加载中</div>
+    <div id="unity-progress-bar-empty"><div id="unity-progress-bar-full"></div></div>
+    <div class="p" id="loadPct">0% · 请保持网络畅通（约20MB）</div>
+  </div>
+  <div id="unity-warning"> </div>
+  <div id="unity-footer">
+    <div id="unity-webgl-logo"></div>
+    <div id="unity-fullscreen-button"></div>
+    <div id="unity-build-title">Angry Birds Trial</div>
+  </div>
+</div>
 
-<div id="loading">
-  <div class="b">🐦</div>
-  <div class="t">愤怒的小鸟 · 加载中</div>
-  <div class="bar"><i id="barFill"></i></div>
-  <div class="p" id="pct">0%</div>
+<div id="err">
+  <div class="e">🐦💥</div>
+  <div class="et" id="errTitle">加载失败</div>
+  <div class="ed" id="errDesc">网络中断或设备内存不足，请重试。</div>
+  <button class="eb" id="errBtn">重试</button>
 </div>
 
 <script>
 'use strict';
 document.getElementById('btnBack').onclick = ()=>{ location.href='main.html'; };
-/* 监听 iframe 内 Unity 加载进度（同源可访问） */
-const barFill = document.getElementById('barFill'), pct = document.getElementById('pct');
-const loading = document.getElementById('loading');
-function check(){
-  try{
-    const doc = document.getElementById('frame').contentDocument;
-    if(!doc) return;
-    const bar = doc.getElementById('unity-progress-bar-full');
-    const lb = doc.getElementById('unity-loading-bar');
-    if(bar && lb && lb.style.display !== 'none'){
-      const w = parseFloat(bar.style.width) || 0;
-      barFill.style.width = w + '%';
-      pct.textContent = Math.round(w) + '%';
-    } else {
-      /* 加载条隐藏 = 引擎就绪 */
-      loading.style.opacity = '0';
-      setTimeout(()=>{ loading.style.display='none'; }, 500);
-      return;
-    }
-  }catch(e){}
-  setTimeout(check, 300);
+
+var container = document.querySelector("#unity-container");
+var canvas = document.querySelector("#unity-canvas");
+var loadingBar = document.querySelector("#unity-loading-bar");
+var progressBarFull = document.querySelector("#unity-progress-bar-full");
+var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+var warningBanner = document.querySelector("#unity-warning");
+var loadPct = document.getElementById('loadPct');
+
+function unityShowBanner(msg, type) {
+  function updateBannerVisibility() {
+    warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+  }
+  var div = document.createElement('div');
+  div.innerHTML = msg;
+  warningBanner.appendChild(div);
+  if (type == 'error') div.style = 'background: red; padding: 10px;';
+  else {
+    if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+    setTimeout(function() {
+      warningBanner.removeChild(div);
+      updateBannerVisibility();
+    }, 5000);
+  }
+  updateBannerVisibility();
 }
-setTimeout(check, 500);
-/* 兜底：60 秒后不管怎样都隐藏加载层（Unity 错误提示会显示在画布上） */
-setTimeout(()=>{ loading.style.opacity='0'; setTimeout(()=>{ loading.style.display='none'; }, 500); }, 60000);
+
+var buildUrl = "angry/Build";
+var loaderUrl = buildUrl + "/fourth build.loader.js";
+var config = {
+  dataUrl: buildUrl + "/fourth build.data.br",
+  frameworkUrl: buildUrl + "/fourth build.framework.js",
+  codeUrl: buildUrl + "/fourth build.wasm.br",
+  streamingAssetsUrl: "angry/StreamingAssets",
+  companyName: "Qumodi",
+  productName: "Angry Birds Trial",
+  productVersion: "1",
+  showBanner: unityShowBanner,
+};
+
+if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+  var meta = document.createElement('meta');
+  meta.name = 'viewport';
+  meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+  document.getElementsByTagName('head')[0].appendChild(meta);
+  container.className = "unity-mobile";
+  canvas.className = "unity-mobile";
+} else {
+  canvas.style.width = "960px";
+  canvas.style.height = "540px";
+}
+
+loadingBar.style.display = "flex";
+
+var script = document.createElement("script");
+script.src = loaderUrl;
+script.onload = () => {
+  createUnityInstance(canvas, config, (progress) => {
+    progressBarFull.style.width = 100 * progress + "%";
+    loadPct.textContent = Math.round(progress * 100) + "% · 请保持网络畅通（约20MB）";
+  }).then((unityInstance) => {
+    loadingBar.style.display = "none";
+    fullscreenButton.onclick = () => { unityInstance.SetFullscreen(1); };
+  }).catch((message) => {
+    /* 捕获 Unity 引擎启动/加载错误 → 友好中文提示 */
+    document.getElementById('errTitle').textContent = '加载失败';
+    var m = String(message || '');
+    if (/memory|Memory|Out of/i.test(m)) {
+      document.getElementById('errDesc').textContent = '设备内存不足，无法启动原版引擎。建议：关闭其他应用后重试，或在电脑上打开。';
+    } else if (/Failed to fetch|abort\(\{\}\)/i.test(m)) {
+      document.getElementById('errDesc').textContent = '下载中断（网络不稳定）。建议：连接稳定 Wi-Fi 后重试；进度条走满后会被浏览器缓存，下次秒开。';
+    } else {
+      document.getElementById('errDesc').textContent = '引擎启动异常：' + m.slice(0, 160) + '。建议：刷新重试；若反复失败，请连接稳定 Wi-Fi 或改用电脑打开。';
+    }
+    document.getElementById('err').style.display = 'flex';
+    loadingBar.style.display = 'none';
+  });
+};
+document.body.appendChild(script);
+
+document.getElementById('errBtn').onclick = ()=>{ location.reload(); };
 </script>
 </body>
 </html>
