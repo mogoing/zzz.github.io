@@ -4,6 +4,21 @@
  * 版本更新（version.json 变化 -> pvz.html 带参重载 -> 注册 sw.js?v=N）时自动清旧缓存重新缓存。
  */
 var CACHE_NAME = 'mogoing-pvz';
+/* ---- ab/（Flash 游戏）持久缓存：字节校验 + gz 解压 + 独立缓存 ----
+ * 覆盖愤怒小鸟/割绳子/滑雪/登山赛车等 Ruffle 游戏的资源。
+ * 命中 CacheStorage 直接返回（零网络、永不过期）；坏缓存/断流缓存自动删除重下。
+ */
+var CACHE_AB = 'ab-v51';
+var GZ_WASM = ['72a20ef1c0b8ceb37720.wasm', '826bb0938097485a2c9d.wasm'];
+var GZ_SIZE = { '72a20ef1c0b8ceb37720.wasm.gz': 4976993, '826bb0938097485a2c9d.wasm.gz': 4984326 };
+var FILE_SIZE = {
+  'ruffle.js': 465076,
+  'core.ruffle.c80159b526e567babaf5.js': 108322,
+  'core.ruffle.f000070ea72f8ae4fe3a.js': 114739,
+  'angry_birds.swf': 7122218,
+  'cursed-treasure-1.swf': 7987921,
+  'skisafari.swf': 10319667
+};
 var PRECACHE = [
     "2025%E5%B9%B49%E6%9C%8825%E6%97%A5pvz/asp/GetImZombieCreateGameList222.asp",
     "2025%E5%B9%B49%E6%9C%8825%E6%97%A5pvz/asp/GetUser.asp",
@@ -569,7 +584,7 @@ self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys().then(function(keys) {
       return Promise.all(
-        keys.filter(function(k) { return k.indexOf(CACHE_NAME) === 0; })
+        keys.filter(function(k) { return k !== CACHE_NAME && k !== CACHE_AB; })
             .map(function(k) { return caches.delete(k); })
       );
     }).then(function() { return self.clients.claim(); })
@@ -601,6 +616,69 @@ self.addEventListener('fetch', function(e) {
     return;
   }
 
+  /* ---- ab/（Flash 游戏）专用分支：字节校验 + gz 解压 + 独立持久缓存 ---- */
+  var ap = url.pathname;
+  var isRawWasm = ap.indexOf('.wasm') > -1 && ap.indexOf('.wasm.gz') === -1 && GZ_WASM.some(function(w) { return ap.indexOf(w) > -1; });
+  var isAbStatic = ap.indexOf('/ab/') === 0 && (/\\.(js|swf)$/.test(ap) || ap.indexOf('.wasm.gz') > -1);
+  if (isRawWasm || isAbStatic) {
+    e.respondWith((async function() {
+      if (isRawWasm) {
+        /* 原始 .wasm 请求：走 gz 缓存/下载 + 解压 */
+        var gzName = ap + '.gz';
+        var gzFile = gzName.split('/').pop();
+        var gzSize = GZ_SIZE[gzFile];
+        try {
+          var abCache = await caches.open(CACHE_AB);
+          var gzHit = await abCache.match(gzName);
+          if (gzHit) {
+            var gb = await gzHit.arrayBuffer();
+            if (!gzSize || gb.byteLength === gzSize) return gz2wasm(gb);
+            await abCache.delete(gzName);
+          }
+          for (var t = 0; t < 2; t++) {
+            var gres = await fetch(gzName, { cache: 'reload' });
+            if (!gres.ok) continue;
+            var gbuf = await gres.arrayBuffer();
+            if (!gzSize || gbuf.byteLength === gzSize) {
+              try { await abCache.put(gzName, new Response(gbuf, { headers: { 'Content-Type': 'application/gzip' } })); } catch (err) {}
+              return gz2wasm(gbuf);
+            }
+          }
+          return new Response('bad gz', { status: 502 });
+        } catch (err) {
+          return fetch(e.request);
+        }
+      }
+      /* js / swf / wasm.gz：缓存优先，写入前字节校验 */
+      var abCache2 = await caches.open(CACHE_AB);
+      var abHit = await abCache2.match(e.request);
+      if (abHit) return abHit;
+      var fname = ap.split('/').pop();
+      var fsize = FILE_SIZE[fname];
+      var fresp = await fetch(e.request);
+      if (fresp && fresp.ok) {
+        if (fsize) {
+          var farr = await fresp.clone().arrayBuffer();
+          if (farr.byteLength === fsize) {
+            try { await abCache2.put(e.request, fresp.clone()); } catch (err) {}
+          } else {
+            try { await abCache2.delete(e.request); } catch (err) {}
+            var fresp2 = await fetch(e.request, { cache: 'reload' });
+            if (fresp2 && fresp2.ok) {
+              var farr2 = await fresp2.clone().arrayBuffer();
+              if (farr2.byteLength === fsize) { try { await abCache2.put(e.request, fresp2.clone()); } catch (err) {} }
+            }
+            return fresp2;
+          }
+        } else {
+          try { await abCache2.put(e.request, fresp.clone()); } catch (err) {}
+        }
+      }
+      return fresp;
+    })());
+    return;
+  }
+
   e.respondWith(
     caches.match(req).then(function(hit) {
       if (hit) return hit;                       // 命中缓存：不再下载
@@ -613,4 +691,12 @@ self.addEventListener('fetch', function(e) {
       }).catch(function() { return hit; });
     })
   );
+
+
+function gz2wasm(buf) {
+  if (typeof DecompressionStream === 'undefined') throw new Error('no-decompression');
+  return new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip')), {
+    headers: { 'Content-Type': 'application/wasm' }
+  });
+}
 });

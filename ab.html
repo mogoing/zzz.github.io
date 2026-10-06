@@ -44,7 +44,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0e2a3a;font-family:
 <div id="loading">
   <div class="bird">🐦</div>
   <div class="lt">愤怒的小鸟 · 启动中</div>
-  <div class="ld">正在加载游戏资源…主页面已预下载的资源将秒开</div>
+  <div class="ld">正在加载游戏资源…首次加载会稍慢，成功后永久缓存、下次秒开</div>
 </div>
 
 <div id="err">
@@ -71,7 +71,7 @@ function showErr(m) {
     d.textContent = 'Flash 模拟器需要约 14MB 运行内存，当前设备内存紧张。建议：关闭其他应用后重试，或换一台手机/电脑。';
   } else if (/fetch|Fetch|network|Network|load|Load|404|401|403/i.test(mm)) {
     t.textContent = '下载中断';
-    d.textContent = '游戏资源下载失败（网络不稳定）。建议：连接稳定 Wi-Fi 后重试；首次加载完会被浏览器缓存，下次秒开。';
+    d.textContent = '游戏资源下载失败（网络不稳定）。点下方「重试」重新下载；成功后即永久缓存、下次秒开。';
   } else if (/mime|MIME|wasm/i.test(mm)) {
     t.textContent = '环境不兼容';
     d.textContent = '浏览器未能正确识别游戏组件。建议：更新浏览器后重试。';
@@ -113,7 +113,7 @@ s.onerror = function() { showErr('模拟器组件下载失败，请检查网络�
 document.body.appendChild(s);
 /* 注册 Service Worker：wasm 走 gz 预压缩，传输量降 65% */
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('ab/sw.js?v=44').catch(function(){});
+  navigator.serviceWorker.register('sw.js').catch(function(){});
 }
 </script>
 </body>
