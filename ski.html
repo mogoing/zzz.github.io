@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>滑雪大冒险 · 原版</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;background:#2a4a6a;font-family:'PingFang SC','Microsoft YaHei',sans-serif}
+#top{position:fixed;top:0;left:0;right:0;height:50px;z-index:100;display:flex;align-items:center;gap:10px;padding:0 10px;
+  background:linear-gradient(135deg,rgba(40,90,140,.95),rgba(160,90,50,.95));backdrop-filter:blur(4px)}
+#top .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:rgba(255,255,255,.95);color:#2a5a8a;
+  font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.2)}
+#top .btn:active{transform:translateY(1px)}
+#top .t{color:#fff;font-size:16px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+#top .sp{flex:1}
+#stage{position:fixed;top:50px;left:0;right:0;bottom:0;background:#2a4a6a;display:flex;align-items:center;justify-content:center}
+#stage ruffle-player{width:100%;height:100%}
+#loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:radial-gradient(circle at 50% 40%,#5a9ad0 0%,#2a4a6a 70%);z-index:50}
+#loading .sk{font-size:64px;animation:slide 1s infinite}
+@keyframes slide{0%,100%{transform:translateX(-12px)}50%{transform:translateX(12px)}}
+#loading .lt{color:#fff;font-size:18px;font-weight:800;letter-spacing:2px}
+#loading .ld{color:#d8ecff;font-size:13px;margin-top:-6px}
+#err{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:rgba(16,26,40,.96);text-align:center;padding:30px}
+#err .e{font-size:52px}
+#err .et{color:#ffd93d;font-size:20px;font-weight:800}
+#err .ed{color:#cfd8e8;font-size:14px;line-height:1.8;max-width:340px}
+#err .eb{height:44px;border:0;border-radius:22px;padding:0 34px;background:linear-gradient(90deg,#ffd93d,#ff8f3c);color:#5a2d00;
+  font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.3)}
+</style>
+</head>
+<body>
+<div id="top">
+  <button class="btn" id="btnBack">← 主页</button>
+  <div class="t">🎿 滑雪大冒险 · 原版</div>
+  <div class="sp"></div>
+  <button class="btn" id="btnFull">⛶ 全屏</button>
+</div>
+
+<div id="stage"></div>
+
+<div id="loading">
+  <div class="sk">🎿</div>
+  <div class="lt">滑雪大冒险 · 启动中</div>
+  <div class="ld">首次加载约 24MB（Flash 模拟器 + 游戏），请保持网络畅通</div>
+</div>
+
+<div id="err">
+  <div class="e">🎿💥</div>
+  <div class="et" id="errTitle">加载失败</div>
+  <div class="ed" id="errDesc">未知错误，请重试。</div>
+  <button class="eb" id="errBtn">重试</button>
+</div>
+
+<script>
+'use strict';
+document.getElementById('btnBack').onclick = ()=>{ location.href='main.html'; };
+document.getElementById('errBtn').onclick = ()=>{ location.reload(); };
+
+var stage = document.getElementById('stage');
+var loading = document.getElementById('loading');
+
+function showErr(m) {
+  var t = document.getElementById('errTitle');
+  var d = document.getElementById('errDesc');
+  var mm = String(m || '');
+  if (/memory|Memory|Out of/i.test(mm)) {
+    t.textContent = '设备内存不足';
+    d.textContent = 'Flash 模拟器需要约 14MB 运行内存，当前设备内存紧张。建议：关闭其他应用后重试，或换一台手机/电脑。';
+  } else if (/fetch|Fetch|network|Network|load|Load|404|401|403/i.test(mm)) {
+    t.textContent = '下载中断';
+    d.textContent = '游戏资源下载失败（网络不稳定）。建议：连接稳定 Wi-Fi 后重试；首次加载完会被浏览器缓存，下次秒开。';
+  } else if (/mime|MIME|wasm/i.test(mm)) {
+    t.textContent = '环境不兼容';
+    d.textContent = '浏览器未能正确识别游戏组件。建议：更新浏览器后重试。';
+  } else {
+    t.textContent = '启动异常';
+    d.textContent = (mm ? mm.slice(0, 160) : '未知错误') + '。建议：刷新重试；反复失败请换电脑打开。';
+  }
+  loading.style.display = 'none';
+  document.getElementById('err').style.display = 'flex';
+}
+
+/* 复用 ab/ 的 Ruffle 播放器（0 外链） */
+var s = document.createElement('script');
+s.src = 'ab/ruffle.js';
+s.onload = function() {
+  window.RufflePlayer = window.RufflePlayer || {};
+  window.RufflePlayer.config = {
+    autoplay: 'on',
+    unmuteOverlay: 'hidden',
+    letterbox: 'off',
+    allowScriptAccess: false
+  };
+  var ruffle = window.RufflePlayer.newest();
+  if (!ruffle) { showErr('Ruffle 初始化失败，请更新浏览器'); return; }
+  var player = ruffle.createPlayer();
+  player.style.width = '100%';
+  player.style.height = '100%';
+  stage.appendChild(player);
+  player.load('ab/skisafari.swf').then(function() {
+    loading.style.display = 'none';
+  }).catch(function(e) {
+    showErr(e);
+  });
+  document.getElementById('btnFull').onclick = function() {
+    try { stage.requestFullscreen && stage.requestFullscreen(); } catch(e){}
+  };
+};
+s.onerror = function() { showErr('模拟器组件下载失败，请检查网络后重试'); };
+document.body.appendChild(s);
+</script>
+</body>
+</html>
