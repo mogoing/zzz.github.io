@@ -555,8 +555,7 @@
     { name:'种豆',     desc:'洛克农场', icon:'bean', target:'bean.html?v=20260929' },
     { name:'沙威玛',   desc:'摆摊传奇', icon:'shaw', target:'shawarma.html' },
     { name:'登山赛车', desc:'翻山越岭', icon:'hcr', target:'hcr.html?v=39' },
-    { name:'割绳子',   desc:'糖果物理', icon:'ctr', target:'ab/ctr.html' },
-    { name:'割绳子2',  desc:'糖果物理', icon:'ctr', target:'ab/ctr2.html' },
+    { name:'割绳子1',  desc:'糖果物理', icon:'ctr', target:'ab/ctr2.html' },
     { name:'愤怒的小鸟', desc:'原版弹弓', icon:'ab', target:'ab.html' },
   ];
   const PER_PAGE = 6;   // 一页六个（两排三个）
@@ -897,7 +896,7 @@
 
   render();
 /* ===== 资源预下载中心：进页面自动后台下载，杜绝中途损坏 ===== */
-var DL_VER = 'v54';
+var DL_VER = 'v55';
 var DL_LIST = [
   ['ab/ruffle.js?v=47',465076,'Ruffle 启动器'],
   ['ab/core.ruffle.c80159b526e567babaf5.js',108322,'Ruffle 内核 A'],
@@ -905,25 +904,35 @@ var DL_LIST = [
   ['ab/72a20ef1c0b8ceb37720.wasm.gz',4976993,'渲染引擎 A（压缩）'],
   ['ab/826bb0938097485a2c9d.wasm.gz',4984326,'渲染引擎 B（压缩）'],
   ['ab/angry_birds.swf?v=47',7122218,'愤怒的小鸟'],
-  ['ab/ctr_cn/viverse-game-interface.js',1540542,'割绳子 加载器'],
-  ['ab/ctr_cn/ctr.min.js',782857,'割绳子 游戏主体'],
-  ['ab/ctr_cn/playcanvas-stable.min.js',478559,'割绳子 渲染引擎'],
-  ['ab/ctr_cn/index.umd.js',304623,'割绳子 引导'],
-  ['ab/ctr_cn/storage-sdk.umd.js',7046,'割绳子 存储SDK'],
-  ['ab/ctr_cn/famobi.json',960,'割绳子 配置'],
-  ['ab/ctr_cn/res/loader.avif',13186,'割绳子 加载动画'],
-  ['ab/ctr_cn/res/loader_bg.jpg',22263,'割绳子 加载背景'],
-  ['ab/ctr_cn/res/strings.json',47035,'割绳子 中文文本'],
-  ['ab/ctr_cn/res/menu/ui.avif',158811,'割绳子 菜单UI'],
-  ['ab/ctr_cn/res/menu/ui.json',21407,'割绳子 菜单配置'],
-  ['ab/ctr_cn/res/audio/aac/sound.aac',334758,'割绳子 音效'],
-  ['ab/ctr_cn/res/box01/maps.json',53856,'割绳子 关卡数据'],
-  ['ab/ctr_cn/res/menu/bg2.dds',156684,'割绳子 菜单背景'],
-  ['ab/ctr_cn/res/menu/shadow.dds',24603,'割绳子 菜单阴影'],
-  ['ab/ctr_cn/res/menu/salute-2x.dds',171593,'割绳子 菜单弹窗'],
-  ['ab/ctr_cn/res/box01/bg.dds',465612,'割绳子 第一关背景'],
-  ['ab/ctr_cn/res/box01/support.dds',27853,'割绳子 第一关装饰'],
-  ['ab/ctr_cn/res/box01/cover.dds',103507,'割绳子 第一关封面']
+  ['ab/ctr2/ctrr.js',374782,'割绳子 游戏主体'],
+  ['ab/ctr2/html5games/gameapi/zepto.min.js',26386,'割绳子 加载库'],
+  ['ab/ctr2/html5games/gameapi/detection.js',2305,'割绳子 设备检测'],
+  ['ab/ctr2/html5games/gameapi/fenster.js',3396,'割绳子 弹窗组件'],
+  ['ab/ctr2/html5games/gameapi/famobi_analytics_v1.js',10320,'割绳子 统计组件'],
+  ['ab/ctr2/res/strings.json',40945,'割绳子 中文文本'],
+  ['ab/ctr2/res/lang/font-ja.dat',20199,'割绳子 中文字体表'],
+  ['ab/ctr2/res/lang/font-ja.avif',157855,'割绳子 中文字体图'],
+  ['ab/ctr2/res/menu/ui.avif',101487,'割绳子 菜单UI'],
+  ['ab/ctr2/res/menu/ui.json',15147,'割绳子 菜单配置'],
+  ['ab/ctr2/res/menu/bg.jpg',88868,'割绳子 菜单背景'],
+  ['ab/ctr2/res/menu/bg2.avif',83887,'割绳子 菜单背景2'],
+  ['ab/ctr2/res/menu/shadow.avif',2633,'割绳子 菜单阴影'],
+  ['ab/ctr2/res/menu/salute.avif',78563,'割绳子 菜单弹窗'],
+  ['ab/ctr2/res/menu/salute.json',11190,'割绳子 菜单弹窗配置'],
+  ['ab/ctr2/res/audio/aac/sound.aac',262358,'割绳子 音效'],
+  ['ab/ctr2/res/audio/aac/menu_music.aac',264130,'割绳子 菜单音乐'],
+  ['ab/ctr2/res/box01/maps.json',53148,'割绳子 关卡数据'],
+  ['ab/ctr2/res/box01/bg.jpg',223066,'割绳子 第一关背景'],
+  ['ab/ctr2/res/box01/support.avif',4676,'割绳子 第一关装饰'],
+  ['ab/ctr2/res/box01/cover.avif',40419,'割绳子 第一关封面'],
+  ['ab/ctr2/res/game/char1.avif',222007,'割绳子 角色1'],
+  ['ab/ctr2/res/game/char1.json',17377,'割绳子 角色1配置'],
+  ['ab/ctr2/res/game/char2.avif',238826,'割绳子 角色2'],
+  ['ab/ctr2/res/game/char2.json',18905,'割绳子 角色2配置'],
+  ['ab/ctr2/res/loader.avif',13186,'割绳子 加载动画'],
+  ['ab/ctr2/res/loader.dat',440,'割绳子 加载配置'],
+  ['ab/ctr2/res/loader_bg.jpg',22263,'割绳子 加载背景'],
+  ['ab/ctr2/res/video/intro_landscape.mp4',364300,'割绳子 开场动画']
 ];
 var dlTotalBytes = 0, dlGotBytes = 0, dlFailed = 0, dlBusy = false, dlAllDone = false;
 DL_LIST.forEach(function(x){ dlTotalBytes += x[1]; });
