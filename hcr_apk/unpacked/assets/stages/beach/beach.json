@@ -1,0 +1,39 @@
+//
+// stage definition file
+//
+{
+  "id": "beach",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "pits",
+      "type": "water"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "pits"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/countryside/sky-bg",
+      "terrainTexture": "stages/beach/terrain-beach",
+      "terrainTopTexture": "stages/beach/terrain-beach-surface",
+      "pitTexture": "water",
+      "dirtParticle": "dirt-grayscale.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.5,
+      "surfaceType": "sand"
+    }
+  ],
+  "coinMultiplier": 1.15
+
+}

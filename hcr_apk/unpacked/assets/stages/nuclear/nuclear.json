@@ -1,0 +1,69 @@
+//
+// stage definition file
+//
+{
+  "id": "nuclear",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "json"
+  ],
+  "json": [
+    {
+      "blockFile": "stages/nuclear/nuclear_blocks.json",
+      "objectFile": "stages/nuclear/nuclear_objects.json",
+      "lazyPhysicsCreationSpeed": 2,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false
+    }
+  ],
+  "props": [
+    {
+      "barrels": true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "terrainTexture": "stages/nuclear/terrain-nuclear",
+      "terrainTopTexture": "stages/nuclear/terrain-nuclear-surface",
+      "terrainTopTextureScale": 3.0,
+      "terrainTopTextureWidthScale": 3.0,
+      "JsonTextureScale": [ 0.1, 1.0 ],
+      "indoorTexture": "stages/nuclear/nuclear-bg-fill.png",
+      "outdoorSkyTexture": "stages/nuclear/sky-bg-nuclear.png",
+      "skyMovementScale": 0.01,
+      "outdoorDoorTexture": "stages/nuclear/nuclear-door",
+      "outdoorTerrainTexture": "stages/countryside/terrain-ground",
+      "outdoorTerrainTopTexture": "stages/countryside/terrain-surface",
+      "ceiling": [],
+      "dirtParticle": "smoke.plist"
+    }
+  ],
+  "camera": [
+    {
+      "limitVelocityEffect": true,
+      "additionalZoom": 0.85
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.4,
+      "surfaceType": "asphalt",
+      "tractionCategory": "asphalt",
+      "spawnOffset": [ 0.0, 2.0 ]
+    }
+  ],
+  "coinMultiplier": 0.4,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true
+
+}

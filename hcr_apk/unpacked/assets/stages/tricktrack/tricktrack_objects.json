@@ -1,0 +1,668 @@
+
+{
+	"allowSleep" : true,
+	"autoClearForces" : true,
+	"body" : 
+	[
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "CompoundObject"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				},
+				
+				{
+					"float" : 0.4,
+					"name" : "motorSpeed"
+				},
+				
+				{
+					"float" : 0,
+					"name" : "motorTorque"
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_jumpringfront",
+			"position" : 
+			{
+				"x" : 9.083492279052734,
+				"y" : -0.8551908731460571
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "ScoreBoard"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_scoreboard",
+			"position" : 
+			{
+				"x" : 3.559099912643433,
+				"y" : 4.497729778289795
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "CompoundObject"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				},
+				
+				{
+					"float" : 0.4,
+					"name" : "motorSpeed"
+				},
+				
+				{
+					"float" : 0,
+					"name" : "motorTorque"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.6,
+					"friction" : 0.4,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.08196830749511719,
+								0.07796287536621094,
+								-0.1665458679199219,
+								-0.1659393310546875
+							],
+							"y" : 
+							[
+								-0.9877547025680542,
+								-0.9144048690795898,
+								-0.9151017665863037,
+								-0.9940252304077148
+							]
+						}
+					}
+				},
+				
+				{
+					"density" : 0.6,
+					"friction" : 0.4,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.07330045104026794,
+								0.07071885466575623,
+								-0.1644600033760071,
+								-0.1615255475044251
+							],
+							"y" : 
+							[
+								0.9084498286247253,
+								0.9922875165939331,
+								0.9910485744476318,
+								0.9077039361000061
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_jumpringback",
+			"position" : 
+			{
+				"x" : 9.079257011413574,
+				"y" : -0.8546801805496216
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_swingbase",
+			"position" : 
+			{
+				"x" : 0.1582105159759522,
+				"y" : -0.9387286901473999
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				},
+				
+				{
+					"float" : 0.4,
+					"name" : "motorSpeed"
+				},
+				
+				{
+					"float" : 0,
+					"name" : "motorTorque"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : -0.004333138465881348,
+							"y" : -0.08208586275577545
+						},
+						"radius" : 0.1
+					},
+					"density" : 0.6,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				},
+				
+				{
+					"density" : 0.6,
+					"friction" : 0.4,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 1, 1, -0.9969024658203125, -0.9965419173240662 ],
+							"y" : [ -0.04, 0.03519409894943237, 0.03442567586898804, -0.03846303373575211 ]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.02973549813032150,
+			"massData-center" : 
+			{
+				"x" : 0.004865312483161688,
+				"y" : -0.01620939373970032
+			},
+			"massData-mass" : 0.1075535863637924,
+			"name" : "o_swing_big",
+			"position" : 
+			{
+				"x" : 1.846460223197937,
+				"y" : -1.833122372627258
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				},
+				
+				{
+					"float" : 0.4,
+					"name" : "motorSpeed"
+				},
+				
+				{
+					"float" : 0,
+					"name" : "motorTorque"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.6,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.6854150295257568,
+								-0.6842145919799805,
+								-0.6842145919799805,
+								0.6854099035263062
+							],
+							"y" : [ 0.02029900066554546, 0.01815196499228478, -0.03944611549377441, -0.04 ]
+						}
+					}
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : -0.004333138465881348,
+							"y" : -0.08208586275577545
+						},
+						"radius" : 0.07
+					},
+					"density" : 0.6,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.007677169051021338,
+			"massData-center" : 
+			{
+				"x" : 0.004201214294880629,
+				"y" : -0.02174970880150795
+			},
+			"massData-mass" : 0.05767879262566567,
+			"name" : "o_swing_small",
+			"position" : 
+			{
+				"x" : 1.866680026054382,
+				"y" : -1.291229963302612
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_warning_up",
+			"position" : 
+			{
+				"x" : 11.26924514770508,
+				"y" : 4.456388473510742
+			},
+			"type" : 0
+		}
+	],
+	"continuousPhysics" : true,
+	"gravity" : 
+	{
+		"x" : 0,
+		"y" : -10
+	},
+	"image" : 
+	[
+		
+		{
+			"aspectScale" : 1,
+			"body" : 6,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.3886718750, 0.3886718750, 0.3886718750, -0.3886718750 ],
+				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/arena-warning-up.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.3886718750,
+				-0.5,
+				0.3886718750,
+				-0.5,
+				0.3886718750,
+				0.5,
+				-0.3886718750,
+				0.5
+			],
+			"name" : "image7",
+			"opacity" : 0.5,
+			"scale" : 1
+		},
+		
+		{
+			"angle" : 1.570796370506287,
+			"aspectScale" : 1,
+			"body" : 2,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ 0.25, 0.25, -0.25, -0.25 ],
+				"y" : [ -1, 1, 1, -1 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "repeatTexture"
+				}
+			],
+			"file" : "../Resources/ring_back.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ 0.25, -1, 0.25, 1, -0.25, 1, -0.25, -1 ],
+			"name" : "image6",
+			"opacity" : 1,
+			"scale" : 0.5
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 3,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.15, 0.15, 0.15, -0.15 ],
+				"y" : [ -0.15, -0.15, 0.15, 0.15 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/car-train-tire.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.15, -0.15, 0.15, -0.15, 0.15, 0.15, -0.15, 0.15 ],
+			"name" : "image7",
+			"opacity" : 0.5,
+			"scale" : 0.3
+		},
+		
+		{
+			"aspectScale" : 11.39999961853027,
+			"body" : 5,
+			"center" : 
+			{
+				"x" : 0,
+				"y" : -0.008785719983279705
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.6839999556541443,
+					0.6839999556541443,
+					0.6839999556541443,
+					-0.6839999556541443
+				],
+				"y" : 
+				[
+					-0.03878571838140488,
+					-0.03878571838140488,
+					0.02121428027749062,
+					0.02121428027749062
+				]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "repeatTexture"
+				}
+			],
+			"file" : "../Resources/SwingTexture.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.6839999556541443,
+				-0.03878571838140488,
+				0.6839999556541443,
+				-0.03878571838140488,
+				0.6839999556541443,
+				0.02121428027749062,
+				-0.6839999556541443,
+				0.02121428027749062
+			],
+			"name" : "image6",
+			"opacity" : 1,
+			"scale" : 0.06
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 1,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -3, 3, 3, -3 ],
+				"y" : [ -3, -3, 3, 3 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/score_display.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -3, -3, 3, -3, 3, 3, -3, 3 ],
+			"name" : "image7",
+			"opacity" : 0.5,
+			"scale" : 6
+		},
+		
+		{
+			"aspectScale" : 7.8,
+			"body" : 4,
+			"center" : 
+			{
+				"x" : 0,
+				"y" : -0.003406289964914322
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-1.013999938964844,
+					1.013999938964844,
+					1.013999938964844,
+					-1.013999938964844
+				],
+				"y" : 
+				[
+					-0.06840628385543823,
+					-0.06840628385543823,
+					0.06159370765089989,
+					0.06159370765089989
+				]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "repeatTexture"
+				}
+			],
+			"file" : "../Resources/SwingTexture.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-1.013999938964844,
+				-0.06840628385543823,
+				1.013999938964844,
+				-0.06840628385543823,
+				1.013999938964844,
+				0.06159370765089989,
+				-1.013999938964844,
+				0.06159370765089989
+			],
+			"name" : "image6",
+			"opacity" : 1,
+			"scale" : 0.13
+		},
+		
+		{
+			"angle" : 1.570796370506287,
+			"aspectScale" : 1,
+			"body" : 0,
+			"center" : 
+			{
+				"x" : -0.1190880015492439,
+				"y" : 0
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					0.1309120357036591,
+					0.1309119611978531,
+					-0.3690880537033081,
+					-0.3690879642963409
+				],
+				"y" : [ -1, 1, 1, -1 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "fade"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "repeatTexture"
+				}
+			],
+			"file" : "../Resources/ring_front.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				0.1309120357036591,
+				-1,
+				0.1309119611978531,
+				1,
+				-0.3690880537033081,
+				1,
+				-0.3690879642963409,
+				-1
+			],
+			"name" : "image6",
+			"opacity" : 1,
+			"scale" : 0.5
+		}
+	],
+	"positionIterations" : 3,
+	"stepsPerSecond" : 60.0,
+	"subStepping" : false,
+	"velocityIterations" : 8,
+	"warmStarting" : true
+}

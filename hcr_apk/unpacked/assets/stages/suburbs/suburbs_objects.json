@@ -1,0 +1,1261 @@
+
+{
+	"body" : 
+	[
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : false,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "nonLethal"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : -0.04338335990905762,
+							"y" : 0.07745027542114258
+						},
+						"radius" : 0.1518896669149399
+					},
+					"density" : 0.07277005910873413,
+					"friction" : 0.5,
+					"name" : "fixture12"
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : 0.301412820816040,
+							"y" : -0.07735633850097656
+						},
+						"radius" : 0.1425165385007858
+					},
+					"density" : 0.07277005910873413,
+					"friction" : 0.5,
+					"name" : "fixture12"
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : 0.03050160408020020,
+							"y" : -0.09142971038818359
+						},
+						"radius" : 0.1518896669149399
+					},
+					"density" : 0.07277005910873413,
+					"friction" : 0.5,
+					"name" : "fixture12"
+				}
+			],
+			"gravityScale" : 0.1,
+			"name" : "o_plasticbag",
+			"position" : 
+			{
+				"x" : 3.400925874710083,
+				"y" : -3.074505329132080
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : false,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 2.943467617034912,
+					"friction" : 0.5,
+					"name" : "fixture6",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.6406499147415161,
+								0.6200125217437744,
+								-0.3563560843467712,
+								-0.5995990037918091,
+								-0.5424628257751465
+							],
+							"y" : 
+							[
+								-0.5036573410034180,
+								0.2337346971035004,
+								0.4449695944786072,
+								0.2704958617687225,
+								-0.5054281949996948
+							]
+						}
+					}
+				}
+			],
+			"name" : "o_piggy",
+			"position" : 
+			{
+				"x" : 3.157430648803711,
+				"y" : -0.9273192882537842
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"name" : "o_sewerpipe_inactive",
+			"position" : 
+			{
+				"x" : -8.988826751708984,
+				"y" : -2.464257478713989
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.35
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture8"
+				}
+			],
+			"name" : "rearFoot",
+			"position" : 
+			{
+				"x" : -1.029980421066284,
+				"y" : -0.3808349072933197
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.35
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture8"
+				}
+			],
+			"name" : "frontFoot",
+			"position" : 
+			{
+				"x" : -1.842750549316406,
+				"y" : -0.3808349072933197
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.2590803802013397
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture7"
+				}
+			],
+			"name" : "body0",
+			"position" : 
+			{
+				"x" : -1.638482570648193,
+				"y" : 1.198644518852234
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				}
+			],
+			"name" : "o_tree",
+			"position" : 
+			{
+				"x" : -2.570111989974976,
+				"y" : -8.059611320495606
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				}
+			],
+			"name" : "o_trafficsign",
+			"position" : 
+			{
+				"x" : -5.810617923736572,
+				"y" : -8.042993545532227
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : false,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture3",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								1.516181945800781,
+								1.480247259140015,
+								1.058551430702210,
+								-0.3414930105209351,
+								-1.531678080558777
+							],
+							"y" : 
+							[
+								-0.6263895034790039,
+								-0.5406956672668457,
+								-0.2567427456378937,
+								-0.04972481727600098,
+								-0.6448664665222168
+							]
+						}
+					}
+				},
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture3",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								1.058551430702210,
+								0.6456637382507324,
+								0.4211087226867676,
+								-0.3414930105209351
+							],
+							"y" : 
+							[
+								-0.2567427456378937,
+								0.5638852119445801,
+								0.6474480628967285,
+								-0.04972481727600098
+							]
+						}
+					}
+				}
+			],
+			"name" : "o_sandpile",
+			"position" : 
+			{
+				"x" : 1.761266231536865,
+				"y" : -5.766848564147949
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "CanReturn"
+				}
+			],
+			"name" : "o_shop",
+			"position" : 
+			{
+				"x" : 1.608995199203491,
+				"y" : -8.239952087402344
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : false,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture6",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								1.047293543815613,
+								0.6215072870254517,
+								-0.5953538417816162,
+								-1.115103244781494
+							],
+							"y" : 
+							[
+								-0.4402251243591309,
+								0.1077454090118408,
+								-0.01403570175170898,
+								-0.4588611125946045
+							]
+						}
+					}
+				},
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture6",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.6215072870254517, -0.2937962412834168, -0.5953538417816162 ],
+							"y" : [ 0.1077454090118408, 0.3982341289520264, -0.01403570175170898 ]
+						}
+					}
+				}
+			],
+			"name" : "o_poop",
+			"position" : 
+			{
+				"x" : 0.2558459937572479,
+				"y" : -2.668270111083984
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : false,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture11",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								1.218043565750122,
+								0.4222438335418701,
+								-0.4911274909973145,
+								-1.286927223205566
+							],
+							"y" : 
+							[
+								-0.8214883804321289,
+								-0.7694511413574219,
+								-0.7694511413574219,
+								-0.8214883804321289
+							]
+						}
+					}
+				},
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture9",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								1.395991444587708,
+								-1.352301120758057,
+								-1.352300047874451,
+								1.395990014076233
+							],
+							"y" : 
+							[
+								0.6613402366638184,
+								0.6613402366638184,
+								0.4361520111560822,
+								0.4361520111560822
+							]
+						}
+					}
+				}
+			],
+			"name" : "o_busstop",
+			"position" : 
+			{
+				"x" : -2.684859752655029,
+				"y" : -5.198259830474854
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : false,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "nonLethal"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.1,
+					"friction" : 1,
+					"name" : "fixture5",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.6010189056396484, -0.2267920076847076, -0.8762367963790894 ],
+							"y" : [ -0.4420592784881592, 0.2641802132129669, -0.4904329776763916 ]
+						}
+					}
+				}
+			],
+			"name" : "o_banana",
+			"position" : 
+			{
+				"x" : -5.937706470489502,
+				"y" : -5.148978710174561
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				}
+			],
+			"name" : "o_walllamp",
+			"position" : 
+			{
+				"x" : -2.898837327957153,
+				"y" : -2.695914745330811
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.35
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"name" : "ratHead",
+			"position" : 
+			{
+				"x" : -2.637912034988403,
+				"y" : -0.08218169957399368
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "Liquid"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : 0.003020286560058594,
+							"y" : 0.02201128005981445
+						},
+						"radius" : 0.6787065863609314
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture0"
+				}
+			],
+			"name" : "o_sewerpipe",
+			"position" : 
+			{
+				"x" : -5.924482345581055,
+				"y" : -2.433332443237305
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "Liquid"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture2"
+				}
+			],
+			"name" : "o_liquidpool",
+			"position" : 
+			{
+				"x" : -5.892164707183838,
+				"y" : 0.322926402091980
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "Seagull"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.2521104216575623
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture10"
+				}
+			],
+			"name" : "o_seagull",
+			"position" : 
+			{
+				"x" : -3.559095859527588,
+				"y" : 2.479167461395264
+			},
+			"type" : 1
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "Rat"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "noCollision"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.8831616640090942,
+								0.6926264762878418,
+								0.3287748098373413,
+								-0.1874837875366211,
+								-0.6554063558578491,
+								-1.034884929656982,
+								-0.3707660138607025,
+								0.7428802251815796
+							],
+							"y" : 
+							[
+								-0.3539659082889557,
+								0.3191710710525513,
+								0.7158834934234619,
+								0.6703510284423828,
+								0.2318609058856964,
+								-0.1913967579603195,
+								-0.8849503993988037,
+								-0.8849505186080933
+							]
+						}
+					}
+				},
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ -0.1874837875366211, -0.5888690948486328, -0.6554063558578491 ],
+							"y" : [ 0.6703510284423828, 0.3310843408107758, 0.2318609058856964 ]
+						}
+					}
+				}
+			],
+			"name" : "o_rat",
+			"position" : 
+			{
+				"x" : -1.514816284179688,
+				"y" : 0.1403017044067383
+			},
+			"type" : 2
+		}
+	],
+	"image" : 
+	[
+		
+		{
+			"aspectScale" : 1,
+			"body" : -1,
+			"center" : 
+			{
+				"x" : -0.6040349006652832,
+				"y" : 0.3181283473968506
+			},
+			"file" : "rat-tail.png",
+			"name" : "image9",
+			"renderOrder" : -1,
+			"scale" : 1.459874153137207
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 10,
+			"center" : 
+			{
+				"x" : -2.384190054272040e-007,
+				"y" : 0
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-prop-poop.png",
+			"name" : "image4",
+			"scale" : 1.022813558578491
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 17,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "seagull-body.png",
+			"name" : "image10",
+			"scale" : 0.5662295818328857
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 2,
+			"center" : 
+			{
+				"x" : -2.086243284793454e-007,
+				"y" : 1.611430100467715e-008
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-sewer-drain-empty.png",
+			"name" : "image7",
+			"scale" : 1.928846359252930
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 13,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-sewer-walllamp.png",
+			"name" : "image3",
+			"scale" : 2.080311536788940
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 6,
+			"center" : 
+			{
+				"x" : -4.979058871867892e-007,
+				"y" : 0
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-prop-tree.png",
+			"name" : "image4",
+			"scale" : 2.136011838912964
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 18,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "rat-body.png",
+			"name" : "image7",
+			"scale" : 1.484274983406067
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 16,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "sewer-bubble-white.png",
+			"name" : "image2",
+			"scale" : 2
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 12,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-prop-banana.png",
+			"name" : "image4",
+			"scale" : 1
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 0,
+			"center" : 
+			{
+				"x" : -2.384190054272040e-007,
+				"y" : 0
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-plasticbag.png",
+			"name" : "image4",
+			"scale" : 1.022813558578491
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 1,
+			"center" : 
+			{
+				"x" : -2.384190054272040e-007,
+				"y" : 0
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-piggy.png",
+			"name" : "image4",
+			"scale" : 1.022813558578491
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 9,
+			"center" : 
+			{
+				"x" : 4.768371582031250e-007,
+				"y" : -4.768371582031250e-006
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-collectible-returnstore.png",
+			"name" : "image17",
+			"scale" : 1.993948221206665
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 8,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-prop-sandpile.png",
+			"name" : "image4",
+			"scale" : 1.339975476264954
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 7,
+			"center" : 
+			{
+				"x" : -4.979058871867892e-007,
+				"y" : 0
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-prop-trafficsign.png",
+			"name" : "image4",
+			"scale" : 2.136011838912964
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 15,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-sewer-drain.png",
+			"name" : "image7",
+			"scale" : 1.648797273635864
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 11,
+			"center" : 
+			{
+				"x" : -2.384185791015625e-007,
+				"y" : 0
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "suburb-prop-busstop.png",
+			"name" : "image4",
+			"scale" : 1.690273165702820
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 14,
+			"center" : 0,
+			"file" : "rat-head-base.png",
+			"name" : "image0",
+			"renderOrder" : 1,
+			"scale" : 0.7862777709960938
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : -1,
+			"center" : 
+			{
+				"x" : -3.594747781753540,
+				"y" : 2.621634721755981
+			},
+			"file" : "seagull-wing-bottom.png",
+			"name" : "image15",
+			"renderOrder" : 1,
+			"scale" : 0.6406206488609314
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 4,
+			"center" : 
+			{
+				"x" : -0.1051139831542969,
+				"y" : 0.0007349550724029541
+			},
+			"file" : "rat-foot-front.png",
+			"name" : "image6",
+			"renderOrder" : 1,
+			"scale" : 0.7414097785949707
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : -1,
+			"center" : 
+			{
+				"x" : -2.936658859252930,
+				"y" : 2.597348690032959
+			},
+			"file" : "seagull-eye.png",
+			"name" : "image13",
+			"renderOrder" : 1,
+			"scale" : 0.1217375323176384
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 3,
+			"center" : 
+			{
+				"x" : 0.07992720603942871,
+				"y" : 0.1469873338937759
+			},
+			"file" : "rat-foot-back.png",
+			"name" : "image8",
+			"renderOrder" : 1,
+			"scale" : 1.032781004905701
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : -1,
+			"center" : 
+			{
+				"x" : -3.786632061004639,
+				"y" : 3.210521221160889
+			},
+			"file" : "seagull-wing-top.png",
+			"name" : "image16",
+			"renderOrder" : 2,
+			"scale" : 1
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 14,
+			"center" : 
+			{
+				"x" : 0.06428432464599609,
+				"y" : 0.1926515102386475
+			},
+			"file" : "rat-head-eye.png",
+			"name" : "image1",
+			"renderOrder" : 2,
+			"scale" : 0.1945048123598099
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 14,
+			"center" : 
+			{
+				"x" : 0.4570679962635040,
+				"y" : 0.2903944253921509
+			},
+			"file" : "rat-head-ear.png",
+			"name" : "image5",
+			"renderOrder" : 2,
+			"scale" : 0.3992298245429993
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : -1,
+			"center" : 
+			{
+				"x" : -2.981359958648682,
+				"y" : 2.707190036773682
+			},
+			"file" : "seagull-eyebrow.png",
+			"name" : "image14",
+			"renderOrder" : 2,
+			"scale" : 0.1745262295007706
+		},
+		
+		{
+			"angle" : -0.2739124000072479,
+			"aspectScale" : 1,
+			"body" : -1,
+			"center" : 
+			{
+				"x" : -2.562753915786743,
+				"y" : 0.1514292061328888
+			},
+			"file" : "rat-head-eye-lid.png",
+			"name" : "image11",
+			"renderOrder" : 3,
+			"scale" : 0.1155261099338532
+		},
+		
+		{
+			"angle" : -0.3094418644905090,
+			"aspectScale" : 1,
+			"body" : -1,
+			"center" : 
+			{
+				"x" : -2.519025325775147,
+				"y" : 0.1877657473087311
+			},
+			"file" : "rat-head-eye-brow.png",
+			"name" : "image12",
+			"renderOrder" : 4,
+			"scale" : 0.09318731725215912
+		}
+	]
+}

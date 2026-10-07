@@ -1,0 +1,51 @@
+{
+	"parallax_layers": [
+
+		{
+			"zorder":1,
+			"continuous_parallax":true,
+			"texture":"jungle-bg",
+			"speed_x":2.0,
+			"scale_x":1.0,
+			"scale_y":1.0,
+			"position_offset_y": 0.0,
+			"position_offset_x": 0.0,
+			"disable_fade":true
+		},
+        {
+            "zorder":4,
+            "count":2,
+            "continuous_parallax":false,
+            "texture":"stages/jungle/jungle-tree",
+            "speed_x":3.0,
+            "speed_y":0.0,
+            "scale_x":0.5,
+            "scale_y":0.5,
+            "position_offset_y":0.0,
+            "position_offset_x":0.0,
+            "disable_fade":true,
+            "disable_flip":true,
+            "hasAnimation":false,
+            "y_relative_to_camera":false,
+            "disable_in_lowres":true
+        },
+                        
+        {
+            "zorder":5,
+            "count":2,
+            "continuous_parallax":false,
+            "texture":"stages/jungle/jungle-tree",
+            "speed_x":4.0,
+            "speed_y":0.0,
+            "scale_x":0.5,
+            "scale_y":0.5,
+            "position_offset_y":0.0,
+            "position_offset_x":0.0,
+            "disable_fade":true,
+            "disable_flip":true,
+            "hasAnimation":false,
+            "y_relative_to_camera":false,
+            "disable_in_lowres":true
+        }    
+		]
+}

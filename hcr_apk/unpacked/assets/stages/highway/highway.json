@@ -1,0 +1,34 @@
+//
+// stage definition file
+//
+{
+  "id": "highway",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/highway/highway-sky-bg",
+      "terrainTexture": "stages/highway/highway-ground",
+      "terrainTopTexture": "stages/highway/highway-surface",
+      "terrainTopOffset": 0.285,
+      "dirtParticle": "smoke.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.4,
+      "tractionCategory": "asphalt",
+      "surfaceType": "asphalt"
+    }
+  ],
+	"coinMultiplier": 1.15
+}

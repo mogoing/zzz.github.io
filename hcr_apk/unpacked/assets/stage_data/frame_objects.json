@@ -1,0 +1,526 @@
+
+{
+	"allowSleep" : true,
+	"autoClearForces" : true,
+	"body" : 
+	[
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_warning_wheels",
+			"position" : 
+			{
+				"x" : 4.096044063568115,
+				"y" : 1.240297555923462
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_warning_logs",
+			"position" : 
+			{
+				"x" : 1.339827418327332,
+				"y" : 0.8460053205490112
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_warning_drop",
+			"position" : 
+			{
+				"x" : 2.495906829833984,
+				"y" : 1.117798805236816
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 1.570796370506287,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "MovingPlatform"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixedRotation" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.2,
+					"friction" : 0.2,
+					"name" : "fixture7",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.1033371090888977,
+								0.1033371090888977,
+								-0.1003059148788452,
+								-0.1003059148788452
+							],
+							"y" : 
+							[
+								-0.4970407485961914,
+								0.5029592514038086,
+								0.5058104395866394,
+								-0.4941895604133606
+							]
+						}
+					},
+					"restitution" : 1
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_stonefloor",
+			"position" : 
+			{
+				"x" : 6.350040435791016,
+				"y" : -2.672636270523071
+			},
+			"type" : 1
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "MovingPlatform"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixedRotation" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.2,
+					"friction" : 0.2,
+					"name" : "fixture7",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.3326850533485413,
+								0.3326850533485413,
+								-0.3414911031723023,
+								-0.3414911031723023
+							],
+							"y" : [ -0.5, 0.5, 0.5132090449333191, -0.4867909550666809 ]
+						}
+					},
+					"restitution" : 1
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_stonewall",
+			"position" : 
+			{
+				"x" : 5.191166877746582,
+				"y" : -2.672636270523071
+			},
+			"type" : 1
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "BouncingBall"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.5
+					},
+					"density" : 0.1273239552974701,
+					"friction" : 0.2,
+					"name" : "fixture6",
+					"restitution" : 1
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.01250000018626452,
+			"massData-mass" : 0.1,
+			"name" : "o_bouncingball",
+			"position" : 
+			{
+				"x" : 4.878551959991455,
+				"y" : -0.9158292412757874
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "o_barrack",
+			"position" : 
+			{
+				"x" : 6.987794399261475,
+				"y" : 2.782226085662842
+			},
+			"type" : 0
+		}
+	],
+	"continuousPhysics" : true,
+	"gravity" : 
+	{
+		"x" : 0,
+		"y" : -10
+	},
+	"image" : 
+	[
+		
+		{
+			"aspectScale" : 1,
+			"body" : 0,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.38769531250, 0.38769531250, 0.38769531250, -0.38769531250 ],
+				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/bootcamp-warning-wheels.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.38769531250,
+				-0.5,
+				0.38769531250,
+				-0.5,
+				0.38769531250,
+				0.5,
+				-0.38769531250,
+				0.5
+			],
+			"name" : "image7",
+			"opacity" : 0.5,
+			"scale" : 1
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 1,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.38769531250, 0.38769531250, 0.38769531250, -0.38769531250 ],
+				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/bootcamp-warning-logs.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.38769531250,
+				-0.5,
+				0.38769531250,
+				-0.5,
+				0.38769531250,
+				0.5,
+				-0.38769531250,
+				0.5
+			],
+			"name" : "image7",
+			"opacity" : 0.5,
+			"scale" : 1
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 2,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.38769531250, 0.38769531250, 0.38769531250, -0.38769531250 ],
+				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/bootcamp-warning-drop.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.38769531250,
+				-0.5,
+				0.38769531250,
+				-0.5,
+				0.38769531250,
+				0.5,
+				-0.38769531250,
+				0.5
+			],
+			"name" : "image7",
+			"opacity" : 0.5,
+			"scale" : 1
+		},
+		
+		{
+			"aspectScale" : 0.7,
+			"body" : 4,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.08749999850988388,
+					0.08749999850988388,
+					0.08749999850988388,
+					-0.08749999850988388
+				],
+				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/sky-bg-frame.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.08749999850988388,
+				-0.5,
+				0.08749999850988388,
+				-0.5,
+				0.08749999850988388,
+				0.5,
+				-0.08749999850988388,
+				0.5
+			],
+			"name" : "image5",
+			"opacity" : 0.5,
+			"scale" : 1
+		},
+		
+		{
+			"aspectScale" : 0.2,
+			"body" : 3,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.02500000037252903,
+					0.02500000037252903,
+					0.02500000037252903,
+					-0.02500000037252903
+				],
+				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/sky-bg-frame.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.02500000037252903,
+				-0.5,
+				0.02500000037252903,
+				-0.5,
+				0.02500000037252903,
+				0.5,
+				-0.02500000037252903,
+				0.5
+			],
+			"name" : "image5",
+			"opacity" : 0.5,
+			"scale" : 1
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 6,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : 
+				[
+					-1.312820553779602,
+					1.312820553779602,
+					1.312820553779602,
+					-1.312820553779602
+				],
+				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/bootcamp-barrack.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-1.312820553779602,
+				-0.5,
+				1.312820553779602,
+				-0.5,
+				1.312820553779602,
+				0.5,
+				-1.312820553779602,
+				0.5
+			],
+			"name" : "image7",
+			"opacity" : 0.5,
+			"scale" : 1
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 5,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.5, 0.5, 0.5, -0.5 ],
+				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../Resources/car-tractor-tire.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5 ],
+			"name" : "image4",
+			"opacity" : 0.5,
+			"scale" : 1
+		}
+	],
+	"positionIterations" : 3,
+	"stepsPerSecond" : 60.0,
+	"subStepping" : false,
+	"velocityIterations" : 8,
+	"warmStarting" : true
+}

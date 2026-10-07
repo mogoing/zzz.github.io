@@ -18,7 +18,7 @@
       window.famobi_gameID = "cut-the-rope";
       window.famobi_gameJS = [
         "ctrr.js",
-        function () { Ctrr.main("ja"); }
+        function () { Ctrr.main("zh"); }
       ];
       // v1.js 加载 famobi API（提供 window.famobi 适配层）
       (function(d,url){ var s=d.createElement("script"); s.src=url+""; (d.head||d.documentElement).appendChild(s); })(document, "html5games/gameapi/v1.js?e=");
@@ -41,7 +41,7 @@
           var i = 0;
           function next(){
             if (i >= deps.length) {
-              try { Ctrr.main("ja"); } catch(e){ console.log("CTR 启动失败:", e && e.message); }
+              try { Ctrr.main("zh"); } catch(e){ console.log("CTR 启动失败:", e && e.message); }
               return;
             }
             var s = document.createElement("script");

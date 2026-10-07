@@ -1,0 +1,4663 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr "Project-Id-Version: PACKAGE VERSION\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2021-09-03 11:18+0300\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+
+#: src/common/Planet.cpp
+#, c-format
+msgid "     MISSION\nACCOMPLISHED!!\n  +%d"
+msgstr "ภารกิจ\nสำเร็จ!!\n +%d"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "  FLIP\n +%d "
+msgstr " พลิกตัว\n +%d "
+
+#: src/common/GameLayer.cpp
+msgid "  FLIP\n +1000 "
+msgstr "ตีลังกา\n +1000"
+
+#: src/common/GameLayer.cpp
+msgid "  FLIP\n +200 "
+msgstr "พลิก\n +200 "
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "  FLIP\n +500 "
+msgstr "ตีลังกา\n +500"
+
+#: src/common/GameLayer.cpp
+msgid "  FLIP\n +700 "
+msgstr "พลิกหมุน\n +700 "
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "  LOOP\n +%d "
+msgstr "หมุนวน\n +%d "
+
+#: src/common/GameLayer.cpp
+msgid "  LOOP\n +1000 "
+msgstr "วนรอบ\n +1000"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "  PRESENT\n  DELIVERED!\n +1000 "
+msgstr "ของขวัญ\n  มาถึงแล้ว!\n +1000"
+
+#: src/common/GameLayer.cpp
+msgid " Collect all soda cans!!\nWatch out for seagulls!!"
+msgstr ""
+
+#: src/common/GameLayer.cpp
+msgid " TOUCH TO CONTINUE "
+msgstr "แตะเพื่อดำเนินการต่อ"
+
+#: src/common/TrapSensor.cpp
+#, c-format
+msgid "%d CANS RETURNED!\n  +%d"
+msgstr ""
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Coins"
+msgstr "%d x เหรียญ"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Container"
+msgstr "%d x ตู้คอนเทนเนอร์"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Gem"
+msgstr "%d x อัญมณี"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Lunchbox"
+msgstr "%d x กล่องอาหาร"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Toolbox"
+msgstr "%d x กล่องเครื่องมือ"
+
+#: src/common/GameLayer.cpp src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%dm"
+msgstr "%dm"
+
+#: src/common/ScoreBoard.cpp
+#, c-format
+msgid "%dm (BEST %dm)"
+msgstr "%dm (ดีที่สุด %dm)"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%dm (id: %d)"
+msgstr "%dm (id: %d)"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "%dx%s BOOSTER"
+msgstr ""
+
+#. Text in result screen indicating how many times the player got points for staying in the air
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "%dxAIR TIME "
+msgstr "%dxลอยกลางอากาศ"
+
+#. Text in result screen indicating how many back flips the player did
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "%dxBACK FLIP "
+msgstr "%dxตีลังกากลับหลัง"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "%dxBOOSTER"
+msgstr "%dxBOOSTER"
+
+#. Text in result screen indicating how many (%d) flips the player did
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "%dxFLIP "
+msgstr "%dxตีลังกา"
+
+#. Text in result screen indicating how many flips that broke the driver's neck the player did
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "%dxNECK FLIP "
+msgstr "%dxตีลังกาคอพับ"
+
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "%s\n\nCost: %s gems\nYou need %s more gems"
+msgstr "%s\n\nราคา: อัญมณี %s เม็ด\nคุณต้องมีอีก %s เม็ด"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%s\n\nEntry fee cost: %s gems\nYou need %s more gems"
+msgstr "%s\n\nค่าเข้า: อัญมณี %s เม็ด\nคุณต้องการอัญมณีเพิ่มอีก %s เม็ด"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%s\n\nEntry fee cost: %s gems "
+msgstr "%s\n\nค่าเข้า: อัญมณี %s เม็ด"
+
+#. This text appears if user doesn't have enough coins to unlock the specific item. First %s is replaced with the item name, then the %d are coin numbers
+#: src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp src/common/MenuGarageMain.cpp
+#, c-format
+msgid "%s\n\nUnlock cost: %s coins\nYou need %s more coins"
+msgstr "%s\n\nค่าปลดล็อค: %s เหรียญ\nคุณต้องมีอีก %s เหรียญ"
+
+#. Text for showing that how much an unlock costs. %s is replaced with the item name user is about to unlock and %d is replaced with the number of coins this unlock will cost
+#: src/common/MenuGarageMain.cpp
+#, c-format
+msgid "%s\n\nUnlock cost: %s coins "
+msgstr "%s\n\nค่าปลดล็อค: %s เหรียญ"
+
+#: src/common/MainMenuSelectCar.cpp
+#, c-format
+msgid "%s\n\nUnlock cost: %s gems\nYou need %s more gems"
+msgstr "%s\n\nปลดล็อคราคา: อัญมณี %s เม็ด\nคุณต้องมีอีก %s เม็ด"
+
+#. Shows the upgrade cost in coins
+#: src/common/MenuUpgradeButton.cpp
+#, c-format
+msgid "%s\n\nUpgrade cost: %s coins"
+msgstr "%s\n\nค่าอัปเกรด: %s เหรียญ"
+
+#. Shown to the user when more coins are required to upgrade
+#: src/common/MenuGarageWorkshop.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp src/common/MenuUpgradeButton.cpp
+#, c-format
+msgid "%s\n\nUpgrade cost: %s coins\nYou need %s more coins"
+msgstr "%s\n\nค่าอัปเกรด: %s เหรียญ\nคุณต้องมีอีก %s เหรียญ"
+
+#. Text for showing that how much an unlock costs. %s is replaced with the item name user is about to unlock and %d is replaced with the number of coins this unlock will cost
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "%s\nOpening cost: %s gems "
+msgstr "%s\nราคาสำหรับปลดล็อก: อัญมณี %s เม็ด"
+
+#: src/common/Idol.cpp
+#, c-format
+msgid "%s %d / %d collected!"
+msgstr ""
+
+#: src/common/HighscoreMenu.cpp
+#, c-format
+msgid "%s HIGH SCORES"
+msgstr "%s คะแนนสูงสุด"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#, c-format
+msgid "%s unlocked!"
+msgstr "%s ปลดล็อกแล้ว!"
+
+#. Menu title text showing how far the player needs to go to reach the next level (%s is the stage, first %d is level, second %d is the distance); LVL is short for level
+#: src/common/MainMenuCar.cpp
+#, c-format
+msgid "%s: LVL %d (%dm)"
+msgstr "%s: เลเวล %d (%dม.)"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "(best time: %s)"
+msgstr ""
+
+#. Text in game result indicating all-time record in stage
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "(best: %dm)"
+msgstr "(ดีที่สุด: %dม.)"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "(best:%s)"
+msgstr ""
+
+#: src/common/MenuGDPR.cpp
+msgid "* Instead of random advertisements you could see ads\n   relevant to you!\n* You can change your choice later from the game's settings.\n* Please note that not allowing relevant ads does not\n   make the game ad free."
+msgstr "* แทนที่จะเป็นโฆษณาแบบไร้ทิศทาง คุณจะได้รับชมโฆษณา\n ที่ตรงกับความสนใจของคุณ!\n* คุณสามารถเปลี่ยนตัวเลือกของคุณได้ในภายหลังที่การตั้งค่าของเกม\n* โปรดทราบว่าการไม่อนุญาตให้นำเสนอโฆษณาตามความสนใจไม่ได้\n ทำให้เกมปลอดโฆษณาแต่อย่างใด"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "+%d"
+msgstr "+%d"
+
+#: src/common/MenuGarageGacha.cpp
+#, c-format
+msgid "+%d COINS"
+msgstr "+%d เหรียญ"
+
+#. Text in result screen indicating the value of coins collected
+#. CCLOG("CurrentCoins = %d", mCoinsCollected);
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "+%d COINS "
+msgstr "+%d เหรียญ"
+
+#: src/common/BogPropGenerator.cpp
+#, c-format
+msgid "+%d COINS FOUND!"
+msgstr ""
+
+#: src/common/MenuGarageGacha.cpp src/common/MenuGarageGacha.cpp
+#: src/common/MenuGarageGacha.cpp
+#, c-format
+msgid "+%d GEMS"
+msgstr "อัญมณี +%d"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "+%d GEMS "
+msgstr "+%d เม็ด"
+
+#: src/common/BogPropGenerator.cpp
+#, c-format
+msgid "+%d GEMS FOUND!"
+msgstr ""
+
+#: src/common/MenuGarageGacha.cpp
+#, c-format
+msgid "+%d NITROS"
+msgstr "ไนโตร +%d"
+
+#: src/common/GarageLocalization.cpp
+msgid "+20%;Acceleration"
+msgstr "+20%;การเร่งความเร็ว"
+
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+#: src/common/GarageLocalization.cpp
+msgid "+30%;more grip"
+msgstr "+30%;เพิ่มการยึดเกาะ"
+
+#: src/common/GarageLocalization.cpp
+msgid "+30%;power"
+msgstr "+30%;พลัง"
+
+#: src/common/GarageLocalization.cpp
+msgid "+40%;Acceleration"
+msgstr "+40%;การเร่งความเร็ว"
+
+#: src/common/GarageLocalization.cpp
+msgid "+40%;more size"
+msgstr "+40%;ขยายขนาด"
+
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+#: src/common/GarageLocalization.cpp
+msgid "+40%;power"
+msgstr "+40%;พลัง"
+
+#: src/common/GarageLocalization.cpp
+msgid "+40%;torque"
+msgstr "+40%;แรงบิด"
+
+#: src/common/GarageLocalization.cpp
+msgid "+50%;more size"
+msgstr "+50%;ขยายขนาด"
+
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+#: src/common/GarageLocalization.cpp
+msgid "+60%;more grip"
+msgstr "+60%;เพิ่มการยึดเกาะ"
+
+#: src/common/GarageLocalization.cpp
+msgid "+60%;power"
+msgstr "+60%;พลัง"
+
+#: src/common/GarageLocalization.cpp
+msgid "+80%;more grip"
+msgstr "+80%;เกาะถนนดีขึ้น"
+
+#: src/common/GarageLocalization.cpp
+msgid "+80%;power"
+msgstr "+80%;พลัง"
+
+#: src/common/GarageLocalization.cpp
+msgid "-20%;fuel"
+msgstr "-20%;เชื้อเพลิง"
+
+#: src/common/GarageLocalization.cpp
+msgid "-20%;weight"
+msgstr "-20%;น้ำหนัก"
+
+#: src/common/GarageLocalization.cpp
+msgid "-50%;fuel"
+msgstr "-50%;เชื้อเพลิง"
+
+#: src/common/GarageLocalization.cpp
+msgid "2WD racer chassis. Fast with adjustable downforce."
+msgstr "โครงรถแข่งแบบ 2WD เร็วและปรับแรงกดแนวดิ่งได้"
+
+#. Upgrade title
+#. Drive upgrade title
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "4WD"
+msgstr "4WD"
+
+#: src/common/GarageLocalization.cpp
+msgid "4WD;Light"
+msgstr "4WD;รุ่นเล็ก"
+
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+msgid "4WD;Monsterous"
+msgstr "4WD;รุ่นใหญ่"
+
+#. Quad bike vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "4x4 quad bike with almost the same agility as the bike offers you a different ride."
+msgstr "มอเตอร์ไซค์สี่ล้อ 4x4 ที่มีความคล่องตัวใกล้เคียงกัน เพราะว่ามอเตอร์ไซค์จะมอบประสบการณ์การขับขี่ที่แตกต่าง"
+
+#. Electric car description
+#: src/common/PlayerCarManager.cpp
+msgid "A small beast, full of green energy"
+msgstr "สัตว์ประหลาดน้อยที่มีพลังงานสีเขียวเต็มเปี่ยม"
+
+#: src/common/Ufo.cpp
+msgid "ABDUCTED!!"
+msgstr "ถูกลักพา!!"
+
+#. Button for displaying the credits view
+#: src/common/MenuAbout.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp
+msgid "ABOUT"
+msgstr "เกี่ยวกับ"
+
+#. Electric engines
+#: src/common/GaragePartDialog.cpp src/common/GarageUpgradeNode.cpp
+msgid "ACCELERATION"
+msgstr "การเร่ง"
+
+#. accept
+#: src/common/MenuGarageMain.cpp
+msgid "ACCEPT"
+msgstr "ยอมรับ"
+
+#. Button for displaying player's achievements
+#: src/common/AchievementMenu.cpp src/common/AchievementMenu.cpp
+#: src/common/MenuMore.cpp
+msgid "ACHIEVEMENTS"
+msgstr "ความสำเร็จ"
+
+#. In app product that removes ads from the game
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+msgid "AD FREE"
+msgstr "ไม่มีโฆษณา"
+
+#. Aerodynamics upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "AERODYNAMICS"
+msgstr "แอโรไดนามิกส์"
+
+#. Text indicating the player received a bonus for staying in the air
+#: src/common/GameLayer.cpp
+msgid "AIR TIME\n"
+msgstr "ลอยกลางอากาศ\n"
+
+#. Text indicating the player received a bonus for staying in the air
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "AIR TIME\n +%d "
+msgstr "ลอยกลางอากาศ\n +%d"
+
+#: src/common/MissionDialog.cpp
+msgid "AIR TIMES"
+msgstr "เวลาออกอากาศ"
+
+#. Alien planet level title (weird slimy planet with very slippery surface)
+#: src/common/Stage.cpp
+msgid "ALIEN PLANET"
+msgstr "ดาวเอเลี่ยน"
+
+#: src/common/TrapSensor.cpp
+#, c-format
+msgid "ALL CANS RETURNED!\n  +%d"
+msgstr ""
+
+#: src/common/MissionDialog.cpp
+msgid "ALL IDOLS"
+msgstr "ไอดอลทุกคน"
+
+#. CCPA Switch
+#: src/common/MenuGDPR.cpp
+msgid "ALLOWED"
+msgstr ""
+
+#. Ambulance vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "AMBULANCE"
+msgstr "รถฉุกเฉิน"
+
+#. Arctic level title
+#: src/common/Stage.cpp
+msgid "ARCTIC"
+msgstr "ขั้วโลก"
+
+#. Arctic cave title
+#: src/common/Stage.cpp
+msgid "ARCTIC CAVE"
+msgstr "ถ้ำขั้วโลก"
+
+#. level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "ARENA"
+msgstr "ด่าน"
+
+#: src/common/GarageLocalization.cpp
+msgid "AWD"
+msgstr "ขับเคลื่อนทุกล้อ"
+
+#: src/common/GarageLocalization.cpp
+msgid "AWD;upgrade"
+msgstr "AWD;อัปเกรด"
+
+#: src/winrt/WindowsTools.cpp
+msgid "About"
+msgstr "เกี่ยวกับ"
+
+#. Brake upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Adjust drive balance between rear-wheel drive and four-wheel drive"
+msgstr "ปรับสมดุลในการขับเคลื่อนระหว่างการขับเคลื่อนล้อหลังและการขับเคลื่อนสี่ล้อ"
+
+#: src/common/MenuGDPR.cpp
+msgid "Advertising ID is not a new thing, in fact it has\nalready been used by practically all online services\nfor over a decade! An upcoming change in EU's\nlegislation sets some requirements on how this ID\ncan be used and we want to be completely open about\nhow we use your personal data.\n\nAdvertising ID is a random string of characters that\nis created when you first started using your device\n(phone, PC, etc). This ID can be seen by the apps you\nuse on your device. By comparing the apps you've used\nin the past a \"player type profile\" can be created to\nsuggest more similar apps to you! By clicking \"I agree\"\nyou allow us to continue sharing your advertising ID\nwith Fingersoft's ad partners (and nobody else!) for\nthem to give you suggestions on other apps you might\nlike. We believe directing advertisements is in our\nplayer's interests, as nobody wants to see ads for\ndoll houses in a racing game, right?! If you'd like\neven more information and the list of our advertising\npartners, please review our Privacy Policy. Link to our\nPrivacy Policy can be found in the game's settings."
+msgstr "ไอดีโฆษณาไม่ใช่เรื่องใหม่ อันที่จริงมัน\nได้ถูกนำมาใช้งานโดยบริการออนไลน์ต่างๆ ด้วยกันทั้งนั้น\nนับเป็นเวลากว่าทศวรรษมาแล้ว! การเปลี่ยนแปลงในอนาคตอันใกล้ของกฎหมายใน EU\n ได้เพิ่มเงื่อนไขบางอย่างในการใช้งานไอดีเหล่านี้\nและเราต้องการดำเนินการอย่างเปิดเผยใน\nการใช้งานข้อมูลส่วนบุคคลของคุณ\n\nไอดีโฆษณาเป็นกลุ่มตัวอักษรแบบสุ่มที่\nสร้างขึ้นมาเมื่อคุณเริ่มต้นใช้งานอุปกรณ์ของคุณเป็นครั้งแรก\n(โทรศัพท์ พีซี ฯลฯ) ไอดีดังกล่าวนี้สามารถถูกมองเห็นได้โดยแอปที่คุณ\nใช้บนอุปกรณ์ของคุณ \"โปรไฟล์ลักษณะของผู้เล่น\" ได้ถูกสร้างขึ้นโดยการเปรียบเทียบแอปที่คุณเคยใช้งาน\nในอดีต เพื่อ\nที่จะแนะนำแอปคล้ายๆ กันให้แก่คุณ! โดยการคลิกที่ \"ยอมรับ\"\nถือว่าคุณได้อนุญาตให้เราแบ่งปันไอดีโฆษณาของคุณ\nกับสปอนเซอร์โฆษณาของ Fingersoft (เท่านั้น!) เพื่อให้\nพวกเขาแนะนำแอปอื่นๆ ที่คุณน่าจะ\nชอบ เราเชื่อว่าผู้เล่นเกมของเราย่อมสนใจที่จะกำกับทิศทางโฆษณาที่ชม\nเพราะคงไม่มีใครอยากชมโฆษณาสำหรับ\nบ้านตุ๊กตาในเกมแข่งรถหรอกใช่ไหมล่ะ?! หากคุณต้องการทราบ\nข้อมูลเพิ่มเติม ตลอดจนรายการโฆษณาของเรา\nโปรดอ่านนโยบายความเป็นส่วนตัว ลิงค์ไปยังหน้า\nนโยบายความเป็นส่วนตัวอยู่ที่การตั้งค่าในเกมส์"
+
+#. Achievement title for making total 100 backflips
+#: src/common/AchievementManager.cpp
+msgid "All Backwards"
+msgstr "กลับหลังล้วน"
+
+#. Achievement title for unlocking all vehicles
+#: src/common/AchievementManager.cpp
+msgid "All Your Car Are Belong to Us"
+msgstr "รถของคุณทุกคันเป็นของเรา"
+
+#. Achievement title for unlocking 10 vehicles
+#: src/common/AchievementManager.cpp
+msgid "Almost Famous"
+msgstr "เกือบดังแล้ว"
+
+#. Achievement title for driving 1000km with Moonlander
+#: src/common/AchievementManager.cpp
+msgid "Apollo Crewmember"
+msgstr "ลูกเรืออพอลโล่"
+
+#. Description for asking if the user really wants to exit
+#: src/common/GameLayer.cpp
+msgid "Are you sure you want to exit to menu?"
+msgstr "แน่ใจหรือว่าจะออกไปที่เมนู?"
+
+#. Description for a window if user has already upgraded something to its maximum level
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+#: src/common/MissionDialog.cpp
+msgid "Are you sure you want to skip this mission?"
+msgstr "แน่ใจหรือว่าจะข้ามภารกิจนี้ไป?"
+
+#. GDPR text
+#: src/common/MenuGDPR.cpp
+msgid "As of January 1, 2020 personal information collected about you is\nsubject to the California Consumer Privacy Act (CCPA)\nwhich gives certain rights to residents of California regarding\ntheir personal information."
+msgstr ""
+
+#. small print
+#: src/common/MenuGDPR.cpp
+msgid "As part of CCPA you have the right to control to whom we disclose\nyour personal information. In the next screen you can choose to\nallow us to disclose certain technical identifiers to our\nadvertising partners."
+msgstr ""
+
+#. Achievement title for driving 1000km with Truck
+#: src/common/AchievementManager.cpp
+msgid "Attitude Problem"
+msgstr "มีปัญหาทางทัศนคติ"
+
+#. boost upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Automatic boost gives additional speed for a small duration. Upgrade increases boost power."
+msgstr "บูสต์อัตโนมัติช่วยเร่งความเร็วเพิ่มในเวลาอันสั้น อัปเกรดเพิ่มแรงบูสต์"
+
+#. Button that takes the user back to previous menu
+#. //////////////////////////////////////////////////////////////////////////
+#. Button that takes the user back to previous menu
+#. TODO: move button creation to own file ?
+#: src/common/AchievementMenu.cpp src/common/HighscoreMenu.cpp
+#: src/common/InAppPurchaseMenu.cpp src/common/LanguageMenu.cpp
+#: src/common/MainMenuLayer.cpp src/common/MenuAbout.cpp
+#: src/common/MenuControls.cpp src/common/MenuControls.cpp
+#: src/common/MenuEnterCode.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageWorkshop.cpp src/common/MenuGDPR.cpp
+#: src/common/MenuGDPR.cpp src/common/MenuMore.cpp
+msgid "BACK"
+msgstr "กลับ"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "BACK FLIP\n +%d "
+msgstr "พลิกกลับหลัง\n +%d "
+
+#: src/common/GameLayer.cpp
+msgid "BACK FLIP\n +1000 "
+msgstr "ตีลังกากลับหลัง\n +1000"
+
+#: src/common/GameLayer.cpp
+msgid "BACK FLIP\n +200 "
+msgstr "พลิกกลับหลัง\n +200 "
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "BACK FLIP\n +500 "
+msgstr "ตีลังกากลับหลัง\n +500"
+
+#: src/common/GameLayer.cpp
+msgid "BACK FLIP\n +700 "
+msgstr "พลิกกลับ\n +700 "
+
+#: src/common/MissionDialog.cpp
+msgid "BACK FLIPS"
+msgstr "ม้วนกลับหลัง"
+
+#: src/common/MenuNewSettings.cpp
+msgid "BACKGROUND SCROLL"
+msgstr "เลื่อนดูฉากหลัง"
+
+#: src/common/MissionDialog.cpp
+msgid "BARRELS"
+msgstr "บาร์เรล"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "BATTERY"
+msgstr "แบตเตอรี"
+
+#. Beach level title
+#: src/common/Stage.cpp
+msgid "BEACH"
+msgstr "ชายหาด"
+
+#. Text indicating the player received a bonus for staying in the air for long time
+#: src/common/GameLayer.cpp
+msgid "BIG AIR TIME\n"
+msgstr "ลอยกลางอากาศได้นาน\n"
+
+#. Text indicating the player received a bonus for staying in the air for long time
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "BIG AIR TIME\n   +%d "
+msgstr "ลอยกลางอากาศได้นานๆ\n   +%d"
+
+#. Big monster truck "big finger" vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "BIG FINGER"
+msgstr "BIG FINGER"
+
+#: src/common/GarageLocalization.cpp
+msgid "BIG MONSTER"
+msgstr "รถขนาดใหญ่"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "BOGLAND"
+msgstr "หล่ม"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "BONUS COINS: %d"
+msgstr "เหรียญโบนัส: %d"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "BONUS GEMS: %d"
+msgstr "อัญมณีโบนัส: %d"
+
+#. Title for asking if the user really wants to exit
+#: src/common/GameLayer.cpp
+msgid "BONUS REWARD!"
+msgstr "รางวัลโบนัส!"
+
+#. Boost upgrade title (boost gives additional speed for a small duration)
+#: src/common/PlayerCarManager.cpp
+msgid "BOOST"
+msgstr "บูสต์"
+
+#. update description
+#: src/common/Nitro.cpp src/common/Nitro.cpp
+msgid "BOOSTER WILL POWER YOUR CAR TO DRIVE SOME EXTRA METERS"
+msgstr "บูสเตอร์จะเพิ่มพลังให้รถของคุณวิ่งไปไกลขึ้นกว่าเดิมหลายเมตร"
+
+#. level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "BOOT CAMP"
+msgstr "ค่ายฝึกทหารใหม่"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "BOOTCAMP BUNDLE"
+msgstr "คอลเลคชั่นค่ายทหาร"
+
+#. Text for the button where the car brakes
+#: src/common/MenuControls.cpp src/common/TVOsTutorialNode.cpp
+msgid "BRAKE"
+msgstr "เบรค"
+
+#. Brake upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "BRAKES"
+msgstr "เบรก"
+
+#. Button text for unlocking an item
+#: src/common/InAppPurchaseMenu.cpp
+msgid "BUY"
+msgstr "ซื้อ"
+
+#: src/common/Nitro.cpp src/common/PowerUpDialog.cpp
+msgid "BUY BOOSTER?"
+msgstr "ซื้อบูสเตอร์?"
+
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "BUY PART %s? "
+msgstr "ซื้ออะไหล่ %s? "
+
+#: src/common/GarageLocalization.cpp
+msgid "Basic inline 4 engine."
+msgstr "เครื่องยนต์ 4 สูบเรียงมาตรฐาน"
+
+#. Achievement title for driving 1000km with Electric car
+#: src/common/AchievementManager.cpp
+msgid "Battery charger"
+msgstr "ที่ชาร์จแบตเตอร์รี่"
+
+#. Achievement title for driving total distance of 1000000m
+#: src/common/AchievementManager.cpp
+msgid "Because I'm in Love"
+msgstr "ก็ใจมันรัก"
+
+#. Achievement for picking 500 berries in Bogland
+#: src/common/AchievementManager.cpp
+msgid "Berry Picker"
+msgstr ""
+
+#: src/common/GarageLocalization.cpp
+msgid "Best in winter and ice levels!"
+msgstr "ดีที่สุดในเลเวลหน้าหนาวและน้ำแข็ง!"
+
+#. Shows the best score user has made in that level: For example: "Best: 1352m". Please preserve the %d.
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Best: %dm"
+msgstr "คะแนนดีที่สุด: %dม."
+
+#: src/common/PlayerCarManager.cpp
+msgid "Better engine gives you higher top speed."
+msgstr ""
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Better suspension helps you in uneven terrain."
+msgstr "ระบบกันสะเทือนที่ดีขึ้นจะช่วยคุณได้เมื่อแล่นอยู่บนสนามแข่งที่ขรุขระ"
+
+#: src/common/PlayerCarManager.cpp
+msgid "Better torque means better acceleration."
+msgstr ""
+
+#. Police car description
+#: src/common/PlayerCarManager.cpp
+msgid "Beware all speeding hill climbers, the police is now patrolling the hills."
+msgstr "ระวังนักไต่เขาลมกรม ตำรวจกำลังตรวจตามเนินเขาอยู่"
+
+#. Achievement title for unlocking 10 stages
+#: src/common/AchievementManager.cpp
+msgid "Beyond the Galaxy"
+msgstr "ออกนอกกาแล็กซี่"
+
+#: src/common/GarageLocalization.cpp
+msgid "Big monster chassis. Real off-road monster."
+msgstr "โครงรถมอนสเตอร์ขนาดใหญ่ มอนสเตอร์ตัวจริงสำหรับออฟโรด"
+
+#: src/common/PlayerCarManager.cpp
+msgid "Bigger fuel tank size makes you walk further."
+msgstr ""
+
+#. Tire upgrade description
+#. Tire size upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Bigger tires helps maneuvering on the bumpy road."
+msgstr "ยางล้อขนาดใหญ่จะช่วยในการเคลื่อนที่บนถนนผิวขรุขระ"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Bill decided to put on his old Halloween costume and go for a ride in the nearby haunted hills."
+msgstr "บิลตัดสินใจใส่ชุดฮัลโลวีนเก่า แล้วขี่เข้าเนินเขาผีสิงใกล้ๆ"
+
+#. Tourist bus where people ride in the bus (vehicle description)
+#: src/common/PlayerCarManager.cpp
+msgid "Bill decided to take a shower and give people a ride while climbing hills! Not suitable for cave levels!"
+msgstr "ระหว่างขึ้นเขา บิลตัดสินใจไปอาบน้ำแล้วก็ไปขับรถบัสให้คนนั่ง! ไม่เหมาะสำหรับเลเวลระดับถ้ำ"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Blood-thirsty mosquitos, sinking terrain and miserable weather! Life just doesn't get better than this!"
+msgstr ""
+
+#: src/common/AchievementManager.cpp
+msgid "Bog Digger"
+msgstr ""
+
+#. Achievement title for driving 1000km with Finger Screw
+#: src/common/AchievementManager.cpp
+msgid "Bottle Opener"
+msgstr "ที่เปิดขวด"
+
+#. Achievement title for making total 10 flips
+#: src/common/AchievementManager.cpp
+msgid "Bottoms Up"
+msgstr "จอมหกคะเมน"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Brooom! It's time to explore some challenges!"
+msgstr "บรื้น! ถึงเวลาแสวงหาความท้าทายใหม่ๆ แล้ว!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Brooom! It's time to make some awesome jumps and stunts!"
+msgstr "บรื้นนน! ถึงเวลาต้องไปตะลุยกันแล้ว!"
+
+#: src/common/MenuGDPR.cpp
+msgid "By selecting \"I AGREE\" I confirm that I am over the age of 16\nand allow my advertising identifier to be sent to Fingersoft's\nad partners."
+msgstr "โดยการเลือก \"ยอมรับ\" ฉันยืนยันว่าฉันมีอายุเท่ากับหรือมากกว่า 16 ปี\nและอนุญาตให้ส่งข้อมูลในการกำหนดโฆษณาของฉันแก่สปอนเซอร์โฆษณา\nของ Fingersoft ได้"
+
+#: src/common/TrapSensor.cpp
+#, c-format
+msgid "CAN RETURNED!\n  +%d"
+msgstr ""
+
+#. Button text for cancelling an operation
+#. icon
+#. NULL, NULL, NULL, NULL,
+#. Button text for cancelling an operation
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/InAppPurchaseMenu.cpp
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuSelectCar.cpp src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp src/common/MenuUpgradeButton.cpp
+msgid "CANCEL"
+msgstr "ยกเลิก"
+
+#: src/common/MenuGarageMain.cpp
+msgid "CAR NAME"
+msgstr "ชื่อรถ"
+
+#: src/common/PlayerCarManager.cpp
+msgid "CARANTULA"
+msgstr ""
+
+#: src/common/MissionDialog.cpp
+msgid "CARROTS"
+msgstr "แครอท"
+
+#. Cave level title
+#: src/common/Stage.cpp
+msgid "CAVE"
+msgstr "ถ้ำ"
+
+#: src/common/Idol.cpp
+msgid "CAVE OPEN!!"
+msgstr ""
+
+#. Text in result screen indicating how many back flips the player did
+#. sprintf(str, FN_TEXT_INGAME("FREERIDE MODE\n"),);
+#: src/common/GameLayer.cpp
+msgid "CHALLENGE"
+msgstr "ท้าแข่ง"
+
+#. Text in result screen indicating how many back flips the player did
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "CHALLENGE\n GOAL: %dm"
+msgstr "การท้าทาย\n เป้าหมาย: %dm"
+
+#. Text in result screen indicating how many back flips the player did
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "CHALLENGE COMPLETED!\n GOAL: %dm\n"
+msgstr "การท้าทายสำเร็จ!\n เป้าหมาย: %dm\n"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "CHALLENGE COMPLETED! +%d GEMS"
+msgstr "เอาชนะความท้าทายสำเร็จ! + อัญมณี %d เม็ด"
+
+#. Text showing how far the player must drive to reach the next level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "CHALLENGE: Drive %dm "
+msgstr "การท้าทาย: ขับ %dm"
+
+#: src/common/GarageLocalization.cpp
+msgid "CHARGER"
+msgstr "เครื่องชาร์จ"
+
+#: src/common/GaragePartDialog.cpp
+msgid "CHASSIS"
+msgstr "โครงรถ"
+
+#: src/common/MenuGarageMain.cpp
+msgid "CHOOSE CHASSIS"
+msgstr "เลือกแชสซี"
+
+#. vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "CHOPPER"
+msgstr "รถชอปเปอร์"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "CHOPPER BUNDLE"
+msgstr "แพ็กเกจรถชอปเปอร์"
+
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+#: src/common/MissionDialog.cpp
+msgid "CLAIM"
+msgstr "รับสิทธิ์"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "CLOSE"
+msgstr "ปิด"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+#: src/common/MissionDialog.cpp
+msgid "COINS"
+msgstr "เหรียญ"
+
+#: src/common/AppDelegate.cpp src/common/PopupOfferDialog.cpp
+#, c-format
+msgid "COINS: %d"
+msgstr "เหรียญ: %d"
+
+#: src/common/MissionDialog.cpp
+msgid "COLLECT"
+msgstr "เก็บ"
+
+#: src/common/GaragePartLibrary.cpp src/common/GaragePartLibrary.cpp
+msgid "COMMON"
+msgstr "ทั่วไป"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "COMMON PARTS"
+msgstr "ส่วนประกอบทั่วไป"
+
+#. Title for button displayed while the game is connecting to cloud services
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "CONNECTING"
+msgstr "การเชื่อมต่อ"
+
+#. Construction level title
+#: src/common/Stage.cpp
+msgid "CONSTRUCTION"
+msgstr "ก่อสร้าง"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+#: src/common/MissionDialog.cpp
+msgid "CONTAINER"
+msgstr "คอนเทนเนอร์"
+
+#. Text for a button which opens the controls info screen
+#: src/common/MenuMore.cpp
+msgid "CONTROLS"
+msgstr "การควบคุม"
+
+#. Country side level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "COUNTRYSIDE"
+msgstr "ชนบท"
+
+#. Can like beverage can
+#: src/common/Idol.cpp
+#, c-format
+msgid "Can %d / %d collected!"
+msgstr ""
+
+#. Achievement title for walking 1000km with Carantula
+#: src/common/AchievementManager.cpp
+msgid "Carantula Tamer"
+msgstr ""
+
+#. Achievement title for making total 10 backflips
+#: src/common/AchievementManager.cpp
+msgid "Casual Backflipper"
+msgstr "นักตีลังกากลับหลังสุดชิว"
+
+#. Achievement title for making 10 flips in one run
+#: src/common/AchievementManager.cpp
+msgid "Casual Driving"
+msgstr "ขี่แบบชิวๆ"
+
+#: src/common/MainMenuSelectStage.cpp
+msgid "Challenge completed"
+msgstr "เอาชนะความท้าทายสำเร็จ"
+
+#: src/common/AchievementManager.cpp
+msgid "Challenger"
+msgstr "ผู้ท้าทาย"
+
+#. Construction level description
+#: src/common/Stage.cpp
+msgid "Challenging stage even for the most skilled drivers."
+msgstr "สนามที่ท้าทาย แม้แต่กับผู้ขับขี่มือฉกาจ"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "Chance: %d%%"
+msgstr "โอกาส: %d%%"
+
+#. Achievement for driving the Luxury Car for 2km without dropping any passengers
+#: src/common/AchievementManager.cpp
+msgid "Chauffeur"
+msgstr ""
+
+#. Text used when sharing a link to the game. Hill Climb Racing should not be translated.
+#: src/wp8/PlatformTools.cpp
+msgid "Check out Hill Climb Racing!\n"
+msgstr "ดูเกม HILL CLIMB RACING นี่สิ!\n"
+
+#. Text used when sharing a link to the game. Hill Climb Racing should not be translated.
+#: src/winrt/WindowsTools.cpp
+#, c-format
+msgid "Check out Hill Climb Racing!\n%s"
+msgstr "ดูเกม HILL CLIMB RACING นี่สิ!\n%s"
+
+#. Hover craft description
+#: src/common/PlayerCarManager.cpp
+msgid "Climb the steepest hills with this powerful vehicle. Especially fast on stages with low friction."
+msgstr "ขับขึ้นเขาสูงชันที่สุดด้วยยานพาหนะที่เปี่ยมสมรรถภาพนี้ เร็วเป็นพิเศษบนสนามที่มีความเสียดทานต่ำ"
+
+#. Desert level description
+#: src/common/Stage.cpp
+msgid "Climbing hills in the desert is a must have experience for any hillbilly. In order to travel to desert you need a trailer and a towing car that can carry your vehicle."
+msgstr "การขับรถขึ้นเขาในทะเลทรายเป็นประสบการณ์ที่นักขับไต่เขาทุกคนควรต้องมี ในการเดินทางสู่ทะเลทรายคุณต้องมีรถพ่วงและรถลากเพื่อใช้บรรทุกรถของคุณ"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Coins & Gems remove banner ads!"
+msgstr "เหรียญและอัญมณีลบแถบโฆษณาได้!"
+
+#. Title of message box displayed when the user is rewarded free coins for installing a promoted application
+#: src/common/AppDelegate.cpp
+msgid "Coins received"
+msgstr "ได้รับเหรียญ"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Collect all treasures from the Jungle"
+msgstr "เก็บสมบัติทั้งหมดที่มีในป่า"
+
+#. Achievement title for fully upgrading a vehicle
+#: src/common/AchievementManager.cpp
+msgid "Collector's Edition"
+msgstr "รุ่นชุดนักสะสม"
+
+#: src/common/AchievementManager.cpp
+msgid "Complete 10 challenges"
+msgstr "เอาชนะ 10 ความท้าทาย"
+
+#: src/common/MissionDialog.cpp
+msgid "Complete Daily Missions"
+msgstr "ทำภารกิจประจำวัน"
+
+#. Title of the message shown when connecting to in-app store fails
+#. Title of message box shown to user when connecting to the Windows Store fails
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+#: src/common/InAppPurchaseMenu.cpp src/winrt/WindowsTools.cpp
+#: src/winrt/WindowsTools.cpp src/winrt/WindowsTools.cpp
+msgid "Connection failed"
+msgstr "ไม่สามารถเชื่อมต่อได้"
+
+#: src/common/GameLayer.cpp
+msgid "Conquer the planets!!"
+msgstr "ยึดครองดวงดาว!!"
+
+#: src/common/GameLayer.cpp
+msgid "Conquer the planets!!\nPress both pedals\nto fire thrusters!!"
+msgstr ""
+
+#. Title of the message box shown when no advertisement videos are available
+#: src/common/MainMenuLayer.cpp
+msgid "Contact Us"
+msgstr "ติดต่อเรา"
+
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "Contains %d random card(s), %d common card(s), %d rare card(s), %d epic card(s) and %d legendary card(s)."
+msgstr "มีการ์ดสุ่ม %d ใบ, การ์ดทั่วไป %d ใบ, การ์ดหายาก %d ใบ, การ์ดชั้นเยี่ยม %d ใบ และการ์ดในตำนาน %d ใบ"
+
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "Cost: %s gems You need %s more gems"
+msgstr "ราคา: อัญมณี %s เม็ด คุณขาดอีก %s เม็ด"
+
+#. Achievement title for making total 50 neckflips
+#: src/common/AchievementManager.cpp
+msgid "Could Happen to Anyone"
+msgstr "แบบนี้ใครๆ ก็เจอได้"
+
+#. Achievement title for driving 1000km with Ambulance
+#: src/common/AchievementManager.cpp
+msgid "Crazed Paramedic"
+msgstr "แพทย์สนามเหยียบคลั่ง"
+
+#: src/common/GarageLocalization.cpp
+msgid "Custom Bill's Hill Climber chassis. Good all-around car."
+msgstr "โครงรถไต่เขาโดย Custom Bill รถยนต์ที่ดีในทุกด้าน"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "DAILY CHALLENGE"
+msgstr "ความท้าทายประจำวัน"
+
+#. Title for asking if the user really wants to exit
+#: src/common/GameLayer.cpp
+msgid "DAILY DOUBLE BONUS!"
+msgstr "ดับเบิ้ลโบนัสรายวัน!"
+
+#. Volcano level description
+#: src/common/Stage.cpp
+msgid "DANGER! Lava pits ahead!"
+msgstr "อันตราย! หลุมลาวาอยู่ข้างหน้า!"
+
+#: src/common/MenuGDPR.cpp src/common/MenuGDPR.cpp
+msgid "DECLINE"
+msgstr "ปฏิเสธ"
+
+#: src/common/MissionDialog.cpp
+msgid "DELIVER"
+msgstr "ส่ง"
+
+#. Desert level title
+#: src/common/Stage.cpp
+msgid "DESERT"
+msgstr "ทะเลทราย"
+
+#: src/common/GarageLocalization.cpp
+msgid "DIESEL 4"
+msgstr "ดีเซล 4 สูบ"
+
+#: src/common/GarageLocalization.cpp
+msgid "DIESEL 6"
+msgstr "ดีเซล 6 สูบ"
+
+#: src/common/GarageLocalization.cpp
+msgid "DIESEL V8 TT"
+msgstr "ดีเซล V8 TT"
+
+#: src/common/MissionDialog.cpp
+msgid "DISTANCE"
+msgstr "ระยะทาง"
+
+#. Text in result screen indicating that how far the player got
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "DISTANCE: %dm "
+msgstr "ระยะทาง: %dม."
+
+#: src/common/MissionDialog.cpp
+msgid "DO"
+msgstr "ทำ"
+
+#: src/common/MenuGDPR.cpp
+msgid "DO NOT SELL MY PERSONAL INFORMATION"
+msgstr ""
+
+#: src/common/MenuGDPR.cpp
+msgid "DON'T SELL MY PERSONAL INFORMATION."
+msgstr ""
+
+#: src/common/MenuGarageGacha.cpp
+msgid "DONE"
+msgstr "เสร็จสิ้น"
+
+#. Exit button text
+#: src/common/GameLayer.cpp
+msgid "DOUBLE"
+msgstr "ดับเบิ้ล"
+
+#. Exit button text
+#: src/common/GameLayer.cpp
+msgid "DOUBLE COINS"
+msgstr "เหรียญสองเท่า"
+
+#: src/common/PowerUp.cpp
+msgid "DOUBLE JUMP BOOSTER WILL ALLOW THE CAR TO DIAGONAL JUMP SHORT DISTANCE"
+msgstr ""
+
+#. Exit button text
+#: src/common/GameLayer.cpp
+msgid "DOUBLE NOW"
+msgstr "ดับเบิ้ลเลย"
+
+#. INSERT_PART_TEXT("DENSITY", FN_TEXT_GARAGE("DENSITY"))
+#. Upgrade title for downforce (rally car, f1 car etc)., pushes the car downwards the faster you go
+#. Upgrade title
+#. Title for vehicle suspension upgrade
+#. Upgrade title for downforce (rally car, f1 car etc)., pushes the car downwards the faster you go
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "DOWNFORCE"
+msgstr "แรงกด"
+
+#. Dragster vehicle name (Drag racing car, top fuel class)
+#: src/common/PlayerCarManager.cpp
+msgid "DRAGSTER"
+msgstr "รถ DRAGSTER"
+
+#: src/common/MenuNewSettings.cpp
+msgid "DRAW DIRT"
+msgstr "ลากดิน"
+
+#. Title for button displaying that render dirt to texture is disabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+msgid "DRAW DIRT: OFF"
+msgstr "ลากพื้น: ปิด"
+
+#. Title for button displaying that render dirt to texture is enabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+msgid "DRAW DIRT: ON"
+msgstr "ลากพื้น: เปิด"
+
+#: src/common/MissionDialog.cpp
+msgid "DRIVE"
+msgstr "ขับ"
+
+#. Text displayed when the game ends because the driver's head has hit something
+#: src/common/GameLayer.cpp
+msgid "DRIVER DOWN "
+msgstr "คนขับเดี้ยง"
+
+#. Text displayed when the game ends because the driver's head has hit something and the vehicle has run out of fuel
+#: src/common/GameLayer.cpp
+msgid "DRIVER DOWN &\n   OUT OF FUEL "
+msgstr "คนขับเดี้ยง &\n เชื้อเพลิงหมด"
+
+#. Dune buggy vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "DUNE BUGGY"
+msgstr "DUNE BUGGY"
+
+#: src/common/MissionDialog.cpp
+msgid "Daily Missions!"
+msgstr "ภารกิจประจำวัน!"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Deliver 500 presents"
+msgstr "ส่งของขวัญ 500 ชิ้น"
+
+#. Achievement title for making 10 backflips in one run
+#: src/common/AchievementManager.cpp
+msgid "Denying Gravity"
+msgstr "ต้านแรงโน้มถ่วง"
+
+#. Achievement title for driving 1000km with Dune Buggy
+#: src/common/AchievementManager.cpp
+msgid "Desert Racer"
+msgstr "นักซิ่งทะเลทราย"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Destroy 10000 packages in the Factory"
+msgstr "ทำลายสินค้า 10000 หีบห่อในโรงงาน"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Detach all train carriages"
+msgstr "ถอดโบกี้รถไฟทั้งหมด"
+
+#. Achievement title for driving 1000km with Tractor
+#: src/common/AchievementManager.cpp
+msgid "Dirt Farmer"
+msgstr "เกษตรกรเปื้อนฝุ่น"
+
+#. Ask the user if the user really wants to exit
+#: src/common/MainMenuLayer.cpp src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuUpgradeCar.cpp
+msgid "Do you really want to exit?"
+msgstr "ต้องการออกแน่หรือ?"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "Double Coins!"
+msgstr ""
+
+#: src/common/PowerUp.cpp
+msgid "Double Jump"
+msgstr ""
+
+#. Upgrade description for downforce (rally car, f1 car etc)., pushes the car downwards the faster you go
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Down force pushes your car downwards when the speed increases improving traction."
+msgstr "แรงกดจะดันรถของคุณลงล่าง เมื่อความเร็วเพิ่มจะช่วยให้เกิดแรงดึง"
+
+#. Total distance
+#. Achievement description (please preserve the %s)
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#, c-format
+msgid "Drive %s"
+msgstr "ขับไกล %s"
+
+#: src/common/AchievementManager.cpp
+msgid "Drive 10 years in Seasons"
+msgstr "ขับรถ 10 ปีในฤดูกาลต่างๆ"
+
+#. Achievement description for driving 1000000m with a vehicle. Preserve %s in translation, it's replaced by the vehicle name, eg. Drive 1000km with Jeep
+#: src/common/AchievementManager.cpp
+#, c-format
+msgid "Drive 1000km with %s"
+msgstr "ขับไกล 1000 กม. ด้วย %s"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Drive 2km with Luxury Car without dropping the passengers"
+msgstr ""
+
+#. Highway level description
+#: src/common/Stage.cpp
+msgid "Driving a vehicle built for offroad is quite an experience on tarmac surface. In this level you may get far and fast, but gasoline is a limited resource."
+msgstr "การขับขี่ยานพาหนะที่สร้างเพื่อขับแบบออฟโร้ด ให้ประสบการณ์บนพื้นราดยาง ในเลเวลนี้คุณอาจไปได้แรงและเร็ว แต่เชื้อเพลิงมีจำกัด"
+
+#. Night level description
+#: src/common/Stage.cpp
+msgid "Driving in pitch black is a real challenge."
+msgstr "การขับขี่ในสนามดำมืดเป็นความท้าทายอย่างแท้จริง"
+
+#. Onewheeler vehicle descripton
+#: src/common/PlayerCarManager.cpp
+msgid "Driving the hills with this offroad personal transporter is a real challenge!"
+msgstr "การขับบนเขาด้วยยานพาหนะขนส่งส่วนบุคคลแบบออฟโร้ดนี้เป็นความท้าทายอย่างแท้จริง!"
+
+#. Achievement title for detaching all train carriages
+#: src/common/AchievementManager.cpp
+msgid "Drop the Extra Weight"
+msgstr "ทิ้งน้ำหนักส่วนเกิน"
+
+#. Message shown when customer care button is pressed
+#: src/common/MainMenuLayer.cpp
+msgid "E-mail: care@mygamez.com\nToll-free#：400-807-1016"
+msgstr "อีเมล: care@mygamez.com\nโทรฟรี：400-807-1016"
+
+#: src/common/MenuGarageMain.cpp
+msgid "EDIT CAR NAME"
+msgstr "แก้ไขชื่อรถ"
+
+#: src/common/GarageLocalization.cpp
+msgid "ELECTRIC"
+msgstr "ไฟฟ้า"
+
+#. Electric car vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "ELECTRIC CAR"
+msgstr "รถพลังงานไฟฟ้า"
+
+#: src/common/GarageLocalization.cpp
+msgid "ELECTRIC ZAP"
+msgstr "จู่โจมด้วยไฟฟ้า"
+
+#: src/common/GarageCarManager.cpp src/common/MenuGarageMain.cpp
+msgid "EMPTY SLOT"
+msgstr "ช่องว่าง"
+
+#. Upgrade title
+#. Title for vehicle engine upgrade
+#. Upgrade title
+#. Title for vehicle engine upgrade
+#. Upgrade title
+#. Title for vehicle engine upgrade
+#. Upgrade title
+#: src/common/GaragePartDialog.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "ENGINE"
+msgstr "เครื่องยนต์"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "ENGINE FRONT"
+msgstr "เครื่องยนต์ด้านหน้า"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "ENGINE REAR"
+msgstr "เครื่องยนต์ด้านหลัง"
+
+#. Menu title for language menu where the user can select the used language
+#. Button for displaying player's achievements
+#: src/common/MenuEnterCode.cpp src/common/MenuMore.cpp
+msgid "ENTER CODE"
+msgstr "ใส่รหัส"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "ENTRY FEE FOR %s? "
+msgstr "ค่าเข้าสำหรับ %s? "
+
+#: src/common/GaragePartLibrary.cpp src/common/GaragePartLibrary.cpp
+msgid "EPIC"
+msgstr "ชั้นเยี่ยม"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "EPIC PARTS"
+msgstr "ส่วนประกอบมหากาพย์"
+
+#. MenuItemButton* backButton = Utils::createUIButtonWithCustomFile("button-bg-left", NULL, FN_TEXT("BACK"), this, menu_selector(GaragePartUpgrade::onBackPressed), 1.0f, Utils::TEXT_ALIGN_CENTER);
+#. backButton->setScale(buttonScale);
+#. backButton->setPosition(size.width/2 - backButton->getContentSize().width*backButton->getScale()/2.f, -45.f);
+#. pInfoMenu->addChild(backButton);
+#.
+#. Equip button
+#. Tune button
+#: src/common/GaragePartUpgrade.cpp src/common/GaragePartUpgrade.cpp
+#: src/common/GaragePartUpgrade.cpp
+msgid "EQUIP"
+msgstr "ติดตั้ง"
+
+#: src/common/MenuGarageWorkshop.cpp
+msgid "ERROR"
+msgstr "ข้อผิดพลาด"
+
+#. Text in result screen indicating how many back flips the player did
+#. sprintf(str, FN_TEXT_INGAME("FREERIDE MODE\n"),);
+#. TODO COPY FROM OVER ADD CHALLENGE THING
+#: src/common/GameLayer.cpp src/common/Stage.cpp
+msgid "EVENT"
+msgstr "กิจกรรม"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "EVENT\n GOAL: %dm"
+msgstr "กิจกรรม\n เป้าหมาย: %dm"
+
+#: src/common/GameLayer.cpp
+msgid "EVENT COMPLETED"
+msgstr "กิจกรรมเสร็จสิ้น"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "EVENT COMPLETED\n+%d %s"
+msgstr "กิจกรรมเสร็จสิ้น\n+%d %s"
+
+#. TODO WEEK		TEXT FOR CHALLENGE COMPLETED
+#. Text displayed when the game ends because the driver's head has hit something
+#: src/common/GameLayer.cpp
+msgid "EVENT COMPLETED!"
+msgstr "กิจกรรมเสร็จสิ้น!"
+
+#. Text in result screen indicating how many back flips the player did
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "EVENT COMPLETED!\n GOAL: %dm\n"
+msgstr "กิจกรรมเสร็จสิ้น!\n เป้าหมาย: %dm\n"
+
+#. Text showing how far the player must drive to reach the next level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "EVENT: Drive %dm "
+msgstr "กิจกรรม: ขับ %dm "
+
+#. Exit button text (user exits the game session)
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/MenuEULA.cpp
+msgid "EXIT"
+msgstr "ออก"
+
+#. Title for asking if the user really wants to exit
+#. Ask for an exit
+#: src/common/GameLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuUpgradeCar.cpp
+msgid "EXIT?"
+msgstr "ออก?"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Earn 100000 coins in one run"
+msgstr "รับ 100000 เหรียญในเที่ยวเดียว"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Earn 1000000 coins in one run"
+msgstr "รับ 1000000 เหรียญในเที่ยวเดียว"
+
+#. Windows tile notification telling the user they can unlock a new vehicle if the earn more coins
+#. Windows tile notification telling the user they can unlock a new stage if the earn more coins
+#: src/winrt/TileNotificationManager.cpp
+#: src/winrt/TileNotificationManager.cpp
+#, c-format
+msgid "Earn only %d more coins to unlock %s!"
+msgstr "รับอีกเพียง %d เพื่อปลดล็อค %s!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Eco engine with improved acceleration."
+msgstr "เครื่องยนต์อีโค่พร้อมความเร่งที่ดียิ่งขึ้น"
+
+#. Mountain level description
+#: src/common/Stage.cpp
+msgid "Edgy mountain that is very hard to overcome. Highly upgraded vehicle recommended!"
+msgstr "ภูเขาแหลมคมยากจะพิชิต แนะนำให้อัปเกรดรถเป็นอย่างยิ่ง!"
+
+#. Achievement title for driving 1000km with Luxury Car
+#: src/common/AchievementManager.cpp
+msgid "Elite Driver"
+msgstr ""
+
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "Enable ICloud from the device settings"
+msgstr "เปิดการใช้งาน ICloud จากการตั้งค่าอุปกรณ์"
+
+#. Beach level description
+#: src/common/Stage.cpp
+msgid "Enjoy the view and feel the ocean breeze at the hilltop in this relaxing map."
+msgstr "เพลิดเพลินกับวิวและสัมผัสลมจากมหาสมุทรที่ยอดเขาในแผนที่ผ่อนคลายนี้"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Enter the 9th dimension!"
+msgstr "เข้าสู่มิติที่เก้า!"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Entry fee: %d"
+msgstr "ค่าเข้า: %d"
+
+#. Achievement title for driving 1000km with Diesel Truck
+#: src/common/AchievementManager.cpp
+msgid "Environmentalist"
+msgstr "นักสิ่งแวดล้อม"
+
+#: src/common/MainMenuSelectStage.cpp
+msgid "Event completed!"
+msgstr "กิจกรรมเสร็จสิ้น!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Excellent fuel efficiency and torque."
+msgstr "ประสิทธิภาพการใช้เชื้อเพลิงและแรงบิดที่ดีเยี่ยม"
+
+#. Arctic level description
+#: src/common/Stage.cpp
+msgid "Experience the slippery snow conditions! In order to get to the northern parts of Finland you need a cargo plane that carries the car."
+msgstr "สัมผัสสภาพหิมะสุดลื่น! เพื่อเข้าไปเป็นส่วนหนึ่งของฟินแลนด์ตอนเหนือ คุณต้องมีเครื่องบินขนส่งที่ใช้ขนรถ"
+
+#: src/common/GarageLocalization.cpp
+msgid "Extra traction on mud surfaces!"
+msgstr "แรงฉุดพิเศษบนพื้นโคลน!"
+
+#. Rainbow level description
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "Extreme stage with many tricky jumps."
+msgstr "ด่านสุดโหดพร้อมกระโดดหลายท่าผาดโผน"
+
+#. Roller coaster level description
+#: src/common/Stage.cpp
+msgid "Extremely fast ride only for the bravest drivers."
+msgstr "ขับขี่เร็วถึงใจเฉพาะกับผู้ขับขี่ที่ใจถึง"
+
+#. level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "FACTORY"
+msgstr "โรงงาน"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "FACTORY BUNDLE"
+msgstr "คอลเลคชั่นโรงงาน"
+
+#. Rally car vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "FAST CAR"
+msgstr "รถเร็ว"
+
+#. Screw finger vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "FINGER SCREW"
+msgstr "FINGER SCREW "
+
+#. Show other Fingersoft releases
+#: src/common/MenuMore.cpp
+msgid "FINGERSOFT GAMES & APPS"
+msgstr "เกมและแอป FINGERSOFT"
+
+#. Opens Fingersoft Facebook page
+#: src/common/MenuMore.cpp
+msgid "FINGERSOFT ON FACEBOOK"
+msgstr "FINGERSOFT บน FACEBOOK"
+
+#. Fire truck vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "FIRE TRUCK"
+msgstr "รถดับเพลิง"
+
+#: src/common/PlayerCarBubbleCar.cpp
+#, c-format
+msgid "FLIGHT TIME %.2f s"
+msgstr "เวลาบิน %.2f วินาที"
+
+#: src/common/MissionDialog.cpp
+msgid "FLY"
+msgstr "บิน"
+
+#: src/common/GarageLocalization.cpp
+msgid "FLYTURNRATE"
+msgstr "ความเร็วของการควงในอากาศ"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "FOOD"
+msgstr "อาหาร"
+
+#. Forest level title
+#: src/common/Stage.cpp
+msgid "FOREST"
+msgstr "ป่า"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "FOREST BUNDLE"
+msgstr "คอลเลคชั่นป่า"
+
+#: src/common/PlayerCarManager.cpp
+msgid "FORK"
+msgstr "รถยก"
+
+#: src/common/GarageLocalization.cpp
+msgid "FORMULA"
+msgstr "ฟอร์มูลา"
+
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/PopupOfferDialog.cpp
+msgid "FREE"
+msgstr "ฟรี"
+
+#. Friction reduction upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "FRICTION"
+msgstr "แรงเสียดทาน"
+
+#: src/common/MissionDialog.cpp
+msgid "FRONT FLIPS"
+msgstr "ม้วนหน้า"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "FRONT HEIGHT"
+msgstr "ความสูงส่วนหน้า"
+
+#. Tire size title
+#: src/common/PlayerCarManager.cpp
+msgid "FRONT TIRE SIZE"
+msgstr "ขนาดยางล้อหน้า"
+
+#. Upgrade title
+#. Title for fuel upgrade
+#. Upgrade title
+#. Fuel tank upgrade title
+#. Title for fuel upgrade
+#. Upgrade title
+#. Fuel tank upgrade title
+#. Upgrade title
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "FUEL"
+msgstr "เชื้อเพลิง"
+
+#: src/common/MissionDialog.cpp
+msgid "FUELS"
+msgstr "เชื้อเพลิง"
+
+#: src/common/MenuGarageGacha.cpp
+msgid "FULL"
+msgstr "เต็มพิกัด"
+
+#. Title of a dialog shown to the user when cloud sign-in failed
+#: src/common/Utils.cpp
+msgid "Failed to sign in"
+msgstr "ไม่สามารถลงชื่อเข้าใช้ได้"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Find a secret in Nuclear Plant"
+msgstr "ค้นหาความลับในโรงงานนิวเคลียร์"
+
+#. Achievement title for driving 1000km with Rally Car
+#: src/common/AchievementManager.cpp
+msgid "Finger Rally Champion"
+msgstr "แชมป์แรลลี่นิ้วซิ่ง"
+
+#: src/common/AchievementManager.cpp
+msgid "Fingersoft"
+msgstr "Fingersoft"
+
+#. Fire truck description
+#: src/common/PlayerCarManager.cpp
+msgid "Fingertown Fear & Rescue at your service!"
+msgstr "Fingertown Fear & Rescue พร้อมให้บริการ!"
+
+#. Achievement title for driving total distance of 1000m
+#: src/common/AchievementManager.cpp
+msgid "First Hills"
+msgstr "เนินแรก"
+
+#. Achievement title for unlocking a second stage
+#: src/common/AchievementManager.cpp
+msgid "First Trip"
+msgstr "เที่ยวแรก"
+
+#. Achievement title for making total 1000 flips
+#: src/common/AchievementManager.cpp
+msgid "Flip-Lord"
+msgstr "จอมตีลังกา"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fly for 1.5 seconds with The Rocket"
+msgstr "บินได้นาน 1.5 วินาทีด้วยจรวด"
+
+#. more info
+#: src/common/MenuGDPR.cpp
+msgid "For more information on your rights regarding your personal\ninformation and the rights specific to residents of\nCalifornia please review our Privacy Policy's and\nthe section \"For residents of California.\"\n\nSharing my Advertising ID and other technical identifiers such as\nmy IP address to Fingersoft's advertising partners. These\nidentifiers will be used to display ads relevant to my interests\nin Hill Climb Racing "
+msgstr ""
+
+#. sprintf(str, FN_TEXT("Free tries left: %d"), free);
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Free tries: %d"
+msgstr "ทดลองฟรี: %d"
+
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "Free upgrade"
+msgstr "อัปเกรดฟรี"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fully upgrade 10 vehicles"
+msgstr "อัปเกรดเต็มรูปแบบ 10 คัน"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fully upgrade 5 vehicles"
+msgstr "อัปเกรดเต็มรูปแบบ 5 คัน"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fully upgrade a vehicle"
+msgstr "อัปเกรดเต็มรูปแบบหนึ่งคัน"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fully upgrade all vehicles"
+msgstr "อัปเกรดเต็มรูปแบบทุกคัน"
+
+#: src/common/GarageLocalization.cpp
+msgid "Fun drive everywhere!"
+msgstr "ขับขี่สนุกได้ทุกที่!"
+
+#. Screw finger vehicle name
+#: src/common/MissionDialog.cpp src/common/PlayerCarManager.cpp
+msgid "GARAGE"
+msgstr "อู่"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "GARAGE LOCKED"
+msgstr "โรงรถล็อก"
+
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+msgid "GARAGE SLOT"
+msgstr "ช่องในโรงรถ"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "GARAGE SPECIAL PACK"
+msgstr "แพ็กเกจพิเศษสำหรับอู่รถ"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "GARAGE STARTER PACK"
+msgstr "แพ็กเกจเริ่มต้นสำหรับอู่รถ"
+
+#. Doesn't fit in 4/3 screens, divide in 2 lines
+#: src/common/MainMenuLayer.cpp
+msgid "GARAGE UNLOCKED - Access garage in the select vehicle menu"
+msgstr "โรงรถปลดล็อกแล้ว - เข้าใช้งานโรงรถได้ในเมนูเลือกรถ"
+
+#. Text for the button where the car accelerates
+#: src/common/MenuControls.cpp src/common/TVOsTutorialNode.cpp
+msgid "GAS"
+msgstr "แก๊ส"
+
+#: src/common/GarageLocalization.cpp
+msgid "GAS TURBINE"
+msgstr "กังหันแก๊ส"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MissionDialog.cpp
+msgid "GEMS"
+msgstr "อัญมณี"
+
+#: src/common/AppDelegate.cpp src/common/PopupOfferDialog.cpp
+#, c-format
+msgid "GEMS: %d"
+msgstr "อัญมณี: %d"
+
+#: src/common/MainMenuLayer.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp
+msgid "GET COINS"
+msgstr "รับเหรียญ"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+#: src/common/Nitro.cpp src/common/PowerUpDialog.cpp
+msgid "GET GEMS"
+msgstr "รับอัญมณี"
+
+#: src/common/MenuUpdate.cpp
+msgid "GET IT FROM APP STORE!"
+msgstr ""
+
+#: src/common/MenuUpdate.cpp
+msgid "GET IT FROM GOOGLE PLAY!"
+msgstr ""
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageWorkshop.cpp
+msgid "GET PARTS"
+msgstr "รับอะไหล่"
+
+#. Exit button text
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "GET REWARD!"
+msgstr "รับรางวัล!"
+
+#: src/common/GarageChestButton.cpp
+msgid "GIFT"
+msgstr "ของขวัญ"
+
+#: src/common/GarageLocalization.cpp
+msgid "GRAVEL"
+msgstr "ลูกรัง"
+
+#: src/common/GarageLocalization.cpp
+msgid "GRAVEL PRO"
+msgstr "ลูกรังโปร"
+
+#: src/common/PlayerCarManager.cpp
+msgid "GRIP"
+msgstr ""
+
+#: src/common/MainMenuLayer.cpp
+msgid "Garage unlocked!"
+msgstr "ปลดล็อกอู่รถแล้ว!"
+
+#. Achievement for returning all cans in Suburbs stage
+#: src/common/AchievementManager.cpp
+msgid "Garbage Collector"
+msgstr ""
+
+#. Windows tile notification telling the user how much further they need to get to reach the next level in a stage
+#: src/winrt/TileNotificationManager.cpp
+#: src/winrt/TileNotificationManager.cpp
+#, c-format
+msgid "Get %dm further to reach level %d in %s!"
+msgstr "อีก %dม. จะถึงเลเวล %d ใน %s!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Get back to the 80's!"
+msgstr "กลับไปสู่ยุค 80!"
+
+#. Achievement title for unlocking all stages
+#: src/common/AchievementManager.cpp
+msgid "Globetrotter"
+msgstr "นักเดินทางรอบโลก"
+
+#. Mars level description
+#: src/common/Stage.cpp
+msgid "Go even further in our galaxy and explore the Mars. Go through tunnels and experience the different gravity."
+msgstr "ไปให้ไกลยิ่งขึ้นในกาแล็กซีของเราแล้วสำรวจดาวอังคาร ลอดอุโมงค์และสัมผัสแรงโน้มถ่วงที่แตกต่าง"
+
+#. Moon level description
+#: src/common/Stage.cpp
+msgid "Go to the place no hillbilly has been ever before. Different gravity allows a whole new set of tricks to experience!"
+msgstr "ไปยังสถานที่ที่ไม่ชนบทที่ไหนเคยมีมาก่อน แรงโน้มถ่วงที่แตกต่างกันจะช่วยให้คุณได้สัมผัสกับลูกเล่นที่เป็นประสบการณ์ใหม่เอี่ยม!"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Goal: Reach %dm"
+msgstr "เป้าหมาย: ไปให้ถึง %dm"
+
+#. Achievement title for fully upgrading 5 vehicles
+#: src/common/AchievementManager.cpp
+msgid "Golden Sample"
+msgstr "ตัวอย่างระดับทองคำ"
+
+#. Achievement for jumping 8m with Lowrider
+#: src/common/AchievementManager.cpp
+msgid "Grasshopper"
+msgstr "ตั๊กแตน"
+
+#. Achievement title for fully upgrading 10 vehicles
+#: src/common/AchievementManager.cpp
+msgid "Grease Monkey"
+msgstr "ช่างเครื่องตัวจริง"
+
+#: src/common/GarageLocalization.cpp
+msgid "Great fuel efficiency and torque."
+msgstr "ประสิทธิภาพการใช้เชื้อเพลิงและแรงบิดที่ดี"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Great job! \nDouble your coins by watching a short video!\nCoins collected: %d"
+msgstr "เก่งมาก! \nเพิ่มเหรียญสองเท่าด้วยการดูวิดีโอสั้นๆ!\nได้เหรียญ: %d"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "Great job! \nGet bonus reward by watching a short video!\n%s"
+msgstr "เก่งมาก! \nรับโบนัสด้วยการรับชมวิดีโอสั้น!\n%s"
+
+#. Snowmobile vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Great traction in the ice and snow. Fully upgraded it becomes a fun vehicle for other levels too!"
+msgstr "แรงดึงดีๆ ในน้ำแข็งและหิมะ อัปเกรดเครื่องเต็มรูปแบบเพื่อให้กลายเป็นรถที่ขับสนุกในอีกระดับด้วย!"
+
+#. Achievement title for earning 100000 coins in a single run
+#: src/common/AchievementManager.cpp
+msgid "Greedy"
+msgstr "โลภจริงๆ"
+
+#. Title for button displaying that halloween content is disabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp
+msgid "HALLOWEEN CONTENT: OFF"
+msgstr "เนื้อหาฮัลโลวีน: ปิด"
+
+#. Title for button displaying that halloween content is enabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp
+msgid "HALLOWEEN CONTENT: ON"
+msgstr "เนื้อหาฮัลโลวีน: เปิด"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "HAUNTED"
+msgstr "หลอน"
+
+#. Text for the button which toggles the gas and brake pedals visibility in the game (show/hide pedals)
+#: src/common/MenuControls.cpp
+msgid "HIDE PEDALS"
+msgstr "ซ่อนคันเหยียบ"
+
+#: src/common/AchievementMenu.cpp
+msgid "HIGH SCORE"
+msgstr "คะแนนสูงสุด"
+
+#. Button for displaying the High Score
+#: src/common/MenuMore.cpp
+msgid "HIGH SCORES"
+msgstr "คะแนนสูงสุด"
+
+#. Highway level title
+#: src/common/Stage.cpp
+msgid "HIGHWAY"
+msgstr "ทางด่วน"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "HIGHWAY BUNDLE"
+msgstr "คอลเลคชั่นทางด่วน"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "HIPPIE BUNDLE"
+msgstr "คอลเลคชั่นฮิปปี้"
+
+#. Hippie van vehicle name (VW Kleinbus)
+#: src/common/PlayerCarManager.cpp
+msgid "HIPPIE VAN"
+msgstr "รถฮิปปี้แวน"
+
+#: src/common/MissionDialog.cpp
+msgid "HIT"
+msgstr "โดน"
+
+#. Hot rod vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "HOT ROD"
+msgstr "ฮ็อดร็อด"
+
+#. Hover craft vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "HOVERCRAFT"
+msgstr "รถสะเทินน้ำสะเทินบก"
+
+#. vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Have a good seat and take some easy ride with the chopper!"
+msgstr "นั่งให้ดีๆ แล้วออกไปซิ่งรถชอปเปอร์กัน!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Heads up soldiers! You are now in the Bill's Boot Camp! Move it, Move it!"
+msgstr "ระวังตัวให้ดีทหาร! คุณอยู่ในค่ายทหารของบิลแล้ว! หน้าเดินๆ!"
+
+#. Formula-1 car like race car description
+#: src/common/PlayerCarManager.cpp
+msgid "High power and aerodynamic ultimate hill climbing vehicle. Upgrade downforce to make this car follow the road like a magnet."
+msgstr "รถไต่เขาแอโร่ไดนามิกชั้นเยี่ยมกำลังสูง อัปเกรดแรงกดเพื่อให้รถคันนี้เกาะถนนได้เหมือนติดแม่เหล็กดูด"
+
+#: src/common/PlayerCarManager.cpp
+msgid "Higher passenger wealth gives you more tips."
+msgstr ""
+
+#. Front suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Higher suspension helps you in uneven terrain and gives you more hopping power."
+msgstr "ระบบกันสะเทือนที่ดีขึ้นช่วยในการขับขี่บนพื้นที่ขรุขระและเพิ่งกำลังในการกระดอนแก่รถคุณ"
+
+#. Rear suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Higher suspension helps you in uneven terrain and gives you more jumping power."
+msgstr "ระบบกันสะเทือนที่ดีขึ้นช่วยในการขับขี่บนพื้นที่ขรุขระและเพิ่งกำลังในการกระโจนแก่รถคุณ"
+
+#. Achievement title for driving 1000km with Dragster
+#: src/common/AchievementManager.cpp
+msgid "Highest Roller"
+msgstr "วิ่งล้อสูงสุด"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Hill Climb Racing: I reached %dm in %s"
+msgstr "Hill Climb Racing: ฉันมาได้ %dม. ใน %s"
+
+#. Achievement for hopping 3m with Lowrider
+#: src/common/AchievementManager.cpp
+msgid "Hip Hopper"
+msgstr "รถฮิปฮอป"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Ho ho hou! Santa is having a big hurry and he asked some help from Bill to deliver presents."
+msgstr "โฮ่ๆๆ! ซานต้ากำลังรีบ เขาขอให้บิลช่วยส่งของขวัญแน่ะ"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Hop 3m with Lowrider"
+msgstr "กระโดด 3 เมตรด้วยโลว์ไรเดอร์"
+
+#: src/common/PlayerCarLowrider.cpp
+#, c-format
+msgid "Hopped     \n%d cm!    "
+msgstr "กระโดด \n%d ซม.!    "
+
+#: src/common/GarageLocalization.cpp
+msgid "Huge size, works everywhere!"
+msgstr "ขนาดใหญ่ ทำงานได้ทุกที่!"
+
+#: src/common/MenuGDPR.cpp src/common/MenuGDPR.cpp
+msgid "I AGREE"
+msgstr "ยอมรับ"
+
+#. Achievement title for driving 1000km with Police Car
+#: src/common/AchievementManager.cpp
+msgid "I Am the Law"
+msgstr "ฉันคือผู้พิทักษ์กฎหมาย"
+
+#: src/common/MenuEULA.cpp
+msgid "I have read and accept the End-User License\nAgreement and Fingersoft's Privacy Policy."
+msgstr ""
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "I reached %dm in %s. Check out how far you go: %s"
+msgstr "มาถึง %dม. ใน %s ดูซิว่าคุณจะไปได้ไกลแค่ไหน: %s"
+
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "ICLOUD DISABLED"
+msgstr "ปิดการใช้งาน ICLOUD"
+
+#. Title for button where the user can initiate the cloud sign-in process
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "ICLOUD SYNC: OFF"
+msgstr "ซิงค์ ICLOUD: ปิด"
+
+#. Title for button where the user can sign out from cloud services
+#. CONNECTING;
+#. Title for button where the user can sign out from cloud services
+#. CONNECTING;
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "ICLOUD SYNC: ON"
+msgstr "ซิงค์ ICLOUD: เปิด"
+
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "ICloud disabled"
+msgstr "ปิดการใช้งาน ICloud"
+
+#: src/common/MissionDialog.cpp
+msgid "IDOLS"
+msgstr "ไอดอล"
+
+#. Current language name in local language (eg. English, Deutsch, Suomi)
+#. Current language name in local language (eg. English, Deutsch, Suomi)
+#. TODO: uppercase?
+#. Set initial focus to currently selected language
+#. Current language name in local language (eg. English, Deutsch, Suomi)
+#: src/common/LanguageMenu.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp
+msgid "ID_LANGUAGE_NAME"
+msgstr "ไทย"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "IN %s"
+msgstr "ใน %s"
+
+#: src/common/MissionDialog.cpp
+msgid "IN THE AIR"
+msgstr "ในอากาศ"
+
+#. Engine texts
+#: src/common/GarageLocalization.cpp
+msgid "INLINE 4"
+msgstr "4 สูบเรียง"
+
+#: src/common/GarageLocalization.cpp
+msgid "INLINE 6"
+msgstr "6 สูบเรียง"
+
+#. Text indicating the player received a bonus for staying in the air for a really long time
+#: src/common/GameLayer.cpp
+msgid "INSANE AIR TIME\n"
+msgstr "ลอยกลางอากาศสุดเทพ\n"
+
+#. Text indicating the player received a bonus for staying in the air for a really long time
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "INSANE AIR TIME\n    +%d "
+msgstr "ลอยกลางอากาศอย่างเทพ\n    +%d"
+
+#. Achievement title for driving 1000km with Race Car
+#: src/common/AchievementManager.cpp
+msgid "Iceman"
+msgstr "มนุษย์น้ำแข็ง"
+
+#. Aerodynamics upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved aerodynamics reduces air resistance and results in higher top speed."
+msgstr "แอโร่ไดนามิกส์ที่ดีขึ้นจะช่วยลดแรงต้านของอากาศ และช่วยให้ความเร็วสูงสุดเร็วขึ้น"
+
+#. Brake upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved brakes makes car to stop faster. Warning: strong brakes may decrease structural integrity"
+msgstr "ปรับปรุงเบรกช่วยให้รถจอดได้เร็วขึ้น คำเตือน: การเบรกแรงๆ อาจลดความสมบูรณ์ของโครงสร้าง"
+
+#. Friction reduction upgrade description (allows the vehicle to move faster)
+#: src/common/PlayerCarManager.cpp
+msgid "Improved cushion material reduces friction and results in higher ground speed."
+msgstr "วัสดุกันกระแทกที่ดีจะช่วยลดแรงเสียดทาน และทำให้ความเร็วภาคพื้นดินสูงขึ้น"
+
+#. Battery upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved energy efficiency allows the vehicle to driver further with one charge."
+msgstr "ประสิทธิภาพในการใช้พลังงานที่ดีขึ้นจะช่วยให้ยานพาหนะขับเคลื่อนไปได้ไกลขึ้นในการเติมเชื้อเพลิงเพียงครั้งเดียว"
+
+#. Engine upgrade description
+#. Engine rear upgrade description
+#. Engine front upgrade description
+#. Engine upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Improved engine parts result in power increase. Higher horsepower helps you climb hills and make longer jumps and tricks for more bonuses."
+msgstr "ชิ้นส่วนเครื่องยนต์ที่ดีขึ้นจะช่วยเพิ่มพลังงาน แรงม้าที่สูงขึ้นจะช่วยคุณไต่เขา และกระโดดได้นานขึ้น รวมถึงขี่ผาดโผนเพื่อรับโบนัสได้มากขึ้นด้วย"
+
+#. Engine upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved engine parts result in power increase. Improved engine also weights more."
+msgstr "ชิ้นส่วนเครื่องยนต์ที่ดีขึ้นช่วยเพิ่มความแรง แต่เครื่องยนต์ที่ดีขึ้นก็มีน้ำหนักมากขึ้นด้วยเช่นกัน"
+
+#: src/common/GarageLocalization.cpp
+msgid "Improved gravel tire!"
+msgstr "ยางลุยลูกรังที่ดีขึ้น!"
+
+#: src/common/PlayerCarManager.cpp
+msgid "Improved grip gives the legs better traction."
+msgstr ""
+
+#. Tire upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved roll cage material can take more damage before breaking."
+msgstr "วัสดุโครงเหล็กที่ดีขึ้นสามารถรับความเสียหายก่อนการแตกหักได้ดีขึ้นกว่าเดิม"
+
+#. Description for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#: src/common/PlayerCarManager.cpp
+msgid "Improved screw result in better traction and better power delivery to the ground."
+msgstr "การขันสกรูจะช่วยให้แรงดึงดีขึ้นและส่งแรงลงพื้นได้ดีขึ้นด้วย"
+
+#: src/common/PlayerCarManager.cpp
+msgid "Improved shock absorption gives you and the passengers smoother ride."
+msgstr ""
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Improved shock absorption improves stability at high speeds and makes the car more stable on bumps."
+msgstr "การรับแรงสั่นสะเทือนที่ดีขึ้นช่วยให้รถเสถียรขึ้นที่ระดับความเร็วสูง และทำให้รถมีเสถียรภาพขณะรับแรงกระแทกได้ดีขึ้น"
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved shock absorption improves stability at high speeds and makes the reindeer more stable on bumps."
+msgstr "การรับแรงสั่นสะเทือนที่ดีขึ้นช่วยให้เสถียรขึ้นที่ระดับความเร็วสูง และทำให้เรนเดียร์มีเสถียรภาพขณะรับแรงกระแทกได้ดีขึ้น"
+
+#. Shoes upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved shoes result in better traction and better power delivery to the ground."
+msgstr "รองเท้าดีขึ้นทำให้แรงดึงดีขึ้นและส่งแรงลงพื้นได้ดีกว่าเดิม"
+
+#: src/common/GarageLocalization.cpp
+msgid "Improved street tire for asphalt!"
+msgstr "ยางล้อสำหรับถนนยางมะตอยที่ดีขึ้น!"
+
+#. Thruster upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved thruster technology results in better power delivery."
+msgstr "ปรับปรุงเทคโนโลยีหัวขับดันช่วยให้ส่งแรงได้ดียิ่งขึ้น"
+
+#. Tire upgrade description
+#. Tires upgrade description
+#. Tire upgrade description
+#. Thruster upgrade description
+#. Tires upgrade description
+#. Tire upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Improved tires result in better traction and better power delivery to the ground."
+msgstr "ยางรถที่ดีขึ้นช่วยให้มีแรงดึงดีขึ้น และส่งแรงลงพื้นได้ดีกว่า"
+
+#. Tire upgrade description
+#. Description for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Improved tracks result in better traction and better power delivery to the ground."
+msgstr "ช่วงล้อที่ดีขึ้น ช่วยให้มีแรงดึงดีขึ้นและส่งแรงลงพื้นได้ดีกว่า"
+
+#: src/common/GarageLocalization.cpp
+msgid "Improved traction in asphalt levels!"
+msgstr "ปรับปรุงการยึดเกาะในด่านถนนยางมะตอย!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Improved winter tire!"
+msgstr "ยางลุยหน้าหนาวที่ดีขึ้น!"
+
+#. 4WD upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Improving all wheel drive system will result in better traction and better handling of the vehicle."
+msgstr "การปรับปรุงระบบขับเคลื่อนล้อทั้งหมดจะส่งผลให้เกิดแรงดึงที่ดีขึ้นและควบคุมรถได้ดีกว่าเดิม"
+
+#. Fuel upgrade description
+#. Fuel tank upgrade description
+#. Fuel upgrade description
+#. Fuel tank upgrade description
+#. Fuel upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Improving the fuel tank size makes it possible to drive further."
+msgstr "การปรับปรุงขนาดถังเชื้อเพลิงช่วยให้ขับขี่ได้ไกลยิ่งขึ้น"
+
+#. Ambulance description
+#: src/common/PlayerCarManager.cpp
+msgid "In case of emergency, call 555-NECK-FLIP."
+msgstr "กรณีฉุกเฉิน โทร 555-ตีลังกา-คอพับ"
+
+#. Bubblecar car description
+#: src/common/PlayerCarManager.cpp
+msgid "Is it a car or an aeroplane?"
+msgstr "นี่เป็นรถหรือว่าเครื่องบินกันเนี่ย?"
+
+#. Tank vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "It's a tank!"
+msgstr "นี่คือรถถัง!"
+
+#. Mudpool level description
+#: src/common/Stage.cpp
+msgid "It's time to get dirty!"
+msgstr "ได้เวลามาคลุกฝุ่นกันแล้ว!"
+
+#. Alien planet level description (weird slimy planet with very slippery surface)
+#: src/common/Stage.cpp
+msgid "It's time to go beyond the galaxy to an alien planet. This slimy sloped planet gives you a challenge of its own."
+msgstr "ถึงเวลาไปให้ไกลเกินกว่ากาแล็กซีเพื่อไปถึงโลกมนุษย์ต่างดาว ดาวเคราะห์ลาดแสนลื่นดวงนี้จะช่วยให้คุณได้ท้าทายตัวเอง"
+
+#. Tank vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "It's your custom car!"
+msgstr "นี่คือรถแต่งของคุณ!"
+
+#: src/common/MissionDialog.cpp
+msgid "JUMP"
+msgstr "กระโดด"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "JUMP %dm"
+msgstr "ทะยาน %dm"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "JUNGLE"
+msgstr "ป่า"
+
+#. Junkyard level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "JUNKYARD"
+msgstr "พื้นที่เก็บของเก่า"
+
+#. Achievement title for driving total distance of 10000m
+#: src/common/AchievementManager.cpp
+msgid "Journey Begins"
+msgstr "เริ่มต้นการเดินทาง"
+
+#: src/common/AchievementManager.cpp
+msgid "Jump 140 meters with 10 cars in Arena"
+msgstr "ทะยานจากพื้น 140 เมตรกับรถแข่งสิบคันในสนามประชันความเร็ว"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Jump 8m with Lowrider"
+msgstr "กระโดด 8 เมตรด้วยโลว์ไรเดอร์"
+
+#: src/common/PlayerCarLowrider.cpp
+#, c-format
+msgid "Jumped      \n%d cm!     "
+msgstr "กระโดด \n%d ซม.!     "
+
+#. Achievement for completing the Jungle level
+#: src/common/AchievementManager.cpp
+msgid "Jungle King"
+msgstr "เจ้าป่า"
+
+#. Achievement title for making total 10 neckflips
+#: src/common/AchievementManager.cpp
+msgid "Just a Flesh Wound"
+msgstr "ก็แค่แผลสด"
+
+#. Train vehicle name (kid's train)
+#: src/common/PlayerCarManager.cpp
+msgid "KIDDIE EXPRESS"
+msgstr "สายด่วนสำหรับเด็ก"
+
+#: src/common/MainMenuSelectCar.cpp
+msgid "Keep going! Fully upgrade your vehicle to unlock a new vehicle skin!"
+msgstr ""
+
+#. Tractor stability upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Keeps the tractor from rolling over on steep hills."
+msgstr "เลี้ยงรถแทรกเตอร์ไม่ให้กลิ้งลงเนินเขาสูงชัน"
+
+#. Stability upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Keeps the vehicle from rolling over on steep hills."
+msgstr "รักษาสมดุลของยานพาหนะ ไม่ให้กลิ้งลงเขาสูงชัน"
+
+#. Achievement title for driving 1000km with Superoffroad
+#: src/common/AchievementManager.cpp
+msgid "King of the Hill"
+msgstr "จ้าวแห่งขุนเขา"
+
+#: src/common/Planet.cpp
+#, c-format
+msgid "LANDING BONUS\n  +%d"
+msgstr "โบนัสการลงจอด\n  +%d"
+
+#: src/common/MenuNewSettings.cpp
+msgid "LANGUAGE"
+msgstr "ภาษา"
+
+#. Button text for cancelling an operation
+#: src/common/GameLayer.cpp
+msgid "LATER"
+msgstr "ไว้ก่อน"
+
+#: src/common/GaragePartLibrary.cpp src/common/GaragePartLibrary.cpp
+msgid "LEGENDARY"
+msgstr "ตำนาน"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "LEGENDARY BUNDLE"
+msgstr "คอลเลคชั่นในตำนาน"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "LEGENDARY PARTS"
+msgstr "ส่วนประกอบในตำนาน"
+
+#: src/common/GarageStockBar.cpp
+msgid "LEVEL "
+msgstr "เลเวล"
+
+#: src/common/GaragePartDialog.cpp src/common/GaragePartUpgrade.cpp
+#, c-format
+msgid "LEVEL %d"
+msgstr "เลเวล %d"
+
+#. Upgrade level progress
+#: src/common/MenuUpgradeButton.cpp
+#, c-format
+msgid "LEVEL %d / %d"
+msgstr "เลเวล %d / %d"
+
+#. Text displayed when the player completes a new level of a stage
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "LEVEL %d COMPLETE "
+msgstr "เลเวล %d เรียบร้อย"
+
+#: src/common/GameLayer.cpp
+msgid "LEVEL COMPLETE !!"
+msgstr ""
+
+#: src/common/AssetLoader.cpp
+msgid "LOADING..."
+msgstr "กำลังโหลด..."
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/PlayerCar.cpp src/common/PlayerCar.cpp
+msgid "LOST IN SPACE!!"
+msgstr "สาบสูญในอวกาศ!!"
+
+#. Lowrider vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "LOWRIDER"
+msgstr "โลว์ไรเดอร์"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+msgid "LUNCHBOX"
+msgstr "กล่องอาหาร"
+
+#: src/common/PlayerCarManager.cpp
+msgid "LUXURY CAR"
+msgstr "รถหรู"
+
+#. Achievement title for driving 1000km with Snow Mobile
+#: src/common/AchievementManager.cpp
+msgid "Lapland Hillbilly"
+msgstr "นักขับไต่เขาแห่งแลปแลนด์"
+
+#. The text on the later button of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "Later"
+msgstr "ไว้ก่อน"
+
+#. Achievement title for making total 5 neckflips
+#: src/common/AchievementManager.cpp
+msgid "Let's Try That Again"
+msgstr "เอาแบบนี้อีกที"
+
+#. Text indicating how far the player needs to drive to reach the next level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Level %d: Reach %dm"
+msgstr "เลเวล %d: เป้าหมาย %dม."
+
+#. Text showing how far the player must drive to reach the next level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Level %d: Reach %dm "
+msgstr "เลเวล %d: เป้าหมาย %dม."
+
+#. Shows the next goal for a level in level selection screen. For example: "Level 2: Reach 400m". Please preserve the %d.
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Level %d: reach %dm"
+msgstr "เลเวล %d: เป้าหมาย %dม."
+
+#. Text indicating that the player received points for reaching a new level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Level bonus +%d "
+msgstr "โบนัสเลเวล +%d"
+
+#. Text indicating that the player received points for reaching a new level
+#: src/common/GameLayer.cpp
+msgid "Level bonus +0     "
+msgstr "โบนัสเลเวล +0"
+
+#. Achievement for flying 1.5 seconds with The Rocket
+#: src/common/AchievementManager.cpp
+msgid "Liftoff"
+msgstr "ทะยานขึ้น"
+
+#: src/common/GarageLocalization.cpp
+msgid "Lightweight rally car chassis."
+msgstr "โครงรถแรลลี่น้ำหนักเบา"
+
+#. Achievement title for doing a neckflip within 5 seconds from stage start
+#: src/common/AchievementManager.cpp
+msgid "Live Fast Flip Young"
+msgstr "ไปเร็วมาเร็ว"
+
+#. Text displayed while the waiting for in-app prices from the server
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Loading prices from server..."
+msgstr "กำลังโหลดราคาจากเซิร์ฟเวอร์..."
+
+#. Electric car batter upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Longer drive with improved battery"
+msgstr "ขับได้ไกลขึ้นด้วยแบตเตอรี่ที่ดียิ่งขึ้น"
+
+#. Achievement title for driving 1000km with Fire Truck
+#: src/common/AchievementManager.cpp
+msgid "Lord of Fire"
+msgstr "พระเพลิง"
+
+#. Achievement title for driving 1000km with Lowrider
+#: src/common/AchievementManager.cpp
+msgid "Low Rider"
+msgstr "โลว์ไรเดอร์"
+
+#. Stability upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower center of mass keeps the vehicle from rolling over on steep hills."
+msgstr "ตั้งศูนย์ถ่วงให้ต่ำลงช่วยป้องกันไม่ให้ยานพาหนะกลิ้งไปบนเขาสูงชัน"
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improve stability at high speeds and makes the car more stable on bumps."
+msgstr ""
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the bike more stable on bumps."
+msgstr "จุดศูนย์ถ่วงที่ต่ำลงและการซับแรงกระแทกที่ดีขึ้น ช่วยเพิ่มความเสถียรในการขับขี่ที่ความเร็วสูง และเมื่อเผชิญกับทางขรุขระ"
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the car more stable on bumps."
+msgstr "จุดศูนย์ถ่วงที่ปรับให้ต่ำลงและการซับแรงกระแทกที่ดียิ่งขึ้นช่วยเพิ่มเสถียรภาพให้แก่รถในขณะที่ขับขี่ด้วยความเร็วสูง และในยามที่มีการกระแทกเกิดขึ้น"
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the screw more stable on bumps."
+msgstr "ปรับศูนย์ถ่วงต่ำให้ต่ำลง และปรับปรุงระบบกันกระเทือนช่วยเพิ่มความเสถียรให้รถที่ระดับความเร็วสูง และทำให้สกรูเข้าที่คงตัวรับการกระแทก"
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the tank more stable on bumps."
+msgstr "จุดศูนย์ถ่วงที่ปรับให้ต่ำลงและการซับแรงกระแทกที่ดียิ่งขึ้นช่วยเพิ่มเสถียรภาพให้แก่รถถังในขณะที่ขับขี่ด้วยความเร็วสูง และในยามที่มีการกระแทกเกิดขึ้น"
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the vehicle more stable on bumps."
+msgstr "จุดศูนย์ถ่วงที่ปรับให้ต่ำลงและการซับแรงกระแทกที่ดียิ่งขึ้นช่วยเพิ่มเสถียรภาพให้แก่ยานพาหนะในขณะที่ขับขี่ด้วยความเร็วสูง และในยามที่มีการกระแทกเกิดขึ้น"
+
+#. Achievement title for picking up fuel with an empty tank
+#: src/common/AchievementManager.cpp
+msgid "Lucky Fuel"
+msgstr "เชื้อเพลิงนำโชค"
+
+#. Mars level title (yes, the mars planet)
+#: src/common/Stage.cpp
+msgid "MARS"
+msgstr "ดาวอังคาร"
+
+#: src/common/GarageStockBar.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "MAX"
+msgstr "สูงสุด"
+
+#. Max level (user has already reached the maximum level available)
+#: src/common/GaragePartUpgrade.cpp src/common/MenuUpgradeButton.cpp
+msgid "MAX LEVEL"
+msgstr "เลเวลสูงสุด"
+
+#: src/common/Nitro.cpp src/common/PowerUpDialog.cpp
+#, c-format
+msgid "MAXIMUM ALLOWED AMOUNT OF BOOSTER IS %d"
+msgstr "จำนวนบูสเตอร์สูงสุดที่อนุญาตคือ %d"
+
+#. Title for a window if user has already upgraded something to its maximum level
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp
+msgid "MAXIMUM LEVEL"
+msgstr "เลเวลสูงสุด"
+
+#: src/common/PowerUp.cpp
+msgid "MEGA TIRES BOOSTER WILL INCREASE CARS TIRE SIZE"
+msgstr ""
+
+#. Text for a controls info screen, describing what the game controller d-pad does in the game, ie. changes the selected menu item
+#: src/common/MenuControls.cpp
+msgid "MENU CONTROL"
+msgstr "เมนูควบคุม"
+
+#. Show Fingersoft merchandise page
+#: src/common/MenuMore.cpp
+msgid "MERCHANDISE"
+msgstr "สินค้า"
+
+#: src/common/MissionDialog.cpp
+msgid "METERS"
+msgstr "มิเตอร์"
+
+#. Mid-air control upgrade (allows the player to have more responsive control when the vehicle is flying/jumping)
+#: src/common/PlayerCarManager.cpp
+msgid "MID-AIR CONTROL"
+msgstr "การควบคุมกลางอากาศ"
+
+#. Minibike vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "MINIBIKE"
+msgstr "มินิไบค์"
+
+#: src/common/GarageLocalization.cpp
+msgid "MONSTER"
+msgstr "รถขนาดใหญ่"
+
+#. Monster truck name
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "MONSTER TRUCK"
+msgstr "รถกระบะวิบาก"
+
+#. Moon level title
+#: src/common/Stage.cpp
+msgid "MOON"
+msgstr "จันทร์"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "MOON BUNDLE"
+msgstr "คอลเลคชั่นดวงจันทร์"
+
+#. Moonlander vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "MOONLANDER"
+msgstr "ผู้พิชิตดวงจันทร์"
+
+#. More menu title
+#: src/common/MenuMore.cpp
+msgid "MORE"
+msgstr "เพิ่มเติม"
+
+#: src/common/MainMenuSelectCar.cpp src/common/MainMenuSelectStage.cpp
+msgid "MORE FROM US"
+msgstr "เพิ่มเติมจากเรา"
+
+#. Motocross bike vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "MOTOCROSS BIKE"
+msgstr "รถมอเตอร์ครอส"
+
+#. Mountain level title
+#: src/common/Stage.cpp
+msgid "MOUNTAIN"
+msgstr "ภูเขา"
+
+#: src/common/GarageLocalization.cpp
+msgid "MUD"
+msgstr "โคลน"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "MUD BUNDLE"
+msgstr "คอลเลคชั่นโคลน"
+
+#. Mudpool level title
+#: src/common/Stage.cpp
+msgid "MUDPOOL"
+msgstr "สระโคลน"
+
+#: src/common/MainMenuSelectCar.cpp src/common/MainMenuSelectStage.cpp
+msgid "MULTIPLAYER"
+msgstr "ผู้เล่นหลายคน"
+
+#: src/common/MenuNewSettings.cpp
+msgid "MUSIC"
+msgstr "เพลง"
+
+#. Shapeshifter vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "MUTANT"
+msgstr "รถกลายพันธุ์"
+
+#: src/common/GarageCarManager.cpp src/common/GarageCarManager.cpp
+#: src/common/GarageCarManager.cpp
+msgid "MY CAR"
+msgstr "รถของฉัน"
+
+#. Backflips
+#. Achievement description (please preserve the %d)
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#: src/common/AchievementManager.cpp
+#, c-format
+msgid "Make %d backflips"
+msgstr "ตีลังกากลับหลัง %d ตลบ"
+
+#. Flips
+#. Achievement description (please preserve the %d)
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#: src/common/AchievementManager.cpp
+#, c-format
+msgid "Make %d flips"
+msgstr "ตีลังกา %d รอบ"
+
+#. Neckflips
+#. Achievement description (please preserve the %d)
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#: src/common/AchievementManager.cpp
+#, c-format
+msgid "Make %d neckflips"
+msgstr "ตีลังกาคอพับ %d รอบ"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Make 10 backflips in one run"
+msgstr "ตีลังกากลับหลัง 10 รอบในเที่ยวเดียว"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Make 10 flips in one run"
+msgstr "ตีลังกา 10 รอบในเที่ยวเดียว"
+
+#. fork length upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Makes your bike more stable (and cooler)."
+msgstr "ปรับปรุงรถให้เสถียรยิ่งขึ้น (และเท่ห์ขึ้นด้วย)"
+
+#. Mid-air control upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Makes your bike turn faster in mid-air making tricks easier and allow more control on landing."
+msgstr "ทำให้มอเตอร์ไซด์ของคุณเร็วขึ้นกลางอากาศ ขี่ผาดโผนได้ง่ายกว่าเดิม และควบคุมการลงสู่พื้นดินได้ดียิ่งขึ้น"
+
+#: src/common/PowerUp.cpp
+msgid "Mega Tires"
+msgstr ""
+
+#. Achievement title for driving 1000km with Minibike
+#: src/common/AchievementManager.cpp
+msgid "Micro Maniac"
+msgstr "บ้าเล็กๆ"
+
+#. Achievement title for driving 1000km with Monster Truck
+#: src/common/AchievementManager.cpp
+msgid "Monster Truck Mayhem"
+msgstr "มอนสเตอร์ทรัคขาลุย"
+
+#: src/common/GarageLocalization.cpp
+msgid "Monster car chassis. Good for air time tricks."
+msgstr "โครงรถมอนสเตอร์ เหมาะสำหรับท่าผาดโผนในอากาศ"
+
+#. Achievement title for driving 1000km with Motocross Bike
+#: src/common/AchievementManager.cpp
+msgid "Moon Grinder"
+msgstr "ซิ่งอัดดวงจันทร์"
+
+#. Sleigh description
+#: src/common/PlayerCarManager.cpp
+msgid "More horsepower with real animals!"
+msgstr "แรงม้าเพิ่มด้วยสัตว์ตัวจริง!"
+
+#. Reindeer upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "More reindeer means more power! Reindeer helps you climb hills and make longer jumps and tricks for more bonuses."
+msgstr "ยิ่งมีกวางเรนเดียร์เยอะยิ่งมีแรงเยอะ! กวางเรนเดียร์จะช่วยคุณไต่เขา และกระโดดได้นานขึ้น ทำท่าผาดโผนเพื่อรับโบนัสได้เยอะขึ้น"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Mysterious place with tons of challenging surprises."
+msgstr "สถานที่ลึกลับพร้อมเซอร์ไพร์สที่ท้าทาย"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "NATIONAL DAY PACK"
+msgstr "แพ็กสำหรับวันชาติ"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "NECK FLIP\n    +%d "
+msgstr "พลิกจนคอพลิก\n +%d "
+
+#: src/common/GameLayer.cpp
+msgid "NECK FLIP\n    +2500 "
+msgstr "ตีลังกาคอพับ\n +2500"
+
+#: src/common/MissionDialog.cpp
+msgid "NECK FLIPS"
+msgstr "ม้วนคอ"
+
+#: src/common/MenuGarageWorkshop.cpp
+msgid "NEED MORE CAR PARTS?"
+msgstr "ต้องการอะไหล่เพิ่มไหม?"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "NEON"
+msgstr "นีออน"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "NEW BEST:%s"
+msgstr ""
+
+#: src/common/GarageCarManager.h
+msgid "NEW CAR"
+msgstr "รถใหม่"
+
+#. Title for asking if the user really wants to exit
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "NEW LEVEL ACHIEVED!"
+msgstr "ถึงเลเวลใหม่แล้ว!"
+
+#: src/common/MenuGarage.cpp src/common/MenuGarage.cpp
+msgid "NEW PART"
+msgstr "อะไหล่ใหม่"
+
+#. Text displayed when the player makes a new record
+#: src/common/GameLayer.cpp
+msgid "NEW RECORD! "
+msgstr "สถิติใหม่!"
+
+#. Text in result screen indicating that the player made a new record and how far they got
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "NEW RECORD: %dm "
+msgstr "สถิติใหม่: %dm"
+
+#. Button text for taking the user to the next menu screen
+#.
+#. mBackButton = Utils::createUIButtonWithCustomFile("button-bg-left", NULL, FN_TEXT("BACK"), this, menu_selector(MenuGarageGacha::onBackPressed), 1.0f, Utils::TEXT_ALIGN_CENTER);
+#. mBackButton->setHighlightSprite("button-bg-right_focus", true);
+#. mBackButton->setPosition(110.f, 50.f);
+#.
+#: src/common/MainMenuSelectCar.cpp src/common/MenuGarageGacha.cpp
+#: src/common/MenuGarageMain.cpp
+msgid "NEXT"
+msgstr "ถัดไป"
+
+#. (int)mLeftPassengerAirTime *
+#. (int)mRightPassengerAirTime *
+#: src/common/PlayerCarLuxury.cpp src/common/PlayerCarLuxury.cpp
+#, c-format
+msgid "NICE CATCH!\n  +%d"
+msgstr ""
+
+#. Night level title
+#: src/common/Stage.cpp
+msgid "NIGHT"
+msgstr "กลางคืน"
+
+#: src/common/PowerUp.cpp
+msgid "NITRO BOOSTER WILL POWER YOUR CAR TO DRIVE SOME EXTRA METERS"
+msgstr ""
+
+#. Button text for a negative answer
+#: src/common/MainMenuLayer.cpp src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuUpgradeCar.cpp src/common/MissionDialog.cpp
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+#: src/common/UIContinueDialog.cpp
+msgid "NO"
+msgstr "ไม่"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "NO ADS"
+msgstr ""
+
+#. level title
+#: src/common/Stage.cpp
+msgid "NORTHPOLE"
+msgstr "ขั้วโลกเหนือ"
+
+#: src/common/Nitro.cpp src/common/PowerUpDialog.cpp
+#, c-format
+msgid "NOT ENOUGH GEMS. BUY MISSING %d GEMS?"
+msgstr "อัญมณีไม่พอ ซื้ออัญมณีที่ยังขาดอยู่ %d เม็ดไหม?"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "NUCLEAR BUNDLE"
+msgstr "คอลเลคชั่นนิวเคลียร์"
+
+#. level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "NUCLEAR PLANT"
+msgstr "โรงงานนิวเคลียร์"
+
+#: src/common/GarageLocalization.cpp
+msgid "Naturally aspirated inline 6 engine"
+msgstr "เครื่องยนต์ 6 สูบเรียงแบบไร้ระบบอัดอากาศ"
+
+#. Achievement title for delivering 10000 presents
+#: src/common/AchievementManager.cpp
+msgid "Naughty driver"
+msgstr "คนขับจอมแสบ"
+
+#. Title for revive dialog
+#: src/common/UIContinueDialog.cpp
+msgid "Neck patch?"
+msgstr "เข้าเฝือกดามคอไหม?"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Neckflip within 5 seconds from stage start"
+msgstr "ตีลังกาคอพับใน 5 วินาทีแรกนับจากเริ่มออกตัว"
+
+#. Achievement for riding the Dragon in Neon level
+#: src/common/AchievementManager.cpp
+msgid "Neon King"
+msgstr "คิงนีออน"
+
+#. Achievement title for unlocking a second vehicle
+#: src/common/AchievementManager.cpp
+msgid "New Direction"
+msgstr "สู่ทิศทางใหม่"
+
+#: src/common/PowerUp.cpp
+msgid "Nitro"
+msgstr ""
+
+#: src/common/MainMenuLayer.cpp
+msgid "No Event Available!"
+msgstr "ไม่มีกิจกรรมให้ร่วม!"
+
+#. Achievement title for driving 1000km with Tourist Bus
+#: src/common/AchievementManager.cpp
+msgid "No Tips Required"
+msgstr "ไม่ต้องมีทิป"
+
+#: src/common/MainMenuLayer.cpp
+msgid "No event active at the current time!\nCheck back Later!"
+msgstr "ไม่มีกิจกรรมดำเนินอยู่ในขณะนี้!\nโปรดตรวจสอบใหม่ในภายหลัง!"
+
+#: src/common/MainMenuSelectStage.cpp
+msgid "No event available \nat this moment."
+msgstr "ไม่มีกิจกรรมให้ร่วม \nในเวลานี้"
+
+#. Food upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "No food, no go. Improved feedbag size makes it possible to drive further."
+msgstr "ไม่มีอาหารก็ไปไม่ได้ ปรับขนาดถุงอาหารให้คุณขับขี่ได้ไกลอีกหน่อย"
+
+#. The text on the no button of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "No thanks"
+msgstr "ไม่ ขอบคุณ"
+
+#. Title of the message box shown when no advertisement videos are available
+#: src/common/MenuDoubleMoneyDialog.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "No videos to view currently"
+msgstr "ขณะนี้ไม่มีวิดีโอให้ดู"
+
+#: src/common/AchievementManager.cpp
+msgid "Nuclear Secret"
+msgstr "ความลับเรื่องนิวเคลียร์"
+
+#. Achievement title for earning 1000000 coins in a single run
+#: src/common/AchievementManager.cpp
+msgid "Numismatist"
+msgstr "นักกวาดเหรียญตัวยง"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp
+msgid "OFF"
+msgstr ""
+
+#. Exit button text
+#. OK button
+#: src/common/GameLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp src/common/MenuEULA.cpp
+#: src/common/MenuGarageWorkshop.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp src/common/MenuUpgradeButton.cpp
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+msgid "OK"
+msgstr "ตกลง"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp
+msgid "ON"
+msgstr ""
+
+#: src/common/MissionDialog.cpp
+msgid "ON THE DRAGON"
+msgstr "บนหลังมังกร"
+
+#. Onewheeler vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "ONEWHEELER"
+msgstr "รถล้อเดียว"
+
+#. Text displayed when the game ends because the vehicle has run out of fuel
+#: src/common/GameLayer.cpp
+msgid "OUT OF FUEL "
+msgstr "เชื้อเพลิงหมด"
+
+#. Achievement title for making total 1000 backflips
+#: src/common/AchievementManager.cpp
+msgid "Obsessed Backflipper"
+msgstr "นักตีลังกากลับหลังซ้ำซาก"
+
+#. Achievement title for driving 1000km with Quad Bike
+#: src/common/AchievementManager.cpp
+msgid "Offroader"
+msgstr "นักซิ่งออฟโร้ด"
+
+#: src/common/AchievementManager.cpp
+msgid "Old-timer"
+msgstr "รุ่นเก๋า"
+
+#: src/common/AchievementManager.cpp
+msgid "Olympic medalist"
+msgstr "ผู้คว้าเหรียญโอลิมปิค"
+
+#. Achievement title for making total 100 flips
+#: src/common/AchievementManager.cpp
+msgid "On a Roll"
+msgstr "ม้วนตัวไป"
+
+#: src/common/MenuEULA.cpp
+msgid "Our End-User License Agreement (EULA) has been updated!\nPlease review the changes here to continue playing.\nThe Full EULA can be found here:\n\n\nThe EULA is subject to Fingersoft's Privacy policy,\nwhich you can review here:"
+msgstr ""
+
+#: src/common/MissionDialog.cpp
+msgid "PACKAGES"
+msgstr "แพ็คเกจ"
+
+#: src/common/MenuGarageMain.cpp
+msgid "PARTS"
+msgstr "อะไหล่"
+
+#: src/common/GaragePartUpgrade.cpp
+msgid "PARTS:"
+msgstr "อะไหล่:"
+
+#. Text indicating that the game is paused
+#: src/common/GameLayer.cpp
+msgid "PAUSED"
+msgstr "พัก"
+
+#: src/common/MenuNewSettings.cpp
+msgid "PEDALS"
+msgstr "คันเหยียบ"
+
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "PEDALS: OFF"
+msgstr "คันเร่ง: ปิด"
+
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "PEDALS: ON"
+msgstr "คันเร่ง: เปิด"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "PENALTY: +%s"
+msgstr ""
+
+#: src/common/Planet.cpp
+#, c-format
+msgid "PERFECT RUN!!\n  +%d"
+msgstr "เพอร์เฟกต์รัน!!\n  +%d"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "PERSONAL BEST:%s"
+msgstr ""
+
+#: src/common/Planet.cpp
+#, c-format
+msgid "PLANET BONUS\n  +%d x %d"
+msgstr "โบนัสดาวเคราะห์\n  +%d x %d"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+msgid "PLAY"
+msgstr "เล่น"
+
+#. Police car vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "POLICE CAR"
+msgstr "รถตำรวจ"
+
+#. INSERT_PART_TEXT("TURBOMAX", FN_TEXT_GARAGE("TURBOMAX"))
+#. INSERT_PART_TEXT("TURBOSPEED", FN_TEXT_GARAGE("TURBOSPEED"))
+#: src/common/GarageLocalization.cpp
+msgid "POWER"
+msgstr "กำลัง"
+
+#: src/common/MissionDialog.cpp
+msgid "PRESENTS"
+msgstr "ของขวัญ"
+
+#: src/common/GameLayer.cpp
+msgid "PRESS BUTTON TO CONTINUE"
+msgstr "กดปุ่มเพื่อดำเนินการต่อ"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "PREVIOUS BEST:%s"
+msgstr ""
+
+#: src/common/MenuNewSettings.cpp
+msgid "PRIVACY OPTIONS"
+msgstr "ตัวเลือกความเป็นส่วนตัว"
+
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "PRIVACY POLICY"
+msgstr "นโยบายความเป็นส่วนตัว"
+
+#. Button for displaying the Privacy Policy
+#: src/common/MenuMore.cpp
+msgid "PRIVACY POLICY & EULA"
+msgstr "นโยบายความเป็นส่วนตัวและข้อตกลง EULA"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "PROGNOSIS"
+msgstr "ประเมิน"
+
+#: src/common/MissionDialog.cpp
+msgid "PUMPKINS"
+msgstr "ฟักทอง"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Packages and conveyor belts all over the place. Eat carrots to get more vitamins!"
+msgstr "หีบห่อสินค้าและสายพานลำเลียงเต็มพื้นที่ไปหมด ต้องกินแครอทเพิ่มวิตามินซะหน่อย!"
+
+#: src/common/UIContinueDialog.cpp
+#, c-format
+msgid "Pay %d GEMS to keep on playing?"
+msgstr "จ่ายอัญมณี %d เม็ดเพื่อเล่นต่อไหม?"
+
+#: src/common/GarageLocalization.cpp
+msgid "Perfect for driving in gravel!"
+msgstr "เหมาะสำหรับการขับขี่บนถนนลูกรังหรือพื้นกรวด!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Perfect for driving in space!"
+msgstr "เหมาะสำหรับการขับขี่ในอวกาศ!"
+
+#. Achievement title for driving 1000km with Onewheeler
+#: src/common/AchievementManager.cpp
+msgid "Personal Transport"
+msgstr "การขนส่งส่วนตัว"
+
+#. Achievement title for sharing a result in social media
+#: src/common/AchievementManager.cpp
+msgid "Photobomb"
+msgstr "ระเบิดรูป"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Pick 500 berries in Bogland"
+msgstr ""
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Pick up fuel canister with empty fuel tank"
+msgstr "อัดถังเชื้อเพลิงมากับถังเชื้อเพลิงเปล่า"
+
+#: src/common/MenuEULA.cpp
+msgid "Please review this EULA"
+msgstr ""
+
+#: src/common/MenuUpdate.cpp
+msgid "Please update your client from the store!"
+msgstr ""
+
+#. Rally car vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Powerful engine and downforce upgraded provide the most ultimate combination for hill climbing."
+msgstr "เครื่องยนต์เปี่ยมประสิทธิภาพและการอัปเกรดแรงกดให้ส่วนผสมที่ลงตัวที่สุดในการปีนเขา"
+
+#. Train description
+#: src/common/PlayerCarManager.cpp
+msgid "Powerful train with two carriages. Enjoy the ride!"
+msgstr "รถไฟทรงพลังพร้อมสองโบกี้ ขอให้ขับขี่ให้สนุก!"
+
+#. Moonlander vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Prepare for liftoff! This agile lunar rover is equipped with thrusters!"
+msgstr "เตรียมปล่อยยาน! ยานโฉบท่องดวงจันทร์ที่ปราดเปรียวลำติดตั้งมาพร้อมกับหัวขับดัน!"
+
+#. Big monster truck "big finger" description
+#: src/common/PlayerCarManager.cpp
+msgid "Prepare for true monster mayhem with this huge truck."
+msgstr "เตรียมสัตว์ประหลาดจอมทำลายด้วยรถบรรทุกขนาดใหญ่นี้"
+
+#: src/common/MenuGarage.cpp
+#, c-format
+msgid "Press %s\nto replace existing car configuration with a new chassis or purchase a 'new car' empty slot to use new chassis"
+msgstr "กด %s\nเพื่อแทนที่คุณลักษณะปัจจุบันของรถด้วยโครงรถใหม่ หรือ ซื้อช่องเก็บเพิ่มสำหรับ 'รถคันใหม่' ซึ่งจะใช้งานโครงรถใหม่ดังกล่าว"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/Nitro.cpp
+msgid "Purchase Complete"
+msgstr ""
+
+#. Title of message box displayed when the user buys coins
+#: src/common/AppDelegate.cpp
+msgid "Purchase Failed"
+msgstr "การซื้อล้มเหลว"
+
+#: src/common/MenuGarageWorkshop.cpp
+msgid "Purchase car part chests to get more car parts"
+msgstr "คุณจะได้อะไหล่มากยิ่งขึ้นถ้าซื้อหีบอะไหล่"
+
+#. Title of message box displayed when the user buys coins
+#: src/common/AppDelegate.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp src/common/PopupOfferDialog.cpp
+msgid "Purchase complete"
+msgstr "การซื้อเสร็จสมบูรณ์"
+
+#. Title of message box shown when in-app purchase fails
+#: src/winrt/WindowsTools.cpp src/winrt/WindowsTools.cpp
+#: src/winrt/WindowsTools.cpp
+msgid "Purchase failed"
+msgstr "การซื้อไม่สำเร็จ"
+
+#. Quad bike vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "QUAD BIKE"
+msgstr "มอเตอร์ไซด์สี่ล้อ"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "QUEST COMPLETED!\n  +%d gems"
+msgstr "บรรลุเป้าหมาย!\n  +เพชร %d เม็ด"
+
+#. Dune buggy description
+#: src/common/PlayerCarManager.cpp
+msgid "Quick, good traction and a handy hill climbing vehicle!"
+msgstr "แรงดึงที่ดีและว่องไว กับรถไต่เขาที่คล่องตัว!"
+
+#. Formula-1 car like race car name
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "RACE CAR"
+msgstr "รถแข่ง"
+
+#. level title
+#: src/common/MissionDialog.cpp src/common/Stage.cpp
+#: src/common/Stage.cpp
+msgid "RAGNAROK"
+msgstr "แร็กนาร็อก"
+
+#. Rainbow level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "RAINBOW"
+msgstr "สายรุ้ง"
+
+#. Rally car vehicle name
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "RALLY CAR"
+msgstr "รถแรลลี่"
+
+#: src/common/GaragePartLibrary.cpp src/common/GaragePartLibrary.cpp
+msgid "RARE"
+msgstr "หายาก"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "RARE PARTS"
+msgstr "ส่วนประกอบหายาก"
+
+#: src/common/Rat.cpp
+msgid "RAT HIT!\n"
+msgstr ""
+
+#: src/common/Rat.cpp
+msgid "RAT STUNNED!\n"
+msgstr ""
+
+#: src/common/GarageChestButton.cpp
+msgid "READY"
+msgstr "เตรียมพร้อม"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "REAR HEIGHT"
+msgstr "ความสูงของส่วนท้าย"
+
+#. Tire size title
+#: src/common/PlayerCarManager.cpp
+msgid "REAR TIRE SIZE"
+msgstr "ขนาดยางล้อหลัง"
+
+#: src/common/PlayerCarLowrider.cpp
+#, c-format
+msgid "RECORD HOP!\n     %d cm"
+msgstr "สถิติการกระโดด!\n     %d ซม."
+
+#: src/common/PlayerCarLowrider.cpp
+#, c-format
+msgid "RECORD JUMP!\n      %d cm"
+msgstr "สถิติการกระโดด!\n %d ซม."
+
+#. Text in result screen indicating that the player made a new record and how far they got
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "RECORD: %dm "
+msgstr "สถิติ: %dม."
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "REINDEER"
+msgstr "กวางเรนเดียร์"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "REINDEER SHOES"
+msgstr "รองเท้าเรนเดียร์"
+
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+msgid "RESET"
+msgstr "รีเซ็ต"
+
+#. Restart button text (user restarts the game session)
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+msgid "RESTART"
+msgstr "รีสตาร์ท"
+
+#: src/common/GaragePartDialog.cpp
+msgid "RESTORE"
+msgstr "เรียกคืน"
+
+#. Resume button text (user resumes to game from pause menu)
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "RESUME"
+msgstr "ดำเนินต่อ"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "ROCKET"
+msgstr "จรวด"
+
+#. Roll cage upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "ROLL CAGE"
+msgstr "โครงเหล็กเสริม"
+
+#. Roller coaster level title
+#: src/common/Stage.cpp
+msgid "ROLLER COASTER"
+msgstr "รถไฟเหาะตีลังกา"
+
+#. Rooftops level title
+#: src/common/Stage.cpp
+msgid "ROOFTOPS"
+msgstr "หลังคา"
+
+#. Motocross bike vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Race the hills with this impressive turboed motocross bike."
+msgstr "แข่งบนเขาด้วยรถมอเตอร์ครอสเทอร์โบที่น่าประทับใจคันนี้"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Random Card Probabilities"
+msgstr "ความน่าจะเป็นของไพ่แบบสุ่ม"
+
+#. The title of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "Rate Hill Climb Racing?"
+msgstr "ให้คะแนน Hill Climb Racing?"
+
+#. Diesel track vehicle description (decent turbo diesel truck that puts out black smoke when driving hard)
+#: src/common/PlayerCarManager.cpp
+msgid "Ready for the super turbo whistle and black smoke? With powerful engine and large wheelbase this really is an unique experience!"
+msgstr "พร้อมสำหรับเสียงซูเปอร์เทอร์โบกระหึ่มและควันดำหรือยัง? ด้วยเครื่องยนต์ทรงประสิทธิภาพและฐานล้อขนาดใหญ่จะให้ประสบการณ์ที่ไม่เหมือนใคร!"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Return all cans in Suburbs"
+msgstr ""
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Ride the Neon Dragon"
+msgstr "ขี่มังกรนีออน"
+
+#. Achievement title for driving 1000km with Chopper
+#: src/common/AchievementManager.cpp
+msgid "Road Warrior"
+msgstr "นักรบแห่งท้องถนน"
+
+#. Sissybar upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Rollcage for the bike."
+msgstr "กงล้อสำหรับจักรยาน"
+
+#. Stability upgrade on hovercraft, improves overal vehicle stability when climbing high hills
+#: src/common/PlayerCarManager.cpp
+msgid "Rotating engine improves stability when climbing steep hills."
+msgstr "เครื่องยนต์หมุนช่วยเพิ่มเสถียรภาพเมื่อต้องปีนเขาสูงชัน"
+
+#. Achievement title for driving 1000km with Hot Rod
+#: src/common/AchievementManager.cpp
+msgid "Rubber Burner"
+msgstr "เผายาง"
+
+#. Achievement title for driving 1000km with Sleigh
+#: src/common/AchievementManager.cpp
+msgid "Rudolf's Big Brother"
+msgstr "พี่ใหญ่ของรูดอล์ฟ"
+
+#. Lowrider car description
+#: src/common/PlayerCarManager.cpp
+msgid "Rule the streets with this hip hopper!"
+msgstr "ครองถนนแข่งด้วยรถฮิปฮอป!"
+
+#: src/common/MissionDialog.cpp
+msgid "SANDBAGS"
+msgstr "ถุงทราย"
+
+#: src/common/GaragePartDialog.cpp
+msgid "SAVE"
+msgstr "บันทึก"
+
+#. Title for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#: src/common/PlayerCarManager.cpp
+msgid "SCREW"
+msgstr "สกรู"
+
+#. Title for button displaying that scrolling background is disabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+msgid "SCROLLING BACKGROUND: OFF"
+msgstr "การเลื่อนพื้นหลัง: ปิด"
+
+#. Title for button displaying that scrolling background is enabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+msgid "SCROLLING BACKGROUND: ON"
+msgstr "การเลื่อนพื้นหลัง: เปิด"
+
+#: src/common/Seagull.cpp
+msgid "SEAGULL STUNNED!\n"
+msgstr ""
+
+#: src/common/Seagull.cpp
+msgid "SEAGULL WARNING!\n"
+msgstr ""
+
+#. level title
+#: src/common/Stage.cpp
+msgid "SEASONS"
+msgstr "ฤดูกาล"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "SEAT"
+msgstr "ที่นั่ง"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "SECRET FOUND\n  +%d"
+msgstr "พบความลับ\n +%d"
+
+#: src/common/GameLayer.cpp
+msgid "SECRET FOUND\n  +10000"
+msgstr "พบความลับ\n  +10000"
+
+#. Text for a controls info screen, describing which button in the game controller is the select button. Select button activates the currently selected menu item.
+#: src/common/MenuControls.cpp src/common/MenuGarageMain.cpp
+msgid "SELECT"
+msgstr "เลือก"
+
+#: src/common/PowerUpDialog.cpp src/common/PowerUpDialog.cpp
+#: src/common/PowerUpDialog.cpp
+msgid "SELECT A CONSUMABLE BOOSTER YOU WANT TO USE IN GAME"
+msgstr ""
+
+#. Menu title for language menu where the user can select the used language
+#: src/common/LanguageMenu.cpp src/common/MenuNewSettings.cpp
+msgid "SELECT LANGUAGE"
+msgstr "เลือกภาษา"
+
+#. Title of the screen where user selects the level/stage to play in
+#: src/common/HighscoreMenu.cpp src/common/HighscoreMenu.cpp
+#: src/common/MainMenuSelectStage.cpp
+msgid "SELECT STAGE"
+msgstr "เลือกสนาม"
+
+#. Menu title for car selection screen
+#: src/common/MainMenuSelectCar.cpp
+msgid "SELECT VEHICLE"
+msgstr "เลือกยานพาหนะ"
+
+#: src/common/MenuNewSettings.cpp
+msgid "SETTINGS"
+msgstr "ตั้งค่า"
+
+#: src/common/GaragePartDialog.cpp
+#, c-format
+msgid "SETTINGS %d"
+msgstr "การตั้งค่า %d"
+
+#. Share a link to the game in social media
+#: src/common/MenuMore.cpp
+msgid "SHARE HILL CLIMB RACING"
+msgstr "แชร์เกม HILL CLIMB RACING"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp
+msgid "SHOP"
+msgstr "ร้านค้า"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp
+msgid "SHOP "
+msgstr "ร้านค้า"
+
+#. Button text for taking the user to the next menu screen
+#: src/common/MainMenuLayer.cpp
+msgid "SHOW AD CONTROLS"
+msgstr "แสดงการกำกับโฆษณา"
+
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "SIGN IN"
+msgstr "ลงชื่อเข้าใช้"
+
+#. Title for button where the user can initiate the cloud sign-in process
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "SIGN IN TO CLOUD"
+msgstr "ลงชื่อเข้าใช้คลาวด์"
+
+#. Title for button where the user can sign out from cloud services
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "SIGN OUT"
+msgstr "ออกจากระบบ"
+
+#: src/common/GarageLocalization.cpp
+msgid "SIZE"
+msgstr "ขนาด"
+
+#: src/common/MissionDialog.cpp
+msgid "SKELETONS"
+msgstr "โครงกระดูก"
+
+#. Title for a window if user has already upgraded something to its maximum level
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+#: src/common/MissionDialog.cpp
+msgid "SKIP MISSION"
+msgstr "ข้ามภารกิจ"
+
+#. Sleigh vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "SLEIGH"
+msgstr "เลื่อน"
+
+#. Snowmobile vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "SNOW MOBILE"
+msgstr "สโนว์โมบิล"
+
+#: src/common/MenuNewSettings.cpp
+msgid "SOUNDS"
+msgstr "เพลง"
+
+#: src/common/GarageLocalization.cpp
+msgid "SPACE"
+msgstr "อวกาศ"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "SPACE EVENT\n%s"
+msgstr "กิจกรรมอวกาศ\n%s"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "SPACE MISSION"
+msgstr "ภารกิจอวกาศ"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "SPACE MISSION\n%s"
+msgstr ""
+
+#. level description
+#: src/common/Stage.cpp
+msgid "SPACE, the first frontier!\nExplore alien planets, dodge asteroids and black holes while avoiding extraterrestrial encounters on your journey through space.\nThe Rocket is yours for the mission, free of charge!"
+msgstr ""
+
+#. Level title
+#: src/common/Stage.cpp
+msgid "SPORT ARENA"
+msgstr ""
+
+#. level description
+#: src/common/Stage.cpp
+msgid "SPORTS ARENA DESCRIPTION!"
+msgstr ""
+
+#: src/common/GarageLocalization.cpp
+msgid "SPRINGS"
+msgstr "สปริง"
+
+#. Upgrade title
+#. Title for vehicle stability upgrade
+#. Upgrade title
+#. Stability upgrade title
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "STABILITY"
+msgstr "ความเสถียร"
+
+#: src/common/MainMenuCar.cpp src/common/MainMenuLayer.cpp
+#: src/common/PopupOfferDialog.cpp
+msgid "STAGE"
+msgstr "สนาม"
+
+#: src/common/GameLayer.cpp
+msgid "STAGE COMPLETED!"
+msgstr ""
+
+#. In tab mode, create a start button which goes to ingame, since stage select is an earlier tab
+#: src/common/MainMenuCar.cpp src/common/MainMenuLayer.cpp
+#: src/common/MenuGarageWorkshop.cpp
+msgid "START "
+msgstr "เริ่ม"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "STIFFNESS"
+msgstr ""
+
+#: src/common/GarageLocalization.cpp
+msgid "STREET"
+msgstr "ถนน"
+
+#: src/common/GarageLocalization.cpp
+msgid "STREET PRO"
+msgstr "ถนนรุ่นโปร"
+
+#. Button that takes the user back to previous menu
+#: src/common/MenuEnterCode.cpp
+msgid "SUBMIT"
+msgstr "ส่ง"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "SUBURBS"
+msgstr "ชานเมือง"
+
+#: src/common/Planet.cpp
+msgid "SUCKED INTO\nBLACK HOLE!!"
+msgstr "ถูกดูดเข้าไปใน\nหลุมดำ!!"
+
+#. Diesel track vehicle name (decent turbo diesel truck that puts out black smoke when driving hard)
+#: src/common/PlayerCarManager.cpp
+msgid "SUPER DIESEL 4X4"
+msgstr "ซูเปอร์ดีเซล 4X4"
+
+#. Title for asking if the user really wants to exit
+#: src/common/GameLayer.cpp
+msgid "SUPER DRIVER BONUS!"
+msgstr "โบนัสสำหรับสุดยอดนักขับขี่!"
+
+#. Tank vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "SUPER OFFROAD"
+msgstr "ซูเปอร์ออฟโร้ด"
+
+#: src/common/GarageLocalization.cpp
+msgid "SURFACE"
+msgstr "พื้นผิว"
+
+#: src/common/MissionDialog.cpp
+msgid "SURVIVE"
+msgstr "อยู่รอด"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "SURVIVOR"
+msgstr "ผู้รอดชีวิต"
+
+#. Upgrade title
+#. Title for vehicle suspension upgrade
+#. Upgrade title
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "SUSPENSION"
+msgstr "ช่วงล่าง"
+
+#. Title for button displayed while the game is synchronizing game data with cloud
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "SYNC IN PROGRESS"
+msgstr "อยู่ระหว่างการซิงค์"
+
+#. Achievement title for driving 1000km with Kiddie Express
+#: src/common/AchievementManager.cpp
+msgid "Safety Inspector"
+msgstr "ผู้ตรวจตราความปลอดภัย"
+
+#. Achievement title for delivering 100 presents
+#: src/common/AchievementManager.cpp
+msgid "Santa's Lost Cousin"
+msgstr "ญาติที่หายไปของซานต้า"
+
+#. Displayed achievement title in achievement menu when the achievement is hidden and not yet discovered
+#: src/common/AchievementMenu.cpp
+msgid "Secret Achievement"
+msgstr "ความสำเร็จลับ"
+
+#. Achievement title for unlocking 5 vehicles
+#: src/common/AchievementManager.cpp
+msgid "Serious Junkie"
+msgstr "ติดใจจริงจัง"
+
+#. Achievement title for driving 1000km with Mutant
+#: src/common/AchievementManager.cpp
+msgid "Shapeshifter"
+msgstr ""
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Share your result"
+msgstr "แชร์ผลลัพธ์"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Sink to 25 meters"
+msgstr ""
+
+#. Arctic cave description
+#: src/common/Stage.cpp
+msgid "Slippery arctic cave is something different to try."
+msgstr "ถ้ำขั้วโลกสุดลื่นมีบางอย่างที่แตกต่างให้ลอง"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Smash 1000 pumpkins"
+msgstr "ซัดฟักทองไป 1000 ลูก"
+
+#. Achievement title for smashing 1000 pumpkins
+#: src/common/AchievementManager.cpp
+msgid "Smashing Pumpkins"
+msgstr "ซัดฟักทอง"
+
+#: src/common/MenuGarageWorkshop.cpp
+msgid "Some of car parts seems to be invalid. You can try to change or tune some parts or just build new car on the same slot"
+msgstr "ส่วนประกอบบางชิ้นของรถใช้การไม่ได้ คุณสามารถลองเปลี่ยนหรือปรับจูนอะไหล่ หรือผลิตรถคันใหม่ในช่องเก็บรถที่มีอยู่"
+
+#: src/common/MainMenuLayer.cpp
+msgid "Space Instructions"
+msgstr "คำแนะนำสำหรับอวกาศ"
+
+#. Achievement title for drivign 1000km with Fast Car
+#: src/common/AchievementManager.cpp
+msgid "Speed Freak"
+msgstr ""
+
+#. Achievement for walking 500m with Carantula
+#: src/common/AchievementManager.cpp
+msgid "Spider Walker"
+msgstr ""
+
+#: src/common/PlayerCarManager.cpp
+msgid "Stiffer chassis gives you better handling at high speeds."
+msgstr ""
+
+#: src/common/GarageLocalization.cpp
+msgid "Street race tire!"
+msgstr "ยางแข่งสำหรับถนน!"
+
+#. Wing upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Stronger rocket gives you more flight time."
+msgstr "จรวดที่แรงขึ้นจะทำให้คุณบินได้นานขึ้น"
+
+#: src/common/GarageLocalization.cpp
+msgid "Super powerful and fast."
+msgstr "เร็วและซูเปอร์แรง"
+
+#: src/common/GarageLocalization.cpp
+msgid "Superb eco engine with improved acceleration."
+msgstr "เครื่องยนต์อีโค่ที่เหนือชั้นพร้อมการเร่งความเร็วที่ดีขึ้น"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Survive in the Ragnarok"
+msgstr "เอาตัวรอดในแร็กนาร็อก"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Survive the Jungle"
+msgstr "เอาชีวิตรอดจากป่า"
+
+#. Tank vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "TANK"
+msgstr "รถถัง"
+
+#: src/common/MissionDialog.cpp
+msgid "THE JUNGLE"
+msgstr "ป่า"
+
+#. Bubble car vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "THE ROCKET"
+msgstr "จรวด"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "THRUSTER"
+msgstr "หัวขับดัน"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "TIME:%s"
+msgstr ""
+
+#: src/common/GaragePartDialog.cpp
+msgid "TIRE"
+msgstr "ยาง"
+
+#. Upgrade title
+#. Tire size title
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "TIRE SIZE"
+msgstr "ขนาดยาง"
+
+#. Upgrade title
+#. Tires upgrade title
+#. Upgrade title
+#. Tires upgrade title
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "TIRES"
+msgstr "ยาง"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+msgid "TOOLBOX"
+msgstr "กล่องเครื่องมือ"
+
+#. INSERT_PART_TEXT("SPEED", FN_TEXT_GARAGE("SPEED"))
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "TORQUE"
+msgstr "แรงบิด"
+
+#: src/common/MenuGarage.cpp
+msgid "TOUCH TO CONTINUE"
+msgstr "แตะเพื่อดำเนินการต่อ"
+
+#. Tourist bus where people ride in the bus (vehicle name)
+#: src/common/PlayerCarManager.cpp
+msgid "TOURIST BUS"
+msgstr "รถทัวร์"
+
+#. Title for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#. Upgrade title
+#. Title for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "TRACKS"
+msgstr "ล้อตีนตะขาบ"
+
+#: src/common/GarageLocalization.cpp
+msgid "TRACTION"
+msgstr "การยึดเกาะ"
+
+#. Tractor vehicle name
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "TRACTOR"
+msgstr "รถแทร็กเตอร์"
+
+#: src/common/MissionDialog.cpp
+msgid "TRAVERSE"
+msgstr "ข้ามผ่าน"
+
+#. Generic bundles for other devices
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "TRICK BUNDLE"
+msgstr "คอลเลคชั่นลูกเล่น"
+
+#. Dune buggy vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "TROPHY TRUCK"
+msgstr "รถบรรทุกถ้วยทอง"
+
+#. 6-wheel truck vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "TRUCK"
+msgstr "รถบรรทุก"
+
+#: src/common/GaragePartUpgrade.cpp src/common/MainMenuLayer.cpp
+msgid "TUNE"
+msgstr "ปรับจูน"
+
+#: src/common/GaragePartDialog.cpp
+#, c-format
+msgid "TUNE %s"
+msgstr "ปรับจูน %s"
+
+#: src/common/GarageLocalization.cpp
+msgid "TURBO"
+msgstr "เทอร์โบ"
+
+#. Cave level description
+#: src/common/Stage.cpp
+msgid "Take an adventure into the treasure cave. It's hard to approach the bumps without hitting the ceiling. Gasoline is a limited resource in a cave."
+msgstr "การผจญภัยในถ้ำสมบัติ ยากที่คุมรถกระดอนไม่ให้กระแทกเพดาน เชื้อเพลิงเป็นทรัพยากรที่มีจำกัดในถ้ำนี้"
+
+#. Achievement title for driving 1000km with Trophy truck
+#: src/common/AchievementManager.cpp
+msgid "Terrain Rocket"
+msgstr "ไอ้หัวจรวด"
+
+#. Achievement title for driving 1000km with The Rocket
+#: src/common/AchievementManager.cpp
+msgid "Test Pilot"
+msgstr "นักบินทดสอบ"
+
+#. Achievement title for driving 1000km with Jeep
+#: src/common/AchievementManager.cpp
+msgid "The Classic"
+msgstr "คลาสสิค"
+
+#. Achievement title for driving 1000km with Hovercraft
+#: src/common/AchievementManager.cpp
+msgid "The Softer Side"
+msgstr "ด้านที่นุ่มนวลกว่า"
+
+#: src/common/PlayerCarManager.cpp
+msgid "The best things in life are free, but this car certainly isn't!"
+msgstr ""
+
+#: src/common/MenuGarageMain.cpp
+msgid "The car slot will be emptied due to fatal error. You can still build a new car on the slot. Proceed?"
+msgstr "ช่องรถนี้จะถูกรีเซ็ตใหม่เนื่องจากเกิดความผิดพลาดที่ร้ายแรง คุณยังสามารถสร้างรถใหม่ในช่องนี้ได้ ดำเนินการต่อไหม?"
+
+#: src/common/MenuGarageMain.cpp
+msgid "The car slot will be emptied. You can still build a new car on the slot. Proceed?"
+msgstr "ช่องรถจะว่างเปล่า คุณยังสามารถสร้างรถใหม่ในช่องนั้นได้ เอาเลยไหม?"
+
+#. Shapeshifter description
+#: src/common/PlayerCarManager.cpp
+msgid "The future of automobiles is here! Tap both pedals to change shape!"
+msgstr "อนาคตของรถอยู่ที่นี่แล้ว! แตะคันเหยียบทั้งสองเพื่อเปลี่ยนดีไซน์!"
+
+#. Dune buggy description
+#: src/common/PlayerCarManager.cpp
+msgid "The highest class of off-road racing vehicles!"
+msgstr "ระดับชั้นสูงสุดของรถแข่งออฟโรด!"
+
+#. Hippie van vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "The hippie van has plenty of fuel but suffers from loose tires! These tree huggers have also figured out how to drive around trees."
+msgstr "ฮิปปี้แวนมีเชื้อเพลิงเต็มเพียบ แต่ลำบากตรงยางหลวมไปหน่อย! แถมรถรักต้นไม้พวกนี้ยังคิดจะหาทางขับไปวนรอบต้นไม้ซะอีก"
+
+#. Junkyard level description
+#: src/common/Stage.cpp
+msgid "The local junkyard is full of Bill's old vehicles"
+msgstr "พื้นที่เก็บของเก่าในท้องถิ่นเต็มไปด้วยยานพาหนะเก่าของบิล"
+
+#. Tractor vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "The tractor is slow and heavy but has great traction and plenty of torque (and a tendency to roll over in steep terrain). Not recommended for caves."
+msgstr "รถแทรกเตอร์อืดและหนัก แต่มีแรงดึงมากและมีแรงบิดเต็มเปี่ยม (และมีแนวโน้มจะกลิ้งไปตามพื้นที่สูงชัน) ไม่แนะนำให้วิ่งในบริเวณถ้ำ"
+
+#. Forest level description (the user has to drive through the trees in the forest)
+#: src/common/Stage.cpp
+msgid "The trees arent just for decoration, you'll have to drive through them. Highly upgraded vehicle recommended!"
+msgstr "ต้นไม้ไม่ใช่แค่ของตกแต่ง คุณจะต้องขับฝ่ามันไปให้ได้ แนะนำให้อัปเกรดยานพาหนะเป็นอย่างยิ่ง"
+
+#. E
+#: src/common/MenuUpdate.cpp
+msgid "There is new version available!"
+msgstr ""
+
+#: src/common/MenuGDPR.cpp
+msgid "These rights are in addition to the rights granted by the European\nGeneral Data Protection Regulation (GDPR)\nwhich also applies to your data as our company\nis based in the EU."
+msgstr ""
+
+#. Minibike vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "This agile childhood ride becomes a powerful little beast when fully upgraded."
+msgstr "รถในวัยเด็กที่ปราดเปรียวนี้จะกลายเป็นจอมพลังตัวน้อยเมื่ออัปเกรดเต็มรูปแบบ"
+
+#: src/common/Stage.cpp
+msgid "This is challenge five"
+msgstr "นี่คือความท้าทายที่ห้า"
+
+#: src/common/Stage.cpp
+msgid "This is challenge four"
+msgstr "นี่คือความท้าทายที่สี่"
+
+#: src/common/Stage.cpp
+msgid "This is challenge one"
+msgstr "นี่คือความท้าทายที่หนึ่ง"
+
+#: src/common/Stage.cpp
+msgid "This is challenge seven"
+msgstr "นี่คือความท้าทายที่เจ็ด"
+
+#: src/common/Stage.cpp
+msgid "This is challenge six"
+msgstr "นี่คือความท้าทายที่หก"
+
+#: src/common/Stage.cpp
+msgid "This is challenge three"
+msgstr "นี่คือความท้าทายที่สาม"
+
+#: src/common/Stage.cpp
+msgid "This is challenge two"
+msgstr "นี่คือความท้าทายที่สอง"
+
+#: src/common/Stage.cpp
+msgid "This is event."
+msgstr "นี่คือกิจกรรม"
+
+#: src/common/MissionDialog.cpp
+msgid "To Earn Prizes"
+msgstr "เพื่อรับรางวัล"
+
+#. Achievement title for unlocking 5 stages
+#: src/common/AchievementManager.cpp
+msgid "To the Moon and Back"
+msgstr "ไปกลับดวงจันทร์"
+
+#. Achievement title for driving 1000km with Tank
+#: src/common/AchievementManager.cpp
+msgid "Top Gun"
+msgstr "ท็อปกัน"
+
+#. Dragster description
+#: src/common/PlayerCarManager.cpp
+msgid "Top fuel dragster! Insanely fast, but be careful, it's not easy to control!"
+msgstr "Top fuel dragster! เร็วสุดใจ แต่ระวังให้ดี มันควบคุมไม่ได้ง่ายๆ นะ!"
+
+#. Achievement title for fully upgrading all vehicles
+#: src/common/AchievementManager.cpp
+msgid "Totally Worth It"
+msgstr "คุ้มค่าสุด"
+
+#: src/common/Idol.cpp
+#, c-format
+msgid "Treasure %d / 10 collected!"
+msgstr "เก็บ %d / 10 ของสมบัติ!"
+
+#. Achievement for collecting all tresures from the Jungle level
+#: src/common/AchievementManager.cpp
+msgid "Treasure Hunter"
+msgstr "นักล่าสมบัติ"
+
+#. Achievement title for driving 1000km with Hippie Van
+#: src/common/AchievementManager.cpp
+msgid "Triptacular"
+msgstr "ทริปแบบฮิปๆ"
+
+#. Achievement for completing ragnarok
+#: src/common/AchievementManager.cpp
+msgid "Troll Master"
+msgstr "จ้าวแห่งโทรล"
+
+#. Hot rod description
+#: src/common/PlayerCarManager.cpp
+msgid "Tune up your own super hot rod!"
+msgstr "ปรับแต่งซูเปอร์ฮ็อดร็อดของคุณเอง!"
+
+#: src/common/Ufo.cpp
+#, c-format
+msgid "UFO STUNNED!!\n  +%d"
+msgstr "จานบินชะงัก!!\n  +%d"
+
+#. icon
+#. NULL, NULL, NULL, NULL,
+#. Button text for unlocking an item
+#: src/common/MainMenuSelectCar.cpp src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp src/common/MenuGarageMain.cpp
+msgid "UNLOCK"
+msgstr "ปลดล็อค"
+
+#. Title for unlocking something, please preserve %s, it will be replaced by the item name user is going to unlock
+#: src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageMain.cpp
+#, c-format
+msgid "UNLOCK %s? "
+msgstr "ปลดล็อค %s?"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "UNLOCK GARAGE?"
+msgstr "ปลดล็อกอู่รถงั้นหรือ?"
+
+#: src/common/MenuUpdate.cpp
+msgid "UPDATE AVAILABLE!"
+msgstr ""
+
+#. DynamicFont* f = DynamicFont::create(FN_TEXT("LEVEL UP"), 50, kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter, 0);
+#: src/common/GaragePartDialog.cpp src/common/GaragePartUpgrade.cpp
+#: src/common/GarageStockBar.cpp src/common/MenuUpgradeButton.cpp
+msgid "UPGRADE"
+msgstr "อัปเกรด"
+
+#: src/common/MenuGarageGacha.cpp
+msgid "UPGRADE\nAVAILABLE"
+msgstr "อัพเกรด\nสามารถทำได้"
+
+#: src/common/MainMenuCar.cpp src/common/MainMenuUpgradeCar.cpp
+#, c-format
+msgid "UPGRADE %s?"
+msgstr "อัปเกรด %s?"
+
+#: src/common/MenuGarageWorkshop.cpp
+#, c-format
+msgid "UPGRADE %s? "
+msgstr "อัปเกรด %s? "
+
+#. Menu title text showing how far the player needs to go to reach the next level (%s is the stage, first %d is level, second %d is the distance); LVL is short for level
+#. sprintf(strTitle, FN_TEXT("%s: LVL %d (%dm)"), StageManager::getStageInfo(PlayerInfo::mSelectedStage)->mTitle.c_str(), StageManager::getStageInfo(PlayerInfo::mSelectedStage)->mLevel + 1, StageManager::getStageInfo(PlayerInfo::mSelectedStage)->getLevelGoal());
+#. setMenuTitle(strTitle);
+#: src/common/MainMenuUpgradeCar.cpp
+msgid "UPGRADE CAR"
+msgstr "อัปเกรดรถ"
+
+#. Message shown when connecting to in-app store fails (iOS)
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Unable to connect to the AppStore. Please try again later."
+msgstr "ไม่สามารถเชื่อมต่อกับ AppStore ได้ โปรดลองอีกครั้งในภายหลัง"
+
+#. Message shown when connecting to in-app store fails (Tizen)
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Unable to connect to the Tizen Store. Please try again later."
+msgstr "ไม่สามารถเชื่อมต่อกับ Tizen Store ได้ โปรดลองอีกครั้งในภายหลัง"
+
+#. Message shown when connecting to in-app store fails (Windows)
+#. Shown to user when connecting to the Windows Store fails
+#: src/common/InAppPurchaseMenu.cpp src/winrt/WindowsTools.cpp
+#: src/winrt/WindowsTools.cpp src/winrt/WindowsTools.cpp
+msgid "Unable to connect to the Windows Store. Please try again later."
+msgstr "ไม่สามารถเชื่อมต่อกับ Windows Store ได้ โปรดลองอีกครั้งในภายหลัง"
+
+#. Message show when in-app purchase fails
+#: src/winrt/WindowsTools.cpp src/winrt/WindowsTools.cpp
+#: src/winrt/WindowsTools.cpp
+msgid "Unable to purchase item at this time. Please try again later."
+msgstr "ไม่สามารถซื้อไอเท็มได้ในขณะนี้ โปรดลองอีกครั้งในภายหลัง"
+
+#. Title of message ox displayed when saving an image of game results failed
+#: src/common/GameLayer.cpp
+msgid "Unable to save image"
+msgstr "ไม่สามารถบันทึกภาพได้"
+
+#. Message displayed when saving an image of game results failed
+#: src/common/GameLayer.cpp
+msgid "Unable to save result image. There might not be enough space available."
+msgstr "ไม่สามารถบันทึกภาพผลลัพธ์ได้ อาจเพราะไม่มีพื้นที่ว่างมากพอ"
+
+#. Message shown when no advertisement videos are available
+#: src/common/MenuDoubleMoneyDialog.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "Unfortunately there were no videos available right now. Try again later."
+msgstr "น่าเสียดายที่ไม่มีวิดีโอในขณะนี้ ลองอีกครั้งในภายหลัง"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "Unlock %s"
+msgstr "ปลดล็อก %s"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock 10 stages"
+msgstr "ปลดล็อค 10 สนาม"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock 10 vehicles"
+msgstr "ปลดล็อค 10 คัน"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock 5 stages"
+msgstr "ปลดล็อค 5 สนาม"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock 5 vehicles"
+msgstr "ปลดล็อค 5 คัน"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+msgid "Unlock Garage"
+msgstr "ปลดล็อกอู่รถ"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock a stage"
+msgstr "ปลดล็อคสนามเดียว"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock a vehicle"
+msgstr "ปลดล็อคคันเดียว"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock all stages"
+msgstr "ปลดล็อคทุกสนาม"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock all vehicles"
+msgstr "ปลดล็อคทุกคัน"
+
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "Upgrade complete"
+msgstr "อัปเกรดเสร็จสิ้น"
+
+#: src/common/GarageLocalization.cpp
+msgid "V12"
+msgstr "V12"
+
+#: src/common/GarageLocalization.cpp
+msgid "V12 super engine with a supercharger"
+msgstr "เครื่องยนต์ซูเปอร์ V12 พร้อมซูเปอร์ชาร์จเจอร์"
+
+#: src/common/GarageLocalization.cpp
+msgid "V6"
+msgstr "V6"
+
+#: src/common/GarageLocalization.cpp
+msgid "V6 sport engine with a supercharger."
+msgstr "เครื่องยนต์สปอร์ต V6 พร้อมซูเปอร์ชาร์จเจอร์"
+
+#: src/common/GarageLocalization.cpp
+msgid "V8"
+msgstr "V8"
+
+#: src/common/GarageLocalization.cpp
+msgid "V8 diesel with twin turbo."
+msgstr "ดีเซล V8 พร้อมทวินเทอร์โบ"
+
+#: src/common/GarageLocalization.cpp
+msgid "V8 race engine with a supercharger."
+msgstr "เครื่องยนต์แข่ง V8 พร้อมซูเปอร์ชาร์จเจอร์"
+
+#: src/common/MainMenuLayer.cpp src/common/PopupOfferDialog.cpp
+msgid "VEHICLE"
+msgstr "ยานพาหนะ"
+
+#. Volcano level title
+#: src/common/Stage.cpp
+msgid "VOLCANO"
+msgstr "ภูเขาไฟ"
+
+#. Shows the best score user has made in that level in the selected vehicle: For example: "Vehicle best: 1352m ". Please preserve the %d".
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Vehicle best: %dm"
+msgstr "ดีที่สุดของรถกลุ่มนี้: %dม."
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "WATCH AD"
+msgstr ""
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "WATCH VIDEO"
+msgstr "ดูวิดีโอ"
+
+#: src/common/PlayerCarManager.cpp
+msgid "WEALTH"
+msgstr ""
+
+#. Tire texts
+#: src/common/GarageLocalization.cpp
+msgid "WINTER"
+msgstr "หน้าหนาว"
+
+#: src/common/GarageLocalization.cpp
+msgid "WINTER PRO"
+msgstr "หน้าหนาวรุ่นโปร"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Walk 500m with Carantula"
+msgstr ""
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Warning! Radioactive materials inside, no trespassing!"
+msgstr "คำเตือน! มีสารกัมมันตรังสีด้านใน ห้ามบุกรุก!"
+
+#: src/common/UIContinueDialog.cpp
+msgid "Watch a video to keep on playing?"
+msgstr "ดูวิดีโอเพื่อเล่นต่อไหม?"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "Watch an ad to get double value from the"
+msgstr ""
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Watch credits to the end"
+msgstr "ดูเครดิตจนจบ"
+
+#. Rooftops level description
+#: src/common/Stage.cpp
+msgid "Watch out for the gaps between buildings or you may fall off!"
+msgstr "ระวังช่องว่างระหว่างอาคารไม่งั้นคุณอาจร่วงได้!"
+
+#: src/common/MenuGDPR.cpp src/common/MenuGDPR.cpp
+msgid "We would like to show ads relevant to you!"
+msgstr "เราอยากแสดงโฆษณาที่ตรงกับความสนใจของคุณ!"
+
+#. 6-wheel truck vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Weight, power, turbo whistle and attitude! And upgradeable very large fuel tank!"
+msgstr "น้ำหนัก แรง เสียงเทอร์โบกระหึ่ม และรูปลักษณ์ท่าที! รวมไปถึงถังเชื้อเพลิงขนาดใหญ่บึ้มที่อัปเกรดได้"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Welcome to the mystic jungle, Bill!"
+msgstr "ยินดีต้อนรับสู่ป่าพิศวง คุณบิล!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Welcome to the suburbs!"
+msgstr ""
+
+#. level description
+#: src/common/Stage.cpp
+msgid "What a wonderful world, Bill thinks, and throttles through steep hills of the seasons"
+msgstr "มหัศจรรย์แท้ๆ บิลคิดและเค้นฝ่าช่วงพี้คสุดๆ ของฤดูกาล"
+
+#. Tank vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "What do you expect?! It's a race car on tracks with a huge V8 stuffed into it! "
+msgstr "คุณคาดหวังอะไรอีก?! นี่เป็นรถแข่งในสนามที่มี V8 ขนาดใหญ่อยู่ในนั้นเชียวนะ!"
+
+#: src/common/PlayerCarManager.cpp
+msgid "What in the world is this mechanical monstrosity?"
+msgstr ""
+
+#. Achievement title for driving total distance of 100000m
+#: src/common/AchievementManager.cpp
+msgid "Why Do I Climb the Mountain?"
+msgstr "ทำไมฉันต้องปีนเขา?"
+
+#. Achievement title for driving 1000km with Big Finger
+#: src/common/AchievementManager.cpp
+msgid "With Wheels Like These"
+msgstr "ด้วยล้อแบบนี้"
+
+#. Monster truck description
+#: src/common/PlayerCarManager.cpp
+msgid "With large wheels and a supercharged engine this car really gives a new experience for Hill Climbing!"
+msgstr "รถคันนี้จะมอบประสบการณ์ใหม่ในการปีนเขาให้ ด้วยล้อขนาดใหญ่และเครื่องยนต์ซูเปอร์ชาร์จ!"
+
+#. The text of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "Would you like rate our game and give us feedback?"
+msgstr "คุณต้องการให้คะแนนเกมของเราและให้ข้อเสนอแนะเราหรือไม่?"
+
+#. Xmas level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "XMAS"
+msgstr "คริสต์มาส"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "XMAS BUNDLE"
+msgstr "แพ็กเกจคริสต์มาส"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "YEAR %d"
+msgstr "ปี %d"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "YEAR %d COMPLETED"
+msgstr "ปี %d เรียบร้อยแล้ว"
+
+#: src/common/MissionDialog.cpp
+msgid "YEARS"
+msgstr "ปี"
+
+#. Button text for a positive answer
+#. OK button
+#: src/common/MainMenuLayer.cpp src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuUpgradeCar.cpp src/common/MissionDialog.cpp
+#: src/common/UIContinueDialog.cpp
+msgid "YES"
+msgstr "ใช่"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "YOUR TIME:%s"
+msgstr ""
+
+#. The text on the yes button of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "Yes"
+msgstr "ใช่"
+
+#. Dialog text when cloud sign-in failed due to the user having too many devices already synced in the cloud
+#: src/common/Utils.cpp
+msgid "You have already reached the maximum number of synchronized devices."
+msgstr "คุณมีอุปกรณ์ที่ซิงค์เต็มจำนวนที่กำหนดแล้ว"
+
+#. Description for a window if user has already upgraded something to its maximum level
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp
+msgid "You have already upgraded this to the maximum level available."
+msgstr "คุณได้อัปเกรดจนถึงระดับสูงสุดเท่าที่มีแล้ว"
+
+#: src/common/PopupOfferDialog.cpp
+msgid "You have been awarded"
+msgstr "คุณได้รับรางวัล"
+
+#: src/common/MainMenuLayer.cpp
+#, c-format
+msgid "You have been awarded %d coins."
+msgstr "คุณได้เหรียญ %d เหรียญเป็นรางวัล "
+
+#: src/common/MainMenuLayer.cpp src/common/Nitro.cpp
+#, c-format
+msgid "You have been awarded %d gems."
+msgstr "คุณได้อัญมณี %d เม็ดเป็นรางวัล "
+
+#: src/common/PopupOfferDialog.cpp src/common/PopupOfferDialog.cpp
+#, c-format
+msgid "You have been awarded %s coins. "
+msgstr "คุณได้เหรียญ %s เหรียญเป็นรางวัล "
+
+#: src/common/PopupOfferDialog.cpp src/common/PopupOfferDialog.cpp
+#, c-format
+msgid "You have been awarded %s gems. "
+msgstr "คุณได้อัญมณี %s เม็ดเป็นรางวัล "
+
+#: src/common/AppDelegate.cpp src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s and advertisements have been removed. "
+msgstr "คุณได้รับ %s เป็นรางวัล และโฆษณาถูกลบแล้ว"
+
+#. Message displayed when the user buys coins (%s is the amount) and advertisements are removed
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s coins and advertisements have been removed. "
+msgstr "คุณจะได้รับ %s เหรียญ และลบโฆษณาออกไป"
+
+#. Message displayed to the user when he has been rewarded free coins for installing a promoted application
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s coins for installing %s."
+msgstr "คุณได้รับรางวัล %s เหรียญสำหรับการติดตั้ง %s"
+
+#. Message displayed when the user buys coins (%s is the amount)
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s coins. "
+msgstr "คุณจะได้รับ %s เหรียญ"
+
+#. Message displayed when the user buys gems (%s is the amount) and advertisements are removed
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s gems and advertisements have been removed. "
+msgstr "คุณได้รับอัญมณี %s เม็ด และโฆษณาได้ถูกลบออก"
+
+#. Message displayed when the user buys gems (%s is the amount)
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s gems. "
+msgstr "คุณได้รับอัญมณี %s เม็ด"
+
+#: src/common/MainMenuLayer.cpp
+msgid "You have been rewarded:"
+msgstr "คุณได้รับรางวัล:"
+
+#. Windows tile notification telling the user they have enough coins to to unlock a new vehicle
+#. Windows tile notification telling the user they have enough coins to to unlock a new stage
+#: src/winrt/TileNotificationManager.cpp
+#: src/winrt/TileNotificationManager.cpp
+#, c-format
+msgid "You have enough coins to unlock %s. Give it a try!"
+msgstr "คุณมีเหรียญพอปลดล็อค %s แล้ว เอาเลย!"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "You need to unlock garage feature first. Unlock now?"
+msgstr "คุณต้องปลดล็อกคุณสมบัติโรงรถเสียก่อน ปลดล็อกเลยไหม?"
+
+#. Tank vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Yura Vereshchak designed, you voted, the ultimate fan vehicle, the Finger Screw!"
+msgstr "Yura Vereshchak ออกแบบ คุณโหวต รถแฟนที่สุดขั้ว the Finger Screw!"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "coins you collect on the levels for +5 min!"
+msgstr "coins you collect on the levels for next race!"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "common part"
+msgstr "อะไหล่ทั่วไป"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "epic part"
+msgstr "อะไหล่ชั้นเยี่ยม"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "legendary part"
+msgstr "อะไหล่ในตำนาน"
+
+#. CardRan
+#: src/common/InAppPurchaseMenu.cpp
+msgid "random part"
+msgstr "อะไหล่สุ่ม"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "rare part"
+msgstr "อะไหล่หายาก"
+
+#: src/common/MainMenuLayer.cpp
+#, c-format
+msgid "x %d"
+msgstr "x %d"
+
+#: src/common/MenuGDPR.cpp
+msgid ""
+"- In order to do this our ad partners will analyze how you play our game and "
+"other online behavior\n"
+"- This information will only be used to tailor ads to fit your interests\n"
+"- You can change your choice any time from the game's settings\n"
+"\n"
+"By selecting 'I AGREE' I confirm that I am over the age of 16. This opens a "
+"system dialog where you can allow your advertising identifier and in-game "
+"statistics to be shared with Fingersoft's ad partners for ad targeting "
+"purposes."
+msgstr ""
+"- และเพื่อให้เราสามารถทำตามเป้าประสงค์นี้ได้ พันธมิตรด้านโฆษณาของเราจึงจะวิเคราะห์วิธีการที่คุณเล่นเกมของเราและพฤติกรรมในการทำกิจกรรมออนไลน์อื่น ๆ\n"
+"- ข้อมูลนี้จะนำไปใช้เพื่อปรับโฆษณาให้เหมาะสมกับสิ่งที่คุณสนใจเท่านั้น\n"
+"- คุณสามารถเปลี่ยนตัวเลือกของคุณได้ตลอดเวลาในการตั้งค่าเกม\n"
+"\n"
+"เมื่อเลือก 'ฉันยอมรับ' เท่ากับฉันยืนยันว่าฉันอายุเกิน 16 ปี การดำเนินการนี้จะเปิดกล่องโต้ตอบของระบบ ซึ่งเป็นส่วนที่คุณสามารถอนุญาตให้แบ่งปันตัวระบุการโฆษณาและสถิติในเกมของคุณกับพันธมิตรด้านโฆษณาของ Fingersoft เพื่อวัตถุประสงค์ในการกำหนดกลุ่มเป้าหมายของโฆษณา"
+
+#: src/common/MenuGDPR.cpp
+msgid ""
+"Tracking online behavior over different services using an advertising "
+"identifier is nothing new. In fact it has been a staple of e-commerce for "
+"over a decade! Legislation across the globe sets some requirements on how "
+"this identifier can be used and we want to be completely open about how we "
+"process your personal data.\n"
+"An advertising identifier is a random string of characters that is created "
+"when you first started using your device (phone, PC, etc.). This identifier "
+"can be seen by the internet services you use on that device, including by "
+"our game. By analyzing and comparing your playing with your other online "
+"behavior a 'customer profile' can be created and ads can then be tailored to "
+"fit your likings and needs.\n"
+"We believe targeting advertisements is in our players' interests, as ads "
+"with pink unicorns don't really fit a racing game, right?! Regardless, we "
+"cannot do this without your consent.\n"
+"If you'd like even more information and see the list of our advertising "
+"partners, please review our Privacy Policy."
+msgstr ""
+"การติดตามพฤติกรรมการทำกิจกรรมออนไลน์ผ่านบริการต่าง ๆ โดยใช้ตัวระบุการโฆษณาไม่ใช่เรื่องใหม่ ในความเป็นจริงแล้ว การติดตามในลักษณะนี้เป็นส่วนสำคัญของอีคอมเมิร์ซมานานกว่าทศวรรษ! กฎหมายทั่วโลกตั้งข้อกำหนดบางประการเกี่ยวกับวิธีใช้ตัวระบุนี้ ซึ่งเราเองก็ต้องการเปิดกว้างอย่างเต็มที่เกี่ยวกับวิธีที่เราประมวลผลข้อมูลส่วนบุคคลของคุณ\n"
+"\n"
+"ตัวระบุการโฆษณาคือสตริงอักขระแบบสุ่มที่สร้างขึ้นเมื่อคุณเริ่มใช้อุปกรณ์ของคุณเป็นครั้งแรก (เช่น โทรศัพท์ คอมพิวเตอร์ส่วนตัว ฯลฯ) ตัวระบุนี้สามารถมองเห็นได้โดยบริการอินเทอร์เน็ตที่คุณใช้ในอุปกรณ์นั้น รวมถึงมองเห็นได้โดยเกมของเรา ด้วยการวิเคราะห์และเปรียบเทียบการเล่นของคุณกับพฤติกรรมการทำกิจกรรมออนไลน์อื่น ๆ ของคุณ จะทำให้สามารถสร้าง 'โปรไฟล์ลูกค้า' และสามารถปรับโฆษณาให้เหมาะกับความชอบและความต้องการของคุณได้\n"
+"\n"
+"เราเชื่อว่าการกำหนดกลุ่มเป้าหมายของโฆษณาจะเป็นประโยชน์กับผู้เล่นของเรา เพราะโฆษณาที่มียูนิคอร์นสีชมพูก็คงไม่เหมาะกับเกมแข่งรถ ใช่ไหมล่ะ! อย่างไรก็ตาม เราจะไม่สามารถดำเนินการดังกล่าวได้หากไม่ได้รับความยินยอมจากคุณ\n"
+"\n"
+"หากคุณต้องการข้อมูลเพิ่มเติมและดูรายชื่อพันธมิตรด้านโฆษณาของเรา โปรดอ่านนโยบายความเป็นส่วนตัวของเรา"
+
+#: src/common/MenuGDPR.cpp
+msgid "More info"
+msgstr "ข้อมูล"

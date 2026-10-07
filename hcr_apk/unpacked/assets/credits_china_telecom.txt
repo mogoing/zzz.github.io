@@ -1,0 +1,118 @@
+游戏名称
+登山赛车
+
+游戏类型
+益智休闲
+
+公司名称
+北京唯我乐园（MyGamez）
+
+客服电话
+13920078954
+
+免责声明
+
+本游戏版权归北京唯我乐园(MyGamez)所有，
+游戏中的文字、
+图片等内容均为游戏版权所有者的个人态度或立场，
+炫彩公司（中国电信）对此不承担任何法律责任
+
+登山赛车
+
+版本号 1.25.10
+
+Fingersoft 2012-2016 版权所有。
+
+制作团队
+
+编程:
+Toni Fingerroos
+Teemu Närhi
+Marko Brockman
+Esa Kauppinen
+Niklas Kumpulainen
+Lee Stoddart
+Markku Voho
+
+美术:
+Pia Turunen
+Samuel Hyry
+Tuomas Soukka
+Kimmo Äijälä
+Henri Heikkinen
+Thomas Wahlberg
+
+测试:
+Pia Turunen
+Sami-Jukka Piippo
+Thomas Heinze
+
+其他设计和测试:
+Samuli Polvi
+Joel Kaukaoja
+
+音乐
+
+来源于playonloop.com
+
+音效来源
+
+拾金币:
+
+来源于Freesound.org
+
+骨头折断:
+
+来源于Freesound.org
+
+文字出现 (奖励等):
+
+来源于Freesound.org
+
+点击菜单:
+
+来源于Freesound.org
+
+燃油量低提醒:
+
+来源于Freesound.org
+
+购买音效:
+
+来源于Freesound.org
+
+拍照音效:
+
+来源于Freesound.org
+
+火车引擎:
+
+来源于Freesound.org
+
+火车轰鸣:
+
+来源于Freesound.org
+
+赛车引擎:
+
+来源于Freesound.org
+
+警车音效:
+
+来源于Freesound.org
+
+轿车引擎:
+
+开发团队原创 :)
+
+其他资源
+
+Cocos2D-x
+
+解锁图标:
+
+来源于newidols.ru
+
+感谢您对《登山赛车》的喜爱和支持！
+
+我们希望您能享受游戏给您带来的乐趣！

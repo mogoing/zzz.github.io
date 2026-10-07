@@ -1,0 +1,44 @@
+//
+// stage definition file
+//
+{
+  "id": "forest",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "bridge",
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "bridge"
+  ],
+  "props": [
+    {
+      "trees": true
+    }
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/forest/sky-bg-forest",
+      "terrainTexture": "stages/forest/terrain-forest-ground",
+      "terrainTopTexture": "stages/forest/terrain-forest-surface",
+      "terrainTopOffset": 0.1,
+      "dirtParticle": "dirt.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.4,
+      "tractionCategory": "asphalt",
+      "surfaceType": "asphalt"
+    }
+  ],
+  "coinMultiplier": 1.7
+}

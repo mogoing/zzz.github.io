@@ -1,0 +1,4867 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr "Project-Id-Version: PACKAGE VERSION\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2022-03-10 13:07+0200\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+
+#: src/common/Planet.cpp
+#, c-format
+msgid "     MISSION\nACCOMPLISHED!!\n  +%d"
+msgstr "म‍िशन\nपूरा हुआ!!\n +%d"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "  FLIP\n +%d "
+msgstr "फ्लिप\n +%d"
+
+#: src/common/GameLayer.cpp
+msgid "  FLIP\n +1000 "
+msgstr "फ्लिप\n +1000"
+
+#: src/common/GameLayer.cpp
+msgid "  FLIP\n +200 "
+msgstr "फ्लिप\n +200 "
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "  FLIP\n +500 "
+msgstr "फ्लिप\n +500"
+
+#: src/common/GameLayer.cpp
+msgid "  FLIP\n +700 "
+msgstr "फ्लिप\n +700 "
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "  LOOP\n +%d "
+msgstr "लूप\n +%d"
+
+#: src/common/GameLayer.cpp
+msgid "  LOOP\n +1000 "
+msgstr "लूप\n +1000"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "  PRESENT\n  DELIVERED!\n +1000 "
+msgstr "उपहार\n  सौंपे गए!\n +1000"
+
+#: src/common/GameLayer.cpp
+msgid " Collect all soda cans!!\nWatch out for seagulls!!"
+msgstr "सभी सोडा कैन संग्रह करें!!\nसीगल से सवधान रहें!!"
+
+#: src/common/GameLayer.cpp
+msgid " TOUCH TO CONTINUE "
+msgstr "जारी रखने के लिए टच करें"
+
+#: src/common/TrapSensor.cpp
+#, c-format
+msgid "%d CANS RETURNED!\n  +%d"
+msgstr "%d कैन लौटाई गई!\n +%d"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Coins"
+msgstr "%d x सिक्के"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Container"
+msgstr "%d x कंटेनर"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Gem"
+msgstr "%d x रत्न"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Lunchbox"
+msgstr "%d x लंचबॉक्स"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "%d x Toolbox"
+msgstr "%d x टूलबॉक्स"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%dm"
+msgstr "%dm"
+
+#: src/common/ScoreBoard.cpp
+#, c-format
+msgid "%dm (BEST %dm)"
+msgstr "%dm (सर्वश्रेष्ठ %dm)"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%dm (id: %d)"
+msgstr "%dm (id: %d)"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "%dx%s BOOSTER"
+msgstr "%dx%s बूस्टर"
+
+#. Text in result screen indicating how many times the player got points for staying in the air
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "%dxAIR TIME "
+msgstr "%dx एयर टाइम"
+
+#. Text in result screen indicating how many back flips the player did
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "%dxBACK FLIP "
+msgstr "%dxबैक फ्लिप"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "%dxBOOSTER"
+msgstr "%dxबूस्टर"
+
+#. Text in result screen indicating how many (%d) flips the player did
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "%dxFLIP "
+msgstr "%dxफ्लिप"
+
+#. Text in result screen indicating how many flips that broke the driver's neck the player did
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "%dxNECK FLIP "
+msgstr "%dxनैक फ्लिप"
+
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "%s\n\nCost: %s gems\nYou need %s more gems"
+msgstr "%s\n\nलागत : %s रत्न\nआपको %s और रत्न चाहिएं"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%s\n\nEntry fee cost: %s gems\nYou need %s more gems"
+msgstr "%s\n\nप्रवेश शुल्क लागत %s रत्न\nआपको %s और रत्न चाहिएं"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%s\n\nEntry fee cost: %s gems "
+msgstr "%s\n\nप्रवेश शुल्क लागत: %s रत्न "
+
+#. This text appears if user doesn't have enough coins to unlock the specific item. First %s is replaced with the item name, then the %d are coin numbers
+#: src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp src/common/MenuGarageMain.cpp
+#, c-format
+msgid "%s\n\nUnlock cost: %s coins\nYou need %s more coins"
+msgstr "%s\n\nअनलॉक मूल्य : %s सिक्के \n आपको %s और सिक्के चाहिएं"
+
+#. Text for showing that how much an unlock costs. %s is replaced with the item name user is about to unlock and %d is replaced with the number of coins this unlock will cost
+#: src/common/MenuGarageMain.cpp
+#, c-format
+msgid "%s\n\nUnlock cost: %s coins "
+msgstr "%s\n\n अनलॉक मूल्य : %s सिक्के"
+
+#: src/common/MainMenuSelectCar.cpp
+#, c-format
+msgid "%s\n\nUnlock cost: %s gems\nYou need %s more gems"
+msgstr "%s\n\nलागत अनलॉक करें : %s रत्न\nआपको %s और रत्न चाहिएं"
+
+#. Shows the upgrade cost in coins
+#: src/common/MenuUpgradeButton.cpp
+#, c-format
+msgid "%s\n\nUpgrade cost: %s coins"
+msgstr "%s\n\nअपग्रेड मूल्य : %s सिक्के"
+
+#. Shown to the user when more coins are required to upgrade
+#: src/common/MenuGarageWorkshop.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp src/common/MenuUpgradeButton.cpp
+#, c-format
+msgid "%s\n\nUpgrade cost: %s coins\nYou need %s more coins"
+msgstr "%s\n\nअपग्रेड मूल्य : %s सिक्के\nआपको %s और सिक्के चाहिएं"
+
+#. Text for showing that how much an unlock costs. %s is replaced with the item name user is about to unlock and %d is replaced with the number of coins this unlock will cost
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "%s\nOpening cost: %s gems "
+msgstr "%s\nखोलने की लागत: %s रत्न"
+
+#: src/common/HighscoreMenu.cpp
+#, c-format
+msgid "%s HIGH SCORES"
+msgstr "%s उच्च स्कोर"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%s SKIN LOCKED"
+msgstr "%s स्किन लॉक किया गया है"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "%s SKIN UNLOCKED!"
+msgstr "%s स्किन अनलॉक हुई!"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#, c-format
+msgid "%s unlocked!"
+msgstr "%s अनलॉक हुआ!"
+
+#. Menu title text showing how far the player needs to go to reach the next level (%s is the stage, first %d is level, second %d is the distance); LVL is short for level
+#: src/common/MainMenuCar.cpp
+#, c-format
+msgid "%s: LVL %d (%dm)"
+msgstr "%s: स्तर %d (%dm)"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "(best time: %s)"
+msgstr "(बेहतरीन समय: %s)"
+
+#. Text in game result indicating all-time record in stage
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "(best: %dm)"
+msgstr "(श्रेष्ठ : %dm)"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "(best:%s)"
+msgstr "(बेहतरीन:%s)"
+
+#: src/common/MenuGDPR.cpp
+msgid "* Instead of random advertisements you could see ads\n   relevant to you!\n* You can change your choice later from the game's settings.\n* Please note that not allowing relevant ads does not\n   make the game ad free."
+msgstr "* आप यादृच्छिक विज्ञापनों के बजाय\n अपने प्रासंगिक विज्ञापनों को देख सकते हैं!\n* आप अपनी पसंद को बाद में गेम सेटिंग्स में बदल सकते हैं.\n* कृपया ध्यान दें प्रासंगिक विज्ञापनों को अनुमति नहीं देना\n गेम को विज्ञापन मुक्त नहीं बनाता है."
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "+%d"
+msgstr "+%d"
+
+#: src/common/MenuGarageGacha.cpp
+#, c-format
+msgid "+%d COINS"
+msgstr "+%d सिक्के"
+
+#. Text in result screen indicating the value of coins collected
+#. CCLOG("CurrentCoins = %d", mCoinsCollected);
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "+%d COINS "
+msgstr "+%d सिक्के"
+
+#: src/common/BogPropGenerator.cpp
+#, c-format
+msgid "+%d COINS FOUND!"
+msgstr "+%d स‍िक्के म‍िले!"
+
+#: src/common/MenuGarageGacha.cpp src/common/MenuGarageGacha.cpp
+#: src/common/MenuGarageGacha.cpp
+#, c-format
+msgid "+%d GEMS"
+msgstr "+%d रत्न"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "+%d GEMS "
+msgstr "+%d रत्न "
+
+#: src/common/BogPropGenerator.cpp
+#, c-format
+msgid "+%d GEMS FOUND!"
+msgstr "+%d रत्न म‍िले!"
+
+#: src/common/MenuGarageGacha.cpp
+#, c-format
+msgid "+%d NITROS"
+msgstr "+%d न‍िट्रोस"
+
+#: src/common/MenuGarageGacha.cpp
+#, c-format
+msgid "+%d PAINT BUCKETS"
+msgstr "+%d पेंट बाल्टियां"
+
+#: src/common/GarageLocalization.cpp
+msgid "+20%;Acceleration"
+msgstr "+20%;गतिवृद्धि"
+
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+#: src/common/GarageLocalization.cpp
+msgid "+30%;more grip"
+msgstr "+30%;अधिक पकड़"
+
+#: src/common/GarageLocalization.cpp
+msgid "+30%;power"
+msgstr "+30%;शक्ति"
+
+#: src/common/GarageLocalization.cpp
+msgid "+40%;Acceleration"
+msgstr "+40%;गतिवृद्धि"
+
+#: src/common/GarageLocalization.cpp
+msgid "+40%;more size"
+msgstr "+40%;बड़ा आकार"
+
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+#: src/common/GarageLocalization.cpp
+msgid "+40%;power"
+msgstr "+40%;शक्ति"
+
+#: src/common/GarageLocalization.cpp
+msgid "+40%;torque"
+msgstr "+40%;टॉर्क"
+
+#: src/common/GarageLocalization.cpp
+msgid "+50%;more size"
+msgstr "+50%;बड़ा आकार"
+
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+#: src/common/GarageLocalization.cpp
+msgid "+60%;more grip"
+msgstr "+60%;अधिक पकड़"
+
+#: src/common/GarageLocalization.cpp
+msgid "+60%;power"
+msgstr "+60%;शक्ति"
+
+#: src/common/GarageLocalization.cpp
+msgid "+80%;more grip"
+msgstr "+80%;अधिक पकड़"
+
+#: src/common/GarageLocalization.cpp
+msgid "+80%;power"
+msgstr "+80%;शक्ति"
+
+#: src/common/GarageLocalization.cpp
+msgid "-20%;fuel"
+msgstr "-20%;ईंधन"
+
+#: src/common/GarageLocalization.cpp
+msgid "-20%;weight"
+msgstr "-20%;वजन"
+
+#: src/common/GarageLocalization.cpp
+msgid "-50%;fuel"
+msgstr "-50%;ईंधन"
+
+#: src/common/GarageLocalization.cpp
+msgid "2WD racer chassis. Fast with adjustable downforce."
+msgstr "2WD रेसर चेसिस. समायोज्य डाउनफोर्स सहित तेज"
+
+#. Upgrade title
+#. Drive upgrade title
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "4WD"
+msgstr "4WD"
+
+#: src/common/GarageLocalization.cpp
+msgid "4WD;Light"
+msgstr "4WD;लाइट"
+
+#: src/common/GarageLocalization.cpp src/common/GarageLocalization.cpp
+msgid "4WD;Monsterous"
+msgstr "4WD;विशालकाय"
+
+#. Quad bike vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "4x4 quad bike with almost the same agility as the bike offers you a different ride."
+msgstr "4x4 क्वेड बाइक लगभग उतनी ही फुर्ती के साथ जैसी बाइक एक अलग सवारी प्रदान करती है."
+
+#. Electric car description
+#: src/common/PlayerCarManager.cpp
+msgid "A small beast, full of green energy"
+msgstr "एक छोटा जंगली, हरित ऊर्जा से भरपूर"
+
+#: src/common/Ufo.cpp
+msgid "ABDUCTED!!"
+msgstr "अपहृत!!"
+
+#. Button for displaying the credits view
+#: src/common/MenuAbout.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp
+msgid "ABOUT"
+msgstr "के बारे में"
+
+#. Electric engines
+#: src/common/GaragePartDialog.cpp src/common/GarageUpgradeNode.cpp
+msgid "ACCELERATION"
+msgstr "गतिवृद्धि"
+
+#. accept
+#: src/common/MenuGarageMain.cpp
+msgid "ACCEPT"
+msgstr "स्वीकार"
+
+#. Button for displaying player's achievements
+#: src/common/AchievementMenu.cpp src/common/AchievementMenu.cpp
+#: src/common/MenuMore.cpp
+msgid "ACHIEVEMENTS"
+msgstr "उपलब्धियां"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "ACTION HERO"
+msgstr "एक्शन हीरो"
+
+#. In app product that removes ads from the game
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+msgid "AD FREE"
+msgstr "विज्ञापन रहित"
+
+#. Aerodynamics upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "AERODYNAMICS"
+msgstr "वायुगतिकी"
+
+#. Text indicating the player received a bonus for staying in the air
+#: src/common/GameLayer.cpp
+msgid "AIR TIME\n"
+msgstr "एयर टाइम\n"
+
+#. Text indicating the player received a bonus for staying in the air
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "AIR TIME\n +%d "
+msgstr "एयर टाइम\n +%d"
+
+#: src/common/MissionDialog.cpp
+msgid "AIR TIMES"
+msgstr "एयर टाइम"
+
+#. Alien planet level title (weird slimy planet with very slippery surface)
+#: src/common/Stage.cpp
+msgid "ALIEN PLANET"
+msgstr "अपरिचित ग्रह"
+
+#: src/common/TrapSensor.cpp
+#, c-format
+msgid "ALL CANS RETURNED!\n  +%d"
+msgstr "सभी कैन लौटाई गई!\n +%d"
+
+#: src/common/MissionDialog.cpp
+msgid "ALL IDOLS"
+msgstr "सभी आदर्श"
+
+#. CCPA Switch
+#: src/common/MenuGDPR.cpp
+msgid "ALLOWED"
+msgstr ""
+
+#: src/common/InAppUnlockDialog.cpp
+msgid "ALL STAGES UNLOCKED"
+msgstr "सभी स्टेज अनलॉक हुई"
+
+#: src/common/InAppUnlockDialog.cpp
+msgid "ALL VEHICLES UNLOCKED"
+msgstr "सभी व्हीकल अनलॉक हुए"
+
+#. Ambulance vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "AMBULANCE"
+msgstr "एम्बुलेंस"
+
+#: src/common/CustomizeMenu.cpp
+msgid "APPLY"
+msgstr "लागू करें"
+
+#. Arctic level title
+#: src/common/Stage.cpp
+msgid "ARCTIC"
+msgstr "आर्कटिक"
+
+#. Arctic cave title
+#: src/common/Stage.cpp
+msgid "ARCTIC CAVE"
+msgstr "आर्कटिक गुफा"
+
+#. level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "ARENA"
+msgstr "एरिना"
+
+#: src/common/GarageLocalization.cpp
+msgid "AWD"
+msgstr "AWD"
+
+#: src/common/GarageLocalization.cpp
+msgid "AWD;upgrade"
+msgstr "AWD;अपग्रेड"
+
+#: src/winrt/WindowsTools.cpp
+msgid "About"
+msgstr "परिचय"
+
+#. Brake upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Adjust drive balance between rear-wheel drive and four-wheel drive"
+msgstr "रियर-व्हील ड्राइव और फोर-व्हील ड्राइव के मध्य ड्राइव संतुलित करें"
+
+#: src/common/MenuGDPR.cpp
+msgid "Advertising ID is not a new thing, in fact it has\nalready been used by practically all online services\nfor over a decade! An upcoming change in EU's\nlegislation sets some requirements on how this ID\ncan be used and we want to be completely open about\nhow we use your personal data.\n\nAdvertising ID is a random string of characters that\nis created when you first started using your device\n(phone, PC, etc). This ID can be seen by the apps you\nuse on your device. By comparing the apps you've used\nin the past a \"player type profile\" can be created to\nsuggest more similar apps to you! By clicking \"I agree\"\nyou allow us to continue sharing your advertising ID\nwith Fingersoft's ad partners (and nobody else!) for\nthem to give you suggestions on other apps you might\nlike. We believe directing advertisements is in our\nplayer's interests, as nobody wants to see ads for\ndoll houses in a racing game, right?! If you'd like\neven more information and the list of our advertising\npartners, please review our Privacy Policy. Link to our\nPrivacy Policy can be found in the game's settings."
+msgstr "विज्ञापन ID एक नई चीज नहीं है, असल में इसका उपयोग\nपहले ही विशेष रूप से सभी ऑनलाइन सेवाओं द्वारा\nएक दशक से भी अधिक समय से किया जा रहा है! EU के कानून में एक आगामी\nपरिवर्तन कुछ शर्तें निर्धारित करता है कि इस ID का उपयोग कैसे\nकिया जा सकता है और हम इस बार ब‍िल्कुल स्पष्ट करना चाहते हैं कि\nहम आपके निजी डेटा का इस्तेमाल कैसे करेंगे.\n\nव‍िज्ञापन ID अक्षरों की एक बेतरतीब सीरिज होती है जो\nउस समय तैयार होती है जब आप पहली बार अपना डिवाइस (फोन, PC, आदि) उपयोग करना शुरू करते हैं. यह ID उन ऐप द्वारा देखी जा सकती है\n जो आप अपने डिवाइस में उपयोग करते हैं. आपके द्वारा पहले उपयोग किए गए ऐप की तुलना करने के द्वाराnएक \"प्लेयर टाइप प्रोफाइल\" तैयार की जा सकती है जो\nआपको इनके समान और अधिक ऐप के सुझाव दे! \"मैं सहमत हूँ\"\nक्लिक करने के द्वारा आप हमें अपनी विज्ञापन ID को \nFingersoft के व‍िज्ञापन सहयोग‍ियों (और इनके अलावा कोई नहीं!) के साथ साझा करना जारी रखने की अनुमति देते हैं\nताकि आपको अन्य एप्प को सुझाव दें जो आप\n पसंद करें. हम विज्ञापनों को अपने ख‍िलाड़ि‍यों के हितों में\nन‍िर्देश‍ित करने में व‍िश्वास रखते हैं, क्योंकि कोई भी रेसिंग गेम में डॉल हाउस\n के व‍िज्ञापन देखना पसंद नहीं करेगा, ठीक है ना?! यदि आप और अधिक जानकारी\nऔर हमारे व‍िज्ञापन सहयोगियों की सूची भी देखना चाहते हैं\nतो कृपया हमारी गोपनीयता नीति की समीक्षा करें. हमारी\nगोपनीयता नीति का लिंक गेम की सेटिंग्स में खोज सकते हैं."
+
+#. Achievement title for making total 100 backflips
+#: src/common/AchievementManager.cpp
+msgid "All Backwards"
+msgstr "सभी पीछे की ओर"
+
+#. Achievement title for unlocking all vehicles
+#: src/common/AchievementManager.cpp
+msgid "All Your Car Are Belong to Us"
+msgstr "आपकी सभी कारों के मालिक हम हैं"
+
+#: src/common/MainMenuLayer.cpp
+msgid "All stages and vehicles are unlocked!"
+msgstr "सभी चरण और वाहन अनलॉक हैं!"
+
+#: src/common/MainMenuLayer.cpp
+msgid "All stages are unlocked!"
+msgstr "सभी चरण अनलॉक हैं!"
+
+#. Description for a window if user has already upgraded something to its maximum level
+#: src/common/MissionDialog.cpp
+msgid "All the skips for this set of daily missions have been used.\n\nPlease wait until a Rewarded video has loaded to resume skipping further daily missions."
+msgstr "दैनिक मिशन के इस सेट के लिए सभी स्किप उपयोग कर लिए गए.\n\nकृपया प्रतीक्षा करें जब तक एक पुरस्कार वीडियो को आगामी दैनिक मिशन स्किप पुर्नस्थापित करने के लिए लोड किया जाए."
+
+#: src/common/MainMenuLayer.cpp
+msgid "All vehicles are unlocked!"
+msgstr "सभी वाहन अनलॉक हैं!"
+
+#. Achievement title for unlocking 10 vehicles
+#: src/common/AchievementManager.cpp
+msgid "Almost Famous"
+msgstr "लगभग लोकप्रिय"
+
+#. Achievement title for driving 1000km with Moonlander
+#: src/common/AchievementManager.cpp
+msgid "Apollo Crewmember"
+msgstr "अपोलो क्रूमेम्बर"
+
+#. Description for asking if the user really wants to exit
+#: src/common/GameLayer.cpp
+msgid "Are you sure you want to exit to menu?"
+msgstr "क्या आप वाकई मेनू से निकलना चाहते हैं?"
+
+#. Description for a window if user has already upgraded something to its maximum level
+#: src/common/MissionDialog.cpp
+msgid "Are you sure you want to skip this mission?"
+msgstr "क्या आप वाकई इस मिशन को छोड़ने के लिए सुनिश्चित हैं?"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Attention Driver! Reach %dm to unlock the %s skin!"
+msgstr "चालक ध्यान दें! %dm तक पहुँचे %s स्किन अनलॉक करने के लिए!"
+
+#. GDPR text
+#: src/common/MenuGDPR.cpp
+msgid "As of January 1, 2020 personal information collected about you is\nsubject to the California Consumer Privacy Act (CCPA)\nwhich gives certain rights to residents of California regarding\ntheir personal information."
+msgstr ""
+
+#. small print
+#: src/common/MenuGDPR.cpp
+msgid "As part of CCPA you have the right to control to whom we disclose\nyour personal information. In the next screen you can choose to\nallow us to disclose certain technical identifiers to our\nadvertising partners."
+msgstr ""
+
+#. Achievement title for driving 1000km with Truck
+#: src/common/AchievementManager.cpp
+msgid "Attitude Problem"
+msgstr "दृष्टिकोण की समस्या"
+
+#. boost upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Automatic boost gives additional speed for a small duration. Upgrade increases boost power."
+msgstr "ऑटोमेटिक बूस्ट थोड़ी अवधि के लिए अतिरिक्त गति देता है. अपग्रेड बूस्ट पॉवर में वृद्धि करता है."
+
+#. Button that takes the user back to previous menu
+#. //////////////////////////////////////////////////////////////////////////
+#. Button that takes the user back to previous menu
+#. TODO: move button creation to own file ?
+#: src/common/AchievementMenu.cpp src/common/CustomizeMenu.cpp
+#: src/common/HighscoreMenu.cpp src/common/InAppPurchaseMenu.cpp
+#: src/common/InAppUnlockDialog.cpp src/common/LanguageMenu.cpp
+#: src/common/MainMenuLayer.cpp src/common/MenuAbout.cpp
+#: src/common/MenuControls.cpp src/common/MenuControls.cpp
+#: src/common/MenuEnterCode.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageWorkshop.cpp src/common/MenuGDPR.cpp
+#: src/common/MenuGDPR.cpp src/common/MenuMore.cpp
+msgid "BACK"
+msgstr "वापस"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "BACK FLIP\n +%d "
+msgstr "बैक फ्लिप\n +%d"
+
+#: src/common/GameLayer.cpp
+msgid "BACK FLIP\n +1000 "
+msgstr "बैक फ्लिप\n +1000"
+
+#: src/common/GameLayer.cpp
+msgid "BACK FLIP\n +200 "
+msgstr "बैक फ्लिप\n +200 "
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "BACK FLIP\n +500 "
+msgstr "बैक फ्लिप\n +500"
+
+#: src/common/GameLayer.cpp
+msgid "BACK FLIP\n +700 "
+msgstr "बैक फ्लिप\n +700 "
+
+#: src/common/MissionDialog.cpp
+msgid "BACK FLIPS"
+msgstr "बैक फ्लिप"
+
+#: src/common/MenuNewSettings.cpp
+msgid "BACKGROUND SCROLL"
+msgstr "पृष्ठभूमि स्क्रॉल"
+
+#: src/common/MissionDialog.cpp
+msgid "BARRELS"
+msgstr "बैरल"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "BATTERY"
+msgstr "बैटरी"
+
+#. Beach level title
+#: src/common/Stage.cpp
+msgid "BEACH"
+msgstr "समुद्र तट"
+
+#: src/common/MissionDialog.cpp
+msgid "BERRIES"
+msgstr "बेरी"
+
+#. Text indicating the player received a bonus for staying in the air for long time
+#: src/common/GameLayer.cpp
+msgid "BIG AIR TIME\n"
+msgstr "बिग एयर टाइम\n"
+
+#. Text indicating the player received a bonus for staying in the air for long time
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "BIG AIR TIME\n   +%d "
+msgstr "बिग एयर टाइम\n   +%d"
+
+#. Big monster truck "big finger" vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "BIG FINGER"
+msgstr "बिग फिंगर"
+
+#: src/common/GarageLocalization.cpp
+msgid "BIG MONSTER"
+msgstr "बड़ा राक्षस"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "BOGLAND"
+msgstr "बॉगलैण्ड"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "BONUS COINS: %d"
+msgstr "बोनस सिक्के: %d"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "BONUS GEMS: %d"
+msgstr "बोनस रत्न: %d"
+
+#. Title for asking if the user really wants to exit
+#: src/common/GameLayer.cpp
+msgid "BONUS REWARD!"
+msgstr "बोनस पुरस्कार!"
+
+#. Boost upgrade title (boost gives additional speed for a small duration)
+#: src/common/PlayerCarManager.cpp
+msgid "BOOST"
+msgstr "बूस्ट"
+
+#. update description
+#: src/common/Nitro.cpp src/common/Nitro.cpp
+msgid "BOOSTER WILL POWER YOUR CAR TO DRIVE SOME EXTRA METERS"
+msgstr "बूस्टर आपकी कार को कुछ अतिरिक्त मीटर ड्राइव करने की शक्ति देगा"
+
+#. level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "BOOT CAMP"
+msgstr "बूट कैंप"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "BOOTCAMP BUNDLE"
+msgstr "बूट कैम्प बण्डल"
+
+#. Text for the button where the car brakes
+#: src/common/MenuControls.cpp src/common/TVOsTutorialNode.cpp
+msgid "BRAKE"
+msgstr "ब्रेक"
+
+#. Brake upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "BRAKES"
+msgstr "ब्रेक"
+
+#. Button text for unlocking an item
+#: src/common/CustomizeMenu.cpp src/common/InAppPurchaseMenu.cpp
+msgid "BUY"
+msgstr "खरीदें"
+
+#: src/common/PowerUpDialog.cpp
+msgid "BUY BOOSTER?"
+msgstr "बूस्टर खरीदें?"
+
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "BUY PART %s? "
+msgstr "पुर्जा खरीदें %s? "
+
+#: src/common/GarageLocalization.cpp
+msgid "Basic inline 4 engine."
+msgstr "बेसिक इनलाइन 4 इंजन."
+
+#. Achievement title for driving 1000km with Electric car
+#: src/common/AchievementManager.cpp
+msgid "Battery charger"
+msgstr "बैटरी चार्जर"
+
+#. Achievement title for driving total distance of 1000000m
+#: src/common/AchievementManager.cpp
+msgid "Because I'm in Love"
+msgstr "क्योंकि मुझे प्यार है"
+
+#. Achievement for picking 500 berries in Bogland
+#: src/common/AchievementManager.cpp
+msgid "Berry Picker"
+msgstr "बैरी पिकर"
+
+#: src/common/GarageLocalization.cpp
+msgid "Best in winter and ice levels!"
+msgstr "सर्दी और बर्फीले स्तरों में बेहतरीन!"
+
+#. Shows the best score user has made in that level: For example: "Best: 1352m". Please preserve the %d.
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Best: %dm"
+msgstr "श्रेष्ठ : %dm"
+
+#: src/common/PlayerCarManager.cpp
+msgid "Better engine gives you higher top speed."
+msgstr "बेहतर इंजन आपको उच्च टॉप स्पीड देता है."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Better suspension helps you in uneven terrain."
+msgstr "बेहतर सस्पेंशन ऊबड़-खाबड़ इलाक़ो में आपकी मदद करता है."
+
+#: src/common/PlayerCarManager.cpp
+msgid "Better torque means better acceleration."
+msgstr "बेहतर टॉर्क का मतलब बेहतर एक्सलिरेशन."
+
+#. Police car description
+#: src/common/PlayerCarManager.cpp
+msgid "Beware all speeding hill climbers, the police is now patrolling the hills."
+msgstr "सभी तेजी से पहाड़ी चढ़ाई करने वालों सतर्क रहें, अब पुलिस पहाड़ि‍यों पर गश्त कर रही है."
+
+#. Achievement title for unlocking 10 stages
+#: src/common/AchievementManager.cpp
+msgid "Beyond the Galaxy"
+msgstr "आकाशगंगा से आगे"
+
+#: src/common/GarageLocalization.cpp
+msgid "Big monster chassis. Real off-road monster."
+msgstr "बड़ी विशालकाय चेसिस. असली ऑफ-रोड दैत्य."
+
+#: src/common/PlayerCarManager.cpp
+msgid "Bigger fuel tank size makes you walk further."
+msgstr "ईंधन टैंक का बड़ा आकार आपको अधिक चलने देता है."
+
+#. Tire upgrade description
+#. Tire size upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Bigger tires helps maneuvering on the bumpy road."
+msgstr "बड़े टायर ऊबड़-खाबड़ सड़कों पर चलने में मदद करते हैं."
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Bill decided to put on his old Halloween costume and go for a ride in the nearby haunted hills."
+msgstr "बिल ने अपना पुराना हैलोविन आवरण पहनने और पास की भूतहा पहाड़ि‍यों पर एक सवारी करने का निर्णय लिया."
+
+#. Tourist bus where people ride in the bus (vehicle description)
+#: src/common/PlayerCarManager.cpp
+msgid "Bill decided to take a shower and give people a ride while climbing hills! Not suitable for cave levels!"
+msgstr "बिल ने एक शॉवर लेने और पहाड़ि‍यों पर चढ़ते हुए लोगों को एक सवारी करवाने का निर्णय लिया! गुफा स्तरों के लिए उपयुक्त नहीं!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Blood-thirsty mosquitos, sinking terrain and miserable weather! Life just doesn't get better than this!"
+msgstr "रक्त-प‍िपासु मच्छर, डूबता हुआ इलाका और खराब मौसम! ज‍िंंदगी में इससे बेहतर और कुछ नहीं!"
+
+#: src/common/AchievementManager.cpp
+msgid "Bog Digger"
+msgstr "बॉग डिग्गर"
+
+#. Achievement title for driving 1000km with Finger Screw
+#: src/common/AchievementManager.cpp
+msgid "Bottle Opener"
+msgstr "बोतल ओपनर"
+
+#. Achievement title for making total 10 flips
+#: src/common/AchievementManager.cpp
+msgid "Bottoms Up"
+msgstr "नीचे से ऊपर"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Brooom! It's time to explore some challenges!"
+msgstr "बरूम्म! यह समय कुछ चुनौतियां खोजने का है!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Brooom! It's time to make some awesome jumps and stunts!"
+msgstr "बरूम्म्म! यह कुछ शानदार जंप और स्टंट करने का समय है!"
+
+#: src/common/MenuGDPR.cpp
+msgid "By selecting \"I AGREE\" I confirm that I am over the age of 16\nand allow my advertising identifier to be sent to Fingersoft's\nad partners."
+msgstr "\"मैं सहमत हूँ\" का चुनाव करने के द्वारा मैं पुष्टि करता/ती हूँ कि मेरी आयु 16 वर्ष से अधिक है\nऔर मेरी विज्ञापन पहचानकर्ता को Fingersoft के\nविज्ञापन सहयोगियों को भेजने की अनुमति देता/ती हूँ."
+
+#: src/common/TrapSensor.cpp
+#, c-format
+msgid "CAN RETURNED!\n  +%d"
+msgstr "कैन लौटाई गई!\n +%d"
+
+#. Button text for cancelling an operation
+#. icon
+#. NULL, NULL, NULL, NULL,
+#. Button text for cancelling an operation
+#: src/common/CustomizeMenu.cpp src/common/CustomizeMenu.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/InAppPurchaseMenu.cpp
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp src/common/MenuUpgradeButton.cpp
+msgid "CANCEL"
+msgstr "रद्द करें"
+
+#: src/common/MenuGarageMain.cpp
+msgid "CAR NAME"
+msgstr "गाड़ी का नाम"
+
+#: src/common/PlayerCarManager.cpp
+msgid "CARANTULA"
+msgstr "कैरातुंला"
+
+#: src/common/MissionDialog.cpp
+msgid "CARROTS"
+msgstr "कैरट्स"
+
+#. Cave level title
+#: src/common/Stage.cpp
+msgid "CAVE"
+msgstr "गुफा"
+
+#: src/common/Idol.cpp
+msgid "CAVE OPEN!!"
+msgstr "गुफा खुली!!"
+
+#. Text in result screen indicating how many back flips the player did
+#. sprintf(str, FN_TEXT_INGAME("FREERIDE MODE\n"),);
+#: src/common/GameLayer.cpp
+msgid "CHALLENGE"
+msgstr "चुनौती"
+
+#. Text in result screen indicating how many back flips the player did
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "CHALLENGE\n GOAL: %dm"
+msgstr "चुनौती\n लक्ष्य: %dm"
+
+#. Text in result screen indicating how many back flips the player did
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "CHALLENGE COMPLETED!\n GOAL: %dm\n"
+msgstr "चुनौती पूरी हुई!\n लक्ष्य: %dm\n"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "CHALLENGE COMPLETED! +%d GEMS"
+msgstr "चुनौती संपन्न हुई! +%d रत्न"
+
+#. Text showing how far the player must drive to reach the next level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "CHALLENGE: Drive %dm "
+msgstr "चुनौती: ड्राइव करें %dm "
+
+#: src/common/GarageLocalization.cpp
+msgid "CHARGER"
+msgstr "चार्जर"
+
+#: src/common/GaragePartDialog.cpp
+msgid "CHASSIS"
+msgstr "चेसिस"
+
+#: src/common/MenuGarageMain.cpp
+msgid "CHOOSE CHASSIS"
+msgstr "चेसिस चुनें"
+
+#. vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "CHOPPER"
+msgstr "हेलिकॉप्टर"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "CHOPPER BUNDLE"
+msgstr "हेलिकॉप्टर बंडल"
+
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+#: src/common/MissionDialog.cpp
+msgid "CLAIM"
+msgstr "दावा करें"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "CLOSE"
+msgstr "बंद करें"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MissionDialog.cpp
+msgid "COINS"
+msgstr "सिक्के"
+
+#: src/common/AppDelegate.cpp src/common/PopupOfferDialog.cpp
+#, c-format
+msgid "COINS: %d"
+msgstr "सिक्के: %d"
+
+#: src/common/MissionDialog.cpp
+msgid "COLLECT"
+msgstr "संग्रह करें"
+
+#: src/common/GaragePartLibrary.cpp src/common/GaragePartLibrary.cpp
+msgid "COMMON"
+msgstr "सामान्य"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "COMMON PARTS"
+msgstr "सामान्य पार्टस"
+
+#. Title for button displayed while the game is connecting to cloud services
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "CONNECTING"
+msgstr "कनेक्ट हो रहा है"
+
+#. Construction level title
+#: src/common/Stage.cpp
+msgid "CONSTRUCTION"
+msgstr "निर्माण"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+#: src/common/MissionDialog.cpp
+msgid "CONTAINER"
+msgstr "कंटेनर"
+
+#. Text for a button which opens the controls info screen
+#: src/common/MenuMore.cpp
+msgid "CONTROLS"
+msgstr "नियंत्रण"
+
+#. Country side level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "COUNTRYSIDE"
+msgstr "देहात"
+
+#: src/common/Idol.cpp
+#, c-format
+msgid "Can %d / %d collected!"
+msgstr "कैन %d / %d संग्रह की गई!"
+
+#. Achievement title for walking 1000km with Carantula
+#: src/common/AchievementManager.cpp
+msgid "Carantula Tamer"
+msgstr "केरातुंला टेमर"
+
+#. Achievement title for making total 10 backflips
+#: src/common/AchievementManager.cpp
+msgid "Casual Backflipper"
+msgstr "कैजुअल बैकफ्लिपर"
+
+#. Achievement title for making 10 flips in one run
+#: src/common/AchievementManager.cpp
+msgid "Casual Driving"
+msgstr "कैजुअल ड्राइविंग"
+
+#: src/common/MainMenuSelectStage.cpp
+msgid "Challenge completed"
+msgstr "चुनौती संपन्न हुई"
+
+#: src/common/AchievementManager.cpp
+msgid "Challenger"
+msgstr "चैलेंजर"
+
+#. Construction level description
+#: src/common/Stage.cpp
+msgid "Challenging stage even for the most skilled drivers."
+msgstr "सबसे कुशल ड्राइवरों के लिए भी चुनौतिपूर्ण चरण."
+
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "Chance: %d%%"
+msgstr "अवसर: %d%%"
+
+#. Achievement for driving the Luxury Car for 2km without dropping any passengers
+#: src/common/AchievementManager.cpp
+msgid "Chauffeur"
+msgstr "शोफर"
+
+#. Text used when sharing a link to the game. Hill Climb Racing should not be translated.
+#: src/wp8/PlatformTools.cpp
+msgid "Check out Hill Climb Racing!\n"
+msgstr "पहाड़ी चढ़ाई रेसिंग देखें!\n"
+
+#. Text used when sharing a link to the game. Hill Climb Racing should not be translated.
+#: src/winrt/WindowsTools.cpp
+#, c-format
+msgid "Check out Hill Climb Racing!\n%s"
+msgstr "पहाड़ी चढ़ाई रेसिंग देखें!\n%s"
+
+#. Hover craft description
+#: src/common/PlayerCarManager.cpp
+msgid "Climb the steepest hills with this powerful vehicle. Especially fast on stages with low friction."
+msgstr "इस शक्तिशाली वाहन के साथ सबसे बिल्कुल खड़ी पहाड़ि‍यों पर चढ़ाई करें. विशेषकर कम कर्षण वाली स्टेजों में तेज."
+
+#. Desert level description
+#: src/common/Stage.cpp
+msgid "Climbing hills in the desert is a must have experience for any hillbilly. In order to travel to desert you need a trailer and a towing car that can carry your vehicle."
+msgstr "किसी भी देहाती के लिए रेगिस्तान में पहाड़ि‍यों पर चढ़ाई का अनुभव होना जरूरी है. रेगिस्तान में यात्रा करने के लिए आपको एक ट्रेलर और एक टो कार की जरूरत है जो आपके वाहन को ले जा सकें."
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Coins & Gems remove banner ads!"
+msgstr "सिक्के और रत्न बैनर विज्ञापन हटाते हैं!"
+
+#. Title of message box displayed when the user is rewarded free coins for installing a promoted application
+#: src/common/AppDelegate.cpp
+msgid "Coins received"
+msgstr "प्राप्त सिक्के"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Collect all treasures from the Jungle"
+msgstr "जंगल से सभी खजाने इक्ट्ठठा करें"
+
+#. Achievement title for fully upgrading a vehicle
+#: src/common/AchievementManager.cpp
+msgid "Collector's Edition"
+msgstr "संग्रहकर्ता संस्करण"
+
+#: src/common/AchievementManager.cpp
+msgid "Complete 10 challenges"
+msgstr "10 चुनौतियां पूरी करें"
+
+#: src/common/MissionDialog.cpp
+msgid "Complete Missions, Earn Prizes"
+msgstr "मिशन पूरे करें, पुरस्कार हासिल करें"
+
+#. Title of the message shown when connecting to in-app store fails
+#. Title of message box shown to user when connecting to the Windows Store fails
+#: src/common/InAppPurchaseMenu.cpp src/common/InAppPurchaseMenu.cpp
+#: src/common/InAppPurchaseMenu.cpp src/winrt/WindowsTools.cpp
+#: src/winrt/WindowsTools.cpp src/winrt/WindowsTools.cpp
+msgid "Connection failed"
+msgstr "कनेक्शन विफल"
+
+#: src/common/GameLayer.cpp
+msgid "Conquer the planets!!"
+msgstr "ग्रहों को जीतें!!"
+
+#: src/common/GameLayer.cpp
+msgid "Conquer the planets!!\nPress both pedals\nto fire thrusters!!"
+msgstr "ग्रहों पर जीत हासिल करें!!\nथ्रस्टर फायर करने के लिए\nदोनों पैडल दबाएं!!"
+
+#. Title of the message box shown when no advertisement videos are available
+#: src/common/MainMenuLayer.cpp
+msgid "Contact Us"
+msgstr "हमें संपर्क करें"
+
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "Contains %d random card(s), %d common card(s), %d rare card(s), %d epic card(s) and %d legendary card(s)."
+msgstr "%d यादृच्छिक कार्ड, %d सामान्य कार्ड, %d दुलर्भ कार्ड, %d महान कार्ड और %d दिग्गज कार्ड शामिल हैं."
+
+#: src/common/InAppPurchaseMenu.cpp
+#, c-format
+msgid "Cost: %s gems You need %s more gems"
+msgstr "लागत : %s रत्न आपको %s और रत्न चाहिएं"
+
+#. Achievement title for making total 50 neckflips
+#: src/common/AchievementManager.cpp
+msgid "Could Happen to Anyone"
+msgstr "किसी के भी साथ हो सकता है"
+
+#. Achievement title for driving 1000km with Ambulance
+#: src/common/AchievementManager.cpp
+msgid "Crazed Paramedic"
+msgstr "सनकी पैरामेडिक"
+
+#: src/common/GarageLocalization.cpp
+msgid "Custom Bill's Hill Climber chassis. Good all-around car."
+msgstr "कस्टम बिल ह‍िल क्लाइम्बर चेसिस. अच्छी आल-राउंड कार."
+
+#: src/common/CustomizeMenu.cpp
+msgid "Customize vehicle"
+msgstr "वाहन कस्टमाइज करें"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "DAILY CHALLENGE"
+msgstr "दैनिक चुनौती"
+
+#. Title for asking if the user really wants to exit
+#: src/common/GameLayer.cpp
+msgid "DAILY DOUBLE BONUS!"
+msgstr "हर रोज दोगुणा बोनस!"
+
+#. Volcano level description
+#: src/common/Stage.cpp
+msgid "DANGER! Lava pits ahead!"
+msgstr "खतरा! आगे लावा गड्ढे हैं!"
+
+#: src/common/MenuGDPR.cpp src/common/MenuGDPR.cpp
+msgid "DECLINE"
+msgstr "अस्वीकारेें"
+
+#: src/common/MissionDialog.cpp
+msgid "DELIVER"
+msgstr "सौंपना"
+
+#. Desert level title
+#: src/common/Stage.cpp
+msgid "DESERT"
+msgstr "रेगिस्तान"
+
+#: src/common/GarageLocalization.cpp
+msgid "DIESEL 4"
+msgstr "डीजल 4"
+
+#: src/common/GarageLocalization.cpp
+msgid "DIESEL 6"
+msgstr "डीजल 6"
+
+#: src/common/GarageLocalization.cpp
+msgid "DIESEL V8 TT"
+msgstr "डीजल V8 TT"
+
+#: src/common/MissionDialog.cpp
+msgid "DISTANCE"
+msgstr "दूरी"
+
+#. Text in result screen indicating that how far the player got
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "DISTANCE: %dm "
+msgstr "दूरी : %dm"
+
+#: src/common/MissionDialog.cpp
+msgid "DO"
+msgstr "करें"
+
+#: src/common/MenuGDPR.cpp
+msgid "DO NOT SELL MY PERSONAL INFORMATION"
+msgstr ""
+
+#: src/common/MenuGDPR.cpp
+msgid "DON'T SELL MY PERSONAL INFORMATION."
+msgstr ""
+
+#: src/common/MenuGarageGacha.cpp
+msgid "DONE"
+msgstr "संपन्न"
+
+#. Exit button text
+#: src/common/GameLayer.cpp
+msgid "DOUBLE"
+msgstr "दोगुणा"
+
+#. Exit button text
+#: src/common/GameLayer.cpp
+msgid "DOUBLE COINS"
+msgstr "दोगुना सिक्के"
+
+#: src/common/PowerUp.cpp
+msgid "DOUBLE JUMP BOOSTER WILL ALLOW THE CAR TO DIAGONAL JUMP SHORT DISTANCE"
+msgstr "डबल जम्प बूस्टर कार को थोड़ी दूरी तक कार को तिरछा उछालने की अनुमत‍ि देता है"
+
+#. Exit button text
+#: src/common/GameLayer.cpp
+msgid "DOUBLE NOW"
+msgstr "अभी दोगुना करें"
+
+#. INSERT_PART_TEXT("DENSITY", FN_TEXT_GARAGE("DENSITY"))
+#. Upgrade title for downforce (rally car, f1 car etc)., pushes the car downwards the faster you go
+#. Upgrade title
+#. Title for vehicle suspension upgrade
+#. Upgrade title for downforce (rally car, f1 car etc)., pushes the car downwards the faster you go
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "DOWNFORCE"
+msgstr "डाउनफोर्स"
+
+#. Dragster vehicle name (Drag racing car, top fuel class)
+#: src/common/PlayerCarManager.cpp
+msgid "DRAGSTER"
+msgstr "ड्रेगस्टर"
+
+#: src/common/MenuNewSettings.cpp
+msgid "DRAW DIRT"
+msgstr "धूल निकालें"
+
+#. Title for button displaying that render dirt to texture is disabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+msgid "DRAW DIRT: OFF"
+msgstr "धूल उठाएं: ऑफ"
+
+#. Title for button displaying that render dirt to texture is enabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+msgid "DRAW DIRT: ON"
+msgstr "धूल उठाएं: ऑन"
+
+#: src/common/MissionDialog.cpp
+msgid "DRIVE"
+msgstr "ड्राइव करें"
+
+#. Text displayed when the game ends because the driver's head has hit something
+#: src/common/GameLayer.cpp
+msgid "DRIVER DOWN "
+msgstr "ड्राइवर घायल है"
+
+#. Text displayed when the game ends because the driver's head has hit something and the vehicle has run out of fuel
+#: src/common/GameLayer.cpp
+msgid "DRIVER DOWN &\n   OUT OF FUEL "
+msgstr "ड्राइवर घायल है और\n ईंधन समाप्त"
+
+#. Dune buggy vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "DUNE BUGGY"
+msgstr "टिब्बा बग्गी"
+
+#: src/common/MissionDialog.cpp
+msgid "Daily Missions!"
+msgstr "दैनिक मि‍शन!"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Deliver 500 presents"
+msgstr "500 उपहार सौंपें"
+
+#. Achievement title for making 10 backflips in one run
+#: src/common/AchievementManager.cpp
+msgid "Denying Gravity"
+msgstr "गुरुत्वाकर्षण खारिज करते हुए"
+
+#. Achievement title for driving 1000km with Dune Buggy
+#: src/common/AchievementManager.cpp
+msgid "Desert Racer"
+msgstr "डेजर्ट रेसर"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Destroy 10000 packages in the Factory"
+msgstr "फैक्टरी में 10000 पैकेटों को नष्ट करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Detach all train carriages"
+msgstr "सभी ट्रेन बोगियों को अलग करें"
+
+#. Achievement title for driving 1000km with Tractor
+#: src/common/AchievementManager.cpp
+msgid "Dirt Farmer"
+msgstr "डर्ट फार्मर"
+
+#. Ask the user if the user really wants to exit
+#: src/common/MainMenuLayer.cpp src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuUpgradeCar.cpp
+msgid "Do you really want to exit?"
+msgstr "क्या आप सचमुच बाहर निकलना चाहते हैं?"
+
+#: src/common/CustomizeMenu.cpp
+msgid "Do you want to purchase this skin?"
+msgstr "क्या आप यह स्किन खरीदना चाहते हैं?"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "Double Coins!"
+msgstr "दोहरे सिक्के!"
+
+#: src/common/PowerUp.cpp
+msgid "Double Jump"
+msgstr "डबल जम्प"
+
+#. Upgrade description for downforce (rally car, f1 car etc)., pushes the car downwards the faster you go
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Down force pushes your car downwards when the speed increases improving traction."
+msgstr "जब गति बढ़ाते हैं तो डाउनफोर्स आपकी कार पर नीचे की ओर बल डालते हुए कर्षण में सुधार करती है."
+
+#. Total distance
+#. Achievement description (please preserve the %s)
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#, c-format
+msgid "Drive %s"
+msgstr "%s ड्राइव करें"
+
+#: src/common/AchievementManager.cpp
+msgid "Drive 10 years in Seasons"
+msgstr "सीजनों में 10 वर्षों तक ड्राइव करें"
+
+#. Achievement description for driving 1000000m with a vehicle. Preserve %s in translation, it's replaced by the vehicle name, eg. Drive 1000km with Jeep
+#: src/common/AchievementManager.cpp
+#, c-format
+msgid "Drive 1000km with %s"
+msgstr "%s के साथ 1000km ड्राइव करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Drive 2km with Luxury Car without dropping the passengers"
+msgstr "लक्जरी कार को 2km तक सवारियों को उतारे बगैर ड्राइव करें"
+
+#. Highway level description
+#: src/common/Stage.cpp
+msgid "Driving a vehicle built for offroad is quite an experience on tarmac surface. In this level you may get far and fast, but gasoline is a limited resource."
+msgstr "कच्चे-पक्के रास्तों के लिए निर्मित वाहन को डामर की सतह पर चलाना एक बिल्कुल अलग अनुभव है. इस स्तर में आप तेजी से और दूर तक जा सकते हैं, लेकिन गैसोलिन एक सीमित संसाधन है."
+
+#. Night level description
+#: src/common/Stage.cpp
+msgid "Driving in pitch black is a real challenge."
+msgstr "घने अंधेरे में ड्राइविंग एक असल चुनौती है."
+
+#. Onewheeler vehicle descripton
+#: src/common/PlayerCarManager.cpp
+msgid "Driving the hills with this offroad personal transporter is a real challenge!"
+msgstr "इस ऑफरोड निजी वाहन को पहाडि़यों में चलाना एक असल चुनौती है!"
+
+#. Achievement title for detaching all train carriages
+#: src/common/AchievementManager.cpp
+msgid "Drop the Extra Weight"
+msgstr "अतिरिक्त वजन गिराएं"
+
+#. Message shown when customer care button is pressed
+#: src/common/MainMenuLayer.cpp
+msgid "E-mail: care@mygamez.com\nToll-free#：400-807-1016"
+msgstr "ई-मेल करें : care@mygamez.com\n टोल फ्री#：400-807-1016"
+
+#: src/common/MissionDialog.cpp
+msgid "EASY"
+msgstr "आसान"
+
+#: src/common/MenuGarageMain.cpp
+msgid "EDIT CAR NAME"
+msgstr "गाड़ी का नाम संपादन करें"
+
+#: src/common/MissionDialog.cpp
+msgid "EJECT"
+msgstr "निकालें"
+
+#: src/common/GarageLocalization.cpp
+msgid "ELECTRIC"
+msgstr "इलेक्ट्रिक"
+
+#. Electric car vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "ELECTRIC CAR"
+msgstr "इलेक्ट्रिक कार"
+
+#: src/common/GarageLocalization.cpp
+msgid "ELECTRIC ZAP"
+msgstr "इलेक्ट्रिक जैप"
+
+#: src/common/GarageCarManager.cpp src/common/MenuGarageMain.cpp
+msgid "EMPTY SLOT"
+msgstr "खाली स्लॉट"
+
+#. Upgrade title
+#. Title for vehicle engine upgrade
+#. Upgrade title
+#. Title for vehicle engine upgrade
+#. Upgrade title
+#. Title for vehicle engine upgrade
+#. Upgrade title
+#: src/common/GaragePartDialog.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "ENGINE"
+msgstr "इंजन"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "ENGINE FRONT"
+msgstr "इंजन फ्रंट"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "ENGINE REAR"
+msgstr "इंजन रीयर"
+
+#. Menu title for language menu where the user can select the used language
+#. Button for displaying player's achievements
+#: src/common/MenuEnterCode.cpp src/common/MenuMore.cpp
+msgid "ENTER CODE"
+msgstr "कोड दर्ज करें"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+msgid "ENTRY FEE"
+msgstr "प्रवेश शुल्क"
+
+#: src/common/GaragePartLibrary.cpp src/common/GaragePartLibrary.cpp
+msgid "EPIC"
+msgstr "एपिक"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "EPIC PARTS"
+msgstr "एपिक पार्टस"
+
+#. MenuItemButton* backButton = Utils::createUIButtonWithCustomFile("button-bg-left", NULL, FN_TEXT("BACK"), this, menu_selector(GaragePartUpgrade::onBackPressed), 1.0f, Utils::TEXT_ALIGN_CENTER);
+#. backButton->setScale(buttonScale);
+#. backButton->setPosition(size.width/2 - backButton->getContentSize().width*backButton->getScale()/2.f, -45.f);
+#. pInfoMenu->addChild(backButton);
+#.
+#. Equip button
+#. Tune button
+#: src/common/GaragePartUpgrade.cpp src/common/GaragePartUpgrade.cpp
+#: src/common/GaragePartUpgrade.cpp
+msgid "EQUIP"
+msgstr "सुसज्जित करें"
+
+#: src/common/MenuGarageWorkshop.cpp
+msgid "ERROR"
+msgstr "त्रुटि"
+
+#. Text in result screen indicating how many back flips the player did
+#. sprintf(str, FN_TEXT_INGAME("FREERIDE MODE\n"),);
+#. TODO COPY FROM OVER ADD CHALLENGE THING
+#: src/common/GameLayer.cpp src/common/Stage.cpp
+msgid "EVENT"
+msgstr "इवेंट"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "EVENT\n GOAL: %dm"
+msgstr "इवेंट\n लक्ष्य: %dm"
+
+#: src/common/GameLayer.cpp
+msgid "EVENT COMPLETED"
+msgstr "इवेंट पूरा हुआ"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "EVENT COMPLETED\n+%d %s"
+msgstr "इवेंट संपन्न हुआ\n+%d %s"
+
+#. TODO WEEK		TEXT FOR CHALLENGE COMPLETED
+#. Text displayed when the game ends because the driver's head has hit something
+#: src/common/GameLayer.cpp
+msgid "EVENT COMPLETED!"
+msgstr "इवेंट पूरा हुआ!"
+
+#. Text in result screen indicating how many back flips the player did
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "EVENT COMPLETED!\n GOAL: %dm\n"
+msgstr "इवेंट संपन्न हुआ!\n लक्ष्य: %dm\n"
+
+#. Text showing how far the player must drive to reach the next level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "EVENT: Drive %dm "
+msgstr "इवेंट: %dm ड्राइव करें"
+
+#. Exit button text (user exits the game session)
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/MenuEULA.cpp
+msgid "EXIT"
+msgstr "निकास"
+
+#. Title for asking if the user really wants to exit
+#. Ask for an exit
+#: src/common/GameLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuUpgradeCar.cpp
+msgid "EXIT?"
+msgstr "निकास?"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Earn 100000 coins in one run"
+msgstr "एक दौड़ में 100000 सिक्के कमाएं"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Earn 1000000 coins in one run"
+msgstr "एक दौड़ में 1000000 सिक्के कमाएं"
+
+#. Windows tile notification telling the user they can unlock a new vehicle if the earn more coins
+#. Windows tile notification telling the user they can unlock a new stage if the earn more coins
+#: src/winrt/TileNotificationManager.cpp
+#: src/winrt/TileNotificationManager.cpp
+#, c-format
+msgid "Earn only %d more coins to unlock %s!"
+msgstr "केवल %d और सिक्के कमाएं %s अनलॉक करने के लिए!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Eco engine with improved acceleration."
+msgstr "उन्नत गतिवृद्धि सहित इको इंजन."
+
+#. Mountain level description
+#: src/common/Stage.cpp
+msgid "Edgy mountain that is very hard to overcome. Highly upgraded vehicle recommended!"
+msgstr "नोकदार पहाड़ जिसे जीतना बहुत कठिन है. उच्चतर अपग्रेड किए गए वाहन की सिफारिश की जाती है!"
+
+#. Achievement title for driving 1000km with Luxury Car
+#: src/common/AchievementManager.cpp
+msgid "Elite Driver"
+msgstr "इलीट ड्राइवर"
+
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "Enable ICloud from the device settings"
+msgstr "डिवाइस सेटिंग्स में ICloud सक्षम करें"
+
+#. Beach level description
+#: src/common/Stage.cpp
+msgid "Enjoy the view and feel the ocean breeze at the hilltop in this relaxing map."
+msgstr "इस खुशनुमा नक्शे में पहाड़ी की चोटी पर नजारे का मजा लें और समुद्री हवा का अहसास लीजिए."
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Enter the 9th dimension!"
+msgstr "9वें आयाम में प्रवेश करें!"
+
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Entry fee: %d"
+msgstr "प्रवेश शुल्क: %d"
+
+#. Achievement title for driving 1000km with Diesel Truck
+#: src/common/AchievementManager.cpp
+msgid "Environmentalist"
+msgstr "पर्यावरणविद्"
+
+#: src/common/MainMenuSelectStage.cpp
+msgid "Event completed!"
+msgstr "इवेंट संपन्न हुआ!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Excellent fuel efficiency and torque."
+msgstr "श्रेष्ठ ईंधन क्षमता और टॉर्क."
+
+#. Arctic level description
+#: src/common/Stage.cpp
+msgid "Experience the slippery snow conditions! In order to get to the northern parts of Finland you need a cargo plane that carries the car."
+msgstr "फिसलनभरी बर्फीली स्थितियों का अनुभव लीजिए! फिनलैंड के उत्तरी हिस्सों में पहुँचने के लिए आपको एक कार्गो प्लेन की जरूरत है जो कार को ले जा सके."
+
+#: src/common/GarageLocalization.cpp
+msgid "Extra traction on mud surfaces!"
+msgstr "कीचड़ की सतहों पर अतिरिक्त कर्षण!"
+
+#. Rainbow level description
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "Extreme stage with many tricky jumps."
+msgstr "अनेक करतबयुक्त छलांगों सहित कठिन स्टेज."
+
+#. Roller coaster level description
+#: src/common/Stage.cpp
+msgid "Extremely fast ride only for the bravest drivers."
+msgstr "केवल निडर चालकों के लिए अत्यधिक तेज सवारी."
+
+#. level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "FACTORY"
+msgstr "फैक्टरी"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "FACTORY BUNDLE"
+msgstr "फैक्टरी बण्डल"
+
+#. Rally car vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "FAST CAR"
+msgstr "फास्ट कार"
+
+#. Screw finger vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "FINGER SCREW"
+msgstr "फिंगर स्क्रू"
+
+#. Show other Fingersoft releases
+#: src/common/MenuMore.cpp
+msgid "FINGERSOFT GAMES & APPS"
+msgstr "गेम और एप्प पर अंगुलियां घुमाएं"
+
+#. Opens Fingersoft Facebook page
+#: src/common/MenuMore.cpp
+msgid "FINGERSOFT ON FACEBOOK"
+msgstr "FACEBOOK पर अंगुलियां घुमाएं"
+
+#. Fire truck vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "FIRE TRUCK"
+msgstr "फायर ट्रक"
+
+#: src/common/PlayerCarBubbleCar.cpp
+#, c-format
+msgid "FLIGHT TIME %.2f s"
+msgstr "फ्लाइट समय %.2f s"
+
+#: src/common/MissionDialog.cpp
+msgid "FLY"
+msgstr "उड़ान"
+
+#: src/common/GarageLocalization.cpp
+msgid "FLYTURNRATE"
+msgstr "फ्लाई टर्न रेट"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "FOOD"
+msgstr "भोजन"
+
+#: src/common/MissionDialog.cpp
+msgid "FOR"
+msgstr "के लिए"
+
+#. Forest level title
+#: src/common/Stage.cpp
+msgid "FOREST"
+msgstr "जंगल"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "FOREST BUNDLE"
+msgstr "फॉरेस्ट बण्डल"
+
+#: src/common/PlayerCarManager.cpp
+msgid "FORK"
+msgstr "फोर्क"
+
+#: src/common/GarageLocalization.cpp
+msgid "FORMULA"
+msgstr "फार्मूला"
+
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/PopupOfferDialog.cpp
+msgid "FREE"
+msgstr "मुफ्त"
+
+#. Friction reduction upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "FRICTION"
+msgstr "घर्षण"
+
+#: src/common/MissionDialog.cpp
+msgid "FRONT FLIPS"
+msgstr "फ्रंट फ्लिप"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "FRONT HEIGHT"
+msgstr "फ्रंट की ऊंचाई"
+
+#. Tire size title
+#: src/common/PlayerCarManager.cpp
+msgid "FRONT TIRE SIZE"
+msgstr "फ्रंट टायर आकार"
+
+#. Upgrade title
+#. Title for fuel upgrade
+#. Upgrade title
+#. Fuel tank upgrade title
+#. Title for fuel upgrade
+#. Upgrade title
+#. Fuel tank upgrade title
+#. Upgrade title
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "FUEL"
+msgstr "ईंधन"
+
+#: src/common/MissionDialog.cpp
+msgid "FUELS"
+msgstr "ईंधन"
+
+#: src/common/MenuGarageGacha.cpp
+msgid "FULL"
+msgstr "पूरा"
+
+#. Title of a dialog shown to the user when cloud sign-in failed
+#: src/common/Utils.cpp
+msgid "Failed to sign in"
+msgstr "साइन इन करने में विफल"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Find a secret in Nuclear Plant"
+msgstr "न्यूक्लियर प्लांट में एक रहस्य खोजें"
+
+#. Achievement title for driving 1000km with Rally Car
+#: src/common/AchievementManager.cpp
+msgid "Finger Rally Champion"
+msgstr "फिंगर रैली चैंम्पियन"
+
+#: src/common/AchievementManager.cpp
+msgid "Fingersoft"
+msgstr "फिंंगरसॉफ्ट"
+
+#. Fire truck description
+#: src/common/PlayerCarManager.cpp
+msgid "Fingertown Fear & Rescue at your service!"
+msgstr "फिंगरटाउन फायर और रेस्क्यु आपकी सेवा में!"
+
+#. Achievement title for driving total distance of 1000m
+#: src/common/AchievementManager.cpp
+msgid "First Hills"
+msgstr "पहली पहाड़ि‍यां"
+
+#. Achievement title for unlocking a second stage
+#: src/common/AchievementManager.cpp
+msgid "First Trip"
+msgstr "पहली यात्रा"
+
+#. Achievement title for making total 1000 flips
+#: src/common/AchievementManager.cpp
+msgid "Flip-Lord"
+msgstr "फ्लिप-लॉर्ड"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fly for 1.5 seconds with The Rocket"
+msgstr "रॉकेट के साथ 1.5 सेकण्ड तक उड़ान भरें"
+
+#. more info
+#: src/common/MenuGDPR.cpp
+msgid "For more information on your rights regarding your personal\ninformation and the rights specific to residents of\nCalifornia please review our Privacy Policy's and\nthe section \"For residents of California.\"\n\nSharing my Advertising ID and other technical identifiers such as\nmy IP address to Fingersoft's advertising partners. These\nidentifiers will be used to display ads relevant to my interests\nin Hill Climb Racing "
+msgstr ""
+
+#. sprintf(str, FN_TEXT("Free tries left: %d"), free);
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Free tries: %d"
+msgstr "मुफ्त कोश‍िशें: %d"
+
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "Free upgrade"
+msgstr "मुफ्त अपग्रेड"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fully upgrade 10 vehicles"
+msgstr "पूर्णत: अपग्रेड 10 वाहन"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fully upgrade 5 vehicles"
+msgstr "पूर्णत: अपग्रेड 5 वाहन"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fully upgrade a vehicle"
+msgstr "एक वाहन पूर्णत:अपग्रेड करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Fully upgrade all vehicles"
+msgstr "सभी वाहनों को पूर्णत:अपग्रेड करें"
+
+#: src/common/GarageLocalization.cpp
+msgid "Fun drive everywhere!"
+msgstr "हर जगह मजेदार ड्राइव!"
+
+#. Screw finger vehicle name
+#: src/common/MissionDialog.cpp src/common/PlayerCarManager.cpp
+msgid "GARAGE"
+msgstr "गैराज"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "GARAGE LOCKED"
+msgstr "गैराज बंद"
+
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+msgid "GARAGE SLOT"
+msgstr "गैराज स्लॉट"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "GARAGE SPECIAL PACK"
+msgstr "गैराज स्पेशल पैक"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "GARAGE STARTER PACK"
+msgstr "गैराज स्टार्टर पैक"
+
+#. Doesn't fit in 4/3 screens, divide in 2 lines
+#: src/common/MainMenuLayer.cpp
+msgid "GARAGE UNLOCKED - Access garage in the select vehicle menu"
+msgstr "गैराज अनलॉक्ड - चयनित वाहन मेन्यू में गैराज में प्रवेश करें"
+
+#. Text for the button where the car accelerates
+#: src/common/MenuControls.cpp src/common/TVOsTutorialNode.cpp
+msgid "GAS"
+msgstr "गैस"
+
+#: src/common/GarageLocalization.cpp
+msgid "GAS TURBINE"
+msgstr "गैस टर्बाइन"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MissionDialog.cpp
+msgid "GEMS"
+msgstr "रत्न"
+
+#: src/common/AppDelegate.cpp src/common/PopupOfferDialog.cpp
+#, c-format
+msgid "GEMS: %d"
+msgstr "रत्न: %d"
+
+#: src/common/MainMenuLayer.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp
+msgid "GET COINS"
+msgstr "सिक्के प्राप्त करें"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+#: src/common/PowerUpDialog.cpp
+msgid "GET GEMS"
+msgstr "रत्न प्राप्त करें"
+
+#: src/common/MenuUpdate.cpp
+msgid "GET IT FROM APP STORE!"
+msgstr "इसे APP STORE से प्राप्त करें!"
+
+#: src/common/MenuUpdate.cpp
+msgid "GET IT FROM GOOGLE PLAY!"
+msgstr "इसे GOOGLE PLAY से प्राप्त करें!"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageWorkshop.cpp
+msgid "GET PARTS"
+msgstr "पुर्जे प्राप्त करें"
+
+#. Exit button text
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "GET REWARD!"
+msgstr "इनाम प्राप्त करें!"
+
+#: src/common/GarageChestButton.cpp
+msgid "GIFT"
+msgstr "उपहार"
+
+#: src/common/PowerUp.cpp
+msgid "GLIDER BOOSTER WILL ALLOW THE CAR TO FLY LONGER DISTANCE"
+msgstr "ग्लाइडर बूस्टर कार को लंबी दूरी तक छलांग लगाने देगा"
+
+#: src/common/GarageLocalization.cpp
+msgid "GRAVEL"
+msgstr "ग्रेवल"
+
+#: src/common/GarageLocalization.cpp
+msgid "GRAVEL PRO"
+msgstr "ग्रेवल प्रो"
+
+#: src/common/PlayerCarManager.cpp
+msgid "GRIP"
+msgstr "पकड़"
+
+#: src/common/PowerUp.cpp
+msgid "GRIP BOOSTER WILL INCREASE YOUR CAR CLIMBING PERFORMANCE"
+msgstr "ग्रिप बूस्टर आपकी कार के चढ़ाई के प्रदर्शन में वृद्धि करेगा"
+
+#: src/common/MainMenuLayer.cpp
+msgid "Garage unlocked!"
+msgstr "गैराज अनलॉक हुआ!"
+
+#. Achievement for returning all cans in Suburbs stage
+#: src/common/AchievementManager.cpp
+msgid "Garbage Collector"
+msgstr "कूड़ा-कर्कट संग्राहक"
+
+#. Windows tile notification telling the user how much further they need to get to reach the next level in a stage
+#: src/winrt/TileNotificationManager.cpp
+#: src/winrt/TileNotificationManager.cpp
+#, c-format
+msgid "Get %dm further to reach level %d in %s!"
+msgstr "आगे %dm प्राप्त करें स्तर %d में %s पहुँचने के लिए!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Get back to the 80's!"
+msgstr "80 के दशक में वापस जाएं!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Get ready to break stuff!"
+msgstr "अनर्थक तोड़ने के लिए तैयार हो जाओ!"
+
+#: src/common/PowerUp.cpp
+msgid "Glider"
+msgstr "ग्लाइडर"
+
+#. Achievement title for unlocking all stages
+#: src/common/AchievementManager.cpp
+msgid "Globetrotter"
+msgstr "ग्लोबट्रॉटर"
+
+#. Mars level description
+#: src/common/Stage.cpp
+msgid "Go even further in our galaxy and explore the Mars. Go through tunnels and experience the different gravity."
+msgstr "हमारी आकाशगंगा में और भी आगे जाएं और मंगल ग्रह पर खोज करें. सुरंगों में से गुजरें और विभिन्न गुरुत्वाकर्षण को अनुभव करें."
+
+#. Moon level description
+#: src/common/Stage.cpp
+msgid "Go to the place no hillbilly has been ever before. Different gravity allows a whole new set of tricks to experience!"
+msgstr "एेसे स्थान पर जाएं जहाँ कोई देहाती पहले नहीं पहुँचा है. विभिन्न गुरूत्वाकर्षण ट्रिक और अनुभव के एक बिल्कुल नये सेट की अनुमति देते हैं!"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Goal: Reach %dm"
+msgstr "लक्ष्य: %dm पर पहुँचें"
+
+#. Achievement title for fully upgrading 5 vehicles
+#: src/common/AchievementManager.cpp
+msgid "Golden Sample"
+msgstr "गोल्डन सेंपल"
+
+#. Achievement for jumping 8m with Lowrider
+#: src/common/AchievementManager.cpp
+msgid "Grasshopper"
+msgstr "ग्रासहॉपर"
+
+#. Achievement title for fully upgrading 10 vehicles
+#: src/common/AchievementManager.cpp
+msgid "Grease Monkey"
+msgstr "ग्रीज मंकी"
+
+#: src/common/GarageLocalization.cpp
+msgid "Great fuel efficiency and torque."
+msgstr "शानदार ईंधन क्षमता और टॉर्क."
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Great job! \nDouble your coins by watching a short video!\nCoins collected: %d"
+msgstr "शानदार कार्य! \nएक छोटा वीडियो देखकर अपने सिक्के दोगुुणा करें!\nइक्ट्ठा किए गए सिक्के : %d"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "Great job! \nGet bonus reward by watching a short video!\n%s"
+msgstr "शानदार कार्य! \nएक छोटा वीडियो देखकर बोनस इनाम प्राप्त करें!\n%s"
+
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Great job! You've unlocked the new %s skin!"
+msgstr "शानदार कार्य! आपने नई %s स्किन अनलॉक की हैं!"
+
+#. Snowmobile vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Great traction in the ice and snow. Fully upgraded it becomes a fun vehicle for other levels too!"
+msgstr "बर्फ और हिमपात में शानदार कर्षण. पूर्णत: अपग्रेड होकर यह अन्य स्तरों के लिए भी मजेदार वाहन हो जाता है!"
+
+#. Achievement title for earning 100000 coins in a single run
+#: src/common/AchievementManager.cpp
+msgid "Greedy"
+msgstr "लालची"
+
+#: src/common/PowerUp.cpp
+msgid "Grip"
+msgstr "ग्रिप"
+
+#. Title for button displaying that halloween content is disabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp
+msgid "HALLOWEEN CONTENT: OFF"
+msgstr "हैलोविन सामग्री : ऑफ"
+
+#. Title for button displaying that halloween content is enabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp
+msgid "HALLOWEEN CONTENT: ON"
+msgstr "हैलोविन सामग्री : ऑन"
+
+#: src/common/MissionDialog.cpp
+msgid "HARD"
+msgstr "कठिन"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "HAUNTED"
+msgstr "भूतहा"
+
+#. Text for the button which toggles the gas and brake pedals visibility in the game (show/hide pedals)
+#: src/common/MenuControls.cpp
+msgid "HIDE PEDALS"
+msgstr "पेडल छुपाएं"
+
+#: src/common/AchievementMenu.cpp
+msgid "HIGH SCORE"
+msgstr "उच्च स्कोर"
+
+#. Button for displaying the High Score
+#: src/common/MenuMore.cpp
+msgid "HIGH SCORES"
+msgstr "उच्च स्कोर"
+
+#. Highway level title
+#: src/common/Stage.cpp
+msgid "HIGHWAY"
+msgstr "हाइवे"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "HIGHWAY BUNDLE"
+msgstr "हाइवे बण्डल"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "HIPPIE BUNDLE"
+msgstr "हिप्पी बण्डल"
+
+#. Hippie van vehicle name (VW Kleinbus)
+#: src/common/PlayerCarManager.cpp
+msgid "HIPPIE VAN"
+msgstr "हिप्पी वैन"
+
+#: src/common/MissionDialog.cpp
+msgid "HIT"
+msgstr "हिट करें"
+
+#. Hot rod vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "HOT ROD"
+msgstr "हॉट रॉड"
+
+#. Hover craft vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "HOVERCRAFT"
+msgstr "होवरक्राफ्ट"
+
+#. vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Have a good seat and take some easy ride with the chopper!"
+msgstr "एक अच्छी सीट पर बैठें और हेलिकॉप्टर पर एक आसान सवारी करें!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Heads up soldiers! You are now in the Bill's Boot Camp! Move it, Move it!"
+msgstr "सावधान सैनिको! अब आप बिल के बूट कैंप में हैं! बढ़ते रहो, बढ़ते रहो!"
+
+#. Formula-1 car like race car description
+#: src/common/PlayerCarManager.cpp
+msgid "High power and aerodynamic ultimate hill climbing vehicle. Upgrade downforce to make this car follow the road like a magnet."
+msgstr "उच्च शक्ति और वायुगतिकी पहाड़ी पर चढ़ाई का बेहतरीन वाहन. इस कार को सड़न पर चुम्बक की तरह रेंगने के लिए डाउनफोर्स अपग्रेड करें."
+
+#: src/common/PlayerCarManager.cpp
+msgid "Higher passenger wealth gives you more tips."
+msgstr "उच्च यात्री पूँजी आपको अधिक टिप प्रदान करता है."
+
+#. Front suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Higher suspension helps you in uneven terrain and gives you more hopping power."
+msgstr "उच्च सस्पेंशन आपको ऊंचे-नीचे क्षेत्र में मदद करता है और आपको ज्यादा हॉपिंग पॉवर देता है."
+
+#. Rear suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Higher suspension helps you in uneven terrain and gives you more jumping power."
+msgstr "उच्च सस्पेंशन आपको ऊंचे-नीचे क्षेत्र में मदद करता है और आपको ज्यादा जम्पिंग पॉवर देता है."
+
+#. Achievement title for driving 1000km with Dragster
+#: src/common/AchievementManager.cpp
+msgid "Highest Roller"
+msgstr "उच्चतम रोलर"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Hill Climb Racing: I reached %dm in %s"
+msgstr "Hill Climb Racing: मैं %dm पहुँच गया/यी %s में"
+
+#. Achievement for hopping 3m with Lowrider
+#: src/common/AchievementManager.cpp
+msgid "Hip Hopper"
+msgstr "ह‍िप हॉपर"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Ho ho hou! Santa is having a big hurry and he asked some help from Bill to deliver presents."
+msgstr "हो हो हुआ! साँता बहुत जल्दी में हैं और उसने बिल से उपहार सौंपने में कुछ मदद करने का आग्रह किया है."
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Hop 3m with Lowrider"
+msgstr "हॉप 3m लोराइडर के साथ"
+
+#: src/common/PlayerCarLowrider.cpp
+#, c-format
+msgid "Hopped     \n%d cm!    "
+msgstr "उछाल \n%d सें.मी.!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Huge size, works everywhere!"
+msgstr "विशाल आकार, हर जगह काम करता है!"
+
+#: src/common/MenuGDPR.cpp src/common/MenuGDPR.cpp
+msgid "I AGREE"
+msgstr "मैं सहमत हूँ"
+
+#. Achievement title for driving 1000km with Police Car
+#: src/common/AchievementManager.cpp
+msgid "I Am the Law"
+msgstr "मैं कानून हूँ"
+
+#: src/common/MenuEULA.cpp
+msgid "I have read and accept the End-User License\nAgreement and Fingersoft's Privacy Policy."
+msgstr "मैंने अंतिम-प्रयोक्ता लाइसेंस\nसमझौता और Fingersoft की गोपनीयता नीति को पढ़ और स्वीकार कर लिया है ."
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "I reached %dm in %s. Check out how far you go: %s"
+msgstr "मैं %dm पहुँच गया/यी %s में. देखिए आप कितनी दूरी तक जाते हैं : %s"
+
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "ICLOUD DISABLED"
+msgstr "ICLOUD अक्षम हैं"
+
+#. Title for button where the user can initiate the cloud sign-in process
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "ICLOUD SYNC: OFF"
+msgstr "ICLOUD सिंक : ऑफ"
+
+#. Title for button where the user can sign out from cloud services
+#. CONNECTING;
+#. Title for button where the user can sign out from cloud services
+#. CONNECTING;
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "ICLOUD SYNC: ON"
+msgstr "ICLOUD सिंक : ऑन"
+
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "ICloud disabled"
+msgstr "ICloud अक्षम है"
+
+#: src/common/MissionDialog.cpp
+msgid "IDOLS"
+msgstr "आदर्श"
+
+#. Current language name in local language (eg. English, Deutsch, Suomi)
+#. Current language name in local language (eg. English, Deutsch, Suomi)
+#. TODO: uppercase?
+#. Set initial focus to currently selected language
+#. Current language name in local language (eg. English, Deutsch, Suomi)
+#: src/common/LanguageMenu.cpp src/common/MenuNewSettings.cpp
+#: src/common/MenuNewSettings.cpp
+msgid "ID_LANGUAGE_NAME"
+msgstr "हिंदी"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "IN %s"
+msgstr "%s में"
+
+#: src/common/MissionDialog.cpp
+msgid "IN ONE RUN"
+msgstr "एक दौड़ में"
+
+#: src/common/MissionDialog.cpp
+msgid "IN THE AIR"
+msgstr "हवा में"
+
+#. Engine texts
+#: src/common/GarageLocalization.cpp
+msgid "INLINE 4"
+msgstr "इनलाइन 4"
+
+#: src/common/GarageLocalization.cpp
+msgid "INLINE 6"
+msgstr "इनलाइन 6"
+
+#. Text indicating the player received a bonus for staying in the air for a really long time
+#: src/common/GameLayer.cpp
+msgid "INSANE AIR TIME\n"
+msgstr "उन्मादी एयर टाइम\n"
+
+#. Text indicating the player received a bonus for staying in the air for a really long time
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "INSANE AIR TIME\n    +%d "
+msgstr "उन्मादी एयर टाइम\n    +%d"
+
+#. Achievement title for driving 1000km with Race Car
+#: src/common/AchievementManager.cpp
+msgid "Iceman"
+msgstr "आइसमैन"
+
+#. Aerodynamics upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved aerodynamics reduces air resistance and results in higher top speed."
+msgstr "उन्नत वायुगतिकी वायु प्रतिरोध में कमी करती है और परिणाम उच्च गति में ज्यादा वृद्धि."
+
+#. Brake upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved brakes makes car to stop faster. Warning: strong brakes may decrease structural integrity"
+msgstr "उन्नत ब्रेक कार को शीघ्र रोकते हैं. चेतावनी : जोरदार ब्रेक संरचनात्मक समग्रता में कमी कर सकते हैं"
+
+#. Friction reduction upgrade description (allows the vehicle to move faster)
+#: src/common/PlayerCarManager.cpp
+msgid "Improved cushion material reduces friction and results in higher ground speed."
+msgstr "उन्नत कुशन सामग्री घर्षण में कमी करती है और परिणाम सतह पर उच्च गति."
+
+#. Battery upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved energy efficiency allows the vehicle to driver further with one charge."
+msgstr "उन्नत ऊर्जा क्षमता वाहन को एक बदलाव के साथ ड्राइव करने की अनुमति देती है."
+
+#. Engine upgrade description
+#. Engine rear upgrade description
+#. Engine front upgrade description
+#. Engine upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Improved engine parts result in power increase. Higher horsepower helps you climb hills and make longer jumps and tricks for more bonuses."
+msgstr "उन्नत इंजन पुर्जो का परिणाम ताकत में वृद्धि. ज्यादा हॉर्सपॉवर आपको पहाड़ी पर चढ़ाई करने और लंबी छलांग लगाने और अधिक बोनस के लिए करतब करने में मदद करती है."
+
+#. Engine upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved engine parts result in power increase. Improved engine also weights more."
+msgstr "उन्नत ईंजन पुर्जों का परिणाम पॉवर वृद्धि में होता है. उन्नत ईंजन से वजन में भी वृद्धि होती है."
+
+#: src/common/GarageLocalization.cpp
+msgid "Improved gravel tire!"
+msgstr "उन्नत ग्रेवल टायर!"
+
+#: src/common/PlayerCarManager.cpp
+msgid "Improved grip gives the legs better traction."
+msgstr "उन्नत पकड़ पैरों को बेहतर ट्रेक्शन देती है."
+
+#. Tire upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved roll cage material can take more damage before breaking."
+msgstr "उन्नत रोल केज सामग्री टूटने से पहले अधिक नुक़सान सह सकती है."
+
+#. Description for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#: src/common/PlayerCarManager.cpp
+msgid "Improved screw result in better traction and better power delivery to the ground."
+msgstr "उन्नत स्क्रू का परिणाम बेहतर कर्षण और जमीन पर बेहतर पॉवर निष्पादन होता है."
+
+#: src/common/PlayerCarManager.cpp
+msgid "Improved shock absorption gives you and the passengers smoother ride."
+msgstr "उन्नत शाॅॅॅक एब्जार्पशन आपको और यात्रियों को सहज यात्रा प्रदान करता है."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Improved shock absorption improves stability at high speeds and makes the car more stable on bumps."
+msgstr "उन्नत शॉक अर्ब्जाप्शन तेज गतियों पर स्थिरता में वृद्धि करती है और कार को किनारों पर ज्यादा स्थिर बनाता है."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved shock absorption improves stability at high speeds and makes the reindeer more stable on bumps."
+msgstr "उन्नत शॉक अब्जार्बर तेज गति पर स्थिरता में वृद्धि करता है और रेंडियर को किनारों पर ज्यादा स्थिर बनाए रखता हैं."
+
+#. Shoes upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved shoes result in better traction and better power delivery to the ground."
+msgstr "उन्नत जूतों का परिणाम बेहतर कर्षण और जमीन पर बेहतर पॉवर डिलीवरी."
+
+#: src/common/GarageLocalization.cpp
+msgid "Improved street tire for asphalt!"
+msgstr "डामर के लिए उन्नत स्ट्रीट टायर!"
+
+#. Thruster upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Improved thruster technology results in better power delivery."
+msgstr "उन्नत थ्रस्टर प्रोद्यौगिकी का परिणाम बेहतर पॉवर डिलीवरी."
+
+#. Tire upgrade description
+#. Tires upgrade description
+#. Tire upgrade description
+#. Thruster upgrade description
+#. Tires upgrade description
+#. Tire upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Improved tires result in better traction and better power delivery to the ground."
+msgstr "उन्नत टायरों का परिणाम बेहतर कर्षण और जमीन पर बेहतर पॉवर डिलीवरी."
+
+#. Tire upgrade description
+#. Description for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "Improved tracks result in better traction and better power delivery to the ground."
+msgstr "उन्नत ट्रेकों का परिणाम बेहतर कर्षण और जमीन पर बेहतर पॉवर डिलीवरी."
+
+#: src/common/GarageLocalization.cpp
+msgid "Improved traction in asphalt levels!"
+msgstr "डामर स्तरों में उन्नत कर्षण!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Improved winter tire!"
+msgstr "उन्नत शीत टायर!"
+
+#. 4WD upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Improving all wheel drive system will result in better traction and better handling of the vehicle."
+msgstr "सभी व्हील ड्राइव सिस्टम उन्नत करने का परिणाम बेहतर कर्षण और वाहन का बेहतर संचालन."
+
+#. Fuel upgrade description
+#. Fuel tank upgrade description
+#. Fuel upgrade description
+#. Fuel tank upgrade description
+#. Fuel upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Improving the fuel tank size makes it possible to drive further."
+msgstr "ईंधन टैंक का आकार उन्नत करना अधिक ड्राइव संभव बनाता है."
+
+#. Ambulance description
+#: src/common/PlayerCarManager.cpp
+msgid "In case of emergency, call 555-NECK-FLIP."
+msgstr "आपातस्थिति में, 555-नैक-फ्लिप पर काल करें."
+
+#. Bubblecar car description
+#: src/common/PlayerCarManager.cpp
+msgid "Is it a car or an aeroplane?"
+msgstr "क्या यह एक कार या हवाईजहाज है?"
+
+#. Tank vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "It's a tank!"
+msgstr "यह एक टैंक है!"
+
+#. Mudpool level description
+#: src/common/Stage.cpp
+msgid "It's time to get dirty!"
+msgstr "यह गंदा होने का समय है!"
+
+#. Alien planet level description (weird slimy planet with very slippery surface)
+#: src/common/Stage.cpp
+msgid "It's time to go beyond the galaxy to an alien planet. This slimy sloped planet gives you a challenge of its own."
+msgstr "यह आकाशगंगा से आगे एक अन्जान ग्रह पर जाने का समय है. यह चिपचिपा ढलान वाला ग्रह आपको अपनी तरह की चुनौती देता है."
+
+#. Tank vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "It's your custom car!"
+msgstr "यह आपकी तैयार की गई गाड़ी है!"
+
+#: src/common/MissionDialog.cpp
+msgid "JUMP"
+msgstr "कूदें"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "JUMP %dm"
+msgstr "जम्प %dm"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "JUNGLE"
+msgstr "जंगल"
+
+#. Junkyard level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "JUNKYARD"
+msgstr "कबाड़खाना"
+
+#. Achievement title for driving total distance of 10000m
+#: src/common/AchievementManager.cpp
+msgid "Journey Begins"
+msgstr "यात्रा प्रारंभ"
+
+#: src/common/AchievementManager.cpp
+msgid "Jump 140 meters with 10 cars in Arena"
+msgstr "एरिना में 10 कारों सह‍ित 140 मीटर छलांग लगाएं"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Jump 8m with Lowrider"
+msgstr "जम्प 8m लोराइडर के साथ"
+
+#: src/common/PlayerCarLowrider.cpp
+#, c-format
+msgid "Jumped      \n%d cm!     "
+msgstr "जम्प किया \n%d सें.मी.!"
+
+#. Achievement for completing the Jungle level
+#: src/common/AchievementManager.cpp
+msgid "Jungle King"
+msgstr "जंगल क‍िंंग"
+
+#. Achievement title for making total 10 neckflips
+#: src/common/AchievementManager.cpp
+msgid "Just a Flesh Wound"
+msgstr "बस एक छोटा सा घाव"
+
+#: src/common/MissionDialog.cpp
+msgid "KEEP"
+msgstr "बनाए रखें"
+
+#. Train vehicle name (kid's train)
+#: src/common/PlayerCarManager.cpp
+msgid "KIDDIE EXPRESS"
+msgstr "किड्डी एक्सप्रेस"
+
+#. Tractor stability upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Keeps the tractor from rolling over on steep hills."
+msgstr "ट्रेक्टर को खड़ी पहाड़ियों पर चलाना जारी रखें."
+
+#. Stability upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Keeps the vehicle from rolling over on steep hills."
+msgstr "वाहन को खड़ी पहाड़ि‍यों पर चलाना जारी रखें."
+
+#. Achievement title for driving 1000km with Superoffroad
+#: src/common/AchievementManager.cpp
+msgid "King of the Hill"
+msgstr "पहाड़ि‍यों का राजा"
+
+#: src/common/Planet.cpp
+#, c-format
+msgid "LANDING BONUS\n  +%d"
+msgstr "लैंडिंग बोनस\n  +%d"
+
+#: src/common/MenuNewSettings.cpp
+msgid "LANGUAGE"
+msgstr "भाषा"
+
+#. Button text for cancelling an operation
+#: src/common/GameLayer.cpp
+msgid "LATER"
+msgstr "बाद में"
+
+#: src/common/GaragePartLibrary.cpp src/common/GaragePartLibrary.cpp
+msgid "LEGENDARY"
+msgstr "महानायक"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "LEGENDARY BUNDLE"
+msgstr "लीजेंडरी बण्डल"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "LEGENDARY PARTS"
+msgstr "लेजेंडरी पार्टस"
+
+#: src/common/GarageStockBar.cpp
+msgid "LEVEL "
+msgstr "स्तर"
+
+#: src/common/GaragePartDialog.cpp src/common/GaragePartUpgrade.cpp
+#, c-format
+msgid "LEVEL %d"
+msgstr "स्तर %d"
+
+#. Upgrade level progress
+#: src/common/MenuUpgradeButton.cpp
+#, c-format
+msgid "LEVEL %d / %d"
+msgstr "स्तर %d / %d"
+
+#. Text displayed when the player completes a new level of a stage
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "LEVEL %d COMPLETE "
+msgstr "स्तर %d पूरा हुआ"
+
+#: src/common/GameLayer.cpp
+msgid "LEVEL COMPLETE !!"
+msgstr "लेवल पूरा हुआ !!"
+
+#: src/common/AssetLoader.cpp
+msgid "LOADING..."
+msgstr "लोड हो रहा है..."
+
+#: src/common/MissionDialog.cpp
+msgid "LOOPS"
+msgstr "लूप"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/PlayerCar.cpp src/common/PlayerCar.cpp
+msgid "LOST IN SPACE!!"
+msgstr "अंतरिक्ष में खो गए!!"
+
+#. Lowrider vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "LOWRIDER"
+msgstr "लोराइडर"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+msgid "LUNCHBOX"
+msgstr "लंचबॉक्स"
+
+#: src/common/PlayerCarManager.cpp
+msgid "LUXURY CAR"
+msgstr "लक्जरी कार"
+
+#. Achievement title for driving 1000km with Snow Mobile
+#: src/common/AchievementManager.cpp
+msgid "Lapland Hillbilly"
+msgstr "लैपलैंड हिलबिली"
+
+#. The text on the later button of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "Later"
+msgstr "बाद में"
+
+#. Achievement title for making total 5 neckflips
+#: src/common/AchievementManager.cpp
+msgid "Let's Try That Again"
+msgstr "आइए हम फिर से कोशिश करें"
+
+#. Text indicating how far the player needs to drive to reach the next level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Level %d: Reach %dm"
+msgstr "स्तर %d: %dm पहुँचे"
+
+#. Text showing how far the player must drive to reach the next level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Level %d: Reach %dm "
+msgstr "स्तर %d: पहुँचे %dm"
+
+#. Shows the next goal for a level in level selection screen. For example: "Level 2: Reach 400m". Please preserve the %d.
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Level %d: reach %dm"
+msgstr "स्तर %d: पहुँचे %dm"
+
+#. Text indicating that the player received points for reaching a new level
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "Level bonus +%d "
+msgstr "स्तर बोनस +%d"
+
+#. Text indicating that the player received points for reaching a new level
+#: src/common/GameLayer.cpp
+msgid "Level bonus +0     "
+msgstr "स्तर बोनस +0"
+
+#. Achievement for flying 1.5 seconds with The Rocket
+#: src/common/AchievementManager.cpp
+msgid "Liftoff"
+msgstr "लिफ्टऑफ"
+
+#: src/common/GarageLocalization.cpp
+msgid "Lightweight rally car chassis."
+msgstr "हल्के वजन की रैली कार चेसिस."
+
+#. Achievement title for doing a neckflip within 5 seconds from stage start
+#: src/common/AchievementManager.cpp
+msgid "Live Fast Flip Young"
+msgstr "तेज जिंदगानी फ्लिप करती जवानी"
+
+#. Text displayed while the waiting for in-app prices from the server
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Loading prices from server..."
+msgstr "सर्वर से मूल्य लोड हो रहे हैं..."
+
+#. Electric car batter upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Longer drive with improved battery"
+msgstr "उन्नत बैटरी के साथ लंबा ड्राइव"
+
+#. Achievement title for driving 1000km with Fire Truck
+#: src/common/AchievementManager.cpp
+msgid "Lord of Fire"
+msgstr "लॉर्ड आफ फायर"
+
+#. Achievement title for driving 1000km with Lowrider
+#: src/common/AchievementManager.cpp
+msgid "Low Rider"
+msgstr "लो राइडर"
+
+#. Stability upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower center of mass keeps the vehicle from rolling over on steep hills."
+msgstr "द्रव्यमान की निचला केन्द्र वाहन को खड़ी पहाड़ि‍यों पर चलायमान रखता है."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improve stability at high speeds and makes the car more stable on bumps."
+msgstr "कम वजन पॉइंट और उन्नत शॉक अब्जॉर्प्शन तेज गति पर स्थिरता में सुधार करता है और उछाल पर कार को अधिक स्थिर बनाता है."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the bike more stable on bumps."
+msgstr "कम वजन पॉइंट और बेहतर आघात अवशोषण तेज गति पर स्थिरता में सुधार और धक्कों में बाइक को और अधिक स्थिर बनाता है."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the car more stable on bumps."
+msgstr "निचले वजन पॉइंट और उन्नत शॉक अर्ब्जाप्शन तेज गति पर स्थिरता में वृद्धि करते हैं और कार को किनारों पर ज्यादा स्थिर बनाते हैं."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the screw more stable on bumps."
+msgstr "कम वजन बिंदु और उन्नत शॅक अर्ब्जाप्शन तेज गति में स्थिरता और उछाल में स्क्रू को अधिक स्थिरत बनाता है."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the tank more stable on bumps."
+msgstr "निचले वजन पॉइंट और उन्नत शॉक अर्ब्जाप्शन तेज गति पर स्थिरता में वृद्धि करते हैं और टैंक को किनारों पर ज्यादा स्थिर बनाते हैं."
+
+#. Suspension upgrade description
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "Lower weight point and improved shock absorption improves stability at high speeds and makes the vehicle more stable on bumps."
+msgstr "निचले वजन पॉइंट और उन्नत शॉक अर्ब्जाप्शन तेज गति पर स्थिरता में वृद्धि करते हैं और वाहन को किनारों पर ज्यादा स्थिर बनाते हैं."
+
+#. Achievement title for picking up fuel with an empty tank
+#: src/common/AchievementManager.cpp
+msgid "Lucky Fuel"
+msgstr "लकी फ्युल"
+
+#. Mars level title (yes, the mars planet)
+#: src/common/Stage.cpp
+msgid "MARS"
+msgstr "मंगल ग्रह"
+
+#: src/common/GarageStockBar.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "MAX"
+msgstr "अधिकतम"
+
+#. Max level (user has already reached the maximum level available)
+#: src/common/GaragePartUpgrade.cpp src/common/MenuUpgradeButton.cpp
+msgid "MAX LEVEL"
+msgstr "अधिकतम स्तर"
+
+#: src/common/PowerUpDialog.cpp
+#, c-format
+msgid "MAXIMUM ALLOWED AMOUNT OF BOOSTER IS %d"
+msgstr "बूस्टर की अधिकतम अनुमति प्राप्त मात्रा है %d"
+
+#. Title for a window if user has already upgraded something to its maximum level
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp
+msgid "MAXIMUM LEVEL"
+msgstr "अधिकतम स्तर"
+
+#: src/common/MissionDialog.cpp
+msgid "MEDIUM"
+msgstr "मध्यम"
+
+#: src/common/PowerUp.cpp
+msgid "MEGA TIRES BOOSTER WILL INCREASE CARS TIRE SIZE"
+msgstr "मेगा टायर बूस्टर कार टायर आकार को बढ़ा देगा"
+
+#. Text for a controls info screen, describing what the game controller d-pad does in the game, ie. changes the selected menu item
+#: src/common/MenuControls.cpp
+msgid "MENU CONTROL"
+msgstr "मेन्यु कंट्रोल"
+
+#. Show Fingersoft merchandise page
+#: src/common/MenuMore.cpp
+msgid "MERCHANDISE"
+msgstr "माल"
+
+#: src/common/MissionDialog.cpp
+msgid "METERS"
+msgstr "मीटर"
+
+#. Mid-air control upgrade (allows the player to have more responsive control when the vehicle is flying/jumping)
+#: src/common/PlayerCarManager.cpp
+msgid "MID-AIR CONTROL"
+msgstr "आसमान में नियंत्रण"
+
+#. Minibike vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "MINIBIKE"
+msgstr "मिनीबाइक"
+
+#: src/common/GarageLocalization.cpp
+msgid "MONSTER"
+msgstr "विशालकाय"
+
+#. Monster truck name
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "MONSTER TRUCK"
+msgstr "दैत्याकार ट्रक"
+
+#. Moon level title
+#: src/common/Stage.cpp
+msgid "MOON"
+msgstr "चाँद"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "MOON BUNDLE"
+msgstr "मून बण्डल"
+
+#. Moonlander vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "MOONLANDER"
+msgstr "मूनलैंडर"
+
+#. More menu title
+#: src/common/MenuMore.cpp
+msgid "MORE"
+msgstr "अधिक"
+
+#: src/common/MainMenuSelectCar.cpp src/common/MainMenuSelectStage.cpp
+msgid "MORE FROM US"
+msgstr "हमारी तरफ से और भी"
+
+#. Motocross bike vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "MOTOCROSS BIKE"
+msgstr "मोटोक्रॉस बाइक"
+
+#. Mountain level title
+#: src/common/Stage.cpp
+msgid "MOUNTAIN"
+msgstr "पहाड़"
+
+#: src/common/GarageLocalization.cpp
+msgid "MUD"
+msgstr "कीचड़"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "MUD BUNDLE"
+msgstr "मड बण्डल"
+
+#. Mudpool level title
+#: src/common/Stage.cpp
+msgid "MUDPOOL"
+msgstr "गारा का पूल"
+
+#: src/common/MainMenuSelectCar.cpp
+msgid "MULTIPLAYER"
+msgstr "मल्टीप्लेयर"
+
+#: src/common/MenuNewSettings.cpp
+msgid "MUSIC"
+msgstr "म्यूज़िक"
+
+#. Shapeshifter vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "MUTANT"
+msgstr "परिवर्तित"
+
+#: src/common/GarageCarManager.cpp src/common/GarageCarManager.cpp
+#: src/common/GarageCarManager.cpp
+msgid "MY CAR"
+msgstr "मेरी गाड़ी"
+
+#. Backflips
+#. Achievement description (please preserve the %d)
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#: src/common/AchievementManager.cpp
+#, c-format
+msgid "Make %d backflips"
+msgstr "%d बैकफ्लिप करें"
+
+#. Flips
+#. Achievement description (please preserve the %d)
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#: src/common/AchievementManager.cpp
+#, c-format
+msgid "Make %d flips"
+msgstr "%d फ्लिप करें"
+
+#. Neckflips
+#. Achievement description (please preserve the %d)
+#: src/common/AchievementManager.cpp src/common/AchievementManager.cpp
+#: src/common/AchievementManager.cpp
+#, c-format
+msgid "Make %d neckflips"
+msgstr "%d नैकफ्लिप करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Make 10 backflips in one run"
+msgstr "एक दौड़ में 10 बैकफ्लिप करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Make 10 flips in one run"
+msgstr "एक दौड़ में 10 फ्लिप करें"
+
+#. fork length upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Makes your bike more stable (and cooler)."
+msgstr "अपनी बाइक को और अधिक स्थिर (और आकर्षक) बनाएं."
+
+#. Mid-air control upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Makes your bike turn faster in mid-air making tricks easier and allow more control on landing."
+msgstr "आपकी बाइक को आसमान में तेजी से घूमते हुए आसानी से करतब करने और लैंडिंग में ज्यादा नियंत्रण की अनुमति देता है."
+
+#: src/common/PowerUp.cpp
+msgid "Mega Tires"
+msgstr "मेगा टायर"
+
+#. Achievement title for driving 1000km with Minibike
+#: src/common/AchievementManager.cpp
+msgid "Micro Maniac"
+msgstr "माइक्रो मेनियाक"
+
+#. Achievement title for driving 1000km with Monster Truck
+#: src/common/AchievementManager.cpp
+msgid "Monster Truck Mayhem"
+msgstr "विशाल ट्रक तबाही"
+
+#: src/common/GarageLocalization.cpp
+msgid "Monster car chassis. Good for air time tricks."
+msgstr "विशालकाय कार चेसिस. एयर टाइम करतबो के लिए अच्छा"
+
+#. Achievement title for driving 1000km with Motocross Bike
+#: src/common/AchievementManager.cpp
+msgid "Moon Grinder"
+msgstr "मून ग्राइंडर"
+
+#. Sleigh description
+#: src/common/PlayerCarManager.cpp
+msgid "More horsepower with real animals!"
+msgstr "असली जानवरों के साथ ज्यादा हॉर्सपॉवर!!"
+
+#. Reindeer upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "More reindeer means more power! Reindeer helps you climb hills and make longer jumps and tricks for more bonuses."
+msgstr "ज्यादा रेंडियर मतलब ज्यादा ताकत! रेंडियर आपकी पहा‍ड़ि‍यों पर चढ़ाई करने और लंबी छलांगे लगाने और अधिक बोनस लेने के लिए करतब करने में मदद करते हैं."
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Mysterious place with tons of challenging surprises."
+msgstr "टनों चुनौतिपूर्ण आश्चर्यों के साथ रहस्यमयी स्थान."
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "NATIONAL DAY PACK"
+msgstr "राष्ट्रीय दिवस पैक"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "NECK FLIP\n    +%d "
+msgstr "नैक फ्लिप\n +%d"
+
+#: src/common/GameLayer.cpp
+msgid "NECK FLIP\n    +2500 "
+msgstr "नैक फ्लिप \n  +2500"
+
+#: src/common/MissionDialog.cpp
+msgid "NECK FLIPS"
+msgstr "नैक फ्लिप"
+
+#: src/common/MenuGarageWorkshop.cpp
+msgid "NEED MORE CAR PARTS?"
+msgstr "अधिक कार पुर्जे चाहिएं?"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "NEON"
+msgstr "नियोन"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "NEW BEST:%s"
+msgstr "नया बेहतरीन:%s"
+
+#: src/common/GarageCarManager.h
+msgid "NEW CAR"
+msgstr "नई गाड़ी"
+
+#. Title for asking if the user really wants to exit
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "NEW LEVEL ACHIEVED!"
+msgstr "नया स्तर हासिल!"
+
+#: src/common/MenuGarage.cpp src/common/MenuGarage.cpp
+msgid "NEW PART"
+msgstr "नया पार्ट"
+
+#. Text displayed when the player makes a new record
+#: src/common/GameLayer.cpp
+msgid "NEW RECORD! "
+msgstr "नया रिकॉर्ड!"
+
+#. Text in result screen indicating that the player made a new record and how far they got
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "NEW RECORD: %dm "
+msgstr "नया रिकॉर्ड: %dm "
+
+#. Button text for taking the user to the next menu screen
+#.
+#. mBackButton = Utils::createUIButtonWithCustomFile("button-bg-left", NULL, FN_TEXT("BACK"), this, menu_selector(MenuGarageGacha::onBackPressed), 1.0f, Utils::TEXT_ALIGN_CENTER);
+#. mBackButton->setHighlightSprite("button-bg-right_focus", true);
+#. mBackButton->setPosition(110.f, 50.f);
+#.
+#: src/common/MainMenuSelectCar.cpp src/common/MenuGarageGacha.cpp
+#: src/common/MenuGarageMain.cpp
+msgid "NEXT"
+msgstr "अगला"
+
+#. (int)mLeftPassengerAirTime *
+#. (int)mRightPassengerAirTime *
+#: src/common/PlayerCarLuxury.cpp src/common/PlayerCarLuxury.cpp
+#, c-format
+msgid "NICE CATCH!\n  +%d"
+msgstr "अच्छी पकड़!\n +%d"
+
+#. Night level title
+#: src/common/Stage.cpp
+msgid "NIGHT"
+msgstr "रात्रि"
+
+#: src/common/PowerUp.cpp
+msgid "NITRO BOOSTER WILL POWER YOUR CAR TO DRIVE SOME EXTRA METERS"
+msgstr "नाइट्रो बूस्टर आपकी कार को कुछ अतिरिक्त मीटरों तक कार को ड्राइव करने की पॉवर देगी"
+
+#. Button text for a negative answer
+#: src/common/MainMenuLayer.cpp src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuUpgradeCar.cpp src/common/MissionDialog.cpp
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+#: src/common/UIContinueDialog.cpp
+msgid "NO"
+msgstr "नहीं"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "NO ADS"
+msgstr "कोई व‍िज्ञापन नहीं"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "NORTHPOLE"
+msgstr "उत्तरीध्रुव"
+
+#: src/common/PowerUpDialog.cpp
+#, c-format
+msgid "NOT ENOUGH GEMS. BUY MISSING %d GEMS?"
+msgstr "पर्याप्त रत्न नहीं. गायब %d रत्न नहीं?"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "NUCLEAR BUNDLE"
+msgstr "न्यूक्लियर बण्डल"
+
+#. level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "NUCLEAR PLANT"
+msgstr "न्यूक्लियर प्लांट"
+
+#: src/common/GarageLocalization.cpp
+msgid "Naturally aspirated inline 6 engine"
+msgstr "स्वाभाविक वांछित इनलाइन 6 इंजन"
+
+#. Achievement title for delivering 10000 presents
+#: src/common/AchievementManager.cpp
+msgid "Naughty driver"
+msgstr "शरारती ड्राइवर"
+
+#. Title for revive dialog
+#: src/common/UIContinueDialog.cpp
+msgid "Neck patch?"
+msgstr "नैक पैच?"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Neckflip within 5 seconds from stage start"
+msgstr "स्टेज शुरू होने के 5 सेकेण्ड के अंदर नैकफ्लिप"
+
+#. Achievement for riding the Dragon in Neon level
+#: src/common/AchievementManager.cpp
+msgid "Neon King"
+msgstr "नियोन किंग"
+
+#. Achievement title for unlocking a second vehicle
+#: src/common/AchievementManager.cpp
+msgid "New Direction"
+msgstr "नयी दिशा"
+
+#: src/common/PowerUp.cpp
+msgid "Nitro"
+msgstr "नाइट्रो"
+
+#: src/common/MainMenuLayer.cpp
+msgid "No Event Available!"
+msgstr "कोई इवेंट उपलब्ध नहीं है!"
+
+#. Achievement title for driving 1000km with Tourist Bus
+#: src/common/AchievementManager.cpp
+msgid "No Tips Required"
+msgstr "कोई ट्रिप नहीं चाहिए"
+
+#: src/common/MainMenuLayer.cpp
+msgid "No event active at the current time!\nCheck back Later!"
+msgstr "इस समय कोई इवेंट सक्रिय नहीं है!\nबाद में दोबारा जाँच करें!"
+
+#: src/common/MainMenuSelectStage.cpp
+msgid "No event available \nat this moment."
+msgstr "इस समय कोई इवेंट \nउपलब्ध नहीं है."
+
+#. Food upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "No food, no go. Improved feedbag size makes it possible to drive further."
+msgstr "भोजन नहीं, जाना नहीं. भोजनथैली का उन्नत आकार दूर तक ड्राइव करना संभव बनाता है."
+
+#. The text on the no button of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "No thanks"
+msgstr "नहीं धन्यवाद"
+
+#. Title of the message box shown when no advertisement videos are available
+#: src/common/MenuDoubleMoneyDialog.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "No videos to view currently"
+msgstr "वर्तमान में देखने के लिए कोई वीडियो नहीं"
+
+#: src/common/AchievementManager.cpp
+msgid "Nuclear Secret"
+msgstr "परमाणु रहस्य"
+
+#. Achievement title for earning 1000000 coins in a single run
+#: src/common/AchievementManager.cpp
+msgid "Numismatist"
+msgstr "न्यूमिज़माटिस्ट"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp
+msgid "OFF"
+msgstr "ऑफ"
+
+#. Exit button text
+#. OK button
+#: src/common/GameLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp src/common/MenuEULA.cpp
+#: src/common/MenuGarageWorkshop.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp src/common/MenuUpgradeButton.cpp
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+#: src/common/MissionDialog.cpp
+msgid "OK"
+msgstr "ठीक"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp
+msgid "ON"
+msgstr "ऑन"
+
+#: src/common/MissionDialog.cpp
+msgid "ON THE DRAGON"
+msgstr "ड्रेगन पर"
+
+#. Onewheeler vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "ONEWHEELER"
+msgstr "वनव्हीलर"
+
+#. Text displayed when the game ends because the vehicle has run out of fuel
+#: src/common/GameLayer.cpp
+msgid "OUT OF FUEL "
+msgstr "ईंधन समाप्त"
+
+#. Achievement title for making total 1000 backflips
+#: src/common/AchievementManager.cpp
+msgid "Obsessed Backflipper"
+msgstr "जुनूनी बैकफ्लिपर"
+
+#. Achievement title for driving 1000km with Quad Bike
+#: src/common/AchievementManager.cpp
+msgid "Offroader"
+msgstr "ऑफरोडर"
+
+#: src/common/AchievementManager.cpp
+msgid "Old-timer"
+msgstr "पुराना निवासी"
+
+#: src/common/AchievementManager.cpp
+msgid "Olympic medalist"
+msgstr "ओलम्पिक पदक विजेता"
+
+#: src/common/MissionDialog.cpp
+msgid "On Next reload"
+msgstr "अगले रीलोड पर"
+
+#. Achievement title for making total 100 flips
+#: src/common/AchievementManager.cpp
+msgid "On a Roll"
+msgstr "एक रोल पर"
+
+#: src/common/MenuEULA.cpp
+msgid "Our End-User License Agreement (EULA) has been updated!\nPlease review the changes here to continue playing.\nThe Full EULA can be found here:\n\n\nThe EULA is subject to Fingersoft's Privacy policy,\nwhich you can review here:"
+msgstr ""
+
+#: src/common/MissionDialog.cpp
+msgid "PACKAGES"
+msgstr "पैकेज"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "PAINTS"
+msgstr "पेंट"
+
+#: src/common/MenuGarageMain.cpp
+msgid "PARTS"
+msgstr "पुर्जे"
+
+#: src/common/GaragePartUpgrade.cpp
+msgid "PARTS:"
+msgstr "पुर्जे :"
+
+#: src/common/MissionDialog.cpp
+msgid "PASSENGERS"
+msgstr "यात्रीगण"
+
+#. Text indicating that the game is paused
+#: src/common/GameLayer.cpp
+msgid "PAUSED"
+msgstr "विराम"
+
+#: src/common/MenuNewSettings.cpp
+msgid "PEDALS"
+msgstr "पैडल"
+
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "PEDALS: OFF"
+msgstr "पैडल : ऑफ"
+
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "PEDALS: ON"
+msgstr "पैडल : ऑन"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "PENALTY: +%s"
+msgstr "जुर्माना: +%s"
+
+#: src/common/Planet.cpp
+#, c-format
+msgid "PERFECT RUN!!\n  +%d"
+msgstr "सटीक दौड़!!\n +%d"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "PERSONAL BEST:%s"
+msgstr "व्यक्तिगत बेहतरीन:%s"
+
+#: src/common/Planet.cpp
+#, c-format
+msgid "PLANET BONUS\n  +%d x %d"
+msgstr "प्लेेेेेनेट बोनस\n +%d x %d"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp
+msgid "PLAY"
+msgstr "खेलें"
+
+#. Police car vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "POLICE CAR"
+msgstr "पुलिस कार"
+
+#. INSERT_PART_TEXT("TURBOMAX", FN_TEXT_GARAGE("TURBOMAX"))
+#. INSERT_PART_TEXT("TURBOSPEED", FN_TEXT_GARAGE("TURBOSPEED"))
+#: src/common/GarageLocalization.cpp
+msgid "POWER"
+msgstr "पॉवर"
+
+#: src/common/MissionDialog.cpp
+msgid "PRESENTS"
+msgstr "प्रस्तुति‍"
+
+#: src/common/GameLayer.cpp
+msgid "PRESS BUTTON TO CONTINUE"
+msgstr "जारी रखने के लिए बटन दबाएं"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "PREVIOUS BEST:%s"
+msgstr "प‍िछला बेहतरीन:%s"
+
+#: src/common/MenuNewSettings.cpp
+msgid "PRIVACY OPTIONS"
+msgstr "गोपनीयता विकल्प"
+
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "PRIVACY POLICY"
+msgstr "गोपनीयता नीति"
+
+#. Button for displaying the Privacy Policy
+#: src/common/MenuMore.cpp
+msgid "PRIVACY POLICY & EULA"
+msgstr "गोपनीयता नीति और EULA"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "PROGNOSIS"
+msgstr "भविष्यवाणी"
+
+#: src/common/MissionDialog.cpp
+msgid "PUMPKINS"
+msgstr "पम्पकि‍न"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Packages and conveyor belts all over the place. Eat carrots to get more vitamins!"
+msgstr "पैकेट और कनवेयर बेल्ट सभी यथा स्थान हैं. अधिक विटाामिन लेने के लिए गाजरें खाइए!"
+
+#: src/common/UIContinueDialog.cpp
+#, c-format
+msgid "Pay %d GEMS to keep on playing?"
+msgstr "खेलना जारी रखने के लिए %d रत्न भुगतान करें?"
+
+#: src/common/GarageLocalization.cpp
+msgid "Perfect for driving in gravel!"
+msgstr "कंकड़ों पर चलने मेंं बिल्कुल सही!"
+
+#: src/common/GarageLocalization.cpp
+msgid "Perfect for driving in space!"
+msgstr "अंतरिक्ष में ड्राइव करने के लिए बिल्कुल सही!"
+
+#. Achievement title for driving 1000km with Onewheeler
+#: src/common/AchievementManager.cpp
+msgid "Personal Transport"
+msgstr "निजी ट्रांसपोर्ट"
+
+#. Achievement title for sharing a result in social media
+#: src/common/AchievementManager.cpp
+msgid "Photobomb"
+msgstr "फोटोबम"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Pick 500 berries in Bogland"
+msgstr "बॉगलैण्ड में 500 बैरी चुनें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Pick up fuel canister with empty fuel tank"
+msgstr "खाली ईंधन टंकी के लिए ईंधन कैन उठाइए"
+
+#: src/common/MenuEULA.cpp
+msgid "Please review this EULA"
+msgstr ""
+
+#: src/common/MenuUpdate.cpp
+msgid "Please update your client from the store!"
+msgstr "कृपया स्टोर से अपना क्लायंट अपडेट करें!"
+
+#. Rally car vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Powerful engine and downforce upgraded provide the most ultimate combination for hill climbing."
+msgstr "शक्तिशाली इंजन और अपग्रेड की गई डाउनफोर्स पहाड़ी चढ़ाई पर सबसे बेहतरीन संयोजन प्रदान करते हैं."
+
+#. Rally car vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Powerful engine and sporty chassis make this car one of the fastest out there!"
+msgstr "शक्तिशाली इंजन और स्पोर्टी चेसिस इस कार को उनमें सबसे शक्तिशाली कारों में से एक बनाता है!"
+
+#. Train description
+#: src/common/PlayerCarManager.cpp
+msgid "Powerful train with two carriages. Enjoy the ride!"
+msgstr "शक्तिशाली ट्रेन दो कैरिज सहित. सवारी का मजा लीजिए!"
+
+#. Moonlander vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Prepare for liftoff! This agile lunar rover is equipped with thrusters!"
+msgstr "उड़ान के लिए तैयार! यह फुर्तीला लूनी रोवर थ्रस्टर से सुसज्जित है!"
+
+#. Big monster truck "big finger" description
+#: src/common/PlayerCarManager.cpp
+msgid "Prepare for true monster mayhem with this huge truck."
+msgstr "इस विशाल ट्रक के साथ असल राक्षस द्वारा तबाही के लिए तैयार रहें."
+
+#: src/common/MenuGarage.cpp
+#, c-format
+msgid "Press %s\nto replace existing car configuration with a new chassis or purchase a 'new car' empty slot to use new chassis"
+msgstr "मौजूदा कार कॉन्फिगरेशन को नयी चेसिस से बदलने के लिए %s\n दबाएं या नयी चेसिस उपयोग करने के लिए एक 'नयी कार' खाली स्लॉट खरीदें"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+msgid "Purchase Complete"
+msgstr "खरीद संपन्न"
+
+#. Title of message box displayed when the user buys coins
+#: src/common/AppDelegate.cpp
+msgid "Purchase Failed"
+msgstr "खरीद विफल हुई"
+
+#: src/common/MenuGarageWorkshop.cpp
+msgid "Purchase car part chests to get more car parts"
+msgstr "अधिक कार पुर्जे प्राप्त करने के लिए कार पार्टस चेस्ट खरीदें"
+
+#. Title of message box displayed when the user buys coins
+#: src/common/AppDelegate.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp src/common/PopupOfferDialog.cpp
+msgid "Purchase complete"
+msgstr "खरीद संपन्न"
+
+#. Title of message box shown when in-app purchase fails
+#: src/winrt/WindowsTools.cpp src/winrt/WindowsTools.cpp
+#: src/winrt/WindowsTools.cpp
+msgid "Purchase failed"
+msgstr "खरीद विफल"
+
+#. Quad bike vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "QUAD BIKE"
+msgstr "क्वेड बाइक"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "QUEST COMPLETED!\n  +%d gems"
+msgstr "खेज संपन्न हुई!\n  +%d रत्न"
+
+#. Dune buggy description
+#: src/common/PlayerCarManager.cpp
+msgid "Quick, good traction and a handy hill climbing vehicle!"
+msgstr "तत्काल, अच्छा कर्षण और एक आसान पहाड़ी चढ़ाई का वाहन!"
+
+#. Formula-1 car like race car name
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "RACE CAR"
+msgstr "रेस कार"
+
+#. level title
+#: src/common/MissionDialog.cpp src/common/Stage.cpp
+#: src/common/Stage.cpp
+msgid "RAGNAROK"
+msgstr "रागनारॉक"
+
+#. Rainbow level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "RAINBOW"
+msgstr "इंद्रधनुष"
+
+#. Rally car vehicle name
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "RALLY CAR"
+msgstr "रैली कार"
+
+#: src/common/GaragePartLibrary.cpp src/common/GaragePartLibrary.cpp
+msgid "RARE"
+msgstr "दुलर्भ"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "RARE PARTS"
+msgstr "दुलर्भ पार्टस"
+
+#: src/common/Rat.cpp
+msgid "RAT HIT!\n"
+msgstr "रैट हिट!\n"
+
+#: src/common/Rat.cpp
+msgid "RAT STUNNED!\n"
+msgstr "रैट स्तब्ध!\n"
+
+#: src/common/GarageChestButton.cpp
+msgid "READY"
+msgstr "तैयार"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "REAR HEIGHT"
+msgstr "रीयर ऊँचाई"
+
+#. Tire size title
+#: src/common/PlayerCarManager.cpp
+msgid "REAR TIRE SIZE"
+msgstr "रीयर टायर आकार"
+
+#: src/common/PlayerCarLowrider.cpp
+#, c-format
+msgid "RECORD HOP!\n     %d cm"
+msgstr "रिकॉर्ड उछाल!\n %d सें.मी."
+
+#: src/common/PlayerCarLowrider.cpp
+#, c-format
+msgid "RECORD JUMP!\n      %d cm"
+msgstr "रिकॉर्ड जम्प!\n %d सें.मी."
+
+#. Text in result screen indicating that the player made a new record and how far they got
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "RECORD: %dm "
+msgstr "रिकॉर्ड : %dm"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "REINDEER"
+msgstr "रेंडियर"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "REINDEER SHOES"
+msgstr "रेंडियर शूज"
+
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageMain.cpp src/common/MenuGarageMain.cpp
+msgid "RESET"
+msgstr "रीसेट करें"
+
+#. Restart button text (user restarts the game session)
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#: src/common/GameLayer.cpp
+msgid "RESTART"
+msgstr "रिस्टार्ट"
+
+#: src/common/GaragePartDialog.cpp
+msgid "RESTORE"
+msgstr "पुनर्स्थापित करें"
+
+#. Resume button text (user resumes to game from pause menu)
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "RESUME"
+msgstr "पुनः आरंभ"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "ROCKET"
+msgstr "रॉकेट"
+
+#. Roll cage upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "ROLL CAGE"
+msgstr "रोल केज"
+
+#. Roller coaster level title
+#: src/common/Stage.cpp
+msgid "ROLLER COASTER"
+msgstr "रोलर कोस्टर"
+
+#. Rooftops level title
+#: src/common/Stage.cpp
+msgid "ROOFTOPS"
+msgstr "रूफटॉप"
+
+#. Motocross bike vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Race the hills with this impressive turboed motocross bike."
+msgstr "इस शानदार टर्बो मोटोक्रॉस बाइक के साथ पहाड़ि‍यों पर रेस करें."
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Random Card Probabilities"
+msgstr "रैंडम कार्ड संभावनाएं"
+
+#. The title of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "Rate Hill Climb Racing?"
+msgstr "Hill Climb Racing का मूल्यांकन करेंगे?"
+
+#. Diesel track vehicle description (decent turbo diesel truck that puts out black smoke when driving hard)
+#: src/common/PlayerCarManager.cpp
+msgid "Ready for the super turbo whistle and black smoke? With powerful engine and large wheelbase this really is an unique experience!"
+msgstr "सुपर टर्बो सीटी और काले धुएँ के लिए तैयार हैं? शक्तिशाली इंजन और बड़े व्हीलबेस के साथ सही में यह एक अनूठा अनुभव है!"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Return all cans in Suburbs"
+msgstr "सभी कैन उपनगरों में लौटाएं"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Ride the Neon Dragon"
+msgstr "नियोन ड्रेगन पर सवारी करें"
+
+#. Achievement title for driving 1000km with Chopper
+#: src/common/AchievementManager.cpp
+msgid "Road Warrior"
+msgstr "रोड वॉरियर"
+
+#. Sissybar upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Rollcage for the bike."
+msgstr "बाइक के ल‍िए रोलकेज"
+
+#. Stability upgrade on hovercraft, improves overal vehicle stability when climbing high hills
+#: src/common/PlayerCarManager.cpp
+msgid "Rotating engine improves stability when climbing steep hills."
+msgstr "रोटेटिंग इंजन खड़ी पहाड़ि‍यों पर चढ़ाई करते समय स्थिरता में सुधार करता है."
+
+#. Achievement title for driving 1000km with Hot Rod
+#: src/common/AchievementManager.cpp
+msgid "Rubber Burner"
+msgstr "रबड़ बर्नर"
+
+#. Achievement title for driving 1000km with Sleigh
+#: src/common/AchievementManager.cpp
+msgid "Rudolf's Big Brother"
+msgstr "रूडोल्फ के बड़े भाई"
+
+#. Lowrider car description
+#: src/common/PlayerCarManager.cpp
+msgid "Rule the streets with this hip hopper!"
+msgstr "इस हिप हॉपर के साथ सड़कों पर राज करें!"
+
+#: src/common/MissionDialog.cpp
+msgid "SANDBAGS"
+msgstr "सैंडबैग्स"
+
+#: src/common/GaragePartDialog.cpp
+msgid "SAVE"
+msgstr "सहेजें"
+
+#. Title for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#: src/common/PlayerCarManager.cpp
+msgid "SCREW"
+msgstr "स्क्रू"
+
+#. Title for button displaying that scrolling background is disabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+msgid "SCROLLING BACKGROUND: OFF"
+msgstr "पृष्ठभूमि स्क्रॉल : ऑफ"
+
+#. Title for button displaying that scrolling background is enabled
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+msgid "SCROLLING BACKGROUND: ON"
+msgstr "पृष्ठभूमि स्क्रॉल : ऑन"
+
+#: src/common/Seagull.cpp
+msgid "SEAGULL STUNNED!\n"
+msgstr "सीगल स्तब्ध!\n"
+
+#: src/common/Seagull.cpp
+msgid "SEAGULL WARNING!\n"
+msgstr "सीगल चेतावनी!\n"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "SEASONS"
+msgstr "सीजन"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "SEAT"
+msgstr "सीट"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "SECRET FOUND\n  +%d"
+msgstr "गुप्त धन\n +%d"
+
+#: src/common/GameLayer.cpp
+msgid "SECRET FOUND\n  +10000"
+msgstr "रहस्य प्राप्त हुआ\n  +10000"
+
+#. Text for a controls info screen, describing which button in the game controller is the select button. Select button activates the currently selected menu item.
+#: src/common/MenuControls.cpp src/common/MenuGarageMain.cpp
+msgid "SELECT"
+msgstr "चुनें"
+
+#: src/common/PowerUpDialog.cpp src/common/PowerUpDialog.cpp
+#: src/common/PowerUpDialog.cpp
+msgid "SELECT A CONSUMABLE BOOSTER YOU WANT TO USE IN GAME"
+msgstr "एक उपभोग योग्य बूस्टर चुनें जो आप गेम में उपयोग करना चाहते हैं"
+
+#. Menu title for language menu where the user can select the used language
+#: src/common/LanguageMenu.cpp src/common/MenuNewSettings.cpp
+msgid "SELECT LANGUAGE"
+msgstr "भाषा चुनें"
+
+#. Title of the screen where user selects the level/stage to play in
+#: src/common/HighscoreMenu.cpp src/common/HighscoreMenu.cpp
+#: src/common/MainMenuSelectStage.cpp
+msgid "SELECT STAGE"
+msgstr "स्टेज चुनें"
+
+#. Menu title for car selection screen
+#: src/common/MainMenuSelectCar.cpp
+msgid "SELECT VEHICLE"
+msgstr "वाहन चुनें"
+
+#: src/common/MenuNewSettings.cpp
+msgid "SETTINGS"
+msgstr "सेटिंग्स"
+
+#: src/common/GaragePartDialog.cpp
+#, c-format
+msgid "SETTINGS %d"
+msgstr "सेटिंग्स %d"
+
+#. Share a link to the game in social media
+#: src/common/MenuMore.cpp
+msgid "SHARE HILL CLIMB RACING"
+msgstr "पहाड़ी चढ़ाई रेसिंग साझा करें"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp
+msgid "SHOP"
+msgstr "शॉप"
+
+#: src/common/MainMenuLayer.cpp src/common/MainMenuLayer.cpp
+#: src/common/MainMenuLayer.cpp
+msgid "SHOP "
+msgstr "खरीदें"
+
+#. Button text for taking the user to the next menu screen
+#: src/common/MainMenuLayer.cpp
+msgid "SHOW AD CONTROLS"
+msgstr "विज्ञापन नियंत्रण दिखाएँ"
+
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "SIGN IN"
+msgstr "साइन इन"
+
+#. Title for button where the user can initiate the cloud sign-in process
+#: src/common/MenuMore.cpp src/common/MenuNewSettings.cpp
+msgid "SIGN IN TO CLOUD"
+msgstr "CLOUD में साइन इन करें"
+
+#. Title for button where the user can sign out from cloud services
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "SIGN OUT"
+msgstr "साइन आउट"
+
+#: src/common/GarageLocalization.cpp
+msgid "SIZE"
+msgstr "आकार"
+
+#: src/common/MissionDialog.cpp
+msgid "SKELETONS"
+msgstr "कंकाल"
+
+#. Title for a window if user has already upgraded something to its maximum level
+#: src/common/MissionDialog.cpp
+msgid "SKIP MISSION"
+msgstr "मिशन छोड़ें"
+
+#. Title for a window if user has already upgraded something to its maximum level
+#: src/common/MissionDialog.cpp src/common/MissionDialog.cpp
+msgid "SKIP MISSION?"
+msgstr "मिशन स्किप करें?"
+
+#. Sleigh vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "SLEIGH"
+msgstr "स्लेज"
+
+#. Snowmobile vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "SNOW MOBILE"
+msgstr "स्नो मोबाइल"
+
+#: src/common/MenuNewSettings.cpp
+msgid "SOUNDS"
+msgstr "ध्वनियां"
+
+#: src/common/GarageLocalization.cpp
+msgid "SPACE"
+msgstr "अंतरिक्ष"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "SPACE EVENT\n%s"
+msgstr "स्पेस इवेंट\n%s"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "SPACE MISSION"
+msgstr "स्पेस म‍िशन"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+#, c-format
+msgid "SPACE MISSION\n%s"
+msgstr "स्पेस मिशन\n%s"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "SPACE, the first frontier!\nExplore alien planets, dodge asteroids and black holes while avoiding extraterrestrial encounters on your journey through space.\nThe Rocket is yours for the mission, free of charge!"
+msgstr "स्पेस, पहला मोर्चा!\nअनजान उपग्रहों की खोजबीन करें, उल्काप‍िंंडों और ब्लैक होल्स को चकमा देते हुए जबकि स्पेस में आपकी यात्रा में बाहरी दुनिया की मुठभेड़ों से बचाव करते हुए.\nइस म‍िशन के ल‍िए रॉकेट आपका है, बिल्कुल मुफ्त!"
+
+#. Level title
+#: src/common/Stage.cpp
+msgid "SPORT ARENA"
+msgstr ""
+
+#. level description
+#: src/common/Stage.cpp
+msgid "SPORTS ARENA DESCRIPTION!"
+msgstr ""
+
+#: src/common/GarageLocalization.cpp
+msgid "SPRINGS"
+msgstr "स्प्रिंग"
+
+#. Upgrade title
+#. Title for vehicle stability upgrade
+#. Upgrade title
+#. Stability upgrade title
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "STABILITY"
+msgstr "स्थिरता"
+
+#: src/common/MainMenuCar.cpp src/common/MainMenuLayer.cpp
+#: src/common/PopupOfferDialog.cpp
+msgid "STAGE"
+msgstr "स्टेज"
+
+#: src/common/GameLayer.cpp
+msgid "STAGE COMPLETED!"
+msgstr "चरण पूरा हुआ!"
+
+#: src/common/MissionDialog.cpp
+msgid "START"
+msgstr "शुरू करें"
+
+#. In tab mode, create a start button which goes to ingame, since stage select is an earlier tab
+#: src/common/MainMenuCar.cpp src/common/MainMenuLayer.cpp
+#: src/common/MenuGarageWorkshop.cpp
+msgid "START "
+msgstr "स्टार्ट"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "STIFFNESS"
+msgstr "कठोरता"
+
+#: src/common/GarageLocalization.cpp
+msgid "STREET"
+msgstr "स्ट्रीट"
+
+#: src/common/GarageLocalization.cpp
+msgid "STREET PRO"
+msgstr "स्ट्रीट प्रो"
+
+#. Button that takes the user back to previous menu
+#: src/common/MenuEnterCode.cpp
+msgid "SUBMIT"
+msgstr "प्रस्तुत करें"
+
+#. level title
+#: src/common/Stage.cpp
+msgid "SUBURBS"
+msgstr "उपनगर"
+
+#: src/common/Planet.cpp
+msgid "SUCKED INTO\nBLACK HOLE!!"
+msgstr "ब्लैक होल में\nसमा गए!!"
+
+#. Diesel track vehicle name (decent turbo diesel truck that puts out black smoke when driving hard)
+#: src/common/PlayerCarManager.cpp
+msgid "SUPER DIESEL 4X4"
+msgstr "सुपर डीजल 4X4"
+
+#. Title for asking if the user really wants to exit
+#: src/common/GameLayer.cpp
+msgid "SUPER DRIVER BONUS!"
+msgstr "सुपर ड्राइवर बोनस!"
+
+#. Tank vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "SUPER OFFROAD"
+msgstr "सुपर ऑफरोड"
+
+#: src/common/GarageLocalization.cpp
+msgid "SURFACE"
+msgstr "सतह"
+
+#: src/common/MissionDialog.cpp
+msgid "SURVIVE"
+msgstr "जीवित बचना"
+
+#: src/common/GameLayer.cpp src/common/GameLayer.cpp
+msgid "SURVIVOR"
+msgstr "बचे हुए"
+
+#. Upgrade title
+#. Title for vehicle suspension upgrade
+#. Upgrade title
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "SUSPENSION"
+msgstr "सस्पेन्शन"
+
+#. Title for button displayed while the game is synchronizing game data with cloud
+#: src/common/MenuMore.cpp src/common/MenuMore.cpp
+#: src/common/MenuNewSettings.cpp src/common/MenuNewSettings.cpp
+msgid "SYNC IN PROGRESS"
+msgstr "सिंक प्रगति पर है"
+
+#. Achievement title for driving 1000km with Kiddie Express
+#: src/common/AchievementManager.cpp
+msgid "Safety Inspector"
+msgstr "सुरक्षा इंस्पेक्टर"
+
+#. Achievement title for delivering 100 presents
+#: src/common/AchievementManager.cpp
+msgid "Santa's Lost Cousin"
+msgstr "साँता का बिछुड़ा हुआ भाई"
+
+#. Displayed achievement title in achievement menu when the achievement is hidden and not yet discovered
+#: src/common/AchievementMenu.cpp
+msgid "Secret Achievement"
+msgstr "गुप्त उपलब्धि"
+
+#. Achievement title for unlocking 5 vehicles
+#: src/common/AchievementManager.cpp
+msgid "Serious Junkie"
+msgstr "सीरियस जंकी"
+
+#. Achievement title for driving 1000km with Mutant
+#: src/common/AchievementManager.cpp
+msgid "Shapeshifter"
+msgstr "शेपशिफ्टर"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Share your result"
+msgstr "अपने परिणाम साझा करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Sink to 25 meters"
+msgstr "25 मीटर तक डूब"
+
+#. Arctic cave description
+#: src/common/Stage.cpp
+msgid "Slippery arctic cave is something different to try."
+msgstr "फिसलनयुक्त आर्कटिक गुफा कोशिश करने के लिए कुछ अलग है."
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Smash 1000 pumpkins"
+msgstr "1000 कद्दू फोड़ें"
+
+#. Achievement title for smashing 1000 pumpkins
+#: src/common/AchievementManager.cpp
+msgid "Smashing Pumpkins"
+msgstr "कद्दू फोड़ रहे हैं"
+
+#: src/common/MenuGarageWorkshop.cpp
+msgid "Some of car parts seems to be invalid. You can try to change or tune some parts or just build new car on the same slot"
+msgstr "कुछ कार पार्टस अवैध लगते हैं. आप कुछ पार्टस बदलने या सुसंगत करने का प्रयास कर सकते हैं \nया उसी स्लॉट में बस एक नई कार बनाएं"
+
+#: src/common/MainMenuLayer.cpp
+msgid "Space Instructions"
+msgstr "स्पेस द‍िशान‍िर्देश"
+
+#. Achievement title for drivign 1000km with Fast Car
+#: src/common/AchievementManager.cpp
+msgid "Speed Freak"
+msgstr "गति की सनक"
+
+#. Achievement for walking 500m with Carantula
+#: src/common/AchievementManager.cpp
+msgid "Spider Walker"
+msgstr "स्पाइडर वॉकर"
+
+#: src/common/PlayerCarManager.cpp
+msgid "Stiffer chassis gives you better handling at high speeds."
+msgstr "कठोर चेसिस आपको तेज गति पर बेहतर हैंडलिंग प्रदान करती है."
+
+#: src/common/GarageLocalization.cpp
+msgid "Street race tire!"
+msgstr "स्ट्रीट रेस टायर!"
+
+#. Wing upgrade description
+#: src/common/PlayerCarManager.cpp
+msgid "Stronger rocket gives you more flight time."
+msgstr "शक्तिशाली रॉकेट आपको ज्यादा फ्लाइट समय देता है."
+
+#: src/common/GarageLocalization.cpp
+msgid "Super powerful and fast."
+msgstr "सुपर शक्तिशाली और तेज."
+
+#: src/common/GarageLocalization.cpp
+msgid "Superb eco engine with improved acceleration."
+msgstr "उन्न गतिवृद्धि सहित शानदार ईको इंजन."
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Survive in the Ragnarok"
+msgstr "रागनारॉक में जीवित रहना"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Survive the Jungle"
+msgstr "जंगल में बचकर निकलें"
+
+#. Tank vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "TANK"
+msgstr "टैंक"
+
+#: src/common/MissionDialog.cpp
+msgid "THE JUNGLE"
+msgstr "जंगल"
+
+#. Bubble car vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "THE ROCKET"
+msgstr "रॉकेट"
+
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp
+msgid "THRUSTER"
+msgstr "थ्रस्टर"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "TIME:%s"
+msgstr "समय:%s"
+
+#: src/common/GaragePartDialog.cpp
+msgid "TIRE"
+msgstr "टायर"
+
+#. Upgrade title
+#. Tire size title
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+msgid "TIRE SIZE"
+msgstr "टायर आकार"
+
+#. Upgrade title
+#. Tires upgrade title
+#. Upgrade title
+#. Tires upgrade title
+#. Upgrade title
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "TIRES"
+msgstr "टायर"
+
+#: src/common/InAppPurchaseMenu.cpp src/common/MainMenuLayer.cpp
+msgid "TOOLBOX"
+msgstr "टूलबॉक्स"
+
+#. INSERT_PART_TEXT("SPEED", FN_TEXT_GARAGE("SPEED"))
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "TORQUE"
+msgstr "टॉर्क"
+
+#: src/common/MenuGarage.cpp
+msgid "TOUCH TO CONTINUE"
+msgstr "जारी रखने के लिए टच करें"
+
+#. Tourist bus where people ride in the bus (vehicle name)
+#: src/common/PlayerCarManager.cpp
+msgid "TOURIST BUS"
+msgstr "पर्यटक बस"
+
+#. Title for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#. Upgrade title
+#. Title for tracks / tires upgrade (improves traction in the tank, snow mobile etc)
+#: src/common/PlayerCarManager.cpp src/common/PlayerCarManager.cpp
+#: src/common/PlayerCarManager.cpp
+msgid "TRACKS"
+msgstr "ट्रेक"
+
+#: src/common/GarageLocalization.cpp
+msgid "TRACTION"
+msgstr "कर्षण"
+
+#. Tractor vehicle name
+#: src/common/GarageLocalization.cpp src/common/PlayerCarManager.cpp
+msgid "TRACTOR"
+msgstr "ट्रैक्टर"
+
+#: src/common/MissionDialog.cpp
+msgid "TRAVERSE"
+msgstr "ट्रावर्स"
+
+#. Generic bundles for other devices
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "TRICK BUNDLE"
+msgstr "ट्रिक बण्डल"
+
+#. Dune buggy vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "TROPHY TRUCK"
+msgstr "ट्रॉफी ट्रक"
+
+#. 6-wheel truck vehicle name
+#: src/common/PlayerCarManager.cpp
+msgid "TRUCK"
+msgstr "ट्रक"
+
+#: src/common/GaragePartUpgrade.cpp src/common/MainMenuLayer.cpp
+msgid "TUNE"
+msgstr "ट्यून"
+
+#: src/common/GaragePartDialog.cpp
+#, c-format
+msgid "TUNE %s"
+msgstr "ट्यून %s"
+
+#: src/common/GarageLocalization.cpp
+msgid "TURBO"
+msgstr "टर्बो"
+
+#. Cave level description
+#: src/common/Stage.cpp
+msgid "Take an adventure into the treasure cave. It's hard to approach the bumps without hitting the ceiling. Gasoline is a limited resource in a cave."
+msgstr "खजाने की गुफा की एक रोमांचक यात्रा करें. छत से टकराए बगैर किनारों तक पहुँचना कठिन है. किसी गुफा में गैसोलिन एक सीमित संसाधन है."
+
+#. Achievement title for driving 1000km with Trophy truck
+#: src/common/AchievementManager.cpp
+msgid "Terrain Rocket"
+msgstr "टैरेन रॉकेट"
+
+#. Achievement title for driving 1000km with The Rocket
+#: src/common/AchievementManager.cpp
+msgid "Test Pilot"
+msgstr "टेस्ट पायलट"
+
+#. Achievement title for driving 1000km with Jeep
+#: src/common/AchievementManager.cpp
+msgid "The Classic"
+msgstr "क्लासिक"
+
+#. Achievement title for driving 1000km with Hovercraft
+#: src/common/AchievementManager.cpp
+msgid "The Softer Side"
+msgstr "सॉफ्टर साइड"
+
+#: src/common/PlayerCarManager.cpp
+msgid "The best things in life are free, but this car certainly isn't!"
+msgstr "ज़िंदगी में बेहतरीन चीज़ें निःशुल्क होती हैं, लेकिन यह कार निश्चित रूप से नहीं है!"
+
+#: src/common/MenuGarageMain.cpp
+msgid "The car slot will be emptied due to fatal error. You can still build a new car on the slot. Proceed?"
+msgstr "गंभीर त्रुटि के कारण कार स्लॉट खाली किया जाएगा. आप अभी भी स्लॉट में एक नयी गाड़ी बना सकते हैं. आगे बढ़ें?"
+
+#: src/common/MenuGarageMain.cpp
+msgid "The car slot will be emptied. You can still build a new car on the slot. Proceed?"
+msgstr "कार स्लॉट खाली किया जाएगा. आप अभी भी स्लॉट में एक नयी गाड़ी बना सकते हैं. आगे बढ़ें?"
+
+#. Shapeshifter description
+#: src/common/PlayerCarManager.cpp
+msgid "The future of automobiles is here! Tap both pedals to change shape!"
+msgstr "आटोमोबाइल का भविष्य यहां है! आकृति अदलने के ल‍िए दोनों पैडल पर टैप करें!"
+
+#. Dune buggy description
+#: src/common/PlayerCarManager.cpp
+msgid "The highest class of off-road racing vehicles!"
+msgstr "ऑफ-रोड रेसिंग वाहनों की उच्चतम श्रेणी!"
+
+#. Hippie van vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "The hippie van has plenty of fuel but suffers from loose tires! These tree huggers have also figured out how to drive around trees."
+msgstr "हिप्पी वैन में काफी ईंधन है लेकिन खुले टायरों की कमी है! इन पेड़ों से लिपटने वालों ने जान लिया है कि पेड़ों के आसपास कैसे ड्राइव करना है."
+
+#. Junkyard level description
+#: src/common/Stage.cpp
+msgid "The local junkyard is full of Bill's old vehicles"
+msgstr "लोकल कबाड़खाना बिल के पुराने वाहनों से भरा हुआ है"
+
+#. Tractor vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "The tractor is slow and heavy but has great traction and plenty of torque (and a tendency to roll over in steep terrain). Not recommended for caves."
+msgstr "ट्रैक्टर धीमा और भारी है लेकिन शानदार कर्षण और बहुत अधिक टॉर्क होता है (और खड़ी ढााल वाले इलाके में चलने की प्रवृत्ति). गुफाओं के लिए सिफारिश नहीं की जाती है."
+
+#. Forest level description (the user has to drive through the trees in the forest)
+#: src/common/Stage.cpp
+msgid "The trees arent just for decoration, you'll have to drive through them. Highly upgraded vehicle recommended!"
+msgstr "पेड़ केवल सजावट के लिए नहीं होते हैं, आपको उनके बीच ड्राइव करना होगा. उच्चतम अपग्रेड किए गए वाहन की सिफारिश की जाती है!"
+
+#. E
+#: src/common/MenuUpdate.cpp
+msgid "There is new version available!"
+msgstr "एक नया संस्करण उपलब्ध है!"
+
+#: src/common/MenuGDPR.cpp
+msgid "These rights are in addition to the rights granted by the European\nGeneral Data Protection Regulation (GDPR)\nwhich also applies to your data as our company\nis based in the EU."
+msgstr ""
+
+#. Minibike vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "This agile childhood ride becomes a powerful little beast when fully upgraded."
+msgstr "यह बचपन की फुर्तिली सवारी जब पूरी तरह अपग्रेड की जाए तो एक शक्तिशाली छोटा जानवर बन जाती है."
+
+#: src/common/Stage.cpp
+msgid "This is challenge five"
+msgstr "यह चुनौती पॉंच है"
+
+#: src/common/Stage.cpp
+msgid "This is challenge four"
+msgstr "यह चुनौती चार है"
+
+#: src/common/Stage.cpp
+msgid "This is challenge one"
+msgstr "यह चुनौती एक है"
+
+#: src/common/Stage.cpp
+msgid "This is challenge seven"
+msgstr "यह चुनौती सात है"
+
+#: src/common/Stage.cpp
+msgid "This is challenge six"
+msgstr "यह चुनौती छह है"
+
+#: src/common/Stage.cpp
+msgid "This is challenge three"
+msgstr "यह चुनौती तीन है"
+
+#: src/common/Stage.cpp
+msgid "This is challenge two"
+msgstr "यह चुनौती दो है"
+
+#: src/common/Stage.cpp
+msgid "This is event."
+msgstr "यह इवेंट है."
+
+#: src/common/MissionDialog.cpp
+msgid "Time Until Refresh"
+msgstr "रीफ्रेश होने तक समय"
+
+#. Achievement title for unlocking 5 stages
+#: src/common/AchievementManager.cpp
+msgid "To the Moon and Back"
+msgstr "चंद्रमा पर और वापसी"
+
+#. Achievement title for driving 1000km with Tank
+#: src/common/AchievementManager.cpp
+msgid "Top Gun"
+msgstr "टॉप गन"
+
+#. Dragster description
+#: src/common/PlayerCarManager.cpp
+msgid "Top fuel dragster! Insanely fast, but be careful, it's not easy to control!"
+msgstr "टॉप ईंधन ड्रेगस्टर! अत्यधिक तेज, लेकिन सर्तक रहें, इसे नियंत्रित करना आसान नहीं है!"
+
+#. Achievement title for fully upgrading all vehicles
+#: src/common/AchievementManager.cpp
+msgid "Totally Worth It"
+msgstr "बिल्कुल इसके लायक"
+
+#: src/common/Idol.cpp
+#, c-format
+msgid "Treasure %d / 10 collected!"
+msgstr "खजाना %d / 10 प्राप्त किए!"
+
+#. Achievement for collecting all tresures from the Jungle level
+#: src/common/AchievementManager.cpp
+msgid "Treasure Hunter"
+msgstr "ट्रेजर हंटर"
+
+#. Achievement title for driving 1000km with Hippie Van
+#: src/common/AchievementManager.cpp
+msgid "Triptacular"
+msgstr "ट्रिप्टाक्युलर"
+
+#. Achievement for completing ragnarok
+#: src/common/AchievementManager.cpp
+msgid "Troll Master"
+msgstr "ट्रोल मास्टर"
+
+#. Hot rod description
+#: src/common/PlayerCarManager.cpp
+msgid "Tune up your own super hot rod!"
+msgstr "आपकी अपनी हॉट रॉड ट्यून अप करें!"
+
+#: src/common/Ufo.cpp
+#, c-format
+msgid "UFO STUNNED!!\n  +%d"
+msgstr "यूएफओ स्तब्ध!!\n +%d"
+
+#. icon
+#. NULL, NULL, NULL, NULL,
+#. Button text for unlocking an item
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp src/common/MenuGarageMain.cpp
+msgid "UNLOCK"
+msgstr "अनलॉक"
+
+#. Title for unlocking something, please preserve %s, it will be replaced by the item name user is going to unlock
+#: src/common/CustomizeMenu.cpp src/common/CustomizeMenu.cpp
+#: src/common/MainMenuSelectCar.cpp src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuSelectStage.cpp src/common/MenuGarageMain.cpp
+#: src/common/MenuGarageMain.cpp
+#, c-format
+msgid "UNLOCK %s? "
+msgstr "%s अनलॉक करें?"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "UNLOCK ALL"
+msgstr "सभी अनलॉक करें"
+
+#: src/common/InAppUnlockDialog.cpp
+msgid "UNLOCK ALL STAGES AND VEHICLES?"
+msgstr "सभी चरण और वाहन अनलॉक करें?"
+
+#: src/common/InAppUnlockDialog.cpp
+msgid "UNLOCK ALL STAGES?"
+msgstr "सभी चरण अनलॉक करें?"
+
+#: src/common/InAppUnlockDialog.cpp
+msgid "UNLOCK ALL VEHICLES?"
+msgstr "सभी वाहन अनलॉक करें?"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "UNLOCK GARAGE?"
+msgstr "गैराज अनलॉक करें?"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "UNLOCK STAGES"
+msgstr "चरण अनलॉक करें"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "UNLOCK VEHICLES"
+msgstr "वाहन अनलॉक करें"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "UNLOCKS"
+msgstr "अनलॉक्स"
+
+#: src/common/MenuUpdate.cpp
+msgid "UPDATE AVAILABLE!"
+msgstr "अपडेट उपलब्ध है!"
+
+#. DynamicFont* f = DynamicFont::create(FN_TEXT("LEVEL UP"), 50, kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter, 0);
+#: src/common/GaragePartDialog.cpp src/common/GaragePartUpgrade.cpp
+#: src/common/GarageStockBar.cpp src/common/MenuUpgradeButton.cpp
+msgid "UPGRADE"
+msgstr "अपग्रेड"
+
+#: src/common/MenuGarageGacha.cpp
+msgid "UPGRADE\nAVAILABLE"
+msgstr "अपग्रेड\nउपलब्ध"
+
+#: src/common/MainMenuCar.cpp src/common/MainMenuUpgradeCar.cpp
+#, c-format
+msgid "UPGRADE %s?"
+msgstr "%s अपग्रेड करें?"
+
+#: src/common/MenuGarageWorkshop.cpp
+#, c-format
+msgid "UPGRADE %s? "
+msgstr "%s अपग्रेड करें ?"
+
+#. Menu title text showing how far the player needs to go to reach the next level (%s is the stage, first %d is level, second %d is the distance); LVL is short for level
+#. sprintf(strTitle, FN_TEXT("%s: LVL %d (%dm)"), StageManager::getStageInfo(PlayerInfo::mSelectedStage)->mTitle.c_str(), StageManager::getStageInfo(PlayerInfo::mSelectedStage)->mLevel + 1, StageManager::getStageInfo(PlayerInfo::mSelectedStage)->getLevelGoal());
+#. setMenuTitle(strTitle);
+#: src/common/MainMenuUpgradeCar.cpp
+msgid "UPGRADE CAR"
+msgstr "कार अपग्रेड करें"
+
+#. Message shown when connecting to in-app store fails (iOS)
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Unable to connect to the AppStore. Please try again later."
+msgstr "AppStore से कनेक्ट करने में असमर्थ. कृपया बाद में पुन: प्रयास करें."
+
+#. Message shown when connecting to in-app store fails (Tizen)
+#: src/common/InAppPurchaseMenu.cpp
+msgid "Unable to connect to the Tizen Store. Please try again later."
+msgstr "Tizen Store से कनेक्ट करने में असमर्थ. कृपया बाद में पुन: प्रयास करें."
+
+#. Message shown when connecting to in-app store fails (Windows)
+#. Shown to user when connecting to the Windows Store fails
+#: src/common/InAppPurchaseMenu.cpp src/winrt/WindowsTools.cpp
+#: src/winrt/WindowsTools.cpp src/winrt/WindowsTools.cpp
+msgid "Unable to connect to the Windows Store. Please try again later."
+msgstr "Windows स्टोर से कनेक्ट करने में असमर्थ. कृपया बाद में पुन: प्रयास करें."
+
+#. Message show when in-app purchase fails
+#: src/winrt/WindowsTools.cpp src/winrt/WindowsTools.cpp
+#: src/winrt/WindowsTools.cpp
+msgid "Unable to purchase item at this time. Please try again later."
+msgstr "इस समय आइटम खरीदने में असमर्थ. कृपया बाद में पुन: प्रयास करें."
+
+#. Title of message ox displayed when saving an image of game results failed
+#: src/common/GameLayer.cpp
+msgid "Unable to save image"
+msgstr "छवि सहेजने में असमर्थ"
+
+#. Message displayed when saving an image of game results failed
+#: src/common/GameLayer.cpp
+msgid "Unable to save result image. There might not be enough space available."
+msgstr "परिणाम छवि सहेजने में असमर्थ. शायद पर्याप्त स्थान उपलब्ध नहीं है."
+
+#. Message shown when no advertisement videos are available
+#: src/common/MenuDoubleMoneyDialog.cpp
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "Unfortunately there were no videos available right now. Try again later."
+msgstr "दुर्भाग्य से अभी कोई वीडियो उपलब्ध नहीं है. बाद में पुन: प्रयास करें."
+
+#: src/common/InAppUnlockDialog.cpp
+#, c-format
+msgid "Unlock %d stages"
+msgstr "%d चरण अनलॉक करें"
+
+#: src/common/InAppUnlockDialog.cpp
+#, c-format
+msgid "Unlock %d vehicles"
+msgstr "%d वाहन अनलॉक करें"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+#, c-format
+msgid "Unlock %s"
+msgstr "%s अनलॉक करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock 10 stages"
+msgstr "10 स्टेज अनलॉक करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock 10 vehicles"
+msgstr "10 वाहन अनलॉक करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock 5 stages"
+msgstr "5 स्टेज अनलॉक करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock 5 vehicles"
+msgstr "5 वाहन अनलॉक करें"
+
+#: src/common/InAppMenuButton.cpp src/common/InAppMenuButton.cpp
+msgid "Unlock Garage"
+msgstr "गैराज अनलॉक करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock a stage"
+msgstr "एक स्टेज अनलॉक करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock a vehicle"
+msgstr "एक वाहन अनलॉक करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock all stages"
+msgstr "सभी स्टेज अनलॉक करें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Unlock all vehicles"
+msgstr "सभी वाहन अनलॉक करें"
+
+#: src/common/MenuSetUpgradeLevelButton.cpp
+msgid "Upgrade complete"
+msgstr "अपग्रेड संपन्न"
+
+#: src/common/GarageLocalization.cpp
+msgid "V12"
+msgstr "V12"
+
+#: src/common/GarageLocalization.cpp
+msgid "V12 super engine with a supercharger"
+msgstr "सुपरचार्जर सहित V12 सुपर इंजन"
+
+#: src/common/GarageLocalization.cpp
+msgid "V6"
+msgstr "V6"
+
+#: src/common/GarageLocalization.cpp
+msgid "V6 sport engine with a supercharger."
+msgstr "ण्‍क सुपरचार्जर सहित V6 स्पोर्ट इंजन"
+
+#: src/common/GarageLocalization.cpp
+msgid "V8"
+msgstr "V8"
+
+#: src/common/GarageLocalization.cpp
+msgid "V8 diesel with twin turbo."
+msgstr "ट्विन टर्बो सहित V8 डीजल."
+
+#: src/common/GarageLocalization.cpp
+msgid "V8 race engine with a supercharger."
+msgstr "एक सुपरचार्जर सहित V8 रेस इंजन."
+
+#: src/common/CustomizeMenu.cpp src/common/MainMenuLayer.cpp
+#: src/common/PopupOfferDialog.cpp
+msgid "VEHICLE"
+msgstr "वाहन"
+
+#. Volcano level title
+#: src/common/Stage.cpp
+msgid "VOLCANO"
+msgstr "ज्वालामुखी"
+
+#. Shows the best score user has made in that level in the selected vehicle: For example: "Vehicle best: 1352m ". Please preserve the %d".
+#: src/common/MainMenuSelectStage.cpp
+#, c-format
+msgid "Vehicle best: %dm"
+msgstr "श्रेष्ठ वाहन : %dm"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "WATCH AD"
+msgstr "विज्ञापन देखें"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "WATCH VIDEO"
+msgstr "वीडियो देखें"
+
+#: src/common/PlayerCarManager.cpp
+msgid "WEALTH"
+msgstr "दौलत"
+
+#. Tire texts
+#: src/common/GarageLocalization.cpp
+msgid "WINTER"
+msgstr "विंटर"
+
+#: src/common/GarageLocalization.cpp
+msgid "WINTER PRO"
+msgstr "विंटर प्रो"
+
+#: src/common/MissionDialog.cpp
+msgid "WITHIN"
+msgstr "के अंदर"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Walk 500m with Carantula"
+msgstr "केरातुंला के साथ 500m चलें"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Warning! Radioactive materials inside, no trespassing!"
+msgstr "चेतावनी! अंदर रेडियोधर्मी सामग्रियां, प्रवेश निषेध!"
+
+#: src/common/UIContinueDialog.cpp
+msgid "Watch a video to keep on playing?"
+msgstr "खेल जारी रखने के लिए एक वीडियो देखना चाहेंगे?"
+
+#. Description for a window if user has already upgraded something to its maximum level
+#: src/common/MissionDialog.cpp
+msgid "Watch a video to skip this mission?"
+msgstr "मिशन स्किप करने के लिए एक वीडियो देखें?"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "Watch an ad to get double value from the"
+msgstr "दोहरा मान प्राप्त करने के लिए व‍िज्ञापन देखें"
+
+#. Achievement description
+#: src/common/AchievementManager.cpp
+msgid "Watch credits to the end"
+msgstr "अंत तक क्रेडिट देखें"
+
+#. Rooftops level description
+#: src/common/Stage.cpp
+msgid "Watch out for the gaps between buildings or you may fall off!"
+msgstr "बिल्डिंगों के बीच में अंतराल देंखें नहीं तो आप गिर जाएंगे!"
+
+#: src/common/MenuGDPR.cpp src/common/MenuGDPR.cpp
+msgid "We would like to show ads relevant to you!"
+msgstr "हम आपसे प्रासंगिक विज्ञापन दिखाना पसंंद करेंगे!"
+
+#. 6-wheel truck vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Weight, power, turbo whistle and attitude! And upgradeable very large fuel tank!"
+msgstr "वजन, शक्ति, टर्बो सीटी और दृष्टिकोण! और अपग्रेड योग्य बहुत बड़ा ईंधन टैंक!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Welcome to the mystic jungle, Bill!"
+msgstr "बि‍ल, रहस्यमयी जंगल में स्वागत है!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "Welcome to the suburbs!"
+msgstr "उपनगरों में स्वागत है!"
+
+#. level description
+#: src/common/Stage.cpp
+msgid "What a wonderful world, Bill thinks, and throttles through steep hills of the seasons"
+msgstr "कैसी अद्भुत दुनिया है, बिल सीजनों की ऊँँची पहाड़ि‍यों के बारे में सोचता और उन्हें रौंदता है"
+
+#. Tank vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "What do you expect?! It's a race car on tracks with a huge V8 stuffed into it! "
+msgstr "आप क्या उम्मीद करते हैं?! यह पटरियों पर एक रेस कार है जिसके अंदर विशाल V8 रखा गया है!"
+
+#: src/common/PlayerCarManager.cpp
+msgid "What in the world is this mechanical monstrosity?"
+msgstr "दुन‍िया में यह यांत्रिक दैत्यता क्या है?"
+
+#. Achievement title for driving total distance of 100000m
+#: src/common/AchievementManager.cpp
+msgid "Why Do I Climb the Mountain?"
+msgstr "पहाड़ पर मैं क्यों चढ़ाई करूं?"
+
+#. Achievement title for driving 1000km with Big Finger
+#: src/common/AchievementManager.cpp
+msgid "With Wheels Like These"
+msgstr "इन जैसे पहियों के साथ"
+
+#. Monster truck description
+#: src/common/PlayerCarManager.cpp
+msgid "With large wheels and a supercharged engine this car really gives a new experience for Hill Climbing!"
+msgstr "बड़े पहियों और एक सुपरचार्ज इंजन के साथ यह कार पहाड़ी चढ़ाई में असल में एक नया अनुभव प्रदान करती है!"
+
+#. The text of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "Would you like rate our game and give us feedback?"
+msgstr "क्या आप हमारे गेम का मूल्यांकन करना और हमें फीडबैक देना चाहेंगे?"
+
+#. Xmas level title
+#: src/common/Stage.cpp src/common/Stage.cpp
+msgid "XMAS"
+msgstr "क्रिसमस"
+
+#: src/common/AndroidInAppPurchasesJNI.cpp
+#: src/common/AndroidInAppPurchasesJNI.cpp
+msgid "XMAS BUNDLE"
+msgstr "क्रिसमस बंडल"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "YEAR %d"
+msgstr "वर्ष %d"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "YEAR %d COMPLETED"
+msgstr "वर्ष %d पूरा हुआ"
+
+#: src/common/MissionDialog.cpp
+msgid "YEARS"
+msgstr "वर्षों"
+
+#. Button text for a positive answer
+#: src/common/MainMenuLayer.cpp src/common/MainMenuSelectCar.cpp
+#: src/common/MainMenuSelectStage.cpp
+#: src/common/MainMenuUpgradeCar.cpp src/common/UIContinueDialog.cpp
+msgid "YES"
+msgstr "हाँ"
+
+#: src/common/GameLayer.cpp
+#, c-format
+msgid "YOUR TIME:%s"
+msgstr "आपका समय:%s"
+
+#. The text on the yes button of a dialog asking the user to rate the game
+#: src/winrt/WindowsTools.cpp
+msgid "Yes"
+msgstr "हाँ"
+
+#: src/common/CustomizeMenu.cpp
+msgid "You do not have enough paint buckets to purchase this skin"
+msgstr "यह स्किन खरीदने के लिए आपके पास पर्याप्त पेंट की बाल्टियां नहीं हैं"
+
+#. Dialog text when cloud sign-in failed due to the user having too many devices already synced in the cloud
+#: src/common/Utils.cpp
+msgid "You have already reached the maximum number of synchronized devices."
+msgstr "आप पहले ही सिंक्रोनाइज्ड डिवाइस की अधिकतम संख्या तक पहुँच चुके हैं."
+
+#. Description for a window if user has already upgraded something to its maximum level
+#: src/common/MenuSetUpgradeLevelButton.cpp
+#: src/common/MenuUpgradeButton.cpp
+msgid "You have already upgraded this to the maximum level available."
+msgstr "आप इसे पहले ही उपलब्ध अधिकतम स्तर तक अपग्रेड कर चुके हैं."
+
+#: src/common/PopupOfferDialog.cpp
+msgid "You have been awarded"
+msgstr "आपको पुरस्कृत किया गया है"
+
+#: src/common/MainMenuLayer.cpp
+#, c-format
+msgid "You have been awarded %d coins."
+msgstr "आपको %d स‍िक्के इनाम में द‍िए गए हैं."
+
+#: src/common/MainMenuLayer.cpp
+#, c-format
+msgid "You have been awarded %d gems."
+msgstr "आपको %d रत्न पुरस्कार में द‍िए गए हैं."
+
+#: src/common/PopupOfferDialog.cpp src/common/PopupOfferDialog.cpp
+#, c-format
+msgid "You have been awarded %s coins. "
+msgstr "आपको %s सिक्कों से पुरस्कृत किया गया है."
+
+#: src/common/PopupOfferDialog.cpp src/common/PopupOfferDialog.cpp
+#, c-format
+msgid "You have been awarded %s gems. "
+msgstr "आपको %s रत्नों से पुरस्कृत किया गया है."
+
+#: src/common/AppDelegate.cpp src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s and advertisements have been removed. "
+msgstr "आपको %s पुरस्कार मिला है और विज्ञापन हटा लिए गए हैं"
+
+#. Message displayed when the user buys coins (%s is the amount) and advertisements are removed
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s coins and advertisements have been removed. "
+msgstr "आपको %s सिक्के पुरस्कार मिला है और विज्ञापन हटा दिए गए हैं."
+
+#. Message displayed to the user when he has been rewarded free coins for installing a promoted application
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s coins for installing %s."
+msgstr "आपको %s सिक्के  %s इंस्टाल करने का पुरस्कार मिला है."
+
+#. Message displayed when the user buys coins (%s is the amount)
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s coins. "
+msgstr "आपको %s सिक्के पुरस्कार मिला है."
+
+#. Message displayed when the user buys gems (%s is the amount) and advertisements are removed
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s gems and advertisements have been removed. "
+msgstr "आपको %s रत्न पुरस्कार दिया गया है और विज्ञापन हटा लिए गए हैं."
+
+#. Message displayed when the user buys gems (%s is the amount)
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s gems. "
+msgstr "आपको %s रत्न पुरस्कार दिए गए हैं."
+
+#. Message displayed when the user buys paints (%s is the amount) and advertisements are removed
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s paints and advertisements have been removed. "
+msgstr "आपको %s पेंट से पुरस्कृत किया गया है और विज्ञापन हटा लिए गए हैं."
+
+#. Message displayed when the user buys paints (%s is the amount)
+#: src/common/AppDelegate.cpp
+#, c-format
+msgid "You have been rewarded %s paints. "
+msgstr "आपको %s पेंट से पुरस्कृत किया गया है."
+
+#: src/common/MainMenuLayer.cpp
+msgid "You have been rewarded:"
+msgstr "आपको पुरस्कृत किया गया:"
+
+#. Windows tile notification telling the user they have enough coins to to unlock a new vehicle
+#. Windows tile notification telling the user they have enough coins to to unlock a new stage
+#: src/winrt/TileNotificationManager.cpp
+#: src/winrt/TileNotificationManager.cpp
+#, c-format
+msgid "You have enough coins to unlock %s. Give it a try!"
+msgstr "आपके पास %s अनलॉक करने के लिए काफी सिक्के हैं. एक कोशिश करें!"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "You need to unlock garage feature first. Unlock now?"
+msgstr "आपको पहले गैराज सुविधा अनलॉक करने की जरूरत है. अभी अनलॉक करें?"
+
+#. Tank vehicle description
+#: src/common/PlayerCarManager.cpp
+msgid "Yura Vereshchak designed, you voted, the ultimate fan vehicle, the Finger Screw!"
+msgstr "यूरा वर्सेचाक द्वारा डिजाइन किया गया, आपने सर्वश्रेष्ठ प्रशंसक वाहन, फिंगर स्क्रू को वोट दिया है!"
+
+#: src/common/MenuDoubleMoneyDialog.cpp
+msgid "coins you collect on the levels for +5 min!"
+msgstr "सिक्के आप अगले दौड़ के लिए स्तरों पर इकट्ठा!"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "common part"
+msgstr "सामान्य हिस्सा"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "epic part"
+msgstr "महान हिस्सा"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "legendary part"
+msgstr "दिग्गज हिस्सा"
+
+#. CardRan
+#: src/common/InAppPurchaseMenu.cpp
+msgid "random part"
+msgstr "यादृच्छिक हिस्सा"
+
+#: src/common/InAppPurchaseMenu.cpp
+msgid "rare part"
+msgstr "दुर्लभ हिस्सा"
+
+#: src/common/MainMenuLayer.cpp
+#, c-format
+msgid "x %d"
+msgstr "x %d"
+
+#: src/common/MenuGDPR.cpp
+msgid ""
+"- In order to do this our ad partners will analyze how you play our game and "
+"other online behavior\n"
+"- This information will only be used to tailor ads to fit your interests\n"
+"- You can change your choice any time from the game's settings\n"
+"\n"
+"By selecting 'I AGREE' I confirm that I am over the age of 16. This opens a "
+"system dialog where you can allow your advertising identifier and in-game "
+"statistics to be shared with Fingersoft's ad partners for ad targeting "
+"purposes."
+msgstr ""
+"- इसे करने के लिए, हमारे विज्ञापन के साझेदार इसका विश्लेषण करेंगे कि आप हमारा खेल किस तरह से खेलते हैं और आपका अन्य ऑनलाइन व्यवहार कैसा है\n"
+"- यह सूचना केवल विज्ञापनों को आपकी रुचि के अनुसार अनुकूलित करने के लिए उपयोग की जाएगी\n"
+"- आप अपनी पसंद को किसी भी समय खेल की सेटिंग्स से बदल सकते हैं\n"
+"\n"
+"'सहमत' को चुनकर मैं पुष्टि करता हूँ कि मैं 16 साल से ऊपर का हूँ। यह एक सिस्टम डायलॉग को खोलता है, जहां आप अपने विज्ञापन पहचानकर्ता और इन-गेम स्टेटिस्टिक्स को विज्ञापन लक्ष्य करने के उद्देश्य के लिए Fingersoft के विज्ञापन साझेदार के साथ साझा करने की अनुमति दे सकते हैं।"
+
+#: src/common/MenuGDPR.cpp
+msgid ""
+"Tracking online behavior over different services using an advertising "
+"identifier is nothing new. In fact it has been a staple of e-commerce for "
+"over a decade! Legislation across the globe sets some requirements on how "
+"this identifier can be used and we want to be completely open about how we "
+"process your personal data.\n"
+"An advertising identifier is a random string of characters that is created "
+"when you first started using your device (phone, PC, etc.). This identifier "
+"can be seen by the internet services you use on that device, including by "
+"our game. By analyzing and comparing your playing with your other online "
+"behavior a 'customer profile' can be created and ads can then be tailored to "
+"fit your likings and needs.\n"
+"We believe targeting advertisements is in our players' interests, as ads "
+"with pink unicorns don't really fit a racing game, right?! Regardless, we "
+"cannot do this without your consent.\n"
+"If you'd like even more information and see the list of our advertising "
+"partners, please review our Privacy Policy."
+msgstr ""
+"विज्ञापन पहचानकर्ता का उपयोग करते हुए विभिन्न सेवाओं पर ऑनलाइन व्यवहार को ट्रैक करने में कुछ भी नया नहीं है। दरअसल यह एक दशक से ई-कॉमर्स का मुख्य भाग रहा है! दुनिया भर में विधान ने इस पहचानकर्ता के द्वारा उपयोग करने के लिए कुछ आवश्यकताओं को निर्धारित किया है और हम इस बारे में पूरी तरह से पारदर्शी रहना चाहते हैं कि हम आपके निजी डेटा को किस प्रकार से उपयोग करते हैं।\n"
+"\n"
+"एक विज्ञापन पहचानकर्ता वर्णों की एक क्रम रहित शृंखला होती है जो आपके अपने डिवाइस (फ़ोन, PC, आदि) को पहली बार उपयोग करने पर बनती है। यह पहचानकर्ता उन इंटरनेट सेवाओं के द्वारा देखा जा सकता है जिनका आप उन डिवाइस पर उपयोग करते हैं, जिसमें आपका खेल भी शामिल है। आपके खेलने को आपके अन्य ऑनलाइन व्यवहार के साथ विश्लेषण और तुलना करके एक 'ग्राहक प्रोफाइल' बनाई जा सकती है और फिर विज्ञापनों को आपकी पसंद और जरूरतों के अनुसार अनुकूलित किया जा सकता है।\n"
+"\n"
+"हमारा मानना है कि विज्ञापनों को लक्षित करना हमारे खिलाड़ियों की रुचि के अनुसार होता है, क्योंकि पिंक यूनिकॉर्न वाला विज्ञापन रेसिंग खेल में बिलकुल भी ठीक नहीं लगता, है ना?! इसके बावजूद, हम इसे आपकी इच्छा के बिना नहीं कर सकते।\n"
+"\n"
+"अगर आपको अधिक सूचना भी चाहिए और हमारे विज्ञापन साझेदारों की सूची देखना चाहते हैं, कृपया हमारी गोपनियता नीति की समीक्षा करें।"
+
+#: src/common/MenuGDPR.cpp
+msgid "More info"
+msgstr "जानकारी"

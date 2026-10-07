@@ -1,0 +1,45 @@
+//
+// stage definition file
+//
+{
+  "id": "junkyard",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "junk",
+      "type": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "junk"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/rooftops/sky-bg-rooftops",
+      "terrainTexture": "stages/junkyard/terrain-junkyard",
+      "terrainTopTexture": "stages/junkyard/terrain-junkyard-surface",
+      "terrainTopOffset": 0.05,
+      "terrainTopTextureWidthScale": 2.0,
+      "parallaxLayers": [
+        {
+          "count": 4,
+          "texture": "stages/junkyard/junkyard-parallax",
+          "scale": [ 0.7, 0.7 ]
+        }
+      ],
+      "dirtParticle": "dirt-grayscale.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.5,
+      "surfaceType": "sand"
+    }
+  ]
+}

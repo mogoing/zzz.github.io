@@ -1,0 +1,45 @@
+//
+// stage definition file
+//
+{
+  "id": "countryside",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": "x *= 1.5;
+		        x += 10.0;
+		        var y := cos(x / 10.0) * 2;
+		        y += cos(x + (sin(x * 0.25)))* 0.2 * clamp(x * 0.0015, 0, 1.0);
+		        y += cos(x * 0.17 + (sin(x * 0.25))) * 2.0 * clamp(x * 0.00075, 0, 1.0);
+		        y += cos(x * 0.0952 + (sin(x * 0.15))) * 2.0 * clamp(x * 0.00275, 0, 1.0);
+		        y += -1 + sin(x / 30.0 + cos(x / 32.14)) * 4 * clamp(x * 0.00075, 0, 1.0);
+		        y *= 0.5 + clamp(x / 2000.0, 0.0, 1.5); "
+    },
+    {
+      "id": "bridge", 
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "bridge"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/countryside/sky-bg",
+      "terrainTexture": "stages/countryside/terrain-ground",
+      "terrainTopTexture": "stages/countryside/terrain-surface",
+      "dirtParticle": "dirt.plist"
+    }
+  ],
+  "physics": [
+    {
+      "gravity": [ 0.0, -10.0 ],
+      "friction": 0.6,
+      "tractionCategory": "gravel"
+    }
+  ],
+	"coinMultiplier": 1.25
+}

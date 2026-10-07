@@ -1,0 +1,76 @@
+//
+// stage definition file
+//
+{
+  "id": "neon",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm"
+  ],
+  "music": [
+    {
+      "track": "audio/bgmusic-neon",
+      "volume": 0.8
+    }
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/neon/sky-bg-synth",
+      "terrainTexture": "stages/neon/terrain-neon",
+      "terrainTopTexture": "stages/neon/terrain-neon-surface",
+      "terrainTopOffset": -0.2,
+      "terrainTopTextureScale": 0.5,
+      "terrainTopTextureWidthScale": 1.0,
+      "dirtParticle": "dirt-grayscale.plist"
+    }
+  ],
+  "coinMultiplier": 1.0,
+  "firstCoinChunkPosition": 51.0,
+  "coinSpawnOffset": 50.0,
+  "parallax_layers": [
+    {
+      "zorder": 1,
+      "continuous_parallax": false,
+      "texture": "stages/neon/synth-moon",
+      "speed_x": 0.01,
+      "speed_y": 0.001,
+      "scale_x": 0.775,
+      "scale_y": 0.775,
+      "position_offset_y": 125.0,
+      "position_offset_x": -250.0,
+      "disable_fade": true,
+      "use_vehicle_color": true
+    },
+    {
+      "zorder": 2,
+      "continuous_parallax": true,
+      "texture": "stages/neon/synth-bg",
+      "speed_x": 2.0,
+      "speed_y": 0.2,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true
+    },
+    {
+      "zorder": 3,
+      "continuous_parallax": true,
+      "texture": "stages/neon/synth-bg2",
+      "speed_x": 2.5,
+      "speed_y": 0.2,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true
+    }
+  ]
+}

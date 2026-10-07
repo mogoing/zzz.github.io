@@ -1,0 +1,128 @@
+//
+// stage definition file
+//
+{
+  "id": "suburbs",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "json"
+  ],
+  "props": [
+    {
+      "outdoor": true
+    }
+  ],
+  "json": [
+    {
+      "blockFile": "stages/suburbs/suburbs_blocks.json",
+      "objectFile": "stages/suburbs/suburbs_objects.json",
+      "lazyPhysicsCreationSpeed": 6,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false,
+      "isHybrid": true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "gradientSkyTexture": "stages/jungle/sky-bg-jungle",
+      "terrainTexture": "stages/suburbs/terrain-suburb-sewer",
+      "terrainTopTexture": "stages/suburbs/terrain-suburb-sewer-surface",
+      "surfaceHeight": 0.6,
+      "surfaceOffset": -0.6,
+      "terrainTopTextureScale": 2.0,
+      "terrainTopTextureWidthScale": 1.0,
+      "JsonTextureScale": [ 0.1, 1.0 ],
+      "skyMovementScale": 0.01,
+      "outdoorTerrainTexture": "stages/suburbs/terrain-suburb",
+      "outdoorTerrainTopTexture": "stages/suburbs/terrain-suburb-surface",
+      "dirtParticle": "dirt-grayscale.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.45,
+      "surfaceType": "gravel",
+      "spawnOffset": [ 0.0, 0.5 ]
+    }
+  ],
+  "coinMultiplier": 0.2,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true,
+  "parallax_layers": [
+    {
+      "zorder": 1,
+      "continuous_parallax": true,
+      "stretch_to_screen": true,
+      "texture": "stages/suburbs/suburb-sky",
+      "speed_x": -2.0,
+      "scale_x": -1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true
+    },
+    {
+      "zorder": 2,
+      "count": 1,
+      "continuous_parallax": true,
+      "stretch_to_screen": true,
+      "texture": "stages/suburbs/suburb-parallax2",
+      "speed_x": -5.0,
+      "speed_y": 0.0,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": false
+    },
+    {
+      "zorder": 3,
+      "count": 1,
+      "continuous_parallax": true,
+      "stretch_to_screen": true,
+      "texture": "stages/suburbs/suburb-parallax",
+      "speed_x": -10.0,
+      "speed_y": 0.0,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    },
+    {
+      "zorder": 4,
+      "count": 3,
+      "continuous_parallax": false,
+      "texture": "stages/suburbs/suburb-prop-tree",
+      "speed_x": 5.0,
+      "speed_y": 0.0,
+      "scale_x": 0.45,
+      "scale_y": 0.45,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+msgid "ID_LANGUAGE_NAME"
+msgstr "TÜRKÇE"

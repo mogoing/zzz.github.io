@@ -1,0 +1,43 @@
+//
+// stage definition file
+//
+{
+  "id": "volcano",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "pits",
+      "type": "lava"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "pits"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/volcano/sky-bg-volcano",
+      "terrainTexture": "stages/volcano/terrain-volcano",
+      "terrainTopTexture": "stages/volcano/terrain-volcano-surface",
+      "terrainTopOffset": -0.115,
+      "terrainTopTextureScale": 0.5,
+      "pitTexture": "lava",
+      "dirtParticle": "rocks.plist",
+      "burnAnimation" : true
+    }
+  ],
+  "physics": [
+    {
+      "temperature": "hot",
+      "surfaceType": "rock"
+    }
+  ],
+  "coinMultiplier": 1.7,
+  "coinHeightOffset": -0.5
+
+}

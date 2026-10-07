@@ -1,0 +1,44 @@
+//
+// stage definition file
+//
+{
+  "id": "xmas",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm"
+  ],
+  "props": [
+    {
+      "trees": true,
+      "treeDensity": 0.6,
+      "treeStartPosition": 125.0,
+      "treeType": "christmas",
+      "hasTreePackages": true
+    }
+  ],
+  "graphics": [
+    {
+      "skyTexture": "stages/xmas/sky-bg-xmas",
+      "gradientSkyTexture": "stages/xmas/sky-bg-xmas-fade",
+      "terrainTexture": "stages/xmas/terrain-xmas",
+      "terrainTopTexture": "stages/xmas/terrain-xmas-surface",
+      "terrainTopTextureScale": 2.0,
+      "terrainTopTextureWidthScale": 1.0,
+      "dirtParticle": "snow.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.195,
+      "temperature": "cold",
+      "tractionCategory": "snow"
+    }
+  ]
+}

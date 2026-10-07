@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fingersoft</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+            </head>
+    <body>
+        <div class="eula-space" id="eula-space">
+            <div class="eula-container">
+                
+                <div class="eula-inner-container">
+                    <header class="eula-header">
+                        <h1 class="eula-title"><img class="eula-logo" src="logo.png"> Please review this EULA</h1>
+                    </header>
+                    
+                    <section class="eula-content">
+                        
+                        <p>You can play Hill Climb Racing for free, but it has ads and you can make in-app purchases to progress faster. Tap OK to accept our Privacy Policy and Terms.</p>
+                        
+                        <p>See the full EULA at <br><a href="http://fingersoft.net/eula/">http://fingersoft.net/eula/</a></p>
+                        <p>Our Privacy Policy can be found at <br><a href="http://fingersoft.net/privacy/">http://fingersoft.net/privacy/</a></p>
+                    </section>
+                    
+                    <footer class="eula-footer">
+                        <!--<div class="eula-acceptance">
+                         <input id="eula-acceptance-checkbox" onclick="fseula.onTermsAccepted()" type="checkbox" class="eula-accept-terms">
+                         <label for="eula-acceptance-checkbox">I accept the terms</label>
+                         </div>-->
+                        <div class="eula-buttons">
+                            <a id="eula-accept-button" class="eula-button eula-button-accept eula-button-accepted " onclick="fseula.onAccept()">OK</a>
+                            <!--<a class="eula-button eula-button-cancel" onclick="fseula.onCancel()">Cancel</a>-->
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <style type="text/css">
+            body { margin: 0; background: transparent; font-family: Verdana, sans-serif; color: #eee; overflow: hidden; }
+            h1 { font-size: 22px; }
+            h1, p {  margin: 10px 10px; }
+            a { color: #ccc; }
+            
+            .eula-logo { float: left;  height: 20%; max-height: 62px; margin-right: 3px; }
+            .eula-space { background-color: rgba(0,0,0,0.8);  }
+            .eula-text { float: left; width: 100%; padding: 0px; background-color: rgba(255,255,255,0.7) }
+            
+            .eula-title { margin: 0; padding: 10px; line-height: 62px; color: #fff; font-size: 20px; text-align: left; border-radius: 0px;  font-weight: lighter; }
+            
+            
+            .eula-container {
+                min-width: 230px;
+                background-color: #262D3A;
+                width: 408px;  box-sizing: border-box;
+                position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);
+                overflow: hidden;
+                box-shadow: 0px 0px 25px #000;
+            }
+        
+        .eula-header {  width: 100%; background-color: #61666D; float: left; box-shadow: 0px 0px 5px #111; }
+        .eula-footer {  margin: 0px; width: 100%; background-color: #61666D; float: left; padding: 5px 0px;  }
+        .eula-content {  font-size: 14px; padding: 10px 20px; overflow-y: scroll; margin: 0px; height: 200px; font-family: Verdana, "sans-serif"; -webkit-user-drag: auto; }
+        
+        .eula-acceptance { text-align: center; padding: 8px 0px 12px 0px; width: 100%; float: left; font-size: 16px; line-height: 16px; vertical-align: middle; }
+        .eula-accept-terms {  margin: 0; vertical-align: inherit; }
+        .eula-acceptance label { vertical-align: inherit; }
+        
+        .eula-inner-container {position: relative;  background-size: cover; background-position: center center;  float: left; width: 100%; }
+        
+        .eula-button { background-size: cover; vertical-align: top; display:inline-block; padding: 10px 20px; margin: 0px 10px 0px 10px; text-align: center; text-decoration: none; color: #fff; box-sizing: border-box;
+            font-size: 20px;
+            height: auto;
+            text-transform: uppercase;
+        }
+        
+        .eula-button-cancel { background-color: #7D8B8C; }
+        .eula-button-accept { background-color: #25292B;  }
+        .eula-button-accepted { background-color: #49A936; }
+        .eula-buttons { float: left; width: 100%; text-align: center; }
+        
+        /** Effects **/
+        
+        .eula-button:active { background: #333; color: #fff; transition: background 0s, color 0s; }
+        
+        
+        
+        @media (max-width: 440px) {
+            .eula-container { max-width: 100%; background-image: none; }
+            .eula-header { background-image: none; background-color: #61666D; }
+            .eula-title { font-size: 20px; }
+            .eula-content { font-size: 12px;  }
+            .eula-buttons { width: 100%; left: 0; margin-left: 0; }
+            .eula-footer { max-width: 100%; margin: 0; background-size: contain; }
+        }
+        
+        @media (max-width: 380px) {
+            .eula-title { font-size: 14px; line-height: 32px; }
+            .eula-logo { max-height: 32px; max-width: 32px; }
+            .eula-header { }
+            .eula-content { font-size: 12px;  }
+            .eula-footer { max-height: 120px; }
+            .eula-button { height: 32px; font-size: 12px; line-height: 14px; }
+        }
+        
+        @media (max-height: 410px) {
+            .eula-container {  max-height: 320px; }
+            .eula-content { height: 100px; }
+            .eula-header { height: 42px; }
+            .eula-title { line-height: 24px; font-size: 16px; }
+            .eula-logo { max-height: 24px; max-width: 24px; }
+            .eula-acceptance { font-size: 14px; line-height: 14px; }
+            .eula-accept-terms {  width: 14px; height: 14px; }
+            .eula-button {  font-size: 16px; line-height: 16px; }
+        }
+        
+        @media (max-height: 320px) {
+            .eula-container {  background-image: none; }
+            .eula-content { height: 80px; font-size: 12px; }
+            .eula-footer { padding-bottom: 5px; }
+            .eula-button { height: 32px; font-size: 12px; line-height: 14px; }
+            .eula-acceptance { padding: 6px 0px 6px 0px; }
+            .eula-header { background-image: none; background-color: #61666D; height: 38px; }
+            .eula-title { font-size: 14px; line-height: 24px; }
+            .eula-logo { max-height: 24px; max-width: 24px; }
+        }
+        
+            </style>
+        
+        
+        <script type="text/javascript">
+            
+            "use strict";
+            
+            var fseula = {};
+            fseula.accepted = false;
+            fseula.settings = {};
+            fseula.settings.checkInterval = 500;
+            fseula.settings.maxLoadTime = 10000;
+            
+            fseula.settings.timesChecked = 0;
+            fseula.settings.loadedImages = 0;
+            fseula.settings.intervalID = null;
+            
+            fseula.settings.platform = "";
+            
+            
+            fseula.checkPromoPlatform = function () {
+                
+                var userAgent = window.navigator.userAgent.toLowerCase(),
+                ios = /iphone|ipod|ipad/.test(userAgent),
+                windows = /Windows Phone|iemobile|WPDesktop/i.test(userAgent);
+                
+                if (ios) {
+                    fseula.settings.platform = 'ios';
+                } else if (windows) {
+                    fseula.settings.platform = 'windows';
+                } else if (typeof Android !== 'undefined') {
+                    fseula.settings.platform = 'android';
+                } else {
+                    fseula.settings.platform = 'other';
+                }
+                
+            };
+        
+        fseula.onTermsAccepted = function () {
+            var d = document.getElementById("eula-accept-button");
+            if (document.getElementById('eula-acceptance-checkbox').checked) {
+                fseula.accepted = true;
+                d.className += " eula-button-accepted";
+            } else {
+                fseula.accepted = false;
+                d.className = "eula-button eula-button-accept";
+            }
+        };
+        
+        fseula.onAccept = function () {
+            /* if (!fseula.accepted) {
+             return false;
+             } */
+            
+            if (fseula.settings.platform === "android") {
+                Android.eulaAcceptButton();
+            } else if (fseula.settings.platform === "ios") {
+                window.location = "fs-eula-accept://";
+            } else if (fseula.settings.platform === "windows") {
+                window.external.notify("eulaaccept");
+            }
+        };
+        
+        fseula.onCancel = function () {
+            
+            if (fseula.settings.platform === "android") {
+                Android.eulaCanceltButton();
+            } else if (fseula.settings.platform === "ios") {
+                window.location = "fs-eula-cancel://";
+            } else if (fseula.settings.platform === "windows") {
+                window.external.notify("eulacancel");
+            }
+            
+        };
+        fseula.onMore = function () {
+            
+            if (fseula.settings.platform === "android") {
+                Android.eulaMoreButton();
+            } else if (fseula.settings.platform === "ios") {
+                window.location = "fs-eula-more://";
+            } else if (fseula.settings.platform === "windows") {
+                window.external.notify("eulamore");
+            }
+            
+            
+        };
+        
+        fseula.resize = function () {
+            var body = document.body,
+            html = document.documentElement;
+            
+            var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+            document.getElementById('eula-space').setAttribute("style", "height:" + height + "px");
+        };
+        
+        
+        window.onresize = function (event) {
+            fseula.resize();
+        };
+        
+        
+        /**
+         * Observe the promo image load status
+         **/
+        fseula.observeImageLoadStatus = function () {
+            
+            window.onload = function () {
+                
+                for (var i = 0; i < document.getElementsByName('img').length; i++) {
+                    document.getElementsByName('img')[i].onload = function () {
+                        fseula.settings.loadedImages++;
+                    };
+                }
+                fseula.settings.intervalID = setInterval("fseula.checkStatus()", fseula.checkInterval);
+            };
+            
+        };
+        
+        fseula.checkStatus = function () {
+            fseula.settings.timesChecked++;
+            if (fseula.settings.loadedImages >= document.getElementsByName('img').length || fseula.settings.timesChecked * fseula.settings.checkInterval >= fseula.settings.maxLoadTime) {
+                clearInterval(fseula.settings.intervalID);
+                fseula.resize();
+                if (typeof Android !== "undefined") {
+                    
+                    fseula.promoLoaded();
+                    
+                }
+            }
+            
+        };
+        
+        fseula.promoLoaded = function () {
+            Android.promoLoaded();
+        };
+        
+        
+        fseula.checkPromoPlatform();
+        fseula.observeImageLoadStatus();
+        fseula.resize();
+        
+        
+        
+        
+            </script>
+        
+    </body>
+</html>

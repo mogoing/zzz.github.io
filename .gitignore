@@ -1,0 +1,9 @@
+
+# 敏感/本地文件（勿上传）
+mogoing.keystore
+zzz-backend/
+
+_deploy_worker.py
+
+# 部署脚本（含密钥）勿上传
+_deploy_worker.py

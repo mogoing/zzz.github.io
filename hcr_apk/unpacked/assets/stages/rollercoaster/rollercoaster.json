@@ -1,0 +1,39 @@
+//
+// stage definition file
+//
+{
+  "id": "rollercoaster",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "loops",
+      "type": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "loops"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/mountain/sky-bg-cliffs",
+      "terrainTexture": "stages/rollercoaster/terrain-rollercoaster",
+      "terrainTopTexture": "stages/rollercoaster/terrain-rollercoaster-surface",
+      "terrainTopOffset": 0.56,
+      "terrainTopTextureScale": 3.0,
+      "terrainTopTextureWidthScale": 3.0,
+      "dirtParticle": "smoke.plist"
+    }
+  ],
+  "physics": [
+    {
+      "surfaceType": "asphalt",
+      "tractionCategory": "asphalt"
+    }
+  ]
+}

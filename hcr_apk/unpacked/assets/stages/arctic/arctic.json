@@ -1,0 +1,39 @@
+//
+// stage definition file
+//
+{
+  "id": "arctic",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "bridge", 
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "bridge"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/countryside/sky-bg",
+      "terrainTexture": "stages/arctic/arctic-ground",
+      "terrainTopTexture": "stages/arctic/arctic-surface",
+      "dirtParticle": "snow.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.15,
+      "tractionCategory": "snow",
+      "temperature": "cold",
+      "surfaceType": "snow"
+    }
+  ],
+	"coinMultiplier": 1.95
+}

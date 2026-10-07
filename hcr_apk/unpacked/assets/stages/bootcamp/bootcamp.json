@@ -1,0 +1,73 @@
+//
+// stage definition file
+//
+{
+  "id": "bootcamp",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "json"
+  ],
+  "json": [
+    {
+      "blockFile": "stages/bootcamp/bootcamp_blocks.json",
+      "objectFile": "stages/bootcamp/bootcamp_objects.json",
+      "lazyPhysicsCreationSpeed": 6,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false,
+      "isHybrid":  true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "gradientSkyTexture": "stages/bootcamp/sky-bg-bootcamp",
+      "terrainTexture": "stages/bootcamp/terrain-bootcamp",
+      "terrainTopTexture": "stages/bootcamp/terrain-bootcamp-surface",
+      "surfaceHeight": 1.0,
+      "surfaceOffset": -0.6,
+      "terrainTopTextureScale": 3.0,
+      "terrainTopTextureWidthScale": 3.0,
+      "JsonTextureScale": [ 0.1, 1.0 ],
+      "pitTexture": "bootcamp-mud",
+      "skyMovementScale": 0.01,
+      "outdoorTerrainTexture": "stages/bootcamp/terrain-bootcamp-outdoor",
+      "outdoorTerrainTopTexture": "stages/forest/terrain-forest-surface",
+      "useParallaxColorTint": false,
+      "parallaxLayers": [
+        {
+          "continuous": true,
+          "count": 1,
+          "texture": "stages/bootcamp/bootcamp-bg",
+          "speed": [ 2.0, 0.0 ]
+        }
+      ],
+      "dirtParticle": "dirt-grayscale.plist"
+    }
+  ],
+  "camera": [
+    {
+      "limitVelocityEffect": true,
+      "additionalZoom": 0.85
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.45,
+      "surfaceType": "gravel",
+      "spawnOffset": [ 0.0, 0.5 ]
+    }
+  ],
+  "coinMultiplier": 0.4,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true
+
+}

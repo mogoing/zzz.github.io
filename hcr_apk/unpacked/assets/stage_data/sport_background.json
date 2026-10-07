@@ -1,0 +1,28 @@
+{
+	"parallax_layers": [
+		{
+			"zorder":2,
+			"continuous_parallax":true,
+			"texture":"sport-bg",
+			"speed_x":2.5,
+			"speed_y":5.2,
+			"scale_x":1.0,
+			"scale_y":1.0,
+			"position_offset_y": 100.0,
+			"position_offset_x": 0.0,
+			"disable_fade":true
+		},
+		{
+			"zorder":1,
+			"continuous_parallax":true,
+			"texture":"sport-bg2",
+			"speed_x":0.5,
+			"speed_y":0.2,
+			"scale_x":1.0,
+			"scale_y":1.0,
+			"position_offset_y": 50.0,
+			"position_offset_x": 0.0,
+			"disable_fade":true
+		}
+		]
+}

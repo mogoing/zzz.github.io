@@ -1,0 +1,638 @@
+
+{
+	"body" : 
+	[
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture8",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.4119542241096497,
+								0.4119542241096497,
+								-0.4042980372905731,
+								-0.4042980372905731
+							],
+							"y" : [ -0.5, 0.5, 0.4961718916893005, -0.5038281083106995 ]
+						}
+					}
+				},
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture8",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.4119542241096497,
+								0.4119542241096497,
+								-0.4042980372905731,
+								-0.4042980372905731
+							],
+							"y" : [ -0.5, 0.5, 0.4961718916893005, -0.5038281083106995 ]
+						}
+					}
+				}
+			],
+			"name" : "o_fence",
+			"position" : 
+			{
+				"x" : 8.024827957153320,
+				"y" : -0.5908676385879517
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"name" : "o_tent",
+			"position" : 
+			{
+				"x" : 7.579532146453857,
+				"y" : 1.176507234573364
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"name" : "o_warning_wheels",
+			"position" : 
+			{
+				"x" : 4.096044063568115,
+				"y" : 1.240297555923462
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"name" : "o_warning_logs",
+			"position" : 
+			{
+				"x" : 1.339827418327332,
+				"y" : 0.8460053205490112
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"name" : "o_warning_drop",
+			"position" : 
+			{
+				"x" : 2.495906829833984,
+				"y" : 1.117798805236816
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 1.570796370506287,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "MovingPlatform"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.2,
+					"friction" : 0.2,
+					"name" : "fixture7",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.1033371090888977,
+								0.1033371090888977,
+								-0.1003059148788452,
+								-0.1003059148788452
+							],
+							"y" : 
+							[
+								-0.4970407485961914,
+								0.5029592514038086,
+								0.5058104395866394,
+								-0.4941895604133606
+							]
+						}
+					}
+				}
+			],
+			"name" : "o_stonefloor",
+			"position" : 
+			{
+				"x" : 6.350040435791016,
+				"y" : -2.672636270523071
+			},
+			"type" : 1
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "MovingPlatform"
+				},
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.2,
+					"friction" : 0.2,
+					"name" : "fixture7",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.3326850533485413,
+								0.3326850533485413,
+								-0.3414911031723023,
+								-0.3414911031723023
+							],
+							"y" : [ -0.5, 0.5, 0.5132090449333191, -0.4867909550666809 ]
+						}
+					}
+				}
+			],
+			"name" : "o_stonewall",
+			"position" : 
+			{
+				"x" : 5.191166877746582,
+				"y" : -2.672636270523071
+			},
+			"type" : 1
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"name" : "script",
+					"string" : "BouncingBall"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.5
+					},
+					"density" : 0.1273239552974701,
+					"friction" : 0.2,
+					"name" : "fixture6"
+				}
+			],
+			"name" : "o_bouncingball",
+			"position" : 
+			{
+				"x" : 4.878551959991455,
+				"y" : -0.9158292412757874
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : -0.5884289741516113,
+							"y" : 0.1159136295318604
+						},
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4"
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : -0.2896611690521240,
+							"y" : 0.1182194948196411
+						},
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4"
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : 0.5781172513961792,
+							"y" : 0.1099634170532227
+						},
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4"
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : -0.8760025501251221,
+							"y" : 0.1224958896636963
+						},
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4"
+				},
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture5",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								-0.7826718091964722,
+								-0.7856546640396118,
+								-0.9644532203674316,
+								-0.9614703655242920
+							],
+							"y" : 
+							[
+								-0.2367529869079590,
+								0.1230032444000244,
+								0.1230032444000244,
+								-0.2367529869079590
+							]
+						}
+					}
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : 0.8338879346847534,
+							"y" : 0.1132342815399170
+						},
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4"
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : 0.2944487333297730,
+							"y" : 0.1117858886718750
+						},
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4"
+				},
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture5",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.9352654218673706,
+								0.9322825670242310,
+								0.7534840106964111,
+								0.7564668655395508
+							],
+							"y" : 
+							[
+								-0.2470502853393555,
+								0.1127059459686279,
+								0.1127059459686279,
+								-0.2470502853393555
+							]
+						}
+					}
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : 0.01379239559173584,
+							"y" : 0.1201159954071045
+						},
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4"
+				}
+			],
+			"name" : "o_logbench",
+			"position" : 
+			{
+				"x" : 2.046804428100586,
+				"y" : -3.458760738372803
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "noCollision"
+				}
+			],
+			"name" : "o_barrack",
+			"position" : 
+			{
+				"x" : 6.987794399261475,
+				"y" : 2.782226085662842
+			},
+			"type" : 0
+		}
+	],
+	"image" : 
+	[
+		
+		{
+			"body" : 2,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "bootcamp-warning-wheels.png",
+			"name" : "image7",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 9,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "bootcamp-barrack.png",
+			"name" : "image7",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 8,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../log_bench.png",
+			"name" : "image3",
+			"scale" : 0.4854014813899994
+		},
+		
+		{
+			"body" : 3,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "bootcamp-warning-logs.png",
+			"name" : "image7",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 7,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../car-tractor-tire.png",
+			"name" : "image4",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 4,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "bootcamp-warning-drop.png",
+			"name" : "image7",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 6,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../stonewall-repeat.png",
+			"name" : "image5",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 0,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../bootcamp-fence.png",
+			"name" : "image7",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 1,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "bootcamp-tent.png",
+			"name" : "image7",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 5,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../stonewall-repeat.png",
+			"name" : "image5",
+			"scale" : 1
+		}
+	]
+}

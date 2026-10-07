@@ -1,0 +1,149 @@
+//
+// stage definition file
+//
+{
+  "id": "prog",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "json"
+  ],
+  "json": [
+    {
+      "blockFile": "stages/prog/prog_blocks.json",
+      "objectFile": "stages/prog/prog_objects.json",
+      "lazyPhysicsCreationSpeed": 6,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false,
+      "isHybrid": true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "skyTextures": [ "stages/neon/sky-bg-synth", "stages/neon/sky-bg-synth", "stages/neon/sky-bg-synth", "stages/neon/sky-bg-synth" ],
+      "terrainTextures": [ "stages/prog/terrain-progrock", "stages/prog/terrain-progrock-alt", "stages/prog/terrain-progrock-crystal", "stages/prog/terrain-progrock-alt" ],
+      "terrainTopTextures": [ "stages/prog/terrain-progrock-surface", "stages/prog/terrain-progrock-alt-surface", "stages/prog/terrain-progrock-crystal-surface", "stages/prog/terrain-progrock-alt-surface" ],
+      "backgroundTextures": [ "stages/prog/progrock-bg", "stages/prog/progrock-bg2", "stages/prog/progrock-bg-alt", "stages/prog/progrock-bg2-alt" ],
+      "backgroundTreeTextures": [ "stages/prog/progrock-tree", "stages/prog/progrock-tree", "stages/prog/progrock-tree-alt", "stages/prog/progrock-tree-alt" ],
+      "backgroundSkyTextures": [ "stages/prog/progrock-bg-sky", "stages/prog/progrock-bg-sky", "stages/prog/progrock-bg-sky-alt", "stages/prog/progrock-bg-sky-alt" ],
+      "skyPropTextures": [ "stages/prog/prog-empty", "stages/prog/prog-alpaca" ],
+      "surfaceHeight": 1.2,
+      "surfaceOffset": -0.8,
+      "JsonTextureScale": [ 0.11, 1.1 ],
+      "terrainTopTextureWidthScale": 1.0,
+      "dirtParticle": "rocks.plist"
+    }
+  ],
+  "music": [
+    {
+      "track": "audio/bgmusic-prog",
+      "volume": 0.75
+    }
+  ],
+  "camera": [
+    {
+      "limitVelocityEffect": true
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.45,
+      "surfaceType": "rock",
+      "spawnOffset": [ 0.0, 0.5 ]
+    }
+  ],
+  "coinMultiplier": 0.4,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true,
+  "parallax_layers": [
+    {
+      "zorder": 1,
+      "continuous_parallax": true,
+      "stretch_to_screen": true,
+      "texture": "stages/prog/progrock-bg-sky",
+      "speed_x": 1.0,
+      "speed_y": 0.1,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true
+    },
+    {
+      "zorder": 2,
+      "continuous_parallax": true,
+      "stretch_to_screen": true,
+      "texture": "stages/prog/progrock-bg",
+      "speed_x": 2.0,
+      "speed_y": 0.2,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true
+    },
+    {
+      "zorder": 3,
+      "count": 2,
+      "continuous_parallax": false,
+      "texture": "stages/prog/prog-empty",
+      "speed_x": 1.0,
+      "basespeed_x": 5.5,
+      "basespeed_y": 0.1,
+      "scale_x": 0.4,
+      "scale_y": 0.4,
+      "position_offset_y": 450,
+      "position_offset_x": 220,
+      "disable_fade": false,
+      "disable_flip": true,
+      "y_relative_to_camera": false,
+      "hasAnimation": true,
+      "animationSpeed": 1.5,
+      "animationAmp": 0.5
+    },
+    {
+      "zorder": 4,
+      "count": 2,
+      "continuous_parallax": false,
+      "texture": "stages/prog/progrock-tree",
+      "speed_x": 3.0,
+      "speed_y": 0.0,
+      "scale_x": 0.7,
+      "scale_y": 0.7,
+      "position_offset_y": -10.0,
+      "position_offset_x": -200.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    },
+    {
+      "zorder": 5,
+      "count": 1,
+      "continuous_parallax": false,
+      "texture": "stages/prog/progrock-tree",
+      "speed_x": 4.0,
+      "speed_y": 0.0,
+      "scale_x": 0.9,
+      "scale_y": 0.9,
+      "position_offset_y": 0.0,
+      "position_offset_x": -490.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    }
+  ]
+
+}

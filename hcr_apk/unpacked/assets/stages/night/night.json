@@ -1,0 +1,36 @@
+//
+// stage definition file
+//
+{
+  "id": "night",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm"
+  ],
+  "graphics": [
+    {
+      "skyTexture": "stages/night/sky-bg-night",
+      "gradientSkyTexture": "stages/night/sky-bg-night-fade",
+      "terrainTexture": "stages/night/terrain-night",
+      "terrainTopTexture": "stages/night/terrain-night-surface",
+      "terrainTopOffset": -0.05,
+      "terrainTopTextureScale": 0.5,
+      "isDark": true,
+      "moonTexture": "stages/night/moon",
+      "moonTextureScale": 0.28,
+      "dirtParticle": "dirt.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.45
+    }
+  ]
+}

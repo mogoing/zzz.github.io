@@ -1,0 +1,48 @@
+//
+// stage definition file
+//
+{
+  "id": "cave",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "bridge",
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "bridge"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/cave/sky-bg-cave",
+      "terrainTexture": "stages/countryside/terrain-ground",
+      "terrainTopTexture": "stages/cave/terrain-cave-surface",
+      "terrainTopOffset": -0.115,
+      "terrainTopTextureScale": 0.5,
+      "ceiling": [
+        {
+          "ceilingTexture": "stages/countryside/terrain-ground",
+          "ceilingTopTexture": "stages/cave/terrain-cave-surface",
+          "ceilingTopOffset": 0.245,
+          "ceilingTopTextureScale": 0.5
+        }
+      ],
+      "dirtParticle": "rocks.plist"
+    }
+  ],
+  "physics": [
+    {
+      "tractionCategory": "asphalt",
+      "surfaceType": "rock"
+    }
+  ],
+  "coinMultiplier": 1.7,
+  "coinHeightOffset": -0.5
+}

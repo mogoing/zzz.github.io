@@ -1,0 +1,51 @@
+//
+// stage definition file
+//
+{
+  "id": "mars",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "bridge",
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "bridge"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/mars/sky-bg-mars",
+      "terrainTexture": "stages/mars/mars-ground",
+      "terrainTopTexture": "stages/mars/terrain-mars-surface",
+      "terrainTopOffset": -0.115,
+      "terrainTopTextureScale": 0.5,
+      "ceiling": [
+        {
+          "ceilingTexture": "stages/mars/mars-ground",
+          "ceilingTopTexture": "stages/mars/terrain-mars-surface",
+          "ceilingTopOffset": 0.245,
+          "ceilingTopTextureScale": 0.5
+        }
+      ],
+      "dirtParticle": "rocks-mars.plist"
+    }
+  ],
+  "physics": [
+    {
+      "gravity": [ 0.0, -5.0 ],
+      "tractionCategory": "space",
+      "temperature": "cold",
+      "surfaceType": "rock"
+    }
+  ],
+  "coinMultiplier": 1.7,
+  "coinHeightOffset": -0.5
+
+}

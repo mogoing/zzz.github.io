@@ -1,0 +1,68 @@
+//
+// stage definition file
+//
+{
+  "id": "rainbow",
+  "type": "adventure",
+  "json": [
+    {
+      "blockFile": "stages/rainbow/rainbow_blocks.json",
+      "blocks": [
+        // Easy blocks
+        "easy01",
+        "up01",
+        "hills01",
+        "choice01",
+        "easy02",
+        "up02",
+        "hills02",
+        "roof01",
+        "choice02",
+        "hills03",
+
+        // Advanced blocks
+        "up03",
+        "flip01",
+        "up04",
+        "drop01",
+        "up05",
+        "drop02",
+        "flip02",
+        "up06",
+        "drop03"
+      ]
+    }
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/rainbow/sky-bg-rainbow",
+      "hasTerrain": false,
+      "terrainTexture": "stages/rainbow/terrain-rainbow",
+      "terrainTopTexture": "stages/rainbow/terrain-rainbow-surface",
+      "terrainTopTextureScale": 3.0,
+      "terrainTopTextureWidthScale": 3.0,
+      "JsonTextureScale": [ 0.3, 1.0 ],
+      "hasEarth": true,
+      "hasSun": true,
+      "dirtParticle": "dirt-star.plist"
+    }
+  ],
+  "camera": [
+    {
+      "limitVelocityEffect": true,
+      "additionalZoom": 0.85
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.2,
+      "surfaceType": "rock",
+      "tractionCategory": "asphalt",
+      "hasFallDeath": true,
+      "spawnOffset": [ 0.0, 2.0 ]
+    }
+  ],
+  "coinMultiplier": 1.5,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true
+}

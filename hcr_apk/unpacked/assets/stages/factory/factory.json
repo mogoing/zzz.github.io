@@ -1,0 +1,69 @@
+//
+// stage definition file
+//
+{
+  "id": "factory",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "json"
+  ],
+  "json": [
+    {
+      "blockFile": "stages/factory/factory_blocks.json",
+      "objectFile": "stages/factory/factory_objects.json",
+      "lazyPhysicsCreationSpeed": 2,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false
+    }
+  ],
+  "props": [
+    {
+      "belts": true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "terrainTexture": "stages/factory/terrain-factory",
+      "terrainTopTexture": "stages/factory/terrain-factory-surface",
+      "surfaceHeight": 1.0,
+      "surfaceOffset": -0.6,
+      "terrainTopTextureScale": 3.0,
+      "terrainTopTextureWidthScale": 3.0,
+      "JsonTextureScale": [ 0.1, 1.0 ],
+      "indoorTexture": "stages/factory/factory-bg-fill.png",
+      "outdoorSkyTexture": "stages/bootcamp/sky-bg-bootcamp.png",
+      "skyMovementScale": 0.01,
+      "outdoorDoorTexture": "stages/factory/factory-door",
+      "ceiling": [],
+      "dirtParticle": "smoke.plist"
+    }
+  ],
+  "camera": [
+    {
+      "limitVelocityEffect": true,
+      "additionalZoom": 0.7
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.4,
+      "surfaceType": "asphalt",
+      "tractionCategory": "asphalt",
+      "spawnOffset": [ 0.0, 2.0 ]
+    }
+  ],
+  "coinMultiplier": 0.4,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true
+
+}

@@ -1,0 +1,109 @@
+//
+// stage definition file
+//
+{
+  "id": "jungle",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "json"
+  ],
+  "props": [
+    {
+      "outdoor": true
+    }
+  ],
+  "json": [
+    {
+      "blockFile": "stages/jungle/jungle_blocks.json",
+      "objectFile": "stages/jungle/jungle_objects.json",
+      "lazyPhysicsCreationSpeed": 6,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false,
+      "isHybrid": true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "gradientSkyTexture": "stages/jungle/sky-bg-jungle",
+      "terrainTexture": "stages/jungle/terrain-jungle-ground",
+      "terrainTopTexture": "stages/jungle/terrain-jungle-surface",
+      "surfaceHeight": 1.0,
+      "surfaceOffset": -0.6,
+      "terrainTopTextureScale": 3.0,
+      "terrainTopTextureWidthScale": 3.0,
+      "JsonTextureScale": [ 0.1, 1.0 ],
+      "skyMovementScale": 0.01,
+      "outdoorTerrainTexture": "stages/jungle/terrain-jungle-ground",
+      "outdoorTerrainTopTexture": "stages/jungle/terrain-jungle-surface",
+      "dirtParticle": "dirt-grayscale.plist",
+      "burnAnimation": true
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.45,
+      "surfaceType": "gravel",
+      "spawnOffset": [ 0.0, 0.5 ]
+    }
+  ],
+  "coinMultiplier": 0.4,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true,
+	"parallax_layers": [
+    {
+      "zorder": 1,
+      "continuous_parallax": true,
+      "texture": "stages/jungle/jungle-bg",
+      "speed_x": 2.0,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true
+    },
+    {
+      "zorder": 4,
+      "count": 2,
+      "continuous_parallax": false,
+      "texture": "stages/jungle/jungle-tree",
+      "speed_x": 3.0,
+      "speed_y": 0.0,
+      "scale_x": 0.5,
+      "scale_y": 0.5,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    },
+    {
+      "zorder": 5,
+      "count": 2,
+      "continuous_parallax": false,
+      "texture":"stages/jungle/jungle-tree",
+      "speed_x": 4.0,
+      "speed_y": 0.0,
+      "scale_x": 0.5,
+      "scale_y": 0.5,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    }    
+	]
+}

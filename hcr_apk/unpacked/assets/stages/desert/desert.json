@@ -1,0 +1,38 @@
+//
+// stage definition file
+//
+{
+  "id": "desert",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "bridge", 
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "bridge"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/countryside/sky-bg",
+      "terrainTexture": "stages/desert/desert-ground",
+      "terrainTopTexture": "stages/desert/desert-surface",
+      "dirtParticle": "dirt.plist"
+    }
+  ],
+  "physics": [
+    {
+      "gravity": [ 0.0, -10.0 ],
+      "friction": 0.5,
+      "tractionCategory": "gravel"
+    }
+  ],
+	"coinMultiplier": 1.75
+}

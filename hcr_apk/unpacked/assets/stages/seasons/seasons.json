@@ -1,0 +1,114 @@
+//
+// stage definition file
+//
+{
+  "id": "seasons",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "json"
+  ],
+  "json": [
+    {
+      "blockFile": "stages/seasons/seasons_blocks.json",
+      "objectFile": "stages/bootcamp/bootcamp_objects.json",
+      "lazyPhysicsCreationSpeed": 6,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false,
+      "isHybrid": true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "skyTextures": [ "stages/seasons/seasons-spring-sky", "stages/seasons/seasons-summer-sky", "stages/seasons/seasons-autumn-sky", "stages/seasons/seasons-winter-sky" ],
+      "terrainTextures": [ "stages/northpole/terrain-northpole", "stages/northpole/terrain-northpole", "stages/northpole/terrain-northpole", "stages/northpole/terrain-northpole" ],
+      "terrainTopTextures": [ "stages/seasons/terrain-seasons-spring-surface", "stages/seasons/terrain-seasons-summer-surface", "stages/haunted/terrain-haunted-surface", "stages/xmas/terrain-xmas-surface" ],
+      "outdoorTerrainTextures": [ "stages/arctic/arctic-ground", "stages/arctic/arctic-ground", "stages/arctic/arctic-ground", "stages/arctic/arctic-ground" ],
+      "backgroundTextures": [ "stages/seasons/seasons-spring-bg", "stages/seasons/seasons-summer-bg", "stages/seasons/seasons-autumn-bg", "stages/seasons/seasons-winter-bg" ],
+      "backgroundTreeTextures": [ "stages/seasons/seasons-spring-tree", "stages/seasons/seasons-summer-tree", "stages/seasons/seasons-autumn-tree", "stages/seasons/seasons-winter-tree" ],
+      "surfaceHeight": 1.0,
+      "surfaceOffset": -0.6,
+      "terrainTopTextureScale": 3.0,
+      "terrainTopTextureWidthScale": 3.0,
+      "JsonTextureScale": [ 0.1, 1.0 ],
+      "skyMovementScale": 0.01,
+      "dirtParticle": "dirt-grayscale.plist"
+    }
+  ],
+  "camera": [
+    {
+      "limitVelocityEffect": true,
+      "additionalZoom": 0.85
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.45,
+      "surfaceType": "gravel",
+      "spawnOffset": [ 0.0, 0.5 ]
+    }
+  ],
+  "coinMultiplier": 0.4,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true,
+
+  "parallax_layers": [
+
+    {
+      "zorder": 1,
+      "continuous_parallax": true,
+      "texture": "stages/seasons/seasons-spring-bg",
+      "speed_x": 2.0,
+      "scale_x": 1.5,
+      "scale_y": 1.5,
+      "position_offset_y": 0.0,
+      "position_offset_x": -200.0,
+      "disable_fade": true
+    },
+    {
+      "zorder": 4,
+      "count": 2,
+      "continuous_parallax": false,
+      "texture": "stages/seasons/seasons-spring-tree",
+      "speed_x": 3.0,
+      "speed_y": 0.0,
+      "scale_x": 0.7,
+      "scale_y": 0.7,
+      "position_offset_y": -50.0,
+      "position_offset_x": -200.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": true,
+      "disable_in_lowres": true
+    },
+
+    {
+      "zorder": 5,
+      "count": 2,
+      "continuous_parallax": false,
+      "texture": "stages/seasons/seasons-spring-tree",
+      "speed_x": 4.0,
+      "speed_y": 0.0,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": -50.0,
+      "position_offset_x": -490.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": true,
+      "disable_in_lowres": true
+    }
+  ]
+
+}

@@ -1,0 +1,543 @@
+
+{
+	"body" : 
+	[
+		
+		{
+			"angle" : 0,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture5",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.5, 0.5, -0.5, -0.5 ],
+							"y" : [ -0.5, 0.5, 0.5, -0.5 ]
+						}
+					}
+				}
+			],
+			"name" : "o_pipe",
+			"position" : 0,
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture6",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.5, 0.5, -0.5, -0.5 ],
+							"y" : [ -0.5, 0.5, 0.5, -0.5 ]
+						}
+					}
+				}
+			],
+			"name" : "o_pipe_end",
+			"position" : 
+			{
+				"x" : 5.894561290740967,
+				"y" : 0.02345316112041473
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture4",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 1, 1, -1, -1 ],
+							"y" : [ -0.1, 0.1, 0.1, -0.1 ]
+						}
+					}
+				}
+			],
+			"name" : "o_rotator",
+			"position" : 
+			{
+				"x" : 2.433664321899414,
+				"y" : -1.564846038818359
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				},
+				
+				{
+					"float" : 0.4,
+					"name" : "motorSpeed"
+				},
+				
+				{
+					"float" : 0,
+					"name" : "motorTorque"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : -0.008168014697730541,
+							"y" : -0.009977698326110840
+						},
+						"radius" : 0.08025556802749634
+					},
+					"density" : 0.6,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				},
+				
+				{
+					"density" : 0.6,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.9821665287017822,
+								0.9813520312309265,
+								0.04894088953733444,
+								0.05202140659093857
+							],
+							"y" : 
+							[
+								-0.02570343017578125,
+								0.01152336597442627,
+								0.03806459903717041,
+								-0.04175233840942383
+							]
+						}
+					}
+				},
+				
+				{
+					"density" : 0.6,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								-0.07181190699338913,
+								-0.07181190699338913,
+								-0.9877529740333557,
+								-0.9883841276168823
+							],
+							"y" : 
+							[
+								-0.05079606920480728,
+								0.02918720245361328,
+								0.01759803295135498,
+								-0.01968061923980713
+							]
+						}
+					}
+				}
+			],
+			"name" : "o_mill",
+			"position" : 
+			{
+				"x" : 0.002592349890619516,
+				"y" : -1.016759991645813
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : false,
+					"name" : "pinned"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.03798392415046692,
+					"friction" : 0.2,
+					"name" : "fixture3",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.3999085426330566,
+								0.3999085426330566,
+								-0.3898992538452148,
+								-0.3898992538452148
+							],
+							"y" : [ -0.5, 0.5, 0.4949953556060791, -0.5050046443939209 ]
+						}
+					}
+				}
+			],
+			"name" : "o_table2",
+			"position" : 
+			{
+				"x" : 3.090788602828980,
+				"y" : -0.09488002210855484
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"name" : "o_warning",
+			"position" : 
+			{
+				"x" : 4.426467895507813,
+				"y" : -1.361755847930908
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				},
+				
+				{
+					"float" : 0.4,
+					"name" : "motorSpeed"
+				},
+				
+				{
+					"float" : 0,
+					"name" : "motorTorque"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 2,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								-0.07715339213609695,
+								-0.07715339213609695,
+								-0.9810478687286377,
+								-0.9816790223121643
+							],
+							"y" : 
+							[
+								-0.04344192892313004,
+								0.03654134273529053,
+								0.01717519760131836,
+								-0.02010345458984375
+							]
+						}
+					}
+				},
+				
+				{
+					"density" : 2,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.9709475040435791,
+								0.9701330065727234,
+								0.05497863143682480,
+								0.05805914849042893
+							],
+							"y" : 
+							[
+								-0.02963364124298096,
+								0.007593154907226563,
+								0.03577899932861328,
+								-0.04403793811798096
+							]
+						}
+					}
+				},
+				
+				{
+					"circle" : 
+					{
+						"center" : 
+						{
+							"x" : -0.006883785128593445,
+							"y" : -0.008774638175964356
+						},
+						"radius" : 0.08446848392486572
+					},
+					"density" : 2,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"name" : "o_heavymill",
+			"position" : 
+			{
+				"x" : 0.004823530558496714,
+				"y" : -1.701733708381653
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : false,
+					"name" : "noCollision"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "pinned"
+				},
+				
+				{
+					"float" : 0,
+					"name" : "motorSpeed"
+				},
+				
+				{
+					"float" : 0,
+					"name" : "motorTorque"
+				}
+			],
+			"fixture" : 
+			[
+				
+				{
+					"density" : 0.6,
+					"friction" : 0.2,
+					"name" : "fixture0",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								0.4199435710906982,
+								0.4166921377182007,
+								-0.2995472550392151,
+								-0.3971664309501648,
+								-0.4648485779762268
+							],
+							"y" : 
+							[
+								-0.2268286943435669,
+								0.1646851301193237,
+								0.1262603700160980,
+								-0.01327554881572723,
+								-0.2305597662925720
+							]
+						}
+					}
+				}
+			],
+			"name" : "o_table",
+			"position" : 
+			{
+				"x" : 1.681931972503662,
+				"y" : -0.3992092609405518
+			},
+			"type" : 0
+		}
+	],
+	"image" : 
+	[
+		
+		{
+			"angle" : 1.578574776649475,
+			"body" : 3,
+			"center" : 
+			{
+				"x" : -0.007361084222793579,
+				"y" : 0.001002073287963867
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../nuclear-mill.png",
+			"name" : "image6",
+			"scale" : 1.979987502098084
+		},
+		
+		{
+			"body" : 5,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../nuclear-toxic-warning.png",
+			"name" : "image2",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 4,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../nuclear-table2.png",
+			"name" : "image1",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 0,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../factory-pipe.png",
+			"name" : "image4",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 2,
+			"center" : 
+			{
+				"x" : 0.003570795059204102,
+				"y" : 0.004618048667907715
+			},
+			"file" : "../../brick.png",
+			"name" : "image3",
+			"scale" : 0.2
+		},
+		
+		{
+			"angle" : 1.578574776649475,
+			"body" : 6,
+			"center" : 
+			{
+				"x" : -0.007361084222793579,
+				"y" : 0.001002073287963867
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../nuclear-mill.png",
+			"name" : "image6",
+			"scale" : 1.979987502098084
+		},
+		
+		{
+			"body" : 1,
+			"center" : 0,
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../factory-pipe-end.png",
+			"name" : "image5",
+			"scale" : 1
+		},
+		
+		{
+			"body" : 7,
+			"center" : 
+			{
+				"x" : 0,
+				"y" : -0.001666048076003790
+			},
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "base"
+				}
+			],
+			"file" : "../../nuclear-table.png",
+			"name" : "image0",
+			"scale" : 0.4452175498008728
+		}
+	]
+}

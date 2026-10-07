@@ -1,0 +1,72 @@
+//
+// stage definition file
+//
+{
+  "id": "space_mission",
+  "type": "mission",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm"
+  ],
+  "json": [
+    {
+      "blockFile": "stages/space_mission/space_mission_blocks.json",
+      "objectFile": "stages/space_mission/space_mission_objects.json",
+      "lazyPhysicsCreationSpeed": 6,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false,
+      "isHybrid": true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "gradientSkyTexture": "stages/moon/moon-bg",
+      "terrainTexture": "stages/moon/moon-ground",
+      "terrainTopTexture": "stages/moon/moon-surface",
+      "JsonTextureScale": [ 0.1, 1.0 ],
+      "dirtParticle": "dirt-grayscale.plist"
+    }
+  ],
+  "camera": [
+    {
+      "limitVelocityEffect": true
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.45,
+      "surfaceType": "gravel",
+      "spawnOffset": [ 0.0, 0.5 ]
+    }
+  ],
+  "hasFuel": false,
+  "firstCoinChunkPosition": 10000,
+
+  "parallax_layers": [
+    {
+      "zorder": 1,
+      "continuous_parallax": true,
+      "stretch_to_screen": true,
+      "texture": "stages/space_mission/bg-space",
+      "textureAlt": "stages/space_mission/gravitygrid",
+      "textureFiltering": false,
+      "shader": "gravitygrid",
+      "speed_x": -0.5,
+      "speed_y": 0.5,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_flip": true,
+      "disable_fade": true
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+//
+// stage definition file
+//
+{
+  "id": "tricktrack",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "json"
+  ],
+  "json": [
+    {
+      "blockFile": "stages/tricktrack/tricktrack_blocks.json",
+      "objectFile": "stages/tricktrack/tricktrack_objects.json",
+      "lazyPhysicsCreationSpeed": 6,
+      "useBottomDraw": true,
+      "useSingleEdgeMode": true,
+      "useInterpolation": false,
+      "isHybrid": true
+    }
+  ],
+  "graphics": [
+    {
+      "hasTerrain": false,
+      "gradientSkyTexture": "stages/tricktrack/sky-bg-arena",
+      "terrainTexture": "stages/tricktrack/terrain-arena",
+      "terrainTopTexture": "stages/tricktrack/terrain-arena-surface",
+      "surfaceHeight": 1.0,
+      "surfaceOffset": -0.6,
+      "terrainTopTextureScale": 3.0,
+      "terrainTopTextureWidthScale": 3.0,
+      "JsonTextureScale": [ 0.1, 1.0 ],
+      "skyMovementScale": 0.01,
+      "outdoorTerrainTexture": "stages/tricktrack/terrain-arena",
+      "outdoorTerrainTopTexture": "stages/tricktrack/terrain-arena-surface",
+      "dirtParticle": "dirt-grayscale.plist",
+      "burnAnimation": true
+    }
+  ],
+  "camera": [
+    {
+      "limitVelocityEffect": true
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.45,
+      "surfaceType": "gravel",
+      "spawnOffset": [ 0.0, 0.5 ]
+    }
+  ],
+  "coinMultiplier": 0.4,
+  "coinHeightOffset": 1.7,
+  "useRaycastCoinPlacement": true,
+
+  "parallax_layers": [
+
+    {
+      "zorder": 1,
+      "continuous_parallax": true,
+      "texture": "stages/tricktrack/arena-bg",
+      "speed_x": 2.0,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": -200.0,
+      "disable_fade": true,
+      "disable_flip": false,
+      "enable_flash_effect": true,
+      "flash_particle_amount": 30
+    }
+  ]
+
+}

@@ -1,0 +1,54 @@
+//
+// stage definition file
+//
+{
+  "id": "haunted",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "haunted",
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "haunted"
+  ],
+  "music": [
+    {
+      "track": "audio/bgmusic-halloween",
+      "volume": 1.0
+    }
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/haunted/sky-bg-haunted",
+      "moonTexture": "stages/haunted/moon-halloween",
+      "terrainTexture": "stages/haunted/terrain-haunted",
+      "terrainTopTexture": "stages/haunted/terrain-haunted-surface",
+      "terrainTopOffset": 0.05,
+      "terrainTopTextureWidthScale": 1.0,
+      "dirtParticle": "dirt-grayscale.plist",
+      "parallaxLayers": [
+        {
+          "continuous": true,
+          "count": 1,
+          "texture": "stages/haunted/haunted-bg",
+          "speed": [ 2.0, 0.0 ]
+        }
+      ]
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.5,
+      "surfaceType": "sand"
+    }
+  ],
+  "coinMultiplier": 1.5
+}

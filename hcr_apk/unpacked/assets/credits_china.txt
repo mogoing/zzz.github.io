@@ -1,0 +1,100 @@
+
+登山赛车
+
+Fingersoft 2012-2016 版权所有。
+
+制作团队
+
+编程:
+Toni Fingerroos
+Teemu Närhi
+Marko Brockman
+Esa Kauppinen
+Niklas Kumpulainen
+Lee Stoddart
+Markku Voho
+
+美术:
+Pia Turunen
+Samuel Hyry
+Tuomas Soukka
+Kimmo Äijälä
+Henri Heikkinen
+Thomas Wahlberg
+
+测试:
+Pia Turunen
+Sami-Jukka Piippo
+Thomas Heinze
+
+其他设计和测试:
+Samuli Polvi
+Joel Kaukaoja
+
+音乐
+
+来源于playonloop网站
+
+音效来源
+
+拾金币:
+
+来源于Freesound网站
+
+骨头折断:
+
+来源于Freesound网站
+
+文字出现 (奖励等):
+
+来源于Freesound网站
+
+点击菜单:
+
+来源于Freesound网站
+
+燃油量低提醒:
+
+来源于Freesound网站
+
+购买音效:
+
+来源于Freesound网站
+
+拍照音效:
+
+来源于Freesound网站
+
+火车引擎:
+
+来源于Freesound网站
+
+火车轰鸣:
+
+来源于Freesound网站
+
+赛车引擎:
+
+来源于Freesound网站
+
+警车音效:
+
+来源于Freesound网站
+
+轿车引擎:
+
+开发团队原创 :)
+
+其他资源
+
+Cocos2D-x:
+
+cocos2d-x网站
+
+解锁图标:
+
+来源于newidols网站
+
+感谢您对《登山赛车》的喜爱和支持！
+
+我们希望您能享受游戏给您带来的乐趣！

@@ -1,0 +1,53 @@
+//
+// stage definition file
+//
+{
+  "id": "arcticcave",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "bridge",
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "bridge"
+  ],
+  "props": [
+    {
+      "iceshards": true
+    }
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/arcticcave/sky-bg-arctic-cave",
+      "terrainTexture": "stages/arctic/arctic-ground",
+      "terrainTopTexture": "stages/arctic/arctic-surface",
+      "ceiling": [
+        {
+          "ceilingTexture": "stages/arctic/arctic-ground",
+          "ceilingTopTexture": "stages/arctic/arctic-surface",
+          "ceilingTopOffset": 0.245
+        }
+      ],
+      "dirtParticle": "snow.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.07,
+      "tractionCategory": "snow",
+      "temperature": "cold",
+      "surfaceType": "snow"
+    }
+  ],
+  "coinMultiplier": 1.7,
+  "coinHeightOffset": -0.5
+
+}

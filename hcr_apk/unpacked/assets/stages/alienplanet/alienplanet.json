@@ -1,0 +1,37 @@
+//
+// stage definition file
+//
+{
+  "id": "alienplanet",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/alienplanet/sky-bg-spacecraft",
+      "terrainTexture": "stages/alienplanet/terrain-alien",
+      "terrainTopTexture": "stages/alienplanet/terrain-alien-surface",
+      "terrainTopOffset": -0.125,
+      "terrainTopTextureScale": 0.5,
+      "terrainShader": "terrain_electric_shader",
+      "dirtParticle": "alien-slime.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.07,
+      "tractionCategory": "space",
+      "surfaceType": "alienslime"
+    }
+  ],
+  "coinMultiplier": 1.15
+
+}

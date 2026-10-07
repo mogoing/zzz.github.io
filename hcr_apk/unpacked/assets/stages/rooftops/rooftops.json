@@ -1,0 +1,43 @@
+//
+// stage definition file
+//
+{
+  "id": "rooftops",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "building",
+      "type": "rooftops"
+    }
+  ],
+  "blocks": [
+    "building"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/rooftops/sky-bg-rooftops",
+      "hasTerrain": false,
+      "terrainTexture": "stages/highway/highway-ground",
+      "terrainTopTexture": "stages/alienplanet/terrain-alien-surface",
+      "terrainTopOffset": -0.25,
+      "terrainTopTextureWidthScale": 1.0,
+      "hasClouds": true,
+      "cloudPosition": "low",
+      "dirtParticle": "smoke.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.195,
+      "surfaceType": "asphalt",
+      "tractionCategory": "asphalt",
+      "hasFallDeath": true
+    }
+  ],
+  "coinHeightOffset": 2.0,
+  "coinPlacementOffset": 1.5,
+  "firstCoinChunkPosition": 61.0,
+  "coinSpawnOffset": 60.0,
+  "useRaycastCoinPlacement": true
+
+}

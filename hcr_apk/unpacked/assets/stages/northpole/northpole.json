@@ -1,0 +1,57 @@
+//
+// stage definition file
+//
+{
+  "id": "northpole",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "northpole",
+      "type": "code"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "northpole"
+  ],
+  "music": [
+    {
+      "volume": 1.0
+    }
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/northpole/sky-bg-northpole",
+      "moonTexture": "stages/northpole/moon-northpole",
+      "moonTextureScale": 0.7,
+      "terrainTexture": "stages/northpole/terrain-northpole",
+      "terrainTopTexture": "stages/xmas/terrain-xmas-surface",
+      "terrainTopOffset": 0.05,
+      "terrainTopTextureWidthScale": 1.0,
+      "dirtParticle": "snow.plist",
+      "useParallaxColorTint": false,
+      "parallaxLayers": [
+        {
+          "continuous": true,
+          "count": 1,
+          "texture": "stages/northpole/northpole-bg",
+          "speed": [ 2.0, 0.0 ]
+        }
+      ]
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.5,
+      "temperature": "cold",
+      "surfaceType": "snow",
+      "tractionCategory": "snow"
+    }
+  ],
+  "coinMultiplier": 0.1
+}

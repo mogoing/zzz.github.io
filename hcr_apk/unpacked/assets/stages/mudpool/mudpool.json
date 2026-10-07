@@ -1,0 +1,41 @@
+//
+// stage definition file
+//
+{
+  "id": "mudpool",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    },
+    {
+      "id": "pits",
+      "type": "mud"
+    }
+  ],
+  "blocks": [
+    "algorithm",
+    "pits"
+  ],
+  "graphics": [
+    {
+      "gradientSkyTexture": "stages/mudpool/sky-bg-mud",
+      "terrainTexture": "stages/mudpool/terrain-mud",
+      "terrainTopTexture": "stages/mudpool/terrain-mud-surface",
+      "terrainTopOffset": -0.125,
+      "pitTexture": "mud",
+      "dirtParticle": "dirt-mud.plist"
+    }
+  ],
+  "physics": [
+    {
+      "friction": 0.1,
+      "tractionCategory": "mud",
+      "surfaceType": "mud"
+    }
+  ],
+  "coinMultiplier": 1.7
+
+}

@@ -1,0 +1,117 @@
+//
+// stage definition file
+//
+{
+  "id": "bog",
+  "type": "adventure",
+  "blockTypes": [
+    {
+      "id": "algorithm",
+      "type": "expr",
+      "expr": ""
+    }
+  ],
+  "blocks": [
+    "algorithm"
+  ],
+  "graphics": [
+    {
+      "terrainTexture": "stages/bog/terrain-bogland-underground",
+      "terrainTopTexture": "stages/bog/terrain-bogland-surface-bg",
+      "terrainInsideTexture": "stages/bog/terrain-bogland-day",
+      "terrainTopInsideTexture": "stages/bog/terrain-bogland-surface",
+      "terrainTopOffset": 0.1,
+      "terrainTopTextureWidthScale": 1.0,
+      "dirtParticle": "dirt.plist"
+    }
+  ],
+  "parallax_layers": [
+    {
+      "zorder": 1,
+      "continuous_parallax": true,
+      "stretch_to_screen": true,
+      "texture": "stages/bog/bogland-day-sky_HD",
+      "textureAlt": "stages/bog/bogland-night-sky_HD",
+      "shader": "crossfade",
+      "speed_x": 0.0,
+      "speed_y": 0.0,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true
+    },
+    {
+      "zorder": 2,
+      "continuous_parallax": true,
+      "stretch_to_screen": true,
+      "texture": "stages/bog/bogland-day-parallax_HD",
+      "textureAlt": "stages/bog/bogland-night-parallax_HD",
+      "shader": "crossfade",
+      "speed_x": 2.0,
+      "speed_y": 0.2,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true
+    },
+    {
+      "zorder": 4,
+      "count": 1,
+      "continuous_parallax": false,
+      "texture": "stages/bog/bogland-day-tree1",
+      "textureAlt": "stages/bog/bogland-night-tree1",
+      "shader": "crossfade",
+      "speed_x": 3.0,
+      "speed_y": 0.0,
+      "scale_x": 0.85,
+      "scale_y": 0.85,
+      "position_offset_y": 0.0,
+      "position_offset_x": 0.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    },
+    {
+      "zorder": 6,
+      "count": 1,
+      "continuous_parallax": false,
+      "texture": "stages/bog/bogland-day-tree2",
+      "textureAlt": "stages/bog/bogland-night-tree2",
+      "shader": "crossfade",
+      "speed_x": 4.0,
+      "speed_y": 0.0,
+      "scale_x": 0.85,
+      "scale_y": 0.85,
+      "position_offset_y": 0.0,
+      "position_offset_x": 200.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    },
+    {
+      "zorder": 5,
+      "count": 1,
+      "continuous_parallax": false,
+      "texture": "stages/bog/bogland-day-crowtree",
+      "textureAlt": "stages/bog/bogland-night-crowtree",
+      "shader": "crossfade",
+      "speed_x": 3.5,
+      "speed_y": 0.0,
+      "scale_x": 0.7,
+      "scale_y": 0.7,
+      "position_offset_y": 0.0,
+      "position_offset_x": 6000.0,
+      "disable_fade": true,
+      "disable_flip": true,
+      "hasAnimation": false,
+      "y_relative_to_camera": false,
+      "disable_in_lowres": true
+    }
+  ]
+}
