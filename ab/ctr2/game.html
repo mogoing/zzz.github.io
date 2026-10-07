@@ -6,7 +6,7 @@
           html,body { margin:0; padding:0; overflow:hidden; background:#000; width:100%; height:100%; }
     </style>
     <script>
-      // 强制中文
+      // 默认英文
       try {
         Object.defineProperty(navigator, 'languages', { get: function(){ return ['en-US','en']; } });
         Object.defineProperty(navigator, 'language', { get: function(){ return 'en-US'; } });
@@ -18,10 +18,95 @@
       window.famobi_gameID = "cut-the-rope";
       window.famobi_gameJS = [
         "ctrr.js",
-        function () { Ctrr.main("en"); }
+        function () { try { window.__ctrBoot && __ctrBoot(); } catch(e){ Ctrr.main("en"); } }
       ];
-      // v1.js 加载 famobi API（提供 window.famobi 适配层）
-      (function(d,url){ var s=d.createElement("script"); s.src=url+""; (d.head||d.documentElement).appendChild(s); })(document, "html5games/gameapi/v1.js?e=");
+      // v1.js 加载 famobi API（提供 window.famobi 适配层）；加载完包装 localStorage 用于存档同步
+      (function(d,url){ var s=d.createElement("script"); s.src=url+""; s.onload=function(){ try{ window.__wrapFamobiLS && __wrapFamobiLS(); }catch(e){} }; (d.head||d.documentElement).appendChild(s); })(document, "html5games/gameapi/v1.js?e=");
+    </script>
+    <script>
+      // 存档同步桥（v58）：进游戏前先拉后端存档再启动；游戏写本地存档时防抖同步到 api.mogoing.xyz
+      (function(){
+        var API = 'https://api.mogoing.xyz', GAME = 'cut-the-rope', PREFIX = 'cut-the-rope:';
+        var LS = window.localStorage, syncTimer = null;
+        function curUser(){ try{ return LS.getItem('blindbox_user') || ''; }catch(e){ return ''; } }
+        function curPass(){ try{ return LS.getItem('blindbox_pass') || ''; }catch(e){ return ''; } }
+        // 包装 famobi.localStorage（幂等：v1.js onload 和启动前各调一次）
+        window.__wrapFamobiLS = function(){
+          var fl = window.famobi && window.famobi.localStorage;
+          if (!fl || fl.__ctrWrapped) return;
+          var base = fl;
+          var w = {
+            setItem: function(k, v){ try{ base.setItem(k, v); }catch(e){} if(String(k).indexOf(PREFIX) === 0) syncSoon(); },
+            getItem: function(k){ try{ return base.getItem(k); }catch(e){ return null; } },
+            removeItem: function(k){ try{ base.removeItem(k); }catch(e){} },
+            clear: function(){ try{ base.clear(); }catch(e){} }
+          };
+          for (var p in w) { if (w.hasOwnProperty(p)) fl[p] = w[p]; }
+          fl.__ctrWrapped = true;
+        };
+        // 收集游戏前缀存档
+        function collect(){
+          var o = {};
+          try { for (var i = 0; i < LS.length; i++) { var k = LS.key(i); if (String(k).indexOf(PREFIX) === 0) o[k] = LS.getItem(k); } } catch(e){}
+          return o;
+        }
+        // 同步到后端（防抖 1.5s；pagehide 兜底）
+        function syncNow(){
+          var u = curUser(), p = curPass();
+          if (!u || !p) return;
+          var ls = collect();
+          if (!Object.keys(ls).length) return;
+          var body = JSON.stringify({ username: u, password: p, game: GAME, data: { ls: ls } });
+          fetch(API + '/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, cache: 'no-store', keepalive: true })
+            .then(function(r){ return r.json(); })
+            .then(function(j){ if (j && j.ok) { try { LS.setItem('ctr_sync_user', u); } catch(e){} } })
+            .catch(function(){ try { navigator.sendBeacon(API + '/api/save', new Blob([body], { type: 'text/plain' })); } catch(e){} });
+        }
+        function syncSoon(){ if (syncTimer) clearTimeout(syncTimer); syncTimer = setTimeout(syncNow, 1500); }
+        window.addEventListener('pagehide', function(){ syncNow(); });
+        // 拉远程存档（3s 超时降级）
+        function fetchRemote(){
+          return new Promise(function(res){
+            var u = curUser(), p = curPass();
+            if (!u || !p) { res(null); return; }
+            var t = setTimeout(function(){ res(null); }, 3000);
+            fetch(API + '/api/save?username=' + encodeURIComponent(u) + '&password=' + encodeURIComponent(p) + '&game=' + GAME, { cache: 'no-store' })
+              .then(function(r){ return r.json(); })
+              .then(function(j){ clearTimeout(t); if (j && j.ok && j.data && j.data.ls) res(j); else res(null); })
+              .catch(function(){ clearTimeout(t); res(null); });
+          });
+        }
+        // 应用远程：有远程存档 → 清本地游戏 key 后覆盖（必须拉，远程为准）；无 → 保留本地
+        function apply(j){
+          var u = curUser();
+          if (!j || !j.data || !j.data.ls) {
+            // 无远程：账号和上次不同则清本地（防串号）
+            var lastU = ''; try { lastU = LS.getItem('ctr_sync_user') || ''; } catch(e){}
+            if (u && u !== lastU) { try { for (var i = LS.length - 1; i >= 0; i--) { var k = LS.key(i); if (String(k).indexOf(PREFIX) === 0) LS.removeItem(k); } } catch(e){} }
+            return;
+          }
+          var ls = j.data.ls;
+          try { for (var i = LS.length - 1; i >= 0; i--) { var k = LS.key(i); if (String(k).indexOf(PREFIX) === 0) LS.removeItem(k); } } catch(e){}
+          for (var key in ls) { try { LS.setItem(key, ls[key]); } catch(e){} }
+          try { LS.setItem('ctr_sync_user', u); } catch(e){}
+        }
+        // 统一启动入口：先拉存档 → 应用 → 再启动游戏
+        window.__ctrBoot = function(){
+          try { window.__wrapFamobiLS && __wrapFamobiLS(); } catch(e){}
+          var mask = document.getElementById('ctrSyncMask');
+          if (mask) mask.style.display = 'flex';
+          fetchRemote().then(function(j){
+            try { apply(j); } catch(e){}
+            if (mask) mask.style.display = 'none';
+            try { Ctrr.main("en"); } catch(e){ console.log('CTR 启动失败:', e && e.message); }
+          });
+        };
+        // 同步进度遮罩
+        var m = document.createElement('div');
+        m.id = 'ctrSyncMask';
+        m.innerHTML = '<div style="position:fixed;left:0;top:0;right:0;bottom:0;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center"><div style="color:#fff;font-size:16px;font-family:sans-serif">同步进度中…</div></div>';
+        document.body.appendChild(m);
+      })();
     </script>
     <script>
       // 自写引导：v1.js 自动链在某些环境不触发（无广告 SDK 时），此脚本兜底手动加载游戏主体
@@ -41,7 +126,7 @@
           var i = 0;
           function next(){
             if (i >= deps.length) {
-              try { Ctrr.main("en"); } catch(e){ console.log("CTR 启动失败:", e && e.message); }
+              try { window.__ctrBoot ? __ctrBoot() : Ctrr.main("en"); } catch(e){ console.log("CTR 启动失败:", e && e.message); }
               return;
             }
             var s = document.createElement("script");
