@@ -1,8 +1,0 @@
-name = "zzz-backend"
-main = "zzz-backend/worker.js"
-compatibility_date = "2025-01-01"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "zzz-data"
-database_id = "d1b8f695-7d0e-47f5-b1df-24df89da05a8"
