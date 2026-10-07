@@ -1668,7 +1668,7 @@ async function dlStart(){
   var allItems = dlItems.slice();
   Object.keys(dlGroups).forEach(function(gname){ allItems = allItems.concat(dlGroups[gname].subs); });
   var pend = allItems.filter(function(it){ return !it.done; });
-  var CONC = 8, idx = 0;   /* 8 路并发下载，互不阻塞 */
+  var CONC = 12, idx = 0;   /* 12 路并发下载，互不阻塞 */
   function dlWorker(){
     while (idx < pend.length) {
       var it = pend[idx++];
