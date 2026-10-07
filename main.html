@@ -560,6 +560,8 @@
     { name:'愤怒的小鸟', desc:'原版弹弓', icon:'ab', target:'ab.html' },
     { name:'保卫萝卜', desc:'经典塔防', icon:'bwlb', target:'bwlb.html?v=1' },
   ];
+  const CDN_BASE = 'https://cdn.jsdelivr.net/gh/mogoing/zzz.github.io@main/';
+  GAMES.forEach(function(g){ if (g.target.indexOf('http') !== 0) g.target = CDN_BASE + g.target; });
   const PER_PAGE = 6;   // 一页六个（两排三个）
   const ICONS = {
     snake: '<span class="mini-snake"><i></i><i></i><i></i><i></i><i></i></span>',
@@ -900,7 +902,7 @@
 
   render();
 /* ===== 资源预下载中心：进页面自动后台下载，杜绝中途损坏 ===== */
-var DL_VER = 'v59';
+var DL_VER = 'v70';
 var DL_LIST = [
   ['ab/ruffle.js?v=47',465076,'Ruffle 启动器'],
   ['ab/core.ruffle.c80159b526e567babaf5.js',108322,'Ruffle 内核 A'],
@@ -1617,13 +1619,17 @@ async function dlOne(it){
   it.el.className = 'dlrow loading';
   it.st.textContent = '下载中';
   var got = null;
+  var cdn = 'https://cdn.jsdelivr.net/gh/mogoing/zzz.github.io@main/';
   for (var t = 0; t < 3 && got === null; t++){
-    try {
-      var r = await fetch(it.url, t > 0 ? { cache: 'reload' } : {});
-      if (!r.ok) continue;
-      var b = await r.arrayBuffer();
-      if (b.byteLength === it.size) got = b;
-    } catch(e){}
+    var urls = [cdn + it.url, it.url];
+    for (var ui = 0; ui < urls.length && got === null; ui++){
+      try {
+        var r = await fetch(urls[ui], t > 0 ? { cache: 'reload' } : {});
+        if (!r.ok) continue;
+        var b = await r.arrayBuffer();
+        if (b.byteLength === it.size) got = b;
+      } catch(e){}
+    }
   }
   if (got) {
     dlGotBytes += it.size;
