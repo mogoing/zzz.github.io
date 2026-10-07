@@ -1565,3 +1565,153 @@ function makeDlRow(name, size){
 var dlItems = [], dlGroups = {};
 DL_LIST.forEach(function(x){
   var isCtr = x[2].indexOf('割绳子') === 0;
+  var isWmw = x[2].indexOf('小鳄鱼') === 0;
+  var isGrp = isCtr || isWmw;
+  var row = makeDlRow(isGrp ? x[2].replace(/^(割绳子|小鳄鱼) /, '') : x[2], x[1]);
+  dlRows.appendChild(row.el);
+  var it = { name: x[2], url: x[0], size: x[1], el: row.el, bar: row.bar, st: row.st, done: false };
+  if (isGrp) {
+    it.el.classList.add('dlsub');
+    it.el.style.display = 'none';
+    var gname = isCtr ? '割绳子' : '小鳄鱼';
+    var g = dlGroups[gname] || (dlGroups[gname] = { name: gname, total: 0, done: 0, subs: [] });
+    it.g = g;
+    g.subs.push(it);
+    g.total++;
+  } else {
+    dlItems.push(it);
+  }
+});
+/* 割绳子合并成一项：生成组行（显示 已下载/总数），点击展开/收起子项 */
+Object.keys(dlGroups).forEach(function(gname){
+  var g = dlGroups[gname];
+  var gr = makeDlRow(gname, 0);
+  gr.el.classList.add('dlgroup');
+  g.row = gr;
+  gr.st.textContent = '0/' + g.total;
+  var first = g.subs[0].el;
+  dlRows.insertBefore(gr.el, first);
+  gr.el.addEventListener('click', function(){
+    var open = gr.el.classList.toggle('open');
+    g.subs.forEach(function(s){ s.el.style.display = open ? '' : 'none'; });
+  });
+});
+function dlRefreshGroup(g){
+  if (!g || !g.row) return;
+  g.row.st.textContent = g.done + '/' + g.total;
+  g.row.bar.style.width = (g.total ? Math.round(g.done / g.total * 100) : 0) + '%';
+  g.row.el.title = g.name + ' ' + g.done + '/' + g.total;
+}
+function dlRefresh(){
+  var pct = dlTotalBytes ? Math.round(dlGotBytes / dlTotalBytes * 100) : 0;
+  dlTotalBar.style.width = pct + '%';
+  dlTotalT.textContent = fmtMB(dlGotBytes) + ' / ' + fmtMB(dlTotalBytes) + ' · ' + pct + '%';
+  if (dlBusy) { goDl.textContent = '⬇️ ' + pct + '%'; }
+  else if (dlAllDone && dlFailed === 0) { goDl.textContent = '✅ 已就绪'; goDl.classList.add('done'); }
+  else if (dlAllDone) { goDl.textContent = '⚠️ ' + dlFailed + '个失败'; }
+}
+async function dlOne(it){
+  it.el.className = 'dlrow loading';
+  it.st.textContent = '下载中';
+  var got = null;
+  for (var t = 0; t < 3 && got === null; t++){
+    try {
+      var r = await fetch(it.url, t > 0 ? { cache: 'reload' } : {});
+      if (!r.ok) continue;
+      var b = await r.arrayBuffer();
+      if (b.byteLength === it.size) got = b;
+    } catch(e){}
+  }
+  if (got) {
+    dlGotBytes += it.size;
+    it.done = true;
+    it.el.className = 'dlrow ok';
+    it.st.textContent = '✅ 完整';
+    it.bar.style.width = '100%';
+    it.el.title = '已下载完整 ' + fmtMB(it.size);
+  } else {
+    dlFailed++;
+    it.el.className = 'dlrow fail';
+    it.st.textContent = '失败';
+  }
+  if (it.g) dlRefreshGroup(it.g);
+  dlRefresh();
+}
+async function dlStart(){
+  if (dlBusy) return;
+  /* 本版本已下载完整过：直接标记就绪，不再重新下载 */
+  if (dlFailed === 0 && localStorage.getItem('dl_done') === DL_VER) {
+    dlGotBytes = dlTotalBytes;
+    dlAllDone = true;
+    dlItems.forEach(function(it){
+      it.done = true;
+      it.el.className = 'dlrow ok';
+      it.st.textContent = '✅ 完整';
+      it.bar.style.width = '100%';
+    });
+    Object.keys(dlGroups).forEach(function(gname){
+      var g = dlGroups[gname];
+      g.done = g.total;
+      g.subs.forEach(function(s){
+        s.done = true;
+        s.el.className = 'dlrow dlsub ok';
+        s.st.textContent = '✅ 完整';
+        s.bar.style.width = '100%';
+      });
+      dlRefreshGroup(g);
+    });
+    dlRefresh();
+    return;
+  }
+  dlBusy = true;
+  goDl.textContent = '⬇️ 开始…';
+  var allItems = dlItems.slice();
+  Object.keys(dlGroups).forEach(function(gname){ allItems = allItems.concat(dlGroups[gname].subs); });
+  var pend = allItems.filter(function(it){ return !it.done; });
+  var CONC = 12, idx = 0;   /* 12 路并发下载，互不阻塞 */
+  function dlWorker(){
+    while (idx < pend.length) {
+      var it = pend[idx++];
+      if (it.done) continue;
+      return dlOne(it).then(dlWorker);
+    }
+    return Promise.resolve();
+  }
+  var wkers = [];
+  for (var w = 0; w < Math.min(CONC, pend.length); w++) wkers.push(dlWorker());
+  await Promise.all(wkers);
+  dlBusy = false;
+  dlAllDone = true;
+  if (dlFailed === 0) { try { localStorage.setItem('dl_done', DL_VER); } catch(e){} }
+  dlRefresh();
+}
+goDl.addEventListener('click', function(){
+  dlMask.classList.add('show');
+  if (!dlBusy && !dlAllDone) dlStart();
+});
+document.getElementById('dlClose').addEventListener('click', function(){ dlMask.classList.remove('show'); });
+dlMask.addEventListener('click', function(e){ if (e.target === dlMask) dlMask.classList.remove('show'); });
+dlRefresh();
+/* 进页面自动开始预下载 */
+setTimeout(dlStart, 600);
+/* ===== 左上角 Logo 抽屉菜单 ===== */
+var _mu = document.getElementById('menuUser');
+if (_mu) { var _hl = document.getElementById('hello'); if (_hl) _mu.textContent = _hl.textContent; }
+document.getElementById('brandLogo').addEventListener('click', function(){
+  document.body.classList.toggle('menu-open');
+});
+document.getElementById('menuMask').addEventListener('click', function(){
+  document.body.classList.remove('menu-open');
+});
+['goBoard','goDiary','goDl','goAdmin','logout'].forEach(function(id){
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('click', function(){ document.body.classList.remove('menu-open'); });
+});
+</script>
+<script>
+// ===== 安卓返回键：本页按返回 = 回登录页 =====
+window.addEventListener('androidback', function(){ location.href = 'index.html'; });
+</script>
+</div>
+</body>
+</html>
