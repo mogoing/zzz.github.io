@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>小鳄鱼爱洗澡_逗游小游戏</title>
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="keywords" content="小鳄鱼爱洗澡,小鳄鱼爱洗澡小游戏,逗游小游戏" />
+	<meta name="description" content="逗游小游戏为你提供最新的小鳄鱼爱洗澡小游戏，免费下载小鳄鱼爱洗澡小游戏，并同时提供最新小鳄鱼爱洗澡小游戏操作方法，助你顺利闯关。在线免费玩小鳄鱼爱洗澡小游戏，马上来逗游小游戏吧，玩游戏其实可以很轻松！" />
+			<!--<script type="text/javascript" src="https://www.doyo.cn/fl.php?title=%E5%B0%8F%E9%B3%84%E9%B1%BC%E7%88%B1%E6%B4%97%E6%BE%A1"></script>-->
+	<script type="text/javascript">
+		u7u9_xyx="https://tablet.doyo.cn/jump/u7u9?url="+encodeURIComponent(u7u9_xyx+"?from=doyo_flash");
+		if(document.referrer.indexOf("baidu.com")>0){
+			document.writeln("<script type=\"text/javascript\" src=\"https://ping.doyo.cn/counter?id=10111\"><\/script>");//Flash详情页-进入游戏跳转统计
+			//location.href=u7u9_xyx;//跳走代码
+		};
+	</script>
+	<link rel="stylesheet" type="text/css" href="/Tpl/web/Public/css/flash.css?ud=20160328" />
+	<script type="text/javascript" src="https://s.doyo.cn/j/dj_1.12.4.js?ud=20160328"></script>
+	<script type="text/javascript" src="/Tpl/web/Public/js/flash.js?ud=20160328"></script>
+
+	<script type="text/javascript">
+
+		var game_id="640023";
+
+		//同系列游戏滚动处理
+		function roll_space_init(){
+			if($("#game_related_game .roll_box a").length<8){return false;}
+			var remainder=$("#game_related_game .roll_box a").length%6;
+			if(remainder>0){$("#game_related_game .roll a:lt("+(6-remainder)+")").clone().css("visibility","hidden").insertAfter("#game_related_game .roll a:last");}
+			$("#game_related_game .roll_box").width(630);
+			$("#game_related_game .go_left,#game_related_game .go_right").show();
+			$("#game_related_game .go_left div,#game_related_game .go_right div").hover(function(){
+				$(this).addClass("active");
+			},function(){
+				$(this).removeClass("active");
+			});
+			$("#game_related_game .go_left div").click(function(){
+				$("#game_related_game .roll a:gt("+($("#game_related_game .roll_box a").length-7)+")").insertBefore("#game_related_game .roll a:first");
+				$("#game_related_game .roll").css("left","-630px").stop(true,true).animate({"left":"0"},700);
+				return false;
+			});
+
+			$("#game_related_game .go_right div").click(function(){
+				$("#game_related_game .roll").stop(true,true).animate({"left":"-630px"},700,function(){
+					$("#game_related_game .roll a:lt(6)").insertAfter("#game_related_game .roll a:last");
+					$("#game_related_game .roll").css("left","0");
+				});
+				return false;
+			});
+		};
+
+		function my_play_list_init(){
+			if(!getCookie("flash_recently_played_list")){return false;};
+			$.get("/flash/get_game_info",{"game_list":getCookie("flash_recently_played_list").split(",")},function(data){
+				var game_info_temp="";
+				$.each(data.game_info,function(i,n){
+					if(i<4){game_info_temp+="<a href=\"/flash/game/"+n[0]+"\" target=\"_blank\" title=\""+n[1]+"\"><img src=\""+n[2]+"\">"+n[1]+"</a>";}
+				});
+				$("#my_play_list").show().find(".list").html(game_info_temp);
+			},"json");
+
+		};
+
+		jQuery(function($){
+
+			$("#game_info_box .left").on("click","a",function(){
+				$.getScript("https://ping.doyo.cn/counter?id=10111");//Flash详情页-进入游戏点击统计
+			});
+
+//导航标签激活
+			$("#flash_nav_yizhi").addClass("active");
+
+//游戏信息区左右等高
+			if($("#game_info_box .left").height()<=$("#game_info_box .right").height()){
+				$("#game_info_box .left").height($("#game_info_box .right").height());
+			}else{
+				$("#game_info_box .right").height($("#game_info_box .left").height());
+			}
+
+//tag完整显示
+			$("#game_info_box .tag_space h3").hover(function(){
+				$("#game_info_box .tag_space .all_tag").show();
+			},function(){});
+
+			$("#game_info_box .tag_space .all_tag").hover(function(){},function(){
+				$(this).hide();
+			});
+
+//投票
+			$("#game_vote").on("click","button",function(){
+				$.get("/index.php/Flash/Flash/vote",{"fid":game_id,"vote":$(this).index("#game_vote button")+1,"random":Math.random()},function(data){
+					if(data.result){
+						$("<div class=\"cover_box\"></div><div class=\"alarm_ok_box\"><span></span>"+data.reason+"</div>").appendTo("#game_vote");
+						$("#game_vote .cover_box,#game_vote .alarm_ok_box").delay(2000).fadeOut(3000,function(){
+							$(this).remove();
+							$("#game_vote").html("").addClass("loading");
+							$("#game_vote").load("/index.php/Flash/Flash/vote/fid/"+game_id+"?random="+Math.random(),function(){
+								$("#game_vote").removeClass("loading");
+							});
+						});
+					}else{
+						$("<div class=\"cover_box\"></div><div class=\"alarm_no_box\"><span></span>"+data.reason+"</div>").appendTo("#game_vote");
+						$("#game_vote .cover_box,#game_vote .alarm_no_box").delay(2000).fadeOut(3000,function(){
+							$(this).remove();
+						});
+					}
+				},"json");
+			});
+
+//同系列游戏滚动处理初始化
+			roll_space_init();
+
+//详情页查看计数
+			$.get("/flash/game/"+game_id+"/view?random="+Math.random());
+
+			$("#infotuijian a").click(function(){
+				$.getScript("https://ping.doyo.cn/counter?id=10084");//Flash详情页-信息推荐a点击
+			});
+
+			$("#tonglei a").click(function(){
+				$.getScript("https://ping.doyo.cn/counter?id=10085");//Flash详情页-同类a点击
+			});
+
+			$("ins[data-baidu-clb-type='dui-lian']").css("top","33%");
+
+			my_play_list_init();//我最近玩过初始化
+
+		});
+
+	</script>
+</head>
+
+<body class="cloud_bg">
+
+<!-- 全站公告开始 -->
+
+<style type="text/css">
+#notice{display:none;width:100%;height:auto;margin:0 auto;font:12px/2.5 Verdana;background:#FFF9ED;color:#333;text-align:center;}
+#notice .f14{font-size:14px;}
+#notice .orange{color:#F60;}
+#notice .grey{color:#AAA;}
+#notice .black{color:#111;}
+#notice .close{float:right;position:relative;z-index:0;left:-3px;top:-6px;cursor:pointer;}
+#notice .close_active{color:#F00;}
+#notice a{color:#4A86CE;text-decoration:none;}
+#notice a:hover{color:#f60;text-decoration:underline;}
+</style>
+<script type="text/javascript">
+
+var show_notice=0;
+
+jQuery(function($){
+
+if(show_notice){
+	$("#notice").slideDown();
+};
+
+$("#notice .close").click(function(){
+	$("#notice").slideUp("slow");
+}).hover(function(){
+	$(this).addClass("close_active");
+},function(){
+	$(this).removeClass("close_active");
+});
+
+if(location.pathname.indexOf("beta")>=0){
+	$("#notice").fadeIn("slow");
+}
+
+});
+
+</script>
+<div id="notice">
+<div class="close" title="关闭">&times;</div>
+<strong class="orange">通知：</strong>*</div>
+
+<!-- 全站公告结束 -->
+
+<!-- 页面头部 -->
+<script type="text/javascript">
+
+//搜索自动完成变量
+var search_temp_str="";
+var search_temp_timer=null;
+
+//自动完成探测及处理
+function auto_complete_check(word){
+	if(word.length){
+		$.get("/flash/autocomplete?q="+encodeURI(word),function(data){
+			if(data.gameinfo.length){
+				var temp_str="";
+				$.each(data.gameinfo,function(i,n){
+					temp_str+="<a href=\""+n[5]+"\"><img src=\""+n[4]+"\">"+n[0]+"<br /><span>"+n[1]+" - "+n[2]+" &nbsp; "+n[3]+"</span></a>";
+				});
+				$("#web_header .header_search_auto_box").html(temp_str).show().find("a").unbind().hover(function(){
+					$(this).addClass("hover");
+				},function(){
+					$(this).removeClass("hover");
+				});
+			}else{
+				$("#web_header .header_search_auto_box").hide();
+			}
+		},"json");
+	}else{
+		$("#web_header .header_search_auto_box").hide();
+	}
+};
+
+//搜索字符串检查
+function check_search_key(){
+	if($("#web_header .header_search_key").val().length>0){
+		return true;
+	}else{
+		alert("请输入搜索关键字！");
+		$("#web_header .header_search_key").focus();
+		return false;
+	};
+};
+
+//前往搜索页
+function go_search_page(){
+	location="/flash/search/"+encodeURI($("#web_header .header_search_key").val());
+}
+
+//add favorite
+function AddFavorite(sUrl,sTitle){if(document.all){try{window.external.addFavorite(sUrl,sTitle);}catch(e1){try{window.external.addToFavoritesBar(sUrl,sTitle);}catch(e2){alert("请使用Ctrl+D添加收藏");}}}else if(window.sidebar && window.sidebar.addPanel){window.sidebar.addPanel(sTitle,sUrl,"");}else{alert("请使用Ctrl+D添加收藏");}};
+
+//login bar init
+function login_bar_init(){
+	var goto=window.web_header_login_goto?web_header_login_goto:location.href;
+	$.get("/User/Passport/login_bar?random="+Math.random(),function(data){
+		if(data.logined){
+			$("#web_header .login").html(data.greetings+"，<a href=\"https://www.doyo.cn/my/\" class=\"name\"><strong>"+data.username+"</strong> (LV"+data.level+")</a>|<a href=\"https://www.doyo.cn/my/\">个人中心</a>|<a href=\"https://www.doyo.cn/my/msg/"+(data.msg_unread>0?"unread":"inbox")+"/\">收件箱"+(data.newmsg>0?"<strong>("+data.newmsg+")</strong>":"")+"</a>|<a href=\"#\" class=\"logout\">退出</a>|<a href=\"#\" onClick=\"AddFavorite(window.location.href,document.title);return false;\" class=\"add_favorite\">收藏本页</a>");
+			$("#web_header a.logout").one("click",function(){
+				$.get("/passport/logout",function(){
+					if($("#web_header .login").length){login_bar_init();};
+					if(typeof doyo_comment==="object"){doyo_comment.login_init();};
+				});
+				return false;
+			});
+		}else{
+			$("#web_header .login").html("<a href=\"https://www.doyo.cn/passport/login?next="+goto+"\">登录</a>|<a href=\"https://www.doyo.cn/passport/register_1\">注册</a>|<a href=\"#\" onClick=\"AddFavorite(window.location.href,document.title);return false;\" class=\"add_favorite\">收藏本页</a>");
+		}
+	},"json");
+	$("#web_header .header_top_space .header_top_box .top_nav,#web_header .header_top_space .header_top_box .care_doyo").hover(function(){
+		$(this).find(".t").addClass("active").prev("div").show();
+	},function(){
+		$(this).find(".t").removeClass("active").prev("div").hide();
+	});
+};
+
+
+jQuery(function($){
+
+//初始化登录条
+login_bar_init();
+
+//搜索回车提交
+$("#web_header .header_search_key").keypress(function(e){
+	if(e.keyCode==13){
+		if($("#web_header .header_search_auto_box:visible a.active").length){
+			location.href=$("#web_header .header_search_auto_box:visible a.active").attr("href");
+		}else{
+			if(check_search_key()){
+				go_search_page();
+			}
+		}
+	};
+});
+
+//搜索按钮提交及hover效果
+$("#web_header .header_search_button").click(function(){
+	if(check_search_key()){go_search_page();}
+}).hover(function(){
+	$(this).addClass("header_search_button_hover");
+},function(){
+	$(this).removeClass("header_search_button_hover");
+});
+
+//自动完成功能
+$("#web_header .header_search_key").keyup(function(e){
+	if(e.keyCode!=38&&e.keyCode!=40&&e.keyCode!=13){
+		auto_complete_check($("#web_header .header_search_key").val());
+	}else{
+		if($("#web_header .header_search_auto_box:visible").length){
+			if(e.keyCode==38){
+				if($("#web_header .header_search_auto_box a.active").length){
+					if($("#web_header .header_search_auto_box a.active").index()==0){
+						$("#web_header .header_search_auto_box a.active").removeClass("active");
+						$("#web_header .header_search_auto_box a:last").addClass("active");
+					}else{
+						$("#web_header .header_search_auto_box a.active").removeClass("active").prev().addClass("active");
+					};
+				}else{
+					$("#web_header .header_search_auto_box a:last").addClass("active");
+				};
+			}else if(e.keyCode==40){
+				if($("#web_header .header_search_auto_box a.active").length){
+					if($("#web_header .header_search_auto_box a.active").index()==$("#web_header .header_search_auto_box a").length-1){
+						$("#web_header .header_search_auto_box a.active").removeClass("active");
+						$("#web_header .header_search_auto_box a:first").addClass("active");
+					}else{
+						$("#web_header .header_search_auto_box a.active").removeClass("active").next().addClass("active");
+					};
+				}else{
+					$("#web_header .header_search_auto_box a:first").addClass("active");
+				};
+			};
+		};
+	};
+}).blur(function(){
+	window.setTimeout(function(){$("#web_header .header_search_auto_box").hide();},300);
+});
+
+//热门搜索关键词读取
+$("#web_header .header_hot_word").load("/flash/topsearch");
+
+//导航条分割线插入
+$("<span></span>").insertBefore("#header_nav_link a:gt(0)");
+
+});
+</script>
+
+<div id="web_header">
+
+	<div class="header_top_space">
+		<div class="header_top_box">
+			<a href="http://www.doyo.cn" class="index" target="_self">逗游网</a>
+			<a href="https://www.doyo.cn/down" class="client" target="_blank">逗游游戏盒</a>
+			<div class="login"></div>
+			<div class="top_nav">
+<div class="nav_box">
+<div>
+<a href="https://www.doyo.cn/danji" target="_blank">单机</a><br />
+<a href="https://www.doyo.cn/wangluo" target="_blank">网游</a><br />
+<a href="https://www.doyo.cn/wangye" target="_blank">页游</a><br />
+<a href="https://www.doyo.cn/shouji" target="_blank">手游</a><br />
+<a href="https://www.doyo.cn/flash" target="_blank">小游戏</a><br />
+
+</div>
+<div>
+<a href="https://www.doyo.cn/news" target="_blank">资讯</a><br />
+<a href="https://www.doyo.cn/strategy" target="_blank">攻略</a><br />
+<a href="https://www.doyo.cn/news/shipin" target="_blank">视频</a><br />
+<a href="https://www.doyo.cn/tu" target="_blank">图库</a><br />
+<a href="http://doyo.fhyx.com" target="_blank">正版商城</a><br />
+<a href="https://www.doyo.cn/down" target="_blank">游戏盒子</a><br />
+</div>
+</div>
+				<div class="t">导航</div>
+			</div>
+			<div class="care_doyo">
+				<div class="care_box">
+					<div class="wechat">
+						<img src="https://www.doyo.cn/Tpl/web/Public/images/wechat.jpg" title="逗游微信">
+						微信：doyo_game
+					</div>
+					<div class="weibo">
+						<img src="https://www.doyo.cn/Tpl/web/Public/images/weibo.jpg" title="逗游微博">
+						<a href="http://weibo.com/woidoyo" class="weibo_link" target="_blank"></a>
+					</div>
+				</div>
+				<div class="t">关注逗游</div>
+			</div>
+		</div>
+	</div>
+	<div style="width:auto;height:33px;clear:both;"></div>
+	<div class="header_bar">
+		<div class="header_logo_space">
+			<a href="/flash" class="logo"><img alt="逗游小游戏" title="逗游小游戏" src="https://s.doyo.cn/material/images/web/flash_main_logo.png"></a>
+			<div class="flash"><EMBED class="top_flash" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" quality="high" width="187" height="43" src="https://s.doyo.cn/material/images/web/flash_top_flash.swf"></EMBED></div>
+		</div>
+		<div class="header_search_space">
+			<div class="header_search_bar">
+				<input type="text" value="" maxlength="30" class="header_search_key" name="key" autocomplete="off" placeholder="输入游戏名称搜索"><button title="点击搜索游戏" class="header_search_button" type="button"></button>
+				<div class="header_search_auto_box"></div>
+			</div>
+			<div class="header_hot_word"></div>
+		</div>
+	</div>
+	<div id="header_nav_top"></div>
+	<div id="header_nav_mid_box">
+		<div id="header_nav_mid">
+			<div class="button_space"><a href="" target="_blank">游戏大全</a><a href="#" onclick="SetHome(this,'https://www.doyo.cn/flash/');return false;">设主页</a><a href="#" onClick="AddFavorite('https://www.doyo.cn/flash','逗游小游戏');return false;">收藏</a><a href="/flash/shortcut"><img src="https://s.doyo.cn/s.gif" class="icon_add_shortcut">保存到桌面</a></div>
+			<div id="header_nav_link"><a href="/flash" id="flash_nav_index">首页</a><a href="/flash/list/1" id="flash_nav_yizhi">益智</a><a href="/flash/list/2" id="flash_nav_dongzuo">动作</a><a href="/flash/list/3" id="flash_nav_sheji">射击</a><a href="/flash/list/4" id="flash_nav_maoxian">冒险</a><a href="/flash/list/5" id="flash_nav_gaoxiao">搞笑</a><a href="/flash/list/6" id="flash_nav_xiuxian">休闲</a><a href="/flash/list/7" id="flash_nav_tiyu">体育</a><a href="/flash/list/8" id="flash_nav_chenve">策略</a><a href="/flash/list/9" id="flash_nav_zhuangban">装扮</a><a href="/flash/list/10" id="flash_nav_ertong">儿童</a><a href="/flash/list/11" id="flash_nav_shuangren">双人</a></div>
+		</div>
+	</div>
+</div>
+
+<div id="header_nav_bot_path">现在位置 &nbsp; &nbsp; <span class="path"><a href="/flash">逗游小游戏</a> &gt; <a href="/flash/list/1">益智小游戏</a> &gt; <a href="/flash/game/640023">小鳄鱼爱洗澡</a></span></div>
+
+
+<div class="area">
+
+	<div id="game_info_box">
+		<div class="left">
+			<div class="gg_space">
+				<script type="text/javascript" smua="d=p&s=b&u=u3041341&w=300&h=250" src="https://www.nkscdn.com/smu0/o.js"></script>
+			</div>
+			<script type="text/javascript">document.write("<div class=\"pic_space\"><a href=\""+u7u9_xyx+"\" title=\"点击开始玩小游戏：小鳄鱼爱洗澡\" class=\"flash_into\"><img src=\"https://f1.doyo.cn/flash/img/de/b1d7ad3a4f06f5c9fff6.jpg\" title=\"小鳄鱼爱洗澡\"></a></div><div class=\"into_space\"><a href=\""+u7u9_xyx+"\" title=\"点击开始玩小游戏：小鳄鱼爱洗澡\" class=\"flash_into\"></a></div>");</script>
+		</div>
+		<div class="right">
+			<div class="name_space">
+
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="name"><h1 title="小鳄鱼爱洗澡">小鳄鱼爱洗澡</h1>(Where's My Water Chinese)</td>
+					</tr>
+				</table>
+				<div class="info">
+					类型：<a href="/flash/list/1" target="_blank" class="blue">益智</a>　　大小：<span class="grey">371.3KB</span>　　语言：<a href="/flash/list/1?lang=1" target="_blank" class="blue">简体中文</a>					<div class="bk1"></div>
+					<div class="tag_space">
+						<div class="tag">标签：</div><h3><a target="_blank" href="/flash/tag/3">逻辑</a><a target="_blank" href="/flash/tag/20">物理</a><a target="_blank" href="/flash/tag/7">中文汉化</a><a target="_blank" href="/flash/tag/2">小动物</a><a target="_blank" href="/flash/tag/5">创意</a><a target="_blank" href="/flash/tag/28">必玩</a></h3>
+						<div class="all_tag"><a target="_blank" href="/flash/tag/3">逻辑</a><a target="_blank" href="/flash/tag/20">物理</a><a target="_blank" href="/flash/tag/7">中文汉化</a><a target="_blank" href="/flash/tag/2">小动物</a><a target="_blank" href="/flash/tag/5">创意</a><a target="_blank" href="/flash/tag/28">必玩</a></div>
+					</div>
+				</div>
+			</div>
+			<div id="game_vote">
+				<div class="score_box">
+															<div class="score green_bg">8<span>.0</span></div>
+										3646票
+									</div>
+				<button type="button">好玩</button><div class="strip_box"><div class="green"></div><div class="green" style="width:130px"></div><span>2633</span></div>
+				<button type="button">一般</button><div class="strip_box"><div class="blue"></div><div class="blue" style="width:27px"></div><span>558</span></div>
+				<button type="button">不好玩</button><div class="strip_box"><div class="orange"></div><div class="orange" style="width:22px"></div><span>455</span></div>
+				<div class="bk1"></div>
+			</div>
+			<div class="bk1"></div>
+						<div class="introduction">
+				<div class="title">游戏简介</div>
+				<div class="bk3"></div>
+				<div class="content">《鳄鱼小顽皮爱洗澡》FLASH版本的中文版，这是一款趣味的益智游戏，游戏中讲述的是住在城市下面的鳄鱼小顽皮（Swampy）希望过上人类一样的生活，非常喜欢干净。可那里最厉害的一只鳄鱼大顽固（Cranky）不满小顽皮的怪癖，与其他鳄鱼密谋破坏小顽皮的水源供应，玩家需要帮助小顽皮避开毒水、水藻和各种各样的陷阱，把清水引到他的浴缸并尽量获得鸭子。</div>
+			</div>
+			
+						<div class="target">
+				<div class="title">游戏目标</div>
+				<div class="bk3"></div>
+				<div class="content">帮助顽皮的小鳄鱼把水引到它的浴缸，能收集到更多的小鸭就更好了</div>
+			</div>
+									<div class="begin">
+				<div class="title">如何开始</div>
+				<div class="bk3"></div>
+				<div class="content">游戏加载完成后点击PLAY - 然后点击click to skip- 跳过剧情即可开始游戏</div>
+			</div>
+						<div class="list" id="infotuijian">
+								<a href="/flash/game/551125" title="小鳄鱼爱洗澡中文版" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f1.doyo.cn/flash/img/f0/98bf9ad9df3791d1a464.jpg" alt="小鳄鱼爱洗澡中文版">小鳄鱼爱洗澡中</a>
+								<a href="/flash/game/716743" title="保卫萝卜电脑单机版" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f1.doyo.cn/flash/img/1a/89f637818be7d18bdf4e.jpg" alt="保卫萝卜电脑单机版">保卫萝卜电脑单</a>
+								<a href="/flash/game/520604" title="神奇小妖怪中文版" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f3.doyo.cn/flash/img/3c/fdbd87ccef1659dac912.jpg" alt="神奇小妖怪中文版">神奇小妖怪中文</a>
+								<a href="/flash/game/518762" title="植物大战僵尸之弹弹堂" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f1.doyo.cn/flash/img/01/4fff4cf451fd7dd4651b.jpg" alt="植物大战僵尸之弹弹堂">植物大战僵尸之</a>
+								<a href="/flash/game/709979" title="大便超人历险记" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f3.doyo.cn/flash/img/aa/c6f7dc557c8221d6308c.jpg" alt="大便超人历险记">大便超人历险记</a>
+								<a href="/flash/game/719932" title="觉醒的霸王龙6" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f1.doyo.cn/flash/img/28/cc5195be29e1a75b9ad4.jpg" alt="觉醒的霸王龙6">觉醒的霸王龙6</a>
+								<a href="/flash/game/724621" title="午夜森林逃脱" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f3.doyo.cn/flash/img/86/be397bc61d987ed8c974ff52c12f3c.jpg" alt="午夜森林逃脱">午夜森林逃脱</a>
+								<a href="/flash/game/724670" title="逗小猴开心之小木屋" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f3.doyo.cn/flash/img/74/9f485e11db96a10af032686a0f4df0.jpg" alt="逗小猴开心之小木屋">逗小猴开心之小</a>
+								<a href="/flash/game/586790" title="开心消消乐" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f1.doyo.cn/flash/img/d2/372868003377f7eadd09.jpg" alt="开心消消乐">开心消消乐</a>
+								<a href="/flash/game/711710" title="长发公主婚礼发型设计2" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f3.doyo.cn/flash/img/4f/7383c46f82aa53eb96ea.jpg" alt="长发公主婚礼发型设计2">长发公主婚礼发</a>
+								<a href="/flash/game/721968" title="史上最贱小游戏之电动" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f1.doyo.cn/flash/img/d6/9bf1ab097c38c1852fdb.jpg" alt="史上最贱小游戏之电动">史上最贱小游戏</a>
+								<a href="/flash/game/716249" title="森林冰火人大冒险2" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f1.doyo.cn/flash/img/50/da5f6d6439188c6d159b.jpg" alt="森林冰火人大冒险2">森林冰火人大冒</a>
+								<a href="/flash/game/716637" title="大鱼吃小鱼无敌版" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f3.doyo.cn/flash/img/6f/fa52148f33123227a849.jpg" alt="大鱼吃小鱼无敌版">大鱼吃小鱼无敌</a>
+								<a href="/flash/game/654501" title="节奏大师电脑版" target="_blank"><img src="https://s.doyo.cn/s.gif" osrc="https://f1.doyo.cn/flash/img/6d/11b59db87d607f5f130505ce48268c.jpg" alt="节奏大师电脑版">节奏大师电脑版</a>
+								<div class="bk3"></div>
+							</div>
+			<div class="other">
+				<a onClick="AddFavorite(window.location.href,document.title);return false;" class="add_game_to_favorite" href="#">加入收藏</a> &nbsp; <a onClick="copy_page_url(window.location.href,document.title);return false;" class="copy_game_url" href="#">复制地址</a>
+			</div>
+
+
+		</div>
+
+				<div class="bottom">
+			<div class="explain">
+				<div class="title">操作指南</div>
+				<div class="bk6"></div>
+				<div class="content"><button class="hotkey_m_l_m" title="按住左键移动鼠标"></button>消除泥土引导水进鳄鱼的浴缸<p>鼠标拖动消除泥土引导水进鳄鱼的浴缸，某些关卡需点击水管喷水，再消除泥土引导水进浴缸</p></div>
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+
+<div id="my_play_list"><div class="title">我最近玩过：</div><div class="list"></div></div>
+
+<div class="bk10"></div>
+
+<div class="area">
+
+	<div id="game_other_box">
+
+		<div class="left">
+
+			<div id="game_related_game">
+												<div class="title"><span class="icon"></span><h3>同类小游戏</h3></div>
+				<div class="content" id="tonglei">
+										<a href="/flash/game/500750" target="_blank" title="诡异的更衣室"><img osrc="https://f1.doyo.cn/flash/img/df/aabc7b0a30216e7cede5.jpg" src="https://s.doyo.cn/s.gif">诡异的更衣室</a>
+										<a href="/flash/game/502253" target="_blank" title="偷吃禁果"><img osrc="https://f1.doyo.cn/flash/img/90/ba5e76fdb16e96c914ba.jpg" src="https://s.doyo.cn/s.gif">偷吃禁果</a>
+										<a href="/flash/game/502427" target="_blank" title="蔬菜大战水果"><img osrc="https://f1.doyo.cn/flash/img/e7/6a03579d9f328894a9d1.jpg" src="https://s.doyo.cn/s.gif">蔬菜大战水果</a>
+										<a href="/flash/game/504222" target="_blank" title="森林冰火人"><img osrc="https://f1.doyo.cn/flash/img/fc/24767e2018335eb0a65c.jpg" src="https://s.doyo.cn/s.gif">森林冰火人</a>
+										<a href="/flash/game/505309" target="_blank" title="圆形人炮击之恶魔村关卡全开版"><img osrc="https://f1.doyo.cn/flash/img/9d/d175698e85b2698650a6.jpg" src="https://s.doyo.cn/s.gif">圆形人炮击之恶魔</a>
+										<a href="/flash/game/505408" target="_blank" title="朵拉救狗狗画线版"><img osrc="https://f1.doyo.cn/flash/img/6e/247c6aa85cf9dd290701.jpg" src="https://s.doyo.cn/s.gif">朵拉救狗狗画线版</a>
+										<a href="/flash/game/506350" target="_blank" title="画线小人进铁笼"><img osrc="https://f3.doyo.cn/flash/img/b3/67f41693daa7b1551a30.jpg" src="https://s.doyo.cn/s.gif">画线小人进铁笼</a>
+										<a href="/flash/game/547605" target="_blank" title="愤怒的冰人火人"><img osrc="https://f1.doyo.cn/flash/img/b9/71389b47259c2dd70f8a.jpg" src="https://s.doyo.cn/s.gif">愤怒的冰人火人</a>
+										<a href="/flash/game/552131" target="_blank" title="小火车过隧道中文版"><img osrc="https://f1.doyo.cn/flash/img/92/4b6e22cbb448a2f1d126.jpg" src="https://s.doyo.cn/s.gif">小火车过隧道中文</a>
+										<a href="/flash/game/552840" target="_blank" title="宠物连连看"><img osrc="https://f3.doyo.cn/flash/img/c6/4698c37e0f657400801a.jpg" src="https://s.doyo.cn/s.gif">宠物连连看</a>
+										<a href="/flash/game/554817" target="_blank" title="铁路谷"><img osrc="https://f1.doyo.cn/flash/img/c5/ffd1a49caad949166d52.jpg" src="https://s.doyo.cn/s.gif">铁路谷</a>
+										<a href="/flash/game/563998" target="_blank" title="展翅高飞"><img osrc="https://f1.doyo.cn/flash/img/c3/3e622ad6a30a88860050.jpg" src="https://s.doyo.cn/s.gif">展翅高飞</a>
+										<a href="/flash/game/646182" target="_blank" title="割绳子关卡全开版"><img osrc="https://f1.doyo.cn/flash/img/78/f93acccf2bc2673c8dfb06442829d4.jpg" src="https://s.doyo.cn/s.gif">割绳子关卡全开版</a>
+										<a href="/flash/game/648098" target="_blank" title="割绳子1.2"><img osrc="https://f1.doyo.cn/flash/img/aa/71c61a609d564ae263f374b19e55c2.jpg" src="https://s.doyo.cn/s.gif">割绳子1.2</a>
+									</div>
+				<div class="line"></div>
+												<div class="title title_nobg"><span class="icon"></span><h3>玩过《小鳄鱼爱洗澡》的玩家还玩过</h3></div>
+				<div class="content">
+										<a href="/flash/game/501242" target="_blank" title="愤怒的小鸟HD1.2"><img osrc="https://f1.doyo.cn/flash/img/f9/3016505395528241b918.jpg" src="https://s.doyo.cn/s.gif">愤怒的小鸟HD1.2</a>
+										<a href="/flash/game/518762" target="_blank" title="植物大战僵尸之弹弹堂"><img osrc="https://f1.doyo.cn/flash/img/01/4fff4cf451fd7dd4651b.jpg" src="https://s.doyo.cn/s.gif">植物大战僵尸之弹</a>
+										<a href="/flash/game/532671" target="_blank" title="超级3D漂移赛车"><img osrc="https://f3.doyo.cn/flash/img/99/97a85c7a783998b578e6.jpg" src="https://s.doyo.cn/s.gif">超级3D漂移赛车</a>
+										<a href="/flash/game/551125" target="_blank" title="小鳄鱼爱洗澡中文版"><img osrc="https://f1.doyo.cn/flash/img/f0/98bf9ad9df3791d1a464.jpg" src="https://s.doyo.cn/s.gif">小鳄鱼爱洗澡中文</a>
+										<a href="/flash/game/586790" target="_blank" title="开心消消乐"><img osrc="https://f1.doyo.cn/flash/img/d2/372868003377f7eadd09.jpg" src="https://s.doyo.cn/s.gif">开心消消乐</a>
+										<a href="/flash/game/709889" target="_blank" title="LGH修罗"><img osrc="https://f1.doyo.cn/flash/img/0f/9001e9dcd517cab12426.jpg" src="https://s.doyo.cn/s.gif">LGH修罗</a>
+										<a href="/flash/game/713104" target="_blank" title="穿越火线打鬼子"><img osrc="https://f3.doyo.cn/flash/img/ee/8cc0defe1b133141b7ca.jpg" src="https://s.doyo.cn/s.gif">穿越火线打鬼子</a>
+										<a href="/flash/game/713440" target="_blank" title="生死阻击"><img osrc="https://f1.doyo.cn/flash/img/7c/e1f622655359c7920c8e.jpg" src="https://s.doyo.cn/s.gif">生死阻击</a>
+										<a href="/flash/game/716249" target="_blank" title="森林冰火人大冒险2"><img osrc="https://f1.doyo.cn/flash/img/50/da5f6d6439188c6d159b.jpg" src="https://s.doyo.cn/s.gif">森林冰火人大冒险</a>
+										<a href="/flash/game/716743" target="_blank" title="保卫萝卜电脑单机版"><img osrc="https://f1.doyo.cn/flash/img/1a/89f637818be7d18bdf4e.jpg" src="https://s.doyo.cn/s.gif">保卫萝卜电脑单机</a>
+										<a href="/flash/game/719028" target="_blank" title="蛇蛇大作战"><img osrc="https://f1.doyo.cn/flash/img/61/206e74fecc07cff9d18d.jpg" src="https://s.doyo.cn/s.gif">蛇蛇大作战</a>
+										<a href="/flash/game/719930" target="_blank" title="暖暖的美丽物语"><img osrc="https://f1.doyo.cn/flash/img/8f/c2407e9437fcf3569be5.jpg" src="https://s.doyo.cn/s.gif">暖暖的美丽物语</a>
+										<a href="/flash/game/720721" target="_blank" title="超级冰火人冒险2"><img osrc="https://f3.doyo.cn/flash/img/eb/fee61bccb50fccd753ab.jpg" src="https://s.doyo.cn/s.gif">超级冰火人冒险2</a>
+										<a href="/flash/game/721968" target="_blank" title="史上最贱小游戏之电动"><img osrc="https://f1.doyo.cn/flash/img/d6/9bf1ab097c38c1852fdb.jpg" src="https://s.doyo.cn/s.gif">史上最贱小游戏之</a>
+									</div>
+								<div class="bk3"></div>
+			</div>
+
+			<div class="bk10"></div>
+
+			<div id="game_other_recommend">
+	<div class="title"><div class="more"><a href="" target="_blank">游戏大全&raquo;</a></div><span class="icon"></span><h3>其他热门游戏</h3></div>
+	<div class="content">
+    <a href="/game/12599" target="_blank" title="武林3"><img osrc="https://s1.doyo.cn/img/50/d9/86289e9e78c52b00013d.jpg" src="https://s.doyo.cn/s.gif">武林3</a>
+    <a href="/game/21813" target="_blank" title="七魄"><img osrc="https://s1.doyo.cn/img/5c/45/7f2e9e9e785b0b00003a.jpg" src="https://s.doyo.cn/s.gif">七魄</a>
+    <a href="/game/20946" target="_blank" title="捕鱼达人-PC电脑版"><img osrc="https://s.doyo.cn/img/5b/11/058c9e9e78474e000026.jpg" src="https://s.doyo.cn/s.gif">捕鱼达人-PC电脑版</a>
+    <a href="/game/19645" target="_blank" title="行尸走肉：第三季"><img osrc="https://s1.doyo.cn/img/58/aa/aa259e9e788509000004.jpg" src="https://s.doyo.cn/s.gif">行尸走肉：第三季</a>
+    <a href="/game/19433" target="_blank" title="看门狗2"><img osrc="https://s2.doyo.cn/img/58/54/f9a49e9e78811b00000b.jpg" src="https://s.doyo.cn/s.gif">看门狗2</a>
+    <a href="/game/18693" target="_blank" title="耻辱2"><img osrc="https://s2.doyo.cn/img/58/aa/a0db9e9e78c72900003b.jpg" src="https://s.doyo.cn/s.gif">耻辱2</a>
+	</div>
+	<div class="bk7"></div>
+</div>
+
+			<div class="bk10"></div>
+
+
+
+		</div>
+
+		<div class="right">
+						<div id="type_rank">
+				<div class="title">
+					<span class="icon"></span><h3>益智小游戏排行</h3>
+				</div>
+				<div class="content">
+					<div class="list">
+						<ul>
+							
+														<li class="top1">
+								<div class="rank"><img src="https://s.doyo.cn/s.gif"></div>
+								<div class="game">
+									<a href="/flash/game/551125" target="_blank" class="game_pic" title="小鳄鱼爱洗澡中文版"><img osrc="https://f1.doyo.cn/flash/img/f0/98bf9ad9df3791d1a464.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/551125" target="_blank" class="game_name" title="小鳄鱼爱洗澡中文版">小鳄鱼爱洗澡中</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/20" target="_blank" class="game_class">[物理]</a>
+																																																																																																			<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li class="top2">
+								<div class="rank"><img src="https://s.doyo.cn/s.gif"></div>
+								<div class="game">
+									<a href="/flash/game/500418" target="_blank" class="game_pic" title="森林冰火人中文版"><img osrc="https://f1.doyo.cn/flash/img/49/4b3ed64f4680f3b1cb00.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/500418" target="_blank" class="game_name" title="森林冰火人中文版">森林冰火人中文</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/6" target="_blank" class="game_class">[白领]</a>
+																																																																																																																					<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li class="top3">
+								<div class="rank"><img src="https://s.doyo.cn/s.gif"></div>
+								<div class="game">
+									<a href="/flash/game/654855" target="_blank" class="game_pic" title="消你妹"><img osrc="https://f1.doyo.cn/flash/img/9e/2a808a79848c141930ab.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/654855" target="_blank" class="game_name" title="消你妹">消你妹</a><br>
+																											<a href="/flash/tag/10" target="_blank" class="game_class">[女生]</a>
+																																				<a href="/flash/tag/29" target="_blank" class="game_class">[全鼠标操作]</a>
+																																																															<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">4</div>
+								<div class="game">
+									<a href="/flash/game/554817" target="_blank" class="game_pic" title="铁路谷"><img osrc="https://f1.doyo.cn/flash/img/c5/ffd1a49caad949166d52.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/554817" target="_blank" class="game_name" title="铁路谷">铁路谷</a><br>
+																											<a href="/flash/tag/78" target="_blank" class="game_class">[火车]</a>
+																																				<a href="/flash/tag/29" target="_blank" class="game_class">[全鼠标操作]</a>
+																																													<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">5</div>
+								<div class="game">
+									<a href="/flash/game/646182" target="_blank" class="game_pic" title="割绳子关卡全开版"><img osrc="https://f1.doyo.cn/flash/img/78/f93acccf2bc2673c8dfb06442829d4.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/646182" target="_blank" class="game_name" title="割绳子关卡全开版">割绳子关卡全开</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/29" target="_blank" class="game_class">[全鼠标操作]</a>
+																																																																																																																					<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">6</div>
+								<div class="game">
+									<a href="/flash/game/653216" target="_blank" class="game_pic" title="活埋骷髅"><img osrc="https://f1.doyo.cn/flash/img/ee/e548b32e06375cc7c7c3342aed8844.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/653216" target="_blank" class="game_name" title="活埋骷髅">活埋骷髅</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/20" target="_blank" class="game_class">[物理]</a>
+																																																															<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">7</div>
+								<div class="game">
+									<a href="/flash/game/552836" target="_blank" class="game_pic" title="植物大战僵尸配对"><img osrc="https://f1.doyo.cn/flash/img/a3/54737e96cac02553a142.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/552836" target="_blank" class="game_name" title="植物大战僵尸配对">植物大战僵尸配</a><br>
+																											<a href="/flash/tag/29" target="_blank" class="game_class">[全鼠标操作]</a>
+																																				<a href="/flash/tag/194" target="_blank" class="game_class">[敏捷]</a>
+																																													<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">8</div>
+								<div class="game">
+									<a href="/flash/game/504223" target="_blank" class="game_pic" title="暴力拆除2"><img osrc="https://f1.doyo.cn/flash/img/ea/cb63cb4d554c8bd1f065.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/504223" target="_blank" class="game_name" title="暴力拆除2">暴力拆除2</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/51" target="_blank" class="game_class">[方块]</a>
+																																																																																																			<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">9</div>
+								<div class="game">
+									<a href="/flash/game/505429" target="_blank" class="game_pic" title="装载卡车3"><img osrc="https://f1.doyo.cn/flash/img/3a/f15b39ab856c869a506c.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/505429" target="_blank" class="game_name" title="装载卡车3">装载卡车3</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/20" target="_blank" class="game_class">[物理]</a>
+																																																																																																			<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">10</div>
+								<div class="game">
+									<a href="/flash/game/592135" target="_blank" class="game_pic" title="连连看3.1原版"><img osrc="https://f1.doyo.cn/flash/img/76/5360e28b631fd36d8bc758e0101daa.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/592135" target="_blank" class="game_name" title="连连看3.1原版">连连看3.1原版</a><br>
+																											<a href="/flash/tag/414" target="_blank" class="game_class">[连连看全集]</a>
+																																				<a href="/flash/tag/129" target="_blank" class="game_class">[宠物]</a>
+																																																															<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">11</div>
+								<div class="game">
+									<a href="/flash/game/557715" target="_blank" class="game_pic" title="装载卡车4"><img osrc="https://f1.doyo.cn/flash/img/77/fb0b928c794f089953fc.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/557715" target="_blank" class="game_name" title="装载卡车4">装载卡车4</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/20" target="_blank" class="game_class">[物理]</a>
+																																																																																	<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">12</div>
+								<div class="game">
+									<a href="/flash/game/505884" target="_blank" class="game_pic" title="画线过山车走"><img osrc="https://f3.doyo.cn/flash/img/6c/0a25cb2fa4899264cedf.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/505884" target="_blank" class="game_name" title="画线过山车走">画线过山车走</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/19" target="_blank" class="game_class">[彩色画笔]</a>
+																																																																																																			<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">13</div>
+								<div class="game">
+									<a href="/flash/game/505392" target="_blank" class="game_pic" title="装载卡车3关卡全开版"><img osrc="https://f3.doyo.cn/flash/img/e8/d7f0b4b94aea0118d3cf.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/505392" target="_blank" class="game_name" title="装载卡车3关卡全开版">装载卡车3关卡</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/20" target="_blank" class="game_class">[物理]</a>
+																																																																																																			<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">14</div>
+								<div class="game">
+									<a href="/flash/game/501674" target="_blank" class="game_pic" title="美女洗澡间"><img osrc="https://f1.doyo.cn/flash/img/b6/36b9b35637bbb4116144.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/501674" target="_blank" class="game_name" title="美女洗澡间">美女洗澡间</a><br>
+																											<a href="/flash/tag/1" target="_blank" class="game_class">[密室逃脱]</a>
+																																				<a href="/flash/tag/6" target="_blank" class="game_class">[白领]</a>
+																																																																																	<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+							
+														<li>
+								<div class="rank">15</div>
+								<div class="game">
+									<a href="/flash/game/550041" target="_blank" class="game_pic" title="海绵宝宝软泥版"><img osrc="https://f1.doyo.cn/flash/img/cc/663084b372ca59c1dc62.jpg" src="https://s.doyo.cn/s.gif" class="game_cover"></a>
+									<a href="/flash/game/550041" target="_blank" class="game_name" title="海绵宝宝软泥版">海绵宝宝软泥版</a><br>
+																											<a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+																																				<a href="/flash/tag/39" target="_blank" class="game_class">[海绵宝宝]</a>
+																																																															<!--<em class="up"></em>-->
+								</div>
+							</li>
+							
+													</ul>
+
+					</div>
+				</div>
+			</div>
+			
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="bk16"></div>
+
+<div id="web_footer">
+	<div class="footer_line"></div>
+	<div class="footer_body">
+		游戏版权归原作者享有，如无意之中侵犯了您的版权，请按照<a href="https://www.doyo.cn/help/copyright_protection" target="_blank" style="color:#999;">《版权保护投诉指引》</a>来信告知，本站将应您的要求删除<br />
+		<a href="https://www.doyo.cn/guardian" target="_blank" class="s">家长监护</a> &nbsp; &nbsp; <a href="https://www.doyo.cn/job" target="_blank" class="s">人才招聘</a> &nbsp; &nbsp; <a href="https://www.doyo.cn/help/agreement" target="_blank">用户协议</a> &nbsp; &nbsp; <a href="https://www.doyo.cn/uploadflash" target="_blank">上传游戏</a> &nbsp; &nbsp; <a href="https://www.doyo.cn/user/feedback" target="_blank">意见反馈</a> &nbsp; &nbsp; <a href="https://www.doyo.cn/help/novice" target="_blank">使用帮助</a> &nbsp; &nbsp; <!--<a href="http://www.yaohou.com/jiazhang.shtml" target="_blank">家长监护</a> &nbsp; &nbsp; --><a href="https://www.doyo.cn/contactus" target="_blank">联系我们</a><br />
+		 <a href="http://www.beian.gov.cn" target="_blank">沪ICP备2023035109号-1</a> &nbsp;
+		<br />
+		Copyright 2016 <a href="http://www.doyo.cn" class="footer_orange">Doyo.cn</a>. Some rights reserved. 逗游网 版权所有
+	</div>
+</div>
+
+<!-- 对联欺骗，让其把位置提高点 -->
+<!--
+<div class="rd_layer" style="display:none;"></div>
+
+<div id="l_d_layer">
+<div class="close">&times;</div>
+
+<script type="text/javascript" smua="d=p&s=b&u=u3025731&w=300&h=250" src="https://www.nkscdn.com/smu0/o.js"></script>
+
+<script type="text/javascript">
+jQuery(function($){
+
+$("#l_d_layer .close").hover(function(){
+	$(this).addClass("close_hover");
+},function(){
+	$(this).removeClass("close_hover");
+}).click(function(){
+	$("#l_d_layer").remove();
+});
+
+});
+</script>
+
+</div>
+
+<div id="r_d_layer">
+<div class="close">&times;</div>
+
+<script type="text/javascript" smua="d=p&s=b&u=u3025731&w=300&h=250" src="https://www.nkscdn.com/smu0/o.js"></script>
+
+<script type="text/javascript">
+jQuery(function($){
+
+$("#r_d_layer .close").hover(function(){
+	$(this).addClass("close_hover");
+},function(){
+	$(this).removeClass("close_hover");
+}).click(function(){
+	$("#r_d_layer").remove();
+});
+
+});
+</script>
+
+</div>
+-->
+
+
+<!-- CNZZ分频道统计_官网小游戏 -->
+<div style="display:none;"><script src='https://w.cnzz.com/q_stat.php?id=1257120062&l=3'></script></div>
+
+<div style="display:none;">
+
+<script src='https://w.cnzz.com/q_stat.php?id=1253539841&l=3'></script>
+
+<script>
+var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?b0affa74a0ef00f793803b2ae8a25f8a";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();
+</script>
+
+<script type="text/javascript" src="/Tpl/web/Public/js/counter.js?ud=20160328"></script>
+
+</div>
+
+<!-- 游戏浏览统计 -->
+<!--<script type="text/javascript">jQuery(function($){$.getScript("https://tj.doyo.cn/game.php?gid=640023");});</script>-->
+
+<!-- 新浏览统计 -->
+<!--<script type="text/javascript">jQuery(function($){$.getScript("https://ping.doyo.cn/tj.php?type=flash&id=640023");});</script>-->
+</body>
+</html>

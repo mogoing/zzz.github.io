@@ -1,0 +1,1172 @@
+﻿<!-- twig code -->
+<!-- end twig code -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>鳄鱼小顽皮_u7u9小游戏</title>
+    <meta name="keywords" content="鳄鱼小顽皮,鳄鱼小顽皮小游戏,u7u9小游戏"/>
+    <meta name="description" content="u7u9小游戏为你提供最新的鳄鱼小顽皮小游戏，免费下载鳄鱼小顽皮小游戏，并同时提供最新鳄鱼小顽皮小游戏操作方法，助你顺利闯关。在线免费玩鳄鱼小顽皮小游戏，马上来u7u9小游戏吧，玩游戏其实可以很轻松！"/>
+    <link rel="stylesheet" type="text/css" href="//s.u7u9.com/css/xyx/flash_haowj.css"/>
+    <link rel="stylesheet" type="text/css" href="//s.u7u9.com/css/xyx/flash_icon.20240428.css"/>
+    <link rel="stylesheet" type="text/css" href="//s.u7u9.com/css/xyx/game_gameintro.css"/>
+    <!--script src="//s.u7u9.com/js/xyx/jQuery.min.js"></script-->
+    <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+        window.jQuery || document.write('<script src="//s.u7u9.com/js/xyx/jQuery.min.js"><\/script>');
+        })();
+    </script>
+	<script type="text/javascript" src="//apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js"></script>
+    <script type="text/javascript" src="//s.u7u9.com/js/xyx/flash.js"></script>
+<style>
+    a{text-decoration: none;color: #f60;}
+    </style>
+    <!-- SSP代码公用类库 -->
+    <script src="//dup.baidustatic.com/js/ds.js"></script>
+    <script type="text/javascript">
+
+        var game_id = "248627";
+
+        //同系列游戏滚动处理
+        function roll_space_init() {
+            if ($("#game_related_game .roll_box a").length < 8) {
+                return false;
+            }
+            var remainder = $("#game_related_game .roll_box a").length % 6;
+            if (remainder > 0) {
+                $("#game_related_game .roll a:lt(" + (6 - remainder) + ")").clone().css("visibility", "hidden").insertAfter("#game_related_game .roll a:last");
+            }
+            $("#game_related_game .roll_box").width(630);
+            $("#game_related_game .go_left,#game_related_game .go_right").show();
+            $("#game_related_game .go_left div,#game_related_game .go_right div").hover(function () {
+                $(this).addClass("active");
+            }, function () {
+                $(this).removeClass("active");
+            });
+            $("#game_related_game .go_left div").click(function () {
+                $("#game_related_game .roll a:gt(" + ($("#game_related_game .roll_box a").length - 7) + ")").insertBefore("#game_related_game .roll a:first");
+                $("#game_related_game .roll").css("left", "-630px").stop(true, true).animate({"left": "0"}, 700);
+                return false;
+            });
+
+            $("#game_related_game .go_right div").click(function () {
+                $("#game_related_game .roll").stop(true, true).animate({"left": "-630px"}, 700, function () {
+                    $("#game_related_game .roll a:lt(6)").insertAfter("#game_related_game .roll a:last");
+                    $("#game_related_game .roll").css("left", "0");
+                });
+                return false;
+            });
+        }
+
+        jQuery(function ($) {
+            $("#dl_left").hide();
+//滚动到播放区域  2016年11月23日 11:15:00  mod chi  已转移至ssp系统控制
+//$(document).scrollTop($("#header_nav_mid_box").offset().top);
+
+//导航标签激活
+            $("#flash_nav_sheji").addClass("active");
+
+
+//游戏信息区左右等高
+            if ($("#game_info_box .left").height() <= $("#game_info_box .right").height()) {
+                //$("#game_info_box .left").height($("#game_info_box .right").height());
+            } else {
+                //$("#game_info_box .right").height($("#game_info_box .left").height());
+            }
+
+//tag完整显示
+            $("#game_info_box .tag_space h3").hover(function () {
+                $("#game_info_box .tag_space .all_tag").show();
+            }, function () {
+            });
+
+            $("#game_info_box .tag_space .all_tag").hover(function () {
+            }, function () {
+                $(this).hide();
+            });
+
+//投票
+            //$("#game_vote button").live("click", function () {
+            //    $.get("/index.php/Flash/Flash/vote", {
+            //        "fid": game_id,
+            //        "vote": $(this).index("#game_vote button") + 1,
+            //        "rand": Math.random()
+            //    }, function (data) {
+            //        if (data.result) {
+            //            $("<div class=\"cover_box\"></div><div class=\"alarm_ok_box\"><span></span>" + data.reason + "</div>").appendTo("#game_vote");
+            //            $("#game_vote .cover_box,#game_vote .alarm_ok_box").delay(2000).fadeOut(3000, function () {
+            //                $(this).remove();
+            //                $("#game_vote").html("").addClass("loading");
+            //                $("#game_vote").load("/index.php/Flash/Flash/vote/fid/" + game_id, function () {
+            //                    $("#game_vote").removeClass("loading");
+            //                });
+            //            });
+            //        } else {
+            //            $("<div class=\"cover_box\"></div><div class=\"alarm_no_box\"><span></span>" + data.reason + "</div>").appendTo("#game_vote");
+            //            $("#game_vote .cover_box,#game_vote .alarm_no_box").delay(2000).fadeOut(3000, function () {
+            //                $(this).remove();
+            //            });
+            //        }
+            //    }, "json");
+            //});
+
+//同系列游戏滚动处理初始化
+            roll_space_init();
+
+//点评登录状态处理
+            //$.getScript("//ping.doyo.cn/checklogin", function (data) {
+            //    refresh_comment_userinfo();
+            //});
+
+//详情页查看计数
+            // $.get("/flash/game/" + game_id + "/view?random=" + Math.random());
+
+        });
+
+    </script>
+</head>
+<!-- 小游戏u7u9统计脚本 START --><div style="display:none;">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?54d28f253bac415147d2acf0e970b749";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+// u7u9 新
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?abdf5f9f40365bfef566df9f2e6d9c8a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script src="//s11.cnzz.com/z_stat.php?id=1259883470&web_id=1259883470" language="JavaScript"></script>
+<script>
+!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JeSAIpXoCmdcj8fJ",ck:"JeSAIpXoCmdcj8fJ"});
+</script>
+<script>
+(function(b,a,e,h,f,c,g,s){b[h]=b[h]||function(){(b[h].c=b[h].c||[]).push(arguments)};
+b[h].s=!!c;g=a.getElementsByTagName(e)[0];s=a.createElement(e);
+s.src="//s.union.360.cn/"+f+".js";s.defer=!0;s.async=!0;g.parentNode.insertBefore(s,g)
+})(window,document,"script","_qha",518457,false);
+</script>
+<!-- 百度自动上报统计脚本 START --><script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+(function(){
+var el = document.createElement("script");
+el.src = "https://lf1-cdn-tos.bytegoofy.com/goofy/ttzz/push.js?3f66154c4121cd05fddbf95fbd8e64426008be35d3aa4b8fc28d959eee7f7b82c112ff4abe50733e0ff1e1071a0fdc024b166ea2a296840a50a5288f35e2ca42";
+el.id = "ttzz";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(el, s);
+})(window)
+</script><!-- 百度自动上报统计脚本 END --></div><!-- 小游戏u7u9统计脚本 END --><!-- 小游戏详情页 START --><body class="cloud_bg">
+    <!-- 详情页 页面头部 -->
+    <div id="web_header">
+    
+            <div class="header_bar">
+            <div class="header_logo_space" style="width: 234px;">
+                <a href="//www.u7u9.com/flash" class="logo"><img alt="u7u9小游戏" title="u7u9小游戏" src="//s.u7u9.com/images/xyx/flash_main_logo_u7u9.png"></a>
+    
+            </div>
+    <div style="float:right"><!-- 广告位：u7u9 小顶通 -->
+    <script>
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div id="' + s + '"></div>');
+        (window.slotbydup=window.slotbydup || []).push({
+            id: '5571931',
+            container: s,
+            size: '640,90',
+            display: 'inlay-fix'
+        });
+    })();
+    </script></div>
+            <div class="header_search_space" style="width: 310px; height: 50px; margin-top: 15px; display:none;">
+                <script type="text/javascript">(function () {
+                    document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
+                    var bdcs = document.createElement('script');
+                    bdcs.type = 'text/javascript';
+                    bdcs.async = true;
+                    bdcs.src = '//znsv.baidu.com/customer_search/api/js?sid=15476455656300467870' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date() / 3600000);
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(bdcs, s);
+                })();
+                </script>
+                <div id="bdcs">
+                    <div class="bdcs-container">
+                        <meta http-equiv="x-ua-compatible" content="IE=9">
+                        <div class="bdcs-main bdcs-clearfix" id="default-searchbox">
+                            <!--<div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">
+                                <form action="/flash/search.html" method="get" target="_blank"
+                                      class="bdcs-search-form" autocomplete="off" id="bdcs-search-form">
+                                    <input type="text" name="keyboard" class="bdcs-search-form-input" id="bdcs-search-form-input"
+                                           placeholder="请输入关键词" style="height: 34px; line-height: 34px;">
+                                    <input type="submit" class="bdcs-search-form-submit" id="bdcs-search-form-submit"
+                                           value="搜索">
+    
+                                </form>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header_nav_top"></div>
+        <div id="header_nav_mid_box">
+            <div id="header_nav_mid">
+                <div class="button_space"><h1 style="float:left;"><a href="/flash" target="_blank">小游戏大全</a></h1><a href="#"
+                                                                                                                    onClick="AddFavorite('//www.u7u9.com','u7u9小游戏');return false;">收藏</a><a
+                        href="/shortcut/"><img src="//s.u7u9.com/images/xyx/space.gif" class="icon_add_shortcut">保存到桌面</a>
+                </div>
+                <div id="header_nav_link"><a href="/flash" id="flash_nav_index"><strong>首页</strong></a><a
+                        href="/flash/list/2" id="flash_nav_dongzuo"><strong>动作</strong></a><a href="/flash/list/3"
+                                                                                              id="flash_nav_sheji"><strong>射击</strong></a><a
+                        href="/flash/list/4" id="flash_nav_maoxian"><strong>冒险</strong></a><a href="/flash/list/5"
+                                                                                              id="flash_nav_gaoxiao"><strong>搞笑</strong></a><a
+                        href="/flash/list/9" id="flash_nav_zhuangban"><strong>装扮</strong></a><a href="/flash/list/10"
+                                                                                                id="flash_nav_ertong"><strong>儿童</strong></a><a
+                        href="/flash/list/11" id="flash_nav_shuangren"><strong>双人</strong></a><a href="/flash/tag/293"
+                                                                                                 id="flash_nav_shuangren"><strong>换装</strong></a><a
+                        href="/flash/tag/280" id="flash_nav_shuangren"><strong>赛车</strong></a><a href="/flash/tag/42"
+                                                                                                 id="flash_nav_shuangren"><strong>原创</strong></a>
+                    <!--<a href="//www.25ku.com/?from=u7u9" id="flash_nav_ertong" target="_blank"
+                       style="color: #23fdec;"><strong>漫画</strong></a>-->
+                    <!--<a id="xiaohuadaquan" href="//www.yaohou.cn" target="_blank"><img src="//www.yo4399.comimages/emotion_happy.png" /><strong>笑话大全</strong></a><a href="//www.yo4399.com/mobile/index.html" target="_blank"><strong>手机游戏</strong></a>-->
+                    <!-- <a href="//www.kakaba.com" id="nav_web_game" target="_blank"><strong>网页游戏</strong></a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header_nav_bot_path">现在位置     <span class="path"><a href="/flash/"><strong>u7u9小游戏</strong></a> > <a
+            href="/flash/list/8"><strong>策略小游戏</strong></a> > <a
+            href="/flash/game/885090"><strong>鳄鱼小顽皮</strong></a></span></div>
+    
+    <div id="detail_top_ad" style="margin:0 auto; width:960px; overflow:hidden;">
+        <div style="margin:0 auto; width:960px; overflow:hidden;">
+        <!-- u7u9_顶通_公用 START --><script type="text/javascript" src="//zxgghn.25ku.com/production/n/production/ihkx/f/openjs/joj.js"></script
+<!-- u7u9_顶通_公用 END -->        </div>
+    </div>
+    <div class="bk10"></div>
+    <div class="area">
+    
+        <div id="game_info_box">
+            <div class="left" style="height:602px">
+                <div class="pic_space">
+                    <a title="点击开始玩小游戏：鳄鱼小顽皮" class="flash_into"><img
+                            src="//img1.yo4399.com/doyo/flash/img/de/b1d7ad3a4f06f5c9fff6.jpg" title="鳄鱼小顽皮" alt="鳄鱼小顽皮"></a>
+                </div>
+    
+                <div style='height: 250px; width: 300px; top: 549px; margin-bottom: 10px; padding: 10px;' class="ad_focus_down">
+                    <!-- u7u9_头图_详情页 START --><script type="text/javascript" src="//zxgghn.25ku.com/source/xs/r/upt/common/p_ru.js"></script><!-- u7u9_头图_详情页 END -->                </div>
+                <div class="into_space">
+                    <a href="/flash/play/885090" title="点击开始玩小游戏：鳄鱼小顽皮" target="_blank"  class="flash_into"></a>
+                </div>
+                <div class="other_space">
+                    <a onClick="AddFavorite(window.location.href,document.title);return false;" class="add_game_to_favorite"
+                       href="#">加入收藏</a>   <a onClick="copy_page_url(window.location.href,document.title);return false;"
+                                              class="copy_game_url" href="#">复制地址</a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="name_space">
+    
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="name"><a href="/flash/game/885090" target="_self" ><h2 title="鳄鱼小顽皮">鳄鱼小顽皮</h2></a></td>
+                        </tr>
+                    </table>
+                    <div class="info">
+                        类型：<a href="/flash/list/8" target="_blank" class="blue">策略小游戏</a>   大小：<span
+                            class="grey"></span>  
+                        <div style="display:none;">语言：<a href="/flash/list/8?lang=3" target="_blank" class="blue"></a>
+                        </div>
+                        <div class="bk1"></div>
+                        <div class="tag_space">
+                            <div class="tag">标签：</div>
+                            <h3>
+                                                                <a target="_blank" href="/flash/tag/0">3D</a>
+                                                                <a target="_blank" href="/flash/tag/0">动作</a>
+                                                                <a target="_blank" href="/flash/tag/0">卡牌</a>
+                                                                <a target="_blank" href="/flash/tag/0">唐家三少</a>
+                                                                <a target="_blank" href="/flash/tag/0">解密</a>
+                                                                <a target="_blank" href="/flash/tag/0">美女武将</a>
+                                                            </h3>
+                            <div class="all_tag">
+                                                                <a target="_blank" href="/flash/tag/0">3D</a>
+                                                                <a target="_blank" href="/flash/tag/0">动作</a>
+                                                                <a target="_blank" href="/flash/tag/0">卡牌</a>
+                                                                <a target="_blank" href="/flash/tag/0">唐家三少</a>
+                                                                <a target="_blank" href="/flash/tag/0">解密</a>
+                                                                <a target="_blank" href="/flash/tag/0">美女武将</a>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="game_vote">
+                    <!--img src="//s.u7u9.com/browser_exception/qrcode_345x120.jpg"-->
+                    <!--div class="score_box">
+                                                <div class="score grey_bg">?</div>
+                        票数不足
+                                            </div>
+                    <button type="button">好玩</button>
+                    <div class="strip_box">
+                        <div class="green"></div>
+                        <div class="green" style="width:130px"></div>
+                        <span>2</span></div>
+                    <button type="button">一般</button>
+                    <div class="strip_box">
+                        <div class="blue"></div>
+                        <div class="blue" style="width:65px"></div>
+                        <span>1</span></div>
+                    <button type="button">不好玩</button>
+                    <div class="strip_box">
+                        <div class="orange"></div>
+                        <div class="orange" style="width:65px"></div>
+                        <span>1</span></div-->
+                    <div class="bk1"></div>
+                </div>
+                <div class="bk1"></div>
+                <div class="introduction">
+                    <div class="title"><b>鳄鱼小顽皮小游戏简介</b></div>
+                    <div class="bk3"></div>
+                    <div class="content">《鳄鱼小顽皮爱洗澡》FLASH版本的中文版，这是一款趣味的益智游戏，游戏中讲述的是住在城市下面的鳄鱼小顽皮（Swampy）希望过上人类一样的生活，非常喜欢干净。可那里最厉害的一只鳄鱼大顽固（Cranky）不满小顽皮的怪癖，与其他鳄鱼密谋破坏小顽皮的水源供应，玩家需要帮助小顽皮避开毒水、水藻和各种各样的陷阱，把清水引到他的浴缸并尽量获得鸭子。
+                        <!--<a style="display:none" href="//www.baike.com/wiki/气球射击狂欢" target="_blank" class="more">更多»</a>-->
+                    </div>
+                </div>
+                <div class="helpbottom">
+                    <div class="explain">
+                        <div class="title"><b>操作指南</b></div>
+                        <div class="bk6"></div>
+                        <div class="content" id="GameKey">
+                            <div class="ins-t"><b>操作说明</b></div>
+                            <div class='GameKey2'>
+                                
+                            </div>
+    
+                            <div class="ins-t"><b>游戏目标</b></div>
+                            <p></p>
+    
+                            <div class="ins-t"><b>如何开始</b></div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-left:15px; margin-top:10px; margin-bottom:10px; overflow:hidden; width:100%">
+                    <!-- Baidu Button BEGIN -->
+                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"
+                         data="{'url':'//www.u7u9.com/flash/play/885090'}">
+                        <span class="bds_more" style="font:12px/1.3 Arial;color:#4B87D4;">分享到：</span>
+                        <a class="bds_qzone"></a>
+                        <a class="bds_tsina"></a>
+                        <a class="bds_tqq"></a>
+                        <a class="bds_renren"></a>
+                        <a class="shareCount">0</a>
+                    </div>
+                    <script type="text/javascript" id="bdshare_js" data="type=tools&uid=452547"></script>
+                    <script type="text/javascript" id="bdshell_js"></script>
+                    <script type="text/javascript">
+                        bds_config = {"bdPic": "//img1.yo4399.com/doyo/flash/img/de/b1d7ad3a4f06f5c9fff6.jpg"};
+                        document.getElementById("bdshell_js").src = "//bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
+                    </script>
+                    <!-- Baidu Button END -->
+                </div>
+                <!-- u7u9_游戏详情右侧_详情页 START --><script type="text/javascript" src="//zxgghn.25ku.com/source/ql/kni/m/source/im_r.js"></script><!-- u7u9_游戏详情右侧_详情页 END -->            </div>
+        </div>
+    
+    </div>
+    <div class="bk10"></div>
+    <div style="width:960px; height:auto; margin:0 auto;" class="ad_game_detail_banner">
+        <!-- u7u9_中通_详情页 START --><script type="text/javascript" src="//zxgghn.25ku.com/source/f/source/a_z/resource/ijgpjc.js"></script><!-- u7u9_中通_详情页 END -->    </div>
+    <div class="bk10"></div>
+    <style>
+        .clearfix::before,
+        .clearfix::after {
+            content: '';
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        .pp-add-list {
+            width: 960px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding-bottom: 10px;
+            /*padding: 0 10px 0;*/
+        }
+        .pop-bg {
+            height: 22px;
+            background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,0));
+            /*margin: 0 -10px;*/
+            position: relative;
+            z-index: -1;
+        }
+        .pp-add-list li {
+            float: left;
+            width: 140px;
+            margin: 0 10px;
+            margin-top: 20px;
+            position: relative;
+        }
+        .pp-add-list li:nth-of-type(-n+6) {
+            margin-top: 0;
+            /*margin-right: 0;*/
+        }
+        .pp-add-list li p {
+            color: #666;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 6px;
+            overflow: hidden;
+            height: 12px;
+        }
+        .pp-add-list li:hover img {
+            transform: scale(1.1);
+        }
+        .pp-add-list li:hover p {
+            color: #f60;
+        }
+        .pp-add-list .feed-ad-360::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 34px;
+            height: 14px;
+            z-index: 99;
+            /*font-size: 12px;*/
+            background: url("https://p0.ssl.qhimg.com/t01c5fc7f8612d6b610.png") no-repeat top right;
+            /*color: #fff;
+            -webkit-border-radius:2px;
+            -moz-border-radius:2px;
+            border-radius:2px;
+            text-align: center;*/
+        }
+        .pp-add-list a {
+            display: block;
+            text-decoration: none;
+        }
+        .pp-add-list .pic {
+            height: 92px;
+            width: 100%;
+            overflow: hidden;
+            -webkit-border-radius:10px;
+            -moz-border-radius:10px;
+            border-radius:10px;
+        }
+        .pp-add-list img {
+            display: block;
+            height: 120px;
+            transition: all 0.5s;
+        }
+    
+    
+    
+        .singleImage__img{
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .singleImage__img .img{
+            height: 92px;
+            background-size: cover;
+            border-radius: 10px;
+            transition: all 0.4s;
+        }
+        .singleImage__img .img:hover{
+            transform: scale(1.2);
+        }
+    
+        .singleImage__img .img .adTag{
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #fff;
+            padding: 2px 3px;
+            font-size: 12px;
+            background: rgba(200,200,200,0.6);
+            line-height: 1em;
+        }
+        .singleImage__body .singleImage__title{
+            white-space: nowrap;
+            /*text-overflow: ellipsis;*/
+            color: #666;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 6px;
+            overflow: hidden;
+            height: 12px;
+            width: 80%;
+            margin-left: 10%;
+        }
+        .singleImage__desc,.largeImage__desc{
+            display: none !important;
+        }
+    
+        .largeImage{
+            height: 110px;
+            position: relative;
+        }
+    
+    
+        .largeImage__img{
+            height: 92px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .largeImage__title{
+            position: absolute;
+            bottom: 0;
+            white-space: nowrap;
+            font-size: 12px;
+            color: #666;
+            overflow: hidden;
+            width: 80%;
+            margin-left: 10%;
+        }
+        .largeImage__img .img{
+            background-size: contain;
+            transition: all 0.4s;
+            height: 92px;
+            border-radius: 10px;
+        }
+        .largeImage__img .img:hover{
+            transform: scale(1.2);
+        }
+        .largeImage__img .img .adTag{
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #fff;
+            padding: 2px 3px;
+            font-size: 12px;
+            background: rgba(200,200,200,0.6);
+            line-height: 1em;
+        }
+    
+    </style>
+        <!--div class="pp-add-list">
+            <div class="pop-bg"></div>
+            <ul class="clearfix" id="_elm">
+            </ul>
+        </div-->
+    <div class="bk10"></div>
+    <div style="width: 960px;margin: 0 auto;">
+    <!--script type="text/javascript">
+            var cpro_id = "u5253935";
+            
+    </script>
+    <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js"></script-->
+
+<div id="last_pcu7u9gyxxlxshow">
+    <script type="text/javascript">
+        //PCu7u9公用信息流下
+        var dom = document.createElement('script');
+        dom.type = "text/javascript";
+        dom.src = "//zxgghn.25ku.com/site/k/f/common/c/ucxn/xc.js";
+        if (
+            isNaN(parseInt($.cookie('last_pcu7u9gyxxlxshowtime'))) ||
+            (parseInt($.cookie('last_pcu7u9gyxxlxshowtime')) + 24 * 60 * 60 * 1000) < Date.now()
+        ) {
+            $.cookie('last_pcu7u9gyxxlxshowtime', Date.now());
+            dom.src = "//zxgghn.25ku.com/site/k/f/common/c/ucxn/xc.js";
+        } else if (isNaN(parseInt($.cookie('last_pcu7u9gyxxlxshow')))) {
+            $.cookie('last_pcu7u9gyxxlxshow', 1, { expires: 1 });
+            dom.src = "//zxgghn.25ku.com/production/s/nm/static/pk-oko/openjs/c.js";
+        } else {
+            dom.src = "//zxgghn.25ku.com/site/k/f/common/c/ucxn/xc.js";
+        }
+        document.getElementById("last_pcu7u9gyxxlxshow").appendChild(dom);
+    </script>
+</div>
+    </div>
+    <div class="bk10"></div>
+    <div class="area">
+        <div id="game_other_box" class="clearfix">
+            <div class="left">
+                <div id="game_related_game">
+                    <div class="title"><span class="icon"></span>
+                        <h3>同类小游戏</h3></div>
+                    <div class="content" style="display:block !important; float:left !important; width:750px !important; height:220px !important; overflow:hidden !important; padding: 0px !important; position:relative; z-index:1; zoom:1;">
+                        <!-- twig code -->
+                                                                        <a href="/flash/game/883330" target="_blank" title="机甲帝国"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170411/600804508_078.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="机甲帝国"/>机甲帝国</a>
+                                                <a href="/flash/game/883248" target="_blank" title="外星系暗流中文版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170406/676358197_079.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="外星系暗流中文版"/>外星系暗流中文</a>
+                                                <a href="/flash/game/883232" target="_blank" title="文明战争5"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170406/361527846_049.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="文明战争5"/>文明战争5</a>
+                                                <a href="/flash/game/883056" target="_blank" title="胜利者之歌无敌版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170323/642722201_083.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="胜利者之歌无敌版"/>胜利者之歌无敌</a>
+                                                <a href="/flash/game/882906" target="_blank" title="机器人英雄之战中文无敌版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170316/255089467_035.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="机器人英雄之战中文无敌版"/>机器人英雄之战</a>
+                                                <a href="/flash/game/882896" target="_blank" title="胜利者之歌"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170316/504558058_017.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="胜利者之歌"/>胜利者之歌</a>
+                                                <a href="/flash/game/882869" target="_blank" title="机器人英雄之战中文版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170315/864159935_115.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="机器人英雄之战中文版"/>机器人英雄之战</a>
+                                                <a href="/flash/game/882738" target="_blank" title="次时代战争中文无敌版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170310/305974928_028.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="次时代战争中文无敌版"/>次时代战争中文</a>
+                                                <a href="/flash/game/882671" target="_blank" title="怪物实验2中文版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170306/92443696_075.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="怪物实验2中文版"/>怪物实验2中文</a>
+                                                <a href="/flash/game/882578" target="_blank" title="变异汪星人3"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170228/815238321_013.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="变异汪星人3"/>变异汪星人3</a>
+                                                <a href="/flash/game/882380" target="_blank" title="神明的反击无敌版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170217/677654382_577.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="神明的反击无敌版"/>神明的反击无敌</a>
+                                                <a href="/flash/game/882090" target="_blank" title="决战加勒比无敌版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170217/826010662_073.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="决战加勒比无敌版"/>决战加勒比无敌</a>
+                                                <a href="/flash/game/881996" target="_blank" title="决战加勒比"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170217/13475561_005.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="决战加勒比"/>决战加勒比</a>
+                                                <a href="/flash/game/881921" target="_blank" title="精英战神2无敌版"><img
+                                osrc="//img1.yo4399.com/swf/yo4399/20170207/39644850_035.jpg"
+                                src="//s.u7u9.com/images/xyx/space.gif" alt="精英战神2无敌版"/>精英战神2无敌</a>
+                                                <!-- end twig code -->
+                    </div>
+                    <div class="line"></div>
+                    <div class="bk3"></div>
+                </div>
+                <div class="bk10"></div>
+                <div class="into_space">
+                    <div id="index_new_recommend">
+                        <!-- u7u9_底通01_详情页 START --><!-- 广告位：u7u9 底通 详情页 -->
+<div id="last_pcu7u9gynytlshow">
+    <script type="text/javascript">
+        //PCu7u9公用内页通栏
+        var dom = document.createElement('script');
+        dom.type = "text/javascript";
+        dom.src = "//zxgghn.25ku.com/site/h_cu/common/zb_uy_ie.js";
+        if (
+            isNaN(parseInt($.cookie('last_pcu7u9gynytlshowtime'))) ||
+            (parseInt($.cookie('last_pcu7u9gynytlshowtime')) + 24 * 60 * 60 * 1000) < Date.now()
+        ) {
+            $.cookie('last_pcu7u9gynytlshowtime', Date.now());
+            dom.src = "//zxgghn.25ku.com/site/h_cu/common/zb_uy_ie.js";
+        } else if (isNaN(parseInt($.cookie('last_pcu7u9gynytlshow')))) {
+            $.cookie('last_pcu7u9gynytlshow', 1, { expires: 1 });
+            dom.src = "//zxgghn.25ku.com/production/y/tsv/quq/production/s/resource/b.js";
+        } else {
+            dom.src = "//zxgghn.25ku.com/site/h_cu/common/zb_uy_ie.js";
+        }
+        document.getElementById("last_pcu7u9gynytlshow").appendChild(dom);
+    </script>
+</div><!-- u7u9_底通01_详情页 END -->                    </div>
+                </div>
+                <div class="bk10"></div>
+                <div id="index_gather_recommend">
+                    <div class="title"><!--<a href="#" target="_blank" class="more">更多</a>--><span class="icon"></span>
+                        <h1>热门小游戏合集</h1></div>
+                    <div class="content">
+                        <!-- twig code controller中查询，栏目名:热门小游戏标签合集 -->
+                                                <a href="/flash/tag/293" target="_blank" title="换装">
+                            <img osrc="http://img1.yo4399.com/img/ad/8803834df2e52a2aef16.jpg">换装
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">12726款</div>
+                        </a>
+                                                <a href="/flash/tag/4" target="_blank" title="男生">
+                            <img osrc="http://img1.yo4399.com/img/13/a438d4c27465b868045a.jpg">男生
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">11161款</div>
+                        </a>
+                                                <a href="/flash/tag/40" target="_blank" title="轻松">
+                            <img osrc="http://img1.yo4399.com/img/88/6d7dfa74c94d99aa4f8a.jpg">轻松
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">10558款</div>
+                        </a>
+                                                <a href="/flash/tag/42" target="_blank" title="原创">
+                            <img osrc="http://img1.yo4399.com/img/a3/3852a8a16a614a88c046.jpg">原创
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">7880款</div>
+                        </a>
+                                                <a href="/flash/tag/9" target="_blank" title="解谜">
+                            <img osrc="http://img1.yo4399.com/img/e0/d1e985eef6b0b29f9ae7.jpg">解谜
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">3605款</div>
+                        </a>
+                                                <a href="/flash/tag/49" target="_blank" title="经典">
+                            <img osrc="http://img1.yo4399.com/img/52/3dfb76b8c7c7e9ef768d.jpg">经典
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">2791款</div>
+                        </a>
+                                                <a href="/flash/tag/168" target="_blank" title="打斗闯关">
+                            <img osrc="http://img1.yo4399.com/img/40/19691a0656bba76937ff.jpg">打斗闯关
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">2590款</div>
+                        </a>
+                                                <a href="/flash/tag/41" target="_blank" title="消除">
+                            <img osrc="http://img1.yo4399.com/img/9e/e2b6733bb446fedbeee6.jpg">消除
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">1776款</div>
+                        </a>
+                                                <a href="/flash/tag/83" target="_blank" title="双人小游戏">
+                            <img osrc="http://img1.yo4399.com/img/73/dc1496dae14737d82c33.jpg">双人小游戏
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">1214款</div>
+                        </a>
+                                                <a href="/flash/tag/138" target="_blank" title="防守">
+                            <img osrc="http://img1.yo4399.com/img/de/bdbd3d4eb78dcf99f950.jpg">防守
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">1150款</div>
+                        </a>
+                                                <a href="/flash/tag/280" target="_blank" title="赛车竞速">
+                            <img osrc="http://img1.yo4399.com/img/44/e42f5716ddc1222e5994.jpg">赛车竞速
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">1127款</div>
+                        </a>
+                                                <a href="/flash/tag/33" target="_blank" title="僵尸">
+                            <img osrc="http://img1.yo4399.com/img/d0/951634f6205b52dbcf1b.jpg">僵尸
+                            <img src="//s.u7u9.com/images/xyx/space.gif" class="cover">
+                            <div class="number">522款</div>
+                        </a>
+                                                <!-- end twig code -->
+                        <div class="bk1"></div>
+                    </div>
+                </div>
+                <div class="bk10"></div>
+                <div class="bk10"></div>
+                <div id="index_new_recommend">
+                    <div class="title"><!--<a href="#" target="_blank" class="more">更多</a>--><span class="icon"></span>
+                        <h1>最新推荐小游戏</h1><!--<span class="number">（今日更新<span>88</span>款）</span>--></div>
+                    <div class="content" style="height:210px; ">
+                                                                        <a href="/flash/game/10009463" target="_blank" title="童话玩具战争"><img
+                                src="//s.u7u9.com/images/7/7/77d5b8798e7b56d7a1d979e30fcea1d6.jpg" alt="童话玩具战争">童话玩具战争
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/10009352" target="_blank" title="敏捷的宠物"><img
+                                src="//s.u7u9.com/images/2/2/22ce346f3bf89a5bd22785757807814a.jpg" alt="敏捷的宠物">敏捷的宠物
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895306" target="_blank" title="超级冰火人冒险2无敌版"><img
+                                src="//img1.yo4399.com/doyo/flash/img/20/b2fafbc8e9dc74d3f122310ded3f99.jpg" alt="超级冰火人冒险2无敌版">超级冰火人冒险
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895282" target="_blank" title="逃离丧尸城"><img
+                                src="//img1.yo4399.com/doyo/flash/img/5e/87872515c4fb29b13c303e9f401c7a.jpg" alt="逃离丧尸城">逃离丧尸城
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895250" target="_blank" title="CF火线悍将无敌版"><img
+                                src="//img1.yo4399.com/doyo/flash/img/e6/9c8cf3973c125775e904020307d64c.jpg" alt="CF火线悍将无敌版">CF火线悍将无
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895217" target="_blank" title="芭比娃娃的薄纱礼服"><img
+                                src="//img1.yo4399.com/doyo/flash/img/4b/a381cbc66d099108c4a145089b9a2a.jpg" alt="芭比娃娃的薄纱礼服">芭比娃娃的薄纱
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895214" target="_blank" title="朵拉美人鱼填色"><img
+                                src="//img1.yo4399.com/doyo/flash/img/69/1be03ef9d0a9430beff3ebbc1faf4d.jpg" alt="朵拉美人鱼填色">朵拉美人鱼填色
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895208" target="_blank" title="白雪公主做水疗"><img
+                                src="//img1.yo4399.com/doyo/flash/img/47/05bb33e54bd20c9c3e2107a02140d0.jpg" alt="白雪公主做水疗">白雪公主做水疗
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895190" target="_blank" title="公主毕业自拍照"><img
+                                src="//img1.yo4399.com/doyo/flash/img/de/777fec449e50ee3d0f592bdb2acfd2.jpg" alt="公主毕业自拍照">公主毕业自拍照
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895177" target="_blank" title="小鬼子来了2"><img
+                                src="//img1.yo4399.com/doyo/flash/img/d7/02b79e15e9c444182cbc.jpg" alt="小鬼子来了2">小鬼子来了2
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895157" target="_blank" title="芭比公主的校服"><img
+                                src="//img1.yo4399.com/doyo/flash/img/26/aed90d843b458d9c82938cb0e71a86.jpg" alt="芭比公主的校服">芭比公主的校服
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895129" target="_blank" title="森林冰火人大冒险2选关版"><img
+                                src="//img1.yo4399.com/doyo/flash/img/fb/9c00fc565cd1babedd7eb2de3089ef.jpg" alt="森林冰火人大冒险2选关版">森林冰火人大冒
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895127" target="_blank" title="灰姑娘的美甲"><img
+                                src="//img1.yo4399.com/doyo/flash/img/a4/36d79403fec7396a602782d3daaa94.jpg" alt="灰姑娘的美甲">灰姑娘的美甲
+                            <div class="cover_new"></div>
+                        </a>
+                                                <a href="/flash/game/895124" target="_blank" title="花椰菜炒鸡肉"><img
+                                src="//img1.yo4399.com/doyo/flash/img/3a/6c20da9001cbe483b8c85fd9f6c18e.jpg" alt="花椰菜炒鸡肉">花椰菜炒鸡肉
+                            <div class="cover_new"></div>
+                        </a>
+                                            </div>
+                </div>
+                <div class="into_space">
+                    <div id="index_new_recommend">
+                        <!-- u7u9_底通_详播 START --><!-- 广告位：u7u9详/播底通 -->
+<script>
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div id="' + s + '"></div>');
+        (window.slotbydup=window.slotbydup || []).push({
+            id: '5420186',
+            container: s,
+            size: '960,0',
+            display: 'inlay-fix'
+        });
+    })();
+</script><!-- u7u9_底通_详播 END -->                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div id="type_rank">
+                    <div class="title">
+                        <span class="icon"></span>
+                        <h3>策略小游戏排行</h3>
+                    </div>
+                    <div class="content">
+                        <div class="list">
+                            <ul>
+                                <!-- twig code -->
+                                                                                                <li class="top1">
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/889473" target="_blank" class="game_pic" title="蓝色药水3第二部">
+                                        <img osrc="//img1.yo4399.com/doyo/flash/img/62/46aca1d70c01ecb1e7e8.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="蓝色药水3第二部"/>
+                                    </a>
+                                    <a href="/flash/game/889473" target="_blank" class="game_name" title="蓝色药水3第二部">蓝色药水3第</a><br>
+                                                                        <a href="/flash/tag/0" target="_blank" class="game_class">[篮球]</a>
+                                                                        <a href="/flash/tag/0" target="_blank" class="game_class">[灌篮]</a>
+                                                                    </div>
+                                </li>
+                                                                <li class="top2">
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/534753" target="_blank" class="game_pic" title="植物大战僵尸">
+                                        <img osrc="//img1.yo4399.com/img/68/84488c736d0921b34f10.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="植物大战僵尸"/>
+                                    </a>
+                                    <a href="/flash/game/534753" target="_blank" class="game_name" title="植物大战僵尸">植物大战僵尸</a><br>
+                                                                        <a href="/flash/tag/4" target="_blank" class="game_class">[男生]</a>
+                                                                        <a href="/flash/tag/14" target="_blank" class="game_class">[学生]</a>
+                                                                    </div>
+                                </li>
+                                                                <li class="top3">
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/535625" target="_blank" class="game_pic" title="植物大战僵尸无敌版">
+                                        <img osrc="//img1.yo4399.com/img/f3/d35a3a34adc2c73bc9bf.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="植物大战僵尸无敌版"/>
+                                    </a>
+                                    <a href="/flash/game/535625" target="_blank" class="game_name" title="植物大战僵尸无敌版">植物大战僵尸</a><br>
+                                                                        <a href="/flash/tag/4" target="_blank" class="game_class">[男生]</a>
+                                                                        <a href="/flash/tag/347" target="_blank" class="game_class">[男生游戏精选]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/643018" target="_blank" class="game_pic" title="保卫萝卜电脑无敌版">
+                                        <img osrc="//img1.yo4399.com/img/16/2246b44f1510b6561e0496ec4469cd.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="保卫萝卜电脑无敌版"/>
+                                    </a>
+                                    <a href="/flash/game/643018" target="_blank" class="game_name" title="保卫萝卜电脑无敌版">保卫萝卜电脑</a><br>
+                                                                        <a href="/flash/tag/28" target="_blank" class="game_class">[必玩]</a>
+                                                                        <a href="/flash/tag/138" target="_blank" class="game_class">[防守]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/555410" target="_blank" class="game_pic" title="大炮灭敌">
+                                        <img osrc="//img1.yo4399.com/img/74/4d3250d33736e5529e5e.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="大炮灭敌"/>
+                                    </a>
+                                    <a href="/flash/game/555410" target="_blank" class="game_name" title="大炮灭敌">大炮灭敌</a><br>
+                                                                        <a href="/flash/tag/72" target="_blank" class="game_class">[大炮]</a>
+                                                                        <a href="/flash/tag/194" target="_blank" class="game_class">[敏捷]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/228" target="_blank" class="game_pic" title="合金弹头突击队无敌版">
+                                        <img osrc="//img1.yo4399.com/img/bd/6fb202452bd7a650eaed1ee21b4b62.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="合金弹头突击队无敌版"/>
+                                    </a>
+                                    <a href="/flash/game/228" target="_blank" class="game_name" title="合金弹头突击队无敌版">合金弹头突击</a><br>
+                                                                        <a href="/flash/tag/4" target="_blank" class="game_class">[男生]</a>
+                                                                        <a href="/flash/tag/169" target="_blank" class="game_class">[越野车]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/534904" target="_blank" class="game_pic" title="资源争霸">
+                                        <img osrc="//img1.yo4399.com/img/db/65e27e30d1c521b76e48.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="资源争霸"/>
+                                    </a>
+                                    <a href="/flash/game/534904" target="_blank" class="game_name" title="资源争霸">资源争霸</a><br>
+                                                                        <a href="/flash/tag/4" target="_blank" class="game_class">[男生]</a>
+                                                                        <a href="/flash/tag/32" target="_blank" class="game_class">[战士]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/657763" target="_blank" class="game_pic" title="植物大战僵尸电脑版">
+                                        <img osrc="//img1.yo4399.com/jifen/images/141518.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="植物大战僵尸电脑版"/>
+                                    </a>
+                                    <a href="/flash/game/657763" target="_blank" class="game_name" title="植物大战僵尸电脑版">植物大战僵尸</a><br>
+                                                                        <a href="/flash/tag/353" target="_blank" class="game_class">[闯关]</a>
+                                                                        <a href="/flash/tag/340" target="_blank" class="game_class">[原创游戏]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/558232" target="_blank" class="game_pic" title="大灰狼抓小兔兔">
+                                        <img osrc="//img1.yo4399.com/img/eb/590f3f1c691be8fd0027.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="大灰狼抓小兔兔"/>
+                                    </a>
+                                    <a href="/flash/game/558232" target="_blank" class="game_name" title="大灰狼抓小兔兔">大灰狼抓小兔</a><br>
+                                                                        <a href="/flash/tag/2" target="_blank" class="game_class">[小动物]</a>
+                                                                        <a href="/flash/tag/29" target="_blank" class="game_class">[全鼠标操作]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/534939" target="_blank" class="game_pic" title="植物大战僵尸僵尸内战">
+                                        <img osrc="//img1.yo4399.com/img/9e/349405f87b272508884f.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="植物大战僵尸僵尸内战"/>
+                                    </a>
+                                    <a href="/flash/game/534939" target="_blank" class="game_name" title="植物大战僵尸僵尸内战">植物大战僵尸</a><br>
+                                                                        <a href="/flash/tag/5" target="_blank" class="game_class">[创意]</a>
+                                                                        <a href="/flash/tag/7" target="_blank" class="game_class">[中文汉化]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/535007" target="_blank" class="game_pic" title="皇家守卫军1.072无敌版">
+                                        <img osrc="//img1.yo4399.com/img/a5/265436757ea87165cbbf.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="皇家守卫军1.072无敌版"/>
+                                    </a>
+                                    <a href="/flash/game/535007" target="_blank" class="game_name" title="皇家守卫军1.072无敌版">皇家守卫军1</a><br>
+                                                                        <a href="/flash/tag/4" target="_blank" class="game_class">[男生]</a>
+                                                                        <a href="/flash/tag/31" target="_blank" class="game_class">[怪物]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/675933" target="_blank" class="game_pic" title="高塔之战3">
+                                        <img osrc="//img1.yo4399.com/jifen/images/162131.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="高塔之战3"/>
+                                    </a>
+                                    <a href="/flash/game/675933" target="_blank" class="game_name" title="高塔之战3">高塔之战3</a><br>
+                                                                        <a href="/flash/tag/372" target="_blank" class="game_class">[塔防游戏]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/562892" target="_blank" class="game_pic" title="机械大战幽灵">
+                                        <img osrc="//img1.yo4399.com/img/9e/337a4ca68ba2c233bb4c.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="机械大战幽灵"/>
+                                    </a>
+                                    <a href="/flash/game/562892" target="_blank" class="game_name" title="机械大战幽灵">机械大战幽灵</a><br>
+                                                                        <a href="/flash/tag/3" target="_blank" class="game_class">[逻辑]</a>
+                                                                        <a href="/flash/tag/49" target="_blank" class="game_class">[经典]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/559655" target="_blank" class="game_pic" title="城邦争霸1.1.2">
+                                        <img osrc="//img1.yo4399.com/img/5a/dd7215b10de91fac6b43.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="城邦争霸1.1.2"/>
+                                    </a>
+                                    <a href="/flash/game/559655" target="_blank" class="game_name" title="城邦争霸1.1.2">城邦争霸1.</a><br>
+                                                                        <a href="/flash/tag/4" target="_blank" class="game_class">[男生]</a>
+                                                                        <a href="/flash/tag/118" target="_blank" class="game_class">[战争]</a>
+                                                                    </div>
+                                </li>
+                                                                <li >
+                                <div class="rank"><img src="//s.u7u9.com/images/xyx/space.gif"></div>
+                                <div class="game">
+                                    <a href="/flash/game/640007" target="_blank" class="game_pic" title="保卫萝卜正式版">
+                                        <img osrc="//img1.yo4399.com/img/19/c94dd7bd0eab51a25f4defea9ce777.jpg" src="//s.u7u9.com/images/xyx/space.gif" class="game_cover" alt="保卫萝卜正式版"/>
+                                    </a>
+                                    <a href="/flash/game/640007" target="_blank" class="game_name" title="保卫萝卜正式版">保卫萝卜正式</a><br>
+                                                                        <a href="/flash/tag/353" target="_blank" class="game_class">[闯关]</a>
+                                                                        <a href="/flash/tag/4" target="_blank" class="game_class">[男生]</a>
+                                                                    </div>
+                                </li>
+                                                            </ul>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+    </div>
+    <script type='text/javascript'>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function () {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+                    '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+    </script>
+    <div style="width: 960px; margin: 0 auto;">
+        <div id="SOHUCS" sid="xiaoyouxi_game_248627"></div>
+        <!--<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+        <script type="text/javascript">
+            window.changyan.api.config({
+                appid: 'cysWngEqa',
+                conf: 'prod_628e38bb78cbde4b1c4711bde015aa0a'
+            });
+        </script>-->
+    </div>
+    
+    <!-- 小游戏公共尾部 START --><div id="web_footer">
+    <div class="footer_line"></div>
+    <div class="footer_body">
+        游戏版权归原作者享有，如无意之中侵犯了您的版权，请按照《版权保护投诉指引》来信告知，本站将应您的要求删除<br>
+        健康游戏提示：抵制不良游戏，拒绝盗版游戏，注意自我保护，谨防受骗上当，适度游戏益脑，沉迷游戏伤身，合理安排时间，享受健康生活
+        <br>
+        <a href="/flash/aboutus.html" target="_blank">关于我们</a>   <a href="/flash/copyright.html" target="_blank">版权保护指引</a>   <a href="/flash/question.html" target="_blank">常见问题</a>  <a href="/flash/contactus.html	" target="_blank">加入我们</a>  <a href="/flash/contactus.html	" target="_blank">联系我们</a>  <br>
+        京网文（2016）6148-820号 京ICP证000007-6  <a href="https://beian.miit.gov.cn/#/Integrated/index" target=black>京ICP备16027086号-1</a><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502051327" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="//img.alicdn.com/tfs/TB1..50QpXXXXX7XpXXXXXXXXXX-40-40.png" style="float:left;" height="20"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010502051327号</p></a>
+        <br>
+
+        Copyright 2010-2015 <a href="//www.u7u9.com/" class="footer_orange">//www.u7u9.com/</a>. Some rights reserved.  <!--cnzz站长统计 S-->
+    </div>
+</div>
+<!--div style="position: fixed; z-index: 10; left: 10px; bottom: 10px; width: 250px; height: 250px; margin: 0px; padding: 0px; border: 0px;display:none;" id="pangu_leftBottom">
+    <div style="position:absolute;width: 245px;top: -18px;height:22px;background:#ededed;font-size:12px;line-height:20px;margin-left: 5px;">
+        <a style="position:absolute; right:0px; top:0px; color:#666; border:1px solid #ddd; width:30px; heght:16px; text-align:center; background:#ededed; font-size:12px; padding:0px 5px; text-decoration:none; cursor:pointer; z-index:10" href="javascript:hide_left();">
+            关闭
+        </a>
+        <script type="text/javascript">
+          function hide_left () {
+            $("#pangu_leftBottom").hide();
+          }
+        </script>
+    </div><!-广告位：u7u9左下角悬浮 ->
+    <script>
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div id="' + s + '"></div>');
+        (window.slotbydup=window.slotbydup || []).push({
+            id: '5890913',
+            container: s,
+            size: '0,0',
+            display: 'inlay-fix'
+        });
+    })();
+    </script>
+</div-->
+<!--div id="pangu_rightBottom" style="width: 300px; height: 250px; position: fixed; z-index: 2147483647; right: 0px; bottom: 0px;">
+    <div style="position:absolute; width:300px; top:-22px; height:22px; background:#ededed; font-size:12px; line-height:20px;">
+        <a style="position:absolute; right:0px; top:0px; color:#666; border:1px solid #ddd; width:30px; heght:16px; text-align:center; background:#ededed; font-size:12px; padding:0px 5px; text-decoration:none; cursor:pointer; z-index:10" href="javascript:hide_right();">
+            关闭
+        </a>
+        <script type="text/javascript">
+          function hide_right () {
+            $("#pangu_rightBottom").hide();
+          }
+        </script>
+    </div>
+    <div id="yxjgg" style="width:300px;height:250px"></div>
+
+    <script src="//static.mediav.com/js/ssp_ad_sdk.js"></script>
+    <script>
+        QH_SSP_AD.loadAd({
+            containerId: "yxjgg",
+            adId: "3020951",
+        })
+    </script>
+
+</div-->
+<!-- 广告位：u7u9开屏 -->
+<script>
+(function() {
+    var s = "_" + Math.random().toString(36).slice(2);
+    document.write('<div id="' + s + '"></div>');
+    (window.slotbydup=window.slotbydup || []).push({
+        id: '8338845',
+        container: s,
+        size: '0,0',
+        display: 'inlay-fix'
+    });
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "aa18d860bbfb4addb583c263b5df620e"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- 左侧对联广告 -->
+    <div id="ad_bd_dl_left" style="position: fixed;z-index: 9;left: 15px;bottom: 30%;">
+<script type="text/javascript" src="//zxgghn.25ku.com/site/d_yzeh_v_vz/static/e.js"></script></div>
+<!-- 小游戏公共尾部 END -->    <!-- 广告位：u7u9 对联 公用(新) -->
+    <script>
+        (function() {
+            var s = "_" + Math.random().toString(36).slice(2);
+            document.write('<div id="' + s + '"></div>');
+            (window.slotbydup=window.slotbydup || []).push({
+                id: '3513125',
+                container: s,
+                size: '120,0',
+                display: 'inlay-fix'
+            });
+        })();
+    </script>
+  
+    <!-- 广告位：u7u9 图加 详情页 -->
+    <script>
+        (function() {
+            var s = "_" + Math.random().toString(36).slice(2);
+            document.write('<div id="' + s + '"></div>');
+            (window.slotbydup=window.slotbydup || []).push({
+                id: '3513156',
+                container: s,
+                size: '360,300',
+                display: 'inlay-fix'
+            });
+        })();
+    </script>
+    <!-- 信息流广告 
+    <script type="text/javascript" src="//s.u7u9.com/js/xyx/tools.js"></script>
+    <script type="text/javascript" src="//s.u7u9.com/js/xyx/ads.js"></script>
+    <script type="text/javascript" src="//s.u7u9.com/js/xyx/md5.js"></script>
+    
+    <script type="text/javascript">
+        function infiniteScroll(){
+            var fid = 885090;
+                $.get('/flash/gamedata/'+fid,function(res){
+                    $("#_elm").append(res);
+                    feed_ad_360(fid, 'KXV4fL');
+                });
+        }
+    
+    </script>
+    <script type="text/javascript" src="//s.u7u9.com/js/xyx/ads_get.js"></script>
+     END  -->
+    <script type="text/javascript" src="//static.mediav.com/js/feed_ts.js"></script>
+    <script type="text/javascript" src="//s.u7u9.com/js/xyx/hb_common.js"></script>
+    <script type="text/javascript">
+        var fid = 885090;
+        //getData(fid);
+    </script>
+    </body><!-- 小游戏详情页 END --></html>
