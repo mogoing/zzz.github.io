@@ -7,3 +7,4 @@ _deploy_worker.py
 
 # 部署脚本（含密钥）勿上传
 _deploy_worker.py
+r2_migrate.py
