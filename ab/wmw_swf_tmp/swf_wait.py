@@ -1,6 +1,6 @@
 import seed_browser_use as bu
 import time
-bu.navigate("http://localhost:8899/ab/wmwswf.html")
+bu.navigate("http://localhost:8899/bwlb.html")
 bu.wait_for_load(timeout=20)
 time.sleep(30)
 frame = bu.screenshot()
