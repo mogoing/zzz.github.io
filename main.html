@@ -556,6 +556,7 @@
     { name:'沙威玛',   desc:'摆摊传奇', icon:'shaw', target:'shawarma.html' },
     { name:'登山赛车', desc:'翻山越岭', icon:'hcr', target:'hcr.html?v=39' },
     { name:'割绳子1',  desc:'糖果物理', icon:'ctr', target:'ab/ctr2.html?v=58' },
+    { name:'小鳄鱼爱洗澡', desc:'引导水流', icon:'wmw', target:'ab/wmw.html?v=1' },
     { name:'愤怒的小鸟', desc:'原版弹弓', icon:'ab', target:'ab.html' },
   ];
   const PER_PAGE = 6;   // 一页六个（两排三个）
@@ -572,6 +573,7 @@
     ab:    '<span style="font-size:38px;line-height:1">🐦</span>',
     hcr:   '<span class="i-hcr"><i class="hill"></i><i class="hill2"></i><i class="car"></i><i class="head"></i><i class="flag"></i></span>',
     ctr:   '<span style="font-size:38px;line-height:1">🍬</span>',
+    wmw:   '<span style="font-size:38px;line-height:1">🐊</span>',
   };
 
   // ===== 金币拉取 =====
@@ -896,7 +898,7 @@
 
   render();
 /* ===== 资源预下载中心：进页面自动后台下载，杜绝中途损坏 ===== */
-var DL_VER = 'v57';
+var DL_VER = 'v58';
 var DL_LIST = [
   ['ab/ruffle.js?v=47',465076,'Ruffle 启动器'],
   ['ab/core.ruffle.c80159b526e567babaf5.js',108322,'Ruffle 内核 A'],
@@ -932,7 +934,15 @@ var DL_LIST = [
   ['ab/ctr2/res/loader.avif',13186,'割绳子 加载动画'],
   ['ab/ctr2/res/loader.dat',440,'割绳子 加载配置'],
   ['ab/ctr2/res/loader_bg.jpg',22263,'割绳子 加载背景'],
-  ['ab/ctr2/res/video/intro_landscape.mp4',364300,'割绳子 开场动画']
+  ['ab/ctr2/res/video/intro_landscape.mp4',364300,'割绳子 开场动画'],
+  ['ab/wmw/index.html',4836,'小鳄鱼 入口'],
+  ['ab/wmw/c2runtime.js',1707161,'小鳄鱼 游戏主体'],
+  ['ab/wmw/data.js',854881,'小鳄鱼 关卡数据'],
+  ['ab/wmw/sdk.js',434300,'小鳄鱼 运行库'],
+  ['ab/wmw/sw.js',13848,'小鳄鱼 离线缓存'],
+  ['ab/wmw/offlineClient.js',1434,'小鳄鱼 离线组件'],
+  ['ab/wmw/jquery-3.4.1.min.js',88145,'小鳄鱼 加载库'],
+  ['ab/wmw/icon-256.png',79158,'小鳄鱼 图标'],
 ];
 var dlTotalBytes = 0, dlGotBytes = 0, dlFailed = 0, dlBusy = false, dlAllDone = false;
 DL_LIST.forEach(function(x){ dlTotalBytes += x[1]; });
