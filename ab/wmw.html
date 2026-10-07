@@ -27,9 +27,9 @@ html,body{width:100%;height:100%;background:#fdf6e3;overflow:hidden}
 function fit(){
   var st=document.getElementById('stage');
   var w=st.clientWidth,h=st.clientHeight;
-  var A=5/3; /* 竖屏画布 480x800 */
-  var bh=Math.min(h, w/A);
-  var bw=bh*A;
+  /* 竖屏画布 480x800：宽:高=3:5 */
+  var bw=Math.min(w, h*3/5);
+  var bh=bw*5/3;
   var gb=document.getElementById('gamebox');
   gb.style.width=bw+'px';gb.style.height=bh+'px';
 }

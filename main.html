@@ -943,7 +943,7 @@ var DL_LIST = [
   ['ab/wmw/jquery-3.4.1.min.js',88145,'小鳄鱼 jquery-3.4.1.min.js'],
   ['ab/wmw/loading-logo.png',11437,'小鳄鱼 loading-logo.png'],
   ['ab/wmw/offlineClient.js',1434,'小鳄鱼 offlineClient.js'],
-  ['ab/wmw/sdk.js',434300,'小鳄鱼 sdk.js'],
+  ['ab/wmw/sdk.js',879,'小鳄鱼 sdk.js'],
   ['ab/wmw/sw.js',13848,'小鳄鱼 sw.js'],
   ['ab/wmw/images/brusheraser-sheet0.png',1204,'小鳄鱼 images/brusheraser-sheet0.png'],
   ['ab/wmw/images/bullet-sheet0.png',1587,'小鳄鱼 images/bullet-sheet0.png'],
@@ -1667,10 +1667,19 @@ async function dlStart(){
   goDl.textContent = '⬇️ 开始…';
   var allItems = dlItems.slice();
   Object.keys(dlGroups).forEach(function(gname){ allItems = allItems.concat(dlGroups[gname].subs); });
-  for (var i = 0; i < allItems.length; i++){
-    if (allItems[i].done) continue;
-    await dlOne(allItems[i]);
+  var pend = allItems.filter(function(it){ return !it.done; });
+  var CONC = 8, idx = 0;   /* 8 路并发下载，互不阻塞 */
+  function dlWorker(){
+    while (idx < pend.length) {
+      var it = pend[idx++];
+      if (it.done) continue;
+      return dlOne(it).then(dlWorker);
+    }
+    return Promise.resolve();
   }
+  var wkers = [];
+  for (var w = 0; w < Math.min(CONC, pend.length); w++) wkers.push(dlWorker());
+  await Promise.all(wkers);
   dlBusy = false;
   dlAllDone = true;
   if (dlFailed === 0) { try { localStorage.setItem('dl_done', DL_VER); } catch(e){} }
