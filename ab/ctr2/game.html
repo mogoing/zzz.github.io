@@ -30,6 +30,19 @@
         var LS = window.localStorage, syncTimer = null;
         function curUser(){ try{ return LS.getItem('blindbox_user') || ''; }catch(e){ return ''; } }
         function curPass(){ try{ return LS.getItem('blindbox_pass') || ''; }catch(e){ return ''; } }
+        // 启动失败可见化（v72）：黑屏时显示白字错误，不再纯黑难定位
+        window.__ctrShowErr = function(msg){
+          try {
+            var el = document.getElementById('ctrErr');
+            if (!el) {
+              el = document.createElement('div');
+              el.id = 'ctrErr';
+              el.style.cssText = 'position:fixed;left:0;top:0;right:0;bottom:0;background:#000;color:#fff;z-index:99999;display:flex;align-items:center;justify-content:center;font-size:14px;font-family:sans-serif;padding:24px;text-align:center';
+              (document.body || document.documentElement).appendChild(el);
+            }
+            el.textContent = '游戏启动失败：' + (msg || '未知错误') + '（请检查网络后重试）';
+          } catch(e) {}
+        };
         // 包装 famobi.localStorage（幂等：v1.js onload 和启动前各调一次）
         window.__wrapFamobiLS = function(){
           var fl = window.famobi && window.famobi.localStorage;
@@ -98,14 +111,18 @@
           fetchRemote().then(function(j){
             try { apply(j); } catch(e){}
             if (mask) mask.style.display = 'none';
-            try { Ctrr.main("en"); } catch(e){ console.log('CTR 启动失败:', e && e.message); }
+            try { Ctrr.main("en"); } catch(e){ console.log('CTR 启动失败:', e && e.message); window.__ctrShowErr && __ctrShowErr(e && e.message); }
           });
         };
         // 同步进度遮罩
         var m = document.createElement('div');
         m.id = 'ctrSyncMask';
         m.innerHTML = '<div style="position:fixed;left:0;top:0;right:0;bottom:0;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center"><div style="color:#fff;font-size:16px;font-family:sans-serif">同步进度中…</div></div>';
-        document.body.appendChild(m);
+        // 安全挂载（v72 修复）：head 阶段 body 尚未解析时 appendChild 会报 null
+        if (document.body) { document.body.appendChild(m); }
+        else {
+          document.addEventListener('DOMContentLoaded', function(){ (document.body || document.documentElement).appendChild(m); });
+        }
       })();
     </script>
     <script>
@@ -126,7 +143,7 @@
           var i = 0;
           function next(){
             if (i >= deps.length) {
-              try { window.__ctrBoot ? __ctrBoot() : Ctrr.main("en"); } catch(e){ console.log("CTR 启动失败:", e && e.message); }
+              try { window.__ctrBoot ? __ctrBoot() : Ctrr.main("en"); } catch(e){ console.log("CTR 启动失败:", e && e.message); window.__ctrShowErr && __ctrShowErr(e && e.message); }
               return;
             }
             var s = document.createElement("script");
@@ -140,6 +157,31 @@
         setTimeout(boot, 2500);
         setTimeout(boot, 5000);
         setTimeout(boot, 8000);
+      })();
+    </script>
+    <script>
+      // 视频兜底（v72）：Intro 视频在部分 WebView 解码失败/加载超时不会触发 ended → 卡黑屏。
+      // 自动跳过：video 报错 / 8s 无元数据 / 15s 未开始播放 → 派发 ended 让游戏直接进菜单
+      (function(){
+        function watchAll(){
+          var vs = document.querySelectorAll('video');
+          for (var i = 0; i < vs.length; i++) (function(v){
+            if (v.__ctrWatch) return;
+            v.__ctrWatch = true;
+            var done = false;
+            function skip(){
+              if (done) return; done = true;
+              try { v.dispatchEvent(new Event('ended')); } catch(e){}
+            }
+            v.addEventListener('error', skip);
+            setTimeout(function(){ if (!v.ended && v.readyState < 1) skip(); }, 8000);
+            setTimeout(function(){ if (!v.ended && v.paused && v.currentTime <= 0) skip(); }, 15000);
+          })(vs[i]);
+        }
+        watchAll();
+        if (window.MutationObserver) {
+          new MutationObserver(watchAll).observe(document.documentElement, { childList: true, subtree: true });
+        }
       })();
     </script>
 </head>
