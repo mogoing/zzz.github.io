@@ -19,11 +19,11 @@ body{
 .title{font-size:16px;font-weight:700;letter-spacing:2px;text-shadow:0 2px 6px rgba(0,0,0,.5)}
 .ghost{width:64px}
 /* ===== 曲目控制区 ===== */
-.songbar{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:5px 12px}
+.songbar{width:100%;display:flex;align-items:center;justify-content:center;gap:14px;padding:6px 12px}
 .songInfo{text-align:center}
-.songName{font-size:16px;font-weight:800;letter-spacing:1px;background:linear-gradient(180deg,#ffd6e8,#ff9fc6);-webkit-background-clip:text;background-clip:text;color:transparent}
-.songDesc{font-size:11px;color:#c9a8bd;margin-top:1px}
-.ctrlBtn{min-width:64px;padding:8px 15px;border:none;border-radius:22px;cursor:pointer;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(180deg,#e57ba8,#c14f86);border-bottom:4px solid #8f3563;box-shadow:0 4px 12px rgba(193,79,134,.4);transition:transform .08s}
+.songName{font-size:18px;font-weight:800;letter-spacing:1px;background:linear-gradient(180deg,#ffd6e8,#ff9fc6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.songDesc{font-size:10px;color:#8d7383;margin-top:2px}
+.ctrlBtn{min-width:84px;padding:12px 22px;border:none;border-radius:26px;cursor:pointer;font-size:16px;font-weight:800;color:#fff;background:linear-gradient(180deg,#e57ba8,#c14f86);border-bottom:4px solid #8f3563;box-shadow:0 4px 12px rgba(193,79,134,.4);transition:transform .08s}
 .ctrlBtn:active{transform:translateY(2px);border-bottom-width:2px}
 .ctrlBtn.stop{background:linear-gradient(180deg,#ff7b7b,#e04545);border-bottom-color:#a02f2f}
 .songList select{appearance:none;-webkit-appearance:none;padding:6px 26px 6px 12px;border:none;border-radius:16px;font-size:12px;font-weight:600;color:#fff;background:rgba(255,255,255,.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23fff'/%3E%3C/svg%3E") no-repeat right 10px center;cursor:pointer;outline:none}
@@ -92,11 +92,11 @@ body{
 </div>
 
 <div class="songbar">
-  <div class="songInfo">
-    <div class="songName" id="songName">The Truth That You Leave</div>
-    <div class="songDesc" id="songDesc">♭B 调 · 完整曲 (1)-(109) 28 段 · 高音自动降八度</div>
-  </div>
   <button class="ctrlBtn" id="playBtn">▶ 播放</button>
+  <div class="songInfo">
+    <div class="songName" id="songName">你离开的事实</div>
+    <div class="songDesc" id="songDesc">The Truth That You Leave · ♭B 调 · 完整曲 28 段 · 高音降八度</div>
+  </div>
   <div class="songList"><select id="songSel"></select></div>
 </div>
 
@@ -139,59 +139,59 @@ const SONGS = [{
   desc:'♭B 调 · 完整曲 (1)-(109) 28 段 · 高音自动降八度 · 组间停顿',
   notes:[
     /* (1) */
-    [5,4,1],[6],['i',4,1],[5],[6,4,1],['i'],[5,4,1],[6,5,2],['i'],[5,5,2],[6,5,2],['i'],{rest:1200},
+    [5,4,1],[6],['i',4,1],[5],[6,4,1],['i'],[5,4,1],[6,5,2],['i'],[5,5,2],[6,5,2],['i'],{rest:400},
     /* (5) */
-    ['i',6,3],['i'],['i',6,3],['i'],[2,6,3],[3,6,3],[4,6,3],[6],{rest:1200},
+    ['i',6,3],['i'],['i',6,3],['i'],[2,6,3],[3,6,3],[4,6,3],[6],{rest:400},
     /* (9) */
     [5,4,1],[6],['i',4,1],[5],[6,4,1],['i'],[5,4,1],[6,5,2],['i'],[5,5,2],[6,5,2],[3,5,2],[4],{rest:1200},
     /* (13) */
-    ['5̇',6,3],['1̇',6,3],[6],['1̇',3],['2̇',6,3],['3̇',6,3],{rest:1200},
+    ['5̇',6,3],['1̇',6,3],[6],['1̇',3],['2̇',6,3],['3̇',6,3],{rest:400},
     /* (17) */
-    [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:1200},
+    [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:400},
     /* (21) */
     ['3̇',6,3],[7,6,3],['1̇',6,3],['3̇',6,3],[6],{rest:1200},
     /* (25) */
-    [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:1200},
+    [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:400},
     /* (29) */
-    [5,6,3],[1,6,3],[2],[3],[4,6,3],[3,6,3],[6,3],[7],[1],[5],{rest:1200},
+    [5,6,3],[1,6,3],[2],[3],[4,6,3],[3,6,3],[6,3],[7],[1],[5],{rest:400},
     /* (33) */
     [4,6,2],[3,6,2],[2,5,2],[5,5,2],{rest:1200},
     /* (37) */
-    [3,7,3],[4],[3],[2,6,3],[1,6,3],{rest:1200},
+    [3,7,3],[4],[3],[2,6,3],[1,6,3],{rest:400},
     /* (41) */
-    [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:1200},
+    [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:400},
     /* (45) */
     [3,6,3],[3,6,3],[3],[6],[7],[7],['i',6,3],{rest:1200},
     /* (49) */
-    [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:1200},
+    [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:400},
     /* (53) */
-    [3,6,3],[1,6,3],[3],[6],[7],[1,6,3],[7],[6],[3,6,3],[1],[2],{rest:1200},
+    [3,6,3],[1,6,3],[3],[6],[7],[1,6,3],[7],[6],[3,6,3],[1],[2],{rest:400},
     /* (57) */
     [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[4,5,2],{rest:1200},
     /* (61) */
-    [5,6,3],[3,6,3],[4,6,3],[3],[6,3],[7],[1],[5],{rest:1200},
+    [5,6,3],[3,6,3],[4,6,3],[3],[6,3],[7],[1],[5],{rest:400},
     /* (65) */
-    [4,6,2],[3,6,2],[2,5,2],{rest:1200},
+    [4,6,2],[3,6,2],[2,5,2],{rest:400},
     /* (69) */
     [7,7,3],[3],[2],[3,7,3],[2,6,3],[1,6,3],{rest:1200},
     /* (73) */
     [5,4,1],[5],[5],[5],[2,4,1],[2],[2],[5,5,2],[5],[5],[5],[2,5,2],[3,5,2],[5],{rest:1200},
     /* (77) */
-    ['i',6,3],[3,6,3],[5,6,3],[5,6,3],{rest:1200},
+    ['i',6,3],[3,6,3],[5,6,3],[5,6,3],{rest:400},
     /* (81) */
-    ['i',4,1],['i'],[5,4,1],[5],[2,5,2],[2],['i',5,2],[2],{rest:1200},
+    ['i',4,1],['i'],[5,4,1],[5],[2,5,2],[2],['i',5,2],[2],{rest:400},
     /* (85) */
-    [3,5,1],[3],[3],[2,5,1],['i'],[3,6,3],[5],[5,6,3],[5],[5],{rest:1200},
+    [3,5,1],[3],[3],[2,5,1],['i'],[3,6,3],[5],[5,6,3],[5],[5],{rest:400},
     /* (89) */
-    ['i',4,1],['i'],[6,4,1],[5],[5],[2,5,2],[2],[3,5,2],[4],[3],{rest:1200},
+    ['i',4,1],['i'],[6,4,1],[5],[5],[2,5,2],[2],[3,5,2],[4],[3],{rest:400},
     /* (93) */
-    [5,5,1],[7,7,3],[3],[5,7,3],[5],[5],{rest:1200},
+    [5,5,1],[7,7,3],[3],[5,7,3],[5],[5],{rest:400},
     /* (97) */
-    ['i',4,1],['i'],[5,4,1],[5],[2,5,2],[2],[7,5,2],['i'],[2],{rest:1200},
+    ['i',4,1],['i'],[5,4,1],[5],[2,5,2],[2],[7,5,2],['i'],[2],{rest:400},
     /* (101) */
-    [3,6,3],[3],['i',6,3],[3,7,3],[5],[6,7,3],[5],[5],{rest:1200},
+    [3,6,3],[3],['i',6,3],[3,7,3],[5],[6,7,3],[5],[5],{rest:400},
     /* (105) */
-    ['i'],['i'],[6,4,1],[5],[5],[2,5,2],[2],['i',5,2],[2],['i'],{rest:1200},
+    ['i'],['i'],[6,4,1],[5],[5],[2,5,2],[2],['i',5,2],[2],['i'],{rest:400},
     /* (109) 结尾 */
     [5],[3],['i'],[3],[5],[3],['i'],[5],[1],{rest:2000}
   ]
