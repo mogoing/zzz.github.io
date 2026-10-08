@@ -19,7 +19,7 @@ body{
 .title{font-size:16px;font-weight:700;letter-spacing:2px;text-shadow:0 2px 6px rgba(0,0,0,.5)}
 .ghost{width:64px}
 /* ===== 曲目控制区 ===== */
-.songbar{width:100%;display:flex;align-items:center;justify-content:center;gap:14px;padding:6px 12px}
+.songbar{width:100%;display:flex;align-items:center;justify-content:space-between;padding:6px 14px}
 .songInfo{text-align:center}
 .songName{font-size:18px;font-weight:800;letter-spacing:1px;background:linear-gradient(180deg,#ffd6e8,#ff9fc6);-webkit-background-clip:text;background-clip:text;color:transparent}
 .songDesc{font-size:10px;color:#8d7383;margin-top:2px}
@@ -93,10 +93,6 @@ body{
 
 <div class="songbar">
   <button class="ctrlBtn" id="playBtn">▶ 播放</button>
-  <div class="songInfo">
-    <div class="songName" id="songName">你离开的事实</div>
-    <div class="songDesc" id="songDesc">The Truth That You Leave · ♭B 调 · 完整曲 28 段 · 高音降八度</div>
-  </div>
   <div class="songList"><select id="songSel"></select></div>
 </div>
 
@@ -342,7 +338,7 @@ const sel=document.getElementById('songSel');
 SONGS.forEach((s,i)=>{
   const o=document.createElement('option'); o.value=i; o.textContent=s.name+'（'+s.desc+'）'; sel.appendChild(o);
 });
-sel.addEventListener('change',()=>{ if(playing) stopSong(); curSong=+sel.value; document.getElementById('songName').textContent=SONGS[curSong].name; document.getElementById('songDesc').textContent=SONGS[curSong].desc+' · 播放自动弹奏 · 和弦同按'; buildSheet(); });
+sel.addEventListener('change',()=>{ if(playing) stopSong(); curSong=+sel.value; buildSheet(); });
 buildSheet();
 document.addEventListener('contextmenu',e=>e.preventDefault());
 </script>
