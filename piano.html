@@ -11,117 +11,60 @@ html,body{width:100%;height:100%;overflow:hidden;touch-action:none;user-select:n
 body{
   font-family:"PingFang SC","Microsoft YaHei",sans-serif;
   background:radial-gradient(ellipse at 50% -10%,#3a2f5c 0%,#1a1530 45%,#0d0a1c 100%);
-  display:flex;flex-direction:column;align-items:center;
-  color:#fff;
+  display:flex;flex-direction:column;align-items:center;color:#fff;
 }
 /* ===== 顶部条 ===== */
-.topbar{
-  width:100%;display:flex;align-items:center;justify-content:space-between;
-  padding:12px 18px;background:rgba(0,0,0,.25);
-}
-.back{
-  display:flex;align-items:center;gap:6px;color:#fff;text-decoration:none;
-  background:linear-gradient(180deg,#ffd479,#f0a63a);color:#5a3a00;
-  font-size:15px;font-weight:700;padding:8px 16px;border-radius:20px;
-  border-bottom:4px solid #c07f1e;box-shadow:0 4px 10px rgba(0,0,0,.35);
-  transition:transform .08s;
-}
+.topbar{width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(0,0,0,.25)}
+.back{display:flex;align-items:center;gap:6px;color:#fff;text-decoration:none;background:linear-gradient(180deg,#ffd479,#f0a63a);color:#5a3a00;font-size:14px;font-weight:700;padding:7px 14px;border-radius:20px;border-bottom:4px solid #c07f1e;box-shadow:0 4px 10px rgba(0,0,0,.35);transition:transform .08s}
 .back:active{transform:translateY(2px);border-bottom-width:2px}
-.title{font-size:17px;font-weight:700;letter-spacing:2px;text-shadow:0 2px 6px rgba(0,0,0,.5)}
-.ghost{width:70px}
-
+.title{font-size:16px;font-weight:700;letter-spacing:2px;text-shadow:0 2px 6px rgba(0,0,0,.5)}
+.ghost{width:64px}
 /* ===== 曲目控制区 ===== */
-.songbar{
-  width:100%;display:flex;align-items:center;justify-content:center;gap:14px;
-  padding:12px 16px;
-}
+.songbar{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 16px}
 .songInfo{text-align:center}
-.songName{font-size:20px;font-weight:800;letter-spacing:1px;
-  background:linear-gradient(180deg,#ffe9a8,#ffb347);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  text-shadow:0 2px 8px rgba(255,180,80,.25)}
-.songDesc{font-size:12px;color:#b9aede;margin-top:3px}
-.ctrlBtn{
-  min-width:76px;padding:10px 18px;border:none;border-radius:22px;cursor:pointer;
-  font-size:15px;font-weight:700;color:#fff;
-  background:linear-gradient(180deg,#7b6ae0,#5a4ac0);border-bottom:4px solid #3d3290;
-  box-shadow:0 4px 12px rgba(90,74,192,.4);transition:transform .08s;
-}
+.songName{font-size:18px;font-weight:800;letter-spacing:1px;background:linear-gradient(180deg,#ffe9a8,#ffb347);-webkit-background-clip:text;background-clip:text;color:transparent}
+.songDesc{font-size:11px;color:#b9aede;margin-top:2px}
+.ctrlBtn{min-width:70px;padding:9px 16px;border:none;border-radius:22px;cursor:pointer;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(180deg,#7b6ae0,#5a4ac0);border-bottom:4px solid #3d3290;box-shadow:0 4px 12px rgba(90,74,192,.4);transition:transform .08s}
 .ctrlBtn:active{transform:translateY(2px);border-bottom-width:2px}
 .ctrlBtn.stop{background:linear-gradient(180deg,#ff7b7b,#e04545);border-bottom-color:#a02f2f}
-.songList{
-  position:relative;display:inline-block;
-}
-.songList select{
-  appearance:none;-webkit-appearance:none;padding:8px 30px 8px 14px;
-  border:none;border-radius:18px;font-size:13px;font-weight:600;color:#fff;
-  background:rgba(255,255,255,.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23fff'/%3E%3C/svg%3E") no-repeat right 12px center;
-  cursor:pointer;outline:none;
-}
-
+.songList select{appearance:none;-webkit-appearance:none;padding:7px 28px 7px 12px;border:none;border-radius:16px;font-size:12px;font-weight:600;color:#fff;background:rgba(255,255,255,.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23fff'/%3E%3C/svg%3E") no-repeat right 10px center;cursor:pointer;outline:none}
 /* ===== 钢琴区 ===== */
-.stage{flex:1;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;padding:8px 2%}
-.piano{
-  position:relative;width:96%;max-width:920px;
-  padding:18px 14px 26px;
-  background:linear-gradient(180deg,#8a6a42,#6b4d2c 40%,#4e3520);
-  border-radius:14px;
-  box-shadow:0 18px 40px rgba(0,0,0,.6), inset 0 2px 4px rgba(255,255,255,.25);
-}
-.piano::before{ /* 木质纹理感 */
-  content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;
-  background:repeating-linear-gradient(90deg,transparent 0 38px,rgba(0,0,0,.05) 38px 39px);
-}
-.keys{position:relative;height:clamp(150px,36vh,300px);display:flex;gap:2px}
+.stage{flex:1;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;padding:6px 1.5%}
+.piano{position:relative;width:97%;max-width:980px;padding:16px 12px 24px;background:linear-gradient(180deg,#8a6a42,#6b4d2c 40%,#4e3520);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 2px 4px rgba(255,255,255,.25)}
+.piano::before{content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 38px,rgba(0,0,0,.05) 38px 39px)}
+.keys{position:relative;height:clamp(130px,32vh,270px);display:flex;gap:2px;perspective:700px}
 .wkey{
   flex:1;position:relative;cursor:pointer;border-radius:0 0 7px 7px;
   background:linear-gradient(180deg,#ffffff 0%,#f5f4f0 60%,#e8e5dd 100%);
-  border:1px solid #b9b4a8;
-  border-bottom:7px solid #b3ab9b;
-  box-shadow:0 5px 12px rgba(0,0,0,.35), inset 0 -16px 20px rgba(0,0,0,.05), inset 0 2px 3px #fff;
-  transition:transform .05s, border-bottom-width .05s, filter .1s;
+  border:1px solid #b9b4a8;border-bottom:7px solid #b3ab9b;
+  box-shadow:0 5px 12px rgba(0,0,0,.35),inset 0 -16px 20px rgba(0,0,0,.05),inset 0 2px 3px #fff;
+  transform-origin:top center;transform-style:preserve-3d;
+  transition:transform .06s,border-bottom-width .06s,filter .1s;
   display:flex;align-items:flex-end;justify-content:center;
-  color:#8d8678;font-size:clamp(10px,2.2vh,15px);font-weight:700;padding-bottom:8px;
+  color:#8d8678;font-size:clamp(9px,1.9vh,13px);font-weight:700;padding-bottom:7px;
 }
 .wkey:hover{filter:brightness(1.04)}
 .wkey.pressed{
-  transform:translateY(5px);border-bottom-width:2px;
+  transform:rotateX(9deg);border-bottom-width:2px;
   background:linear-gradient(180deg,#fff7e8,#ffe9c4);
   box-shadow:0 2px 6px rgba(0,0,0,.25);
 }
 .bkey{
-  position:absolute;top:0;cursor:pointer;z-index:2;
-  height:60%;width:7%;
+  position:absolute;top:0;cursor:pointer;z-index:2;height:60%;width:6.6%;
   border-radius:0 0 5px 5px;
   background:linear-gradient(180deg,#4a4a4a 0%,#1d1d1d 55%,#050505 100%);
-  border:1px solid #000;
-  border-bottom:6px solid #222;
-  box-shadow:0 4px 10px rgba(0,0,0,.6), inset 0 -10px 12px rgba(0,0,0,.6);
-  transition:transform .05s, border-bottom-width .05s, filter .1s;
+  border:1px solid #000;border-bottom:6px solid #222;
+  box-shadow:0 4px 10px rgba(0,0,0,.6),inset 0 -10px 12px rgba(0,0,0,.6);
+  transform-origin:top center;transform-style:preserve-3d;
+  transition:transform .06s,border-bottom-width .06s,filter .1s;
 }
 .bkey:hover{filter:brightness(1.15)}
-.bkey.pressed{
-  transform:translateY(4px);border-bottom-width:1px;
-  background:linear-gradient(180deg,#5a5a5a,#262626 55%,#0a0a0a);
-}
-
-/* ===== 底部简谱条 ===== */
-.sheet{
-  width:96%;max-width:920px;min-height:44px;padding:10px 14px;border-radius:12px;
-  background:rgba(255,255,255,.07);backdrop-filter:blur(6px);
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;
-  font-family:Georgia,"Times New Roman",serif;
-}
-.sheet b{
-  width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
-  border-radius:50%;background:rgba(255,255,255,.1);font-size:15px;color:#cfc3ef;
-  transition:all .12s;border:1px solid transparent;
-}
-.sheet b.cur{
-  background:linear-gradient(180deg,#ffd479,#f0a63a);color:#5a3a00;
-  transform:scale(1.25);border-color:#fff3;box-shadow:0 0 14px rgba(255,190,90,.6);
-}
-.hint{font-size:12px;color:#9c8fc0;padding-bottom:10px}
+.bkey.pressed{transform:rotateX(9deg);border-bottom-width:1px;background:linear-gradient(180deg,#5a5a5a,#262626 55%,#0a0a0a)}
+/* ===== 简谱条 ===== */
+.sheet{width:97%;max-width:980px;min-height:40px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.07);backdrop-filter:blur(6px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:5px;font-family:Georgia,"Times New Roman",serif}
+.sheet b{min-width:26px;height:26px;padding:0 5px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.1);font-size:13px;color:#cfc3ef;transition:all .12s;border:1px solid transparent}
+.sheet b.cur{background:linear-gradient(180deg,#ffd479,#f0a63a);color:#5a3a00;transform:scale(1.2);border-color:#fff3;box-shadow:0 0 12px rgba(255,190,90,.6)}
+.hint{font-size:11px;color:#9c8fc0;padding-bottom:8px}
 </style>
 </head>
 <body>
@@ -135,191 +78,188 @@ body{
 <div class="songbar">
   <div class="songInfo">
     <div class="songName" id="songName">The Truth That You Leave</div>
-    <div class="songDesc" id="songDesc">简化版 · 点击播放自动弹奏 · 也可手动按键</div>
+    <div class="songDesc" id="songDesc">光遇三指版 · 播放自动弹奏 · 和弦同按</div>
   </div>
   <button class="ctrlBtn" id="playBtn">▶ 播放</button>
-  <div class="songList">
-    <select id="songSel"></select>
-  </div>
+  <div class="songList"><select id="songSel"></select></div>
 </div>
 
 <div class="stage">
-  <div class="piano">
-    <div class="keys" id="keys"></div>
-  </div>
+  <div class="piano"><div class="keys" id="keys"></div></div>
   <div class="sheet" id="sheet"></div>
 </div>
-<div class="hint">横屏体验更佳 · 点击琴键即可演奏</div>
+<div class="hint">横屏体验更佳 · 点击琴键即可演奏 · 黑键也可弹</div>
 
 <script>
-/* ================= 内置歌单（简谱） =================
-   1=C4 ... 7=B4，全部 C 大调白键，10 键键盘内 */
+/* ============ 15 键钢琴：10 白 + 5 黑 ============
+   白键: C4 D4 E4 F4 G4 A4 B4 C5 D5 E5（简谱 1-7 + 高音 i 及上方两白键）
+   黑键: C#4 D#4 F#4 G#4 A#4（手动可弹）*/
+const WHITE = [
+  {note:1,  freq:261.63, name:'1'},
+  {note:2,  freq:293.66, name:'2'},
+  {note:3,  freq:329.63, name:'3'},
+  {note:4,  freq:349.23, name:'4'},
+  {note:5,  freq:392.00, name:'5'},
+  {note:6,  freq:440.00, name:'6'},
+  {note:7,  freq:493.88, name:'7'},
+  {note:'i',freq:523.25, name:'1\''},
+  {note:'j',freq:587.33, name:'2\''},
+  {note:'k',freq:659.26, name:'3\''}
+];
+const BLACK = [
+  {gap:1.5, freq:277.18}, {gap:2.5, freq:311.13},
+  {gap:4.5, freq:369.99}, {gap:5.5, freq:415.30}, {gap:6.5, freq:466.16}
+];
+const NOTE_STR = {1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',i:'1\'',j:'2\'',k:'3\''};
+
+/* ============ 内置歌单（光遇三指版，和弦数组 = 同拍同按） ============ */
 const SONGS = [{
   name:'The Truth That You Leave',
-  desc:'Pianoboy 经典 · 简化版',
+  desc:'光遇三指版 · 和弦编配',
   notes:[
-    // 段A 主歌
-    5,2,6,1,5, 2,6,2,1,2,1, 1,2,3,4,5, 2,6,1,5, 2,6,3,4,2,5,
-    // 段B 副歌
-    1,5,3,5,6,5,3,5, 1,5,3,5,6,5,3,2, 1,5,3,5,6,5,3,5, 6,1,6,5,3,5,3,2,
-    // 段C 收尾
-    3,5,6,1,6,5,3,5, 2,3,5,6,5,3,2, 1,2,3,5,3,2,1, 6,5,3,2,1
+    /* —— 主歌（视频谱段） —— */
+    [5,4],[6,1],[7,4],[5,4],[6,1],[7,5],[5,2],[6,5],[7,5],
+    [7,6],[7,3],[7,6],[7,3],[7,6],[7,6],
+    [5,4],[6,1],[7,3],[5,4],[6,1],[7,5],[5,4],[6,1],[7,5],
+    /* —— 副歌后段（三指和弦，用户图 49 起） —— */
+    [5,4,1],[5],[5],[5,4,1],[2,4,1],[2],[2],[5,5,2],
+    [5,5,2],[5],[5],[2],[3,6,3],[1,6,3],[3,6,3],[7,6,3],
+    [1,6,3],[7,6,3],[6,6,3],[3,6,3],
+    [5,4,1],[5],[5],[5,4,1],[2,4,1],[2],[2],[5,5,2],
+    [5,5,2],[5,5,2],[3,2,1],[3,2,1],[6,5,3],[6,5,3],
+    /* —— 收尾段 —— */
+    [5,4,1],[5,4,1],[2,5,2],[2,5,2],[3,6,3],[7,6,3],[5,6,3],[6,6,3],
+    [5,4,1],[5,4,1],[2,5,2],[2,5,2],[3,6,3],[7,3,2],['i',2,'i'],[3,5,5],
+    [5,4,1],[5,4,1],[2,5,2],[2,5,2],[3,6,3],[7,3,2],['i',2,'i'],[5,3,2],
+    [5,4,1],[5,4,1],[2,5,2],[2,5,2],[3,6,3],[7,3,2],['i',2,'i'],[3,5,5],
+    [5,4,1],[5,4,1],[2,5,2],[2,5,2],[3,6,3],[7,3,2],['i',2,'i'],[5,3,2,1]
   ]
 }];
 
-/* 简谱 → 频率（C4=261.63Hz） */
-const FREQ = {1:261.63, 2:293.66, 3:329.63, 4:349.23, 5:392.00, 6:440.00, 7:493.88};
-const NOTE_NAME = {1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7'};
-/* 白键顺序（10键：7白 C D E F G A B + 3黑 C# D# F#） */
-const WHITE = [1,2,3,4,5,6,7];
-const BLACK_POS = { 1.5:'C#', 2.5:'D#', 4.5:'F#' }; /* 黑键位于白键间隙 */
-const BLACK_FREQ = {'C#':277.18, 'D#':311.13, 'F#':369.99};
-
-/* ================= 构建键盘 ================= */
+/* ============ 构建键盘 ============ */
 const keysEl = document.getElementById('keys');
-const keyEls = {}; // note(或黑键名) -> DOM
-WHITE.forEach(n=>{
+const keyEls = {};
+WHITE.forEach(w=>{
   const d = document.createElement('div');
   d.className = 'wkey';
-  d.dataset.note = n;
-  d.innerHTML = '<span>'+NOTE_NAME[n]+'</span>';
-  d.addEventListener('pointerdown', e=>{ e.preventDefault(); press(n, true); });
-  d.addEventListener('pointerup',   ()=>release(n));
-  d.addEventListener('pointerleave',()=>release(n));
+  d.dataset.note = w.note;
+  d.innerHTML = '<span>'+w.name+'</span>';
+  d.addEventListener('pointerdown', e=>{ e.preventDefault(); press(w.note); });
+  d.addEventListener('pointerup',   ()=>release(w.note));
+  d.addEventListener('pointerleave',()=>release(w.note));
   keysEl.appendChild(d);
-  keyEls[n] = d;
+  keyEls[w.note] = d;
 });
-Object.keys(BLACK_POS).forEach(gap=>{
-  const name = BLACK_POS[gap];
+BLACK.forEach((b,i)=>{
   const d = document.createElement('div');
   d.className = 'bkey';
+  const name = 'b'+i;
   d.dataset.note = name;
-  d.style.left = (gap/7*100) - 3.5 + '%';
-  d.addEventListener('pointerdown', e=>{ e.preventDefault(); press(name, true); });
+  d.style.left = (b.gap/10*100) - 3.3 + '%';
+  d.addEventListener('pointerdown', e=>{ e.preventDefault(); press(name); });
   d.addEventListener('pointerup',   ()=>release(name));
   d.addEventListener('pointerleave',()=>release(name));
   keysEl.appendChild(d);
   keyEls[name] = d;
 });
+function freqOf(n){
+  if(typeof n === 'number') return WHITE.find(w=>w.note===n).freq;
+  if(n==='i') return 523.25; if(n==='j') return 587.33; if(n==='k') return 659.26;
+  return BLACK[+n.slice(1)].freq;
+}
 
-/* ================= 钢琴音色（Web Audio 合成） ================= */
+/* ============ 钢琴音色（Web Audio 合成） ============ */
 let actx = null;
-function note(freq, dur){
+function play(freq){
   try{
     actx = actx || new (window.AudioContext||window.webkitAudioContext)();
     if(actx.state==='suspended') actx.resume();
     const t = actx.currentTime;
     const g = actx.createGain();
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(0.55, t+0.01);
-    g.gain.exponentialRampToValueAtTime(0.001, t+dur);
-    const filt = actx.createBiquadFilter();
-    filt.type='lowpass'; filt.frequency.value=5200; filt.Q.value=0.5;
-    // 基音 + 两个泛音，模拟钢琴
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.linearRampToValueAtTime(0.5,t+0.01);
+    g.gain.exponentialRampToValueAtTime(0.001,t+2.2);
+    const filt = actx.createBiquadFilter(); filt.type='lowpass'; filt.frequency.value=5200; filt.Q.value=0.5;
     const o1 = actx.createOscillator(); o1.type='triangle'; o1.frequency.value=freq;
     const o2 = actx.createOscillator(); o2.type='sine';     o2.frequency.value=freq*2;
     const o3 = actx.createOscillator(); o3.type='sine';     o3.frequency.value=freq*3;
-    const g2 = actx.createGain(); g2.gain.value=0.32;
-    const g3 = actx.createGain(); g3.gain.value=0.10;
-    o1.connect(filt);
-    o2.connect(g2); g2.connect(filt);
-    o3.connect(g3); g3.connect(filt);
+    const g2 = actx.createGain(); g2.gain.value=0.3;
+    const g3 = actx.createGain(); g3.gain.value=0.1;
+    o1.connect(filt); o2.connect(g2); g2.connect(filt); o3.connect(g3); g3.connect(filt);
     filt.connect(g); g.connect(actx.destination);
-    // 简单混响（延迟回声）
     const dly = actx.createDelay(); dly.delayTime.value=0.16;
     const drv = actx.createGain(); drv.gain.value=0.22;
     g.connect(dly); dly.connect(drv); drv.connect(actx.destination);
     o1.start(t); o2.start(t); o3.start(t);
-    o1.stop(t+dur+0.3); o2.stop(t+dur+0.3); o3.stop(t+dur+0.3);
-  }catch(e){ /* 静默 */ }
+    o1.stop(t+2.5); o2.stop(t+2.5); o3.stop(t+2.5);
+  }catch(e){}
 }
 
-/* ================= 按键动画 ================= */
+/* ============ 按键（支持多键同按） ============ */
 const pressState = {};
-function press(n, sound){
-  const el = keyEls[n];
-  if(!el) return;
-  el.classList.add('pressed');
-  pressState[n] = true;
-  if(sound) note(typeof n==='number'?FREQ[n]:BLACK_FREQ[n], 2.4);
+function press(n){
+  const el = keyEls[n]; if(!el) return;
+  el.classList.add('pressed'); pressState[n]=true;
+  play(freqOf(n));
 }
 function release(n){
-  pressState[n] = false;
+  pressState[n]=false;
   const el = keyEls[n];
-  if(el) setTimeout(()=>{ if(!pressState[n]) el.classList.remove('pressed'); }, 40);
+  if(el) setTimeout(()=>{ if(!pressState[n]) el.classList.remove('pressed'); },40);
+}
+function chordPress(chord){
+  chord.forEach(n=>{ if(keyEls[n]) press(n); });
+  chord.forEach(n=>{ setTimeout(()=>release(n), 100); });
 }
 
-/* ================= 自动播放 ================= */
-let playing = false, timer = null, curIdx = -1;
+/* ============ 自动播放 ============ */
+let playing=false, timer=null, curIdx=-1;
 const sheetEl = document.getElementById('sheet');
 function buildSheet(){
-  sheetEl.innerHTML = '';
-  const s = SONGS[curSong];
-  s.notes.forEach((n,i)=>{
-    const b = document.createElement('b');
-    b.textContent = NOTE_NAME[n];
-    b.id = 'n'+i;
-    sheetEl.appendChild(b);
+  sheetEl.innerHTML='';
+  SONGS[curSong].notes.forEach((ch,i)=>{
+    const b=document.createElement('b');
+    b.textContent = ch.map(n=>NOTE_STR[n]||'').join('·');
+    b.id='n'+i; sheetEl.appendChild(b);
   });
 }
 function playSong(){
   if(playing) return;
   const s = SONGS[curSong];
-  playing = true;
-  document.getElementById('playBtn').textContent = '■ 停止';
+  playing=true;
+  document.getElementById('playBtn').textContent='■ 停止';
   document.getElementById('playBtn').classList.add('stop');
-  curIdx = 0;
-  const dur = 460;
-  const last = s.notes.length - 1;
+  curIdx=0;
+  const dur=430, last=s.notes.length-1;
   function step(){
     if(!playing) return;
-    if(curIdx > last){
-      stopSong(true);
-      return;
-    }
-    const n = s.notes[curIdx];
-    press(n, true);
-    setTimeout(()=>release(n), 90);
-    const el = document.getElementById('n'+curIdx);
-    if(el){ el.classList.add('cur'); }
+    if(curIdx>last){ stopSong(true); return; }
+    chordPress(s.notes[curIdx]);
+    const el=document.getElementById('n'+curIdx);
+    if(el) el.classList.add('cur');
     if(curIdx>0){ const p=document.getElementById('n'+(curIdx-1)); if(p) p.classList.remove('cur'); }
     curIdx++;
-    timer = setTimeout(step, curIdx===last ? dur*3 : dur);
+    timer=setTimeout(step, curIdx===last ? dur*2.5 : dur);
   }
   step();
 }
-function stopSong(finished){
-  playing = false;
-  clearTimeout(timer);
-  document.getElementById('playBtn').textContent = '▶ 播放';
+function stopSong(){
+  playing=false; clearTimeout(timer);
+  document.getElementById('playBtn').textContent='▶ 播放';
   document.getElementById('playBtn').classList.remove('stop');
   document.querySelectorAll('.sheet b.cur').forEach(b=>b.classList.remove('cur'));
 }
-document.getElementById('playBtn').addEventListener('click', ()=>{
-  if(playing) stopSong();
-  else playSong();
-});
+document.getElementById('playBtn').addEventListener('click',()=>{ if(playing) stopSong(); else playSong(); });
 
-/* ================= 歌单选择 ================= */
-let curSong = 0;
-const sel = document.getElementById('songSel');
+/* ============ 歌单选择 ============ */
+let curSong=0;
+const sel=document.getElementById('songSel');
 SONGS.forEach((s,i)=>{
-  const o = document.createElement('option');
-  o.value = i; o.textContent = s.name + '（' + s.desc + '）';
-  sel.appendChild(o);
+  const o=document.createElement('option'); o.value=i; o.textContent=s.name+'（'+s.desc+'）'; sel.appendChild(o);
 });
-sel.value = 0;
-sel.addEventListener('change', ()=>{
-  if(playing) stopSong();
-  curSong = +sel.value;
-  document.getElementById('songName').textContent = SONGS[curSong].name;
-  document.getElementById('songDesc').textContent = SONGS[curSong].desc + ' · 点击播放自动弹奏 · 也可手动按键';
-  buildSheet();
-});
+sel.addEventListener('change',()=>{ if(playing) stopSong(); curSong=+sel.value; document.getElementById('songName').textContent=SONGS[curSong].name; document.getElementById('songDesc').textContent=SONGS[curSong].desc+' · 播放自动弹奏 · 和弦同按'; buildSheet(); });
 buildSheet();
-
-/* 防止长按弹出菜单/缩放 */
-document.addEventListener('contextmenu', e=>e.preventDefault());
+document.addEventListener('contextmenu',e=>e.preventDefault());
 </script>
 </body>
 </html>
