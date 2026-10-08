@@ -3,87 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="screen-orientation" content="landscape">
 <title>弹钢琴</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100%;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
 body{
   font-family:"PingFang SC","Microsoft YaHei",sans-serif;
-  background:radial-gradient(ellipse at 50% -10%,#2b2350 0%,#151029 45%,#0a0718 100%);
+  background:radial-gradient(ellipse at 50% -10%,#3a2040 0%,#1e1026 45%,#12081a 100%);
   display:flex;flex-direction:column;align-items:center;color:#fff;
 }
 /* ===== 顶部条 ===== */
-.topbar{width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:rgba(0,0,0,.3)}
+.topbar{width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:rgba(0,0,0,.3)}
 .back{display:flex;align-items:center;gap:6px;text-decoration:none;background:linear-gradient(180deg,#ffd479,#f0a63a);color:#5a3a00;font-size:14px;font-weight:700;padding:6px 14px;border-radius:20px;border-bottom:4px solid #c07f1e;box-shadow:0 4px 10px rgba(0,0,0,.35);transition:transform .08s}
 .back:active{transform:translateY(2px);border-bottom-width:2px}
 .title{font-size:16px;font-weight:700;letter-spacing:2px;text-shadow:0 2px 6px rgba(0,0,0,.5)}
 .ghost{width:64px}
 /* ===== 曲目控制区 ===== */
-.songbar{width:100%;display:flex;align-items:center;justify-content:center;gap:14px;padding:6px 16px}
+.songbar{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:5px 12px}
 .songInfo{text-align:center}
-.songName{font-size:17px;font-weight:800;letter-spacing:1px;background:linear-gradient(180deg,#ffe9a8,#ffb347);-webkit-background-clip:text;background-clip:text;color:transparent}
-.songDesc{font-size:11px;color:#b9aede;margin-top:2px}
-.ctrlBtn{min-width:68px;padding:8px 16px;border:none;border-radius:22px;cursor:pointer;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(180deg,#7b6ae0,#5a4ac0);border-bottom:4px solid #3d3290;box-shadow:0 4px 12px rgba(90,74,192,.4);transition:transform .08s}
+.songName{font-size:16px;font-weight:800;letter-spacing:1px;background:linear-gradient(180deg,#ffd6e8,#ff9fc6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.songDesc{font-size:11px;color:#c9a8bd;margin-top:1px}
+.ctrlBtn{min-width:64px;padding:8px 15px;border:none;border-radius:22px;cursor:pointer;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(180deg,#e57ba8,#c14f86);border-bottom:4px solid #8f3563;box-shadow:0 4px 12px rgba(193,79,134,.4);transition:transform .08s}
 .ctrlBtn:active{transform:translateY(2px);border-bottom-width:2px}
 .ctrlBtn.stop{background:linear-gradient(180deg,#ff7b7b,#e04545);border-bottom-color:#a02f2f}
 .songList select{appearance:none;-webkit-appearance:none;padding:6px 26px 6px 12px;border:none;border-radius:16px;font-size:12px;font-weight:600;color:#fff;background:rgba(255,255,255,.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23fff'/%3E%3C/svg%3E") no-repeat right 10px center;cursor:pointer;outline:none}
-/* ===== 主体：左钢琴 + 右竖排简谱 ===== */
-.stage{flex:1;width:100%;display:flex;align-items:center;justify-content:center;gap:2%;padding:4px 1.5%}
-/* 钢琴区：蓝黑琴身（参考图） */
-.pianoWrap{flex:0 0 61%;display:flex;flex-direction:column;align-items:center}
-.piano{position:relative;width:100%;max-width:720px;padding:0 8px 16px;
-  background:linear-gradient(180deg,#27408c 0%,#1b2f6e 8%,#14235a 30%,#0e1a44 60%,#0a1234 100%);
-  border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 2px 6px rgba(255,255,255,.18),inset 0 -10px 24px rgba(0,0,0,.4)}
-.piano::before{content:"";position:absolute;left:8px;right:8px;top:5px;height:14px;border-radius:6px;
-  background-image:radial-gradient(circle 4px at 25% 50%,rgba(255,255,255,.9) 0 3px,transparent 4px),
-                   radial-gradient(circle 4px at 50% 50%,rgba(255,255,255,.9) 0 3px,transparent 4px),
-                   radial-gradient(circle 4px at 75% 50%,rgba(255,255,255,.9) 0 3px,transparent 4px),
-                   linear-gradient(180deg,#5b7bd4,#3b5ab0);
-  box-shadow:inset 0 1px 2px rgba(255,255,255,.4)}
-.keys{position:relative;height:clamp(140px,36vh,300px);margin-top:22px;display:flex;gap:1px}
-/* 白键：修长 */
+/* ===== 钢琴区（粉色琴身，固定不动） ===== */
+.pianoWrap{width:94%;display:flex;flex-direction:column;align-items:center;margin-top:4px}
+.piano{position:relative;width:100%;max-width:520px;padding:0 7px 14px;
+  background:linear-gradient(180deg,#ffb6d9 0%,#f791c4 8%,#e873ad 30%,#d65a99 60%,#b83f7e 100%);
+  border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.6),inset 0 2px 6px rgba(255,255,255,.5),inset 0 -10px 24px rgba(120,20,70,.4)}
+.piano::before{content:"";position:absolute;left:7px;right:7px;top:5px;height:13px;border-radius:6px;
+  background-image:radial-gradient(circle 4px at 25% 50%,rgba(255,255,255,.95) 0 3px,transparent 4px),
+                   radial-gradient(circle 4px at 50% 50%,rgba(255,255,255,.95) 0 3px,transparent 4px),
+                   radial-gradient(circle 4px at 75% 50%,rgba(255,255,255,.95) 0 3px,transparent 4px),
+                   linear-gradient(180deg,#ffcfe4,#f79ac7);
+  box-shadow:inset 0 1px 2px rgba(255,255,255,.5)}
+.keys{position:relative;height:clamp(108px,28vh,250px);margin-top:20px;display:flex;gap:1px}
+/* 白键 */
 .wkey{
-  flex:1;position:relative;cursor:pointer;border-radius:0 0 6px 6px;
-  background:linear-gradient(180deg,#ffffff 0%,#fefdfb 6%,#f4f2ec 48%,#ddd9cf 82%,#cbc5b9 100%);
-  border:1px solid #b0aa9d;border-bottom:9px solid #a49c8e;
-  box-shadow:0 10px 18px rgba(0,0,0,.45),inset 0 3px 2px #ffffff,inset 0 -18px 24px rgba(0,0,0,.08);
+  flex:1;position:relative;cursor:pointer;border-radius:0 0 5px 5px;
+  background:linear-gradient(180deg,#ffffff 0%,#fefdfb 6%,#f5f2ec 48%,#ddd8cf 82%,#cbc4b8 100%);
+  border:1px solid #b0aa9d;border-bottom:8px solid #a49c8e;
+  box-shadow:0 8px 16px rgba(0,0,0,.4),inset 0 3px 2px #ffffff,inset 0 -16px 22px rgba(0,0,0,.07);
   transition:transform .08s,box-shadow .08s,filter .1s;
   display:flex;align-items:flex-end;justify-content:center;
-  color:#8d8678;font-size:clamp(8px,1.8vh,13px);font-weight:700;padding-bottom:7px;
+  color:#8d8678;font-size:clamp(8px,1.8vh,12px);font-weight:700;padding-bottom:6px;
 }
 .wkey:hover{filter:brightness(1.03)}
 .wkey.pressed{
-  transform:translateY(7px);
+  transform:translateY(6px);
   background:linear-gradient(180deg,#fff9ec 0%,#ffeecf 50%,#f2d7a4 100%);
   border-bottom-width:3px;
   box-shadow:0 2px 4px rgba(0,0,0,.3),inset 0 3px 2px #fff,inset 0 -10px 14px rgba(180,140,60,.25);
   color:#a0761f;
 }
-/* 黑键：两白之间标准半音位 */
+/* 黑键：两白之间，可弹 */
 .bkey{
-  position:absolute;top:0;cursor:pointer;z-index:2;height:62%;width:4.2%;
+  position:absolute;top:0;cursor:pointer;z-index:2;height:60%;width:4.2%;
   border-radius:0 0 4px 4px;
   background:linear-gradient(180deg,#5a5a5a 0%,#2e2e2e 12%,#101010 55%,#000000 100%);
-  border:1px solid #000;border-bottom:8px solid #0a0a0a;
-  box-shadow:0 6px 12px rgba(0,0,0,.7),inset 0 3px 2px rgba(255,255,255,.25),inset 0 -10px 12px rgba(0,0,0,.75);
+  border:1px solid #000;border-bottom:7px solid #0a0a0a;
+  box-shadow:0 5px 10px rgba(0,0,0,.7),inset 0 3px 2px rgba(255,255,255,.25),inset 0 -10px 12px rgba(0,0,0,.75);
   transition:transform .08s,box-shadow .08s,filter .1s;
 }
 .bkey:hover{filter:brightness(1.12)}
 .bkey.pressed{
-  transform:translateY(5px);
+  transform:translateY(4px);
   background:linear-gradient(180deg,#6e6e6e 0%,#3c3c3c 12%,#1a1a1a 55%,#080808 100%);
-  border-bottom-width:3px;
+  border-bottom-width:2px;
   box-shadow:0 2px 4px rgba(0,0,0,.5),inset 0 3px 2px rgba(255,255,255,.28);
 }
-/* ===== 竖排简谱（右侧，每拍一行，从上到下滚动） ===== */
-.sheetPanel{flex:1;height:100%;display:flex;flex-direction:column;align-items:center;min-width:0}
-.sheetTitle{font-size:12px;font-weight:700;color:#c9b8f0;margin-bottom:6px;letter-spacing:1px}
-.sheet{width:100%;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:3px;padding:6px 8px;border-radius:12px;background:rgba(255,255,255,.06);backdrop-filter:blur(6px);scroll-behavior:smooth;scrollbar-width:none;font-family:Georgia,"Times New Roman",serif}
+/* ===== 竖排简谱（下部，独立滚动，钢琴不动） ===== */
+.sheetTitle{width:94%;font-size:12px;font-weight:700;color:#e5b7cc;margin:8px 0 4px;letter-spacing:1px;text-align:center}
+.sheet{width:94%;flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:3px;padding:6px 10px;border-radius:12px;background:rgba(255,255,255,.07);backdrop-filter:blur(6px);scrollbar-width:none;font-family:Georgia,"Times New Roman",serif}
 .sheet::-webkit-scrollbar{display:none}
-.sheet b{flex:0 0 auto;height:30px;min-width:54px;padding:0 8px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(255,255,255,.09);font-size:15px;color:#cfc3ef;transition:all .12s;border:1px solid transparent}
-.sheet b.cur{background:linear-gradient(180deg,#ffd479,#f0a63a);color:#5a3a00;transform:scale(1.15);border-color:#fff3;box-shadow:0 0 12px rgba(255,190,90,.6)}
-.hint{font-size:11px;color:#9c8fc0;padding-bottom:6px}
+.sheet b{flex:0 0 auto;height:30px;min-width:60px;padding:0 8px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(255,255,255,.09);font-size:15px;color:#e3c9d6;transition:all .12s;border:1px solid transparent}
+.sheet b.rest{background:transparent;color:#8a7690;font-size:11px;letter-spacing:3px}
+.sheet b.cur{background:linear-gradient(180deg,#ffd6e8,#ff9fc6);color:#8f2148;transform:scale(1.12);border-color:#fff3;box-shadow:0 0 12px rgba(255,140,190,.55)}
+.hint{font-size:11px;color:#9c7f95;padding:6px 0 8px}
 </style>
 </head>
 <body>
@@ -103,92 +100,75 @@ body{
   <div class="songList"><select id="songSel"></select></div>
 </div>
 
-<div class="stage">
-  <div class="pianoWrap">
-    <div class="piano"><div class="keys" id="keys"></div></div>
-  </div>
-  <div class="sheetPanel">
-    <div class="sheetTitle">— 简谱（竖排） —</div>
-    <div class="sheet" id="sheet"></div>
-  </div>
+<div class="pianoWrap">
+  <div class="piano"><div class="keys" id="keys"></div></div>
 </div>
-<div class="hint">横屏体验更佳 · 点击琴键即可演奏 · 黑键也可弹</div>
+
+<div class="sheetTitle">— 简谱（竖排 · 钢琴不动，仅谱滚动） —</div>
+<div class="sheet" id="sheet"></div>
+<div class="hint">竖屏体验 · 点击琴键即可演奏 · 黑键也算音</div>
 
 <script>
-/* ============ 12 白键 + 8 黑键（♭B 调） ============
-   白键: 1 2 3 4 5 6 7 + 1' 2' 3' 4' 5'（砍掉用不上的 6' 7' i）
+/* ============ 14 键位（8 白 6 黑）：白黑白黑白黑白 白 黑白黑白黑白 ============
+   白键: 1 2 3 4 5 6 7 + 1'（C D E F G A B C'，大调音阶）
+   黑键: 插在两白中间（C# D# F# G# A# C'#），全部可弹
    移调：整琴降 2 个半音（C → ♭B，符合谱面调性标注）*/
 const SHIFT = Math.pow(2, -2/12);
-const WHITE = [
-  {note:1,  f:261.63, name:'1'},
-  {note:2,  f:293.66, name:'2'},
-  {note:3,  f:329.63, name:'3'},
-  {note:4,  f:349.23, name:'4'},
-  {note:5,  f:392.00, name:'5'},
-  {note:6,  f:440.00, name:'6'},
-  {note:7,  f:493.88, name:'7'},
-  {note:'1h',f:523.25, name:'1\''},
-  {note:'2h',f:587.33, name:'2\''},
-  {note:'3h',f:659.26, name:'3\''},
-  {note:'4h',f:698.46, name:'4\''},
-  {note:'5h',f:783.99, name:'5\''}
+/* 键位序列：W=白键 B=黑键；白键音符 1..7,1'；黑键 = 半音 */
+const KEYS = [
+  {c:'W', wnote:1,  f:261.63}, {c:'B', f:277.18},
+  {c:'W', wnote:2,  f:293.66}, {c:'B', f:311.13},
+  {c:'W', wnote:3,  f:329.63}, {c:'B', f:369.99},
+  {c:'W', wnote:4,  f:349.23},
+  {c:'W', wnote:5,  f:392.00}, {c:'B', f:415.30},
+  {c:'W', wnote:6,  f:440.00}, {c:'B', f:466.16},
+  {c:'W', wnote:7,  f:493.88}, {c:'B', f:554.37},
+  {c:'W', wnote:'1h', f:523.25}
 ];
-/* 黑键标准半音位：C# D# F# G# A# C# D# F#（12 白键对应） */
-const BLACK = [
-  {gap:0.5, f:277.18}, {gap:1.5, f:311.13},
-  {gap:3.5, f:369.99}, {gap:4.5, f:415.30}, {gap:5.5, f:466.16},
-  {gap:6.5, f:554.37}, {gap:7.5, f:622.25},
-  {gap:9.5, f:739.99}
-];
-const NOTE_STR = {1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',
-  '1h':'1\'','2h':'2\'','3h':'3\'','4h':'4\'','5h':'5\''};
+const NOTE_STR = {1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7','1h':'1\''};
+const WNAME = {'1':'1','2':'2','3':'3','4':'4','5':'5','6':'6','7':'7','1h':'1\''};
 
-/* ============ 歌单：谱面 (49)-(60) 段（视频帧权威解码，竖排同序） ============ */
+/* ============ 歌单：谱面 (49)-(60) 段（视频帧权威解码），组间带停顿 ============ */
 const SONGS = [{
   name:'The Truth That You Leave',
-  desc:'♭B 调 · 谱面 (49)-(60) · 按谱逐列',
+  desc:'♭B 调 · (49)-(60) 段 · 组间停顿',
   notes:[
     /* (49)-(52)：14 拍 */
     [5,4,1],[5],[5],[5,4,1],[2],[2],[2],[5,5,2],[5],[5],[5,5,2],[2],[3],[4],
+    {rest:900},
     /* (53)-(56)：11 拍 */
     [3,6,3],[1,6,3],[3],[6],[7],[1,6,3],[7],[6],[3,6,3],[1],[2],
-    /* (57)-(60)：14 拍（= (49) 重复） */
-    [5,4,1],[5],[5],[5,4,1],[2],[2],[2],[5,5,2],[5],[5],[5,5,2],[2],[3],[4]
+    {rest:900},
+    /* (57)-(60)：14 拍 */
+    [5,4,1],[5],[5],[5,4,1],[2],[2],[2],[5,5,2],[5],[5],[5,5,2],[2],[3],[4],
+    {rest:1400}
   ]
 }];
 
 /* ============ 构建键盘 ============ */
 const keysEl = document.getElementById('keys');
 const keyEls = {};
-WHITE.forEach(w=>{
+KEYS.forEach((k,i)=>{
   const d = document.createElement('div');
-  d.className = 'wkey';
-  d.dataset.note = w.note;
-  d.innerHTML = '<span>'+w.name+'</span>';
-  d.addEventListener('pointerdown', e=>{ e.preventDefault(); press(w.note); });
-  d.addEventListener('pointerup',   ()=>release(w.note));
-  d.addEventListener('pointerleave',()=>release(w.note));
+  const id = (k.c==='W') ? ('w'+k.wnote) : ('b'+i);
+  d.dataset.note = id;
+  if(k.c==='W'){
+    d.className = 'wkey';
+    d.innerHTML = '<span>'+(WNAME[k.wnote]||'')+'</span>';
+    keyEls['w'+k.wnote] = d;
+  } else {
+    d.className = 'bkey';
+    d.style.left = ((i+1)/KEYS.length*100) - 2.1 + '%';
+    keyEls[id] = d;
+  }
+  d.addEventListener('pointerdown', e=>{ e.preventDefault(); press(id); });
+  d.addEventListener('pointerup',   ()=>release(id));
+  d.addEventListener('pointerleave',()=>release(id));
   keysEl.appendChild(d);
-  keyEls[w.note] = d;
 });
-BLACK.forEach((b,i)=>{
-  const d = document.createElement('div');
-  d.className = 'bkey';
-  const name = 'b'+i;
-  d.dataset.note = name;
-  d.style.left = (b.gap/12*100) - 2.1 + '%';
-  d.addEventListener('pointerdown', e=>{ e.preventDefault(); press(name); });
-  d.addEventListener('pointerup',   ()=>release(name));
-  d.addEventListener('pointerleave',()=>release(name));
-  keysEl.appendChild(d);
-  keyEls[name] = d;
-});
-function freqOf(n){
-  let f=261.63;
-  if(typeof n === 'number') f=WHITE[n-1].f;
-  else if(n && n.slice && n.slice(0,1)==='b') f=BLACK[+n.slice(1)].f;
-  else if(n && n.slice && n.slice(-1)==='h'){ const w=WHITE.find(x=>x.note===n); f=w?w.f:261.63; }
-  return f*SHIFT;
+function freqOf(id){
+  if(id[0]==='w'){ const k=KEYS.find(x=>x.c==='W' && x.wnote==id.slice(1)); return (k?k.f:261.63)*SHIFT; }
+  const i=+id.slice(1); const k=KEYS[i]; return (k?k.f:261.63)*SHIFT;
 }
 
 /* ============ 钢琴音色（Web Audio 合成） ============ */
@@ -220,34 +200,40 @@ function play(freq){
 
 /* ============ 按键（支持多键同按） ============ */
 const pressState = {};
-function press(n){
-  const el = keyEls[n]; if(!el) return;
-  el.classList.add('pressed'); pressState[n]=true;
-  play(freqOf(n));
+function press(id){
+  const el = keyEls[id]; if(!el) return;
+  el.classList.add('pressed'); pressState[id]=true;
+  play(freqOf(id));
 }
-function release(n){
-  pressState[n]=false;
-  const el = keyEls[n];
-  if(el) setTimeout(()=>{ if(!pressState[n]) el.classList.remove('pressed'); },40);
+function release(id){
+  pressState[id]=false;
+  const el = keyEls[id];
+  if(el) setTimeout(()=>{ if(!pressState[id]) el.classList.remove('pressed'); },40);
 }
 function chordPress(chord){
-  chord.forEach(n=>{ if(keyEls[n]) press(n); });
-  chord.forEach(n=>{ setTimeout(()=>release(n), 100); });
+  chord.forEach(n=>{
+    const id = 'w'+n;
+    if(keyEls[id]) press(id);
+  });
+  chord.forEach(n=>{ const id='w'+n; setTimeout(()=>release(id), 100); });
 }
 
-/* ============ 自动播放（简谱竖排滚动） ============ */
+/* ============ 自动播放（只滚谱子，钢琴固定） ============ */
 let playing=false, timer=null, curIdx=-1;
 const sheetEl = document.getElementById('sheet');
 function buildSheet(){
   sheetEl.innerHTML='';
   SONGS[curSong].notes.forEach((ch,i)=>{
     const b=document.createElement('b');
-    b.textContent = ch.map(n=>NOTE_STR[n]||'').join('·');
+    if(ch.rest){ b.textContent='· · ·'; b.classList.add('rest'); }
+    else b.textContent = ch.map(n=>NOTE_STR[n]||'').join('·');
     b.id='n'+i; sheetEl.appendChild(b);
   });
 }
 function scrollToNote(el){
-  el.scrollIntoView({block:'center', behavior:'smooth'});
+  /* 只滚 sheet 容器本身，绝不动页面/钢琴 */
+  const top = el.offsetTop - sheetEl.clientHeight/2 + el.clientHeight/2;
+  sheetEl.scrollTop = Math.max(0, top);
 }
 function playSong(){
   if(playing) return;
@@ -260,12 +246,15 @@ function playSong(){
   function step(){
     if(!playing) return;
     if(curIdx>last){ stopSong(true); return; }
-    chordPress(s.notes[curIdx]);
+    const ch = s.notes[curIdx];
     const el=document.getElementById('n'+curIdx);
     if(el){ el.classList.add('cur'); scrollToNote(el); }
     if(curIdx>0){ const p=document.getElementById('n'+(curIdx-1)); if(p) p.classList.remove('cur'); }
+    let wait = (ch.rest) ? ch.rest : dur;
+    if(curIdx===last) wait = (ch.rest) ? ch.rest : dur*2.5;
     curIdx++;
-    timer=setTimeout(step, curIdx===last ? dur*2.5 : dur);
+    if(!ch.rest) chordPress(ch);
+    timer=setTimeout(step, wait);
   }
   step();
 }
