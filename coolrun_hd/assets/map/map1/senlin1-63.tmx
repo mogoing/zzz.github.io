@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="16" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" name="land_1(1)" tilewidth="40" tileheight="40">
+  <image source="land_1(1).png" width="320" height="240"/>
+ </tileset>
+ <tileset firstgid="49" name="F04-000" tilewidth="40" tileheight="40">
+  <image source="F04-000.png" width="70" height="48"/>
+ </tileset>
+ <tileset firstgid="50" name="monster_0" tilewidth="40" tileheight="40">
+  <image source="monster_0.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="54" name="Y001-000" tilewidth="40" tileheight="40">
+  <image source="Y001-000.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="55" name="daoju(2)" tilewidth="40" tileheight="40">
+  <image source="daoju(2).png" width="400" height="80"/>
+ </tileset>
+ <tileset firstgid="75" name="land_x" tilewidth="40" tileheight="40">
+  <image source="land_x.png" width="160" height="114"/>
+ </tileset>
+ <tileset firstgid="83" name="F03-000" tilewidth="40" tileheight="40">
+  <image source="F03-000.png" width="80" height="56"/>
+ </tileset>
+ <tileset firstgid="85" name="Y001-000" tilewidth="40" tileheight="40">
+  <image source="Y001-000.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="86" name="Y02-000" tilewidth="40" tileheight="40">
+  <image source="Y02-000.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="87" name="zhuankuan2" tilewidth="40" tileheight="40">
+  <image source="zhuankuan2.png" width="160" height="80"/>
+ </tileset>
+ <tileset firstgid="95" name="box" tilewidth="40" tileheight="40">
+  <image source="box.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="99" name="F04-000" tilewidth="40" tileheight="40">
+  <image source="F04-000.png" width="70" height="48"/>
+ </tileset>
+ <layer name="map" width="80" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztkrsOwlAMQ2+hC4+lwAJl4bEU+P/vI0uWyPGV0AU6+EiRRztOShFCCCGEEEKI39DZLIgu/xdtVvQFd7OyWRPdfNF/Ljdi2TzftuBuBpsd0f2H/rET5I9uxHZppRGWzfMdkm6ONieiY628xD/+LfJHN2K7tNIIy+b5zkk3F5sr0VutvMQ//i3yRzdiu7TSCMvm+e5JN5PNg+izVl7iH/8W+aMbsV1aaYRl83yvpJs31NQUTw==
+  </data>
+ </layer>
+ <layer name="zhuankuai2" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztztEJgDAQBcHrUmPU/svIayKEgxnY/60CAGCnK91ppOfwS0czvelL/+EXAICOFhVEAtU=
+  </data>
+ </layer>
+ <layer name="zhuankuai" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1jsKACEMBUBv6uf+h1hBBJsU7iKsMAMhr06RJCUAgLNyr7LRGeY8aq+20RnMA3hjvUVRJrbu3ijfxI/yjR/lPx4xNhIZ
+  </data>
+ </layer>
+ <layer name="dici" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIA7B5xb8Hnkkg4WmTJgAAAL+mAYB7C80vAMc=
+  </data>
+ </layer>
+ <layer name="zhu" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzskJADAMBDHXlKP/1uIu1gEJ5j9VAAAAkLG6nZ742OluegIY7wHsNQDP
+  </data>
+ </layer>
+ <layer name="yinbi" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1EEKQCEIBcBO2f2P8vdGRhGBnxmQEBeSi9caQB19oxi5HXDqVTb8MYN6eOMsZu+sX+V0tqe67M+37pftAYDqPpqXEHc=
+  </data>
+ </layer>
+ <layer name="jinbi" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt08EJADAMA7Es2f1X6TvkZQqBggRe4MBVwJYTji5pot+k3xv/BQAAfnUB26EJTQ==
+  </data>
+ </layer>
+ <layer name="futi" width="80" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztz7sNACAIRVH38+/+w4idMUCjdvckLxRACCEAAAAAAADcKZIoSU5dycrePnP2rRve3AvaPz9vDkmVNKeudGVvnzn71g1v7gXtn983YZsI7g/h
+  </data>
+ </layer>
+ <layer name="daoju" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAA8GoUAAAB
+  </data>
+ </layer>
+ <layer name="daodan" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAA8GoUAAAB
+  </data>
+ </layer>
+ <objectgroup name="duixiang">
+  <object x="1120" y="360" width="200" height="80">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object x="1040" y="480" width="320" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object x="680" y="520" width="240" height="120">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object x="960" y="360" width="80" height="80">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object x="760" y="360" width="120" height="80">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object x="520" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="480" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="520" y="400" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="560" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="360" y="480" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="480" y="480" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="600" y="480" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="1440" y="520" width="1000" height="120">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object x="2440" y="520" width="160" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="2400" y="240" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="2440" y="120" width="400" height="80">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="2400" y="200" width="480" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object x="2400" y="80" width="480" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object x="2400" y="120" width="40" height="80">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object x="2840" y="120" width="40" height="80">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object x="2600" y="480" width="360" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object x="2960" y="440" width="240" height="200">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object x="240" y="400" width="80" height="40">
+   <properties>
+    <property name="v" value="11"/>
+   </properties>
+  </object>
+  <object x="0" y="440" width="360" height="200">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object x="2400" y="520" width="240" height="80">
+   <properties>
+    <property name="v" value="28"/>
+   </properties>
+  </object>
+  <object x="1320" y="520" width="160" height="80">
+   <properties>
+    <property name="v" value="28"/>
+   </properties>
+  </object>
+  <object x="2320" y="280" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="320" y="520" width="440" height="80">
+   <properties>
+    <property name="v" value="28"/>
+   </properties>
+  </object>
+  <object x="1760" y="280" width="160" height="80">
+   <properties>
+    <property name="v" value="7"/>
+   </properties>
+  </object>
+  <object x="1560" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="1520" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="1560" y="400" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="1600" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object x="2120" y="440" width="80" height="80">
+   <properties>
+    <property name="v" value="10"/>
+   </properties>
+  </object>
+  <object x="880" y="520" width="200" height="80">
+   <properties>
+    <property name="v" value="28"/>
+   </properties>
+  </object>
+  <object x="2480" y="240" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="2560" y="240" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="2640" y="240" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="2720" y="240" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object x="2800" y="240" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
