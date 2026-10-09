@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="16" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" name="land_1(1)" tilewidth="40" tileheight="40">
+  <image source="land_1(1).png" width="320" height="200"/>
+ </tileset>
+ <tileset firstgid="41" name="monster_0" tilewidth="40" tileheight="40">
+  <image source="monster_0.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="45" name="box" tilewidth="40" tileheight="40">
+  <image source="box.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="49" name="F04-000" tilewidth="40" tileheight="40">
+  <image source="F04-000.png" width="70" height="48"/>
+ </tileset>
+ <tileset firstgid="50" name="land_x" tilewidth="40" tileheight="40">
+  <image source="land_x.png" width="160" height="114"/>
+ </tileset>
+ <tileset firstgid="58" name="Y02-000" tilewidth="40" tileheight="40">
+  <image source="Y02-000.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="59" name="Y001-000" tilewidth="40" tileheight="40">
+  <image source="Y001-000.png" width="40" height="40"/>
+ </tileset>
+ <layer name="map" width="80" height="16" opacity="0.9">
+  <data encoding="base64" compression="zlib">
+   eJztkbkKxDAQQ5NsmhzNHk2OJtn9/2/cMbhwETHCYENAD4QajaZQ0wghhBBCCCGEuAOdqXX8AW57MnuVY71GHwP6OZoGxyfQOZPZqxzrNfoY0M+X6en4O3akG4QdPyDL5Fgv0ZcD+rmaFse32JFuEHbcQZbJsV6iLwf08zQdjn9jR7pB2PEHskyO9RJ9OaCff9m4FEA=
+  </data>
+ </layer>
+ <layer name="zhuankuai" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztz8kJADAMA7As1GP/6dpPNwiEUAn8NXYEAAAA8IybWT2iQNbvdbMTerr59Tc9HHmLAXU=
+  </data>
+ </layer>
+ <layer name="futi" width="80" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztzrkNACAAAzFm4mf/xaBgAQoEhS2d0iYEAAAA+E9ZxV062Pzi7IfGqu7awfYXZ4GrJjrEBi8=
+  </data>
+ </layer>
+ <layer name="zhu" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0rkNACAMBEG3w9N/fTgnJLCAGWnzCy4CAADgby3r1SMuNrJZPeIh/njGH2G3ALCqAVU=
+  </data>
+ </layer>
+ <layer name="dici" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztyjENAAAMw7BSGn9ye0ZgUk9bypcEAAAAoGuu9gv8Lbv+AMU=
+  </data>
+ </layer>
+ <layer name="yinbi" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztlEsKQCEIRVtX+1/YmzQIeTdTCorOgSD83FKsUgAA4ARqW3avYlV+HcRZ31/OjaiaVV2qf17+jPaNRPqk7Jn+7Zo/q53Vj+iMavVie5vSieivJtPD6Ez1Pu8s9depe3r/5QtvGQAAAOAD7csP3Q==
+  </data>
+ </layer>
+ <layer name="jinbi" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0EkKACEMRNHcK/e/l9sgGRQ3ifwHIi2ldEoEADCJml2z4JY7yU5mZ8zmzTLenay/n7pVZ0U5CTKvHe256rubk1lv+6vOo3cm9WZV/zllDgAAgG4WzTsMrg==
+  </data>
+ </layer>
+ <objectgroup name="duixiang" width="0" height="0">
+  <object name="地面" x="0" y="480" width="400" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="440" y="560" width="160" height="80">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="砖块" x="400" y="480" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object name="银币" x="280" y="280" width="200" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="440" y="320" width="80" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1000" y="280" width="200" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="960" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1200" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="地刺" x="480" y="520" width="80" height="40">
+   <properties>
+    <property name="v" value="11"/>
+   </properties>
+  </object>
+  <object name="地面" x="600" y="480" width="240" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="840" y="560" width="160" height="80">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地刺" x="920" y="520" width="80" height="40">
+   <properties>
+    <property name="v" value="11"/>
+   </properties>
+  </object>
+  <object name="地面" x="1000" y="480" width="640" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="1640" y="560" width="160" height="80">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="1800" y="480" width="640" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="2960" y="480" width="240" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="浮梯" x="2400" y="480" width="600" height="40">
+   <properties>
+    <property name="v" value="28"/>
+   </properties>
+  </object>
+  <object name="砖块" x="2880" y="480" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object name="金币" x="2760" y="240" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="2920" y="240" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="2840" y="280" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="3000" y="280" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="3080" y="240" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="银币" x="2560" y="160" width="160" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2560" y="200" width="40" height="120">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2560" y="320" width="160" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2600" y="240" width="120" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="金币" x="2600" y="200" width="120" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="2600" y="280" width="120" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="2320" y="160" width="120" height="120">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="银币" x="2440" y="160" width="40" height="120">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2280" y="160" width="40" height="120">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2320" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="金币" x="2360" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="银币" x="2400" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2360" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="金币" x="2120" y="200" width="40" height="120">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="银币" x="2080" y="160" width="120" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2080" y="320" width="120" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2160" y="200" width="40" height="120">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="2080" y="200" width="40" height="120">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1880" y="320" width="120" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1880" y="160" width="40" height="160">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="金币" x="1840" y="160" width="40" height="200">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="1920" y="160" width="80" height="160">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="银币" x="1440" y="160" width="80" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1560" y="160" width="80" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1400" y="200" width="40" height="80">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1640" y="200" width="40" height="80">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1440" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1600" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1560" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1520" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="银币" x="1480" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="金币" x="1440" y="200" width="80" height="80">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="银币" x="1520" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="金币" x="1560" y="200" width="80" height="80">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="1520" y="240" width="40" height="120">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="1560" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="1480" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="猪" x="1680" y="480" width="80" height="80">
+   <properties>
+    <property name="v" value="10"/>
+   </properties>
+  </object>
+  <object name="猪" x="1520" y="400" width="80" height="80">
+   <properties>
+    <property name="v" value="10"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
