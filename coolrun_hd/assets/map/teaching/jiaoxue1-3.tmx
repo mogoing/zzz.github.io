@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="16" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" name="land_1(1)" tilewidth="40" tileheight="40">
+  <image source="land_1(1).png" width="320" height="200"/>
+ </tileset>
+ <tileset firstgid="41" name="F04-000" tilewidth="40" tileheight="40">
+  <image source="F04-000.png" width="70" height="48"/>
+ </tileset>
+ <tileset firstgid="42" name="F03-000" tilewidth="40" tileheight="40">
+  <image source="F03-000.png" width="80" height="56"/>
+ </tileset>
+ <tileset firstgid="44" name="monster_0" tilewidth="40" tileheight="40">
+  <image source="monster_0.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="48" name="land_x" tilewidth="40" tileheight="40">
+  <image source="land_x.png" width="160" height="114"/>
+ </tileset>
+ <layer name="map" width="100" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztkzsOg1AQxB5pIGn4dNAEaOD+J2QusZKRbMlyt9pmWqunjwP4btV/VMY4ge9W/UfFfbBwHyzcBwv3wcJ9sHAfLP5xB9+t+o/KFW/w3ar/5P108WMx/cafxXSOi8V0jZvF9IinxfQBM7EmAQ==
+  </data>
+ </layer>
+ <layer name="dici" width="100" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+  </data>
+ </layer>
+ <layer name="daodan" width="100" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJAEAIBEHr8fvvT7GCzzSYgcsPNgIAAOBP9t72CYYWd2gBAHBTAUBtAQA=
+  </data>
+ </layer>
+ <layer name="zhu" width="100" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztxcEJACAMALEOZHX/7doR+lEQEjguAgAAAOBfq8vBeWN3Z3AAuK0A888Djw==
+  </data>
+ </layer>
+ <objectgroup name="duixiang" width="100" height="16">
+  <object name="地面" x="0" y="480" width="4000" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="障碍" x="1000" y="0" width="80" height="400">
+   <properties>
+    <property name="v" value="4"/>
+   </properties>
+  </object>
+  <object name="猪" x="3160" y="400" width="80" height="80">
+   <properties>
+    <property name="v" value="10"/>
+   </properties>
+  </object>
+  <object name="猪" x="3240" y="400" width="80" height="80">
+   <properties>
+    <property name="v" value="10"/>
+   </properties>
+  </object>
+  <object name="猪" x="3400" y="400" width="80" height="80">
+   <properties>
+    <property name="v" value="10"/>
+   </properties>
+  </object>
+  <object name="猪" x="3480" y="400" width="80" height="80">
+   <properties>
+    <property name="v" value="10"/>
+   </properties>
+  </object>
+  <object name="猪" x="3320" y="400" width="80" height="80">
+   <properties>
+    <property name="v" value="10"/>
+   </properties>
+  </object>
+  <object name="导弹" x="3280" y="360" width="80" height="40">
+   <properties>
+    <property name="v" value="13"/>
+   </properties>
+  </object>
+  <object name="导弹" x="3320" y="320" width="80" height="40">
+   <properties>
+    <property name="v" value="13"/>
+   </properties>
+  </object>
+  <object name="导弹" x="3360" y="280" width="80" height="40">
+   <properties>
+    <property name="v" value="13"/>
+   </properties>
+  </object>
+  <object name="障碍" x="1880" y="0" width="80" height="400">
+   <properties>
+    <property name="v" value="4"/>
+   </properties>
+  </object>
+  <object name="障碍" x="2600" y="0" width="80" height="400">
+   <properties>
+    <property name="v" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
