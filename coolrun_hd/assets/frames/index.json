@@ -1,0 +1,3218 @@
+{
+ "B010": {
+  "plist": "role/B010.plist",
+  "texture": "role/B010.png",
+  "format": 0,
+  "count": 35,
+  "frames": [
+   {
+    "name": "nan 1/1.png",
+    "file": "B010/1.png",
+    "rect": [
+     0,
+     0,
+     52,
+     57
+    ],
+    "rotated": false,
+    "src": [
+     52,
+     57
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/10.png",
+    "file": "B010/10.png",
+    "rect": [
+     54,
+     0,
+     9,
+     22
+    ],
+    "rotated": false,
+    "src": [
+     9,
+     22
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/2.png",
+    "file": "B010/2.png",
+    "rect": [
+     65,
+     0,
+     32,
+     39
+    ],
+    "rotated": false,
+    "src": [
+     32,
+     39
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/3.png",
+    "file": "B010/3.png",
+    "rect": [
+     99,
+     0,
+     22,
+     33
+    ],
+    "rotated": false,
+    "src": [
+     22,
+     33
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/4.png",
+    "file": "B010/4.png",
+    "rect": [
+     123,
+     0,
+     17,
+     26
+    ],
+    "rotated": false,
+    "src": [
+     17,
+     26
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/5.png",
+    "file": "B010/5.png",
+    "rect": [
+     142,
+     0,
+     24,
+     34
+    ],
+    "rotated": false,
+    "src": [
+     24,
+     34
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/6.png",
+    "file": "B010/6.png",
+    "rect": [
+     168,
+     0,
+     17,
+     24
+    ],
+    "rotated": false,
+    "src": [
+     17,
+     24
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/7.png",
+    "file": "B010/7.png",
+    "rect": [
+     187,
+     0,
+     7,
+     17
+    ],
+    "rotated": false,
+    "src": [
+     7,
+     17
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/8.png",
+    "file": "B010/8.png",
+    "rect": [
+     196,
+     0,
+     19,
+     23
+    ],
+    "rotated": false,
+    "src": [
+     19,
+     23
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/9.png",
+    "file": "B010/9.png",
+    "rect": [
+     217,
+     0,
+     7,
+     18
+    ],
+    "rotated": false,
+    "src": [
+     7,
+     18
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/huachan piaodai -0.png",
+    "file": "B010/huachan_piaodai_-0.png",
+    "rect": [
+     226,
+     0,
+     153,
+     67
+    ],
+    "rotated": false,
+    "src": [
+     153,
+     67
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/huachan piaodai 1.png",
+    "file": "B010/huachan_piaodai_1.png",
+    "rect": [
+     381,
+     0,
+     153,
+     67
+    ],
+    "rotated": false,
+    "src": [
+     153,
+     67
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/huachan piaodai 2.png",
+    "file": "B010/huachan_piaodai_2.png",
+    "rect": [
+     536,
+     0,
+     153,
+     67
+    ],
+    "rotated": false,
+    "src": [
+     153,
+     67
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/huachan piaodai 3.png",
+    "file": "B010/huachan_piaodai_3.png",
+    "rect": [
+     691,
+     0,
+     153,
+     67
+    ],
+    "rotated": false,
+    "src": [
+     153,
+     67
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/huachan piaodai 4.png",
+    "file": "B010/huachan_piaodai_4.png",
+    "rect": [
+     846,
+     0,
+     153,
+     67
+    ],
+    "rotated": false,
+    "src": [
+     153,
+     67
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/huachan piaodai 5.png",
+    "file": "B010/huachan_piaodai_5.png",
+    "rect": [
+     0,
+     69,
+     153,
+     67
+    ],
+    "rotated": false,
+    "src": [
+     153,
+     67
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/huachan.png",
+    "file": "B010/huachan.png",
+    "rect": [
+     155,
+     69,
+     113,
+     71
+    ],
+    "rotated": false,
+    "src": [
+     113,
+     71
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/piaodai-1.png",
+    "file": "B010/piaodai-1.png",
+    "rect": [
+     270,
+     69,
+     130,
+     76
+    ],
+    "rotated": false,
+    "src": [
+     130,
+     76
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/piaodai-2.png",
+    "file": "B010/piaodai-2.png",
+    "rect": [
+     402,
+     69,
+     130,
+     76
+    ],
+    "rotated": false,
+    "src": [
+     130,
+     76
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/piaodai-3.png",
+    "file": "B010/piaodai-3.png",
+    "rect": [
+     534,
+     69,
+     130,
+     76
+    ],
+    "rotated": false,
+    "src": [
+     130,
+     76
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/piaodai-4.png",
+    "file": "B010/piaodai-4.png",
+    "rect": [
+     666,
+     69,
+     130,
+     76
+    ],
+    "rotated": false,
+    "src": [
+     130,
+     76
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/piaodai-5.png",
+    "file": "B010/piaodai-5.png",
+    "rect": [
+     798,
+     69,
+     130,
+     76
+    ],
+    "rotated": false,
+    "src": [
+     130,
+     76
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/piaodai-6.png",
+    "file": "B010/piaodai-6.png",
+    "rect": [
+     0,
+     147,
+     130,
+     76
+    ],
+    "rotated": false,
+    "src": [
+     130,
+     76
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/weiba-1.png",
+    "file": "B010/weiba-1.png",
+    "rect": [
+     132,
+     147,
+     33,
+     24
+    ],
+    "rotated": false,
+    "src": [
+     33,
+     24
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/weiba-2.png",
+    "file": "B010/weiba-2.png",
+    "rect": [
+     167,
+     147,
+     33,
+     24
+    ],
+    "rotated": false,
+    "src": [
+     33,
+     24
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/weiba-3.png",
+    "file": "B010/weiba-3.png",
+    "rect": [
+     202,
+     147,
+     33,
+     24
+    ],
+    "rotated": false,
+    "src": [
+     33,
+     24
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/weiba-4.png",
+    "file": "B010/weiba-4.png",
+    "rect": [
+     237,
+     147,
+     33,
+     24
+    ],
+    "rotated": false,
+    "src": [
+     33,
+     24
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/weiba-5.png",
+    "file": "B010/weiba-5.png",
+    "rect": [
+     272,
+     147,
+     33,
+     24
+    ],
+    "rotated": false,
+    "src": [
+     33,
+     24
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/weiba-6.png",
+    "file": "B010/weiba-6.png",
+    "rect": [
+     307,
+     147,
+     33,
+     24
+    ],
+    "rotated": false,
+    "src": [
+     33,
+     24
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/yumao-1.png",
+    "file": "B010/yumao-1.png",
+    "rect": [
+     342,
+     147,
+     36,
+     26
+    ],
+    "rotated": false,
+    "src": [
+     36,
+     26
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/yumao-2.png",
+    "file": "B010/yumao-2.png",
+    "rect": [
+     380,
+     147,
+     36,
+     26
+    ],
+    "rotated": false,
+    "src": [
+     36,
+     26
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/yumao-3.png",
+    "file": "B010/yumao-3.png",
+    "rect": [
+     418,
+     147,
+     36,
+     26
+    ],
+    "rotated": false,
+    "src": [
+     36,
+     26
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/yumao-4.png",
+    "file": "B010/yumao-4.png",
+    "rect": [
+     456,
+     147,
+     36,
+     26
+    ],
+    "rotated": false,
+    "src": [
+     36,
+     26
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/yumao-5.png",
+    "file": "B010/yumao-5.png",
+    "rect": [
+     494,
+     147,
+     36,
+     26
+    ],
+    "rotated": false,
+    "src": [
+     36,
+     26
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "nan 1/yumao-6.png",
+    "file": "B010/yumao-6.png",
+    "rect": [
+     532,
+     147,
+     36,
+     26
+    ],
+    "rotated": false,
+    "src": [
+     36,
+     26
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "B020": {
+  "plist": "role/B020.plist",
+  "texture": "role/B020.png",
+  "format": 0,
+  "count": 42,
+  "frames": [
+   {
+    "name": "001.png",
+    "file": "B020/001.png",
+    "rect": [
+     0,
+     0,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "002.png",
+    "file": "B020/002.png",
+    "rect": [
+     202,
+     0,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "003.png",
+    "file": "B020/003.png",
+    "rect": [
+     404,
+     0,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "004.png",
+    "file": "B020/004.png",
+    "rect": [
+     606,
+     0,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "005.png",
+    "file": "B020/005.png",
+    "rect": [
+     808,
+     0,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "006.png",
+    "file": "B020/006.png",
+    "rect": [
+     0,
+     122,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "007.png",
+    "file": "B020/007.png",
+    "rect": [
+     202,
+     122,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "008.png",
+    "file": "B020/008.png",
+    "rect": [
+     404,
+     122,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "009.png",
+    "file": "B020/009.png",
+    "rect": [
+     606,
+     122,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "010.png",
+    "file": "B020/010.png",
+    "rect": [
+     808,
+     122,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "011.png",
+    "file": "B020/011.png",
+    "rect": [
+     0,
+     244,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "012.png",
+    "file": "B020/012.png",
+    "rect": [
+     202,
+     244,
+     200,
+     120
+    ],
+    "rotated": false,
+    "src": [
+     200,
+     120
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "040.png",
+    "file": "B020/040.png",
+    "rect": [
+     404,
+     244,
+     196,
+     158
+    ],
+    "rotated": false,
+    "src": [
+     196,
+     158
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "042.png",
+    "file": "B020/042.png",
+    "rect": [
+     602,
+     244,
+     196,
+     158
+    ],
+    "rotated": false,
+    "src": [
+     196,
+     158
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "044.png",
+    "file": "B020/044.png",
+    "rect": [
+     800,
+     244,
+     196,
+     158
+    ],
+    "rotated": false,
+    "src": [
+     196,
+     158
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "046.png",
+    "file": "B020/046.png",
+    "rect": [
+     0,
+     404,
+     196,
+     158
+    ],
+    "rotated": false,
+    "src": [
+     196,
+     158
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "048.png",
+    "file": "B020/048.png",
+    "rect": [
+     198,
+     404,
+     196,
+     158
+    ],
+    "rotated": false,
+    "src": [
+     196,
+     158
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "050.png",
+    "file": "B020/050.png",
+    "rect": [
+     396,
+     404,
+     196,
+     158
+    ],
+    "rotated": false,
+    "src": [
+     196,
+     158
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "1.png",
+    "file": "B020/1.png",
+    "rect": [
+     594,
+     404,
+     14,
+     30
+    ],
+    "rotated": false,
+    "src": [
+     14,
+     30
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "15.png",
+    "file": "B020/15.png",
+    "rect": [
+     610,
+     404,
+     43,
+     39
+    ],
+    "rotated": false,
+    "src": [
+     43,
+     39
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "16.png",
+    "file": "B020/16.png",
+    "rect": [
+     655,
+     404,
+     43,
+     39
+    ],
+    "rotated": false,
+    "src": [
+     43,
+     39
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "17.png",
+    "file": "B020/17.png",
+    "rect": [
+     700,
+     404,
+     43,
+     39
+    ],
+    "rotated": false,
+    "src": [
+     43,
+     39
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "18.png",
+    "file": "B020/18.png",
+    "rect": [
+     745,
+     404,
+     43,
+     39
+    ],
+    "rotated": false,
+    "src": [
+     43,
+     39
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "19.png",
+    "file": "B020/19.png",
+    "rect": [
+     790,
+     404,
+     43,
+     39
+    ],
+    "rotated": false,
+    "src": [
+     43,
+     39
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "2.png",
+    "file": "B020/2.png",
+    "rect": [
+     835,
+     404,
+     12,
+     21
+    ],
+    "rotated": false,
+    "src": [
+     12,
+     21
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "20.png",
+    "file": "B020/20.png",
+    "rect": [
+     849,
+     404,
+     43,
+     39
+    ],
+    "rotated": false,
+    "src": [
+     43,
+     39
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "22.png",
+    "file": "B020/22.png",
+    "rect": [
+     894,
+     404,
+     29,
+     31
+    ],
+    "rotated": false,
+    "src": [
+     29,
+     31
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "23.png",
+    "file": "B020/23.png",
+    "rect": [
+     925,
+     404,
+     55,
+     67
+    ],
+    "rotated": false,
+    "src": [
+     55,
+     67
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "3.png",
+    "file": "B020/3.png",
+    "rect": [
+     982,
+     404,
+     24,
+     41
+    ],
+    "rotated": false,
+    "src": [
+     24,
+     41
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "4.png",
+    "file": "B020/4.png",
+    "rect": [
+     0,
+     564,
+     29,
+     47
+    ],
+    "rotated": false,
+    "src": [
+     29,
+     47
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "5.png",
+    "file": "B020/5.png",
+    "rect": [
+     31,
+     564,
+     20,
+     29
+    ],
+    "rotated": false,
+    "src": [
+     20,
+     29
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "6.png",
+    "file": "B020/6.png",
+    "rect": [
+     53,
+     564,
+     17,
+     27
+    ],
+    "rotated": false,
+    "src": [
+     17,
+     27
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "7.png",
+    "file": "B020/7.png",
+    "rect": [
+     72,
+     564,
+     14,
+     24
+    ],
+    "rotated": false,
+    "src": [
+     14,
+     24
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "8.png",
+    "file": "B020/8.png",
+    "rect": [
+     88,
+     564,
+     13,
+     36
+    ],
+    "rotated": false,
+    "src": [
+     13,
+     36
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "doupeng 00.png",
+    "file": "B020/doupeng_00.png",
+    "rect": [
+     103,
+     564,
+     113,
+     68
+    ],
+    "rotated": false,
+    "src": [
+     113,
+     68
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "doupeng 10.png",
+    "file": "B020/doupeng_10.png",
+    "rect": [
+     218,
+     564,
+     163,
+     47
+    ],
+    "rotated": false,
+    "src": [
+     163,
+     47
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "doupeng 11.png",
+    "file": "B020/doupeng_11.png",
+    "rect": [
+     383,
+     564,
+     163,
+     47
+    ],
+    "rotated": false,
+    "src": [
+     163,
+     47
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "doupeng 12.png",
+    "file": "B020/doupeng_12.png",
+    "rect": [
+     548,
+     564,
+     163,
+     47
+    ],
+    "rotated": false,
+    "src": [
+     163,
+     47
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "doupeng 13.png",
+    "file": "B020/doupeng_13.png",
+    "rect": [
+     713,
+     564,
+     163,
+     47
+    ],
+    "rotated": false,
+    "src": [
+     163,
+     47
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "doupeng 14.png",
+    "file": "B020/doupeng_14.png",
+    "rect": [
+     0,
+     634,
+     163,
+     47
+    ],
+    "rotated": false,
+    "src": [
+     163,
+     47
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "doupeng 9.png",
+    "file": "B020/doupeng_9.png",
+    "rect": [
+     165,
+     634,
+     163,
+     47
+    ],
+    "rotated": false,
+    "src": [
+     163,
+     47
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "bo20huachan.png",
+    "file": "B020/bo20huachan.png",
+    "rect": [
+     330,
+     634,
+     245,
+     93
+    ],
+    "rotated": false,
+    "src": [
+     245,
+     93
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "G010": {
+  "plist": "role/G010.plist",
+  "texture": "role/G010.png",
+  "format": 0,
+  "count": 24,
+  "frames": [
+   {
+    "name": "gebo-01.png",
+    "file": "G010/gebo-01.png",
+    "rect": [
+     0,
+     0,
+     13,
+     27
+    ],
+    "rotated": false,
+    "src": [
+     13,
+     27
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "gebo-02.png",
+    "file": "G010/gebo-02.png",
+    "rect": [
+     15,
+     0,
+     28,
+     34
+    ],
+    "rotated": false,
+    "src": [
+     28,
+     34
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "gebo-22-01.png",
+    "file": "G010/gebo-22-01.png",
+    "rect": [
+     45,
+     0,
+     15,
+     21
+    ],
+    "rotated": false,
+    "src": [
+     15,
+     21
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "gebo-22-02.png",
+    "file": "G010/gebo-22-02.png",
+    "rect": [
+     62,
+     0,
+     23,
+     33
+    ],
+    "rotated": false,
+    "src": [
+     23,
+     33
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "houtui-01-1.png",
+    "file": "G010/houtui-01-1.png",
+    "rect": [
+     87,
+     0,
+     25,
+     35
+    ],
+    "rotated": false,
+    "src": [
+     25,
+     35
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "houtui-01-2.png",
+    "file": "G010/houtui-01-2.png",
+    "rect": [
+     114,
+     0,
+     20,
+     36
+    ],
+    "rotated": false,
+    "src": [
+     20,
+     36
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "houtui-02-1.png",
+    "file": "G010/houtui-02-1.png",
+    "rect": [
+     136,
+     0,
+     38,
+     30
+    ],
+    "rotated": false,
+    "src": [
+     38,
+     30
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "houtui-02-2.png",
+    "file": "G010/houtui-02-2.png",
+    "rect": [
+     176,
+     0,
+     21,
+     34
+    ],
+    "rotated": false,
+    "src": [
+     21,
+     34
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "huachan-weiba.png",
+    "file": "G010/huachan-weiba.png",
+    "rect": [
+     199,
+     0,
+     111,
+     53
+    ],
+    "rotated": false,
+    "src": [
+     111,
+     53
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "huachan.png",
+    "file": "G010/huachan.png",
+    "rect": [
+     312,
+     0,
+     183,
+     118
+    ],
+    "rotated": false,
+    "src": [
+     183,
+     118
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "shenti-01.png",
+    "file": "G010/shenti-01.png",
+    "rect": [
+     497,
+     0,
+     32,
+     52
+    ],
+    "rotated": false,
+    "src": [
+     32,
+     52
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "shenti-02.png",
+    "file": "G010/shenti-02.png",
+    "rect": [
+     531,
+     0,
+     27,
+     40
+    ],
+    "rotated": false,
+    "src": [
+     27,
+     40
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "tou-07.png",
+    "file": "G010/tou-07.png",
+    "rect": [
+     560,
+     0,
+     63,
+     71
+    ],
+    "rotated": false,
+    "src": [
+     63,
+     71
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "weiba-01.png",
+    "file": "G010/weiba-01.png",
+    "rect": [
+     625,
+     0,
+     86,
+     48
+    ],
+    "rotated": false,
+    "src": [
+     86,
+     48
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "weiba-02.png",
+    "file": "G010/weiba-02.png",
+    "rect": [
+     713,
+     0,
+     86,
+     48
+    ],
+    "rotated": false,
+    "src": [
+     86,
+     48
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "weiba-03.png",
+    "file": "G010/weiba-03.png",
+    "rect": [
+     801,
+     0,
+     86,
+     48
+    ],
+    "rotated": false,
+    "src": [
+     86,
+     48
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "weiba-04.png",
+    "file": "G010/weiba-04.png",
+    "rect": [
+     889,
+     0,
+     86,
+     48
+    ],
+    "rotated": false,
+    "src": [
+     86,
+     48
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "weiba-05.png",
+    "file": "G010/weiba-05.png",
+    "rect": [
+     0,
+     120,
+     86,
+     48
+    ],
+    "rotated": false,
+    "src": [
+     86,
+     48
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "weiba-06.png",
+    "file": "G010/weiba-06.png",
+    "rect": [
+     88,
+     120,
+     86,
+     48
+    ],
+    "rotated": false,
+    "src": [
+     86,
+     48
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "WEIBA.png",
+    "file": "G010/WEIBA.png",
+    "rect": [
+     176,
+     120,
+     101,
+     70
+    ],
+    "rotated": false,
+    "src": [
+     101,
+     70
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "youtui-01-1.png",
+    "file": "G010/youtui-01-1.png",
+    "rect": [
+     279,
+     120,
+     23,
+     33
+    ],
+    "rotated": false,
+    "src": [
+     23,
+     33
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "youtui-01-2.png",
+    "file": "G010/youtui-01-2.png",
+    "rect": [
+     304,
+     120,
+     22,
+     31
+    ],
+    "rotated": false,
+    "src": [
+     22,
+     31
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "youtui-02-1.png",
+    "file": "G010/youtui-02-1.png",
+    "rect": [
+     328,
+     120,
+     35,
+     30
+    ],
+    "rotated": false,
+    "src": [
+     35,
+     30
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "youtui-02-2.png",
+    "file": "G010/youtui-02-2.png",
+    "rect": [
+     365,
+     120,
+     21,
+     28
+    ],
+    "rotated": false,
+    "src": [
+     21,
+     28
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "G020": {
+  "plist": "role/G020.plist",
+  "texture": "role/G020.png",
+  "format": 0,
+  "count": 29,
+  "frames": [
+   {
+    "name": "dajichi chibang001.png",
+    "file": "G020/dajichi_chibang001.png",
+    "rect": [
+     0,
+     0,
+     134,
+     59
+    ],
+    "rotated": false,
+    "src": [
+     134,
+     59
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi chibang002 .png",
+    "file": "G020/dajichi_chibang002_.png",
+    "rect": [
+     136,
+     0,
+     134,
+     59
+    ],
+    "rotated": false,
+    "src": [
+     134,
+     59
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi chibang003 .png",
+    "file": "G020/dajichi_chibang003_.png",
+    "rect": [
+     272,
+     0,
+     134,
+     59
+    ],
+    "rotated": false,
+    "src": [
+     134,
+     59
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi chibang004 .png",
+    "file": "G020/dajichi_chibang004_.png",
+    "rect": [
+     408,
+     0,
+     134,
+     59
+    ],
+    "rotated": false,
+    "src": [
+     134,
+     59
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi chibang005.png",
+    "file": "G020/dajichi_chibang005.png",
+    "rect": [
+     544,
+     0,
+     134,
+     59
+    ],
+    "rotated": false,
+    "src": [
+     134,
+     59
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi chibang006.png",
+    "file": "G020/dajichi_chibang006.png",
+    "rect": [
+     680,
+     0,
+     134,
+     59
+    ],
+    "rotated": false,
+    "src": [
+     134,
+     59
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi huachan.png",
+    "file": "G020/dajichi_huachan.png",
+    "rect": [
+     0,
+     61,
+     213,
+     158
+    ],
+    "rotated": false,
+    "src": [
+     213,
+     158
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi piaodai001.png",
+    "file": "G020/dajichi_piaodai001.png",
+    "rect": [
+     215,
+     61,
+     174,
+     60
+    ],
+    "rotated": false,
+    "src": [
+     174,
+     60
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi piaodai002.png",
+    "file": "G020/dajichi_piaodai002.png",
+    "rect": [
+     391,
+     61,
+     174,
+     60
+    ],
+    "rotated": false,
+    "src": [
+     174,
+     60
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi piaodai003.png",
+    "file": "G020/dajichi_piaodai003.png",
+    "rect": [
+     567,
+     61,
+     174,
+     60
+    ],
+    "rotated": false,
+    "src": [
+     174,
+     60
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi piaodai004.png",
+    "file": "G020/dajichi_piaodai004.png",
+    "rect": [
+     743,
+     61,
+     174,
+     60
+    ],
+    "rotated": false,
+    "src": [
+     174,
+     60
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi piaodai005.png",
+    "file": "G020/dajichi_piaodai005.png",
+    "rect": [
+     0,
+     221,
+     174,
+     60
+    ],
+    "rotated": false,
+    "src": [
+     174,
+     60
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi piaodai006.png",
+    "file": "G020/dajichi_piaodai006.png",
+    "rect": [
+     176,
+     221,
+     174,
+     60
+    ],
+    "rotated": false,
+    "src": [
+     174,
+     60
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi qunzi001.png",
+    "file": "G020/dajichi_qunzi001.png",
+    "rect": [
+     352,
+     221,
+     65,
+     52
+    ],
+    "rotated": false,
+    "src": [
+     65,
+     52
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi qunzi002.png",
+    "file": "G020/dajichi_qunzi002.png",
+    "rect": [
+     419,
+     221,
+     65,
+     52
+    ],
+    "rotated": false,
+    "src": [
+     65,
+     52
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi qunzi003.png",
+    "file": "G020/dajichi_qunzi003.png",
+    "rect": [
+     486,
+     221,
+     65,
+     52
+    ],
+    "rotated": false,
+    "src": [
+     65,
+     52
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi qunzi004.png",
+    "file": "G020/dajichi_qunzi004.png",
+    "rect": [
+     553,
+     221,
+     65,
+     52
+    ],
+    "rotated": false,
+    "src": [
+     65,
+     52
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi qunzi005.png",
+    "file": "G020/dajichi_qunzi005.png",
+    "rect": [
+     620,
+     221,
+     65,
+     52
+    ],
+    "rotated": false,
+    "src": [
+     65,
+     52
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi qunzi006.png",
+    "file": "G020/dajichi_qunzi006.png",
+    "rect": [
+     687,
+     221,
+     65,
+     52
+    ],
+    "rotated": false,
+    "src": [
+     65,
+     52
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi shenti.png",
+    "file": "G020/dajichi_shenti.png",
+    "rect": [
+     754,
+     221,
+     25,
+     43
+    ],
+    "rotated": false,
+    "src": [
+     25,
+     43
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi tou.png",
+    "file": "G020/dajichi_tou.png",
+    "rect": [
+     781,
+     221,
+     65,
+     76
+    ],
+    "rotated": false,
+    "src": [
+     65,
+     76
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi youshou001.png",
+    "file": "G020/dajichi_youshou001.png",
+    "rect": [
+     848,
+     221,
+     10,
+     21
+    ],
+    "rotated": false,
+    "src": [
+     10,
+     21
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi youshou002.png",
+    "file": "G020/dajichi_youshou002.png",
+    "rect": [
+     860,
+     221,
+     10,
+     19
+    ],
+    "rotated": false,
+    "src": [
+     10,
+     19
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi youtui001.png",
+    "file": "G020/dajichi_youtui001.png",
+    "rect": [
+     872,
+     221,
+     20,
+     26
+    ],
+    "rotated": false,
+    "src": [
+     20,
+     26
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi youtui002.png",
+    "file": "G020/dajichi_youtui002.png",
+    "rect": [
+     894,
+     221,
+     13,
+     32
+    ],
+    "rotated": false,
+    "src": [
+     13,
+     32
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi zuoshou001.png",
+    "file": "G020/dajichi_zuoshou001.png",
+    "rect": [
+     909,
+     221,
+     11,
+     23
+    ],
+    "rotated": false,
+    "src": [
+     11,
+     23
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi zuoshou002.png",
+    "file": "G020/dajichi_zuoshou002.png",
+    "rect": [
+     922,
+     221,
+     10,
+     19
+    ],
+    "rotated": false,
+    "src": [
+     10,
+     19
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi zuotui001.png",
+    "file": "G020/dajichi_zuotui001.png",
+    "rect": [
+     934,
+     221,
+     21,
+     28
+    ],
+    "rotated": false,
+    "src": [
+     21,
+     28
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "dajichi zuotui002.png",
+    "file": "G020/dajichi_zuotui002.png",
+    "rect": [
+     957,
+     221,
+     12,
+     32
+    ],
+    "rotated": false,
+    "src": [
+     12,
+     32
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "monster010": {
+  "plist": "enemy/monster010.plist",
+  "texture": "enemy/monster010.png",
+  "format": 0,
+  "count": 1,
+  "frames": [
+   {
+    "name": "monster_0.png",
+    "file": "monster010/monster_0.png",
+    "rect": [
+     0,
+     0,
+     80,
+     80
+    ],
+    "rotated": false,
+    "src": [
+     80,
+     80
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "monster020": {
+  "plist": "enemy/monster020.plist",
+  "texture": "enemy/monster020.png",
+  "format": 0,
+  "count": 1,
+  "frames": [
+   {
+    "name": "M03-001.png",
+    "file": "monster020/M03-001.png",
+    "rect": [
+     0,
+     0,
+     80,
+     80
+    ],
+    "rotated": false,
+    "src": [
+     80,
+     80
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "monster030": {
+  "plist": "enemy/monster030.plist",
+  "texture": "enemy/monster030.png",
+  "format": 0,
+  "count": 1,
+  "frames": [
+   {
+    "name": "M02-001.png",
+    "file": "monster030/M02-001.png",
+    "rect": [
+     0,
+     0,
+     80,
+     80
+    ],
+    "rotated": false,
+    "src": [
+     80,
+     80
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "dici": {
+  "plist": "enemy/dici.plist",
+  "texture": "enemy/dici.png",
+  "format": 2,
+  "count": 4,
+  "frames": [
+   {
+    "name": "dici0.png",
+    "file": "dici/dici0.png",
+    "rect": [
+     2,
+     2,
+     78,
+     30
+    ],
+    "rotated": false,
+    "src": [
+     128,
+     128
+    ],
+    "off": [
+     -24,
+     2
+    ]
+   },
+   {
+    "name": "dici1.png",
+    "file": "dici/dici1.png",
+    "rect": [
+     2,
+     34,
+     78,
+     38
+    ],
+    "rotated": false,
+    "src": [
+     128,
+     128
+    ],
+    "off": [
+     -24,
+     6
+    ]
+   },
+   {
+    "name": "dici2.png",
+    "file": "dici/dici2.png",
+    "rect": [
+     2,
+     74,
+     78,
+     56
+    ],
+    "rotated": false,
+    "src": [
+     128,
+     128
+    ],
+    "off": [
+     -24,
+     15
+    ]
+   },
+   {
+    "name": "dici3.png",
+    "file": "dici/dici3.png",
+    "rect": [
+     2,
+     132,
+     78,
+     74
+    ],
+    "rotated": false,
+    "src": [
+     128,
+     128
+    ],
+    "off": [
+     -24,
+     24
+    ]
+   }
+  ]
+ },
+ "222": {
+  "plist": "enemy/222.plist",
+  "texture": "enemy/222.png",
+  "format": 2,
+  "count": 4,
+  "frames": [
+   {
+    "name": "tanhuang001.png",
+    "file": "222/tanhuang001.png",
+    "rect": [
+     66,
+     154,
+     74,
+     58
+    ],
+    "rotated": true,
+    "src": [
+     80,
+     100
+    ],
+    "off": [
+     -1,
+     -19
+    ]
+   },
+   {
+    "name": "tanhuang002.png",
+    "file": "222/tanhuang002.png",
+    "rect": [
+     2,
+     154,
+     74,
+     62
+    ],
+    "rotated": true,
+    "src": [
+     80,
+     100
+    ],
+    "off": [
+     -1,
+     -17
+    ]
+   },
+   {
+    "name": "tanhuang003.png",
+    "file": "222/tanhuang003.png",
+    "rect": [
+     2,
+     78,
+     74,
+     74
+    ],
+    "rotated": false,
+    "src": [
+     80,
+     100
+    ],
+    "off": [
+     0,
+     -10
+    ]
+   },
+   {
+    "name": "tanhuang004.png",
+    "file": "222/tanhuang004.png",
+    "rect": [
+     2,
+     2,
+     74,
+     96
+    ],
+    "rotated": true,
+    "src": [
+     80,
+     100
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "F030": {
+  "plist": "enemy/F030.plist",
+  "texture": "enemy/F030.png",
+  "format": 0,
+  "count": 2,
+  "frames": [
+   {
+    "name": "F03/FO3-001.png",
+    "file": "F030/FO3-001.png",
+    "rect": [
+     0,
+     0,
+     93,
+     54
+    ],
+    "rotated": false,
+    "src": [
+     93,
+     54
+    ],
+    "off": [
+     0,
+     0
+    ]
+   },
+   {
+    "name": "F03/FO3-002.png",
+    "file": "F030/FO3-002.png",
+    "rect": [
+     94,
+     0,
+     160,
+     54
+    ],
+    "rotated": false,
+    "src": [
+     160,
+     54
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "chongci": {
+  "plist": "fx/chongci.plist",
+  "texture": "fx/chongci.png",
+  "format": 0,
+  "count": 0,
+  "frames": []
+ },
+ "rush": {
+  "plist": "fx/rush.plist",
+  "texture": "fx/rush.png",
+  "format": 2,
+  "count": 5,
+  "frames": [
+   {
+    "name": "rush-a.png",
+    "file": "rush/rush-a.png",
+    "rect": [
+     195,
+     195,
+     170,
+     177
+    ],
+    "rotated": true,
+    "src": [
+     208,
+     233
+    ],
+    "off": [
+     -4,
+     0
+    ]
+   },
+   {
+    "name": "rush-b.png",
+    "file": "rush/rush-b.png",
+    "rect": [
+     181,
+     2,
+     126,
+     177
+    ],
+    "rotated": true,
+    "src": [
+     208,
+     233
+    ],
+    "off": [
+     5,
+     0
+    ]
+   },
+   {
+    "name": "rush-c.png",
+    "file": "rush/rush-c.png",
+    "rect": [
+     2,
+     2,
+     110,
+     177
+    ],
+    "rotated": true,
+    "src": [
+     208,
+     233
+    ],
+    "off": [
+     -8,
+     -1
+    ]
+   },
+   {
+    "name": "rush-d.png",
+    "file": "rush/rush-d.png",
+    "rect": [
+     360,
+     2,
+     126,
+     191
+    ],
+    "rotated": false,
+    "src": [
+     208,
+     233
+    ],
+    "off": [
+     -41,
+     0
+    ]
+   },
+   {
+    "name": "rush-e.png",
+    "file": "rush/rush-e.png",
+    "rect": [
+     2,
+     130,
+     138,
+     191
+    ],
+    "rotated": true,
+    "src": [
+     208,
+     233
+    ],
+    "off": [
+     -1,
+     0
+    ]
+   }
+  ]
+ },
+ "rushNum": {
+  "plist": "fx/rushNum.plist",
+  "texture": "fx/rushNum.png",
+  "format": 2,
+  "count": 6,
+  "frames": [
+   {
+    "name": "rush-1.png",
+    "file": "rushNum/rush-1.png",
+    "rect": [
+     209,
+     1336,
+     665,
+     205
+    ],
+    "rotated": true,
+    "src": [
+     675,
+     205
+    ],
+    "off": [
+     -5,
+     0
+    ]
+   },
+   {
+    "name": "rush-2.png",
+    "file": "rushNum/rush-2.png",
+    "rect": [
+     2,
+     1336,
+     665,
+     205
+    ],
+    "rotated": true,
+    "src": [
+     675,
+     205
+    ],
+    "off": [
+     -5,
+     0
+    ]
+   },
+   {
+    "name": "rush-3.png",
+    "file": "rushNum/rush-3.png",
+    "rect": [
+     2,
+     669,
+     665,
+     203
+    ],
+    "rotated": true,
+    "src": [
+     675,
+     205
+    ],
+    "off": [
+     -5,
+     1
+    ]
+   },
+   {
+    "name": "rush-4.png",
+    "file": "rushNum/rush-4.png",
+    "rect": [
+     207,
+     669,
+     665,
+     205
+    ],
+    "rotated": true,
+    "src": [
+     675,
+     205
+    ],
+    "off": [
+     -5,
+     0
+    ]
+   },
+   {
+    "name": "rush-5.png",
+    "file": "rushNum/rush-5.png",
+    "rect": [
+     209,
+     2,
+     665,
+     205
+    ],
+    "rotated": true,
+    "src": [
+     675,
+     205
+    ],
+    "off": [
+     -5,
+     0
+    ]
+   },
+   {
+    "name": "rush-6.png",
+    "file": "rushNum/rush-6.png",
+    "rect": [
+     2,
+     2,
+     665,
+     205
+    ],
+    "rotated": true,
+    "src": [
+     675,
+     205
+    ],
+    "off": [
+     -5,
+     0
+    ]
+   }
+  ]
+ },
+ "E010": {
+  "plist": "fx/E010.plist",
+  "texture": "fx/E010.png",
+  "format": 0,
+  "count": 1,
+  "frames": [
+   {
+    "name": "E01.png",
+    "file": "E010/E01.png",
+    "rect": [
+     0,
+     0,
+     171,
+     132
+    ],
+    "rotated": false,
+    "src": [
+     171,
+     132
+    ],
+    "off": [
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "boxx": {
+  "plist": "prop/boxx.plist",
+  "texture": "prop/boxx.png",
+  "format": 2,
+  "count": 8,
+  "frames": [
+   {
+    "name": "bao xiang0000.png",
+    "file": "boxx/bao_xiang0000.png",
+    "rect": [
+     156,
+     578,
+     146,
+     140
+    ],
+    "rotated": false,
+    "src": [
+     340,
+     274
+    ],
+    "off": [
+     4,
+     -18
+    ]
+   },
+   {
+    "name": "bao xiang0001.png",
+    "file": "boxx/bao_xiang0001.png",
+    "rect": [
+     258,
+     442,
+     158,
+     134
+    ],
+    "rotated": false,
+    "src": [
+     340,
+     274
+    ],
+    "off": [
+     11,
+     -21
+    ]
+   },
+   {
+    "name": "bao xiang0002.png",
+    "file": "boxx/bao_xiang0002.png",
+    "rect": [
+     2,
+     484,
+     152,
+     138
+    ],
+    "rotated": false,
+    "src": [
+     340,
+     274
+    ],
+    "off": [
+     1,
+     -19
+    ]
+   },
+   {
+    "name": "bao xiang0006.png",
+    "file": "boxx/bao_xiang0006.png",
+    "rect": [
+     2,
+     624,
+     146,
+     104
+    ],
+    "rotated": false,
+    "src": [
+     340,
+     274
+    ],
+    "off": [
+     4,
+     -36
+    ]
+   },
+   {
+    "name": "bao xiang0007.png",
+    "file": "boxx/bao_xiang0007.png",
+    "rect": [
+     258,
+     252,
+     188,
+     202
+    ],
+    "rotated": true,
+    "src": [
+     340,
+     274
+    ],
+    "off": [
+     27,
+     13
+    ]
+   },
+   {
+    "name": "bao xiang0008.png",
+    "file": "boxx/bao_xiang0008.png",
+    "rect": [
+     272,
+     2,
+     248,
+     232
+    ],
+    "rotated": true,
+    "src": [
+     340,
+     274
+    ],
+    "off": [
+     19,
+     1
+    ]
+   },
+   {
+    "name": "bao xiang0009.png",
+    "file": "boxx/bao_xiang0009.png",
+    "rect": [
+     2,
+     2,
+     268,
+     238
+    ],
+    "rotated": false,
+    "src": [
+     340,
+     274
+    ],
+    "off": [
+     10,
+     3
+    ]
+   },
+   {
+    "name": "bao xiang0010.png",
+    "file": "boxx/bao_xiang0010.png",
+    "rect": [
+     2,
+     242,
+     254,
+     240
+    ],
+    "rotated": false,
+    "src": [
+     340,
+     274
+    ],
+    "off": [
+     19,
+     4
+    ]
+   }
+  ]
+ }
+}
