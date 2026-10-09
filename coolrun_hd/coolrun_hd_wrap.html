@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>跑酷HD</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;touch-action:none;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;background:#1a1a2e;overflow:hidden}
+#top{position:fixed;top:0;left:0;right:0;height:48px;z-index:100;display:flex;align-items:center;gap:8px;padding:0 8px;background:linear-gradient(135deg,#ff8c42,#e65100);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+#top .btn{height:34px;border:0;border-radius:17px;padding:0 14px;background:rgba(255,255,255,.95);color:#e65100;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.18)}
+#top .btn:active{transform:translateY(1px)}
+#top .t{color:#fff;font-size:17px;font-weight:900;flex:1;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,.25);letter-spacing:2px;white-space:nowrap;overflow:hidden}
+#stage{position:fixed;top:48px;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:#111}
+#gamebox{position:relative;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+#gamebox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+#loading{position:absolute;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 40%,#2a2a4a 0%,#1a1a2e 70%);color:#ffb380;font-size:18px;font-weight:900}
+.spin{width:44px;height:44px;border:5px solid rgba(255,140,66,.25);border-top-color:#ff8c42;border-radius:50%;animation:r 1s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+#err{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(26,26,46,.97);color:#ffb380;font-size:16px;text-align:center}
+#err .btn{height:36px;border:0;border-radius:18px;padding:0 18px;background:#ff8c42;color:#fff;font-size:14px;font-weight:800;cursor:pointer}
+</style></head><body>
+<div id="top"><button class="btn" id="btnBack">← 主页</button><div class="t">跑酷 HD · 无尽版</div><button class="btn" id="btnFull">⛶ 全屏</button></div>
+<div id="stage"><div id="gamebox"><iframe id="g" src="coolrun_hd.html" allowfullscreen></iframe>
+<div id="loading"><div class="spin"></div><div>跑酷HD 加载中…</div></div>
+</div></div>
+<div id="err"><div style="padding:0 24px">游戏加载失败，请检查网络后重试</div><button class="btn" onclick="location.reload()">重试</button></div>
+<script>
+var st=document.getElementById('stage'),gb=document.getElementById('gamebox'),
+    g=document.getElementById('g'),ld=document.getElementById('loading');
+function fit(){
+  var w=st.clientWidth,h=st.clientHeight;
+  if(w<=0||h<=0){w=innerWidth;h=innerHeight;}
+  var portrait = w<h;
+  /* 游戏 960x540 = 16:9。旋转90度后 视觉宽=CSS高、视觉高=CSS宽 */
+  var VW = Math.min(w, h*16/9);   /* 视觉宽（尽量撑满） */
+  var VH = VW*9/16;               /* 视觉高 16:9 */
+  if(portrait){
+    gb.style.width = VH+'px';     /* CSS宽=旋转后视觉高 */
+    gb.style.height = VW+'px';    /* CSS高=旋转后视觉宽 */
+    gb.style.transform = 'rotate(90deg)';
+  }else{
+    gb.style.width = VW+'px';
+    gb.style.height = VH+'px';
+    gb.style.transform = '';
+  }
+}
+function hideLoad(){ if(ld){ ld.style.display='none'; ld=null; } }
+g.addEventListener('load', hideLoad);
+setTimeout(hideLoad, 9000); /* 兜底 */
+window.addEventListener('resize', fit);
+window.addEventListener('orientationchange', function(){ setTimeout(fit,300); });
+document.getElementById('btnBack').addEventListener('click', function(){ location.href='../main.html'; });
+document.getElementById('btnFull').addEventListener('click', function(){
+  if(document.fullscreenElement){ document.exitFullscreen(); }
+  else if(document.documentElement.requestFullscreen){ document.documentElement.requestFullscreen(); }
+});
+fit();
+</script></body></html>
