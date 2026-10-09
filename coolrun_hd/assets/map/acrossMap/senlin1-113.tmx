@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="16" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" name="land_1(1)" tilewidth="40" tileheight="40">
+  <image source="land_1(1).png" width="169" height="240"/>
+ </tileset>
+ <tileset firstgid="25" name="land_x" tilewidth="40" tileheight="40">
+  <image source="land_x.png" width="160" height="114"/>
+ </tileset>
+ <tileset firstgid="33" name="monster_0" tilewidth="40" tileheight="40">
+  <image source="monster_0.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="37" name="F04-000" tilewidth="40" tileheight="40">
+  <image source="F04-000.png" width="70" height="48"/>
+ </tileset>
+ <tileset firstgid="38" name="Y001-000" tilewidth="40" tileheight="40">
+  <image source="Y001-000.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="39" name="Y02-000" tilewidth="40" tileheight="40">
+  <image source="Y02-000.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="40" name="F03-000" tilewidth="40" tileheight="40">
+  <image source="F03-000.png" width="80" height="56"/>
+ </tileset>
+ <tileset firstgid="42" name="chip" tilewidth="37" tileheight="36">
+  <image source="chip.png" width="37" height="36"/>
+ </tileset>
+ <tileset firstgid="43" name="box" tilewidth="40" tileheight="40">
+  <image source="box.png" width="80" height="80"/>
+ </tileset>
+ <layer name="map" width="80" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztkssOglAMRBEUUJSr4oP//1LGXRdNyTSRsJiTnHTTZKa5t6qEEEIIIYQQYr8c4QHWsNkoZ4u8DJmOPTzBFnZ/7GZzojzmBm83Oxuio+UKz/ACB6In+3dsTpTH3ODtZmdHdLTc4Q2OsBA92b9qc6I85gZvNzsHoqPlBR/wCSei59q7RDlRHnODt5udhehomeEbfuCX6Ln2LlFOlMfc4O1m5y9jATG3CdM=
+  </data>
+ </layer>
+ <objectgroup name="duixiang" width="0" height="0">
+  <object name="地面" x="0" y="480" width="240" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="520" y="440" width="160" height="200">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="1560" y="440" width="240" height="200">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="2400" y="480" width="800" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="碎片" x="920" y="440" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="960" y="440" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1760" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1720" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2000" y="400" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="砖块" x="1400" y="440" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object name="地面" x="1960" y="480" width="240" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1000" y="440" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1040" y="440" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1200" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1240" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1280" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1320" y="240" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1360" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1400" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1440" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1480" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1680" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1800" y="240" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1840" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1880" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1920" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1960" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2000" y="160" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2040" y="120" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2080" y="120" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2120" y="120" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2160" y="120" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2040" y="400" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2080" y="400" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2120" y="400" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2200" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2240" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2160" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2280" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2320" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="2360" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1640" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1600" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1160" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1080" y="400" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="1120" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="地面" x="880" y="520" width="240" height="120">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="碎片" x="360" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="400" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="440" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="480" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="520" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="640" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="600" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="560" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="160" y="440" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="120" y="440" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="80" y="400" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="40" y="360" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+  <object name="碎片" x="0" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="8"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="chip" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEOABAMRFHncf8DWkqsmBoq/kvsUGoSpQDAfXUYmPd7v1azQ9a61fu/1i/HW6v7KfOdOVX2jJ5DXZ81p2oPT+fHWSfqRD1njQz/ye7aGe4EAPBoickIsw==
+  </data>
+ </layer>
+ <layer name="zhuankuai" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztz9sJACAMA8Du42P/8ewKglQod5DvJBEAAABwZ2Tm7xGPVX5amV3UVaXjJ+jiAIjyAWU=
+  </data>
+ </layer>
+</map>
