@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="16" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" name="land_1(1)" tilewidth="40" tileheight="40">
+  <image source="land_1(1).png" width="320" height="240"/>
+ </tileset>
+ <tileset firstgid="49" name="Y02-000" tilewidth="40" tileheight="40">
+  <image source="Y02-000.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="50" name="Y001-000" tilewidth="40" tileheight="40">
+  <image source="Y001-000.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="51" name="F04-000" tilewidth="40" tileheight="40">
+  <image source="F04-000.png" width="70" height="48"/>
+ </tileset>
+ <tileset firstgid="52" name="land_x" tilewidth="40" tileheight="40">
+  <image source="land_x.png" width="160" height="114"/>
+ </tileset>
+ <tileset firstgid="60" name="F03-000" tilewidth="40" tileheight="40">
+  <image source="F03-000.png" width="80" height="56"/>
+ </tileset>
+ <tileset firstgid="62" name="F02-003" tilewidth="40" tileheight="40">
+  <image source="F02-003.png" width="60" height="52"/>
+ </tileset>
+ <tileset firstgid="63" name="daoju(2)" tilewidth="40" tileheight="40">
+  <image source="daoju(2).png" width="400" height="80"/>
+ </tileset>
+ <tileset firstgid="83" name="box" tilewidth="40" tileheight="40">
+  <image source="box.png" width="80" height="80"/>
+ </tileset>
+ <layer name="map" width="80" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztkjsOg1AMBAmkAdIQ0vBpSHL/M+LXPzGWtkLakaztRlO4aYwxxhhjjDHG3IE27gHbgeOZcKhLDUrLlZt8Q1wPO0LzK+FQlxqUlis3+d5xE+wMzZ+EQ11qUFqKu/ZnXcK3xi2wGzTvCYe61KC0FHftz8aE7xt3wP6g+Z9wqEsNSktx1/5sTvhOHasUxw==
+  </data>
+ </layer>
+ <layer name="yinbi" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzjEKADAIA0C/1P9/zrV0rAgKd5AxIREAAABsdK5U+78bXd5v0/4BbJI46wJN
+  </data>
+ </layer>
+ <layer name="jinbi" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0rsNACAMQ0HPlP2Ho+TTRIECR3onpcaykQAA3cRyqDk769Bh6O/m2duOHWZdOWbGrvrfHTa9yeyQG9PrJmwKAHA1ADy4BUc=
+  </data>
+ </layer>
+ <layer name="dici" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztw6EJAAAIADB/8v/fLFabQWSDRQAAAMBP2WFLDuGyAkpDAZk=
+  </data>
+ </layer>
+ <layer name="futi" width="80" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztzrsJADAMQ0EPlX/23ytu3LhLJTDvQEilzAAAAAAAVUxP8/TUsYfwg+LLr+tZnp069hF+UHwBUMMD26UIkw==
+  </data>
+ </layer>
+ <layer name="daodan" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0sEJADAIA0AHq/uvZaeoSu8g/wQSAQAAs52b7C7x2I+b2cE3AfYpHikBbA==
+  </data>
+ </layer>
+ <layer name="daoju" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzrENACAIAEE201b3H0h2sCCQu+T7jwCYa2W7eqKxk93qCQAAAL48hvEBEw==
+  </data>
+ </layer>
+ <objectgroup name="duixiang">
+  <object name="银币" x="160" y="440" width="120" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="金币" x="240" y="360" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="320" y="280" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="440" y="240" width="160" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="640" y="280" width="40" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="720" y="360" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="银币" x="800" y="440" width="160" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="金币" x="1560" y="400" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="1640" y="320" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="1720" y="240" width="120" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="1880" y="160" width="120" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="1840" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="2000" y="200" width="40" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="2040" y="240" width="40" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="2120" y="320" width="40" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="金币" x="2200" y="400" width="80" height="40">
+   <properties>
+    <property name="v" value="1"/>
+   </properties>
+  </object>
+  <object name="银币" x="2360" y="440" width="200" height="40">
+   <properties>
+    <property name="v" value="2"/>
+   </properties>
+  </object>
+  <object name="地刺" x="3080" y="440" width="80" height="40">
+   <properties>
+    <property name="v" value="11"/>
+   </properties>
+  </object>
+  <object name="地面" x="0" y="480" width="400" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="浮梯" x="360" y="480" width="360" height="40">
+   <properties>
+    <property name="v" value="28"/>
+   </properties>
+  </object>
+  <object name="地面" x="680" y="480" width="1040" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="浮梯" x="1680" y="480" width="440" height="40">
+   <properties>
+    <property name="v" value="28"/>
+   </properties>
+  </object>
+  <object name="地面" x="2080" y="480" width="560" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="地面" x="2880" y="480" width="320" height="160">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="导弹" x="1040" y="360" width="80" height="40">
+   <properties>
+    <property name="v" value="13"/>
+   </properties>
+  </object>
+  <object name="地面" x="2640" y="560" width="240" height="80">
+   <properties>
+    <property name="v" value="0"/>
+   </properties>
+  </object>
+  <object name="磁铁" x="2920" y="120" width="80" height="80">
+   <properties>
+    <property name="v" value="20"/>
+   </properties>
+  </object>
+  <object name="导弹" x="1320" y="440" width="80" height="40">
+   <properties>
+    <property name="v" value="13"/>
+   </properties>
+  </object>
+  <object name="导弹" x="1800" y="320" width="80" height="40">
+   <properties>
+    <property name="v" value="13"/>
+   </properties>
+  </object>
+  <object name="地刺" x="2640" y="520" width="80" height="40">
+   <properties>
+    <property name="v" value="11"/>
+   </properties>
+  </object>
+  <object name="地刺" x="2720" y="520" width="80" height="40">
+   <properties>
+    <property name="v" value="11"/>
+   </properties>
+  </object>
+  <object name="地刺" x="2800" y="520" width="80" height="40">
+   <properties>
+    <property name="v" value="11"/>
+   </properties>
+  </object>
+  <object name="砖块" x="2560" y="400" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object name="砖块" x="2680" y="360" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+  <object name="砖块" x="2800" y="320" width="80" height="80">
+   <properties>
+    <property name="v" value="5"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="zhuankuai" width="80" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0LkJADAMBEH16Kf/UqzQsR0IwQxcfmwEAAAwcrP6RDN3s5XbhV+60OyPZgBvDg9kA/c=
+  </data>
+ </layer>
+</map>
