@@ -5,6 +5,8 @@
 本文件夹是该站的**完整爬取镜像**：HTML、CSS、JS、行星贴图、GLB 模型、Three.js、
 Google 字体全部本地化，可完全离线运行；并叠加了一层移动端 H5 适配。
 
+**线上地址（GitHub Pages，点开即用）**：https://mogoing.github.io/zzz.github.io/whcccd/
+
 ## 怎么运行
 
 **方式一：双击启动脚本（最省事）**
