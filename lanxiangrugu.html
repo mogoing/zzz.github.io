@@ -35,8 +35,14 @@ video{width:100%;height:100%;object-fit:contain;background:#000}
 .spdBtn:active{transform:scale(.92)}
 #fullBtn{margin-left:auto;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:16px;cursor:pointer;transition:background .2s}
 #fullBtn:active{background:rgba(255,255,255,.28)}
-#info{background:#0d1322;border-top:1px solid rgba(255,255,255,.06);padding:10px 12px;font-size:12px;color:#7c8db0;display:flex;align-items:center;gap:8px}
-#info b{color:#c3cfe4}
+#eps{background:#0d1322;border-top:1px solid rgba(255,255,255,.06);padding:10px 12px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+#eps::-webkit-scrollbar{display:none}
+#eps .lbl{font-size:12px;color:#7c8db0;white-space:nowrap;margin-right:2px}
+.epBtn{height:34px;border:0;border-radius:17px;padding:0 15px;background:rgba(255,255,255,.07);color:#c3cfe4;font-size:13px;cursor:pointer;white-space:nowrap;transition:all .2s;border:1px solid transparent}
+.epBtn.on{background:#2b6df0;color:#fff;border-color:#5a8ff5;box-shadow:0 0 10px rgba(43,109,240,.35)}
+.epBtn:active{transform:scale(.94)}
+.epBtn.done{background:rgba(46,160,67,.15);color:#6fca85}
+@media (min-width:900px){#eps{justify-content:center}}
 </style></head><body>
 <div id="top"><button class="btn" id="btnBack">← 返回</button><div class="t">兰香如故</div><button class="btn" id="btnHome">⌂ 主页</button></div>
 <div id="stage">
@@ -60,32 +66,99 @@ video{width:100%;height:100%;object-fit:contain;background:#000}
       </div>
     </div>
   </div>
-  <div id="info"><span>当前资源：<b>魔都资源 · 第1集</b></span><span style="margin-left:auto">单集约 59 分钟</span></div>
+  <div id="eps"><span class="lbl">选集</span></div>
 </div>
 <script src="hls.min.js"></script>
 <script>
-var SRC="https://play.modujx17.com/20260911/fjZ5pIOb/index.m3u8";
-var v=document.getElementById('v'),hls=null;
-var loadTip=document.getElementById('loadTip');
+var EPS=[
+  {n:1,u:"https://fengbao12.com/video/lanxiangrugu/b7dbece99e0a/index.m3u8"},
+  {n:2,u:"https://fengbao12.com/video/lanxiangrugu/f2a6c59aa02f/index.m3u8"},
+  {n:3,u:"https://fengbao12.com/video/lanxiangrugu/b8e981a6d056/index.m3u8"},
+  {n:4,u:"https://fengbao12.com/video/lanxiangrugu/0223cdca0981/index.m3u8"},
+  {n:5,u:"https://fengbao12.com/video/lanxiangrugu/a37103810164/index.m3u8"},
+  {n:6,u:"https://fengbao12.com/video/lanxiangrugu/c836d4f05c58/index.m3u8"},
+  {n:7,u:"https://fengbao12.com/video/lanxiangrugu/1a1f4a36f355/index.m3u8"},
+  {n:8,u:"https://fengbao12.com/video/lanxiangrugu/c5ad0cc1c034/index.m3u8"},
+  {n:9,u:"https://fengbao12.com/video/lanxiangrugu/e86802fd03fa/index.m3u8"},
+  {n:10,u:"https://fengbao12.com/video/lanxiangrugu/7861726aed5a/index.m3u8"},
+  {n:11,u:"https://fengbao12.com/video/lanxiangrugu/438e61338d93/index.m3u8"},
+  {n:12,u:"https://fengbao12.com/video/lanxiangrugu/79b25c2fe343/index.m3u8"},
+  {n:13,u:"https://fengbao12.com/video/lanxiangrugu/f2eb3f2a60cc/index.m3u8"},
+  {n:14,u:"https://fengbao12.com/video/lanxiangrugu/d43d1a51ec8c/index.m3u8"},
+  {n:15,u:"https://fengbao12.com/video/lanxiangrugu/07c32df43fb1/index.m3u8"},
+  {n:16,u:"https://fengbao12.com/video/lanxiangrugu/e1eb383b081d/index.m3u8"},
+  {n:17,u:"https://fengbao12.com/video/lanxiangrugu/6273752b6c8e/index.m3u8"},
+  {n:18,u:"https://fengbao12.com/video/lanxiangrugu/23c9d754e14b/index.m3u8"},
+  {n:19,u:"https://fengbao12.com/video/lanxiangrugu/bccf014134cb/index.m3u8"},
+  {n:20,u:"https://fengbao12.com/video/lanxiangrugu/b2ce74d6b4f6/index.m3u8"},
+  {n:21,u:"https://fengbao12.com/video/lanxiangrugu/4f56d729a0a3/index.m3u8"},
+  {n:22,u:"https://fengbao12.com/video/lanxiangrugu/76ae91f8ffba/index.m3u8"},
+  {n:23,u:"https://fengbao12.com/video/lanxiangrugu/4b6d04e8f5b6/index.m3u8"},
+  {n:24,u:"https://fengbao12.com/video/lanxiangrugu/e798cdb302e0/index.m3u8"},
+  {n:25,u:"https://fengbao12.com/video/lanxiangrugu/04462c03166d/index.m3u8"},
+  {n:26,u:"https://fengbao12.com/video/lanxiangrugu/4db3247d93c0/index.m3u8"},
+  {n:27,u:"https://fengbao12.com/video/lanxiangrugu/802052f13a56/index.m3u8"},
+  {n:28,u:"https://fengbao12.com/video/lanxiangrugu/6708cedea1dd/index.m3u8"},
+  {n:29,u:"https://fengbao12.com/video/lanxiangrugu/0aca2403f9c0/index.m3u8"},
+  {n:30,u:"https://fengbao12.com/video/lanxiangrugu/45eb20dace45/index.m3u8"},
+  {n:31,u:"https://fengbao12.com/video/lanxiangrugu/090212565c6b/index.m3u8"},
+  {n:32,u:"https://fengbao12.com/video/lanxiangrugu/278f8cef1b18/index.m3u8"},
+  {n:33,u:"https://fengbao12.com/video/lanxiangrugu/4959ea3da269/index.m3u8"},
+  {n:34,u:"https://fengbao12.com/video/lanxiangrugu/f030f8d53b1b/index.m3u8"},
+  {n:35,u:"https://fengbao12.com/video/lanxiangrugu/1624a7217b36/index.m3u8"},
+  {n:36,u:"https://fengbao12.com/video/lanxiangrugu/0aee1aed1ca8/index.m3u8"},
+  {n:37,u:"https://fengbao12.com/video/lanxiangrugu/96de59361dd9/index.m3u8"},
+  {n:38,u:"https://fengbao12.com/video/lanxiangrugu/0724db7047ff/index.m3u8"},
+  {n:39,u:"https://fengbao12.com/video/lanxiangrugu/c965b9a5a2f1/index.m3u8"},
+  {n:40,u:"https://fengbao12.com/video/lanxiangrugu/5b889a6fddf0/index.m3u8"},
+  {n:41,u:"https://fengbao12.com/video/lanxiangrugu/e67294759bc7/index.m3u8"},
+  {n:42,u:"https://fengbao12.com/video/lanxiangrugu/9d6e6238b5e5/index.m3u8"},
+  {n:43,u:"https://fengbao12.com/video/lanxiangrugu/3075e66aff65/index.m3u8"},
+  {n:44,u:"https://fengbao12.com/video/lanxiangrugu/dc879b7f9734/index.m3u8"},
+  {n:45,u:"https://fengbao12.com/video/lanxiangrugu/9ef1c6168975/index.m3u8"},
+  {n:46,u:"https://fengbao12.com/video/lanxiangrugu/e09db3368437/index.m3u8"},
+  {n:47,u:"https://fengbao12.com/video/lanxiangrugu/37266e8ace8b/index.m3u8"}
+];
+var v=document.getElementById('v'),hls=null,cur=1,played=[1];
+var epsBox=document.getElementById('eps'),loadTip=document.getElementById('loadTip');
 var bar=document.getElementById('bar'),barFill=document.getElementById('barFill'),barDot=document.getElementById('barDot');
 var timeEl=document.getElementById('time'),playBtn=document.getElementById('playBtn');
-function boot(){
+EPS.forEach(function(ep){
+  var b=document.createElement('button');
+  b.className='epBtn'+(ep.n===cur?' on':'');
+  b.textContent='第'+ep.n+'集';
+  b.onclick=function(){switchEp(ep.n);};
+  epsBox.appendChild(b);
+});
+function setEpUI(){
+  var bs=epsBox.querySelectorAll('.epBtn');
+  for(var i=0;i<bs.length;i++){
+    var ep=EPS[i];
+    bs[i].className='epBtn'+(ep.n===cur?' on':'')+(played.indexOf(ep.n)>-1&&ep.n!==cur?' done':'');
+  }
+}
+function switchEp(n){
+  if(n===cur&&v.src)return;
+  cur=n;
+  if(played.indexOf(n)<0)played.push(n);
+  var ep=EPS[n-1];
   if(hls){hls.destroy();hls=null;}
   if(window.Hls&&Hls.isSupported()){
     hls=new Hls();
-    hls.loadSource(SRC);
+    hls.loadSource(ep.u);
     hls.attachMedia(v);
     hls.on(Hls.Events.ERROR,function(e,d){
-      if(d.fatal)loadTip.textContent='加载失败，点画面重试';
+      if(d.fatal)loadTip.textContent='加载失败，点击重试';
       loadTip.classList.add('show');
     });
   }else if(v.canPlayType('application/vnd.apple.mpegurl')){
-    v.src=SRC;
+    v.src=ep.u;
   }
   loadTip.textContent='加载中…';loadTip.classList.add('show');
+  setEpUI();
   v.play().catch(function(){});
 }
-boot();
+switchEp(1);
 v.addEventListener('loadeddata',function(){loadTip.classList.remove('show');});
 v.addEventListener('waiting',function(){loadTip.classList.add('show');});
 v.addEventListener('playing',function(){loadTip.classList.remove('show');});
