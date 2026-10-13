@@ -80,6 +80,16 @@ var v=document.getElementById('v'),hls=null,cur=1,played=[1];
 var epsBox=document.getElementById('eps'),loadTip=document.getElementById('loadTip');
 var bar=document.getElementById('bar'),barFill=document.getElementById('barFill'),barDot=document.getElementById('barDot');
 var timeEl=document.getElementById('time'),playBtn=document.getElementById('playBtn');
+var ctrl=document.getElementById('ctrl'),hideTimer=null;
+function hideCtrlSoon(){
+  if(hideTimer)clearTimeout(hideTimer);
+  if(v.paused)return;
+  hideTimer=setTimeout(function(){ctrl.classList.remove('lock');},3500);
+}
+function showCtrl(){
+  ctrl.classList.add('lock');
+  hideCtrlSoon();
+}
 // 选集按钮
 EPS.forEach(function(ep){
   var b=document.createElement('button');
@@ -123,8 +133,8 @@ v.addEventListener('playing',function(){loadTip.classList.remove('show');});
 playBtn.addEventListener('click',function(){
   if(v.paused){v.play();}else{v.pause();}
 });
-v.addEventListener('play',function(){playBtn.textContent='⏸';bigPlay.classList.add('hide');});
-v.addEventListener('pause',function(){playBtn.textContent='▶';bigPlay.classList.remove('hide');});
+v.addEventListener('play',function(){playBtn.textContent='⏸';bigPlay.classList.add('hide');hideCtrlSoon();});
+v.addEventListener('pause',function(){playBtn.textContent='▶';bigPlay.classList.remove('hide');showCtrl();});
 bigPlay.addEventListener('click',function(){v.play();});
 // 进度
 function fmt(s){s=Math.max(0,s|0);var m=Math.floor(s/60),ss=s%60;return (m<10?'0':'')+m+':'+(ss<10?'0':'')+ss;}
@@ -157,8 +167,8 @@ fullBtn.addEventListener('click',function(){
 var playerWrap=document.getElementById('playerWrap');
 playerWrap.addEventListener('click',function(e){
   if(e.target.closest('#ctrl')||e.target===bigPlay)return;
-  var ctrl=document.getElementById('ctrl');
-  ctrl.classList.toggle('lock');
+  if(ctrl.classList.contains('lock')){ctrl.classList.remove('lock');if(hideTimer)clearTimeout(hideTimer);}
+  else{showCtrl();}
 });
 // 返回
 document.getElementById('btnBack').addEventListener('click',function(){history.back();});
