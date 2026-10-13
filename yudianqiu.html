@@ -34,7 +34,8 @@ video{width:100%;height:100%;object-fit:contain;background:#000}
 .spdBtn.on{background:#2b6df0;color:#fff;box-shadow:0 0 10px rgba(43,109,240,.5)}
 .spdBtn:active{transform:scale(.92)}
 #fullBtn{margin-left:auto;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:16px;cursor:pointer;transition:background .2s}
-#fullBtn:active{background:rgba(255,255,255,.28)}
+#hideCtrlBtn{width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#9fb2d4;font-size:18px;line-height:1;cursor:pointer;transition:all .2s;margin-left:4px}
+#fullBtn:active,#hideCtrlBtn:active{background:rgba(255,255,255,.28)}
 #eps{background:#0d1322;border-top:1px solid rgba(255,255,255,.06);padding:10px 12px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
 #eps::-webkit-scrollbar{display:none}
 #eps .lbl{font-size:12px;color:#7c8db0;white-space:nowrap;margin-right:2px}
@@ -62,7 +63,7 @@ video{width:100%;height:100%;object-fit:contain;background:#000}
           <button class="spdBtn" data-spd="1.5">1.5x</button>
           <button class="spdBtn" data-spd="2">2x</button>
         </div>
-        <button id="fullBtn">⛶</button>
+        <button id="fullBtn">⛶</button><button id="hideCtrlBtn">▾</button>
       </div>
     </div>
   </div>
@@ -171,6 +172,10 @@ playerWrap.addEventListener('click',function(e){
   else{showCtrl();}
 });
 // 返回
+document.getElementById('hideCtrlBtn').addEventListener('click',function(){
+  ctrl.classList.remove('lock');
+  if(hideTimer)clearTimeout(hideTimer);
+});
 document.getElementById('btnBack').addEventListener('click',function(){history.back();});
 document.getElementById('btnHome').addEventListener('click',function(){location.href='main.html';});
 document.addEventListener('keydown',function(e){
