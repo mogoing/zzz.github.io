@@ -18,6 +18,7 @@ video{width:100%;height:100%;object-fit:contain;background:#000}
 #loadTip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#9fb2d4;font-size:13px;letter-spacing:2px;z-index:4;display:none}
 #loadTip.show{display:block}
 #ctrl{position:absolute;left:0;right:0;bottom:0;z-index:6;padding:10px 12px 8px;background:linear-gradient(transparent,rgba(0,0,0,.78));opacity:0;transition:opacity .3s}
+#ctrl.forced{opacity:0!important;pointer-events:none}
 #playerWrap:hover #ctrl,#ctrl.lock{opacity:1}
 #bar{height:18px;display:flex;align-items:center;cursor:pointer}
 #barTrack{flex:1;height:4px;background:rgba(255,255,255,.22);border-radius:2px;position:relative;transition:height .2s}
@@ -175,7 +176,7 @@ v.addEventListener('waiting',function(){loadTip.classList.add('show');});
 v.addEventListener('playing',function(){loadTip.classList.remove('show');});
 playBtn.addEventListener('click',function(){v.paused?v.play():v.pause();});
 v.addEventListener('play',function(){playBtn.textContent='⏸';bigPlay.classList.add('hide');hideCtrlSoon();});
-v.addEventListener('pause',function(){playBtn.textContent='▶';bigPlay.classList.remove('hide');showCtrl();});
+v.addEventListener('pause',function(){playBtn.textContent='▶';bigPlay.classList.remove('hide');ctrl.classList.remove('forced');showCtrl();});
 bigPlay.addEventListener('click',function(){v.play();});
 function fmt(s){s=Math.max(0,s|0);var m=Math.floor(s/60),ss=s%60;return (m<10?'0':'')+m+':'+(ss<10?'0':'')+ss;}
 v.addEventListener('timeupdate',function(){
@@ -204,11 +205,13 @@ fullBtn.addEventListener('click',function(){
 var playerWrap=document.getElementById('playerWrap');
 playerWrap.addEventListener('click',function(e){
   if(e.target.closest('#ctrl')||e.target===bigPlay)return;
+  ctrl.classList.remove('forced');
   if(ctrl.classList.contains('lock')){ctrl.classList.remove('lock');if(hideTimer)clearTimeout(hideTimer);}
   else{showCtrl();}
 });
 document.getElementById('hideCtrlBtn').addEventListener('click',function(){
   ctrl.classList.remove('lock');
+  ctrl.classList.add('forced');
   if(hideTimer)clearTimeout(hideTimer);
 });
 document.getElementById('btnBack').addEventListener('click',function(){history.back();});
