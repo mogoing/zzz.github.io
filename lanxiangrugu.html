@@ -135,6 +135,21 @@ function showCtrl(){
   ctrl.classList.add('lock');
   hideCtrlSoon();
 }
+var wakeLock=null;
+function requestWake(){
+  if(!('wakeLock' in navigator))return;
+  try{
+    navigator.wakeLock.request('screen').then(function(wl){wakeLock=wl;}).catch(function(){});
+  }catch(e){}
+}
+function releaseWake(){
+  if(wakeLock){try{wakeLock.release().catch(function(){});}catch(e){}
+    wakeLock=null;}
+}
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden){releaseWake();}
+  else if(!v.paused){requestWake();}
+});
 EPS.forEach(function(ep){
   var b=document.createElement('button');
   b.className='epBtn'+(ep.n===cur?' on':'');
@@ -156,7 +171,7 @@ function switchEp(n){
   var ep=EPS[n-1];
   if(hls){hls.destroy();hls=null;}
   if(window.Hls&&Hls.isSupported()){
-    hls=new Hls();
+    hls=new Hls({maxBufferLength:180,maxBufferSize:120*1000*1000,maxMaxBufferLength:600,backBufferLength:60});
     hls.loadSource(ep.u);
     hls.attachMedia(v);
     hls.on(Hls.Events.ERROR,function(e,d){
@@ -175,8 +190,8 @@ v.addEventListener('loadeddata',function(){loadTip.classList.remove('show');});
 v.addEventListener('waiting',function(){loadTip.classList.add('show');});
 v.addEventListener('playing',function(){loadTip.classList.remove('show');});
 playBtn.addEventListener('click',function(){v.paused?v.play():v.pause();});
-v.addEventListener('play',function(){playBtn.textContent='⏸';bigPlay.classList.add('hide');hideCtrlSoon();});
-v.addEventListener('pause',function(){playBtn.textContent='▶';bigPlay.classList.remove('hide');ctrl.classList.remove('forced');showCtrl();});
+v.addEventListener('play',function(){playBtn.textContent='⏸';bigPlay.classList.add('hide');hideCtrlSoon();requestWake();});
+v.addEventListener('pause',function(){playBtn.textContent='▶';bigPlay.classList.remove('hide');ctrl.classList.remove('forced');showCtrl();releaseWake();});
 bigPlay.addEventListener('click',function(){v.play();});
 function fmt(s){s=Math.max(0,s|0);var m=Math.floor(s/60),ss=s%60;return (m<10?'0':'')+m+':'+(ss<10?'0':'')+ss;}
 v.addEventListener('timeupdate',function(){
