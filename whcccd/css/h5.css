@@ -1,0 +1,40 @@
+/* ============================================================
+   H5 (mobile) refinements — layered on top of beyond.css.
+   Nothing here changes desktop behaviour; rules below only
+   target touch devices (pointer: coarse) or fix mobile-only
+   scroll/zoom quirks.
+   ============================================================ */
+
+/* Stop pull-to-refresh and rubber-band overscroll while the
+   scene owns the viewport (works everywhere, harmless on desktop). */
+html {
+  overscroll-behavior: none;
+}
+
+@media (pointer: coarse) {
+  /* Controls answer on the first tap: removes the 300 ms
+     double-tap-zoom delay and the grey tap flash. */
+  button,
+  .cta,
+  .mb,
+  .ib,
+  .db,
+  .seg3 button,
+  .r-mk,
+  input[type="range"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* The "F = free camera" keyboard hint is desktop-only; on
+     phones free camera lives behind the ✥ EXPLORE button. */
+  .sc-hints span:nth-child(4) {
+    display: none;
+  }
+
+  /* Slightly larger hit area for the small icon buttons. */
+  .ib {
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
