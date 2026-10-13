@@ -10,8 +10,11 @@ html,body{width:100%;height:100%;background:#0a0e17;overflow:hidden;font-family:
 #top .btn:active{transform:translateY(1px) scale(.96)}
 #top .t{flex:1;text-align:center;font-size:16px;font-weight:800;letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #stage{position:fixed;top:52px;left:0;right:0;bottom:0;display:flex;flex-direction:column}
-#playerWrap{position:relative;width:100%;background:#000;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+#playerWrap{position:relative;width:100%;background:#000;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;touch-action:none}
 video{width:100%;height:100%;object-fit:contain;background:#000}
+#brightMask{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:3}
+#gestureTip{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);background:rgba(0,0,0,.62);border-radius:26px;padding:10px 20px;font-size:17px;font-weight:700;color:#fff;z-index:8;display:none;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .25s;letter-spacing:1px;min-width:96px}
+#gestureTip.show{display:flex;opacity:1}
 #bigPlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,.25);transition:opacity .3s;z-index:5}
 #bigPlay.hide{opacity:0;pointer-events:none}
 #bigPlay .tri{width:0;height:0;border-left:34px solid #fff;border-top:22px solid transparent;border-bottom:22px solid transparent;margin-left:8px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
@@ -50,6 +53,8 @@ video{width:100%;height:100%;object-fit:contain;background:#000}
 <div id="stage">
   <div id="playerWrap">
     <video id="v" playsinline webkit-playsinline></video>
+    <div id="brightMask"></div>
+    <div id="gestureTip"></div>
     <div id="bigPlay"><div class="tri"></div></div>
     <div id="loadTip">加载中…</div>
     <div id="ctrl">
@@ -123,6 +128,43 @@ document.addEventListener('visibilitychange',function(){
   if(document.hidden){releaseWake();}
   else if(!v.paused){requestWake();}
 });
+var brightMask=document.getElementById('brightMask'),gestureTip=document.getElementById('gestureTip');
+var brightness=0,tipTimer=null,justGestured=false,gPlayer=document.getElementById('playerWrap');
+function showTip(text){
+  gestureTip.textContent=text;
+  gestureTip.classList.add('show');
+  if(tipTimer)clearTimeout(tipTimer);
+  tipTimer=setTimeout(function(){gestureTip.classList.remove('show');},900);
+}
+gPlayer.addEventListener('pointerdown',function(e){
+  if(e.target.closest('#ctrl')||e.target===bigPlay)return;
+  var r=gPlayer.getBoundingClientRect();
+  gesture={mode:((e.clientX-r.left)/r.width<0.5?'bright':'vol'),startY:e.clientY,startVal:null,moved:false};
+});
+gPlayer.addEventListener('pointermove',function(e){
+  if(!gesture)return;
+  var dy=e.clientY-gesture.startY;
+  if(Math.abs(dy)<14&&!gesture.moved)return;
+  if(e.cancelable)e.preventDefault();
+  gesture.moved=true;
+  var p=Math.max(-1,Math.min(1,dy/180));
+  if(gesture.mode==='bright'){
+    if(gesture.startVal===null)gesture.startVal=brightness;
+    brightness=Math.max(0,Math.min(0.7,gesture.startVal+p*0.7));
+    brightMask.style.opacity=brightness;
+    showTip('亮度 '+Math.round((1-brightness)*100)+'%');
+  }else{
+    if(gesture.startVal===null)gesture.startVal=v.muted?0:v.volume;
+    var vol=Math.max(0,Math.min(1,gesture.startVal-p));
+    v.volume=vol;v.muted=false;
+    showTip('音量 '+Math.round(vol*100)+'%');
+  }
+});
+gPlayer.addEventListener('pointerup',function(){
+  if(gesture&&gesture.moved){justGestured=true;setTimeout(function(){justGestured=false;},200);}
+  gesture=null;
+});
+gPlayer.addEventListener('pointercancel',function(){gesture=null;});
 EPS.forEach(function(ep){
   var b=document.createElement('button');
   b.className='epBtn'+(ep.n===cur?' on':'');
@@ -193,6 +235,7 @@ fullBtn.addEventListener('click',function(){
 });
 var playerWrap=document.getElementById('playerWrap');
 playerWrap.addEventListener('click',function(e){
+  if(justGestured)return;
   if(e.target.closest('#ctrl')||e.target===bigPlay)return;
   ctrl.classList.remove('forced');
   if(ctrl.classList.contains('lock')){ctrl.classList.remove('lock');if(hideTimer)clearTimeout(hideTimer);}
