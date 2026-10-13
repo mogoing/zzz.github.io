@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>兰香如故</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;background:#0a0e17;overflow:hidden;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#e8ecf4}
+#top{position:fixed;top:0;left:0;right:0;height:52px;z-index:100;display:flex;align-items:center;gap:10px;padding:0 10px;background:rgba(10,14,23,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+#top .btn{height:34px;border:0;border-radius:17px;padding:0 16px;background:linear-gradient(135deg,#2b6df0,#1e4fd8);color:#fff;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.25);transition:transform .15s,filter .15s}
+#top .btn:active{transform:translateY(1px) scale(.96)}
+#top .t{flex:1;text-align:center;font-size:16px;font-weight:800;letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#stage{position:fixed;top:52px;left:0;right:0;bottom:0;display:flex;flex-direction:column}
+#playerWrap{position:relative;width:100%;background:#000;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+video{width:100%;height:100%;object-fit:contain;background:#000}
+#bigPlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,.25);transition:opacity .3s;z-index:5}
+#bigPlay.hide{opacity:0;pointer-events:none}
+#bigPlay .tri{width:0;height:0;border-left:34px solid #fff;border-top:22px solid transparent;border-bottom:22px solid transparent;margin-left:8px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+#loadTip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#9fb2d4;font-size:13px;letter-spacing:2px;z-index:4;display:none}
+#loadTip.show{display:block}
+#ctrl{position:absolute;left:0;right:0;bottom:0;z-index:6;padding:10px 12px 8px;background:linear-gradient(transparent,rgba(0,0,0,.78));opacity:0;transition:opacity .3s}
+#playerWrap:hover #ctrl,#ctrl.lock{opacity:1}
+#bar{height:18px;display:flex;align-items:center;cursor:pointer}
+#barTrack{flex:1;height:4px;background:rgba(255,255,255,.22);border-radius:2px;position:relative;transition:height .2s}
+#bar:hover #barTrack{height:6px}
+#barFill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:2px}
+#barDot{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:#fff;transform:translate(-50%,-50%) scale(0);transition:transform .2s;box-shadow:0 0 6px rgba(59,130,246,.8)}
+#bar:hover #barDot{transform:translate(-50%,-50%) scale(1)}
+.row{display:flex;align-items:center;gap:10px;margin-top:6px}
+#playBtn{width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#playBtn:active{background:rgba(255,255,255,.28)}
+#time{font-size:12px;color:#c3cfe4;font-variant-numeric:tabular-nums}
+#spd{display:flex;gap:6px}
+.spdBtn{height:30px;border:0;border-radius:15px;padding:0 11px;background:rgba(255,255,255,.1);color:#dfe6f5;font-size:12px;cursor:pointer;transition:all .2s}
+.spdBtn.on{background:#2b6df0;color:#fff;box-shadow:0 0 10px rgba(43,109,240,.5)}
+.spdBtn:active{transform:scale(.92)}
+#fullBtn{margin-left:auto;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:16px;cursor:pointer;transition:background .2s}
+#fullBtn:active{background:rgba(255,255,255,.28)}
+#info{background:#0d1322;border-top:1px solid rgba(255,255,255,.06);padding:10px 12px;font-size:12px;color:#7c8db0;display:flex;align-items:center;gap:8px}
+#info b{color:#c3cfe4}
+</style></head><body>
+<div id="top"><button class="btn" id="btnBack">← 返回</button><div class="t">兰香如故</div><button class="btn" id="btnHome">⌂ 主页</button></div>
+<div id="stage">
+  <div id="playerWrap">
+    <video id="v" playsinline webkit-playsinline></video>
+    <div id="bigPlay"><div class="tri"></div></div>
+    <div id="loadTip">加载中…</div>
+    <div id="ctrl">
+      <div id="bar"><div id="barTrack"><div id="barFill"></div><div id="barDot"></div></div></div>
+      <div class="row">
+        <button id="playBtn">▶</button>
+        <div id="time">00:00 / 00:00</div>
+        <div id="spd">
+          <button class="spdBtn" data-spd="0.5">0.5x</button>
+          <button class="spdBtn" data-spd="1">1x</button>
+          <button class="spdBtn" data-spd="1.25">1.25x</button>
+          <button class="spdBtn" data-spd="1.5">1.5x</button>
+          <button class="spdBtn" data-spd="2">2x</button>
+        </div>
+        <button id="fullBtn">⛶</button>
+      </div>
+    </div>
+  </div>
+  <div id="info"><span>当前资源：<b>魔都资源 · 第1集</b></span><span style="margin-left:auto">单集约 59 分钟</span></div>
+</div>
+<script src="hls.min.js"></script>
+<script>
+var SRC="https://play.modujx17.com/20260911/fjZ5pIOb/index.m3u8";
+var v=document.getElementById('v'),hls=null;
+var loadTip=document.getElementById('loadTip');
+var bar=document.getElementById('bar'),barFill=document.getElementById('barFill'),barDot=document.getElementById('barDot');
+var timeEl=document.getElementById('time'),playBtn=document.getElementById('playBtn');
+function boot(){
+  if(hls){hls.destroy();hls=null;}
+  if(window.Hls&&Hls.isSupported()){
+    hls=new Hls();
+    hls.loadSource(SRC);
+    hls.attachMedia(v);
+    hls.on(Hls.Events.ERROR,function(e,d){
+      if(d.fatal)loadTip.textContent='加载失败，点画面重试';
+      loadTip.classList.add('show');
+    });
+  }else if(v.canPlayType('application/vnd.apple.mpegurl')){
+    v.src=SRC;
+  }
+  loadTip.textContent='加载中…';loadTip.classList.add('show');
+  v.play().catch(function(){});
+}
+boot();
+v.addEventListener('loadeddata',function(){loadTip.classList.remove('show');});
+v.addEventListener('waiting',function(){loadTip.classList.add('show');});
+v.addEventListener('playing',function(){loadTip.classList.remove('show');});
+playBtn.addEventListener('click',function(){v.paused?v.play():v.pause();});
+v.addEventListener('play',function(){playBtn.textContent='⏸';bigPlay.classList.add('hide');});
+v.addEventListener('pause',function(){playBtn.textContent='▶';bigPlay.classList.remove('hide');});
+bigPlay.addEventListener('click',function(){v.play();});
+function fmt(s){s=Math.max(0,s|0);var m=Math.floor(s/60),ss=s%60;return (m<10?'0':'')+m+':'+(ss<10?'0':'')+ss;}
+v.addEventListener('timeupdate',function(){
+  if(v.duration){var p=v.currentTime/v.duration;barFill.style.width=(p*100)+'%';barDot.style.left=(p*100)+'%';}
+  timeEl.textContent=fmt(v.currentTime)+' / '+fmt(v.duration);
+});
+bar.addEventListener('click',function(e){
+  var r=bar.getBoundingClientRect(),p=(e.clientX-r.left)/r.width;
+  if(v.duration){v.currentTime=p*v.duration;}
+});
+var spdBtns=document.querySelectorAll('.spdBtn');
+spdBtns.forEach(function(b){
+  if(b.dataset.spd==='1')b.classList.add('on');
+  b.addEventListener('click',function(){
+    v.playbackRate=parseFloat(b.dataset.spd);
+    spdBtns.forEach(function(x){x.classList.toggle('on',x===b);});
+  });
+});
+var fullBtn=document.getElementById('fullBtn');
+fullBtn.addEventListener('click',function(){
+  var el=v.parentElement;
+  if(document.fullscreenElement){document.exitFullscreen();}
+  else if(el.requestFullscreen){el.requestFullscreen();}
+  else if(el.webkitRequestFullscreen){el.webkitRequestFullscreen();}
+});
+var playerWrap=document.getElementById('playerWrap');
+playerWrap.addEventListener('click',function(e){
+  if(e.target.closest('#ctrl')||e.target===bigPlay)return;
+  var ctrl=document.getElementById('ctrl');
+  ctrl.classList.toggle('lock');
+});
+document.getElementById('btnBack').addEventListener('click',function(){history.back();});
+document.getElementById('btnHome').addEventListener('click',function(){location.href='main.html';});
+document.addEventListener('keydown',function(e){
+  if(e.code==='Space'){e.preventDefault();v.paused?v.play():v.pause();}
+  if(e.code==='ArrowLeft')v.currentTime-=5;
+  if(e.code==='ArrowRight')v.currentTime+=5;
+  if(e.code==='KeyF')fullBtn.click();
+});
+</script></body></html>
