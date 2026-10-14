@@ -90,7 +90,7 @@
 <!-- 热更新：内容版本变化自动带参重载，绕过缓存（无需重装 APK） -->
 <script>
 (function(){
-  var VER_URL = 'https://mogoing.github.io/zzz.github.io/version.json';
+  var VER_URL = 'https://mogoing.github.io/mogoing/version.json';
   if (!window.fetch) return;
   fetch(VER_URL, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
     var ver = String((j && j.v) || 0);
