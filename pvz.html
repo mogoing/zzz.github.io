@@ -139,7 +139,7 @@
 <!-- 热更新：内容版本变化自动带参重载，绕过缓存（无需重装 APK） -->
 <script>
 (function(){
-  var VER_URL = 'https://mogoing.github.io/zzz.github.io/version.json';
+  var VER_URL = 'https://mogoing.github.io/mogoing/version.json';
   if (!window.fetch) return;
   fetch(VER_URL, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
     var ver = String((j && j.v) || 0);
@@ -171,7 +171,7 @@
   <div class="wrap">
     <div class="canvas" id="canvas">
       <div class="stage" id="stage">
-        <iframe id="game" src="https://mogoing.github.io/zzz.github.io/2025年9月25日pvz/plantsvszombies.htm" scrolling="no" allowfullscreen></iframe>
+        <iframe id="game" src="https://mogoing.github.io/mogoing/2025年9月25日pvz/plantsvszombies.htm" scrolling="no" allowfullscreen></iframe>
       </div>
       <div class="tip" id="tip">加载中…经典中文完整版（冒险+小游戏+益智+生存，全量素材本地化），加载完自动消失</div>
     </div>
@@ -350,9 +350,10 @@
   })();
 
   // ===== PvZ 离线缓存：首次进入把整个游戏缓存到本地，之后秒开不用重新下载 =====
-  // 统一注册根 sw.js（无参数，与 ab/main 共用一个 SW，避免同 scope 覆盖导致缓存反复失效）
+  // 版本戳（localStorage.mogoing_ver）变化 → 页面带参重载 → 注册 sw.js?v=N → 自动清旧缓存重新缓存
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(function(){});
+    var _swVer = localStorage.getItem('mogoing_ver') || '';
+    navigator.serviceWorker.register('sw.js?v=' + _swVer).catch(function(){});
   }
 </script>
 </body>
